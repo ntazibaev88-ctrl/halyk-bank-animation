@@ -231,9 +231,9 @@ function arm2(parent, o) {
   return A;
 }
 
-const D = 11.711; // scene length (s)
-const CH = [0.29, 3.661, 5.959, 8.487]; // narration chunk starts, scene-relative
-const CE = [2.99, 5.401, 7.939, 11.307]; // narration chunk ends, scene-relative
+const D = 12.602; // scene length (s)
+const CH = [0.29, 3.696, 6.051, 9.25]; // narration chunk starts, scene-relative
+const CE = [3.03, 5.476, 8.031, 12.19]; // narration chunk ends, scene-relative
 
 const tl = gsap.timeline({ paused: true });
 const svg = document.getElementById("s8-svg"), defs = el("defs", {}, svg), UI = document.getElementById("s8-ui"), COLS = document.getElementById("s8-cols");
@@ -300,7 +300,7 @@ lm.forEach((m, i) => tl.fromTo(m, { opacity: 0, scale: 0, transformOrigin: "50% 
 tl.to(brk, { scale: 1.06, duration: .8, yoyo: true, repeat: RP(D / .8), ease: "sine.inOut", transformOrigin: "0 0" }, CH[1]);
 [["#s8-c0", CH[1] + .1], ["#s8-c1", CH[1] + .7], ["#s8-c2", CH[2] + .3], ["#s8-c3", CH[3] + .5]].forEach(c => tl.fromTo(c[0], { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: .45, ease: "power3.out" }, c[1]));
 /* system failure glitch */
-const G = CH[2] + 1.5;
+const G = CE[2] + .12;   // the system fails in the pause right after «…даст сбой?»
 tl.fromTo("#s8-flash", { opacity: 0 }, { opacity: .35, duration: .06, yoyo: true, repeat: 5 }, G);
 [-14, 11, -8, 16, -6, 0].forEach((x, i) => tl.to("#s8-world", { x, duration: .05 }, G + i * .06));
 tl.fromTo(face, { skewX: 0 }, { skewX: 14, duration: .06, yoyo: true, repeat: 5, transformOrigin: "0 0" }, G);

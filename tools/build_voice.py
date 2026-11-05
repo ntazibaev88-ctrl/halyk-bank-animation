@@ -24,6 +24,7 @@ VOICE = os.environ.get("TTS_VOICE", "ru_RU-ruslan-medium")
 TAKES = int(os.environ.get("TTS_TAKES", 6))
 # base delivery speed in syllables/second (~6.0 s/s of Russian ~= 140 words/min while speaking)
 BASE_SPS = float(os.environ.get("TTS_SPS", 6.5))
+NOISE_RNG = np.random.default_rng(45)
 SR = 48000
 TMP = os.path.join(os.environ.get("TMPDIR", "/tmp"), "vo_takes")
 os.makedirs(TMP, exist_ok=True)
@@ -132,14 +133,19 @@ def main():
                 hyp = recognise(x)
                 e = wer(ref, [h[0] for h in hyp])
                 dev = abs(syll(spoken) / (len(x) / VSR) - target) / target
-                cand = (e, dev, k, x, hyp)
-                if best is None or (e, dev) < (best[0], best[1]): best = cand
-            e, dev, k, x, hyp = best
+                # intelligibility margin: the take must also survive pink-ish noise at -20 dB (as under music)
+                nz = np.cumsum(NOISE_RNG.standard_normal(len(x)).astype(np.float32)); nz -= np.convolve(nz, np.ones(400) / 400, "same")
+                nz *= np.sqrt((x ** 2).mean()) / (np.sqrt((nz ** 2).mean()) + 1e-9) * 0.1
+                e2 = wer(ref, [h[0] for h in recognise(x + nz)])
+                cand = (e + e2, dev, k, x, hyp, e2)
+                if best is None or (cand[0], dev) < (best[0], best[1]): best = cand
+            _, dev, k, x, hyp, e2 = best
+            e = wer(ref, [h[0] for h in hyp])
             # level-match every sentence (RMS of voiced frames) so the narration sits at one consistent level
             fr = x[: len(x) // 512 * 512].reshape(-1, 512); rms = np.sqrt((fr ** 2).mean(1))
             x = x * (0.09 / (np.sqrt((fr[rms > rms.max() * .15] ** 2).mean()) + 1e-9))
             dur = len(x) / VSR
-            qc.append({"scene": sc["id"], "text": spoken, "take": k + 1, "rate_dev": round(dev, 3), "wer": round(e, 3), "length_scale": round(ls, 3),
+            qc.append({"scene": sc["id"], "text": spoken, "take": k + 1, "rate_dev": round(dev, 3), "wer_in_noise": round(e2, 3), "wer": round(e, 3), "length_scale": round(ls, 3),
                        "syll_per_s": round(syll(spoken) / dur, 2),
                        "heard": " ".join(h[0] for h in hyp), "dur": round(dur, 2),
                        "wpm": round(len(ref) / dur * 60)})

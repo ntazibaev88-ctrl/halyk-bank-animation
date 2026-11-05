@@ -192,9 +192,9 @@ sfx.add(fade(lp(dark.astype(np.float32), 240), 1, .5), S[sc], .75)
 for k in range(int(DUR[sc] / .95)): sfx.add(thump(52, .5, 1.3), A(sc, .4 + k * .95), .5); sfx.add(thump(52, .5, 1.0), A(sc, .4 + k * .95 + .26), .35)
 for t in (CH(sc, 1) + .1, CH(sc, 1) + .7, CH(sc, 2) + .3, CH(sc, 3) + .5): sfx.add(blip(220, .3, 1) + blip(233, .3, 1), t, .5, pan=R(-.5, .5)); sfx.add(chirp(2000, 600, .2), t - .02, .25)
 sfx.add(chirp(400, 3000, 1.2) * .6, CH(sc, 1) - .8, .35)
-G = CH(sc, 2) + 1.5
-for k in range(3): sfx.add(glitch(.5), G + k * .12, .75, pan=R(-1, 1))
-sfx.add(impact(1.4, 38), G, .8); sfx.add(sine(60, 1.0) * np.exp(-tt(1.0) * 2), G + .1, .5)
+G = CE(sc, 2) + .12
+for k in range(3): sfx.add(glitch(.32), G + k * .1, .7, pan=R(-1, 1))
+sfx.add(impact(1.0, 38), G, .7); sfx.add(sine(60, .7) * np.exp(-tt(.7) * 4), G + .1, .4)
 for k in range(10): sfx.add(blip(rs.choice([1500, 2200, 3100]), .06), A(sc, 1.2 + k * .35 + R(0, .1)), .15, pan=R(-1, 1))
 
 # ---- scene 9: the dramatic finale
@@ -300,7 +300,7 @@ subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", f"{ROOT}/audio/music
     "-map", "[out]", "-ar", str(SR), "-ac", "2", f"{ROOT}/audio/music.wav"], check=True)
 # effects also step back under the voice (gentler than the music), so no word is ever masked
 subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", f"{ROOT}/audio/sfx_raw.wav", "-i", f"{ROOT}/audio/voiceover_ru.wav",
-    "-filter_complex", "[0:a][1:a]sidechaincompress=threshold=0.03:ratio=4:attack=15:release=300,volume=0.9[out]",
+    "-filter_complex", "[0:a][1:a]sidechaincompress=threshold=0.02:ratio=6:attack=10:release=300,volume=0.9[out]",
     "-map", "[out]", "-ar", str(SR), "-ac", "2", f"{ROOT}/audio/sfx.wav"], check=True)
 os.remove(f"{ROOT}/audio/music_raw.wav"); os.remove(f"{ROOT}/audio/sfx_raw.wav")
 print("audio ok", round(TOTAL, 2), "s")

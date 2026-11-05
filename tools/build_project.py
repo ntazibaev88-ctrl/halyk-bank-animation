@@ -140,11 +140,14 @@ def build_subs():
         lines = line_break(c["toks"])
         srt.append(f"{i+1}\n{srt_time(c['show'])} --> {srt_time(c['hide'])}\n" +
                    "\n".join(" ".join(w for w, _ in ln) for ln in lines) + "\n")
-        inner = "<br>".join(
-            " ".join(f'<span class="hl">{html.escape(w)}</span>' if h else html.escape(w) for w, h in ln)
+        # each line is unbreakable; long lines get a smaller size so a cue is never more than two lines
+        inner = "".join(
+            '<span class="ln">' + " ".join(f'<span class="hl">{html.escape(w)}</span>' if h else html.escape(w) for w, h in ln) + "</span>"
             for ln in lines)
+        longest = max(len(" ".join(w for w, _ in ln)) for ln in lines)
+        fs = 62 if longest <= 25 else int(62 * 25 / longest)
         dur = round(c["hide"] - c["show"], 3)
-        items.append(f'    <div id="sub{i}" class="clip sub" data-start="{c["show"]:.3f}" data-duration="{dur}" data-track-index="1"><p>{inner}</p></div>')
+        items.append(f'    <div id="sub{i}" class="clip sub" data-start="{c["show"]:.3f}" data-duration="{dur}" data-track-index="1"><p style="font-size:{fs}px">{inner}</p></div>')
         js.append(f'    sub({i}, {c["show"]:.3f}, {dur}, {"true" if any(h for _, h in c["toks"]) else "false"});')
     wr(P("subtitles_ru.srt"), "\n".join(srt))
     page = f"""<template>
@@ -155,6 +158,7 @@ def build_subs():
 .shade{{position:absolute;left:0;right:0;bottom:0;height:760px;background:linear-gradient(0deg,rgba(0,4,12,.78),rgba(0,4,12,.42) 55%,rgba(0,4,12,0))}}
 .sub{{position:absolute;left:60px;width:960px;top:1290px;height:230px;display:flex;align-items:flex-end;justify-content:center;text-align:center}}
 .sub p{{margin:0;font:700 62px/1.2 "F45 Text","Inter",sans-serif;color:#fff;letter-spacing:-.005em;text-shadow:0 3px 18px rgba(0,0,0,.95),0 0 3px rgba(0,0,0,.9)}}
+.sub .ln{{display:block;white-space:nowrap}}
 .sub .hl{{color:#22e4ff;text-shadow:0 0 26px rgba(34,228,255,.75),0 3px 14px rgba(0,0,0,.9)}}
 </style>
 <div id="root" data-composition-id="subs" data-width="{W}" data-height="{H}">
