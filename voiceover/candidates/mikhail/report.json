@@ -1,0 +1,135 @@
+[
+ {
+  "key": "s1_0",
+  "slot_s": 5.215,
+  "natural_s": 4.875,
+  "tempo": 0.946,
+  "fits_without_cut": true
+ },
+ {
+  "key": "s1_1",
+  "slot_s": 6.422,
+  "natural_s": 6.41,
+  "tempo": 1.01,
+  "fits_without_cut": true
+ },
+ {
+  "key": "s2_0",
+  "slot_s": 5.13,
+  "natural_s": 4.865,
+  "tempo": 0.96,
+  "fits_without_cut": true
+ },
+ {
+  "key": "s2_1",
+  "slot_s": 5.415,
+  "natural_s": 5.465,
+  "tempo": 1.021,
+  "fits_without_cut": true
+ },
+ {
+  "key": "s3_0",
+  "slot_s": 2.112,
+  "natural_s": 2.01,
+  "tempo": 0.963,
+  "fits_without_cut": true
+ },
+ {
+  "key": "s3_1",
+  "slot_s": 4.126,
+  "natural_s": 3.71,
+  "tempo": 0.94,
+  "fits_without_cut": true
+ },
+ {
+  "key": "s3_2",
+  "slot_s": 6.801,
+  "natural_s": 6.565,
+  "tempo": 0.977,
+  "fits_without_cut": true
+ },
+ {
+  "key": "s4_0",
+  "slot_s": 3.956,
+  "natural_s": 3.755,
+  "tempo": 0.961,
+  "fits_without_cut": true
+ },
+ {
+  "key": "s4_1",
+  "slot_s": 4.104,
+  "natural_s": 3.775,
+  "tempo": 0.94,
+  "fits_without_cut": true
+ },
+ {
+  "key": "s4_2",
+  "slot_s": 5.48,
+  "natural_s": 5.385,
+  "tempo": 0.994,
+  "fits_without_cut": true
+ },
+ {
+  "key": "s5_0",
+  "slot_s": 2.766,
+  "natural_s": 2.54,
+  "tempo": 0.94,
+  "fits_without_cut": true
+ },
+ {
+  "key": "s5_1",
+  "slot_s": 10.217,
+  "natural_s": 10.47,
+  "tempo": 1.037,
+  "fits_without_cut": true
+ },
+ {
+  "key": "s6_0",
+  "slot_s": 4.93,
+  "natural_s": 5.035,
+  "tempo": 1.034,
+  "fits_without_cut": true
+ },
+ {
+  "key": "s6_1",
+  "slot_s": 6.877,
+  "natural_s": 7.075,
+  "tempo": 1.041,
+  "fits_without_cut": true
+ },
+ {
+  "key": "s7_0",
+  "slot_s": 8.982,
+  "natural_s": 8.595,
+  "tempo": 0.968,
+  "fits_without_cut": true
+ },
+ {
+  "key": "s7_1",
+  "slot_s": 3.928,
+  "natural_s": 3.95,
+  "tempo": 1.018,
+  "fits_without_cut": true
+ },
+ {
+  "key": "s8_0",
+  "slot_s": 3.097,
+  "natural_s": 2.56,
+  "tempo": 0.94,
+  "fits_without_cut": true
+ },
+ {
+  "key": "s8_1",
+  "slot_s": 3.381,
+  "natural_s": 3.085,
+  "tempo": 0.94,
+  "fits_without_cut": true
+ },
+ {
+  "key": "s8_2",
+  "slot_s": 7.119,
+  "natural_s": 7.23,
+  "tempo": 1.028,
+  "fits_without_cut": true
+ }
+]

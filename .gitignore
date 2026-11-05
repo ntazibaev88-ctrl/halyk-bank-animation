@@ -2,3 +2,5 @@ node_modules/
 .hyperframes/
 audio/*.wav
 voiceover/sentences/*.raw.wav
+voiceover/candidates/*/*.wav
+voiceover/candidates/*/sentences/
