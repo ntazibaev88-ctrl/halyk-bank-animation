@@ -296,8 +296,11 @@ write(f"{ROOT}/audio/sfx_raw.wav", sfx.b, .85)
 write(f"{ROOT}/audio/music_raw.wav", mus.b, .85)
 # duck the music under the narration (sidechain), keep the score alive between lines
 subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", f"{ROOT}/audio/music_raw.wav", "-i", f"{ROOT}/audio/voiceover_ru.wav",
-    "-filter_complex", "[0:a][1:a]sidechaincompress=threshold=0.02:ratio=9:attack=25:release=450:makeup=1,volume=0.9[out]",
+    "-filter_complex", "[0:a][1:a]sidechaincompress=threshold=0.015:ratio=10:attack=20:release=500:makeup=1,volume=0.9[out]",
     "-map", "[out]", "-ar", str(SR), "-ac", "2", f"{ROOT}/audio/music.wav"], check=True)
-subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", f"{ROOT}/audio/sfx_raw.wav", "-af", "volume=0.9", "-ar", str(SR), f"{ROOT}/audio/sfx.wav"], check=True)
+# effects also step back under the voice (gentler than the music), so no word is ever masked
+subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", f"{ROOT}/audio/sfx_raw.wav", "-i", f"{ROOT}/audio/voiceover_ru.wav",
+    "-filter_complex", "[0:a][1:a]sidechaincompress=threshold=0.03:ratio=4:attack=15:release=300,volume=0.9[out]",
+    "-map", "[out]", "-ar", str(SR), "-ac", "2", f"{ROOT}/audio/sfx.wav"], check=True)
 os.remove(f"{ROOT}/audio/music_raw.wav"); os.remove(f"{ROOT}/audio/sfx_raw.wav")
 print("audio ok", round(TOTAL, 2), "s")

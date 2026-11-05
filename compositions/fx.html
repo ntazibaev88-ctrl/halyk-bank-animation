@@ -7,35 +7,35 @@
 .streak{position:absolute;left:0;width:1080px;height:3px;opacity:0;background:linear-gradient(90deg,rgba(34,228,255,0),#bff6ff 40%,#fff 60%,rgba(34,228,255,0));box-shadow:0 0 18px #22e4ff}
 </style>
 <div id="root" data-composition-id="fx" data-width="1080" data-height="1920">
-  <div id="fx0" class="clip fxb" data-start="11.325" data-duration="1.3" data-track-index="2">
+  <div id="fx0" class="clip fxb" data-start="13.067" data-duration="1.3" data-track-index="2">
     <div id="fx0-flash" class="flash"></div><div id="fx0-beam" class="beam"></div>
     <div id="fx0-s1" class="streak" style="top:560px"></div><div id="fx0-s2" class="streak" style="top:1010px"></div><div id="fx0-s3" class="streak" style="top:1340px"></div>
   </div>
-  <div id="fx1" class="clip fxb" data-start="20.802" data-duration="1.3" data-track-index="2">
+  <div id="fx1" class="clip fxb" data-start="22.828" data-duration="1.3" data-track-index="2">
     <div id="fx1-flash" class="flash"></div><div id="fx1-beam" class="beam"></div>
     <div id="fx1-s1" class="streak" style="top:560px"></div><div id="fx1-s2" class="streak" style="top:1010px"></div><div id="fx1-s3" class="streak" style="top:1340px"></div>
   </div>
-  <div id="fx2" class="clip fxb" data-start="30.425" data-duration="1.3" data-track-index="2">
+  <div id="fx2" class="clip fxb" data-start="32.844" data-duration="1.3" data-track-index="2">
     <div id="fx2-flash" class="flash"></div><div id="fx2-beam" class="beam"></div>
     <div id="fx2-s1" class="streak" style="top:560px"></div><div id="fx2-s2" class="streak" style="top:1010px"></div><div id="fx2-s3" class="streak" style="top:1340px"></div>
   </div>
-  <div id="fx3" class="clip fxb" data-start="40.840" data-duration="1.3" data-track-index="2">
+  <div id="fx3" class="clip fxb" data-start="44.880" data-duration="1.3" data-track-index="2">
     <div id="fx3-flash" class="flash"></div><div id="fx3-beam" class="beam"></div>
     <div id="fx3-s1" class="streak" style="top:560px"></div><div id="fx3-s2" class="streak" style="top:1010px"></div><div id="fx3-s3" class="streak" style="top:1340px"></div>
   </div>
-  <div id="fx4" class="clip fxb" data-start="51.554" data-duration="1.3" data-track-index="2">
+  <div id="fx4" class="clip fxb" data-start="58.157" data-duration="1.3" data-track-index="2">
     <div id="fx4-flash" class="flash"></div><div id="fx4-beam" class="beam"></div>
     <div id="fx4-s1" class="streak" style="top:560px"></div><div id="fx4-s2" class="streak" style="top:1010px"></div><div id="fx4-s3" class="streak" style="top:1340px"></div>
   </div>
-  <div id="fx5" class="clip fxb" data-start="61.223" data-duration="1.3" data-track-index="2">
+  <div id="fx5" class="clip fxb" data-start="69.008" data-duration="1.3" data-track-index="2">
     <div id="fx5-flash" class="flash"></div><div id="fx5-beam" class="beam"></div>
     <div id="fx5-s1" class="streak" style="top:560px"></div><div id="fx5-s2" class="streak" style="top:1010px"></div><div id="fx5-s3" class="streak" style="top:1340px"></div>
   </div>
-  <div id="fx6" class="clip fxb" data-start="71.689" data-duration="1.3" data-track-index="2">
+  <div id="fx6" class="clip fxb" data-start="83.239" data-duration="1.3" data-track-index="2">
     <div id="fx6-flash" class="flash"></div><div id="fx6-beam" class="beam"></div>
     <div id="fx6-s1" class="streak" style="top:560px"></div><div id="fx6-s2" class="streak" style="top:1010px"></div><div id="fx6-s3" class="streak" style="top:1340px"></div>
   </div>
-  <div id="fx7" class="clip fxb" data-start="81.464" data-duration="1.3" data-track-index="2">
+  <div id="fx7" class="clip fxb" data-start="94.950" data-duration="1.3" data-track-index="2">
     <div id="fx7-flash" class="flash"></div><div id="fx7-beam" class="beam"></div>
     <div id="fx7-s1" class="streak" style="top:560px"></div><div id="fx7-s2" class="streak" style="top:1010px"></div><div id="fx7-s3" class="streak" style="top:1340px"></div>
   </div>
@@ -43,7 +43,7 @@
 <script>
 (function(){
   const tl = gsap.timeline({ paused: true });
-  (function(){ const t=11.325, k="#fx0";
+  (function(){ const t=13.067, k="#fx0";
     tl.fromTo(k+"-flash",{opacity:0},{opacity:.92,duration:.2,ease:"power2.in"},t+.3);
     tl.to(k+"-flash",{opacity:0,duration:.55,ease:"power2.out"},t+.52);
     tl.fromTo(k+"-beam",{x:-1500,opacity:1},{x:1700,duration:.9,ease:"power3.inOut"},t+.1);
@@ -52,7 +52,7 @@
       tl.to(k+s,{opacity:0,duration:.3,ease:"power2.in"},t+.5+j*.04);
     });
   })();
-  (function(){ const t=20.802, k="#fx1";
+  (function(){ const t=22.828, k="#fx1";
     tl.fromTo(k+"-flash",{opacity:0},{opacity:.92,duration:.2,ease:"power2.in"},t+.3);
     tl.to(k+"-flash",{opacity:0,duration:.55,ease:"power2.out"},t+.52);
     tl.fromTo(k+"-beam",{x:-1500,opacity:1},{x:1700,duration:.9,ease:"power3.inOut"},t+.1);
@@ -61,7 +61,7 @@
       tl.to(k+s,{opacity:0,duration:.3,ease:"power2.in"},t+.5+j*.04);
     });
   })();
-  (function(){ const t=30.425, k="#fx2";
+  (function(){ const t=32.844, k="#fx2";
     tl.fromTo(k+"-flash",{opacity:0},{opacity:.92,duration:.2,ease:"power2.in"},t+.3);
     tl.to(k+"-flash",{opacity:0,duration:.55,ease:"power2.out"},t+.52);
     tl.fromTo(k+"-beam",{x:-1500,opacity:1},{x:1700,duration:.9,ease:"power3.inOut"},t+.1);
@@ -70,7 +70,7 @@
       tl.to(k+s,{opacity:0,duration:.3,ease:"power2.in"},t+.5+j*.04);
     });
   })();
-  (function(){ const t=40.840, k="#fx3";
+  (function(){ const t=44.880, k="#fx3";
     tl.fromTo(k+"-flash",{opacity:0},{opacity:.92,duration:.2,ease:"power2.in"},t+.3);
     tl.to(k+"-flash",{opacity:0,duration:.55,ease:"power2.out"},t+.52);
     tl.fromTo(k+"-beam",{x:-1500,opacity:1},{x:1700,duration:.9,ease:"power3.inOut"},t+.1);
@@ -79,7 +79,7 @@
       tl.to(k+s,{opacity:0,duration:.3,ease:"power2.in"},t+.5+j*.04);
     });
   })();
-  (function(){ const t=51.554, k="#fx4";
+  (function(){ const t=58.157, k="#fx4";
     tl.fromTo(k+"-flash",{opacity:0},{opacity:.92,duration:.2,ease:"power2.in"},t+.3);
     tl.to(k+"-flash",{opacity:0,duration:.55,ease:"power2.out"},t+.52);
     tl.fromTo(k+"-beam",{x:-1500,opacity:1},{x:1700,duration:.9,ease:"power3.inOut"},t+.1);
@@ -88,7 +88,7 @@
       tl.to(k+s,{opacity:0,duration:.3,ease:"power2.in"},t+.5+j*.04);
     });
   })();
-  (function(){ const t=61.223, k="#fx5";
+  (function(){ const t=69.008, k="#fx5";
     tl.fromTo(k+"-flash",{opacity:0},{opacity:.92,duration:.2,ease:"power2.in"},t+.3);
     tl.to(k+"-flash",{opacity:0,duration:.55,ease:"power2.out"},t+.52);
     tl.fromTo(k+"-beam",{x:-1500,opacity:1},{x:1700,duration:.9,ease:"power3.inOut"},t+.1);
@@ -97,7 +97,7 @@
       tl.to(k+s,{opacity:0,duration:.3,ease:"power2.in"},t+.5+j*.04);
     });
   })();
-  (function(){ const t=71.689, k="#fx6";
+  (function(){ const t=83.239, k="#fx6";
     tl.fromTo(k+"-flash",{opacity:0},{opacity:.92,duration:.2,ease:"power2.in"},t+.3);
     tl.to(k+"-flash",{opacity:0,duration:.55,ease:"power2.out"},t+.52);
     tl.fromTo(k+"-beam",{x:-1500,opacity:1},{x:1700,duration:.9,ease:"power3.inOut"},t+.1);
@@ -106,7 +106,7 @@
       tl.to(k+s,{opacity:0,duration:.3,ease:"power2.in"},t+.5+j*.04);
     });
   })();
-  (function(){ const t=81.464, k="#fx7";
+  (function(){ const t=94.950, k="#fx7";
     tl.fromTo(k+"-flash",{opacity:0},{opacity:.92,duration:.2,ease:"power2.in"},t+.3);
     tl.to(k+"-flash",{opacity:0,duration:.55,ease:"power2.out"},t+.52);
     tl.fromTo(k+"-beam",{x:-1500,opacity:1},{x:1700,duration:.9,ease:"power3.inOut"},t+.1);
