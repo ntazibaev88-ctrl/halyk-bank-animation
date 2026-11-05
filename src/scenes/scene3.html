@@ -1,0 +1,190 @@
+<style>
+.s3lab{position:absolute;font:600 24px/1 "F45 Mono",monospace;letter-spacing:.16em;color:#8ff6ff;white-space:nowrap;opacity:0}
+.s3lab b{color:#fff;font-weight:600}
+#s3-eta{position:absolute;left:660px;top:1050px;width:340px;height:150px}
+#s3-eta .v{font-size:72px}
+</style>
+<div id="root" data-composition-id="scene3" data-width="1080" data-height="1920">
+  <div id="s3-ext" class="world"><svg id="s3-svg" class="fill" viewBox="0 0 1080 1920"></svg>
+    <div class="s3lab" id="s3-l1" style="left:190px;top:734px">◉ V2X · 5G · <b>12 мс</b></div>
+    <div class="s3lab" id="s3-l2" style="left:600px;top:560px">СВЕТОФОР → АВТО: <b>ЗЕЛЁНАЯ ВОЛНА</b></div>
+  </div>
+  <div id="s3-int" class="world"><svg id="s3-svg2" class="fill" viewBox="0 0 1080 1920"></svg><div id="s3-ip" class="fill"></div></div>
+  <div id="s3-dust" class="fill"></div>
+  <div class="vig"></div><div class="grain"></div>
+  <div id="s3-kicker" class="kicker"><i></i>03 · ТРАНСПОРТ</div>
+  <div id="s3-title" class="title">ТРАНСПОРТ <b>БЕЗ ВОДИТЕЛЯ.</b></div>
+  <div id="s3-rule" class="tline" style="top:440px"></div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+const SW = CH[2] - .25;                       // switch exterior -> interior with the narration
+const svg = document.getElementById("s3-svg"), defs = el("defs", {}, svg);
+function lgrad(id, x2, y2, stops, parent) { const g = el("linearGradient", { id, x1: 0, y1: 0, x2, y2 }, parent || defs); stops.forEach(s => el("stop", { offset: s[0], "stop-color": s[1], "stop-opacity": s[2] == null ? 1 : s[2] }, g)); }
+lgrad("s3-body", 0, 1, [[0, "#f2fbff"], [.5, "#a9d6ff"], [1, "#3b78c8"]]);
+lgrad("s3-road", 0, 1, [[0, "#0a1b30"], [1, "#030a14"]]);
+const rgl = el("radialGradient", { id: "s3-glow" }, defs);
+[[0, "#22e4ff", .9], [1, "#22e4ff", 0]].forEach(s => el("stop", { offset: s[0], "stop-color": s[1], "stop-opacity": s[2] }, rgl));
+
+/* ================= EXTERIOR: tracking shot ================= */
+const sky = el("g", {}, svg);
+const far = el("g", {}, svg), mid = el("g", {}, svg), road = el("g", {}, svg), ground = el("g", {}, svg);
+city(far, { x0: -40, x1: 2500, base: 1180, minH: 360, maxH: 820, minW: 80, maxW: 150, fill: "#0a2547", seed: 3, winProb: .3, wstep: 24, spire: .3 });
+city(mid, { x0: -40, x1: 2700, base: 1210, minH: 240, maxH: 620, minW: 110, maxW: 180, fill: "#061c38", edge: "rgba(143,246,255,.6)", seed: 8, winProb: .36, wstep: 22, spire: .1 }).wins.forEach((w, i) => w.setAttribute("opacity", .35 + (i % 4) * .15));
+/* far buildings' windows lit */
+far.querySelectorAll("rect[opacity='0']").forEach((w, i) => w.setAttribute("opacity", .25 + (i % 3) * .12));
+el("rect", { x: -100, y: 1200, width: 1400, height: 720, fill: "url(#s3-road)" }, ground);
+el("rect", { x: -100, y: 1200, width: 1400, height: 4, fill: "#22e4ff", opacity: .8 }, ground);
+el("rect", { x: -100, y: 1330, width: 1400, height: 3, fill: "#22e4ff", opacity: .35 }, ground);
+el("rect", { x: -100, y: 1330, width: 1400, height: 590, fill: "#020812" }, ground);
+const lanes = el("g", {}, road);
+for (let i = 0; i < 26; i++) el("rect", { x: i * 130, y: 1262, width: 70, height: 6, rx: 3, fill: "#bff6ff", opacity: .7 }, lanes);
+const lanes2 = el("g", {}, road);
+for (let i = 0; i < 26; i++) el("rect", { x: i * 220, y: 1375, width: 120, height: 5, rx: 2, fill: "#22e4ff", opacity: .3 }, lanes2);
+
+function car(parent, s, col) {
+  const g = el("g", {}, parent), b = el("g", { transform: `scale(${s})` }, g);
+  el("ellipse", { cx: 0, cy: 8, rx: 250, ry: 22, fill: "url(#s3-glow)", opacity: .75 }, b);
+  el("path", { d: "M-215,-2 C-215,-34 -176,-46 -124,-52 L-64,-90 C-30,-110 46,-110 88,-90 L156,-58 C204,-50 226,-32 226,-2 Z", fill: "url(#s3-body)", stroke: "#bff6ff", "stroke-width": 2 }, b);
+  el("path", { d: "M-70,-82 C-34,-98 40,-98 76,-82 L130,-58 L-100,-58 Z", fill: "#06203c", opacity: .92 }, b);
+  el("path", { d: "M-70,-82 C-34,-98 40,-98 76,-82 L130,-58 L-100,-58 Z", fill: "none", stroke: "#22e4ff", "stroke-width": 2 }, b);
+  el("rect", { x: -212, y: -26, width: 436, height: 4, fill: "#22e4ff", opacity: .9 }, b);
+  el("rect", { x: 196, y: -34, width: 28, height: 8, rx: 4, fill: "#fff7d6" }, b);
+  el("rect", { x: -218, y: -34, width: 18, height: 8, rx: 4, fill: "#ff5b6e" }, b);
+  const ws = [];
+  [-130, 140].forEach(x => { const w = el("g", { transform: `translate(${x} 4)` }, b); const r = el("g", {}, w);
+    el("circle", { r: 40, fill: "#030a14", stroke: "#22e4ff", "stroke-width": 3 }, r); el("circle", { r: 22, fill: "#0d2c52" }, r);
+    for (let k = 0; k < 5; k++) { const a = k * 72 * Math.PI / 180; el("line", { x1: 0, y1: 0, x2: Math.cos(a) * 36, y2: Math.sin(a) * 36, stroke: "#bff6ff", "stroke-width": 4 }, r); }
+    ws.push(r); });
+  return { g, ws };
+}
+/* neighbour traffic: flowing, never jammed */
+const nb = el("g", {}, road);
+const t1 = car(nb, .34, 0), t2 = car(nb, .3, 0), t3 = car(nb, .38, 0);
+gsap.set(t1.g, { y: 1297 }); gsap.set(t2.g, { y: 1297 }); gsap.set(t3.g, { y: 1305 });
+tl.fromTo(t1.g, { x: 1500 }, { x: -500, duration: 7, ease: "none" }, 0);
+tl.fromTo(t2.g, { x: 1900 }, { x: -300, duration: 8, ease: "none" }, 0);
+tl.fromTo(t3.g, { x: 2300 }, { x: -200, duration: 9, ease: "none" }, 0);
+/* the hero car */
+const hero = car(svg, 1.05, 0);
+gsap.set(hero.g, { x: 540, y: 1330 });
+const bob = rng(4);
+tl.to(hero.g, { y: 1328, duration: .5, ease: "sine.inOut", yoyo: true, repeat: RP(SW / .5) }, 0);
+hero.ws.forEach(w => tl.to(w, { rotation: 360 * 9, duration: SW + 1, ease: "none", transformOrigin: "50% 50%" }, 0));
+/* smart traffic signals + V2X links (scroll with the road) */
+const sig = el("g", {}, svg);
+const signals = [];
+[820, 1700, 2600].forEach((x, i) => {
+  const g = el("g", { transform: `translate(${x} 1210)` }, sig);
+  el("rect", { x: -6, y: -420, width: 12, height: 420, fill: "#12335a" }, g);
+  el("rect", { x: -34, y: -520, width: 68, height: 130, rx: 14, fill: "#06192f", stroke: "#22e4ff", "stroke-width": 2 }, g);
+  el("circle", { cx: 0, cy: -490, r: 13, fill: "#3a1118" }, g); el("circle", { cx: 0, cy: -455, r: 13, fill: "#3a2e11" }, g);
+  const gr = el("circle", { cx: 0, cy: -420, r: 13, fill: "#3dffa0" }, g);
+  const rings = [0, 1, 2].map(k => el("circle", { cx: 0, cy: -455, r: 30, fill: "none", stroke: "#22e4ff", "stroke-width": 3, opacity: 0 }, g));
+  signals.push({ x, g, rings });
+});
+const link = el("path", { d: "M0,0", fill: "none", stroke: "#22e4ff", "stroke-width": 3, "stroke-dasharray": "10 10", opacity: 0 }, svg);
+const pkts = [0, 1, 2].map(() => el("circle", { r: 8, fill: "#fff", opacity: 0 }, svg));
+const scroll = 1300; // road speed (px) over the exterior shot
+tl.to([far], { x: -scroll * .12, duration: SW + 1, ease: "none" }, 0);
+tl.to([mid], { x: -scroll * .4, duration: SW + 1, ease: "none" }, 0);
+tl.to([lanes, lanes2, sig], { x: (i) => -scroll * (i === 1 ? 1.4 : 1), duration: SW + 1, ease: "none" }, 0);
+signals.forEach(s => tl.to(s.g, { x: -scroll, duration: SW + 1, ease: "none" }, 0));
+/* V2X pulse: when a signal gets close the car and signal exchange data */
+const sg = signals[0], sx = (t) => sg.x - scroll * (t / (SW + 1));
+const tHit = CH[1] + .1;
+sg.rings.forEach((r, k) => { tl.fromTo(r, { attr: { r: 20 }, opacity: .9 }, { attr: { r: 200 }, opacity: 0, duration: 1.2, ease: "power2.out" }, tHit + k * .35); tl.fromTo(r, { attr: { r: 20 }, opacity: .9 }, { attr: { r: 200 }, opacity: 0, duration: 1.2, ease: "power2.out" }, tHit + 1.6 + k * .35); });
+const lp = { p: 0 };
+tl.to(lp, { p: 1, duration: 3.2, ease: "none", onUpdate: () => {
+  const t = tHit + lp.p * 3.2, x0 = sg.x - scroll * (t / (SW + 1)) + 0, y0 = 1210 - 455;
+  const x1 = 540 + 30, y1 = 1330 - 140;
+  link.setAttribute("d", `M${x0},${y0} Q${(x0 + x1) / 2},${Math.min(y0, y1) - 120} ${x1},${y1}`);
+  pkts.forEach((pk, i) => { const u = (lp.p * 3 + i / 3) % 1, qx = (1 - u) * (1 - u) * x0 + 2 * (1 - u) * u * ((x0 + x1) / 2) + u * u * x1, qy = (1 - u) * (1 - u) * y0 + 2 * (1 - u) * u * (Math.min(y0, y1) - 120) + u * u * y1; pk.setAttribute("cx", qx); pk.setAttribute("cy", qy); });
+} }, tHit);
+tl.fromTo([link], { opacity: 0 }, { opacity: .9, duration: .3 }, tHit);
+tl.fromTo(pkts, { opacity: 0 }, { opacity: 1, duration: .2 }, tHit);
+tl.to([link, pkts], { opacity: 0, duration: .3 }, tHit + 3.0);
+tl.fromTo("#s3-l1", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .5 }, tHit + .2);
+tl.to("#s3-l1", { opacity: 0, duration: .3 }, tHit + 3);
+/* exterior exits: whip-pan to the left */
+tl.to("#s3-ext", { x: -900, filter: "blur(14px)", duration: .55, ease: "power3.in" }, SW - .1);
+
+const extW = el("g", { transform: "translate(0 -150)" }, svg);
+Array.from(svg.children).forEach(c => { if (c !== defs && c !== extW) extW.appendChild(c); });
+/* ================= INTERIOR: nobody at the wheel ================= */
+const s2 = document.getElementById("s3-svg2"), d2 = el("defs", {}, s2);
+const wsClip = el("clipPath", { id: "s3-ws" }, d2); el("path", { d: "M70,1000 L170,560 Q540,500 910,560 L1010,1000 Z" }, wsClip);
+const iv = el("g", {}, s2);
+const view = el("g", { "clip-path": "url(#s3-ws)" }, iv);
+const g1 = el("linearGradient", { id: "s3-skyi", x1: 0, y1: 0, x2: 0, y2: 1 }, d2);
+[[0, "#04122a"], [1, "#0f4a86"]].forEach(s => el("stop", { offset: s[0], "stop-color": s[1] }, g1));
+el("rect", { x: 0, y: 500, width: 1080, height: 520, fill: "url(#s3-skyi)" }, view);
+const VX = 540, VY = 770;
+const side = el("g", {}, view);
+for (let i = 0; i < 14; i++) { const left = i % 2 === 0, u0 = (i >> 1) / 7; const b = el("rect", { x: -60, y: -300, width: 120, height: 460, fill: i % 3 ? "#0b3a6e" : "#0e4a8c", stroke: "#22e4ff", "stroke-opacity": .4 }, side); b.dataset.l = left ? 1 : 0; b.dataset.u = u0; }
+const bld = Array.from(side.children);
+el("polygon", { points: `${VX - 8},${VY} ${VX + 8},${VY} 1250,1000 -170,1000`, fill: "#06101f" }, view);
+const dash = [];
+for (let i = 0; i < 7; i++) dash.push(el("polygon", { points: "-4,0 4,0 6,10 -6,10", fill: "#bff6ff", opacity: .9 }, view));
+const SPD = 1.15; // cycles per second
+const prog2 = { t: 0 };
+const T2 = D - SW;
+tl.to(prog2, { t: T2, duration: T2, ease: "none", onUpdate: () => {
+  bld.forEach(b => { const u = ((+b.dataset.u + prog2.t * SPD * .25) % 1), e = u * u, s = .08 + e * 2.6, x = VX + (b.dataset.l === "1" ? -1 : 1) * (40 + e * 760), y = VY + (e * 330); b.setAttribute("transform", `translate(${x} ${y}) scale(${s}) translate(0 ${-(1 - 0) * 0})`); b.setAttribute("opacity", Math.min(1, u * 4)); });
+  dash.forEach((d, i) => { const u = ((i / 7 + prog2.t * SPD * .5) % 1), e = u * u, s = .1 + e * 5; d.setAttribute("transform", `translate(${VX} ${VY + e * 230}) scale(${s})`); d.setAttribute("opacity", Math.min(1, u * 5)); });
+} }, SW);
+/* A-pillars + dashboard */
+el("path", { d: "M0,520 L170,560 L70,1000 L0,1000 Z", fill: "#020812" }, iv); el("path", { d: "M1080,520 L910,560 L1010,1000 L1080,1000 Z", fill: "#020812" }, iv);
+el("path", { d: "M0,1000 L1080,1000 L1080,1920 L0,1920 Z", fill: "#030b17" }, iv);
+el("path", { d: "M70,1000 Q540,950 1010,1000 L1080,1260 L0,1260 Z", fill: "#07182e", stroke: "#22e4ff", "stroke-width": 2, "stroke-opacity": .6 }, iv);
+/* driver seat: empty. Steering wheel moves by itself */
+const seatL = el("g", {}, iv); el("path", { d: "M80,1180 Q70,930 150,900 L330,900 Q400,930 390,1180 Z", fill: "#0a2240", stroke: "#22e4ff", "stroke-opacity": .55, "stroke-width": 2 }, seatL);
+el("rect", { x: 160, y: 850, width: 160, height: 72, rx: 28, fill: "#0c294d", stroke: "#22e4ff", "stroke-opacity": .55 }, seatL);
+const wheel = el("g", {}, iv); const wr = el("g", {}, wheel); gsap.set(wheel, { x: 520, y: 1115 });
+el("ellipse", { rx: 98, ry: 56, fill: "none", stroke: "#bcd6ee", "stroke-width": 12 }, wr);
+el("line", { x1: -98, y1: 0, x2: 98, y2: 0, stroke: "#bcd6ee", "stroke-width": 9 }, wr); el("line", { x1: 0, y1: 0, x2: 0, y2: 56, stroke: "#bcd6ee", "stroke-width": 9 }, wr);
+el("circle", { r: 14, fill: "#22e4ff" }, wr);
+const seatR = el("g", {}, iv); el("path", { d: "M720,1200 Q700,930 770,900 L980,900 Q1040,940 1010,1200 Z", fill: "#0a2240", stroke: "#22e4ff", "stroke-opacity": .55, "stroke-width": 2 }, seatR);
+const pax = human(el("g", { transform: "translate(870 1140) scale(.74)" }, seatR), { fill: "#041428", rimOp: .5 });
+/* AR windshield: route map (draws itself) */
+const mp = el("g", { transform: "translate(0 0)" }, iv); const mapG = mp;
+el("rect", { x: 250, y: 580, width: 560, height: 300, rx: 22, fill: "rgba(6,40,78,.62)", stroke: "#22e4ff", "stroke-width": 2 }, mp);
+for (let i = 1; i < 6; i++) { el("line", { x1: 250 + i * 93, y1: 580, x2: 250 + i * 93, y2: 880, stroke: "#22e4ff", "stroke-opacity": .18 }, mp); }
+for (let i = 1; i < 4; i++) { el("line", { x1: 250, y1: 580 + i * 75, x2: 810, y2: 580 + i * 75, stroke: "#22e4ff", "stroke-opacity": .18 }, mp); }
+const routeD = "M300,840 L300,760 L420,760 L420,670 L560,670 L560,730 L700,730 L700,630 L760,630";
+const alt = el("path", { d: "M300,840 L300,640 L470,640 L470,610 L760,610 L760,630", fill: "none", stroke: "#7fa6c4", "stroke-width": 4, "stroke-dasharray": "6 8", opacity: 0 }, mp);
+const route = el("path", { d: routeD, fill: "none", stroke: "#22e4ff", "stroke-width": 8, "stroke-linecap": "round", "stroke-linejoin": "round" }, mp);
+const rl = route.getTotalLength();
+route.setAttribute("stroke-dasharray", rl); route.setAttribute("stroke-dashoffset", rl);
+const pin = el("g", { transform: "translate(760 630)" }, mp); el("circle", { r: 14, fill: "#3dffa0" }, pin); el("circle", { r: 26, fill: "none", stroke: "#3dffa0", "stroke-width": 3 }, pin);
+const me = el("circle", { r: 11, fill: "#fff", stroke: "#22e4ff", "stroke-width": 4 }, mp);
+const lblD = div("s3lab", "left:270px;top:596px;opacity:0", document.getElementById("s3-ip"), "МАРШРУТ · <b>ОПТИМАЛЬНЫЙ</b>");
+const lblE = div("s3lab", "left:270px;top:896px;opacity:0", document.getElementById("s3-ip"), "ВОДИТЕЛЬ: <b>НЕ ТРЕБУЕТСЯ</b> · АВТОПИЛОТ L5");
+const eta = panel("s3-eta", "left:700px;top:1060px;width:300px;height:130px;opacity:0", "ПРИБЫТИЕ", "06:42", "", document.getElementById("s3-ip"));
+const etaTxt = eta.querySelector(".v");
+const rp = { p: 0 };
+tl.fromTo(iv, { opacity: 0 }, { opacity: 1, duration: .01 }, SW);
+tl.fromTo("#s3-int", { x: 900, filter: "blur(14px)" }, { x: 0, filter: "blur(0px)", duration: .6, ease: "power3.out" }, SW - .05);
+tl.fromTo(lblD, { opacity: 0 }, { opacity: 1, duration: .4 }, SW + .6);
+tl.fromTo(alt, { opacity: 0 }, { opacity: .8, duration: .4 }, SW + .7);
+tl.to(rp, { p: 1, duration: D - SW - 1.0, ease: "power1.inOut", onUpdate: () => {
+  route.setAttribute("stroke-dashoffset", rl * (1 - rp.p));
+  const pt = route.getPointAtLength(rl * rp.p); me.setAttribute("cx", pt.x); me.setAttribute("cy", pt.y);
+  const left = Math.round(402 * (1 - rp.p)); etaTxt.textContent = String(Math.floor(left / 60)).padStart(2, "0") + ":" + String(left % 60).padStart(2, "0");
+} }, SW + 1.0);
+tl.to(alt, { opacity: .0, duration: .4 }, SW + 1.8);
+tl.fromTo(lblE, { opacity: 0 }, { opacity: 1, duration: .4 }, SW + .9);
+tl.fromTo("#s3-eta", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: .5, ease: "power3.out" }, SW + 1.2);
+tl.fromTo(pin, { scale: 0 }, { scale: 1, duration: .5, ease: "back.out(2)", transformOrigin: "0 0" }, SW + 1.2);
+/* wheel turns by itself */
+const wv = { a: 0 };
+tl.to(wv, { a: 1, duration: D - SW, ease: "none", onUpdate: () => { wr.setAttribute("transform", `rotate(${Math.sin(wv.a * 9) * 22 * (.5 + .5 * Math.sin(wv.a * 3))})`); } }, SW);
+tl.fromTo(pax.g, { y: 0 }, { y: -4, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 3 }, SW);
+camera(tl, "#s3-int", D - SW, { s0: 1.04, s1: 1.0, at: SW, origin: "540px 900px", ease: "none" });
+camera(tl, "#s3-ext", SW, { s0: 1.0, s1: 1.1, at: 0, origin: "540px 1250px", ease: "sine.inOut" });
+tl.add(particles(document.getElementById("s3-dust"), 30, 31, D, { rmax: 3, dy: -160 }), 0);
+headline(tl, "s3", .5, 3.7);
+sceneInOut(tl, "#s3-dust", D);
+tl.to("#s3-int", { opacity: 0, duration: .28, ease: "power2.in" }, D - .28);
+window.__timelines["scene3"] = tl;
+</script>

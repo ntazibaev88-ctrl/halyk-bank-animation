@@ -1,0 +1,126 @@
+<style>
+.s6lab{position:absolute;font:600 24px/1.2 "F45 Mono",monospace;letter-spacing:.12em;color:#8ff6ff;white-space:nowrap;opacity:0}
+.s6lab b{color:#fff;font-weight:600}
+</style>
+<div id="root" data-composition-id="scene6" data-width="1080" data-height="1920">
+  <div id="s6-world" class="world">
+    <svg id="s6-svg" class="fill" viewBox="0 0 1080 1920"></svg>
+    <div id="s6-ui" class="fill"></div>
+  </div>
+  <div id="s6-dust" class="fill"></div>
+  <div class="vig"></div><div class="grain"></div>
+  <div id="s6-kicker" class="kicker"><i></i>06 · ОБРАЗОВАНИЕ</div>
+  <div id="s6-title" class="title">ЗНАНИЯ <b>БЕЗ ГРАНИЦ.</b></div>
+  <div id="s6-rule" class="tline" style="top:440px"></div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+const svg = document.getElementById("s6-svg"), defs = el("defs", {}, svg), UI = document.getElementById("s6-ui");
+function rgrad(id, stops) { const g = el("radialGradient", { id }, defs); stops.forEach(s => el("stop", { offset: s[0], "stop-color": s[1], "stop-opacity": s[2] }, g)); }
+rgrad("s6-sun", [[0, "#fff6d6", 1], [.35, "#ffb347", .95], [1, "#ff7a2e", 0]]);
+rgrad("s6-neb1", [[0, "#6a4cff", .5], [1, "#6a4cff", 0]]); rgrad("s6-neb2", [[0, "#22e4ff", .4], [1, "#22e4ff", 0]]);
+const lgf = el("linearGradient", { id: "s6-fl", x1: 0, y1: 0, x2: 0, y2: 1 }, defs);
+[[0, "#0b2745"], [1, "#020a15"]].forEach(s => el("stop", { offset: s[0], "stop-color": s[1] }, lgf));
+
+/* ---- classroom (dissolves) ---- */
+const room = el("g", {}, svg), walls = [];
+el("rect", { x: 0, y: 470, width: 1080, height: 770, fill: "#0a2442" }, room);
+for (let i = 0; i < 6; i++) { const w = el("rect", { x: 30 + i * 175, y: 520, width: 150, height: 600, rx: 10, fill: "#0e3158", stroke: "#22e4ff", "stroke-opacity": .35 }, room); walls.push(w); }
+el("rect", { x: 60, y: 640, width: 360, height: 200, fill: "#06192e", stroke: "#8fb4d8", "stroke-width": 4 }, room); // blackboard
+el("text", { x: 90, y: 740, fill: "#8fb4d8", "font-family": "F45 Display", "font-size": 40, "font-weight": 800 }, room).textContent = "E = mc²";
+el("text", { x: 90, y: 800, fill: "#5a86ae", "font-family": "F45 Mono", "font-size": 28 }, room).textContent = "учебник · стр. 42";
+/* nebula + stars (the world "behind" the walls) */
+const space = el("g", { opacity: 0 }, svg);
+el("rect", { x: 0, y: 470, width: 1080, height: 790, fill: "#020712" }, space);
+el("circle", { cx: 300, cy: 760, r: 380, fill: "url(#s6-neb1)" }, space); el("circle", { cx: 820, cy: 1000, r: 360, fill: "url(#s6-neb2)" }, space);
+const R = rng(66); for (let i = 0; i < 110; i++) el("circle", { cx: R() * 1080, cy: 480 + R() * 760, r: .6 + R() * 1.8, fill: "#e8f7ff", opacity: .3 + R() * .7 }, space);
+/* floor */
+const fl = el("g", {}, svg);
+el("rect", { x: 0, y: 1240, width: 1080, height: 680, fill: "url(#s6-fl)" }, fl); el("rect", { x: 0, y: 1240, width: 1080, height: 4, fill: "#22e4ff", opacity: .8 }, fl);
+const grid = el("g", { opacity: 0 }, fl);
+for (let i = 0; i < 15; i++) el("line", { x1: 540 + (i - 7) * 50, y1: 1244, x2: 540 + (i - 7) * 330, y2: 1920, stroke: "#22e4ff", "stroke-opacity": .3 }, grid);
+for (let i = 0; i < 8; i++) el("line", { x1: 0, y1: 1250 + i * i * 9 + i * 14, x2: 1080, y2: 1250 + i * i * 9 + i * 14, stroke: "#22e4ff", "stroke-opacity": .25 }, grid);
+
+/* ---- solar system hologram ---- */
+const CX = 520, CY = 790;
+const sys = el("g", { "data-layout-ignore": "" }, svg);
+const orbits = [[58, 6, "#bcd6ee", "МЕРКУРИЙ", 4.1], [92, 9, "#ffd9a0", "ВЕНЕРА", 3.0], [128, 11, "#3b9bff", "ЗЕМЛЯ", 2.4], [168, 8, "#ff6a4a", "МАРС", 1.9], [222, 21, "#ffb347", "ЮПИТЕР", 1.0], [272, 16, "#ffe2a8", "САТУРН", .72]];
+const oEls = orbits.map((o, i) => {
+  el("ellipse", { cx: CX, cy: CY, rx: o[0], ry: o[0] * .3, fill: "none", stroke: "#22e4ff", "stroke-opacity": .35, "stroke-width": 1.5, "stroke-dasharray": "4 6" }, sys);
+  const g = el("g", {}, sys);
+  if (i === 5) el("ellipse", { rx: o[1] * 1.9, ry: o[1] * .5, fill: "none", stroke: "#ffe2a8", "stroke-width": 3, opacity: .8 }, g);
+  el("circle", { r: o[1], fill: o[2] }, g); el("circle", { r: o[1] * 1.7, fill: o[2], opacity: .16 }, g);
+  const t = el("text", { fill: "#bff6ff", "font-family": "F45 Mono", "font-size": 17, "letter-spacing": 2, "text-anchor": "middle" }, sys); t.textContent = o[3]; t.setAttribute("opacity", 0);
+  return { g, t, o };
+});
+el("circle", { cx: CX, cy: CY, r: 70, fill: "url(#s6-sun)" }, sys);
+const upd = (tm) => oEls.forEach((e, i) => { const a = 1.2 * i + tm * e.o[4] * .55, x = CX + Math.cos(a) * e.o[0], y = CY + Math.sin(a) * e.o[0] * .3; e.g.setAttribute("transform", `translate(${x} ${y}) scale(${1 + Math.sin(a) * .12})`); e.t.setAttribute("x", x); e.t.setAttribute("y", y + e.o[1] + 26); });
+upd(0);
+const clk = { t: 0 };
+tl.to(clk, { t: D, duration: D, ease: "none", onUpdate: () => upd(clk.t) }, 0);
+
+/* ---- holographic teacher ---- */
+const tg = el("g", { transform: "translate(880 1236) scale(.86) translate(-540 -1212)" }, svg);
+const tbodyD = "M500,742 Q540,726 580,742 L630,762 L652,902 L628,912 L608,802 L598,1000 L590,1212 L556,1212 L540,1010 L524,1212 L490,1212 L482,1000 L472,802 L452,912 L428,902 L450,762 Z";
+const tclip = el("clipPath", { id: "s6-tc" }, defs); el("path", { d: tbodyD }, tclip); el("ellipse", { cx: 540, cy: 694, rx: 33, ry: 38 }, tclip);
+const teacher = el("g", { opacity: 0 }, tg);
+el("path", { d: tbodyD, fill: "rgba(34,228,255,.16)", stroke: "#8ff6ff", "stroke-width": 3 }, teacher);
+el("ellipse", { cx: 540, cy: 694, rx: 33, ry: 38, fill: "rgba(34,228,255,.16)", stroke: "#8ff6ff", "stroke-width": 3 }, teacher);
+const tm = el("g", { "clip-path": "url(#s6-tc)" }, teacher); for (let i = 0; i < 30; i++) el("line", { x1: 420, y1: 660 + i * 19, x2: 660, y2: 660 + i * 19, stroke: "#8ff6ff", "stroke-opacity": .35 }, tm);
+const scanT = el("rect", { x: 420, y: 0, width: 240, height: 10, fill: "#fff", opacity: .55 }, tm);
+const tarm = el("g", {}, teacher); el("line", { x1: 0, y1: 0, x2: -170, y2: -60, stroke: "#8ff6ff", "stroke-width": 20, "stroke-linecap": "round", opacity: .5 }, tarm); el("circle", { cx: -170, cy: -60, r: 9, fill: "#fff" }, tarm);
+gsap.set(tarm, { x: 470, y: 770 });
+el("ellipse", { cx: 540, cy: 1214, rx: 80, ry: 12, fill: "none", stroke: "#22e4ff", "stroke-width": 3 }, tg);
+
+/* ---- student with AR glasses (left) ---- */
+const sg = el("g", { transform: "translate(230 1232)" }, svg);
+el("rect", { x: -200, y: -50, width: 330, height: 10, fill: "#bff6ff", opacity: .85 }, sg); // desk top
+el("rect", { x: -180, y: -40, width: 12, height: 80, fill: "#12335a" }, sg); el("rect", { x: 100, y: -40, width: 12, height: 80, fill: "#12335a" }, sg);
+const book = el("g", {}, sg); el("path", { d: "M-130,-52 L-40,-64 L50,-52 L-40,-44 Z", fill: "#d9e7f5" }, book); el("path", { d: "M-40,-64 L-40,-44", stroke: "#8fb4d8", "stroke-width": 2 }, book);
+for (let i = 0; i < 4; i++) el("line", { x1: -112 + i * 8, y1: -52 - i * .6, x2: -52 + i * 8, y2: -58 - i * .6, stroke: "#8fb4d8", "stroke-opacity": .6 }, book);
+const stu = el("g", { transform: "translate(-30 0)" }, sg);
+el("path", { d: "M-44,-52 Q-50,-120 -34,-190 Q-4,-214 30,-190 Q46,-120 40,-52 Z", fill: "#020a14", stroke: "#22e4ff", "stroke-opacity": .6, "stroke-width": 2 }, stu);
+el("ellipse", { cx: 0, cy: -228, rx: 24, ry: 28, fill: "#020a14", stroke: "#22e4ff", "stroke-opacity": .6, "stroke-width": 2 }, stu);
+const glass = el("g", {}, stu); el("path", { d: "M-24,-234 Q0,-246 24,-234", fill: "none", stroke: "#22e4ff", "stroke-width": 7, "stroke-linecap": "round" }, glass); el("circle", { cx: 24, cy: -234, r: 5, fill: "#fff" }, glass);
+const lens = el("polygon", { points: "20,-234 640,-300 640,-120", fill: "#22e4ff", opacity: 0 }, stu);
+
+/* ---- UI ---- */
+const L1 = div("s6lab", "left:70px;top:1010px", UI, "AR · <b>ПЕРСОНАЛЬНЫЙ ТЕМП</b>");
+const sk = panel("s6-pace", "left:60px;top:530px;width:340px;height:170px;opacity:0", "ПЕРСОНАЛЬНЫЙ ПЛАН", "", "", UI);
+sk.insertAdjacentHTML("beforeend", `<div class="r">Тема: Солнечная система</div><div class="r">Темп: <b style="color:#fff">1.3×</b> · Уровень: <b style="color:#fff">B2</b></div><div style="position:absolute;left:22px;right:22px;bottom:22px;height:10px;border-radius:5px;background:rgba(34,228,255,.2)"><div id="s6-pb" style="height:10px;width:10%;border-radius:5px;background:#22e4ff;box-shadow:0 0 12px #22e4ff"></div></div>`);
+const vr = panel("s6-vr", "left:700px;top:530px;width:340px;height:130px;opacity:0", "VR · СЛОЖНЫЕ ПРОЦЕССЫ", "", "", UI);
+vr.insertAdjacentHTML("beforeend", `<div class="r">Орбиты · Гравитация · Клетка</div><div class="r" style="color:#fff">Виртуальная лаборатория ▸</div>`);
+const L2 = div("s6lab", "left:640px;top:1250px;color:#8ff6ff", UI, "ПРОФЕССОР ИИ · <b>ГОЛОГРАММА</b>");
+
+/* ================= animation ================= */
+tl.fromTo(sg, { opacity: 0, x: 200 }, { opacity: 1, x: 230, duration: .9, ease: "power3.out" }, .2);
+tl.fromTo(book, { y: 0 }, { y: -4, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 3 }, 0);
+tl.fromTo(glass, { opacity: .3 }, { opacity: 1, duration: .5 }, .8);
+tl.fromTo(lens, { opacity: 0 }, { opacity: .09, duration: .8 }, CH[1] - .2);
+// walls dissolve -> space opens
+walls.forEach((w, i) => tl.to(w, { opacity: 0, y: (i % 2 ? 60 : -60), scaleX: .7, duration: 1.0, ease: "power2.in", transformOrigin: "50% 50%" }, CH[0] + 1.2 + i * .12));
+tl.to(room, { opacity: 0, duration: 1.2, ease: "power2.inOut" }, CH[0] + 1.8);
+tl.to(space, { opacity: 1, duration: 1.6, ease: "power2.inOut" }, CH[0] + 1.4);
+tl.to(grid, { opacity: 1, duration: 1.4 }, CH[1] + .2);
+tl.to(book, { opacity: 0, y: -80, duration: .8, ease: "power2.in" }, CH[0] + 1.3);
+// solar system blooms, teacher appears
+tl.fromTo(sys, { opacity: 0, scale: .3, transformOrigin: CX + "px " + CY + "px" }, { opacity: 1, scale: 1, duration: 1.4, ease: "back.out(1.4)" }, CH[0] + 1.6);
+oEls.forEach((e, i) => tl.to(e.t, { opacity: i === 2 || i === 4 || i === 5 ? .95 : 0, duration: .5 }, CH[1] + .4 + i * .15));
+tl.fromTo(teacher, { opacity: 0 }, { opacity: .95, duration: .8, ease: "power2.out" }, CH[1] - .4);
+let fk = 0; for (let t = CH[1]; t < D - .5; t += .55) { tl.to(teacher, { opacity: (fk++ % 3 === 0) ? .62 : .95, duration: .08 }, t); }
+tl.fromTo(scanT, { y: 660 }, { y: 1210, duration: 2.4, ease: "none", repeat: RP(D / 2.4 - 1) }, CH[1] - .4);
+tl.fromTo(tarm, { rotation: 24, transformOrigin: "0 0" }, { rotation: -6, duration: 1.8, ease: "sine.inOut", yoyo: true, repeat: 3 }, CH[1]);
+tl.fromTo(L2, { opacity: 0 }, { opacity: 1, duration: .5 }, CH[1] + .5);
+tl.fromTo("#s6-pace", { opacity: 0, x: -60, rotationY: 40, transformPerspective: 800 }, { opacity: 1, x: 0, rotationY: 0, duration: .8, ease: "power3.out" }, CH[1] + .4);
+tl.to("#s6-pb", { width: "46%", duration: 2.4, ease: "power2.out" }, CH[1] + .8);
+tl.fromTo("#s6-vr", { opacity: 0, x: 60, rotationY: -40, transformPerspective: 800 }, { opacity: 1, x: 0, rotationY: 0, duration: .8, ease: "power3.out" }, CH[2] + .2);
+tl.fromTo(L1, { opacity: 0 }, { opacity: 1, duration: .5 }, CH[2] + .6);
+tl.to("#s6-pb", { width: "88%", duration: 2.2, ease: "power2.inOut" }, CH[3] - .4);
+// VR: world zooms through the system
+tl.to(sys, { scale: 1.12, duration: D - CH[2], ease: "sine.inOut", transformOrigin: CX + "px " + CY + "px" }, CH[2]);
+camera(tl, "#s6-world", D, { s0: 1.0, s1: 1.1, y1: -20, origin: "540px 900px", ease: "sine.inOut" });
+tl.add(particles(document.getElementById("s6-dust"), 34, 61, D, { rmax: 3, dy: -200 }), 0);
+headline(tl, "s6", .5, 3.6);
+sceneInOut(tl, "#s6-world, #s6-dust", D);
+window.__timelines["scene6"] = tl;
+</script>

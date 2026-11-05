@@ -1,0 +1,105 @@
+<style>
+#root{background:radial-gradient(120% 70% at 50% 30%,#2a0c1a 0%,#0b0510 50%,#020106 100%)}
+.s8chip{position:absolute;padding:12px 18px;border:2px solid #ff4d6a;border-radius:10px;font:600 24px/1.15 "F45 Mono",monospace;letter-spacing:.08em;color:#ffd1d9;background:rgba(40,4,16,.82);box-shadow:0 0 26px rgba(255,77,106,.45);white-space:nowrap;opacity:0}
+.s8chip b{color:#fff;font-weight:600}
+.s8chip em{font-style:normal;color:#ff4d6a;margin-right:10px}
+.s8col{position:absolute;top:0;font:400 20px/26px "F45 Mono",monospace;color:#ff4d6a;white-space:pre;opacity:.0;text-shadow:0 0 10px rgba(255,77,106,.8)}
+#s8-kicker{color:#ff4d6a}#s8-kicker i{background:#ff4d6a;box-shadow:0 0 14px #ff4d6a}
+#s8-title .c{color:#ff4d6a;text-shadow:0 0 28px rgba(255,77,106,.8)}
+#s8-rule{background:linear-gradient(90deg,#ff4d6a,rgba(255,77,106,0));box-shadow:0 0 18px #ff4d6a}
+#s8-flash{position:absolute;inset:0;background:#ff4d6a;opacity:0;mix-blend-mode:screen}
+#s8-err{position:absolute;left:0;width:1080px;top:1070px;text-align:center;font:800 54px/1 "F45 Display";color:#ff4d6a;letter-spacing:.08em;opacity:0;text-shadow:0 0 30px rgba(255,77,106,.9)}
+</style>
+<div id="root" data-composition-id="scene8" data-width="1080" data-height="1920">
+  <div id="s8-world" class="world">
+    <svg id="s8-svg" class="fill" viewBox="0 0 1080 1920"></svg>
+    <div id="s8-cols" class="fill" data-layout-ignore></div>
+    <div id="s8-ui" class="fill"></div>
+  </div>
+  <div id="s8-dust" class="fill"></div>
+  <div id="s8-flash"></div>
+  <div class="vig"></div><div class="grain"></div>
+  <div id="s8-kicker" class="kicker"><i></i>08 · ОБРАТНАЯ СТОРОНА</div>
+  <div id="s8-title" class="title">ЦЕНА <b>ТЕХНОЛОГИЧЕСКОГО ПРОГРЕССА.</b></div>
+  <div id="s8-rule" class="tline" style="top:520px"></div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+const svg = document.getElementById("s8-svg"), defs = el("defs", {}, svg), UI = document.getElementById("s8-ui"), COLS = document.getElementById("s8-cols");
+document.getElementById("s8-title").style.fontSize = "72px";
+function rgrad(id, stops) { const g = el("radialGradient", { id }, defs); stops.forEach(s => el("stop", { offset: s[0], "stop-color": s[1], "stop-opacity": s[2] }, g)); }
+rgrad("s8-red", [[0, "#ff4d6a", .55], [1, "#ff4d6a", 0]]);
+/* ---- city that goes dark ---- */
+const far = el("g", {}, svg), mid = el("g", {}, svg);
+const cf = city(far, { x0: -40, x1: 1120, base: 1240, minH: 420, maxH: 900, minW: 80, maxW: 140, fill: "#1a0a1e", edge: "rgba(255,77,106,.35)", seed: 13, winProb: .3, wstep: 24, spire: .3, wcols: ["#ffe2a8", "#8ff6ff", "#ffb347"] });
+const cm = city(mid, { x0: -60, x1: 1120, base: 1240, minH: 260, maxH: 620, minW: 100, maxW: 170, fill: "#0d0612", edge: "rgba(255,77,106,.5)", seed: 23, winProb: .34, wstep: 22, spire: .1, wcols: ["#ffe2a8", "#8ff6ff"] });
+el("ellipse", { cx: 540, cy: 1240, rx: 700, ry: 260, fill: "url(#s8-red)" }, svg);
+el("rect", { x: 0, y: 1240, width: 1080, height: 680, fill: "#04010a" }, svg); el("rect", { x: 0, y: 1240, width: 1080, height: 3, fill: "#ff4d6a", opacity: .7 }, svg);
+const all = cf.wins.concat(cm.wins);
+tl.fromTo(all, { opacity: (i) => .35 + (i % 4) * .2 }, { opacity: 0, duration: .25, stagger: { each: .006, from: "random" } }, .1);
+tl.to(all.filter((w, i) => i % 9 === 0), { opacity: .9, fill: "#ff4d6a", duration: .2, stagger: { each: .02, from: "random" } }, 1.2);
+
+/* ---- falling data columns ---- */
+const R = rng(88), glyph = "01ABCDEF▮░▒╳#";
+for (let i = 0; i < 16; i++) { let t = ""; for (let r = 0; r < 70; r++) { let l = ""; for (let c = 0; c < 2; c++) l += glyph[Math.floor(R() * glyph.length)]; t += l + "\n"; }
+  const col = div("s8col", `left:${30 + i * 66}px`, COLS, t); const sp = 200 + R() * 260;
+  tl.fromTo(col, { y: -1100 - R() * 300, opacity: 0 }, { y: -1100 - R() * 300 + sp * D * .6, opacity: .26 + R() * .25, duration: D, ease: "none" }, R() * .8); }
+/* ---- the human, surrounded ---- */
+const hgo = el("g", { transform: "translate(540 1252) scale(1.12)" }, svg);
+const hg = el("g", {}, hgo);
+const hum = human(hg, { fill: "#010005", rim: "#ff4d6a", rimOp: .8 });
+const halo = el("ellipse", { cx: 540, cy: 1240, rx: 160, ry: 26, fill: "none", stroke: "#ff4d6a", "stroke-width": 3 }, svg);
+/* streams converge on the person */
+const streams = [];
+for (let i = 0; i < 12; i++) { const x0 = i < 6 ? -40 : 1120, y0 = 560 + (i % 6) * 120, d = `M${x0},${y0} C${(x0 + 540) / 2},${y0 + 60} ${540 + (x0 < 0 ? -140 : 140)},${1000 + i * 8} 540,${1040 + (i % 6) * 22}`;
+  const g = el("g", {}, svg); const base = el("path", { d, fill: "none", stroke: "#ff4d6a", "stroke-width": 2, opacity: 0 }, g);
+  const flow = el("path", { d, fill: "none", stroke: "#ff9aab", "stroke-width": 4, "stroke-dasharray": "6 30", "stroke-linecap": "round", opacity: 0 }, g); streams.push({ base, flow }); }
+const sf = { p: 0 }; tl.to(sf, { p: 1, duration: D, ease: "none", onUpdate: () => streams.forEach((s, i) => s.flow.setAttribute("stroke-dashoffset", -sf.p * D * (70 + i * 6))) }, 0);
+streams.forEach((s, i) => { tl.fromTo(s.base, { opacity: 0 }, { opacity: .4, duration: .5 }, CH[1] - .6 + i * .08); tl.fromTo(s.flow, { opacity: 0 }, { opacity: 1, duration: .5 }, CH[1] - .6 + i * .08); });
+/* ---- holographic face scan ---- */
+const face = el("g", { transform: "translate(540 760)" }, svg);
+const fc = el("clipPath", { id: "s8-fc" }, defs); el("ellipse", { cx: 0, cy: 0, rx: 116, ry: 156 }, fc);
+const fclip = el("g", { "clip-path": "url(#s8-fc)" }, face);
+el("ellipse", { cx: 0, cy: 0, rx: 116, ry: 156, fill: "rgba(255,77,106,.12)", stroke: "#ff9aab", "stroke-width": 3 }, face);
+for (let i = -8; i <= 8; i++) el("ellipse", { cx: 0, cy: 0, rx: Math.abs(i) * 14.5 + 2, ry: 156, fill: "none", stroke: "#ff4d6a", "stroke-opacity": .35 }, fclip);
+for (let i = -7; i <= 7; i++) el("line", { x1: -120, y1: i * 22, x2: 120, y2: i * 22, stroke: "#ff4d6a", "stroke-opacity": .3 }, fclip);
+[[-44, -32], [44, -32]].forEach(e => { el("path", { d: `M${e[0] - 26},${e[1]} Q${e[0]},${e[1] - 16} ${e[0] + 26},${e[1]} Q${e[0]},${e[1] + 14} ${e[0] - 26},${e[1]} Z`, fill: "none", stroke: "#fff", "stroke-width": 3 }, face); el("circle", { cx: e[0], cy: e[1], r: 6, fill: "#ff4d6a" }, face); });
+el("path", { d: "M0,-20 L-10,36 L10,40", fill: "none", stroke: "#ff9aab", "stroke-width": 3 }, face); el("path", { d: "M-34,76 Q0,96 34,76", fill: "none", stroke: "#ff9aab", "stroke-width": 3 }, face);
+const lm = []; [[-84, -10], [84, -10], [-60, 70], [60, 70], [0, 118], [0, -108], [-96, -62], [96, -62], [0, 12]].forEach(p => lm.push(el("circle", { cx: p[0], cy: p[1], r: 4.5, fill: "#fff" }, face)));
+const brk = el("g", {}, face); [[-150, -190, 1, 1], [150, -190, -1, 1], [-150, 190, 1, -1], [150, 190, -1, -1]].forEach(b => el("path", { d: `M${b[0]},${b[1] + 40 * b[3]} V${b[1]} H${b[0] + 40 * b[2]}`, fill: "none", stroke: "#ff4d6a", "stroke-width": 4 }, brk));
+const scanL = el("rect", { x: -150, y: 0, width: 300, height: 4, fill: "#fff", opacity: .9 }, face); const scanG = el("rect", { x: -150, y: -60, width: 300, height: 60, fill: "#ff4d6a", opacity: .2 }, face);
+const fgrp = [face];
+/* ---- UI chips ---- */
+const chip = (id, css, h) => { const d = div("s8chip", css, UI, h); d.id = id; return d; };
+chip("s8-c0", "left:70px;top:970px", "<em>▲</em>ИДЕНТИФИКАЦИЯ <b>99,8%</b>");
+chip("s8-c1", "right:50px;top:1010px", "<em>⚠</em>ПРИВАТНОСТЬ: <b>УТЕЧКА ДАННЫХ</b>");
+chip("s8-c2", "left:70px;top:1085px", "<em>⚠</em>КИБЕРАТАКА: <b>ОБНАРУЖЕНА</b>");
+chip("s8-c3", "left:300px;top:1190px", "<em>⚠</em>ЗАВИСИМОСТЬ ОТ ИИ: <b>87% ▲</b>");
+const errT = div("", "", UI); errT.id = "s8-err"; errT.textContent = "СИСТЕМА НЕ ОТВЕЧАЕТ";
+
+/* ================= animation ================= */
+tl.to("#root", { duration: 0.01 }, 0);
+tl.fromTo(hg, { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }, .5);
+tl.fromTo(halo, { scale: .4, opacity: 0, transformOrigin: "540px 1240px" }, { scale: 1, opacity: 1, duration: 1, ease: "power3.out" }, .9);
+tl.to(halo, { scale: 1.25, opacity: .25, duration: 1.2, yoyo: true, repeat: RP(D / 1.2), ease: "sine.inOut", transformOrigin: "540px 1240px" }, 2);
+tl.fromTo(face, { opacity: 0, scale: .6, transformOrigin: "0 0" }, { opacity: 1, scale: 1, duration: .9, ease: "back.out(1.6)" }, CH[1] - .8);
+tl.fromTo(scanL, { y: -156 }, { y: 156, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: RP((D - CH[1]) / 1.1) }, CH[1] - .4);
+tl.fromTo(scanG, { y: -216 }, { y: 96, duration: 1.1, ease: "sine.inOut", yoyo: true, repeat: RP((D - CH[1]) / 1.1) }, CH[1] - .4);
+lm.forEach((m, i) => tl.fromTo(m, { opacity: 0, scale: 0, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: .2, ease: "back.out(3)" }, CH[1] - .2 + i * .1));
+tl.to(brk, { scale: 1.06, duration: .8, yoyo: true, repeat: RP(D / .8), ease: "sine.inOut", transformOrigin: "0 0" }, CH[1]);
+[["#s8-c0", CH[1] + .1], ["#s8-c1", CH[1] + .7], ["#s8-c2", CH[2] + .3], ["#s8-c3", CH[3] + .5]].forEach(c => tl.fromTo(c[0], { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: .45, ease: "power3.out" }, c[1]));
+/* system failure glitch */
+const G = CH[2] + 1.5;
+tl.fromTo("#s8-flash", { opacity: 0 }, { opacity: .35, duration: .06, yoyo: true, repeat: 5 }, G);
+[-14, 11, -8, 16, -6, 0].forEach((x, i) => tl.to("#s8-world", { x, duration: .05 }, G + i * .06));
+tl.fromTo(face, { skewX: 0 }, { skewX: 14, duration: .06, yoyo: true, repeat: 5, transformOrigin: "0 0" }, G);
+tl.fromTo("#s8-err", { opacity: 0, scale: 1.2 }, { opacity: 1, scale: 1, duration: .12 }, G + .05);
+tl.to("#s8-err", { opacity: 0, duration: .25 }, G + 1.05);
+tl.to(fgrp, { opacity: .45, duration: .1, yoyo: true, repeat: 7 }, G);
+/* the camera creeps closer, the world pinches */
+camera(tl, "#s8-world", D, { s0: 1.0, s1: 1.16, y1: -40, origin: "540px 1000px", ease: "sine.inOut" });
+tl.add(particles(document.getElementById("s8-dust"), 34, 81, D, { rmax: 3, dy: -160, color: "#ff4d6a" }), 0);
+headline(tl, "s8", CH[0] + .2, 3.2);
+sceneInOut(tl, "#s8-world, #s8-dust", D);
+window.__timelines["scene8"] = tl;
+</script>

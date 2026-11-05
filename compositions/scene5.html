@@ -1,0 +1,352 @@
+<template>
+<style>
+/* ===== FUTURE 2045 — shared design system (inlined into every scene) ===== */
+@font-face{font-family:"F45 Display";font-weight:800;src:url("assets/fonts/montserrat-cyrillic-800-normal.woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"F45 Display";font-weight:800;src:url("assets/fonts/montserrat-latin-800-normal.woff2");unicode-range:U+0000-00FF,U+2000-206F,U+2212}
+@font-face{font-family:"F45 Display";font-weight:700;src:url("assets/fonts/montserrat-cyrillic-700-normal.woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"F45 Display";font-weight:700;src:url("assets/fonts/montserrat-latin-700-normal.woff2");unicode-range:U+0000-00FF,U+2000-206F,U+2212}
+@font-face{font-family:"F45 Text";font-weight:700;src:url("assets/fonts/inter-cyrillic-700-normal.woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"F45 Text";font-weight:700;src:url("assets/fonts/inter-latin-700-normal.woff2");unicode-range:U+0000-00FF,U+2000-206F,U+2212}
+@font-face{font-family:"F45 Text";font-weight:500;src:url("assets/fonts/inter-cyrillic-500-normal.woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"F45 Text";font-weight:500;src:url("assets/fonts/inter-latin-500-normal.woff2");unicode-range:U+0000-00FF,U+2000-206F,U+2212}
+@font-face{font-family:"F45 Mono";font-weight:600;src:url("assets/fonts/jetbrains-mono-cyrillic-600-normal.woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"F45 Mono";font-weight:600;src:url("assets/fonts/jetbrains-mono-latin-600-normal.woff2");unicode-range:U+0000-00FF,U+2000-206F,U+2212,U+2190-21FF,U+25A0-25FF}
+@font-face{font-family:"F45 Mono";font-weight:400;src:url("assets/fonts/jetbrains-mono-cyrillic-400-normal.woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"F45 Mono";font-weight:400;src:url("assets/fonts/jetbrains-mono-latin-400-normal.woff2");unicode-range:U+0000-00FF,U+2000-206F,U+2212,U+2190-21FF,U+25A0-25FF}
+
+#root{
+  --bg0:#01040b; --bg1:#041225; --bg2:#08213f;
+  --cyan:#22e4ff; --cyan2:#8ff6ff; --blue:#2f7bff; --deep:#0b3d7a;
+  --ink:#e8f7ff; --dim:#7fa6c4; --warn:#ff4d6a; --amber:#ffb347;
+  position:absolute; inset:0; overflow:hidden; color:var(--ink);
+  background:radial-gradient(120% 70% at 50% 30%, var(--bg2) 0%, var(--bg1) 45%, var(--bg0) 100%);
+  font-family:"F45 Text","Inter",sans-serif;
+}
+#root *{box-sizing:border-box}
+.abs{position:absolute}
+.fill{position:absolute;left:0;top:0;width:1080px;height:1920px}
+.world{position:absolute;left:0;top:0;width:1080px;height:1920px}
+svg{overflow:visible}
+
+/* typography */
+.kicker{position:absolute;left:90px;top:176px;font:600 26px/1 "F45 Mono",monospace;letter-spacing:.34em;color:var(--cyan);text-transform:uppercase;display:flex;align-items:center;gap:18px;white-space:nowrap}
+.kicker i{display:block;width:70px;height:2px;background:var(--cyan);box-shadow:0 0 14px var(--cyan)}
+.title{position:absolute;left:90px;top:228px;width:900px;font:800 84px/1.04 "F45 Display","Montserrat",sans-serif;letter-spacing:-.012em;color:#fff;text-shadow:0 0 40px rgba(34,228,255,.35),0 4px 30px rgba(0,0,0,.6)}
+.title .w{display:inline-block;margin-right:.26em;will-change:transform,opacity}
+.title .c{color:var(--cyan);text-shadow:0 0 28px rgba(34,228,255,.75)}
+.tline{position:absolute;left:90px;height:3px;width:240px;background:linear-gradient(90deg,var(--cyan),rgba(34,228,255,0));box-shadow:0 0 18px var(--cyan)}
+.mono{font-family:"F45 Mono",monospace}
+
+/* holographic panel */
+.holo{position:absolute;border:2px solid rgba(34,228,255,.75);border-radius:18px;background:linear-gradient(160deg,rgba(18,70,120,.46),rgba(4,24,48,.58));box-shadow:0 0 36px rgba(34,228,255,.28),inset 0 0 40px rgba(34,228,255,.12);color:var(--ink);overflow:hidden}
+.holo::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(150,240,255,.06) 0 2px,transparent 2px 6px);pointer-events:none}
+.holo .h{font:600 24px/1 "F45 Mono",monospace;letter-spacing:.12em;color:var(--cyan);padding:18px 22px 0;text-transform:uppercase}
+.holo .v{font:800 64px/1 "F45 Display",sans-serif;padding:8px 22px 0;color:#fff}
+.holo .r{font:500 26px/1.2 "F45 Text",sans-serif;padding:6px 22px 0;color:var(--cyan2)}
+.dot{position:absolute;border-radius:50%;background:var(--cyan2);box-shadow:0 0 10px var(--cyan)}
+.vig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(90% 62% at 50% 46%,rgba(0,0,0,0) 55%,rgba(0,0,0,.72) 100%)}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.5;background:repeating-linear-gradient(0deg,rgba(0,0,0,.14) 0 1px,transparent 1px 4px)}
+.glowtxt{text-shadow:0 0 18px rgba(34,228,255,.8)}
+
+</style>
+<style>
+.s5lab{position:absolute;font:600 24px/1.25 "F45 Mono",monospace;letter-spacing:.12em;color:#8ff6ff;white-space:nowrap;opacity:0}
+.s5lab b{color:#fff;font-weight:600}
+.s5row{display:flex;justify-content:space-between;align-items:center;padding:8px 22px 0;font:500 26px/1 "F45 Text";color:#bfeaff}
+.s5row i{display:block;height:10px;border-radius:5px;background:linear-gradient(90deg,#2f7bff,#22e4ff);box-shadow:0 0 10px #22e4ff;margin-left:14px}
+.s5bar{width:130px;background:rgba(34,228,255,.18);border-radius:5px;height:10px}
+</style>
+<div id="root" data-composition-id="scene5" data-width="1080" data-height="1920">
+  <div id="s5-world" class="world">
+    <svg id="s5-svg" class="fill" viewBox="0 0 1080 1920"></svg>
+    <div id="s5-ui" class="fill"></div>
+  </div>
+  <div id="s5-dust" class="fill"></div>
+  <div class="vig"></div><div class="grain"></div>
+  <div id="s5-kicker" class="kicker"><i></i>05 · МЕДИЦИНА</div>
+  <div id="s5-title" class="title" style="font-size:72px"><b>МЕДИЦИНА</b> НОВОГО ПОКОЛЕНИЯ.</div>
+  <div id="s5-rule" class="tline" style="top:440px"></div>
+</div>
+<script>
+(function(){
+/* ===== FUTURE 2045 — shared motion toolkit (inlined into every scene) =====
+   Everything is a pure function of timeline time: seeded PRNG, no Date/Math.random. */
+const SVGNS = "http://www.w3.org/2000/svg";
+function rng(seed) { // mulberry32
+  let a = seed >>> 0;
+  return function () { a |= 0; a = (a + 0x6D2B79F5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+}
+function el(tag, attrs, parent) {
+  const n = document.createElementNS(SVGNS, tag);
+  for (const k in (attrs || {})) n.setAttribute(k, attrs[k]);
+  if (parent) parent.appendChild(n);
+  return n;
+}
+function div(cls, css, parent, html) {
+  const n = document.createElement("div");
+  if (cls) n.className = cls;
+  if (css) n.style.cssText = css;
+  if (html != null) n.innerHTML = html;
+  if (parent) parent.appendChild(n);
+  return n;
+}
+/* Split a .title into word spans (words marked with <b> become cyan) */
+function splitTitle(sel) {
+  const t = document.querySelector(sel);
+  const out = [];
+  const walk = (node, cyan) => {
+    node.childNodes.forEach((ch) => {
+      if (ch.nodeType === 3) {
+        ch.textContent.split(/\s+/).filter(Boolean).forEach((w) => {
+          const s = document.createElement("span"); s.className = "w" + (cyan ? " c" : ""); s.textContent = w; out.push(s);
+        });
+      } else if (ch.nodeName === "B") walk(ch, true);
+      else if (ch.nodeName === "BR") out.push(document.createElement("br"));
+    });
+  };
+  walk(t, false);
+  t.innerHTML = "";
+  out.forEach((s) => t.appendChild(s));
+  return t.querySelectorAll(".w");
+}
+/* Standard on-screen headline: kicker slides, words rise out of blur, rule draws, then leaves */
+function headline(tl, id, at, hold) {
+  const words = splitTitle("#" + id + "-title");
+  tl.fromTo("#" + id + "-kicker", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: .6, ease: "power3.out" }, at);
+  tl.fromTo("#" + id + "-kicker i", { scaleX: 0, transformOrigin: "0 50%" }, { scaleX: 1, duration: .7, ease: "power3.out" }, at + .1);
+  tl.fromTo(words, { opacity: 0, y: 70, rotationX: -50, filter: "blur(14px)" },
+    { opacity: 1, y: 0, rotationX: 0, filter: "blur(0px)", duration: .75, ease: "expo.out", stagger: .09 }, at + .15);
+  tl.fromTo("#" + id + "-rule", { scaleX: 0, transformOrigin: "0 50%" }, { scaleX: 1, duration: .9, ease: "power3.inOut" }, at + .5);
+  const end = at + hold;
+  tl.to([ "#" + id + "-kicker", words, "#" + id + "-rule" ], { opacity: 0, y: -26, filter: "blur(10px)", duration: .45, ease: "power2.in", stagger: .03 }, end);
+}
+/* Floating dust / data particles that drift upward, finite and seeded */
+function particles(parent, n, seed, dur, opts) {
+  const o = Object.assign({ w: 1080, h: 1920, rmin: 1.5, rmax: 4.5, dx: 60, dy: -240, color: "" }, opts || {});
+  const R = rng(seed), tl = gsap.timeline();
+  for (let i = 0; i < n; i++) {
+    const r = o.rmin + R() * (o.rmax - o.rmin);
+    const d = div("dot", `left:${R() * o.w}px;top:${R() * o.h}px;width:${r}px;height:${r}px;opacity:0;${o.color ? "background:" + o.color + ";box-shadow:0 0 10px " + o.color : ""}`, parent);
+    const x0 = (R() - .5) * 30, life = 3 + R() * 4, t0 = R() * dur;
+    tl.fromTo(d, { opacity: 0, x: x0, y: 0 }, { opacity: .25 + R() * .6, x: x0 + (R() - .5) * o.dx, y: o.dy * (.4 + R() * .6), duration: life, ease: "sine.inOut" }, t0 * .9);
+    tl.to(d, { opacity: 0, duration: life * .35, ease: "none" }, t0 * .9 + life * .65);
+  }
+  return tl;
+}
+/* Camera: slow push/drift for a "world" element */
+function camera(tl, sel, d, o) {
+  o = Object.assign({ s0: 1, s1: 1.1, x0: 0, x1: 0, y0: 0, y1: 0, at: 0, ease: "sine.inOut", origin: "50% 50%" }, o || {});
+  tl.fromTo(sel, { scale: o.s0, x: o.x0, y: o.y0, transformOrigin: o.origin }, { scale: o.s1, x: o.x1, y: o.y1, duration: d, ease: o.ease }, o.at);
+}
+/* Scene in/out: punch-in settle at the start, push-through at the end (hidden by the root flash) */
+function sceneInOut(tl, sel, d) {
+  tl.fromTo(sel, { opacity: 0, filter: "brightness(2.2) blur(10px)" }, { opacity: 1, filter: "brightness(1) blur(0px)", duration: .55, ease: "power3.out" }, 0);
+  tl.to(sel, { opacity: 0, filter: "brightness(1.6) blur(8px)", duration: .28, ease: "power2.in" }, d - .28);
+}
+/* Holographic data panel factory (HTML) */
+function panel(id, css, head, value, sub, parent) {
+  const p = div("holo", css, parent);
+  p.id = id;
+  p.innerHTML = (head ? `<div class="h">${head}</div>` : "") + (value ? `<div class="v">${value}</div>` : "") + (sub ? `<div class="r">${sub}</div>` : "");
+  return p;
+}
+const RP = (n) => Math.max(0, Math.floor(n)); // finite, never -1 (= infinite) repeat count
+function lerp(a, b, t) { return a + (b - a) * t; }
+function clamp01(x) { return Math.max(0, Math.min(1, x)); }
+/* Procedural skyline (SVG). Returns { bs: building <g>[], wins: lit window <rect>[] } */
+function city(parent, o) {
+  o = Object.assign({ x0: -40, x1: 1120, base: 1500, minW: 70, maxW: 130, minH: 300, maxH: 800, fill: "#0a2342", edge: "rgba(34,228,255,.35)",
+    seed: 1, winProb: .5, winOn: 1, wcols: ["#8ff6ff", "#7ff3ff", "#ffe2a8", "#5aa8ff"], gap: 4, spire: .25, wstep: 22, winOpacity: 1 }, o);
+  const R = rng(o.seed), bs = [], wins = [];
+  let x = o.x0;
+  while (x < o.x1) {
+    const w = o.minW + R() * (o.maxW - o.minW), h = o.minH + R() * (o.maxH - o.minH);
+    const g = el("g", {}, parent);
+    el("rect", { x: x, y: o.base - h, width: w, height: h + 600, fill: o.fill }, g);
+    el("rect", { x: x, y: o.base - h, width: w, height: 3, fill: o.edge }, g);
+    if (R() < o.spire) { const sx = x + w * (.3 + R() * .4); el("rect", { x: sx, y: o.base - h - 60 - R() * 60, width: 3, height: 90, fill: o.edge }, g);
+      el("circle", { cx: sx + 1.5, cy: o.base - h - 60, r: 4, fill: "#ff5b6e" }, g); }
+    if (o.winProb > 0) {
+      const cols = Math.max(1, Math.floor((w - 16) / o.wstep)), rows = Math.floor((h - 24) / (o.wstep * 1.35));
+      for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+        if (R() < o.winProb) {
+          const wc = o.wcols[Math.floor(R() * o.wcols.length)];
+          wins.push(el("rect", { x: x + 10 + c * o.wstep, y: o.base - h + 16 + r * o.wstep * 1.35, width: o.wstep * .42, height: o.wstep * .66, fill: wc, opacity: 0 }, g));
+        }
+      }
+    }
+    bs.push(g);
+    x += w + o.gap;
+  }
+  return { bs: bs, wins: wins };
+}
+/* Human silhouette seen from behind (feet at 0,0, ~330 px tall) */
+function human(parent, o) {
+  o = Object.assign({ fill: "#020913", rim: "#22e4ff", rimOp: .55, s: 1 }, o);
+  const g = el("g", {}, parent);
+  const d = "M-44,-262 Q-50,-246 -49,-205 L-52,-150 L-60,-104 L-30,-100 L-30,-2 L-8,-2 L-5,-98 L5,-98 L8,-2 L30,-2 L30,-100 L60,-104 L52,-150 L49,-205 Q50,-246 44,-262 Q22,-278 0,-274 Q-22,-278 -44,-262 Z";
+  const body = el("path", { d: d, fill: o.fill, stroke: o.rim, "stroke-opacity": o.rimOp, "stroke-width": 2 }, g);
+  const head = el("ellipse", { cx: 0, cy: -296, rx: 22, ry: 26, fill: o.fill, stroke: o.rim, "stroke-opacity": o.rimOp, "stroke-width": 2 }, g);
+  return { g: g, body: body, head: head };
+}
+/* Two-link inverse kinematics (rest pose hangs along +y). Angles in degrees, SVG-rotate convention. */
+function ik2(bx, by, L1, L2, tx, ty, sign) {
+  const dx = tx - bx, dy = ty - by;
+  let d = Math.hypot(dx, dy); d = Math.min(d, L1 + L2 - .5); d = Math.max(d, Math.abs(L1 - L2) + .5);
+  const k = sign * Math.acos(Math.max(-1, Math.min(1, (d * d - L1 * L1 - L2 * L2) / (2 * L1 * L2))));
+  const th1 = Math.atan2(dy, dx) - Math.atan2(L2 * Math.sin(k), L1 + L2 * Math.cos(k));
+  return { a1: th1 * 180 / Math.PI - 90, a2: k * 180 / Math.PI };
+}
+/* Robotic arm with two links + gripper, driven by explicit rotate() attributes (seek-safe). */
+function arm2(parent, o) {
+  o = Object.assign({ x: 0, y: 0, L1: 300, L2: 280, w1: 16, w2: 12, c1: "#bcd6ee", c2: "#e8f7ff", joint: "#22e4ff", sign: 1, rest: null, base: true }, o);
+  const g = el("g", {}, parent);
+  if (o.base) el("rect", { x: o.x - 34, y: o.y - 12, width: 68, height: 18, rx: 7, fill: "#2a4a6e", stroke: o.joint, "stroke-opacity": .6 }, g);
+  const l1 = el("g", {}, g);
+  el("rect", { x: -o.w1 / 2, y: 0, width: o.w1, height: o.L1, rx: o.w1 / 2, fill: o.c1 }, l1);
+  el("circle", { cx: 0, cy: 0, r: o.w1 * .75, fill: o.joint }, l1);
+  const l2 = el("g", {}, l1);
+  el("rect", { x: -o.w2 / 2, y: 0, width: o.w2, height: o.L2, rx: o.w2 / 2, fill: o.c2 }, l2);
+  el("circle", { cx: 0, cy: 0, r: o.w2 * .8, fill: o.joint }, l2);
+  const tip = el("g", { transform: `translate(0 ${o.L2})` }, l2);
+  el("path", { d: "M-15,0 L-8,24 M15,0 L8,24", stroke: o.joint, "stroke-width": 5, "stroke-linecap": "round", fill: "none" }, tip);
+  const st = { a1: 0, a2: 0 };
+  const A = { g, st, tip, last: null };
+  A.apply = () => { l1.setAttribute("transform", `translate(${o.x} ${o.y}) rotate(${st.a1})`); l2.setAttribute("transform", `translate(0 ${o.L1}) rotate(${st.a2})`); };
+  A.pose = (tx, ty) => ik2(o.x, o.y, o.L1, o.L2, tx, ty, o.sign);
+  A.set = (tx, ty) => { const p = A.pose(tx, ty); st.a1 = p.a1; st.a2 = p.a2; A.last = p; A.apply(); };
+  A.reach = (tl, at, dur, tx, ty, ease) => {
+    const p = A.pose(tx, ty), f = A.last || p;
+    tl.fromTo(st, { a1: f.a1, a2: f.a2 }, { a1: p.a1, a2: p.a2, duration: dur, ease: ease || "power3.inOut", onUpdate: A.apply, immediateRender: false }, at);
+    A.last = p;
+  };
+  return A;
+}
+
+const D = 10.714; // scene length (s)
+const CH = [0.35, 1.759, 4.878, 7.394]; // narration chunk starts, scene-relative
+const CE = [1.599, 4.718, 7.234, 10.264]; // narration chunk ends, scene-relative
+
+const tl = gsap.timeline({ paused: true });
+const svg = document.getElementById("s5-svg"), defs = el("defs", {}, svg), UI = document.getElementById("s5-ui");
+function lgrad(id, x2, y2, stops) { const g = el("linearGradient", { id, x1: 0, y1: 0, x2, y2 }, defs); stops.forEach(s => el("stop", { offset: s[0], "stop-color": s[1], "stop-opacity": s[2] == null ? 1 : s[2] }, g)); }
+lgrad("s5-wall", 0, 1, [[0, "#0a2c50"], [1, "#05182d"]]); lgrad("s5-floor", 0, 1, [[0, "#0b2745"], [1, "#020a15"]]);
+lgrad("s5-scan", 0, 1, [[0, "#22e4ff", 0], [1, "#22e4ff", .5]]);
+lgrad("s5-holo", 0, 1, [[0, "#22e4ff", .5], [1, "#22e4ff", .06]]);
+
+/* ---- lab ---- */
+const lab = el("g", {}, svg);
+el("rect", { x: 0, y: 470, width: 1080, height: 770, fill: "url(#s5-wall)" }, lab);
+for (let i = 0; i < 6; i++) { el("rect", { x: 30 + i * 175, y: 540, width: 150, height: 520, rx: 8, fill: "none", stroke: "#22e4ff", "stroke-opacity": .16 }, lab); }
+el("rect", { x: 0, y: 1240, width: 1080, height: 680, fill: "url(#s5-floor)" }, lab); el("rect", { x: 0, y: 1240, width: 1080, height: 4, fill: "#22e4ff", opacity: .8 }, lab);
+el("rect", { x: 0, y: 470, width: 1080, height: 28, fill: "#03101f" }, lab);
+for (let i = 0; i < 5; i++) el("rect", { x: 80 + i * 220, y: 498, width: 120, height: 8, rx: 4, fill: "#bff6ff", opacity: .9 }, lab);
+
+/* ---- projector pad + body hologram ---- */
+const pad = el("g", {}, svg);
+[150, 110, 70].forEach((r, i) => el("ellipse", { cx: 540, cy: 1230, rx: r, ry: r * .16, fill: i === 2 ? "#22e4ff" : "none", "fill-opacity": .22, stroke: "#22e4ff", "stroke-width": 3, opacity: 1 - i * .2 }, pad));
+const beam = el("polygon", { points: "470,1230 610,1230 640,640 440,640", fill: "url(#s5-holo)", opacity: .18 }, svg);
+const body = el("g", {}, svg);
+const bodyD = "M500,742 Q540,726 580,742 L630,762 L652,902 L628,912 L608,802 L598,1000 L590,1212 L556,1212 L540,1010 L524,1212 L490,1212 L482,1000 L472,802 L452,912 L428,902 L450,762 Z";
+const clipB = el("clipPath", { id: "s5-bclip" }, defs); el("path", { d: bodyD }, clipB); el("ellipse", { cx: 540, cy: 694, rx: 33, ry: 38 }, clipB);
+el("path", { d: bodyD, fill: "rgba(34,228,255,.10)", stroke: "#22e4ff", "stroke-width": 3 }, body);
+el("ellipse", { cx: 540, cy: 694, rx: 33, ry: 38, fill: "rgba(34,228,255,.10)", stroke: "#22e4ff", "stroke-width": 3 }, body);
+const mesh = el("g", { "clip-path": "url(#s5-bclip)" }, body);
+for (let i = 0; i < 26; i++) el("line", { x1: 420, y1: 660 + i * 22, x2: 660, y2: 660 + i * 22, stroke: "#22e4ff", "stroke-opacity": .2 }, mesh);
+for (let i = 0; i < 10; i++) el("line", { x1: 440 + i * 24, y1: 650, x2: 440 + i * 24, y2: 1230, stroke: "#22e4ff", "stroke-opacity": .12 }, mesh);
+/* organs */
+const lungL = el("path", { d: "M512,770 Q488,790 494,846 Q512,858 528,840 L530,780 Z", fill: "rgba(143,246,255,.2)", stroke: "#8ff6ff", "stroke-width": 2 }, body);
+const lungR = el("path", { d: "M568,770 Q592,790 586,846 Q568,858 552,840 L550,780 Z", fill: "rgba(143,246,255,.2)", stroke: "#8ff6ff", "stroke-width": 2 }, body);
+const heart = el("path", { d: "M548,810 q-12,-14 -22,0 q-8,14 22,30 q30,-16 22,-30 q-10,-14 -22,0 z", fill: "#ff5b6e", opacity: .9, transform: "translate(0 -4)" }, body);
+const liver = el("ellipse", { cx: 512, cy: 900, rx: 30, ry: 16, fill: "rgba(255,179,71,.25)", stroke: "#ffb347", "stroke-width": 2 }, body);
+const ano = el("g", { transform: "translate(512 900)" }, svg);
+const ring1 = el("circle", { r: 26, fill: "none", stroke: "#ffb347", "stroke-width": 3 }, ano);
+el("path", { d: "M-40,-40 h14 M-40,-40 v14 M40,-40 h-14 M40,-40 v14 M-40,40 h14 M-40,40 v-14 M40,40 h-14 M40,40 v-14", stroke: "#ffb347", "stroke-width": 3, fill: "none" }, ano);
+const scanner = el("g", {}, svg);
+el("ellipse", { cx: 540, cy: 0, rx: 150, ry: 26, fill: "none", stroke: "#bff6ff", "stroke-width": 4 }, scanner);
+el("ellipse", { cx: 540, cy: 0, rx: 150, ry: 26, fill: "rgba(34,228,255,.18)" }, scanner);
+el("rect", { x: 390, y: -180, width: 300, height: 180, fill: "url(#s5-scan)", opacity: .35 }, scanner);
+
+/* ---- doctor (right) studies the hologram ---- */
+const dg = el("g", { transform: "translate(930 1240) scale(-1 1)" }, svg);
+const doc = human(dg, { fill: "#071a30", rim: "#e8f7ff", rimOp: .75 });
+const dArm = el("g", {}, doc.g);
+el("line", { x1: 0, y1: 0, x2: -120, y2: -40, stroke: "#071a30", "stroke-width": 22, "stroke-linecap": "round" }, dArm);
+el("line", { x1: 0, y1: 0, x2: -120, y2: -40, stroke: "#e8f7ff", "stroke-opacity": .55, "stroke-width": 2, "stroke-linecap": "round" }, dArm);
+el("circle", { cx: -120, cy: -40, r: 10, fill: "#22e4ff" }, dArm);
+gsap.set(dArm, { x: 44, y: -248 });
+/* ---- ECG + panels ---- */
+const ecg = panel("s5-ecg", "left:700px;top:520px;width:340px;height:170px;opacity:0", "ПУЛЬС · ЭКГ", "", "", UI);
+ecg.insertAdjacentHTML("beforeend", `<svg width="340" height="120" viewBox="0 0 340 120" style="position:absolute;left:0;top:44px"><path id="s5-ecgp" d="" fill="none" stroke="#3dffa0" stroke-width="3" stroke-linejoin="round"/></svg><div class="mono" id="s5-bpm" style="position:absolute;right:20px;top:14px;font:600 34px/1 'F45 Mono';color:#3dffa0">72</div>`);
+let ed = "M0,70"; for (let i = 0; i < 4; i++) { const x = i * 85; ed += ` L${x + 10},70 L${x + 18},62 L${x + 26},70 L${x + 34},70 L${x + 38},84 L${x + 44},14 L${x + 50},96 L${x + 54},70 L${x + 66},70 L${x + 74},58 L${x + 82},70 L${x + 85},70`; }
+document.getElementById("s5-ecgp").setAttribute("d", ed);
+const ecgPath = document.getElementById("s5-ecgp"), eL = ecgPath.getTotalLength(); ecgPath.setAttribute("stroke-dasharray", eL); ecgPath.setAttribute("stroke-dashoffset", eL);
+const xr = panel("s5-xr", "left:40px;top:520px;width:340px;height:350px;opacity:0", "ИИ-АНАЛИЗ · СНИМОК", "", "", UI);
+xr.insertAdjacentHTML("beforeend", `<svg id="s5-xsvg" width="296" height="250" viewBox="0 0 296 250" style="position:absolute;left:22px;top:52px"></svg><div class="mono" id="s5-xpct" style="position:absolute;left:22px;top:310px;font:600 22px 'F45 Mono';color:#bfeaff">СКАНИРОВАНИЕ… <b style="color:#fff">0%</b></div>`);
+const xs = document.getElementById("s5-xsvg");
+el("rect", { width: 296, height: 250, rx: 10, fill: "#0a1e36" }, xs);
+el("path", { d: "M148,10 V240", stroke: "#8fb4d8", "stroke-width": 8, opacity: .5 }, xs);
+for (let i = 0; i < 7; i++) { el("path", { d: `M148,${30 + i * 28} Q80,${20 + i * 28} 40,${54 + i * 28}`, fill: "none", stroke: "#cfeaff", "stroke-width": 4, opacity: .55 }, xs); el("path", { d: `M148,${30 + i * 28} Q216,${20 + i * 28} 256,${54 + i * 28}`, fill: "none", stroke: "#cfeaff", "stroke-width": 4, opacity: .55 }, xs); }
+el("path", { d: "M130,40 Q70,50 64,130 Q74,200 130,206 Z", fill: "#1a3c63", opacity: .75 }, xs); el("path", { d: "M166,40 Q226,50 232,130 Q222,200 166,206 Z", fill: "#1a3c63", opacity: .75 }, xs);
+const xline = el("rect", { x: 0, y: 0, width: 296, height: 4, fill: "#22e4ff" }, xs);
+const xbox = el("g", { opacity: 0 }, xs); el("rect", { x: 188, y: 88, width: 56, height: 52, fill: "none", stroke: "#ffb347", "stroke-width": 3 }, xbox); el("circle", { cx: 214, cy: 112, r: 9, fill: "#ffb347", opacity: .7 }, xbox);
+const tp = panel("s5-tp", "left:40px;top:900px;width:340px;height:200px;opacity:0", "ИИ · ПЛАН ЛЕЧЕНИЯ", "", "", UI);
+tp.insertAdjacentHTML("beforeend", `<div class="s5row"><span>Вариант A</span><div class="s5bar"><i id="s5-ba" style="width:10%"></i></div><b class="mono" style="color:#fff">92%</b></div><div class="s5row"><span>Вариант B</span><div class="s5bar"><i id="s5-bb" style="width:10%"></i></div><b class="mono" style="color:#fff">71%</b></div><div class="s5row"><span>Вариант C</span><div class="s5bar"><i id="s5-bc" style="width:10%"></i></div><b class="mono" style="color:#fff">48%</b></div>`);
+const dec = panel("s5-dec", "left:690px;top:720px;width:350px;height:150px;opacity:0;border-color:#3dffa0;box-shadow:0 0 36px rgba(61,255,160,.35)", "РЕШЕНИЕ", "", "", UI);
+dec.insertAdjacentHTML("beforeend", `<div style="display:flex;align-items:center;gap:18px;padding:16px 22px 0"><div style="width:64px;height:64px;border-radius:50%;border:4px solid #3dffa0;color:#3dffa0;font:800 40px/56px 'F45 Display';text-align:center;box-shadow:0 0 22px rgba(61,255,160,.7)">✓</div><div style="font:800 30px/1.05 'F45 Display';color:#fff">ЗА ВРАЧОМ</div></div>`);
+dec.querySelector(".h").style.color = "#3dffa0";
+const l1 = div("s5lab", "left:640px;top:1010px", UI, "ЧЕЛОВЕЧЕСКИЙ <b>КОНТРОЛЬ</b>");
+const l2 = div("s5lab", "left:360px;top:1262px", UI, "РОБОТ-ХИРУРГ · ТОЧНОСТЬ <b>0,1 ММ</b>");
+const l3 = div("s5lab", "left:450px;top:560px;color:#ffb347", UI, "ОТКЛОНЕНИЕ · <b>97,4%</b>");
+
+/* ---- robotic surgical system ---- */
+const sa = arm2(svg, { x: 330, y: 506, L1: 270, L2: 250, sign: 1, w1: 22, w2: 18, c1: "#e8f7ff", c2: "#bcd6ee", joint: "#ff5b6e" });
+const sb = arm2(svg, { x: 750, y: 506, L1: 270, L2: 250, sign: -1, w1: 22, w2: 18, c1: "#e8f7ff", c2: "#bcd6ee", joint: "#ff5b6e" });
+sa.set(300, 560); sb.set(780, 560);
+tl.set([sa.g, sb.g], { opacity: 0 }, 0);
+const laser = el("line", { x1: 540, y1: 600, x2: 512, y2: 900, stroke: "#ff5b6e", "stroke-width": 3, opacity: 0 }, svg);
+
+/* ================= animation ================= */
+tl.fromTo(body, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }, .2);
+tl.fromTo(beam, { opacity: 0 }, { opacity: .18, duration: 1.2 }, .2);
+tl.fromTo(pad, { opacity: 0, scale: .6, transformOrigin: "540px 1230px" }, { opacity: 1, scale: 1, duration: 1, ease: "power3.out" }, .1);
+const sc = { y: 0 };
+tl.fromTo(scanner, { y: 680 }, { y: 1220, duration: 3.2, ease: "sine.inOut", yoyo: true, repeat: RP(D / 3.2 - 1) }, .6);
+tl.to(heart, { scale: 1.12, duration: .3, transformOrigin: "548px 820px", yoyo: true, repeat: RP(D / .6 - 1), ease: "sine.inOut" }, 0);
+tl.to([lungL, lungR], { attr: { "fill-opacity": .6 }, duration: 1.4, yoyo: true, repeat: RP(D / 1.4 - 1), ease: "sine.inOut" }, 0);
+// X-ray analysis
+tl.fromTo("#s5-xr", { opacity: 0, x: -70, rotationY: 40, transformPerspective: 800 }, { opacity: 1, x: 0, rotationY: 0, duration: .8, ease: "power3.out" }, CH[1] - .3);
+tl.fromTo(xline, { y: 0 }, { y: 246, duration: 1.8, ease: "sine.inOut", yoyo: true, repeat: 1 }, CH[1] + .3);
+tl.fromTo(xbox, { opacity: 0 }, { opacity: 1, duration: .15, yoyo: true, repeat: 5 }, CH[1] + 2.0); tl.set(xbox, { opacity: 1 }, CH[1] + 2.9);
+const xp = { n: 0 }, xpt = document.getElementById("s5-xpct");
+tl.to(xp, { n: 97.4, duration: 2.6, ease: "power2.out", onUpdate: () => { xpt.innerHTML = (xp.n > 96 ? "ПРИЗНАК НАЙДЕН " : "СКАНИРОВАНИЕ… ") + "<b style='color:#fff'>" + xp.n.toFixed(1) + "%</b>"; } }, CH[1] + .3);
+tl.fromTo(ecg, { opacity: 0, x: 70, rotationY: -40, transformPerspective: 800 }, { opacity: 1, x: 0, rotationY: 0, duration: .8, ease: "power3.out" }, .9);
+tl.to(ecgPath, { attr: { "stroke-dashoffset": 0 }, duration: 3, ease: "none" }, 1.0);
+tl.fromTo(ecgPath, { attr: { "stroke-dashoffset": 0 } }, { attr: { "stroke-dashoffset": -eL }, duration: 3, ease: "none", immediateRender: false }, 4.2);
+// anomaly on the body + treatment plan
+tl.fromTo(ano, { opacity: 0, scale: 2.2, transformOrigin: "0 0" }, { opacity: 1, scale: 1, duration: .6, ease: "back.out(2)" }, CH[2] - .2);
+tl.to(ring1, { attr: { r: 36 }, opacity: .2, duration: .7, yoyo: true, repeat: RP((D - CH[2]) / .7 - 1), ease: "sine.inOut" }, CH[2]);
+tl.fromTo(l3, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .4 }, CH[2] + .1);
+tl.fromTo("#s5-tp", { opacity: 0, x: -70, rotationY: 40, transformPerspective: 800 }, { opacity: 1, x: 0, rotationY: 0, duration: .8, ease: "power3.out" }, CH[2] + .5);
+[["#s5-ba", "92%"], ["#s5-bb", "71%"], ["#s5-bc", "48%"]].forEach((b, i) => tl.to(b[0], { width: b[1], duration: 1.1, ease: "power3.out" }, CH[2] + 1.0 + i * .2));
+// surgery + the human makes the final call
+tl.to(l3, { opacity: 0, duration: .3 }, CH[3] - .2);
+tl.to([sa.g, sb.g], { opacity: 1, duration: .5 }, CH[3] - .9);
+sa.reach(tl, CH[3] - .6, 1.2, 506, 880); sb.reach(tl, CH[3] - .4, 1.2, 556, 920);
+tl.fromTo(laser, { opacity: 0 }, { opacity: .9, duration: .3 }, CH[3] + .8);
+tl.to(laser, { opacity: .3, duration: .2, yoyo: true, repeat: 7 }, CH[3] + 1.1);
+tl.fromTo(l2, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .4 }, CH[3] + .4);
+tl.to(dArm, { rotation: -12, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 3, transformOrigin: "0 0" }, CH[2]);
+tl.fromTo("#s5-dec", { opacity: 0, scale: .8, y: 30, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, y: 0, duration: .6, ease: "back.out(1.8)" }, CH[3] + 1.4);
+tl.fromTo(l1, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .4 }, CH[3] + 1.9);
+camera(tl, "#s5-world", D, { s0: 1.0, s1: 1.1, y1: -30, origin: "540px 900px", ease: "sine.inOut" });
+tl.add(particles(document.getElementById("s5-dust"), 30, 51, D, { rmax: 3, dy: -180 }), 0);
+headline(tl, "s5", .5, 3.8);
+sceneInOut(tl, "#s5-world, #s5-dust", D);
+window.__timelines["scene5"] = tl;
+
+})();
+</script>
+
+</template>

@@ -1,0 +1,104 @@
+<style>
+#s1-clock{position:absolute;left:0;top:700px;width:1080px;text-align:center}
+#s1-clock .y{font:600 250px/1 "F45 Mono",monospace;letter-spacing:.02em;color:#bff6ff;text-shadow:0 0 30px #22e4ff,0 0 90px rgba(34,228,255,.8)}
+#s1-clock .l{font:600 26px/1 "F45 Mono",monospace;letter-spacing:.7em;color:#22e4ff;margin-top:26px;padding-left:.7em}
+#s1-ring{position:absolute;left:290px;top:575px}
+#s1-glow{position:absolute;left:300px;top:880px;width:900px;height:700px;border-radius:50%;background:radial-gradient(closest-side,rgba(34,228,255,.34),rgba(34,228,255,0))}
+</style>
+<div id="root" data-composition-id="scene1" data-width="1080" data-height="1920">
+  <div id="s1-world" class="world">
+    <svg id="s1-svg" class="fill" viewBox="0 0 1080 1920"></svg>
+    <div id="s1-glow"></div>
+  </div>
+  <div id="s1-dust" class="fill"></div>
+  <svg id="s1-ring" width="500" height="500" viewBox="-250 -250 500 500"></svg>
+  <div id="s1-clock"><div class="y" id="s1-year">2025</div><div class="l">ГОД</div></div>
+  <div class="vig"></div><div class="grain"></div>
+  <div id="s1-kicker" class="kicker"><i></i>01 · ПРОЛОГ</div>
+  <div id="s1-title" class="title">2045. БУДУЩЕЕ УЖЕ БЛИЖЕ, <b>ЧЕМ КАЖЕТСЯ.</b></div>
+  <div id="s1-rule" class="tline" style="top:560px"></div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+const svg = document.getElementById("s1-svg");
+const R = rng(2045);
+
+/* --- sky: stars --- */
+const stars = el("g", {}, svg);
+for (let i = 0; i < 90; i++) el("circle", { cx: R() * 1080, cy: R() * 900, r: .8 + R() * 1.6, fill: "#bfeaff", opacity: 0 }, stars);
+tl.to(stars.children, { opacity: (i) => .25 + (i % 5) * .13, duration: 1.4, stagger: .02, ease: "none" }, 2.0);
+
+/* --- skyline in three parallax layers --- */
+const far = el("g", {}, svg), mid = el("g", {}, svg), near = el("g", {}, svg);
+const cFar = city(far, { base: 1500, minH: 380, maxH: 760, minW: 80, maxW: 140, fill: "#0a2547", seed: 11, winProb: .22, wstep: 26, spire: .3 });
+const cMid = city(mid, { x0: 380, base: 1560, minH: 460, maxH: 980, minW: 90, maxW: 150, fill: "#0b2f5a", edge: "rgba(34,228,255,.5)", seed: 29, winProb: .3, wstep: 24, spire: .35 });
+const cNear = city(near, { x0: 520, base: 1700, minH: 420, maxH: 700, minW: 110, maxW: 170, fill: "#051a33", edge: "rgba(143,246,255,.7)", seed: 77, winProb: .34, wstep: 23, spire: .2 });
+/* fog bands between layers */
+const fogDefs = el("defs", {}, svg);
+const lg = el("linearGradient", { id: "s1-fog", x1: 0, y1: 0, x2: 0, y2: 1 }, fogDefs);
+el("stop", { offset: 0, "stop-color": "#22e4ff", "stop-opacity": 0 }, lg); el("stop", { offset: 1, "stop-color": "#22e4ff", "stop-opacity": .22 }, lg);
+el("rect", { x: -100, y: 1180, width: 1300, height: 320, fill: "url(#s1-fog)" }, svg);
+
+/* --- foreground rooftop + human --- */
+const fg = el("g", {}, svg);
+el("path", { d: "M-80,1250 L470,1250 L470,1330 L520,1330 L520,1920 L-80,1920 Z", fill: "#020a15", stroke: "rgba(34,228,255,.55)", "stroke-width": 2 }, fg);
+el("rect", { x: -80, y: 1250, width: 550, height: 4, fill: "#22e4ff", opacity: .8 }, fg);
+for (let i = 0; i < 7; i++) el("rect", { x: 20 + i * 70, y: 1262, width: 36, height: 3, fill: "#22e4ff", opacity: .35 }, fg);
+const hg = el("g", { transform: "translate(330 1250)" }, fg);
+const hum = human(hg, {});
+const hpose = el("g", {}, hg); // wrapper for breathing
+hpose.appendChild(hum.g);
+/* glowing "wrist band" - the only light on the figure */
+const band = el("rect", { x: 46, y: -170, width: 14, height: 8, rx: 3, fill: "#22e4ff" }, hum.g);
+
+/* --- windows light up one by one (as if the city is waking) --- */
+const order = (arr, seed) => { const r = rng(seed), a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+[ [cFar.wins, 1, 2.2, 5.0, .55], [cMid.wins, 2, 2.0, 6.2, .85], [cNear.wins, 3, 1.9, 6.8, 1] ].forEach(([w, s, a, b, op]) => {
+  const o = order(w, s);
+  o.forEach((n, i) => tl.to(n, { opacity: op * (.55 + ((i * 7) % 5) * .11), duration: .25, ease: "none" }, a + (b - a) * (i / o.length)));
+});
+/* buildings rise from the ground in waves */
+[ [cFar.bs, 2.0, .06], [cMid.bs, 1.85, .05], [cNear.bs, 1.7, .05] ].forEach(([bs, t, st], k) => {
+  const bases = [1500, 1560, 1700][k];
+  tl.fromTo(bs, { scaleY: 0, transformOrigin: (i) => "50% " + bases + "px", opacity: 0 }, { scaleY: 1, opacity: 1, duration: .9, ease: "power3.out", stagger: st }, t);
+});
+tl.fromTo(fg, { y: 160, opacity: 0 }, { y: 0, opacity: 1, duration: 1.1, ease: "power3.out" }, 1.7);
+
+/* --- the clock: 2025 → 2045 --- */
+const yr = document.getElementById("s1-year");
+const ring = document.getElementById("s1-ring");
+el("circle", { r: 232, fill: "none", stroke: "#22e4ff", "stroke-opacity": .25, "stroke-width": 2 }, ring);
+const rg = el("g", {}, ring);
+for (let i = 0; i < 72; i++) { const a = i / 72 * Math.PI * 2, r1 = i % 6 === 0 ? 206 : 220; el("line", { x1: Math.cos(a) * r1, y1: Math.sin(a) * r1, x2: Math.cos(a) * 232, y2: Math.sin(a) * 232, stroke: "#22e4ff", "stroke-opacity": i % 6 === 0 ? .9 : .4, "stroke-width": 2 }, rg); }
+const prog = { p: 0 };
+tl.set("#s1-clock, #s1-ring", { opacity: 0 }, 0);
+tl.to("#s1-clock, #s1-ring", { opacity: 1, duration: .25, ease: "none" }, .15);
+tl.to(prog, { p: 1, duration: 1.45, ease: "power3.inOut", onUpdate: () => {
+  const v = Math.round(lerp(2025, 2045, prog.p));
+  const f = Math.floor(prog.p * 60), rr = rng(f * 977 + 3);
+  yr.textContent = (prog.p < 1 && f % 3 === 0) ? String(20 + Math.floor(rr() * 10)) + String(Math.floor(rr() * 10)) + String(Math.floor(rr() * 10)) : String(v);
+} }, .25);
+tl.fromTo(rg, { rotation: -120, svgOrigin: "0 0" }, { rotation: 0, svgOrigin: "0 0", duration: 1.7, ease: "power3.out" }, .2);
+tl.fromTo("#s1-clock", { scale: 1.0 }, { scale: 1.12, duration: .12, ease: "power2.out", transformOrigin: "50% 40%" }, 1.72);
+tl.to("#s1-clock", { scale: 1.0, duration: .3, ease: "power2.inOut" }, 1.84);
+tl.fromTo("#s1-clock .y", { opacity: 1 }, { opacity: .55, duration: .06, yoyo: true, repeat: 3 }, 1.72);
+tl.to("#s1-clock", { y: -330, scale: .62, opacity: 0, filter: "blur(6px)", duration: 1.1, ease: "power3.inOut" }, 2.15);
+tl.to("#s1-ring", { scale: 2.4, opacity: 0, duration: 1.2, ease: "power2.in", transformOrigin: "50% 50%" }, 1.85);
+
+/* --- camera: slow push toward the figure, parallax between layers --- */
+camera(tl, "#s1-world", D, { s0: 1.0, s1: 1.2, y0: 0, y1: -50, origin: "330px 1250px", ease: "sine.inOut" });
+tl.to(far, { x: -20, duration: D, ease: "none" }, 0);
+tl.to(mid, { x: -60, duration: D, ease: "none" }, 0);
+tl.to(near, { x: -120, duration: D, ease: "none" }, 0);
+tl.to(hpose, { y: -3, duration: 2.2, ease: "sine.inOut", yoyo: true, repeat: 3 }, 2);
+tl.fromTo(band, { opacity: .2 }, { opacity: 1, duration: .5, yoyo: true, repeat: 9, ease: "sine.inOut" }, 3);
+tl.fromTo("#s1-glow", { opacity: 0, scale: .8 }, { opacity: 1, scale: 1.1, duration: 4, ease: "sine.out", transformOrigin: "50% 50%" }, 2);
+
+/* --- drifting dust --- */
+tl.add(particles(document.getElementById("s1-dust"), 46, 5, D, { rmax: 3.6, dy: -320 }), 0);
+
+/* --- headline arrives with the narrator's second sentence --- */
+headline(tl, "s1", CH[1] - .35, CE[3] - CH[1] + .6);
+sceneInOut(tl, "#s1-world, #s1-dust", D);
+window.__timelines["scene1"] = tl;
+</script>

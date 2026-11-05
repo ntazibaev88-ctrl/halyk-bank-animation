@@ -1,0 +1,144 @@
+<style>
+.s9h{opacity:0}
+.s9h .big{font:800 30px/1 "F45 Display";padding:6px 22px 0;color:#fff}
+#s9-end{position:absolute;inset:0;background:#000;opacity:0}
+#s9-fin{position:absolute;left:0;width:1080px;top:690px;text-align:center;font:800 124px/1.02 "F45 Display","Montserrat",sans-serif;letter-spacing:-.02em;color:#fff;text-shadow:0 0 50px rgba(34,228,255,.45)}
+#s9-fin .w{display:block}
+#s9-fin .c{color:#22e4ff;text-shadow:0 0 40px rgba(34,228,255,.9)}
+#s9-small{position:absolute;left:0;width:1080px;top:1180px;text-align:center;font:500 46px/1.2 "F45 Text",sans-serif;color:#bfeaff;letter-spacing:.01em}
+#s9-small span{color:#22e4ff;margin-left:6px}
+#s9-line{position:absolute;left:340px;top:1140px;width:400px;height:3px;background:linear-gradient(90deg,rgba(34,228,255,0),#22e4ff,rgba(34,228,255,0));box-shadow:0 0 20px #22e4ff}
+#s9-year{position:absolute;left:0;width:1080px;top:560px;text-align:center;font:600 28px/1 "F45 Mono",monospace;letter-spacing:.6em;color:#22e4ff;padding-left:.6em}
+#s9-ring{position:absolute;left:190px;top:560px}
+</style>
+<div id="root" data-composition-id="scene9" data-width="1080" data-height="1920">
+  <div id="s9-city" class="world">
+    <svg id="s9-svg" class="fill" viewBox="0 0 1080 1920"></svg>
+    <div id="s9-holos" class="fill"></div>
+  </div>
+  <div id="s9-eye" class="world"><svg id="s9-esvg" class="fill" viewBox="0 0 1080 1920"></svg></div>
+  <div id="s9-dust" class="fill"></div>
+  <div id="s9-end">
+    <svg id="s9-ring" width="700" height="700" viewBox="-350 -350 700 700"></svg>
+    <div id="s9-year">2045</div>
+    <div id="s9-fin"><span class="w">БУДУЩЕЕ</span><span class="w">СОЗДАЁМ</span><span class="w c">МЫ.</span></div>
+    <div id="s9-line"></div>
+    <div id="s9-small">Ты готов к 2045 году?<span id="s9-cur">▌</span></div>
+  </div>
+  <div class="vig"></div><div class="grain"></div>
+</div>
+<script>
+const tl = gsap.timeline({ paused: true });
+const svg = document.getElementById("s9-svg"), defs = el("defs", {}, svg), HO = document.getElementById("s9-holos");
+function rgrad(id, stops) { const g = el("radialGradient", { id }, defs); stops.forEach(s => el("stop", { offset: s[0], "stop-color": s[1], "stop-opacity": s[2] }, g)); }
+rgrad("s9-glow", [[0, "#22e4ff", .5], [1, "#22e4ff", 0]]);
+const T_VANISH = CE[1] + .55, T_ZOOM = T_VANISH + .35, T_EYE = CH[3] - .5, T_UI = CH[3] + .2, T_END = CE[3] + .75;
+
+/* ---- plaza at night ---- */
+const far = el("g", {}, svg), mid = el("g", {}, svg);
+const cf = city(far, { x0: -40, x1: 1120, base: 1240, minH: 480, maxH: 1000, minW: 80, maxW: 150, fill: "#0a2547", seed: 91, winProb: .4, wstep: 24, spire: .35 });
+const cm = city(mid, { x0: -60, x1: 1120, base: 1240, minH: 300, maxH: 700, minW: 110, maxW: 180, fill: "#061c38", edge: "rgba(143,246,255,.6)", seed: 92, winProb: .4, wstep: 22, spire: .1 });
+cf.wins.concat(cm.wins).forEach((w, i) => w.setAttribute("opacity", .4 + (i % 4) * .15));
+const gl = el("ellipse", { cx: 540, cy: 1240, rx: 700, ry: 240, fill: "url(#s9-glow)" }, svg);
+el("rect", { x: 0, y: 1240, width: 1080, height: 680, fill: "#020a15" }, svg); el("rect", { x: 0, y: 1240, width: 1080, height: 4, fill: "#22e4ff", opacity: .8 }, svg);
+for (let i = 0; i < 13; i++) el("line", { x1: 540 + (i - 6) * 40, y1: 1244, x2: 540 + (i - 6) * 260, y2: 1920, stroke: "#22e4ff", "stroke-opacity": .16 }, svg);
+const pr = [0, 1, 2].map(i => el("ellipse", { cx: 540, cy: 1250, rx: 150 + i * 70, ry: 26 + i * 12, fill: "none", stroke: "#22e4ff", "stroke-opacity": .6 - i * .18, "stroke-width": 2 }, svg));
+const hgo = el("g", { transform: "translate(540 1250) scale(1.3)" }, svg);
+const hg = el("g", {}, hgo);
+const hum = human(hg, { fill: "#010812", rim: "#22e4ff", rimOp: .85 });
+const dim = el("rect", { x: -200, y: -200, width: 1480, height: 2400, fill: "#000", opacity: 0 }, svg);
+
+/* ---- holograms everywhere ---- */
+const H = [
+  ["РЕКЛАМА · ДЛЯ ТЕБЯ", "−40%", 40, 520, 300, 120, 0], ["НОВОСТИ · ИИ", "ДЛЯ ТЕБЯ", 740, 540, 300, 120, .15], ["ТВОЙ ДЕНЬ", "ПЛАН ГОТОВ", 60, 700, 280, 120, .3],
+  ["СОЦСЕТЬ", "99+", 780, 720, 240, 110, .45], ["МАРШРУТ", "ВЫБРАН", 40, 880, 260, 110, .6], ["ПОКУПКИ", "ЗА ТЕБЯ", 800, 900, 240, 110, .75],
+  ["ЗДОРОВЬЕ", "НОРМА", 70, 1040, 250, 110, .9], ["ЭНЕРГИЯ", "ОПТИМУМ", 790, 1070, 250, 110, 1.05], ["СОВЕТ ИИ", "СОГЛАСЕН?", 300, 560, 280, 100, 1.2]];
+const hp = H.map(h => { const p = panel("", `left:${h[2]}px;top:${h[3]}px;width:${h[4]}px;height:${h[5]}px;opacity:0`, h[0], "", "", HO); p.classList.add("s9h"); p.insertAdjacentHTML("beforeend", `<div class="big">${h[1]}</div>`); return { p, t: h[6] }; });
+const cubes = [];
+for (let i = 0; i < 6; i++) { const r = rng(900 + i), cx = 120 + r() * 840, cy = 650 + r() * 520, s = 22 + r() * 24; const g = el("g", { opacity: 0 }, svg);
+  el("polygon", { points: `${cx},${cy - s} ${cx + s},${cy - s / 2} ${cx + s},${cy + s / 2} ${cx},${cy + s} ${cx - s},${cy + s / 2} ${cx - s},${cy - s / 2}`, fill: "rgba(34,228,255,.12)", stroke: "#22e4ff", "stroke-width": 2 }, g);
+  el("line", { x1: cx, y1: cy - s, x2: cx, y2: cy + s, stroke: "#22e4ff", "stroke-opacity": .5 }, g); cubes.push(g); }
+const beams = [];
+[[170, 640], [900, 660], [150, 1000], [920, 1010]].forEach(b => { const l = el("line", { x1: b[0], y1: b[1], x2: 540, y2: 1000, stroke: "#22e4ff", "stroke-width": 1.5, "stroke-dasharray": "8 10", opacity: 0 }, svg); beams.push(l); });
+
+/* ---- the eye ---- */
+const es = document.getElementById("s9-esvg"), ed = el("defs", {}, es);
+const eg = (id, st) => { const g = el("radialGradient", { id }, ed); st.forEach(s => el("stop", { offset: s[0], "stop-color": s[1], "stop-opacity": s[2] == null ? 1 : s[2] }, g)); };
+eg("s9-scl", [[0, "#eaf6ff"], [.7, "#bcd6ee"], [1, "#5a86ae"]]); eg("s9-iris", [[0, "#06223f"], [.35, "#1a7bd0"], [.7, "#22e4ff"], [1, "#0b3d7a"]]);
+const eclip = el("clipPath", { id: "s9-ec" }, ed); el("path", { d: "M-470,0 Q0,-330 470,0 Q0,330 -470,0 Z" }, eclip);
+const eye = el("g", { transform: "translate(540 940)" }, es), eyeIn = el("g", {}, eye);
+const ball = el("g", { "clip-path": "url(#s9-ec)" }, eyeIn);
+el("rect", { x: -480, y: -340, width: 960, height: 680, fill: "url(#s9-scl)" }, ball);
+const R2 = rng(2045);
+for (let i = 0; i < 14; i++) { const a = R2() * Math.PI * 2, r0 = 200 + R2() * 40; el("path", { d: `M${Math.cos(a) * r0},${Math.sin(a) * r0 * .8} q${(R2() - .5) * 80},${(R2() - .5) * 60} ${Math.cos(a) * 470},${Math.sin(a) * 300}`, fill: "none", stroke: "#d46a7a", "stroke-opacity": .28, "stroke-width": 2 }, ball); }
+const iris = el("g", {}, ball);
+el("circle", { r: 190, fill: "url(#s9-iris)" }, iris);
+for (let i = 0; i < 130; i++) { const a = i / 130 * Math.PI * 2 + R2() * .05, r0 = 70 + R2() * 30, r1 = 130 + R2() * 56; el("line", { x1: Math.cos(a) * r0, y1: Math.sin(a) * r0, x2: Math.cos(a) * r1, y2: Math.sin(a) * r1, stroke: i % 3 ? "#bff6ff" : "#0b3d7a", "stroke-opacity": .35 + R2() * .4, "stroke-width": 2 }, iris); }
+el("circle", { r: 190, fill: "none", stroke: "#02101f", "stroke-width": 14 }, iris);
+const pupil = el("g", {}, iris); const pup = el("circle", { r: 70, fill: "#010409" }, pupil);
+/* interface reflected in the pupil */
+const ui = el("g", { opacity: 0 }, pupil);
+const pcl = el("clipPath", { id: "s9-pc" }, ed); el("circle", { r: 68 }, pcl);
+const uig = el("g", { "clip-path": "url(#s9-pc)" }, ui);
+[56, 40, 24].forEach((r, i) => el("circle", { r, fill: "none", stroke: "#22e4ff", "stroke-width": 1.8, "stroke-dasharray": i === 1 ? "6 5" : "none", opacity: .95 }, uig));
+for (let i = 0; i < 24; i++) { const a = i / 24 * Math.PI * 2; el("line", { x1: Math.cos(a) * 56, y1: Math.sin(a) * 56, x2: Math.cos(a) * 64, y2: Math.sin(a) * 64, stroke: "#8ff6ff" }, uig); }
+const uis = el("g", {}, uig); el("path", { d: "M0,0 L56,0 A56,56 0 0 0 40,-40 Z", fill: "#22e4ff", opacity: .35 }, uis);
+const t45 = el("text", { x: 0, y: 8, "text-anchor": "middle", fill: "#fff", "font-family": "F45 Mono", "font-weight": 600, "font-size": 22 }, uig); t45.textContent = "2045";
+el("rect", { x: -30, y: 18, width: 60, height: 3, fill: "#22e4ff" }, uig);
+el("ellipse", { cx: -26, cy: -26, rx: 14, ry: 8, fill: "#fff", opacity: .6, transform: "rotate(-30 -26 -26)" }, pupil); // specular
+el("ellipse", { cx: 60, cy: -62, rx: 22, ry: 12, fill: "#fff", opacity: .4, transform: "rotate(-20 60 -62)" }, iris);
+el("path", { d: "M-470,0 Q0,-330 470,0 Q0,330 -470,0 Z", fill: "none", stroke: "#22e4ff", "stroke-width": 3, opacity: .7 }, eyeIn);
+const lid1 = el("path", { d: "M-1600,0 L-480,0 Q0,-340 480,0 L1600,0 L1600,-1700 L-1600,-1700 Z", fill: "#010409", opacity: 1 }, eye);
+const lid2 = el("path", { d: "M-1600,0 L-480,0 Q0,340 480,0 L1600,0 L1600,1700 L-1600,1700 Z", fill: "#010409", opacity: 1 }, eye);
+const eglow = el("circle", { cx: 540, cy: 940, r: 420, fill: "url(#s9-glow)", opacity: 0 }, es);
+
+/* ---- end card ring ---- */
+const rr = document.getElementById("s9-ring");
+[320, 250].forEach((r, i) => el("circle", { r, fill: "none", stroke: "#22e4ff", "stroke-opacity": .35 - i * .12, "stroke-width": 2, "stroke-dasharray": i ? "4 14" : "none" }, rr));
+const rg = el("g", {}, rr); for (let i = 0; i < 60; i++) { const a = i / 60 * Math.PI * 2; el("line", { x1: Math.cos(a) * 330, y1: Math.sin(a) * 330, x2: Math.cos(a) * (i % 5 ? 338 : 348), y2: Math.sin(a) * (i % 5 ? 338 : 348), stroke: "#22e4ff", "stroke-opacity": .6 }, rg); }
+
+/* ================= animation ================= */
+tl.to(pr, { scaleX: 1.08, duration: 1.4, yoyo: true, repeat: RP(T_VANISH / 1.4), ease: "sine.inOut", transformOrigin: "540px 1250px" }, 0);
+tl.fromTo(hg, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, .1);
+// holograms bloom around the person
+hp.forEach(h => { tl.fromTo(h.p, { opacity: 0, scale: .7, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: .55, ease: "back.out(1.7)" }, .3 + h.t * .8);
+  tl.to(h.p, { y: -10, duration: 1.2, yoyo: true, repeat: 3, ease: "sine.inOut" }, 1.2 + h.t); });
+cubes.forEach((c, i) => { tl.fromTo(c, { opacity: 0 }, { opacity: 1, duration: .4 }, .6 + i * .2); tl.to(c, { y: -26, rotation: 20, duration: 1.8, yoyo: true, repeat: 2, ease: "sine.inOut", svgOrigin: "540 900" }, .8 + i * .1); });
+beams.forEach((b, i) => tl.fromTo(b, { opacity: 0 }, { opacity: .8, duration: .5 }, .9 + i * .2));
+// tension: the interfaces flicker faster before they disappear
+for (let i = 0; i < 4; i++) tl.to(HO, { opacity: .55, duration: .05, yoyo: true, repeat: 1 }, CH[1] + .2 + i * .4);
+/* --- all holograms vanish at once --- */
+tl.to(HO, { opacity: 0.2, duration: .04, yoyo: true, repeat: 5 }, T_VANISH);
+tl.set(HO, { opacity: 0 }, T_VANISH + .26);
+tl.to([cubes, beams], { opacity: 0, duration: .08 }, T_VANISH + .26);
+tl.fromTo(dim, { opacity: 0 }, { opacity: .45, duration: .9, ease: "power2.out" }, T_VANISH + .26);
+tl.to(gl, { opacity: .35, duration: .8 }, T_VANISH + .26);
+tl.to(pr, { opacity: .3, duration: .8 }, T_VANISH + .26);
+/* --- slow zoom toward the human, to the eye --- */
+tl.to("#s9-city", { scale: 1.12, duration: T_VANISH, ease: "sine.inOut", transformOrigin: "540px 880px" }, 0);
+tl.to("#s9-city", { scale: 7.4, duration: T_EYE + .5 - T_ZOOM, ease: "power3.inOut", transformOrigin: "540px 870px" }, T_ZOOM);
+tl.fromTo("#s9-eye", { opacity: 0, scale: 1.5, transformOrigin: "540px 940px" }, { opacity: 1, scale: 1.0, duration: .9, ease: "power2.out" }, T_EYE);
+tl.to("#s9-city", { opacity: 0, duration: .6 }, T_EYE + .3);
+tl.fromTo(eglow, { opacity: 0 }, { opacity: 1, duration: 1.2 }, T_EYE + .2);
+tl.fromTo(eyeIn, { scaleY: 1 }, { scaleY: .06, duration: .13, yoyo: true, repeat: 1, ease: "power2.inOut", transformOrigin: "0 0" }, T_EYE + .15);
+tl.fromTo(pup, { attr: { r: 52 } }, { attr: { r: 72 }, duration: 2.4, ease: "sine.inOut" }, T_EYE + .3);
+tl.to(eye, { scale: 1.12, duration: T_END - T_EYE, ease: "sine.inOut", transformOrigin: "0 0" }, T_EYE);
+tl.to(iris, { rotation: 8, duration: T_END - T_EYE, ease: "none", transformOrigin: "0 0" }, T_EYE);
+tl.fromTo(ui, { opacity: 0, scale: .4, transformOrigin: "0 0" }, { opacity: 1, scale: 1, duration: .8, ease: "back.out(1.8)" }, T_UI);
+tl.to(uis, { rotation: 360 * 3, duration: T_END - T_UI, ease: "none", transformOrigin: "0 0" }, T_UI);
+/* --- end card --- */
+tl.to("#s9-eye", { opacity: 0, scale: 1.6, duration: .5, ease: "power2.in", transformOrigin: "540px 940px" }, T_END);
+tl.fromTo("#s9-end", { opacity: 0 }, { opacity: 1, duration: .45, ease: "power2.out" }, T_END + .05);
+const fw = document.querySelectorAll("#s9-fin .w");
+tl.fromTo("#s9-ring", { opacity: 0, scale: .7, rotation: -30, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, rotation: 0, duration: 1.6, ease: "power3.out" }, T_END + .3);
+tl.fromTo("#s9-year", { opacity: 0, y: 14 }, { opacity: .9, y: 0, duration: .8 }, T_END + .45);
+fw.forEach((w, i) => tl.fromTo(w, { opacity: 0, y: 80, scale: 1.2, filter: "blur(18px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: .8, ease: "expo.out" }, T_END + .55 + i * .26));
+tl.fromTo("#s9-line", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: .9, ease: "power3.inOut" }, T_END + 1.5);
+tl.fromTo("#s9-small", { opacity: 0, y: 24, filter: "blur(10px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: .8, ease: "power3.out" }, T_END + 1.7);
+tl.fromTo("#s9-cur", { opacity: 1 }, { opacity: 0, duration: .01, repeat: RP((D - T_END - 1.7) / .5), repeatDelay: .49 }, T_END + 2.0);
+tl.to("#s9-fin", { textShadow: "0 0 90px rgba(34,228,255,.9)", duration: 1.6, yoyo: true, repeat: 1, ease: "sine.inOut" }, T_END + 1.6);
+tl.to(rg, { rotation: 360, duration: D, ease: "none", svgOrigin: "0 0" }, T_END);
+tl.add(particles(document.getElementById("s9-dust"), 40, 91, D, { rmax: 3.4, dy: -220 }), 0);
+tl.fromTo("#root", { opacity: 0 }, { opacity: 1, duration: .6, ease: "power2.out" }, 0);
+window.__timelines["scene9"] = tl;
+</script>
