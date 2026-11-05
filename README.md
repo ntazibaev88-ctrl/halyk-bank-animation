@@ -48,18 +48,28 @@ npx hyperframes preview            # просмотр
 npx hyperframes render -q standard -o out/pte_tes_1080x1920.mp4
 ```
 
-## Озвучка: точка интеграции (важно)
+## Озвучка
 
-В среде сборки не было доступа к нейросетевым голосам (HuggingFace/Silero заблокированы), поэтому
-встроенная озвучка — **офлайн-синтез eSpeak NG** (русский, мужской, с понижением тона и обработкой).
-Он разборчив, но звучит синтетически. Для студийного качества:
+**Текущая озвучка ролика — RHVoice, голос «Михаил»** (русский мужской, офлайн-синтез):
+`audio/voice.mp3`, исходники вариантов — `voiceover/candidates/` (также есть «Виталий» для сравнения).
 
-1. Озвучьте каждое предложение из `voiceover/script.json` любым движком (Piper, Silero, Yandex SpeechKit,
-   ElevenLabs, живой диктор) и положите WAV в `voiceover/external/s{сцена}_{номер}.wav`
-   (например `s1_0.wav`, `s1_1.wav`, `s2_0.wav` …).
-2. `VO_ENGINE=external python3 tools/voice.py && python3 tools/timing.py && python3 tools/audio.py`
-   и далее сборка/рендер как выше — длительности сцен и субтитры пересчитаются автоматически
-   (общая длительность должна остаться в пределах 100–115 c).
+- Генерация: `python3 tools/voice_rhvoice.py mikhail` (нужны `apt-get install rhvoice rhvoice-russian`).
+- Текст берётся из `voiceover/script.json` без изменений; каждое предложение вписывается в свой прежний слот
+  (`voiceover/lengths.json`) и ставится на прежнее время (`data/timing.json`), поэтому сцены, субтитры и музыка
+  не меняются. Подгонка темпа ограничена 0,94–1,10; громкость выравнивается до −17 LUFS.
+- Применение: `cp voiceover/candidates/mikhail/voice_mikhail.wav audio/voice.wav` →
+  `ffmpeg -i audio/voice.wav -b:a 192k audio/voice.mp3` → рендер.
+- Финальный MP4 собран так: видеопоток взят без перекодирования из предыдущего рендера, звук — из нового
+  рендера Hyperframes с этим голосом (визуал побитово не изменился).
+
+Предыдущая озвучка eSpeak NG (`tools/voice.py`, `voiceover/sentences/`) оставлена как исходник таймингов.
+
+### Свой голос (живой диктор / нейросервис)
+
+1. Озвучьте каждое предложение из `voiceover/script.json` и положите WAV в `voiceover/external/s{сцена}_{номер}.wav`.
+2. Чтобы **сохранить текущие тайминги**, подгоните файлы под слоты так же, как это делает `tools/voice_rhvoice.py`
+   (функция `build`); либо, если тайминги можно менять, —
+   `VO_ENGINE=external python3 tools/voice.py && python3 tools/timing.py && python3 tools/audio.py` и полная пересборка.
 
 ## Музыка и звук
 
