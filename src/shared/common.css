@@ -1,0 +1,15 @@
+@font-face{font-family:"InterRU";src:url("assets/fonts/Inter-Regular.otf");font-weight:400}
+@font-face{font-family:"InterRU";src:url("assets/fonts/Inter-Bold.otf");font-weight:700}
+@font-face{font-family:"InterRU";src:url("assets/fonts/Inter-ExtraBold.otf");font-weight:800}
+@font-face{font-family:"InterRU";src:url("assets/fonts/Inter-Black.otf");font-weight:900}
+#root{position:absolute;inset:0;overflow:hidden;font-family:"InterRU",sans-serif;color:#fff;
+ background:radial-gradient(120% 80% at 50% 30%,#10264d 0%,#09152c 55%,#050b18 100%)}
+#root svg.full{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#root .kick{position:absolute;left:70px;width:940px;top:190px;font-size:30px;font-weight:800;letter-spacing:.22em;color:#ff8a1f;text-transform:uppercase}
+#root .ttl{position:absolute;left:70px;width:940px;top:236px;font-size:72px;line-height:1.04;font-weight:900;letter-spacing:-.01em;text-shadow:0 4px 24px rgba(0,0,0,.6)}
+#root .ttl b{color:#ff8a1f}
+#root .lbl{position:absolute;padding:12px 22px 12px 20px;font-size:32px;font-weight:800;letter-spacing:.03em;
+ background:rgba(8,18,38,.88);border-left:6px solid #ff8a1f;border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,.45);white-space:nowrap}
+#root .lbl.blue{border-left-color:#35c4ff}
+#root .lbl.red{border-left-color:#ff3b3b;background:rgba(48,8,14,.9)}
+#root .note{position:absolute;left:70px;width:940px;top:1300px;font-size:26px;font-weight:700;color:#8fa3c4;line-height:1.3}

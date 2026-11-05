@@ -1,0 +1,108 @@
+<template>
+<style>
+{{CSS}}
+#root .fin1{position:absolute;left:0;width:1080px;top:225px;text-align:center;font-size:190px;line-height:1;font-weight:900;color:#ff8a1f;letter-spacing:.02em;text-shadow:0 0 60px rgba(255,138,31,.75),0 8px 30px rgba(0,0,0,.8)}
+#root .fin2{position:absolute;left:30px;width:1020px;text-align:center;font-size:76px;line-height:1.02;font-weight:900;text-shadow:0 6px 28px rgba(0,0,0,.85)}
+#root .fin2 b{color:#35c4ff}
+#root .disc{position:absolute;left:70px;width:940px;top:1328px;font-size:26px;font-weight:700;color:#8fa3c4;line-height:1.25}
+</style>
+<div id="root" data-composition-id="s8" data-width="1080" data-height="1920">
+<svg class="full" viewBox="0 0 1080 1920">
+ <defs>
+  <linearGradient id="@@sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#030712"/><stop offset=".6" stop-color="#0d2450"/><stop offset="1" stop-color="#1c4a86"/></linearGradient>
+  <linearGradient id="@@body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6a7fa6"/><stop offset=".5" stop-color="#37486e"/><stop offset="1" stop-color="#1e2b47"/></linearGradient>
+  <linearGradient id="@@floor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#16243f"/><stop offset="1" stop-color="#0a1426"/></linearGradient>
+  <radialGradient id="@@cityglow"><stop offset="0" stop-color="#ffcf7a" stop-opacity=".55"/><stop offset="1" stop-color="#ffcf7a" stop-opacity="0"/></radialGradient>
+ </defs>
+ <rect x="0" y="0" width="1080" height="1920" fill="url(#@@sky)"/>
+ <g id="@@stars"></g>
+ <g id="@@cam">
+  <ellipse id="@@cg" cx="850" cy="1250" rx="420" ry="220" fill="url(#@@cityglow)" opacity="0"/>
+  <g id="@@city"></g>
+  <!-- power line -->
+  <g id="@@pyl"></g>
+  <path id="@@wire" d="M520 1055 L600 1060 L740 1050 L880 1060 L1040 1050" stroke="#35c4ff" stroke-width="5" stroke-dasharray="1.2 3" stroke-linecap="round" fill="none"/>
+  <!-- plant -->
+  <path d="M40 1290 C80 1200 80 1130 55 1050 L215 1050 C190 1130 190 1200 230 1290 Z" fill="#14233f" stroke="#2f4a7a" stroke-width="3"/>
+  <g id="@@stm"><circle cx="135" cy="1040" r="46" fill="#dbe9ff" opacity="0"/><circle cx="135" cy="1040" r="46" fill="#dbe9ff" opacity="0"/><circle cx="135" cy="1040" r="46" fill="#dbe9ff" opacity="0"/><circle cx="135" cy="1040" r="46" fill="#dbe9ff" opacity="0"/>
+   <circle cx="470" cy="660" r="26" fill="#dbe9ff" opacity="0"/><circle cx="470" cy="660" r="26" fill="#dbe9ff" opacity="0"/><circle cx="470" cy="660" r="26" fill="#dbe9ff" opacity="0"/></g>
+  <rect x="445" y="690" width="50" height="600" fill="#243553"/><rect x="445" y="690" width="50" height="56" fill="#c9d3e6"/><rect x="445" y="800" width="50" height="56" fill="#c9d3e6"/>
+  <circle id="@@r1" cx="470" cy="682" r="9" fill="#ff3b3b"/>
+  <rect x="240" y="960" width="200" height="330" fill="#1a2a47" stroke="#33507f" stroke-width="3"/>
+  <rect x="240" y="940" width="330" height="40" fill="#2b4068"/>
+  <rect x="440" y="1000" width="170" height="290" fill="#1a2a47" stroke="#33507f" stroke-width="3"/>
+  <g id="@@wins"></g>
+  <rect x="262" y="1040" width="150" height="100" rx="8" fill="#07101f" stroke="#35c4ff" stroke-width="3"/>
+  <g id="@@tfan"><circle cx="337" cy="1090" r="38" fill="none" stroke="#35c4ff" stroke-width="3"/><g stroke="#35c4ff" stroke-width="6" stroke-linecap="round"><line x1="337" y1="1056" x2="337" y2="1124"/><line x1="303" y1="1090" x2="371" y2="1090"/><line x1="313" y1="1066" x2="361" y2="1114"/><line x1="361" y1="1066" x2="313" y2="1114"/></g></g>
+  <path id="@@hotp" d="M300 1180 L600 1180" stroke="#ff8a1f" stroke-width="6" stroke-dasharray="1.2 3" stroke-linecap="round" fill="none"/>
+  <rect x="0" y="1290" width="1080" height="60" fill="#0a1426"/>
+ </g>
+ <!-- control room window -->
+ <g id="@@cr" opacity="0">
+  <rect x="50" y="760" width="980" height="560" rx="22" fill="#0b162b" stroke="#35c4ff" stroke-width="3"/>
+  <rect x="70" y="780" width="940" height="260" rx="10" fill="url(#@@sky)"/>
+  <g id="@@crc"></g>
+  <g id="@@crs"></g>
+  <rect x="70" y="1040" width="940" height="260" fill="url(#@@floor)"/>
+  <rect x="70" y="1038" width="940" height="6" fill="#35c4ff" opacity=".7"/>
+  <g transform="translate(300 1300) scale(.74)"><g id="@@opc">{{include:operator:c}}</g></g>
+  <g transform="translate(540 1300) scale(.8)"><g id="@@opd">{{include:operator:d}}</g></g>
+  <g transform="translate(780 1300) scale(.74)"><g id="@@ope">{{include:operator:e}}</g></g>
+ </g>
+ <rect id="@@fade" x="0" y="0" width="1080" height="1920" fill="#02050c" opacity="0"/>
+</svg>
+<div class="kick" id="@@k" style="opacity:0">Итог</div>
+<div class="fin1" id="@@f1" style="opacity:0">ПТЭ —</div>
+<div class="fin2" id="@@f2" style="top:430px;opacity:0">ОСНОВА <b>НАДЁЖНОЙ</b></div>
+<div class="fin2" id="@@f3" style="top:515px;opacity:0">РАБОТЫ <b>ТЭЦ</b></div>
+<div class="disc" id="@@d" style="opacity:0">Учебный ролик. Точные требования — в действующих нормативных документах РК и инструкциях станции.</div>
+</div>
+<script>
+{{JS}}
+(function(){
+const tl=gsap.timeline({paused:true});
+/* stars */
+const st=G("@@stars");for(let i=0;i<50;i++){const c=document.createElementNS(NS,"circle");c.setAttribute("cx",(i*149+20)%1080);c.setAttribute("cy",450+(i*83)%520);c.setAttribute("r",1+(i%3)*.6);c.setAttribute("fill","#cfe4ff");c.setAttribute("opacity",.35+(i%4)*.12);st.appendChild(c)}
+/* plant windows */
+const W=G("@@wins");const we=[];for(let r=0;r<3;r++)for(let c=0;c<4;c++){const e=document.createElementNS(NS,"rect");e.setAttribute("x",470+c*34+0);e.setAttribute("y",1030+r*70);e.setAttribute("width",20);e.setAttribute("height",40);e.setAttribute("fill","#ffcf7a");e.setAttribute("opacity",.8);W.appendChild(e);we.push(e)}
+/* city skyline (two depth layers) */
+const CT=G("@@city");const cw=[];
+for(let L=0;L<2;L++)for(let i=0;i<9;i++){const x=600+i*54+L*24-(L?10:0),h=(L?120:170)+((i*53+L*29)%7)*34;
+ mk(CT,`<rect x="${x}" y="${1290-h}" width="46" height="${h}" fill="${L?"#101e38":"#14274a"}" stroke="#2a4a80" stroke-width="2"/>`);
+ for(let r=0;r<Math.floor(h/26);r++)for(let c=0;c<2;c++){if(((r*7+c*3+i+L)%4)==0)continue;const e=document.createElementNS(NS,"rect");e.setAttribute("x",x+8+c*18);e.setAttribute("y",1290-h+10+r*26);e.setAttribute("width",10);e.setAttribute("height",13);e.setAttribute("fill",(r+c+i)%5==0?"#ff8a1f":"#ffd98a");e.setAttribute("opacity",0);CT.appendChild(e);cw.push(e)}}
+/* pylons */
+const PY=G("@@pyl");[560,700,840,980].forEach((x,i)=>mk(PY,`<path d="M${x} 1290 L${x+14} 1050 L${x+28} 1290 M${x+4} 1200 L${x+24} 1200 M${x+8} 1120 L${x+20} 1120" stroke="#6c7f9c" stroke-width="5" fill="none"/>`));
+/* control room details */
+const CC=G("@@crc");for(let i=0;i<9;i++){const h=60+((i*47)%5)*34;mk(CC,`<rect x="${90+i*100}" y="${1040-h}" width="70" height="${h}" fill="#10203d" stroke="#2a4a80" stroke-width="2"/>`);for(let r=0;r<Math.floor(h/22);r++){const e=document.createElementNS(NS,"rect");e.setAttribute("x",100+i*100);e.setAttribute("y",1040-h+8+r*22);e.setAttribute("width",16);e.setAttribute("height",10);e.setAttribute("fill","#ffd98a");e.setAttribute("opacity",.7);CC.appendChild(e)}}
+const CS=G("@@crs");for(let i=0;i<4;i++){const x=110+i*225;mk(CS,`<rect x="${x}" y="800" width="205" height="110" rx="8" fill="#050b18" stroke="#35c4ff" stroke-width="2"/><polyline class="tr" points="${x+12},880 ${x+50},850 ${x+90},868 ${x+130},830 ${x+170},850 ${x+195},838" fill="none" stroke="${i==2?"#ff8a1f":"#35c4ff"}" stroke-width="4"/>`)}
+/* ---- timeline ---- */
+tl.fromTo("#@@cam",{scale:2.3,svgOrigin:"300 1180",x:0},{scale:1,svgOrigin:"300 1180",x:0,duration:6.2,ease:"power2.inOut"},0);
+tl.fromTo("#@@cg",{opacity:0},{opacity:1,duration:3},2.5);
+cw.forEach((e,i)=>tl.fromTo(e,{opacity:0},{opacity:.55+((i*7)%4)*.14,duration:.2},2.8+(i%40)*.07));
+flow(tl,"#@@wire",.2,14,260);flow(tl,"#@@hotp",.2,14,200);
+spin(tl,"#@@tfan",337,1090,0,14,16);
+steamPuffs(tl,"#@@stm circle",0,15,2.2,300,50);
+pulse(tl,"#@@r1",0,14,.25,1,.9);
+pulse(tl,"#@@wins rect",0,14,.7,1,1.3);
+SEL("#@@stars circle").forEach((e,i)=>tl.fromTo(e,{opacity:.3},{opacity:.9,duration:1.2+(i%3)*.3,yoyo:true,repeat:10,ease:"sine.inOut",immediateRender:false},i*.1));
+tl.fromTo("#@@k",{opacity:0,x:-30},{opacity:1,x:0,duration:.5},.3);
+/* final title at 6.6 */
+tl.fromTo("#@@f1",{opacity:0,scale:2.2},{opacity:1,scale:1,duration:.5,ease:"back.out(1.7)"},6.6);
+tl.fromTo("#@@f2",{opacity:0,y:40},{opacity:1,y:0,duration:.45,ease:"power3.out"},7.0);
+tl.fromTo("#@@f3",{opacity:0,y:40},{opacity:1,y:0,duration:.45,ease:"power3.out"},7.35);
+tl.fromTo("#@@f1",{rotation:0},{keyframes:[{rotation:-1.4},{rotation:1.2},{rotation:-.6},{rotation:0}],duration:.4,ease:"none",immediateRender:false},7.1);
+tl.fromTo("#@@f1",{filter:"brightness(1)"},{filter:"brightness(1.35)",duration:1.4,yoyo:true,repeat:5,ease:"sine.inOut",immediateRender:false},8);
+/* control room with workers */
+tl.fromTo("#@@cr",{opacity:0,y:300},{opacity:1,y:0,duration:.9,ease:"power3.out"},8.2);
+SEL("#@@crs .tr").forEach((e,i)=>tl.fromTo(e,{x:0},{x:-16,duration:.5,yoyo:true,repeat:14,ease:"sine.inOut",immediateRender:false},8.8+i*.1));
+["c","d","e"].forEach((c,i)=>{tl.fromTo("#@@op"+c,{y:50,opacity:0},{y:0,opacity:1,duration:.6,ease:"power3.out"},8.6+i*.25);
+ tl.fromTo("#@@op"+c,{y:0},{y:-5,duration:1.3,yoyo:true,repeat:4,ease:"sine.inOut",immediateRender:false},9.4+i*.3)});
+tl.fromTo("#@@armR-d",{rotation:0,svgOrigin:"78 -405"},{rotation:-35,svgOrigin:"78 -405",duration:.6,ease:"power2.out"},12.0);
+tl.fromTo("#@@cr",{scale:1,svgOrigin:"540 1100"},{scale:1.05,svgOrigin:"540 1100",duration:8,ease:"sine.inOut",immediateRender:false},9.2);
+tl.fromTo("#@@d",{opacity:0},{opacity:1,duration:.6},12.6);
+/* end fade */
+tl.fromTo("#@@fade",{opacity:0},{opacity:.85,duration:.9,ease:"power1.in"},15.9);
+window.__timelines["s8"]=tl;
+})();
+</script>
+</template>

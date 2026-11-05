@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1080, height=1920"/>
+<title>ПТЭ — правила технической эксплуатации ТЭС</title>
+<script src="assets/vendor/gsap.min.js"></script>
+<style>
+@font-face{font-family:"InterRU";src:url("assets/fonts/Inter-Regular.otf");font-weight:400}
+@font-face{font-family:"InterRU";src:url("assets/fonts/Inter-Bold.otf");font-weight:700}
+@font-face{font-family:"InterRU";src:url("assets/fonts/Inter-ExtraBold.otf");font-weight:800}
+@font-face{font-family:"InterRU";src:url("assets/fonts/Inter-Black.otf");font-weight:900}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#050b18}
+#root{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:"InterRU",sans-serif;background:#050b18}
+.sc{position:absolute;left:0;top:0;width:1080px;height:1920px}
+/* transitions */
+.wipe{position:absolute;left:0;top:0;width:1080px;height:1920px;z-index:50;pointer-events:none}
+.wipe .bar{position:absolute;left:-700px;top:-300px;width:520px;height:2600px;transform:rotate(14deg);
+  background:linear-gradient(90deg,rgba(53,196,255,0),rgba(53,196,255,.55) 40%,rgba(255,255,255,.95) 50%,rgba(53,196,255,.55) 60%,rgba(53,196,255,0))}
+.wipe .flash{position:absolute;inset:0;background:#cfeaff;opacity:0}
+/* overlay */
+.vig{position:absolute;inset:0;z-index:40;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,0) 55%,rgba(0,0,0,.55) 100%)}
+.prog{position:absolute;left:70px;top:1846px;width:940px;height:6px;border-radius:3px;background:rgba(255,255,255,.12);z-index:60}
+.prog i{position:absolute;left:0;top:0;height:6px;width:940px;border-radius:3px;background:linear-gradient(90deg,#35c4ff,#ff8a1f);transform-origin:0 50%;transform:scaleX(0)}
+.prog u{position:absolute;top:-4px;width:2px;height:14px;background:rgba(255,255,255,.4)}
+/* subtitles: mobile-safe band below the illustration stage */
+.cue{position:absolute;left:0;top:0;width:1080px;height:1920px;z-index:70;pointer-events:none}
+.cuebox{position:absolute;left:60px;width:960px;top:1400px;text-align:center;font-size:58px;line-height:1.2;font-weight:900;color:#fff;
+  text-shadow:0 3px 0 rgba(0,0,0,.55),0 6px 22px rgba(0,0,0,.85),0 0 3px rgba(0,0,0,.9)}
+.cuebox span{display:inline-block;margin:0 .13em;opacity:.38}
+.cuebox span.hl{color:#ff8a1f}
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="{{TOTAL}}" data-width="1080" data-height="1920" data-fps="30">
+
+{{SCENES}}
+
+{{WIPES}}
+<div class="vig clip" id="vig" data-start="0" data-duration="{{TOTAL}}" data-track-index="5"></div>
+<div class="prog clip" id="prog" data-start="0" data-duration="{{TOTAL}}" data-track-index="6"><i id="progfill"></i>{{TICKS}}</div>
+
+{{CUES}}
+
+<audio id="a-music" class="clip" src="audio/music.mp3" data-start="0" data-duration="{{TOTAL}}" data-volume="0.62" data-track-index="10"></audio>
+<audio id="a-amb" class="clip" src="audio/ambience.mp3" data-start="0" data-duration="{{TOTAL}}" data-volume="0.42" data-track-index="11"></audio>
+<audio id="a-sfx" class="clip" src="audio/sfx.mp3" data-start="0" data-duration="{{TOTAL}}" data-volume="0.62" data-track-index="12"></audio>
+<audio id="a-voice" class="clip" src="audio/voice.mp3" data-start="0" data-duration="{{TOTAL}}" data-volume="1" data-track-index="13"></audio>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function(){
+ const tl = gsap.timeline({paused:true});
+ tl.fromTo("#progfill",{scaleX:0},{scaleX:1,duration:{{TOTAL}},ease:"none"},0);
+ {{ROOTJS}}
+ window.__timelines["main"] = tl;
+})();
+</script>
+</body>
+</html>

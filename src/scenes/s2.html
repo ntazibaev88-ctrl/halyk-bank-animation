@@ -1,0 +1,102 @@
+<template>
+<style>
+{{CSS}}
+#root .badge{position:absolute;top:1228px;width:300px;height:74px;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:900;letter-spacing:.06em;border-radius:40px;border:3px solid #35c4ff;background:rgba(10,24,48,.92);color:#fff}
+#root .badge.o{border-color:#ff8a1f}
+#root .stamp{position:absolute;left:300px;top:610px;width:480px;text-align:center;font-size:140px;font-weight:900;color:#ff8a1f;letter-spacing:.05em}
+</style>
+<div id="root" data-composition-id="s2" data-width="1080" data-height="1920">
+<svg class="full" viewBox="0 0 1080 1920">
+ <defs>
+  <pattern id="@@grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0H0V60" fill="none" stroke="#1d3a6b" stroke-width="1.5"/></pattern>
+  <linearGradient id="@@paper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e8eefb"/><stop offset="1" stop-color="#b9c7e2"/></linearGradient>
+  <radialGradient id="@@gl"><stop offset="0" stop-color="#35c4ff" stop-opacity=".8"/><stop offset="1" stop-color="#35c4ff" stop-opacity="0"/></radialGradient>
+  <radialGradient id="@@go"><stop offset="0" stop-color="#ff8a1f" stop-opacity=".85"/><stop offset="1" stop-color="#ff8a1f" stop-opacity="0"/></radialGradient>
+ </defs>
+ <rect x="0" y="470" width="1080" height="860" fill="url(#@@grid)" opacity=".55" id="@@gridr"/>
+ <!-- DOCUMENT -->
+ <g id="@@doc">
+  <rect x="300" y="560" width="480" height="660" rx="12" fill="url(#@@paper)" stroke="#fff" stroke-width="3"/>
+  <rect x="340" y="610" width="140" height="22" fill="#27406e"/>
+  <g id="@@dl" stroke="#7d8fb3" stroke-width="10" stroke-linecap="round"></g>
+  <circle cx="660" cy="1130" r="62" fill="none" stroke="#ff3b3b" stroke-width="7" opacity=".85"/>
+ </g>
+ <!-- DIAGRAM -->
+ <g id="@@wrap"><g id="@@dia" opacity="0">
+  <ellipse cx="540" cy="1160" rx="520" ry="70" fill="#0c1a33" opacity=".7"/>
+  <!-- pipes (under) -->
+  <path id="@@steamP" d="M300 790 L300 700 L470 700 L470 840" fill="none" stroke="#4b5d80" stroke-width="22" stroke-linejoin="round"/>
+  <path id="@@steamF" d="M300 790 L300 700 L470 700 L470 840" fill="none" stroke="#ff8a1f" stroke-width="8" stroke-dasharray="1.4 3.4" stroke-linecap="round"/>
+  <path id="@@condP" d="M600 1010 L600 1100 L330 1100 L330 1010" fill="none" stroke="#4b5d80" stroke-width="22" stroke-linejoin="round"/>
+  <path id="@@condF" d="M600 1010 L600 1100 L330 1100 L330 1010" fill="none" stroke="#35c4ff" stroke-width="8" stroke-dasharray="1.4 3.4" stroke-linecap="round"/>
+  <path id="@@coolP" d="M690 960 L760 960 L760 1120 L830 1120" fill="none" stroke="#4b5d80" stroke-width="18" stroke-linejoin="round"/>
+  <path id="@@coolF" d="M690 960 L760 960 L760 1120 L830 1120" fill="none" stroke="#35c4ff" stroke-width="6" stroke-dasharray="1.4 3.4" stroke-linecap="round"/>
+  <g id="@@parts"></g>
+  <g id="@@bl"></g>
+ </g>
+ <g id="@@hl" opacity="0">
+  <ellipse id="@@hlB" cx="210" cy="870" rx="190" ry="250" fill="url(#@@go)" opacity="0"/>
+  <ellipse id="@@hlT" cx="590" cy="880" rx="190" ry="130" fill="url(#@@gl)" opacity="0"/>
+  <ellipse id="@@hlG" cx="800" cy="880" rx="130" ry="110" fill="url(#@@gl)" opacity="0"/>
+  <ellipse id="@@hlP" cx="960" cy="870" rx="110" ry="130" fill="url(#@@gl)" opacity="0"/>
+ </g></g>
+</svg>
+<div class="stamp" id="@@stamp" style="opacity:0">ПТЭ</div>
+<div class="kick" id="@@k" style="opacity:0">Что такое ПТЭ</div>
+<div class="ttl" id="@@t" style="opacity:0"><b>ПТЭ</b> — ПРАВИЛА ТЕХНИЧЕСКОЙ ЭКСПЛУАТАЦИИ</div>
+<div class="lbl" id="@@l1" style="left:70px;top:520px;opacity:0">КОТЁЛ</div>
+<div class="lbl blue" id="@@l2" style="left:430px;top:560px;opacity:0">ТУРБИНА</div>
+<div class="lbl blue" id="@@l3" style="left:690px;top:610px;opacity:0">ГЕНЕРАТОР</div>
+<div class="lbl" id="@@l4" style="left:760px;top:1010px;opacity:0">ТРАНСФОРМАТОР</div>
+<div class="lbl blue" id="@@l5" style="left:70px;top:1130px;opacity:0">НАСОСЫ И ТРУБОПРОВОДЫ</div>
+<div class="badge" id="@@b1" style="left:60px;opacity:0">БЕЗОПАСНО</div>
+<div class="badge o" id="@@b2" style="left:390px;opacity:0">НАДЁЖНО</div>
+<div class="badge" id="@@b3" style="left:720px;opacity:0">ЭФФЕКТИВНО</div>
+</div>
+<script>
+{{JS}}
+(function(){
+const tl=gsap.timeline({paused:true});
+/* document lines */
+const dl=G("@@dl");for(let i=0;i<10;i++){const l=document.createElementNS(NS,"line");l.setAttribute("x1",340);l.setAttribute("x2",i%3==2?560:740);l.setAttribute("y1",680+i*46);l.setAttribute("y2",680+i*46);dl.appendChild(l)}
+/* diagram parts (pseudo 3D) */
+const P="@@parts";
+box(P,100,720,200,430,50,"#2b3c5e");           /* boiler */
+mk(P,`<rect x="125" y="750" width="150" height="70" rx="12" fill="#0b1a33" stroke="#ff8a1f" stroke-width="3"/><path d="M150 1120 C160 1050 190 1050 200 1120 Z M200 1120 C210 1030 245 1030 255 1120 Z" fill="#ff8a1f"/><rect x="330" y="640" width="36" height="510" fill="#2d3e60" stroke="#4a6794" stroke-width="2"/><rect x="330" y="640" width="36" height="46" fill="#c9d3e6"/>`);
+box(P,470,840,220,120,40,"#34507f");           /* turbine */
+mk(P,`<g id="@@bladeG"><circle cx="580" cy="900" r="42" fill="#0b1a33" stroke="#35c4ff" stroke-width="3"/><g stroke="#35c4ff" stroke-width="7" stroke-linecap="round"><line x1="580" y1="862" x2="580" y2="938"/><line x1="542" y1="900" x2="618" y2="900"/><line x1="553" y1="873" x2="607" y2="927"/><line x1="607" y1="873" x2="553" y2="927"/></g></g>`);
+box(P,720,850,150,100,36,"#3a4f78");            /* generator */
+mk(P,`<g id="@@rotG"><circle cx="795" cy="900" r="32" fill="#0b1a33" stroke="#ff8a1f" stroke-width="3"/><path d="M795 872 A28 28 0 0 1 823 900" stroke="#ff8a1f" stroke-width="8" fill="none"/><path d="M795 928 A28 28 0 0 1 767 900" stroke="#ff8a1f" stroke-width="8" fill="none"/></g><rect x="690" y="890" width="30" height="20" fill="#8fa3c4"/>`);
+box(P,910,840,100,130,26,"#2f4268");            /* transformer */
+mk(P,`<path id="@@cab" d="M870 905 L910 905" stroke="#35c4ff" stroke-width="6"/><path id="@@pyl" d="M1000 890 L1000 820 L1050 790" stroke="#8fa3c4" stroke-width="5" fill="none"/>`);
+box(P,470,985,220,60,40,"#27406e");            /* condenser */
+box(P,830,1040,160,150,30,"#223555");           /* cooling tower block */
+mk(P,`<g id="@@pmp"><circle cx="450" cy="1100" r="38" fill="#0b1a33" stroke="#35c4ff" stroke-width="4"/><g stroke="#35c4ff" stroke-width="6" stroke-linecap="round"><line x1="450" y1="1070" x2="450" y2="1130"/><line x1="420" y1="1100" x2="480" y2="1100"/></g></g>`);
+/* ---- timeline ---- */
+tl.fromTo("#@@k",{opacity:0,x:-30},{opacity:1,x:0,duration:.4},.3);
+tl.fromTo("#@@t",{opacity:0,y:30},{opacity:1,y:0,duration:.6,ease:"power3.out"},.45);
+tl.fromTo("#@@doc",{opacity:0,y:60,scale:.9,svgOrigin:"540 890"},{opacity:1,y:0,scale:1,svgOrigin:"540 890",duration:.7,ease:"back.out(1.4)"},.4);
+tl.fromTo("#@@dl line",{opacity:0},{opacity:1,duration:.2,stagger:.08},.9);
+tl.fromTo("#@@stamp",{opacity:0,scale:2.6,rotation:-14},{opacity:1,scale:1,rotation:-14,duration:.3,ease:"power4.in"},1.7);
+tl.fromTo("#@@gridr",{opacity:.55},{opacity:.85,duration:.8},1.7);
+/* doc -> blueprint */
+tl.to("#@@doc",{scaleX:0.02,svgOrigin:"540 890",opacity:0,duration:.6,ease:"power2.in"},2.6);
+tl.to("#@@stamp",{opacity:0,scale:.5,duration:.3},2.5);
+tl.fromTo("#@@dia",{opacity:0},{opacity:1,duration:.7},2.9);tl.fromTo("#@@wrap",{y:110,scale:.95,svgOrigin:"540 900"},{y:70,scale:1.12,svgOrigin:"540 900",duration:.9,ease:"power3.out"},2.9);
+tl.fromTo("#@@hl",{opacity:0},{opacity:1,duration:.3},3);
+flow(tl,"#@@steamF",3.2,9,300);flow(tl,"#@@condF",3.2,9,-300);flow(tl,"#@@coolF",3.2,9,300);
+spin(tl,"#@@bladeG",580,900,3,9,12);spin(tl,"#@@rotG",795,900,3,9,12);spin(tl,"#@@pmp",450,1100,3,9,9);
+pulse(tl,"#@@cab",3.4,8,.4,1,.5);
+/* highlights follow narration */
+const hl=(id,lab,t)=>{tl.fromTo(id,{opacity:0},{opacity:.9,duration:.3},t);tl.to(id,{opacity:0,duration:.4},t+1.5);tl.fromTo(lab,{opacity:0,x:-20},{opacity:1,x:0,duration:.35,ease:"power3.out"},t)};
+hl("#@@hlB","#@@l1",3.4);hl("#@@hlT","#@@l2",4.3);hl("#@@hlG","#@@l3",5.2);hl("#@@hlP","#@@l4",6.0);
+tl.fromTo("#@@l5",{opacity:0,x:-20},{opacity:1,x:0,duration:.35},6.6);
+["#@@l1","#@@l2","#@@l3","#@@l4","#@@l5"].forEach((l,i)=>tl.to(l,{opacity:0,duration:.3},7.6+i*.05));
+tl.fromTo("#@@b1",{opacity:0,y:30,scale:.8},{opacity:1,y:0,scale:1,duration:.4,ease:"back.out(2)"},7.6);
+tl.fromTo("#@@b2",{opacity:0,y:30,scale:.8},{opacity:1,y:0,scale:1,duration:.4,ease:"back.out(2)"},8.8);
+tl.fromTo("#@@b3",{opacity:0,y:30,scale:.8},{opacity:1,y:0,scale:1,duration:.4,ease:"back.out(2)"},9.9);
+tl.to("#@@wrap",{y:50,scale:1.17,svgOrigin:"540 900",duration:7.5,ease:"sine.inOut"},4.2);
+window.__timelines["s2"]=tl;
+})();
+</script>
+</template>

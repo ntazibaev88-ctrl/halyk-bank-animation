@@ -1,0 +1,203 @@
+<template>
+<style>
+@font-face{font-family:"InterRU";src:url("assets/fonts/Inter-Regular.otf");font-weight:400}
+@font-face{font-family:"InterRU";src:url("assets/fonts/Inter-Bold.otf");font-weight:700}
+@font-face{font-family:"InterRU";src:url("assets/fonts/Inter-ExtraBold.otf");font-weight:800}
+@font-face{font-family:"InterRU";src:url("assets/fonts/Inter-Black.otf");font-weight:900}
+#root{position:absolute;inset:0;overflow:hidden;font-family:"InterRU",sans-serif;color:#fff;
+ background:radial-gradient(120% 80% at 50% 30%,#10264d 0%,#09152c 55%,#050b18 100%)}
+#root svg.full{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#root .kick{position:absolute;left:70px;width:940px;top:190px;font-size:30px;font-weight:800;letter-spacing:.22em;color:#ff8a1f;text-transform:uppercase}
+#root .ttl{position:absolute;left:70px;width:940px;top:236px;font-size:72px;line-height:1.04;font-weight:900;letter-spacing:-.01em;text-shadow:0 4px 24px rgba(0,0,0,.6)}
+#root .ttl b{color:#ff8a1f}
+#root .lbl{position:absolute;padding:12px 22px 12px 20px;font-size:32px;font-weight:800;letter-spacing:.03em;
+ background:rgba(8,18,38,.88);border-left:6px solid #ff8a1f;border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,.45);white-space:nowrap}
+#root .lbl.blue{border-left-color:#35c4ff}
+#root .lbl.red{border-left-color:#ff3b3b;background:rgba(48,8,14,.9)}
+#root .note{position:absolute;left:70px;width:940px;top:1300px;font-size:26px;font-weight:700;color:#8fa3c4;line-height:1.3}
+
+#root .hk{position:absolute;left:40px;width:1000px;text-align:center;font-weight:900;line-height:1.0;text-shadow:0 6px 30px rgba(0,0,0,.8)}
+#root .hk1{top:470px;font-size:104px;color:#fff}
+#root .hk2{top:590px;font-size:104px;color:#fff}
+#root .hk3{top:760px;font-size:230px;color:#ff8a1f;letter-spacing:.02em;text-shadow:0 0 50px rgba(255,138,31,.7),0 6px 30px rgba(0,0,0,.8)}
+#root .alarm{position:absolute;left:0;top:420px;width:1080px;text-align:center;font-size:34px;font-weight:900;letter-spacing:.28em;color:#ff3b3b;text-shadow:0 0 20px rgba(255,59,59,.9)}
+</style>
+<div id="root" data-composition-id="s1" data-width="1080" data-height="1920">
+<svg class="full" viewBox="0 0 1080 1920" id="s1-svg">
+ <defs>
+  <linearGradient id="s1-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#030712"/><stop offset="1" stop-color="#0f2a55"/></linearGradient>
+  <radialGradient id="s1-glowO"><stop offset="0" stop-color="#ffb35c" stop-opacity=".9"/><stop offset="1" stop-color="#ff8a1f" stop-opacity="0"/></radialGradient>
+  <radialGradient id="s1-glowB"><stop offset="0" stop-color="#8fe0ff" stop-opacity=".9"/><stop offset="1" stop-color="#35c4ff" stop-opacity="0"/></radialGradient>
+  <radialGradient id="s1-glowR"><stop offset="0" stop-color="#ff6060" stop-opacity=".95"/><stop offset="1" stop-color="#ff1a1a" stop-opacity="0"/></radialGradient>
+  <linearGradient id="s1-steel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6c7f9c"/><stop offset=".5" stop-color="#3b4b66"/><stop offset="1" stop-color="#1d2940"/></linearGradient>
+  <linearGradient id="s1-cone" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ff3b3b" stop-opacity=".85"/><stop offset="1" stop-color="#ff3b3b" stop-opacity="0"/></linearGradient>
+ </defs>
+ <rect width="1080" height="1920" fill="url(#s1-sky)"/>
+ <g id="s1-stars"></g>
+
+ <!-- SHOT A : exterior night station -->
+ <g id="s1-A">
+  <g id="s1-camA">
+   <!-- distant city glow -->
+   <rect x="-200" y="1130" width="1500" height="200" fill="#1a3a6e" opacity=".35"/>
+   <!-- cooling towers -->
+   <g id="s1-ct1"><path d="M110 1280 C170 1160 170 1040 135 900 L345 900 C310 1040 310 1160 370 1280 Z" fill="#14233f" stroke="#2f4a7a" stroke-width="3"/>
+     <path d="M135 900 L345 900" stroke="#35c4ff" stroke-width="4" opacity=".7"/></g>
+   <g id="s1-ct2"><path d="M690 1280 C740 1170 740 1060 715 940 L905 940 C880 1060 880 1170 930 1280 Z" fill="#14233f" stroke="#2f4a7a" stroke-width="3"/></g>
+   <!-- steam from towers -->
+   <g id="s1-stm"><circle cx="240" cy="880" r="60" fill="#cfe4ff" opacity="0"/><circle cx="240" cy="880" r="60" fill="#cfe4ff" opacity="0"/><circle cx="240" cy="880" r="60" fill="#cfe4ff" opacity="0"/>
+     <circle cx="810" cy="920" r="50" fill="#cfe4ff" opacity="0"/><circle cx="810" cy="920" r="50" fill="#cfe4ff" opacity="0"/><circle cx="810" cy="920" r="50" fill="#cfe4ff" opacity="0"/></g>
+   <!-- stack -->
+   <g><rect x="505" y="700" width="46" height="590" fill="#243553"/>
+     <rect x="505" y="700" width="46" height="60" fill="#c9d3e6"/><rect x="505" y="820" width="46" height="60" fill="#c9d3e6"/>
+     <circle id="s1-red1" cx="528" cy="690" r="9" fill="#ff3b3b"/><circle id="s1-red1g" cx="528" cy="690" r="48" fill="url(#s1-glowR)" opacity="0"/>
+     <rect x="585" y="820" width="34" height="470" fill="#243553"/><circle id="s1-red2" cx="602" cy="810" r="7" fill="#ff3b3b"/></g>
+   <!-- main building -->
+   <rect x="340" y="1030" width="520" height="260" fill="#1a2a47" stroke="#33507f" stroke-width="3"/>
+   <rect x="340" y="1010" width="520" height="24" fill="#2b4068"/>
+   <g id="s1-wins"></g>
+   <rect x="0" y="1280" width="1080" height="640" fill="#0a1426"/>
+   <!-- foreground pipe rack -->
+   <rect x="0" y="1262" width="1080" height="18" fill="url(#s1-steel)"/>
+  </g>
+ </g>
+
+ <!-- SHOT B : interior fly-through -->
+ <g id="s1-B" opacity="0">
+  <rect x="0" y="380" width="1080" height="960" fill="#07101f"/>
+  <!-- perspective floor/ceiling -->
+  <g stroke="#1e3a6a" stroke-width="2" opacity=".8">
+   <path d="M540 860 L-300 1340"/><path d="M540 860 L100 1340"/><path d="M540 860 L540 1340"/><path d="M540 860 L980 1340"/><path d="M540 860 L1380 1340"/>
+   <path d="M540 860 L-300 380"/><path d="M540 860 L100 380"/><path d="M540 860 L980 380"/><path d="M540 860 L1380 380"/>
+  </g>
+  <g id="s1-farL"></g>
+  <g id="s1-pipes">
+   <rect x="-300" y="470" width="2400" height="52" fill="url(#s1-steel)"/><rect x="-300" y="560" width="2400" height="36" fill="url(#s1-steel)"/>
+   <rect x="-300" y="1180" width="2400" height="60" fill="url(#s1-steel)"/>
+   <g id="s1-flang"></g>
+  </g>
+  <!-- glowing steam pipe -->
+  <path id="s1-hotp" d="M-300 520 L2100 520" stroke="#ff8a1f" stroke-width="6" opacity="0"/>
+  <path id="s1-hotflow" d="M-300 496 L2100 496" stroke="#ffb35c" stroke-width="5" stroke-dasharray="1.2 5" stroke-linecap="round" fill="none"/>
+  <!-- equipment sliding by -->
+  <g id="s1-eqTurb" transform="translate(1500 0)">
+    <rect x="0" y="720" width="640" height="190" rx="40" fill="#22304d" stroke="#3d5a8c" stroke-width="3"/>
+    <g id="s1-turbRibs"></g>
+    <rect x="30" y="760" width="580" height="30" rx="8" fill="#35c4ff" opacity="0" id="s1-turbLit"/>
+    <ellipse cx="320" cy="815" rx="400" ry="120" fill="url(#s1-glowB)" opacity="0" id="s1-turbGlow"/>
+  </g>
+  <g id="s1-eqPanel" transform="translate(2300 0)">
+    <rect x="0" y="650" width="520" height="560" rx="14" fill="#1b2840" stroke="#3d5a8c" stroke-width="3"/>
+    <rect x="30" y="690" width="460" height="230" rx="8" fill="#050b18" stroke="#35c4ff" stroke-width="2"/>
+    <polyline points="50,880 120,840 180,860 250,780 320,820 400,740 470,770" fill="none" stroke="#35c4ff" stroke-width="5" opacity="0" id="s1-panelLine"/>
+    <g id="s1-leds"></g>
+    <ellipse cx="260" cy="900" rx="330" ry="260" fill="url(#s1-glowB)" opacity="0" id="s1-panelGlow"/>
+  </g>
+  <g id="s1-eqBoil" transform="translate(3100 0)">
+    <rect x="0" y="600" width="360" height="620" rx="30" fill="#2a3552" stroke="#5a4a3a" stroke-width="3"/>
+    <rect x="30" y="640" width="300" height="540" rx="18" fill="#ff8a1f" opacity="0" id="s1-boilLit"/>
+    <ellipse cx="180" cy="900" rx="330" ry="300" fill="url(#s1-glowO)" opacity="0" id="s1-boilGlow"/>
+  </g>
+  <g id="s1-near"></g>
+ </g>
+
+ <!-- SHOT C : alarm -->
+ <g id="s1-C" opacity="0">
+  <circle cx="540" cy="860" r="380" fill="url(#s1-glowR)" id="s1-alGlow"/>
+  <g id="s1-beam"><path d="M540 860 L1500 560 L1500 1160 Z" fill="url(#s1-cone)" opacity=".75"/><path d="M540 860 L-420 560 L-420 1160 Z" fill="url(#s1-cone)" opacity=".75" transform="translate(1080 0) scale(-1 1)"/></g>
+  <rect x="440" y="880" width="200" height="60" rx="10" fill="#3a1218" stroke="#ff3b3b" stroke-width="4"/>
+  <path d="M460 880 C460 790 620 790 620 880 Z" fill="#ff3b3b"/>
+  <path d="M495 880 C495 825 585 825 585 880 Z" fill="#ffd0d0" opacity=".8"/>
+  <g transform="translate(540 700)"><path d="M0 -150 L135 80 L-135 80 Z" fill="none" stroke="#ff3b3b" stroke-width="14" stroke-linejoin="round" id="s1-tri"/>
+   <rect x="-9" y="-70" width="18" height="82" rx="8" fill="#ff3b3b"/><circle cx="0" cy="44" r="11" fill="#ff3b3b"/></g>
+ </g>
+ <rect id="s1-redFlash" x="0" y="0" width="1080" height="1920" fill="#ff1a1a" opacity="0"/>
+ <rect id="s1-dim" x="0" y="0" width="1080" height="1920" fill="#02050c" opacity="0"/>
+ <rect id="s1-frame" x="14" y="14" width="1052" height="1892" fill="none" stroke="#ff3b3b" stroke-width="10" opacity="0"/>
+</svg>
+<div class="alarm" id="s1-alarm" style="opacity:0">⚠ АВАРИЙНАЯ СИГНАЛИЗАЦИЯ ⚠</div>
+<div class="hk hk1" id="s1-h1" style="opacity:0">ЧТО БУДЕТ,</div>
+<div class="hk hk2" id="s1-h2" style="opacity:0">ЕСЛИ НАРУШИТЬ</div>
+<div class="hk hk3" id="s1-h3" style="opacity:0">ПТЭ?</div>
+</div>
+<script>
+const NS="http://www.w3.org/2000/svg";
+const G=(id)=>document.getElementById(id);
+const SEL=(s)=>Array.from(document.querySelectorAll(s));
+/* animated flow: dashed overlay path whose dash offset travels along the pipe (direction = path direction) */
+function flow(tl,sel,t0,dur,speed){SEL(sel).forEach(p=>{p.setAttribute("pathLength","100");tl.fromTo(p,{strokeDashoffset:0},{strokeDashoffset:-(speed||120),duration:dur,ease:"none"},t0)})}
+function spin(tl,sel,cx,cy,t0,dur,turns){SEL(sel).forEach(e=>tl.fromTo(e,{rotation:0,svgOrigin:cx+" "+cy},{rotation:360*turns,svgOrigin:cx+" "+cy,duration:dur,ease:"none"},t0))}
+function pulse(tl,sel,t0,dur,lo,hi,per){const n=Math.floor(dur/per);SEL(sel).forEach(e=>tl.fromTo(e,{opacity:lo},{opacity:hi,duration:per/2,ease:"sine.inOut",yoyo:true,repeat:n*2-1,immediateRender:false},t0))}
+function popIn(tl,sel,t0,o){o=o||{};SEL(sel).forEach((e,i)=>tl.fromTo(e,{opacity:0,y:o.y===undefined?24:o.y,scale:o.s||1},{opacity:1,y:0,scale:1,duration:o.d||.5,ease:o.e||"back.out(1.6)"},t0+i*(o.stag||0)))}
+function draw(tl,sel,t0,dur,stag){SEL(sel).forEach((e,i)=>{e.setAttribute("pathLength","1");tl.fromTo(e,{strokeDasharray:"1 1",strokeDashoffset:1},{strokeDashoffset:0,duration:dur,ease:"power2.inOut"},t0+i*(stag||0))})}
+/* gauge needle sweep */
+function needle(tl,sel,cx,cy,t0,keys){SEL(sel).forEach(e=>{keys.forEach((k,i)=>tl.to(e,{rotation:k[1],svgOrigin:cx+" "+cy,duration:k[2],ease:k[3]||"sine.inOut"},k[0]))})}
+function steamPuffs(tl,sel,t0,dur,per,rise,drift){SEL(sel).forEach((e,i)=>{const n=Math.max(1,Math.floor(dur/per));tl.fromTo(e,{opacity:0,y:0,x:0,scale:.4},{keyframes:[{opacity:.7,duration:per*.2},{opacity:0,duration:per*.8}],y:-rise,x:drift||0,scale:1.6,duration:per,ease:"none",repeat:n-1,repeatDelay:0},t0+i*per/(SEL(sel).length))})}
+function mk(parent,html){const g=document.createElementNS(NS,"g");g.innerHTML=html;(typeof parent==="string"?G(parent):parent).appendChild(g);return g}
+function shade(hex,k){const n=parseInt(hex.slice(1),16);let r=(n>>16)&255,g=(n>>8)&255,b=n&255;const f=k<0?0:255,t=Math.abs(k);r=Math.round((f-r)*t+r);g=Math.round((f-g)*t+g);b=Math.round((f-b)*t+b);return "#"+((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1)}
+/* pseudo-3D box: front face + top + side */
+function box(parent,x,y,w,h,d,fill,stroke){const t=shade(fill,.22),s=shade(fill,-.3),st=stroke||"#4a6794";
+ return mk(parent,`<polygon points="${x},${y} ${x+d},${y-d*.55} ${x+w+d},${y-d*.55} ${x+w},${y}" fill="${t}" stroke="${st}" stroke-width="2"/><polygon points="${x+w},${y} ${x+w+d},${y-d*.55} ${x+w+d},${y+h-d*.55} ${x+w},${y+h}" fill="${s}" stroke="${st}" stroke-width="2"/><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}" stroke="${st}" stroke-width="2.5"/>`)}
+/* round gauge with needle (needle element id = id+"-n"); returns group */
+function gauge(parent,id,cx,cy,r,col){col=col||"#35c4ff";let tk="";for(let i=0;i<=10;i++){const a=(-120+i*24)*Math.PI/180;const x1=cx+Math.sin(a)*r*.78,y1=cy-Math.cos(a)*r*.78,x2=cx+Math.sin(a)*r*.92,y2=cy-Math.cos(a)*r*.92;tk+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${i>8?"#ff3b3b":"#9fb4d6"}" stroke-width="${i%5?3:5}"/>`}
+ return mk(parent,`<circle cx="${cx}" cy="${cy}" r="${r+10}" fill="#27354f" stroke="#6c7f9c" stroke-width="5"/><circle cx="${cx}" cy="${cy}" r="${r}" fill="#07101f" stroke="${col}" stroke-width="2" opacity="1"/>${tk}<path d="M${cx+Math.sin(96*Math.PI/180)*r*.62} ${cy-Math.cos(96*Math.PI/180)*r*.62} A${r*.62} ${r*.62} 0 0 1 ${cx+Math.sin(120*Math.PI/180)*r*.62} ${cy-Math.cos(120*Math.PI/180)*r*.62}" stroke="#ff3b3b" stroke-width="6" fill="none"/><g id="${id}-n"><line x1="${cx}" y1="${cy+r*.18}" x2="${cx}" y2="${cy-r*.74}" stroke="#ff8a1f" stroke-width="5" stroke-linecap="round"/></g><circle cx="${cx}" cy="${cy}" r="9" fill="#cfd8ea"/>`)}
+
+(function(){
+const tl=gsap.timeline({paused:true});
+const D=12.9;
+/* ---- procedural decoration ---- */
+const stars=G("s1-stars");for(let i=0;i<46;i++){const c=document.createElementNS(NS,"circle");c.setAttribute("cx",(i*173+40)%1080);c.setAttribute("cy",(i*97+30)%760);c.setAttribute("r",1+(i%3)*.7);c.setAttribute("fill","#cfe4ff");c.setAttribute("opacity",.3+(i%5)*.12);stars.appendChild(c)}
+const wins=G("s1-wins");const winEls=[];for(let r=0;r<3;r++)for(let c=0;c<12;c++){const e=document.createElementNS(NS,"rect");e.setAttribute("x",366+c*40);e.setAttribute("y",1056+r*66);e.setAttribute("width",24);e.setAttribute("height",40);e.setAttribute("fill","#ffcf7a");e.setAttribute("opacity",0);wins.appendChild(e);winEls.push(e)}
+const fl=G("s1-flang");for(let i=0;i<30;i++){const r=document.createElementNS(NS,"rect");r.setAttribute("x",-300+i*90);r.setAttribute("y",460);r.setAttribute("width",14);r.setAttribute("height",72);r.setAttribute("fill","#52688f");fl.appendChild(r);const r2=document.createElementNS(NS,"rect");r2.setAttribute("x",-300+i*90+40);r2.setAttribute("y",1170);r2.setAttribute("width",14);r2.setAttribute("height",80);r2.setAttribute("fill","#52688f");fl.appendChild(r2)}
+const far=G("s1-farL");for(let i=0;i<14;i++){const c=document.createElementNS(NS,"rect");c.setAttribute("x",i*190-100);c.setAttribute("y",600);c.setAttribute("width",46);c.setAttribute("height",520);c.setAttribute("fill","#0f1d36");c.setAttribute("stroke","#1d3560");far.appendChild(c)}
+const near=G("s1-near");for(let i=0;i<7;i++){const c=document.createElementNS(NS,"rect");c.setAttribute("x",i*520-200);c.setAttribute("y",380);c.setAttribute("width",90);c.setAttribute("height",960);c.setAttribute("fill","#050b16");c.setAttribute("opacity",.9);near.appendChild(c)}
+const rb=G("s1-turbRibs");for(let i=0;i<14;i++){const r=document.createElementNS(NS,"rect");r.setAttribute("x",30+i*42);r.setAttribute("y",740);r.setAttribute("width",12);r.setAttribute("height",150);r.setAttribute("fill","#3b5683");rb.appendChild(r)}
+const ld=G("s1-leds");const ledEls=[];for(let i=0;i<12;i++){const c=document.createElementNS(NS,"circle");c.setAttribute("cx",50+(i%6)*44);c.setAttribute("cy",960+Math.floor(i/6)*50);c.setAttribute("r",12);c.setAttribute("fill",i%4==0?"#ff8a1f":"#35c4ff");c.setAttribute("opacity",.15);ld.appendChild(c);ledEls.push(c)}
+/* ---- SHOT A (0 - 2.7) ---- */
+tl.fromTo("#s1-camA",{scale:1.0,svgOrigin:"540 1100",y:0},{scale:1.7,svgOrigin:"540 1100",y:-60,duration:2.8,ease:"power2.in"},0);
+winEls.forEach((e,i)=>tl.fromTo(e,{opacity:0},{opacity:.35+((i*7)%5)*.13,duration:.12},.1+i*.05));
+pulse(tl,"#s1-red1",0,3,.2,1,.9);pulse(tl,"#s1-red1g",0,3,0,.9,.9);pulse(tl,"#s1-red2",0,3,.2,1,1.1);
+steamPuffs(tl,"#s1-stm circle",0,3,1.6,260,40);
+pulse(tl,"#s1-stars circle",0,5,.25,.9,1.4);
+/* whip transition A -> B */
+tl.to("#s1-A",{opacity:0,duration:.22,ease:"power2.in"},2.45);
+tl.fromTo("#s1-B",{opacity:0},{opacity:1,duration:.2},2.45);
+/* ---- SHOT B (2.45 - 4.7): fast travel through the hall ---- */
+tl.fromTo("#s1-farL",{x:0},{x:-900,duration:2.3,ease:"none"},2.45);
+tl.fromTo("#s1-pipes",{x:0},{x:-1500,duration:2.3,ease:"none"},2.45);
+tl.fromTo("#s1-near",{x:0},{x:-2600,duration:2.3,ease:"none"},2.45);
+tl.fromTo("#s1-B",{scale:1.0,svgOrigin:"540 860"},{scale:1.12,svgOrigin:"540 860",duration:2.3,ease:"none"},2.45);
+flow(tl,"#s1-hotflow",2.45,2.3,260);
+tl.fromTo("#s1-hotp",{opacity:0},{opacity:.6,duration:.5},2.9);
+/* equipment slides through, lights up as it passes center */
+tl.fromTo("#s1-eqTurb",{x:1500},{x:-1450,duration:2.0,ease:"power1.inOut"},2.5);
+tl.to("#s1-turbLit",{opacity:.95,duration:.25},3.0);tl.to("#s1-turbGlow",{opacity:.9,duration:.25},3.0);
+tl.fromTo("#s1-eqPanel",{x:1900},{x:-900,duration:1.9,ease:"power1.inOut"},2.9);
+tl.to("#s1-panelLine",{opacity:1,duration:.2},3.4);tl.to("#s1-panelGlow",{opacity:.8,duration:.25},3.4);
+ledEls.forEach((e,i)=>tl.to(e,{opacity:1,duration:.1},3.4+i*.06));
+tl.fromTo("#s1-eqBoil",{x:2700},{x:-700,duration:1.9,ease:"power1.inOut"},3.2);
+tl.to("#s1-boilLit",{opacity:.55,duration:.25},3.95);tl.to("#s1-boilGlow",{opacity:.9,duration:.25},3.95);
+/* ---- SHOT C (4.6 - 6.3): warning ---- */
+tl.to("#s1-B",{opacity:.28,duration:.3},4.6);
+tl.fromTo("#s1-C",{opacity:0,scale:.7,svgOrigin:"540 860"},{opacity:1,scale:1,svgOrigin:"540 860",duration:.35,ease:"back.out(2)"},4.6);
+spin(tl,"#s1-beam",540,860,4.6,1.8,3.2);
+for(let k=0;k<7;k++){tl.fromTo("#s1-redFlash",{opacity:0},{opacity:.38,duration:.09},4.6+k*.26);tl.to("#s1-redFlash",{opacity:0,duration:.16},4.69+k*.26)}
+tl.fromTo("#s1-alarm",{opacity:0},{opacity:1,duration:.1,yoyo:true,repeat:11},4.7);
+tl.fromTo("#s1-frame",{opacity:0},{opacity:1,duration:.12,yoyo:true,repeat:15},4.6);
+tl.fromTo("#s1-svg",{x:0},{keyframes:[{x:-12},{x:14},{x:-9},{x:10},{x:-5},{x:0}],duration:.6,ease:"none"},4.6);
+/* ---- FREEZE + TITLE (6.3) ---- */
+tl.to("#s1-C",{opacity:0,duration:.2},6.25);
+tl.to("#s1-dim",{opacity:.72,duration:.25},6.3);
+tl.fromTo("#s1-h1",{opacity:0,scale:1.5,y:-30},{opacity:1,scale:1,y:0,duration:.35,ease:"power4.out"},6.5);
+tl.fromTo("#s1-h2",{opacity:0,scale:1.5,y:-30},{opacity:1,scale:1,y:0,duration:.35,ease:"power4.out"},6.8);
+tl.fromTo("#s1-h3",{opacity:0,scale:2.4},{opacity:1,scale:1,duration:.5,ease:"back.out(1.7)"},7.15);
+tl.fromTo("#s1-h3",{rotation:0},{immediateRender:false,keyframes:[{rotation:-1.5},{rotation:1.2},{rotation:-.8},{rotation:0}],duration:.4,ease:"none"},7.6);
+tl.fromTo("#s1-svg",{x:0},{immediateRender:false,keyframes:[{x:-18},{x:16},{x:-10},{x:6},{x:0}],duration:.45,ease:"none"},7.15);
+pulse(tl,"#s1-frame",8.2,4,.35,1,.8);
+tl.fromTo("#s1-alarm",{opacity:0},{opacity:1,duration:.4,immediateRender:false},8.4);
+pulse(tl,"#s1-alarm",8.4,4.4,.35,1,.9);
+tl.to("#s1-h3",{scale:1.06,duration:2.5,ease:"sine.inOut",yoyo:true,repeat:3},8.2);
+window.__timelines["s1"]=tl;
+})();
+</script>
+</template>

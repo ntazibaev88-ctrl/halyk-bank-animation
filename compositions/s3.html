@@ -1,0 +1,159 @@
+<template>
+<style>
+@font-face{font-family:"InterRU";src:url("assets/fonts/Inter-Regular.otf");font-weight:400}
+@font-face{font-family:"InterRU";src:url("assets/fonts/Inter-Bold.otf");font-weight:700}
+@font-face{font-family:"InterRU";src:url("assets/fonts/Inter-ExtraBold.otf");font-weight:800}
+@font-face{font-family:"InterRU";src:url("assets/fonts/Inter-Black.otf");font-weight:900}
+#root{position:absolute;inset:0;overflow:hidden;font-family:"InterRU",sans-serif;color:#fff;
+ background:radial-gradient(120% 80% at 50% 30%,#10264d 0%,#09152c 55%,#050b18 100%)}
+#root svg.full{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#root .kick{position:absolute;left:70px;width:940px;top:190px;font-size:30px;font-weight:800;letter-spacing:.22em;color:#ff8a1f;text-transform:uppercase}
+#root .ttl{position:absolute;left:70px;width:940px;top:236px;font-size:72px;line-height:1.04;font-weight:900;letter-spacing:-.01em;text-shadow:0 4px 24px rgba(0,0,0,.6)}
+#root .ttl b{color:#ff8a1f}
+#root .lbl{position:absolute;padding:12px 22px 12px 20px;font-size:32px;font-weight:800;letter-spacing:.03em;
+ background:rgba(8,18,38,.88);border-left:6px solid #ff8a1f;border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,.45);white-space:nowrap}
+#root .lbl.blue{border-left-color:#35c4ff}
+#root .lbl.red{border-left-color:#ff3b3b;background:rgba(48,8,14,.9)}
+#root .note{position:absolute;left:70px;width:940px;top:1300px;font-size:26px;font-weight:700;color:#8fa3c4;line-height:1.3}
+
+#root .gl{position:absolute;width:210px;text-align:center;font-size:26px;font-weight:800;color:#9fb4d6;letter-spacing:.06em}
+</style>
+<div id="root" data-composition-id="s3" data-width="1080" data-height="1920">
+<svg class="full" viewBox="0 0 1080 1920">
+ <defs>
+  <pattern id="s3-grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0H0V60" fill="none" stroke="#1d3a6b" stroke-width="1.5"/></pattern>
+  <linearGradient id="s3-wall" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3a4c6e"/><stop offset=".5" stop-color="#2a3a58"/><stop offset="1" stop-color="#1b2740"/></linearGradient>
+  <linearGradient id="s3-drum" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9fb4d6"/><stop offset=".5" stop-color="#5b6f94"/><stop offset="1" stop-color="#2c3b5c"/></linearGradient>
+  <linearGradient id="s3-fire" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#ffdd7a"/><stop offset=".5" stop-color="#ff8a1f"/><stop offset="1" stop-color="#ff3b1f" stop-opacity=".6"/></linearGradient>
+  <radialGradient id="s3-heat"><stop offset="0" stop-color="#ff8a1f" stop-opacity=".75"/><stop offset="1" stop-color="#ff8a1f" stop-opacity="0"/></radialGradient>
+  <clipPath id="s3-cp"><rect x="300" y="690" width="450" height="510"/></clipPath>
+ </defs>
+ <rect x="0" y="470" width="1080" height="860" fill="url(#s3-grid)" opacity=".5"/>
+ <g id="s3-all">
+ <!-- casing -->
+ <rect x="270" y="650" width="510" height="570" rx="10" fill="url(#s3-wall)" stroke="#5a7099" stroke-width="4"/>
+ <rect x="300" y="690" width="450" height="510" fill="#0a1426"/>
+ <ellipse id="s3-heatglow" cx="525" cy="1100" rx="260" ry="200" fill="url(#s3-heat)" opacity="0"/>
+ <!-- water tubes -->
+ <g id="s3-tubes"></g>
+ <!-- lower header -->
+ <rect x="300" y="1060" width="450" height="26" rx="12" fill="#4b5d80"/>
+ <!-- furnace flames -->
+ <g id="s3-flames" clip-path="url(#s3-cp)" opacity="0">
+  <path class="fl" d="M360 1200 C340 1130 380 1110 372 1060 C400 1100 420 1130 410 1200 Z" fill="url(#s3-fire)"/>
+  <path class="fl" d="M440 1200 C420 1110 470 1090 455 1030 C490 1080 505 1120 490 1200 Z" fill="url(#s3-fire)"/>
+  <path class="fl" d="M530 1200 C505 1100 560 1080 540 1010 C585 1070 600 1120 580 1200 Z" fill="url(#s3-fire)"/>
+  <path class="fl" d="M620 1200 C600 1110 650 1090 635 1030 C670 1080 685 1120 670 1200 Z" fill="url(#s3-fire)"/>
+  <path class="fl" d="M700 1200 C690 1140 720 1120 712 1080 C735 1120 745 1150 738 1200 Z" fill="url(#s3-fire)"/>
+ </g>
+ <!-- burner + fuel -->
+ <rect x="200" y="1130" width="110" height="46" rx="8" fill="#6c7f9c" stroke="#9fb4d6" stroke-width="3"/>
+ <path id="s3-fuelP" d="M40 1153 L200 1153" stroke="#ffb35c" stroke-width="7" stroke-dasharray="1.6 3.4" stroke-linecap="round" fill="none"/>
+ <!-- steam drum -->
+ <rect x="290" y="560" width="470" height="100" rx="50" fill="url(#s3-drum)" stroke="#cfd8ea" stroke-width="3"/>
+ <rect x="316" y="600" width="418" height="44" rx="22" fill="#2a8bd6" opacity=".9" id="s3-dwater"/>
+ <rect x="316" y="580" width="418" height="30" rx="14" fill="#e8f3ff" opacity=".0" id="s3-dsteam"/>
+ <!-- down-comer -->
+ <path id="s3-downP" d="M790 640 L830 640 L830 1075 L750 1075" fill="none" stroke="#4b5d80" stroke-width="26" stroke-linejoin="round"/>
+ <path id="s3-downF" d="M790 640 L830 640 L830 1075 L750 1075" fill="none" stroke="#35c4ff" stroke-width="9" stroke-dasharray="1.2 3.2" stroke-linecap="round" opacity="0"/>
+ <!-- main steam line -->
+ <path id="s3-mainP" d="M640 560 L640 500 L1000 500 L1000 560" fill="none" stroke="#6c7f9c" stroke-width="26" stroke-linejoin="round"/>
+ <path id="s3-mainF" d="M640 560 L640 500 L1000 500 L1000 700" fill="none" stroke="#fff" stroke-width="9" stroke-dasharray="1.2 3.2" stroke-linecap="round" opacity="0"/>
+ <!-- safety valve -->
+ <g transform="translate(380 560)"><rect x="-10" y="-50" width="20" height="50" fill="#8fa3c4"/><rect x="-26" y="-64" width="52" height="18" rx="6" fill="#ff3b3b"/></g>
+ <g id="s3-vpuff"><circle cx="380" cy="480" r="22" fill="#e8f3ff" opacity="0"/><circle cx="380" cy="480" r="22" fill="#e8f3ff" opacity="0"/><circle cx="380" cy="480" r="22" fill="#e8f3ff" opacity="0"/></g>
+ <g id="s3-bubbles"></g>
+ <!-- gauges -->
+ <g id="s3-gaugeL"></g>
+ <!-- level glass -->
+ <rect x="900" y="760" width="40" height="180" rx="18" fill="#07101f" stroke="#9fb4d6" stroke-width="5"/>
+ <rect id="s3-lvl" x="906" y="860" width="28" height="74" rx="12" fill="#35c4ff" opacity=".9"/>
+ <line x1="882" y1="800" x2="958" y2="800" stroke="#ff8a1f" stroke-width="3" stroke-dasharray="8 6"/>
+ <path d="M900 850 L840 850 L790 640" stroke="#4b5d80" stroke-width="8" fill="none"/>
+ <!-- protection panel -->
+ <rect x="880" y="1010" width="90" height="190" rx="14" fill="#16233d" stroke="#6c7f9c" stroke-width="4"/>
+ <circle id="s3-p1" cx="925" cy="1055" r="20" fill="#2fd16b"/><circle id="s3-p2" cx="925" cy="1105" r="20" fill="#2fd16b"/><circle id="s3-p3" cx="925" cy="1155" r="20" fill="#2fd16b"/>
+ </g>
+</svg>
+<div class="gl" id="s3-g1" style="left:25px;top:905px;opacity:0">ТЕМПЕРАТУРА</div>
+<div class="gl" id="s3-g2" style="left:25px;top:1148px;opacity:0">ДАВЛЕНИЕ</div>
+<div class="gl" id="s3-g3" style="left:850px;top:950px;width:200px;opacity:0">УРОВЕНЬ ВОДЫ</div>
+<div class="gl" id="s3-g4" style="left:850px;top:1210px;width:200px;opacity:0">ЗАЩИТЫ</div>
+<div class="kick" id="s3-k" style="opacity:0">Котельное оборудование</div>
+<div class="ttl" id="s3-t" style="opacity:0">КОТЁЛ — ИСТОЧНИК <b>ТЕПЛОВОЙ ЭНЕРГИИ</b></div>
+<div class="lbl" id="s3-lf" style="left:40px;top:1245px;opacity:0">ТОПЛИВО</div>
+<div class="lbl blue" id="s3-lw" style="left:310px;top:480px;opacity:0;transform:none">ВОДА → ПАР</div>
+<div class="lbl blue" id="s3-ls" style="left:690px;top:430px;opacity:0">ПАР К ТУРБИНЕ</div>
+</div>
+<script>
+const NS="http://www.w3.org/2000/svg";
+const G=(id)=>document.getElementById(id);
+const SEL=(s)=>Array.from(document.querySelectorAll(s));
+/* animated flow: dashed overlay path whose dash offset travels along the pipe (direction = path direction) */
+function flow(tl,sel,t0,dur,speed){SEL(sel).forEach(p=>{p.setAttribute("pathLength","100");tl.fromTo(p,{strokeDashoffset:0},{strokeDashoffset:-(speed||120),duration:dur,ease:"none"},t0)})}
+function spin(tl,sel,cx,cy,t0,dur,turns){SEL(sel).forEach(e=>tl.fromTo(e,{rotation:0,svgOrigin:cx+" "+cy},{rotation:360*turns,svgOrigin:cx+" "+cy,duration:dur,ease:"none"},t0))}
+function pulse(tl,sel,t0,dur,lo,hi,per){const n=Math.floor(dur/per);SEL(sel).forEach(e=>tl.fromTo(e,{opacity:lo},{opacity:hi,duration:per/2,ease:"sine.inOut",yoyo:true,repeat:n*2-1,immediateRender:false},t0))}
+function popIn(tl,sel,t0,o){o=o||{};SEL(sel).forEach((e,i)=>tl.fromTo(e,{opacity:0,y:o.y===undefined?24:o.y,scale:o.s||1},{opacity:1,y:0,scale:1,duration:o.d||.5,ease:o.e||"back.out(1.6)"},t0+i*(o.stag||0)))}
+function draw(tl,sel,t0,dur,stag){SEL(sel).forEach((e,i)=>{e.setAttribute("pathLength","1");tl.fromTo(e,{strokeDasharray:"1 1",strokeDashoffset:1},{strokeDashoffset:0,duration:dur,ease:"power2.inOut"},t0+i*(stag||0))})}
+/* gauge needle sweep */
+function needle(tl,sel,cx,cy,t0,keys){SEL(sel).forEach(e=>{keys.forEach((k,i)=>tl.to(e,{rotation:k[1],svgOrigin:cx+" "+cy,duration:k[2],ease:k[3]||"sine.inOut"},k[0]))})}
+function steamPuffs(tl,sel,t0,dur,per,rise,drift){SEL(sel).forEach((e,i)=>{const n=Math.max(1,Math.floor(dur/per));tl.fromTo(e,{opacity:0,y:0,x:0,scale:.4},{keyframes:[{opacity:.7,duration:per*.2},{opacity:0,duration:per*.8}],y:-rise,x:drift||0,scale:1.6,duration:per,ease:"none",repeat:n-1,repeatDelay:0},t0+i*per/(SEL(sel).length))})}
+function mk(parent,html){const g=document.createElementNS(NS,"g");g.innerHTML=html;(typeof parent==="string"?G(parent):parent).appendChild(g);return g}
+function shade(hex,k){const n=parseInt(hex.slice(1),16);let r=(n>>16)&255,g=(n>>8)&255,b=n&255;const f=k<0?0:255,t=Math.abs(k);r=Math.round((f-r)*t+r);g=Math.round((f-g)*t+g);b=Math.round((f-b)*t+b);return "#"+((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1)}
+/* pseudo-3D box: front face + top + side */
+function box(parent,x,y,w,h,d,fill,stroke){const t=shade(fill,.22),s=shade(fill,-.3),st=stroke||"#4a6794";
+ return mk(parent,`<polygon points="${x},${y} ${x+d},${y-d*.55} ${x+w+d},${y-d*.55} ${x+w},${y}" fill="${t}" stroke="${st}" stroke-width="2"/><polygon points="${x+w},${y} ${x+w+d},${y-d*.55} ${x+w+d},${y+h-d*.55} ${x+w},${y+h}" fill="${s}" stroke="${st}" stroke-width="2"/><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}" stroke="${st}" stroke-width="2.5"/>`)}
+/* round gauge with needle (needle element id = id+"-n"); returns group */
+function gauge(parent,id,cx,cy,r,col){col=col||"#35c4ff";let tk="";for(let i=0;i<=10;i++){const a=(-120+i*24)*Math.PI/180;const x1=cx+Math.sin(a)*r*.78,y1=cy-Math.cos(a)*r*.78,x2=cx+Math.sin(a)*r*.92,y2=cy-Math.cos(a)*r*.92;tk+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${i>8?"#ff3b3b":"#9fb4d6"}" stroke-width="${i%5?3:5}"/>`}
+ return mk(parent,`<circle cx="${cx}" cy="${cy}" r="${r+10}" fill="#27354f" stroke="#6c7f9c" stroke-width="5"/><circle cx="${cx}" cy="${cy}" r="${r}" fill="#07101f" stroke="${col}" stroke-width="2" opacity="1"/>${tk}<path d="M${cx+Math.sin(96*Math.PI/180)*r*.62} ${cy-Math.cos(96*Math.PI/180)*r*.62} A${r*.62} ${r*.62} 0 0 1 ${cx+Math.sin(120*Math.PI/180)*r*.62} ${cy-Math.cos(120*Math.PI/180)*r*.62}" stroke="#ff3b3b" stroke-width="6" fill="none"/><g id="${id}-n"><line x1="${cx}" y1="${cy+r*.18}" x2="${cx}" y2="${cy-r*.74}" stroke="#ff8a1f" stroke-width="5" stroke-linecap="round"/></g><circle cx="${cx}" cy="${cy}" r="9" fill="#cfd8ea"/>`)}
+
+(function(){
+const tl=gsap.timeline({paused:true});
+const T=G("s3-tubes");const tubes=[];
+for(let i=0;i<8;i++){const x=345+i*52;mk(T,`<line x1="${x}" y1="1070" x2="${x}" y2="670" stroke="#2a4a7a" stroke-width="16" stroke-linecap="round" class="tb"/><line x1="${x}" y1="1070" x2="${x}" y2="670" stroke="#35c4ff" stroke-width="7" stroke-linecap="round" class="tw"/>`)}
+const BB=G("s3-bubbles");
+for(let i=0;i<8;i++){const c=document.createElementNS(NS,"circle");c.setAttribute("cx",345+i*52);c.setAttribute("cy",1060);c.setAttribute("r",5+(i%3)*2);c.setAttribute("fill","#e8f3ff");c.setAttribute("opacity",0);c.setAttribute("class","bub");BB.appendChild(c)}
+gauge("s3-gaugeL","s3-gt",130,800,75,"#ff8a1f");gauge("s3-gaugeL","s3-gp",130,1040,75,"#35c4ff");
+/* intro */
+tl.fromTo("#s3-k",{opacity:0,x:-30},{opacity:1,x:0,duration:.4},.3);
+tl.fromTo("#s3-t",{opacity:0,y:30},{opacity:1,y:0,duration:.6,ease:"power3.out"},.45);
+tl.fromTo("#s3-all",{opacity:0,y:60},{opacity:1,y:0,duration:.9,ease:"power3.out"},.5);
+tl.fromTo("#s3-all",{scale:1.0,svgOrigin:"540 900"},{scale:1.06,svgOrigin:"540 900",duration:14,ease:"sine.inOut",immediateRender:false},.5);
+/* fuel + combustion 2.9 */
+tl.fromTo("#s3-lf",{opacity:0,x:-20},{opacity:1,x:0,duration:.4},3.0);
+flow(tl,"#s3-fuelP",2.9,12,260);
+tl.fromTo("#s3-flames",{opacity:0},{opacity:1,duration:.5},3.5);
+tl.fromTo("#s3-heatglow",{opacity:0},{opacity:1,duration:2,ease:"power1.in"},3.5);
+SEL("#s3-flames .fl").forEach((f,i)=>tl.fromTo(f,{scaleY:.82,scaleX:.95,svgOrigin:(360+i*88)+" 1200"},{scaleY:1.18,scaleX:1.08,svgOrigin:(360+i*88)+" 1200",duration:.18+i*.03,yoyo:true,repeat:60,ease:"sine.inOut"},3.5));
+/* water heating 4.5 -> 7 */
+SEL("#s3-tubes .tw").forEach((e,i)=>tl.fromTo(e,{stroke:"#35c4ff"},{stroke:"#ff8a1f",duration:2.6,ease:"power1.inOut"},4.4+i*.05));
+tl.fromTo("#s3-lw",{opacity:0,y:-10},{opacity:1,y:0,duration:.4},4.6);
+SEL("#s3-bubbles .bub").forEach((b,i)=>{tl.fromTo(b,{opacity:0,y:0},{keyframes:[{opacity:.9,duration:.15},{opacity:0,duration:.85}],y:-380,duration:1.0,ease:"none",repeat:9,repeatDelay:.15},4.8+i*.14)});
+/* steam */
+tl.fromTo("#s3-dsteam",{opacity:0},{opacity:.55,duration:1.2},5.6);
+tl.to("#s3-dwater",{y:-4,duration:.4,yoyo:true,repeat:30,ease:"sine.inOut"},5);
+tl.fromTo("#s3-downF",{opacity:0},{opacity:1,duration:.4},4.8);
+flow(tl,"#s3-downF",4.8,10,300);
+tl.fromTo("#s3-mainF",{opacity:0},{opacity:1,duration:.4},6.2);
+flow(tl,"#s3-mainF",6.2,8.4,300);
+tl.fromTo("#s3-ls",{opacity:0,x:20},{opacity:1,x:0,duration:.4},6.4);
+tl.to("#s3-lw",{opacity:0,duration:.3},7.2);tl.to("#s3-lf",{opacity:0,duration:.3},7.2);
+/* gauges 7.3+ */
+tl.fromTo("#s3-gt-n",{rotation:-110,svgOrigin:"130 800"},{rotation:-40,svgOrigin:"130 800",duration:2.5,ease:"power2.out"},3.6);
+tl.fromTo("#s3-gp-n",{rotation:-110,svgOrigin:"130 1040"},{rotation:-60,svgOrigin:"130 1040",duration:2.5,ease:"power2.out"},3.9);
+tl.fromTo("#s3-g1",{opacity:0},{opacity:1,duration:.4},7.5);
+tl.to("#s3-gt-n",{rotation:30,svgOrigin:"130 800",duration:1.6,ease:"sine.inOut"},7.5);tl.to("#s3-gt-n",{rotation:5,svgOrigin:"130 800",duration:1.0,ease:"sine.inOut"},9.2);
+tl.fromTo("#s3-g2",{opacity:0},{opacity:1,duration:.4},8.6);
+tl.to("#s3-gp-n",{rotation:50,svgOrigin:"130 1040",duration:1.6,ease:"sine.inOut"},8.6);tl.to("#s3-gp-n",{rotation:20,svgOrigin:"130 1040",duration:1.0,ease:"sine.inOut"},10.4);
+tl.fromTo("#s3-g3",{opacity:0},{opacity:1,duration:.4},9.7);
+tl.fromTo("#s3-lvl",{y:0,height:74},{y:-20,height:94,duration:1.2,ease:"sine.inOut"},9.7);tl.to("#s3-lvl",{y:-8,height:82,duration:1,ease:"sine.inOut"},11.2);
+tl.fromTo("#s3-g4",{opacity:0},{opacity:1,duration:.4},11.0);
+/* safety valve pops, protection lights react */
+tl.fromTo("#s3-p1",{fill:"#2fd16b"},{fill:"#2fd16b",duration:.1},11.0);
+pulse(tl,"#s3-p1",11.0,3,.5,1,.7);pulse(tl,"#s3-p2",11.2,3,.5,1,.7);pulse(tl,"#s3-p3",11.4,3,.5,1,.7);
+steamPuffs(tl,"#s3-vpuff circle",9.4,1.8,.7,120,14);
+pulse(tl,"#s3-heatglow",9,5,.7,1,1.2);
+window.__timelines["s3"]=tl;
+})();
+</script>
+</template>

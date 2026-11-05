@@ -1,0 +1,137 @@
+<template>
+<style>
+@font-face{font-family:"InterRU";src:url("assets/fonts/Inter-Regular.otf");font-weight:400}
+@font-face{font-family:"InterRU";src:url("assets/fonts/Inter-Bold.otf");font-weight:700}
+@font-face{font-family:"InterRU";src:url("assets/fonts/Inter-ExtraBold.otf");font-weight:800}
+@font-face{font-family:"InterRU";src:url("assets/fonts/Inter-Black.otf");font-weight:900}
+#root{position:absolute;inset:0;overflow:hidden;font-family:"InterRU",sans-serif;color:#fff;
+ background:radial-gradient(120% 80% at 50% 30%,#10264d 0%,#09152c 55%,#050b18 100%)}
+#root svg.full{position:absolute;left:0;top:0;width:1080px;height:1920px}
+#root .kick{position:absolute;left:70px;width:940px;top:190px;font-size:30px;font-weight:800;letter-spacing:.22em;color:#ff8a1f;text-transform:uppercase}
+#root .ttl{position:absolute;left:70px;width:940px;top:236px;font-size:72px;line-height:1.04;font-weight:900;letter-spacing:-.01em;text-shadow:0 4px 24px rgba(0,0,0,.6)}
+#root .ttl b{color:#ff8a1f}
+#root .lbl{position:absolute;padding:12px 22px 12px 20px;font-size:32px;font-weight:800;letter-spacing:.03em;
+ background:rgba(8,18,38,.88);border-left:6px solid #ff8a1f;border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,.45);white-space:nowrap}
+#root .lbl.blue{border-left-color:#35c4ff}
+#root .lbl.red{border-left-color:#ff3b3b;background:rgba(48,8,14,.9)}
+#root .note{position:absolute;left:70px;width:940px;top:1300px;font-size:26px;font-weight:700;color:#8fa3c4;line-height:1.3}
+
+#root .badge{position:absolute;top:1228px;width:300px;height:74px;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:900;letter-spacing:.06em;border-radius:40px;border:3px solid #35c4ff;background:rgba(10,24,48,.92);color:#fff}
+#root .badge.o{border-color:#ff8a1f}
+#root .stamp{position:absolute;left:300px;top:610px;width:480px;text-align:center;font-size:140px;font-weight:900;color:#ff8a1f;letter-spacing:.05em}
+</style>
+<div id="root" data-composition-id="s2" data-width="1080" data-height="1920">
+<svg class="full" viewBox="0 0 1080 1920">
+ <defs>
+  <pattern id="s2-grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0H0V60" fill="none" stroke="#1d3a6b" stroke-width="1.5"/></pattern>
+  <linearGradient id="s2-paper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e8eefb"/><stop offset="1" stop-color="#b9c7e2"/></linearGradient>
+  <radialGradient id="s2-gl"><stop offset="0" stop-color="#35c4ff" stop-opacity=".8"/><stop offset="1" stop-color="#35c4ff" stop-opacity="0"/></radialGradient>
+  <radialGradient id="s2-go"><stop offset="0" stop-color="#ff8a1f" stop-opacity=".85"/><stop offset="1" stop-color="#ff8a1f" stop-opacity="0"/></radialGradient>
+ </defs>
+ <rect x="0" y="470" width="1080" height="860" fill="url(#s2-grid)" opacity=".55" id="s2-gridr"/>
+ <!-- DOCUMENT -->
+ <g id="s2-doc">
+  <rect x="300" y="560" width="480" height="660" rx="12" fill="url(#s2-paper)" stroke="#fff" stroke-width="3"/>
+  <rect x="340" y="610" width="140" height="22" fill="#27406e"/>
+  <g id="s2-dl" stroke="#7d8fb3" stroke-width="10" stroke-linecap="round"></g>
+  <circle cx="660" cy="1130" r="62" fill="none" stroke="#ff3b3b" stroke-width="7" opacity=".85"/>
+ </g>
+ <!-- DIAGRAM -->
+ <g id="s2-wrap"><g id="s2-dia" opacity="0">
+  <ellipse cx="540" cy="1160" rx="520" ry="70" fill="#0c1a33" opacity=".7"/>
+  <!-- pipes (under) -->
+  <path id="s2-steamP" d="M300 790 L300 700 L470 700 L470 840" fill="none" stroke="#4b5d80" stroke-width="22" stroke-linejoin="round"/>
+  <path id="s2-steamF" d="M300 790 L300 700 L470 700 L470 840" fill="none" stroke="#ff8a1f" stroke-width="8" stroke-dasharray="1.4 3.4" stroke-linecap="round"/>
+  <path id="s2-condP" d="M600 1010 L600 1100 L330 1100 L330 1010" fill="none" stroke="#4b5d80" stroke-width="22" stroke-linejoin="round"/>
+  <path id="s2-condF" d="M600 1010 L600 1100 L330 1100 L330 1010" fill="none" stroke="#35c4ff" stroke-width="8" stroke-dasharray="1.4 3.4" stroke-linecap="round"/>
+  <path id="s2-coolP" d="M690 960 L760 960 L760 1120 L830 1120" fill="none" stroke="#4b5d80" stroke-width="18" stroke-linejoin="round"/>
+  <path id="s2-coolF" d="M690 960 L760 960 L760 1120 L830 1120" fill="none" stroke="#35c4ff" stroke-width="6" stroke-dasharray="1.4 3.4" stroke-linecap="round"/>
+  <g id="s2-parts"></g>
+  <g id="s2-bl"></g>
+ </g>
+ <g id="s2-hl" opacity="0">
+  <ellipse id="s2-hlB" cx="210" cy="870" rx="190" ry="250" fill="url(#s2-go)" opacity="0"/>
+  <ellipse id="s2-hlT" cx="590" cy="880" rx="190" ry="130" fill="url(#s2-gl)" opacity="0"/>
+  <ellipse id="s2-hlG" cx="800" cy="880" rx="130" ry="110" fill="url(#s2-gl)" opacity="0"/>
+  <ellipse id="s2-hlP" cx="960" cy="870" rx="110" ry="130" fill="url(#s2-gl)" opacity="0"/>
+ </g></g>
+</svg>
+<div class="stamp" id="s2-stamp" style="opacity:0">ПТЭ</div>
+<div class="kick" id="s2-k" style="opacity:0">Что такое ПТЭ</div>
+<div class="ttl" id="s2-t" style="opacity:0"><b>ПТЭ</b> — ПРАВИЛА ТЕХНИЧЕСКОЙ ЭКСПЛУАТАЦИИ</div>
+<div class="lbl" id="s2-l1" style="left:70px;top:520px;opacity:0">КОТЁЛ</div>
+<div class="lbl blue" id="s2-l2" style="left:430px;top:560px;opacity:0">ТУРБИНА</div>
+<div class="lbl blue" id="s2-l3" style="left:690px;top:610px;opacity:0">ГЕНЕРАТОР</div>
+<div class="lbl" id="s2-l4" style="left:760px;top:1010px;opacity:0">ТРАНСФОРМАТОР</div>
+<div class="lbl blue" id="s2-l5" style="left:70px;top:1130px;opacity:0">НАСОСЫ И ТРУБОПРОВОДЫ</div>
+<div class="badge" id="s2-b1" style="left:60px;opacity:0">БЕЗОПАСНО</div>
+<div class="badge o" id="s2-b2" style="left:390px;opacity:0">НАДЁЖНО</div>
+<div class="badge" id="s2-b3" style="left:720px;opacity:0">ЭФФЕКТИВНО</div>
+</div>
+<script>
+const NS="http://www.w3.org/2000/svg";
+const G=(id)=>document.getElementById(id);
+const SEL=(s)=>Array.from(document.querySelectorAll(s));
+/* animated flow: dashed overlay path whose dash offset travels along the pipe (direction = path direction) */
+function flow(tl,sel,t0,dur,speed){SEL(sel).forEach(p=>{p.setAttribute("pathLength","100");tl.fromTo(p,{strokeDashoffset:0},{strokeDashoffset:-(speed||120),duration:dur,ease:"none"},t0)})}
+function spin(tl,sel,cx,cy,t0,dur,turns){SEL(sel).forEach(e=>tl.fromTo(e,{rotation:0,svgOrigin:cx+" "+cy},{rotation:360*turns,svgOrigin:cx+" "+cy,duration:dur,ease:"none"},t0))}
+function pulse(tl,sel,t0,dur,lo,hi,per){const n=Math.floor(dur/per);SEL(sel).forEach(e=>tl.fromTo(e,{opacity:lo},{opacity:hi,duration:per/2,ease:"sine.inOut",yoyo:true,repeat:n*2-1,immediateRender:false},t0))}
+function popIn(tl,sel,t0,o){o=o||{};SEL(sel).forEach((e,i)=>tl.fromTo(e,{opacity:0,y:o.y===undefined?24:o.y,scale:o.s||1},{opacity:1,y:0,scale:1,duration:o.d||.5,ease:o.e||"back.out(1.6)"},t0+i*(o.stag||0)))}
+function draw(tl,sel,t0,dur,stag){SEL(sel).forEach((e,i)=>{e.setAttribute("pathLength","1");tl.fromTo(e,{strokeDasharray:"1 1",strokeDashoffset:1},{strokeDashoffset:0,duration:dur,ease:"power2.inOut"},t0+i*(stag||0))})}
+/* gauge needle sweep */
+function needle(tl,sel,cx,cy,t0,keys){SEL(sel).forEach(e=>{keys.forEach((k,i)=>tl.to(e,{rotation:k[1],svgOrigin:cx+" "+cy,duration:k[2],ease:k[3]||"sine.inOut"},k[0]))})}
+function steamPuffs(tl,sel,t0,dur,per,rise,drift){SEL(sel).forEach((e,i)=>{const n=Math.max(1,Math.floor(dur/per));tl.fromTo(e,{opacity:0,y:0,x:0,scale:.4},{keyframes:[{opacity:.7,duration:per*.2},{opacity:0,duration:per*.8}],y:-rise,x:drift||0,scale:1.6,duration:per,ease:"none",repeat:n-1,repeatDelay:0},t0+i*per/(SEL(sel).length))})}
+function mk(parent,html){const g=document.createElementNS(NS,"g");g.innerHTML=html;(typeof parent==="string"?G(parent):parent).appendChild(g);return g}
+function shade(hex,k){const n=parseInt(hex.slice(1),16);let r=(n>>16)&255,g=(n>>8)&255,b=n&255;const f=k<0?0:255,t=Math.abs(k);r=Math.round((f-r)*t+r);g=Math.round((f-g)*t+g);b=Math.round((f-b)*t+b);return "#"+((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1)}
+/* pseudo-3D box: front face + top + side */
+function box(parent,x,y,w,h,d,fill,stroke){const t=shade(fill,.22),s=shade(fill,-.3),st=stroke||"#4a6794";
+ return mk(parent,`<polygon points="${x},${y} ${x+d},${y-d*.55} ${x+w+d},${y-d*.55} ${x+w},${y}" fill="${t}" stroke="${st}" stroke-width="2"/><polygon points="${x+w},${y} ${x+w+d},${y-d*.55} ${x+w+d},${y+h-d*.55} ${x+w},${y+h}" fill="${s}" stroke="${st}" stroke-width="2"/><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}" stroke="${st}" stroke-width="2.5"/>`)}
+/* round gauge with needle (needle element id = id+"-n"); returns group */
+function gauge(parent,id,cx,cy,r,col){col=col||"#35c4ff";let tk="";for(let i=0;i<=10;i++){const a=(-120+i*24)*Math.PI/180;const x1=cx+Math.sin(a)*r*.78,y1=cy-Math.cos(a)*r*.78,x2=cx+Math.sin(a)*r*.92,y2=cy-Math.cos(a)*r*.92;tk+=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${i>8?"#ff3b3b":"#9fb4d6"}" stroke-width="${i%5?3:5}"/>`}
+ return mk(parent,`<circle cx="${cx}" cy="${cy}" r="${r+10}" fill="#27354f" stroke="#6c7f9c" stroke-width="5"/><circle cx="${cx}" cy="${cy}" r="${r}" fill="#07101f" stroke="${col}" stroke-width="2" opacity="1"/>${tk}<path d="M${cx+Math.sin(96*Math.PI/180)*r*.62} ${cy-Math.cos(96*Math.PI/180)*r*.62} A${r*.62} ${r*.62} 0 0 1 ${cx+Math.sin(120*Math.PI/180)*r*.62} ${cy-Math.cos(120*Math.PI/180)*r*.62}" stroke="#ff3b3b" stroke-width="6" fill="none"/><g id="${id}-n"><line x1="${cx}" y1="${cy+r*.18}" x2="${cx}" y2="${cy-r*.74}" stroke="#ff8a1f" stroke-width="5" stroke-linecap="round"/></g><circle cx="${cx}" cy="${cy}" r="9" fill="#cfd8ea"/>`)}
+
+(function(){
+const tl=gsap.timeline({paused:true});
+/* document lines */
+const dl=G("s2-dl");for(let i=0;i<10;i++){const l=document.createElementNS(NS,"line");l.setAttribute("x1",340);l.setAttribute("x2",i%3==2?560:740);l.setAttribute("y1",680+i*46);l.setAttribute("y2",680+i*46);dl.appendChild(l)}
+/* diagram parts (pseudo 3D) */
+const P="s2-parts";
+box(P,100,720,200,430,50,"#2b3c5e");           /* boiler */
+mk(P,`<rect x="125" y="750" width="150" height="70" rx="12" fill="#0b1a33" stroke="#ff8a1f" stroke-width="3"/><path d="M150 1120 C160 1050 190 1050 200 1120 Z M200 1120 C210 1030 245 1030 255 1120 Z" fill="#ff8a1f"/><rect x="330" y="640" width="36" height="510" fill="#2d3e60" stroke="#4a6794" stroke-width="2"/><rect x="330" y="640" width="36" height="46" fill="#c9d3e6"/>`);
+box(P,470,840,220,120,40,"#34507f");           /* turbine */
+mk(P,`<g id="s2-bladeG"><circle cx="580" cy="900" r="42" fill="#0b1a33" stroke="#35c4ff" stroke-width="3"/><g stroke="#35c4ff" stroke-width="7" stroke-linecap="round"><line x1="580" y1="862" x2="580" y2="938"/><line x1="542" y1="900" x2="618" y2="900"/><line x1="553" y1="873" x2="607" y2="927"/><line x1="607" y1="873" x2="553" y2="927"/></g></g>`);
+box(P,720,850,150,100,36,"#3a4f78");            /* generator */
+mk(P,`<g id="s2-rotG"><circle cx="795" cy="900" r="32" fill="#0b1a33" stroke="#ff8a1f" stroke-width="3"/><path d="M795 872 A28 28 0 0 1 823 900" stroke="#ff8a1f" stroke-width="8" fill="none"/><path d="M795 928 A28 28 0 0 1 767 900" stroke="#ff8a1f" stroke-width="8" fill="none"/></g><rect x="690" y="890" width="30" height="20" fill="#8fa3c4"/>`);
+box(P,910,840,100,130,26,"#2f4268");            /* transformer */
+mk(P,`<path id="s2-cab" d="M870 905 L910 905" stroke="#35c4ff" stroke-width="6"/><path id="s2-pyl" d="M1000 890 L1000 820 L1050 790" stroke="#8fa3c4" stroke-width="5" fill="none"/>`);
+box(P,470,985,220,60,40,"#27406e");            /* condenser */
+box(P,830,1040,160,150,30,"#223555");           /* cooling tower block */
+mk(P,`<g id="s2-pmp"><circle cx="450" cy="1100" r="38" fill="#0b1a33" stroke="#35c4ff" stroke-width="4"/><g stroke="#35c4ff" stroke-width="6" stroke-linecap="round"><line x1="450" y1="1070" x2="450" y2="1130"/><line x1="420" y1="1100" x2="480" y2="1100"/></g></g>`);
+/* ---- timeline ---- */
+tl.fromTo("#s2-k",{opacity:0,x:-30},{opacity:1,x:0,duration:.4},.3);
+tl.fromTo("#s2-t",{opacity:0,y:30},{opacity:1,y:0,duration:.6,ease:"power3.out"},.45);
+tl.fromTo("#s2-doc",{opacity:0,y:60,scale:.9,svgOrigin:"540 890"},{opacity:1,y:0,scale:1,svgOrigin:"540 890",duration:.7,ease:"back.out(1.4)"},.4);
+tl.fromTo("#s2-dl line",{opacity:0},{opacity:1,duration:.2,stagger:.08},.9);
+tl.fromTo("#s2-stamp",{opacity:0,scale:2.6,rotation:-14},{opacity:1,scale:1,rotation:-14,duration:.3,ease:"power4.in"},1.7);
+tl.fromTo("#s2-gridr",{opacity:.55},{opacity:.85,duration:.8},1.7);
+/* doc -> blueprint */
+tl.to("#s2-doc",{scaleX:0.02,svgOrigin:"540 890",opacity:0,duration:.6,ease:"power2.in"},2.6);
+tl.to("#s2-stamp",{opacity:0,scale:.5,duration:.3},2.5);
+tl.fromTo("#s2-dia",{opacity:0},{opacity:1,duration:.7},2.9);tl.fromTo("#s2-wrap",{y:110,scale:.95,svgOrigin:"540 900"},{y:70,scale:1.12,svgOrigin:"540 900",duration:.9,ease:"power3.out"},2.9);
+tl.fromTo("#s2-hl",{opacity:0},{opacity:1,duration:.3},3);
+flow(tl,"#s2-steamF",3.2,9,300);flow(tl,"#s2-condF",3.2,9,-300);flow(tl,"#s2-coolF",3.2,9,300);
+spin(tl,"#s2-bladeG",580,900,3,9,12);spin(tl,"#s2-rotG",795,900,3,9,12);spin(tl,"#s2-pmp",450,1100,3,9,9);
+pulse(tl,"#s2-cab",3.4,8,.4,1,.5);
+/* highlights follow narration */
+const hl=(id,lab,t)=>{tl.fromTo(id,{opacity:0},{opacity:.9,duration:.3},t);tl.to(id,{opacity:0,duration:.4},t+1.5);tl.fromTo(lab,{opacity:0,x:-20},{opacity:1,x:0,duration:.35,ease:"power3.out"},t)};
+hl("#s2-hlB","#s2-l1",3.4);hl("#s2-hlT","#s2-l2",4.3);hl("#s2-hlG","#s2-l3",5.2);hl("#s2-hlP","#s2-l4",6.0);
+tl.fromTo("#s2-l5",{opacity:0,x:-20},{opacity:1,x:0,duration:.35},6.6);
+["#s2-l1","#s2-l2","#s2-l3","#s2-l4","#s2-l5"].forEach((l,i)=>tl.to(l,{opacity:0,duration:.3},7.6+i*.05));
+tl.fromTo("#s2-b1",{opacity:0,y:30,scale:.8},{opacity:1,y:0,scale:1,duration:.4,ease:"back.out(2)"},7.6);
+tl.fromTo("#s2-b2",{opacity:0,y:30,scale:.8},{opacity:1,y:0,scale:1,duration:.4,ease:"back.out(2)"},8.8);
+tl.fromTo("#s2-b3",{opacity:0,y:30,scale:.8},{opacity:1,y:0,scale:1,duration:.4,ease:"back.out(2)"},9.9);
+tl.to("#s2-wrap",{y:50,scale:1.17,svgOrigin:"540 900",duration:7.5,ease:"sine.inOut"},4.2);
+window.__timelines["s2"]=tl;
+})();
+</script>
+</template>

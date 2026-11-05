@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1080, height=1920"/>
+<title>ПТЭ — правила технической эксплуатации ТЭС</title>
+<script src="assets/vendor/gsap.min.js"></script>
+<style>
+@font-face{font-family:"InterRU";src:url("assets/fonts/Inter-Regular.otf");font-weight:400}
+@font-face{font-family:"InterRU";src:url("assets/fonts/Inter-Bold.otf");font-weight:700}
+@font-face{font-family:"InterRU";src:url("assets/fonts/Inter-ExtraBold.otf");font-weight:800}
+@font-face{font-family:"InterRU";src:url("assets/fonts/Inter-Black.otf");font-weight:900}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#050b18}
+#root{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:"InterRU",sans-serif;background:#050b18}
+.sc{position:absolute;left:0;top:0;width:1080px;height:1920px}
+/* transitions */
+.wipe{position:absolute;left:0;top:0;width:1080px;height:1920px;z-index:50;pointer-events:none}
+.wipe .bar{position:absolute;left:-700px;top:-300px;width:520px;height:2600px;transform:rotate(14deg);
+  background:linear-gradient(90deg,rgba(53,196,255,0),rgba(53,196,255,.55) 40%,rgba(255,255,255,.95) 50%,rgba(53,196,255,.55) 60%,rgba(53,196,255,0))}
+.wipe .flash{position:absolute;inset:0;background:#cfeaff;opacity:0}
+/* overlay */
+.vig{position:absolute;inset:0;z-index:40;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,0) 55%,rgba(0,0,0,.55) 100%)}
+.prog{position:absolute;left:70px;top:1846px;width:940px;height:6px;border-radius:3px;background:rgba(255,255,255,.12);z-index:60}
+.prog i{position:absolute;left:0;top:0;height:6px;width:940px;border-radius:3px;background:linear-gradient(90deg,#35c4ff,#ff8a1f);transform-origin:0 50%;transform:scaleX(0)}
+.prog u{position:absolute;top:-4px;width:2px;height:14px;background:rgba(255,255,255,.4)}
+/* subtitles: mobile-safe band below the illustration stage */
+.cue{position:absolute;left:0;top:0;width:1080px;height:1920px;z-index:70;pointer-events:none}
+.cuebox{position:absolute;left:60px;width:960px;top:1400px;text-align:center;font-size:58px;line-height:1.2;font-weight:900;color:#fff;
+  text-shadow:0 3px 0 rgba(0,0,0,.55),0 6px 22px rgba(0,0,0,.85),0 0 3px rgba(0,0,0,.9)}
+.cuebox span{display:inline-block;margin:0 .13em;opacity:.38}
+.cuebox span.hl{color:#ff8a1f}
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="113.008" data-width="1080" data-height="1920" data-fps="30">
+
+<div id="s1" class="clip sc" data-composition-id="s1" data-composition-src="compositions/s1.html" data-start="0.0" data-duration="12.937" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+<div id="s2" class="clip sc" data-composition-id="s2" data-composition-src="compositions/s2.html" data-start="12.937" data-duration="11.845" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+<div id="s3" class="clip sc" data-composition-id="s3" data-composition-src="compositions/s3.html" data-start="24.782" data-duration="14.639" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+<div id="s4" class="clip sc" data-composition-id="s4" data-composition-src="compositions/s4.html" data-start="39.421" data-duration="15.14" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+<div id="s5" class="clip sc" data-composition-id="s5" data-composition-src="compositions/s5.html" data-start="54.561" data-duration="14.283" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+<div id="s6" class="clip sc" data-composition-id="s6" data-composition-src="compositions/s6.html" data-start="68.844" data-duration="13.107" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+<div id="s7" class="clip sc" data-composition-id="s7" data-composition-src="compositions/s7.html" data-start="81.951" data-duration="14.21" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+<div id="s8" class="clip sc" data-composition-id="s8" data-composition-src="compositions/s8.html" data-start="96.161" data-duration="16.847" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920"></div>
+
+<div id="wipe2" class="wipe clip" data-start="12.537" data-duration="0.9" data-track-index="7"><div class="flash" id="wf2"></div><div class="bar" id="wb2"></div></div>
+<div id="wipe3" class="wipe clip" data-start="24.382" data-duration="0.9" data-track-index="7"><div class="flash" id="wf3"></div><div class="bar" id="wb3"></div></div>
+<div id="wipe4" class="wipe clip" data-start="39.021" data-duration="0.9" data-track-index="7"><div class="flash" id="wf4"></div><div class="bar" id="wb4"></div></div>
+<div id="wipe5" class="wipe clip" data-start="54.161" data-duration="0.9" data-track-index="7"><div class="flash" id="wf5"></div><div class="bar" id="wb5"></div></div>
+<div id="wipe6" class="wipe clip" data-start="68.444" data-duration="0.9" data-track-index="7"><div class="flash" id="wf6"></div><div class="bar" id="wb6"></div></div>
+<div id="wipe7" class="wipe clip" data-start="81.551" data-duration="0.9" data-track-index="7"><div class="flash" id="wf7"></div><div class="bar" id="wb7"></div></div>
+<div id="wipe8" class="wipe clip" data-start="95.761" data-duration="0.9" data-track-index="7"><div class="flash" id="wf8"></div><div class="bar" id="wb8"></div></div>
+<div class="vig clip" id="vig" data-start="0" data-duration="113.008" data-track-index="5"></div>
+<div class="prog clip" id="prog" data-start="0" data-duration="113.008" data-track-index="6"><i id="progfill"></i><u style="left:0.0px"></u><u style="left:107.6px"></u><u style="left:206.1px"></u><u style="left:327.9px"></u><u style="left:453.8px"></u><u style="left:572.6px"></u><u style="left:681.7px"></u><u style="left:799.9px"></u></div>
+
+<div id="cue0" class="cue clip" data-start="0.45" data-duration="2.339" data-track-index="8"><div class="cuebox" id="cb0"><span id="c0w0">Одна</span> <span id="c0w1" class=hl>ошибка</span> <span id="c0w2">на</span> <span id="c0w3">тепловой</span> <span id="c0w4">электростанции</span></div></div>
+<div id="cue1" class="cue clip" data-start="2.809" data-duration="3.136" data-track-index="8"><div class="cuebox" id="cb1"><span id="c1w0">может</span> <span id="c1w1">привести</span> <span id="c1w2">к</span> <span id="c1w3">серьёзным</span> <span id="c1w4">последствиям.</span></div></div>
+<div id="cue2" class="cue clip" data-start="5.965" data-duration="2.160" data-track-index="8"><div class="cuebox" id="cb2"><span id="c2w0">Именно</span> <span id="c2w1">поэтому</span> <span id="c2w2">существует</span> <span id="c2w3" class=hl>ПТЭ</span> <span id="c2w4">—</span></div></div>
+<div id="cue3" class="cue clip" data-start="8.145" data-duration="2.337" data-track-index="8"><div class="cuebox" id="cb3"><span id="c3w0" class=hl>правила,</span> <span id="c3w1">от</span> <span id="c3w2">которых</span> <span id="c3w3">зависит</span> <span id="c3w4" class=hl>надёжность</span> <span id="c3w5">и</span></div></div>
+<div id="cue4" class="cue clip" data-start="10.502" data-duration="1.885" data-track-index="8"><div class="cuebox" id="cb4"><span id="c4w0" class=hl>безопасность</span> <span id="c4w1">всей</span> <span id="c4w2">станции.</span></div></div>
+<div id="cue5" class="cue clip" data-start="13.387" data-duration="1.857" data-track-index="8"><div class="cuebox" id="cb5"><span id="c5w0" class=hl>ПТЭ</span> <span id="c5w1">—</span> <span id="c5w2">это</span> <span id="c5w3">система</span> <span id="c5w4">требований</span> <span id="c5w5">к</span></div></div>
+<div id="cue6" class="cue clip" data-start="15.264" data-duration="2.044" data-track-index="8"><div class="cuebox" id="cb6"><span id="c6w0">эксплуатации</span> <span id="c6w1">теплоэнергетического</span></div></div>
+<div id="cue7" class="cue clip" data-start="17.328" data-duration="1.469" data-track-index="8"><div class="cuebox" id="cb7"><span id="c7w0" class=hl>оборудования.</span></div></div>
+<div id="cue8" class="cue clip" data-start="18.817" data-duration="1.376" data-track-index="8"><div class="cuebox" id="cb8"><span id="c8w0">Их</span> <span id="c8w1">главная</span> <span id="c8w2">задача</span> <span id="c8w3">—</span></div></div>
+<div id="cue9" class="cue clip" data-start="20.213" data-duration="1.543" data-track-index="8"><div class="cuebox" id="cb9"><span id="c9w0">обеспечить</span> <span id="c9w1" class=hl>безопасную,</span></div></div>
+<div id="cue10" class="cue clip" data-start="21.776" data-duration="2.456" data-track-index="8"><div class="cuebox" id="cb10"><span id="c10w0" class=hl>надёжную</span> <span id="c10w1">и</span> <span id="c10w2">эффективную</span> <span id="c10w3">работу</span> <span id="c10w4">станции.</span></div></div>
+<div id="cue11" class="cue clip" data-start="25.232" data-duration="2.392" data-track-index="8"><div class="cuebox" id="cb11"><span id="c11w0">Начнём</span> <span id="c11w1">с</span> <span id="c11w2" class=hl>котельного</span> <span id="c11w3" class=hl>оборудования.</span></div></div>
+<div id="cue12" class="cue clip" data-start="27.644" data-duration="1.585" data-track-index="8"><div class="cuebox" id="cb12"><span id="c12w0">Здесь</span> <span id="c12w1">топливо</span> <span id="c12w2">сгорает,</span></div></div>
+<div id="cue13" class="cue clip" data-start="29.249" data-duration="2.801" data-track-index="8"><div class="cuebox" id="cb13"><span id="c13w0" class=hl>вода</span> <span id="c13w1">нагревается</span> <span id="c13w2">и</span> <span id="c13w3">превращается</span> <span id="c13w4">в</span> <span id="c13w5" class=hl>пар.</span></div></div>
+<div id="cue14" class="cue clip" data-start="32.07" data-duration="1.577" data-track-index="8"><div class="cuebox" id="cb14"><span id="c14w0">Контроль</span> <span id="c14w1" class=hl>температуры,</span></div></div>
+<div id="cue15" class="cue clip" data-start="33.667" data-duration="1.931" data-track-index="8"><div class="cuebox" id="cb15"><span id="c15w0" class=hl>давления,</span> <span id="c15w1">уровня</span> <span id="c15w2" class=hl>воды</span> <span id="c15w3">и</span> <span id="c15w4">состояния</span></div></div>
+<div id="cue16" class="cue clip" data-start="35.618" data-duration="3.253" data-track-index="8"><div class="cuebox" id="cb16"><span id="c16w0" class=hl>защитных</span> <span id="c16w1">устройств</span> <span id="c16w2">имеет</span> <span id="c16w3">принципиальное</span> <span id="c16w4">значение.</span></div></div>
+<div id="cue17" class="cue clip" data-start="39.871" data-duration="2.342" data-track-index="8"><div class="cuebox" id="cb17"><span id="c17w0">Далее</span> <span id="c17w1" class=hl>пар</span> <span id="c17w2">поступает</span> <span id="c17w3">в</span> <span id="c17w4" class=hl>турбину</span> <span id="c17w5">и</span> <span id="c17w6">приводит</span></div></div>
+<div id="cue18" class="cue clip" data-start="42.233" data-duration="1.874" data-track-index="8"><div class="cuebox" id="cb18"><span id="c18w0">её</span> <span id="c18w1">ротор</span> <span id="c18w2">во</span> <span id="c18w3">вращение.</span></div></div>
+<div id="cue19" class="cue clip" data-start="44.127" data-duration="2.160" data-track-index="8"><div class="cuebox" id="cb19"><span id="c19w0" class=hl>Генератор</span> <span id="c19w1">преобразует</span> <span id="c19w2">механическую</span></div></div>
+<div id="cue20" class="cue clip" data-start="46.307" data-duration="2.204" data-track-index="8"><div class="cuebox" id="cb20"><span id="c20w0">энергию</span> <span id="c20w1">в</span> <span id="c20w2">электрическую.</span></div></div>
+<div id="cue21" class="cue clip" data-start="48.531" data-duration="2.346" data-track-index="8"><div class="cuebox" id="cb21"><span id="c21w0">Работа</span> <span id="c21w1">этих</span> <span id="c21w2">систем</span> <span id="c21w3">требует</span> <span id="c21w4">постоянного</span></div></div>
+<div id="cue22" class="cue clip" data-start="50.897" data-duration="2.098" data-track-index="8"><div class="cuebox" id="cb22"><span id="c22w0">контроля</span> <span id="c22w1">параметров</span> <span id="c22w2">и</span> <span id="c22w3">технического</span></div></div>
+<div id="cue23" class="cue clip" data-start="53.015" data-duration="0.996" data-track-index="8"><div class="cuebox" id="cb23"><span id="c23w0">состояния.</span></div></div>
+<div id="cue24" class="cue clip" data-start="55.011" data-duration="3.046" data-track-index="8"><div class="cuebox" id="cb24"><span id="c24w0">Но</span> <span id="c24w1">станция</span> <span id="c24w2">—</span> <span id="c24w3">это</span> <span id="c24w4">не</span> <span id="c24w5">только</span> <span id="c24w6" class=hl>котёл</span> <span id="c24w7">и</span> <span id="c24w8" class=hl>турбина.</span></div></div>
+<div id="cue25" class="cue clip" data-start="58.077" data-duration="2.364" data-track-index="8"><div class="cuebox" id="cb25"><span id="c25w0">Насосы</span> <span id="c25w1">обеспечивают</span> <span id="c25w2">циркуляцию</span> <span id="c25w3" class=hl>воды,</span></div></div>
+<div id="cue26" class="cue clip" data-start="60.461" data-duration="1.853" data-track-index="8"><div class="cuebox" id="cb26"><span id="c26w0">арматура</span> <span id="c26w1">регулирует</span> <span id="c26w2">потоки,</span></div></div>
+<div id="cue27" class="cue clip" data-start="62.334" data-duration="2.023" data-track-index="8"><div class="cuebox" id="cb27"><span id="c27w0">теплообменники</span> <span id="c27w1">передают</span> <span id="c27w2">тепло,</span></div></div>
+<div id="cue28" class="cue clip" data-start="64.377" data-duration="2.081" data-track-index="8"><div class="cuebox" id="cb28"><span id="c28w0">а</span> <span id="c28w1">системы</span> <span id="c28w2">водоподготовки</span> <span id="c28w3">поддерживают</span></div></div>
+<div id="cue29" class="cue clip" data-start="66.478" data-duration="1.816" data-track-index="8"><div class="cuebox" id="cb29"><span id="c29w0">необходимое</span> <span id="c29w1">качество</span> <span id="c29w2" class=hl>воды.</span></div></div>
+<div id="cue30" class="cue clip" data-start="69.294" data-duration="1.929" data-track-index="8"><div class="cuebox" id="cb30"><span id="c30w0">Перед</span> <span id="c30w1">выполнением</span> <span id="c30w2">работ</span> <span id="c30w3">необходимо</span></div></div>
+<div id="cue31" class="cue clip" data-start="71.243" data-duration="1.872" data-track-index="8"><div class="cuebox" id="cb31"><span id="c31w0">соблюдать</span> <span id="c31w1">установленные</span> <span id="c31w2">процедуры</span></div></div>
+<div id="cue32" class="cue clip" data-start="73.135" data-duration="1.369" data-track-index="8"><div class="cuebox" id="cb32"><span id="c32w0" class=hl>безопасности.</span></div></div>
+<div id="cue33" class="cue clip" data-start="74.524" data-duration="2.236" data-track-index="8"><div class="cuebox" id="cb33"><span id="c33w0">Нельзя</span> <span id="c33w1">самовольно</span> <span id="c33w2">отключать</span> <span id="c33w3" class=hl>защиты,</span></div></div>
+<div id="cue34" class="cue clip" data-start="76.78" data-duration="1.795" data-track-index="8"><div class="cuebox" id="cb34"><span id="c34w0">нарушать</span> <span id="c34w1">порядок</span> <span id="c34w2">переключений</span> <span id="c34w3">или</span></div></div>
+<div id="cue35" class="cue clip" data-start="78.595" data-duration="2.806" data-track-index="8"><div class="cuebox" id="cb35"><span id="c35w0">допускать</span> <span id="c35w1">к</span> <span id="c35w2">работе</span> <span id="c35w3">неподготовленный</span> <span id="c35w4">персонал.</span></div></div>
+<div id="cue36" class="cue clip" data-start="82.401" data-duration="1.969" data-track-index="8"><div class="cuebox" id="cb36"><span id="c36w0">Оператор</span> <span id="c36w1">несёт</span> <span id="c36w2" class=hl>ответственность</span> <span id="c36w3">за</span></div></div>
+<div id="cue37" class="cue clip" data-start="84.39" data-duration="1.548" data-track-index="8"><div class="cuebox" id="cb37"><span id="c37w0">внимательное</span> <span id="c37w1">наблюдение</span> <span id="c37w2">за</span></div></div>
+<div id="cue38" class="cue clip" data-start="85.958" data-duration="1.848" data-track-index="8"><div class="cuebox" id="cb38"><span id="c38w0" class=hl>оборудованием,</span> <span id="c38w1">контроль</span> <span id="c38w2">рабочих</span></div></div>
+<div id="cue39" class="cue clip" data-start="87.826" data-duration="2.331" data-track-index="8"><div class="cuebox" id="cb39"><span id="c39w0">параметров</span> <span id="c39w1">и</span> <span id="c39w2">своевременное</span> <span id="c39w3">реагирование</span></div></div>
+<div id="cue40" class="cue clip" data-start="90.177" data-duration="1.486" data-track-index="8"><div class="cuebox" id="cb40"><span id="c40w0">на</span> <span id="c40w1">отклонения.</span></div></div>
+<div id="cue41" class="cue clip" data-start="91.683" data-duration="1.529" data-track-index="8"><div class="cuebox" id="cb41"><span id="c41w0" class=hl>Дисциплина</span> <span id="c41w1">персонала</span> <span id="c41w2">—</span></div></div>
+<div id="cue42" class="cue clip" data-start="93.232" data-duration="2.379" data-track-index="8"><div class="cuebox" id="cb42"><span id="c42w0">важная</span> <span id="c42w1">часть</span> <span id="c42w2" class=hl>надёжной</span> <span id="c42w3">работы</span> <span id="c42w4">станции.</span></div></div>
+<div id="cue43" class="cue clip" data-start="96.611" data-duration="3.377" data-track-index="8"><div class="cuebox" id="cb43"><span id="c43w0" class=hl>ПТЭ</span> <span id="c43w1">—</span> <span id="c43w2">это</span> <span id="c43w3">не</span> <span id="c43w4">просто</span> <span id="c43w5">инструкция</span> <span id="c43w6">на</span> <span id="c43w7">бумаге.</span></div></div>
+<div id="cue44" class="cue clip" data-start="100.008" data-duration="2.359" data-track-index="8"><div class="cuebox" id="cb44"><span id="c44w0">Это</span> <span id="c44w1">ежедневная</span> <span id="c44w2" class=hl>ответственность</span> <span id="c44w3">каждого</span></div></div>
+<div id="cue45" class="cue clip" data-start="102.387" data-duration="1.282" data-track-index="8"><div class="cuebox" id="cb45"><span id="c45w0">работника.</span></div></div>
+<div id="cue46" class="cue clip" data-start="103.689" data-duration="1.370" data-track-index="8"><div class="cuebox" id="cb46"><span id="c46w0" class=hl>Безопасность</span> <span id="c46w1">людей,</span></div></div>
+<div id="cue47" class="cue clip" data-start="105.079" data-duration="2.038" data-track-index="8"><div class="cuebox" id="cb47"><span id="c47w0">сохранность</span> <span id="c47w1" class=hl>оборудования</span> <span id="c47w2">и</span> <span id="c47w3">стабильная</span></div></div>
+<div id="cue48" class="cue clip" data-start="107.137" data-duration="2.205" data-track-index="8"><div class="cuebox" id="cb48"><span id="c48w0">подача</span> <span id="c48w1">тепла</span> <span id="c48w2">и</span> <span id="c48w3" class=hl>электроэнергии</span> <span id="c48w4">начинаются</span></div></div>
+<div id="cue49" class="cue clip" data-start="109.362" data-duration="1.446" data-track-index="8"><div class="cuebox" id="cb49"><span id="c49w0">с</span> <span id="c49w1">соблюдения</span> <span id="c49w2" class=hl>правил.</span></div></div>
+
+<audio id="a-music" class="clip" src="audio/music.mp3" data-start="0" data-duration="113.008" data-volume="0.62" data-track-index="10"></audio>
+<audio id="a-amb" class="clip" src="audio/ambience.mp3" data-start="0" data-duration="113.008" data-volume="0.42" data-track-index="11"></audio>
+<audio id="a-sfx" class="clip" src="audio/sfx.mp3" data-start="0" data-duration="113.008" data-volume="0.62" data-track-index="12"></audio>
+<audio id="a-voice" class="clip" src="audio/voice.mp3" data-start="0" data-duration="113.008" data-volume="1" data-track-index="13"></audio>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+(function(){
+ const tl = gsap.timeline({paused:true});
+ tl.fromTo("#progfill",{scaleX:0},{scaleX:1,duration:113.008,ease:"none"},0);
+ tl.fromTo("#wb2",{x:0},{x:2100,duration:.8,ease:"power2.inOut"},12.537);tl.fromTo("#wf2",{opacity:0},{keyframes:[{opacity:.55,duration:.2},{opacity:0,duration:.35}],ease:"none"},12.737);
+ tl.fromTo("#wb3",{x:0},{x:2100,duration:.8,ease:"power2.inOut"},24.382);tl.fromTo("#wf3",{opacity:0},{keyframes:[{opacity:.55,duration:.2},{opacity:0,duration:.35}],ease:"none"},24.582);
+ tl.fromTo("#wb4",{x:0},{x:2100,duration:.8,ease:"power2.inOut"},39.021);tl.fromTo("#wf4",{opacity:0},{keyframes:[{opacity:.55,duration:.2},{opacity:0,duration:.35}],ease:"none"},39.221);
+ tl.fromTo("#wb5",{x:0},{x:2100,duration:.8,ease:"power2.inOut"},54.161);tl.fromTo("#wf5",{opacity:0},{keyframes:[{opacity:.55,duration:.2},{opacity:0,duration:.35}],ease:"none"},54.361);
+ tl.fromTo("#wb6",{x:0},{x:2100,duration:.8,ease:"power2.inOut"},68.444);tl.fromTo("#wf6",{opacity:0},{keyframes:[{opacity:.55,duration:.2},{opacity:0,duration:.35}],ease:"none"},68.644);
+ tl.fromTo("#wb7",{x:0},{x:2100,duration:.8,ease:"power2.inOut"},81.551);tl.fromTo("#wf7",{opacity:0},{keyframes:[{opacity:.55,duration:.2},{opacity:0,duration:.35}],ease:"none"},81.751);
+ tl.fromTo("#wb8",{x:0},{x:2100,duration:.8,ease:"power2.inOut"},95.761);tl.fromTo("#wf8",{opacity:0},{keyframes:[{opacity:.55,duration:.2},{opacity:0,duration:.35}],ease:"none"},95.961);
+ tl.to("#c0w0",{opacity:1,duration:.12,ease:"none"},0.450);
+ tl.to("#c0w1",{opacity:1,duration:.12,ease:"none"},0.726);
+ tl.to("#c0w2",{opacity:1,duration:.12,ease:"none"},1.112);
+ tl.to("#c0w3",{opacity:1,duration:.12,ease:"none"},1.278);
+ tl.to("#c0w4",{opacity:1,duration:.12,ease:"none"},1.774);
+ tl.fromTo("#cb0",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},0.450);
+ tl.to("#c1w0",{opacity:1,duration:.12,ease:"none"},2.809);
+ tl.to("#c1w1",{opacity:1,duration:.12,ease:"none"},3.231);
+ tl.to("#c1w2",{opacity:1,duration:.12,ease:"none"},3.865);
+ tl.to("#c1w3",{opacity:1,duration:.12,ease:"none"},4.005);
+ tl.to("#c1w4",{opacity:1,duration:.12,ease:"none"},4.709);
+ tl.fromTo("#cb1",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},2.809);
+ tl.to("#c2w0",{opacity:1,duration:.12,ease:"none"},5.965);
+ tl.to("#c2w1",{opacity:1,duration:.12,ease:"none"},6.400);
+ tl.to("#c2w2",{opacity:1,duration:.12,ease:"none"},6.896);
+ tl.to("#c2w3",{opacity:1,duration:.12,ease:"none"},7.580);
+ tl.to("#c2w4",{opacity:1,duration:.12,ease:"none"},7.828);
+ tl.fromTo("#cb2",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},5.965);
+ tl.to("#c3w0",{opacity:1,duration:.12,ease:"none"},8.145);
+ tl.to("#c3w1",{opacity:1,duration:.12,ease:"none"},8.617);
+ tl.to("#c3w2",{opacity:1,duration:.12,ease:"none"},8.774);
+ tl.to("#c3w3",{opacity:1,duration:.12,ease:"none"},9.194);
+ tl.to("#c3w4",{opacity:1,duration:.12,ease:"none"},9.613);
+ tl.to("#c3w5",{opacity:1,duration:.12,ease:"none"},10.190);
+ tl.fromTo("#cb3",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},8.145);
+ tl.to("#c4w0",{opacity:1,duration:.12,ease:"none"},10.502);
+ tl.to("#c4w1",{opacity:1,duration:.12,ease:"none"},11.337);
+ tl.to("#c4w2",{opacity:1,duration:.12,ease:"none"},11.658);
+ tl.fromTo("#cb4",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},10.502);
+ tl.to("#c5w0",{opacity:1,duration:.12,ease:"none"},13.387);
+ tl.to("#c5w1",{opacity:1,duration:.12,ease:"none"},13.607);
+ tl.to("#c5w2",{opacity:1,duration:.12,ease:"none"},13.718);
+ tl.to("#c5w3",{opacity:1,duration:.12,ease:"none"},13.938);
+ tl.to("#c5w4",{opacity:1,duration:.12,ease:"none"},14.379);
+ tl.to("#c5w5",{opacity:1,duration:.12,ease:"none"},14.985);
+ tl.fromTo("#cb5",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},13.387);
+ tl.to("#c6w0",{opacity:1,duration:.12,ease:"none"},15.264);
+ tl.to("#c6w1",{opacity:1,duration:.12,ease:"none"},15.983);
+ tl.fromTo("#cb6",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},15.264);
+ tl.to("#c7w0",{opacity:1,duration:.12,ease:"none"},17.328);
+ tl.fromTo("#cb7",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},17.328);
+ tl.to("#c8w0",{opacity:1,duration:.12,ease:"none"},18.817);
+ tl.to("#c8w1",{opacity:1,duration:.12,ease:"none"},19.007);
+ tl.to("#c8w2",{opacity:1,duration:.12,ease:"none"},19.513);
+ tl.to("#c8w3",{opacity:1,duration:.12,ease:"none"},19.956);
+ tl.fromTo("#cb8",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},18.817);
+ tl.to("#c9w0",{opacity:1,duration:.12,ease:"none"},20.213);
+ tl.to("#c9w1",{opacity:1,duration:.12,ease:"none"},20.892);
+ tl.fromTo("#cb9",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},20.213);
+ tl.to("#c10w0",{opacity:1,duration:.12,ease:"none"},21.776);
+ tl.to("#c10w1",{opacity:1,duration:.12,ease:"none"},22.297);
+ tl.to("#c10w2",{opacity:1,duration:.12,ease:"none"},22.413);
+ tl.to("#c10w3",{opacity:1,duration:.12,ease:"none"},23.109);
+ tl.to("#c10w4",{opacity:1,duration:.12,ease:"none"},23.514);
+ tl.fromTo("#cb10",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},21.776);
+ tl.to("#c11w0",{opacity:1,duration:.12,ease:"none"},25.232);
+ tl.to("#c11w1",{opacity:1,duration:.12,ease:"none"},25.685);
+ tl.to("#c11w2",{opacity:1,duration:.12,ease:"none"},25.815);
+ tl.to("#c11w3",{opacity:1,duration:.12,ease:"none"},26.526);
+ tl.fromTo("#cb11",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},25.232);
+ tl.to("#c12w0",{opacity:1,duration:.12,ease:"none"},27.644);
+ tl.to("#c12w1",{opacity:1,duration:.12,ease:"none"},28.024);
+ tl.to("#c12w2",{opacity:1,duration:.12,ease:"none"},28.532);
+ tl.fromTo("#cb12",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},27.644);
+ tl.to("#c13w0",{opacity:1,duration:.12,ease:"none"},29.249);
+ tl.to("#c13w1",{opacity:1,duration:.12,ease:"none"},29.579);
+ tl.to("#c13w2",{opacity:1,duration:.12,ease:"none"},30.372);
+ tl.to("#c13w3",{opacity:1,duration:.12,ease:"none"},30.504);
+ tl.to("#c13w4",{opacity:1,duration:.12,ease:"none"},31.363);
+ tl.to("#c13w5",{opacity:1,duration:.12,ease:"none"},31.496);
+ tl.fromTo("#cb13",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},29.249);
+ tl.to("#c14w0",{opacity:1,duration:.12,ease:"none"},32.070);
+ tl.to("#c14w1",{opacity:1,duration:.12,ease:"none"},32.664);
+ tl.fromTo("#cb14",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},32.070);
+ tl.to("#c15w0",{opacity:1,duration:.12,ease:"none"},33.667);
+ tl.to("#c15w1",{opacity:1,duration:.12,ease:"none"},34.190);
+ tl.to("#c15w2",{opacity:1,duration:.12,ease:"none"},34.555);
+ tl.to("#c15w3",{opacity:1,duration:.12,ease:"none"},34.817);
+ tl.to("#c15w4",{opacity:1,duration:.12,ease:"none"},34.921);
+ tl.fromTo("#cb15",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},33.667);
+ tl.to("#c16w0",{opacity:1,duration:.12,ease:"none"},35.618);
+ tl.to("#c16w1",{opacity:1,duration:.12,ease:"none"},36.157);
+ tl.to("#c16w2",{opacity:1,duration:.12,ease:"none"},36.755);
+ tl.to("#c16w3",{opacity:1,duration:.12,ease:"none"},37.114);
+ tl.to("#c16w4",{opacity:1,duration:.12,ease:"none"},38.012);
+ tl.fromTo("#cb16",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},35.618);
+ tl.to("#c17w0",{opacity:1,duration:.12,ease:"none"},39.871);
+ tl.to("#c17w1",{opacity:1,duration:.12,ease:"none"},40.186);
+ tl.to("#c17w2",{opacity:1,duration:.12,ease:"none"},40.397);
+ tl.to("#c17w3",{opacity:1,duration:.12,ease:"none"},40.922);
+ tl.to("#c17w4",{opacity:1,duration:.12,ease:"none"},41.027);
+ tl.to("#c17w5",{opacity:1,duration:.12,ease:"none"},41.448);
+ tl.to("#c17w6",{opacity:1,duration:.12,ease:"none"},41.553);
+ tl.fromTo("#cb17",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},39.871);
+ tl.to("#c18w0",{opacity:1,duration:.12,ease:"none"},42.233);
+ tl.to("#c18w1",{opacity:1,duration:.12,ease:"none"},42.468);
+ tl.to("#c18w2",{opacity:1,duration:.12,ease:"none"},42.938);
+ tl.to("#c18w3",{opacity:1,duration:.12,ease:"none"},43.173);
+ tl.fromTo("#cb18",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},42.233);
+ tl.to("#c19w0",{opacity:1,duration:.12,ease:"none"},44.127);
+ tl.to("#c19w1",{opacity:1,duration:.12,ease:"none"},44.695);
+ tl.to("#c19w2",{opacity:1,duration:.12,ease:"none"},45.376);
+ tl.fromTo("#cb19",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},44.127);
+ tl.to("#c20w0",{opacity:1,duration:.12,ease:"none"},46.307);
+ tl.to("#c20w1",{opacity:1,duration:.12,ease:"none"},46.956);
+ tl.to("#c20w2",{opacity:1,duration:.12,ease:"none"},47.118);
+ tl.fromTo("#cb20",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},46.307);
+ tl.to("#c21w0",{opacity:1,duration:.12,ease:"none"},48.531);
+ tl.to("#c21w1",{opacity:1,duration:.12,ease:"none"},48.918);
+ tl.to("#c21w2",{opacity:1,duration:.12,ease:"none"},49.195);
+ tl.to("#c21w3",{opacity:1,duration:.12,ease:"none"},49.582);
+ tl.to("#c21w4",{opacity:1,duration:.12,ease:"none"},50.025);
+ tl.fromTo("#cb21",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},48.531);
+ tl.to("#c22w0",{opacity:1,duration:.12,ease:"none"},50.897);
+ tl.to("#c22w1",{opacity:1,duration:.12,ease:"none"},51.393);
+ tl.to("#c22w2",{opacity:1,duration:.12,ease:"none"},52.000);
+ tl.to("#c22w3",{opacity:1,duration:.12,ease:"none"},52.110);
+ tl.fromTo("#cb22",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},50.897);
+ tl.to("#c23w0",{opacity:1,duration:.12,ease:"none"},53.015);
+ tl.fromTo("#cb23",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},53.015);
+ tl.to("#c24w0",{opacity:1,duration:.12,ease:"none"},55.011);
+ tl.to("#c24w1",{opacity:1,duration:.12,ease:"none"},55.202);
+ tl.to("#c24w2",{opacity:1,duration:.12,ease:"none"},55.712);
+ tl.to("#c24w3",{opacity:1,duration:.12,ease:"none"},55.839);
+ tl.to("#c24w4",{opacity:1,duration:.12,ease:"none"},56.094);
+ tl.to("#c24w5",{opacity:1,duration:.12,ease:"none"},56.285);
+ tl.to("#c24w6",{opacity:1,duration:.12,ease:"none"},56.731);
+ tl.to("#c24w7",{opacity:1,duration:.12,ease:"none"},57.113);
+ tl.to("#c24w8",{opacity:1,duration:.12,ease:"none"},57.240);
+ tl.fromTo("#cb24",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},55.011);
+ tl.to("#c25w0",{opacity:1,duration:.12,ease:"none"},58.077);
+ tl.to("#c25w1",{opacity:1,duration:.12,ease:"none"},58.488);
+ tl.to("#c25w2",{opacity:1,duration:.12,ease:"none"},59.253);
+ tl.to("#c25w3",{opacity:1,duration:.12,ease:"none"},59.899);
+ tl.fromTo("#cb25",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},58.077);
+ tl.to("#c26w0",{opacity:1,duration:.12,ease:"none"},60.461);
+ tl.to("#c26w1",{opacity:1,duration:.12,ease:"none"},61.009);
+ tl.to("#c26w2",{opacity:1,duration:.12,ease:"none"},61.679);
+ tl.fromTo("#cb26",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},60.461);
+ tl.to("#c27w0",{opacity:1,duration:.12,ease:"none"},62.334);
+ tl.to("#c27w1",{opacity:1,duration:.12,ease:"none"},63.235);
+ tl.to("#c27w2",{opacity:1,duration:.12,ease:"none"},63.775);
+ tl.fromTo("#cb27",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},62.334);
+ tl.to("#c28w0",{opacity:1,duration:.12,ease:"none"},64.377);
+ tl.to("#c28w1",{opacity:1,duration:.12,ease:"none"},64.478);
+ tl.to("#c28w2",{opacity:1,duration:.12,ease:"none"},64.881);
+ tl.to("#c28w3",{opacity:1,duration:.12,ease:"none"},65.637);
+ tl.fromTo("#cb28",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},64.377);
+ tl.to("#c29w0",{opacity:1,duration:.12,ease:"none"},66.478);
+ tl.to("#c29w1",{opacity:1,duration:.12,ease:"none"},67.221);
+ tl.to("#c29w2",{opacity:1,duration:.12,ease:"none"},67.777);
+ tl.fromTo("#cb29",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},66.478);
+ tl.to("#c30w0",{opacity:1,duration:.12,ease:"none"},69.294);
+ tl.to("#c30w1",{opacity:1,duration:.12,ease:"none"},69.598);
+ tl.to("#c30w2",{opacity:1,duration:.12,ease:"none"},70.207);
+ tl.to("#c30w3",{opacity:1,duration:.12,ease:"none"},70.511);
+ tl.fromTo("#cb30",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},69.294);
+ tl.to("#c31w0",{opacity:1,duration:.12,ease:"none"},71.243);
+ tl.to("#c31w1",{opacity:1,duration:.12,ease:"none"},71.750);
+ tl.to("#c31w2",{opacity:1,duration:.12,ease:"none"},72.459);
+ tl.fromTo("#cb31",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},71.243);
+ tl.to("#c32w0",{opacity:1,duration:.12,ease:"none"},73.135);
+ tl.fromTo("#cb32",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},73.135);
+ tl.to("#c33w0",{opacity:1,duration:.12,ease:"none"},74.524);
+ tl.to("#c33w1",{opacity:1,duration:.12,ease:"none"},74.924);
+ tl.to("#c33w2",{opacity:1,duration:.12,ease:"none"},75.553);
+ tl.to("#c33w3",{opacity:1,duration:.12,ease:"none"},76.124);
+ tl.fromTo("#cb33",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},74.524);
+ tl.to("#c34w0",{opacity:1,duration:.12,ease:"none"},76.780);
+ tl.to("#c34w1",{opacity:1,duration:.12,ease:"none"},77.217);
+ tl.to("#c34w2",{opacity:1,duration:.12,ease:"none"},77.606);
+ tl.to("#c34w3",{opacity:1,duration:.12,ease:"none"},78.237);
+ tl.fromTo("#cb34",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},76.780);
+ tl.to("#c35w0",{opacity:1,duration:.12,ease:"none"},78.595);
+ tl.to("#c35w1",{opacity:1,duration:.12,ease:"none"},79.156);
+ tl.to("#c35w2",{opacity:1,duration:.12,ease:"none"},79.268);
+ tl.to("#c35w3",{opacity:1,duration:.12,ease:"none"},79.661);
+ tl.to("#c35w4",{opacity:1,duration:.12,ease:"none"},80.615);
+ tl.fromTo("#cb35",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},78.595);
+ tl.to("#c36w0",{opacity:1,duration:.12,ease:"none"},82.401);
+ tl.to("#c36w1",{opacity:1,duration:.12,ease:"none"},82.881);
+ tl.to("#c36w2",{opacity:1,duration:.12,ease:"none"},83.200);
+ tl.to("#c36w3",{opacity:1,duration:.12,ease:"none"},84.053);
+ tl.fromTo("#cb36",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},82.401);
+ tl.to("#c37w0",{opacity:1,duration:.12,ease:"none"},84.390);
+ tl.to("#c37w1",{opacity:1,duration:.12,ease:"none"},85.076);
+ tl.to("#c37w2",{opacity:1,duration:.12,ease:"none"},85.656);
+ tl.fromTo("#cb37",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},84.390);
+ tl.to("#c38w0",{opacity:1,duration:.12,ease:"none"},85.958);
+ tl.to("#c38w1",{opacity:1,duration:.12,ease:"none"},86.755);
+ tl.to("#c38w2",{opacity:1,duration:.12,ease:"none"},87.233);
+ tl.fromTo("#cb38",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},85.958);
+ tl.to("#c39w0",{opacity:1,duration:.12,ease:"none"},87.826);
+ tl.to("#c39w1",{opacity:1,duration:.12,ease:"none"},88.416);
+ tl.to("#c39w2",{opacity:1,duration:.12,ease:"none"},88.523);
+ tl.to("#c39w3",{opacity:1,duration:.12,ease:"none"},89.274);
+ tl.fromTo("#cb39",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},87.826);
+ tl.to("#c40w0",{opacity:1,duration:.12,ease:"none"},90.177);
+ tl.to("#c40w1",{opacity:1,duration:.12,ease:"none"},90.450);
+ tl.fromTo("#cb40",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},90.177);
+ tl.to("#c41w0",{opacity:1,duration:.12,ease:"none"},91.683);
+ tl.to("#c41w1",{opacity:1,duration:.12,ease:"none"},92.356);
+ tl.to("#c41w2",{opacity:1,duration:.12,ease:"none"},92.967);
+ tl.fromTo("#cb41",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},91.683);
+ tl.to("#c42w0",{opacity:1,duration:.12,ease:"none"},93.232);
+ tl.to("#c42w1",{opacity:1,duration:.12,ease:"none"},93.635);
+ tl.to("#c42w2",{opacity:1,duration:.12,ease:"none"},93.981);
+ tl.to("#c42w3",{opacity:1,duration:.12,ease:"none"},94.499);
+ tl.to("#c42w4",{opacity:1,duration:.12,ease:"none"},94.902);
+ tl.fromTo("#cb42",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},93.232);
+ tl.to("#c43w0",{opacity:1,duration:.12,ease:"none"},96.611);
+ tl.to("#c43w1",{opacity:1,duration:.12,ease:"none"},96.907);
+ tl.to("#c43w2",{opacity:1,duration:.12,ease:"none"},97.055);
+ tl.to("#c43w3",{opacity:1,duration:.12,ease:"none"},97.351);
+ tl.to("#c43w4",{opacity:1,duration:.12,ease:"none"},97.573);
+ tl.to("#c43w5",{opacity:1,duration:.12,ease:"none"},98.090);
+ tl.to("#c43w6",{opacity:1,duration:.12,ease:"none"},98.904);
+ tl.to("#c43w7",{opacity:1,duration:.12,ease:"none"},99.126);
+ tl.fromTo("#cb43",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},96.611);
+ tl.to("#c44w0",{opacity:1,duration:.12,ease:"none"},100.008);
+ tl.to("#c44w1",{opacity:1,duration:.12,ease:"none"},100.231);
+ tl.to("#c44w2",{opacity:1,duration:.12,ease:"none"},100.843);
+ tl.to("#c44w3",{opacity:1,duration:.12,ease:"none"},101.733);
+ tl.fromTo("#cb44",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},100.008);
+ tl.to("#c45w0",{opacity:1,duration:.12,ease:"none"},102.387);
+ tl.fromTo("#cb45",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},102.387);
+ tl.to("#c46w0",{opacity:1,duration:.12,ease:"none"},103.689);
+ tl.to("#c46w1",{opacity:1,duration:.12,ease:"none"},104.508);
+ tl.fromTo("#cb46",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},103.689);
+ tl.to("#c47w0",{opacity:1,duration:.12,ease:"none"},105.079);
+ tl.to("#c47w1",{opacity:1,duration:.12,ease:"none"},105.671);
+ tl.to("#c47w2",{opacity:1,duration:.12,ease:"none"},106.313);
+ tl.to("#c47w3",{opacity:1,duration:.12,ease:"none"},106.411);
+ tl.fromTo("#cb47",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},105.079);
+ tl.to("#c48w0",{opacity:1,duration:.12,ease:"none"},107.137);
+ tl.to("#c48w1",{opacity:1,duration:.12,ease:"none"},107.483);
+ tl.to("#c48w2",{opacity:1,duration:.12,ease:"none"},107.780);
+ tl.to("#c48w3",{opacity:1,duration:.12,ease:"none"},107.879);
+ tl.to("#c48w4",{opacity:1,duration:.12,ease:"none"},108.621);
+ tl.fromTo("#cb48",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},107.137);
+ tl.to("#c49w0",{opacity:1,duration:.12,ease:"none"},109.362);
+ tl.to("#c49w1",{opacity:1,duration:.12,ease:"none"},109.489);
+ tl.to("#c49w2",{opacity:1,duration:.12,ease:"none"},110.186);
+ tl.fromTo("#cb49",{y:14,opacity:0},{y:0,opacity:1,duration:.14,ease:"power2.out"},109.362);
+ window.__timelines["main"] = tl;
+})();
+</script>
+</body>
+</html>
