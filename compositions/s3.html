@@ -75,8 +75,8 @@
  <circle id="s3-p1" cx="925" cy="1055" r="20" fill="#2fd16b"/><circle id="s3-p2" cx="925" cy="1105" r="20" fill="#2fd16b"/><circle id="s3-p3" cx="925" cy="1155" r="20" fill="#2fd16b"/>
  </g>
 </svg>
-<div class="gl" id="s3-g1" style="left:25px;top:905px;opacity:0">ТЕМПЕРАТУРА</div>
-<div class="gl" id="s3-g2" style="left:25px;top:1148px;opacity:0">ДАВЛЕНИЕ</div>
+<div class="gl" id="s3-g1" style="left:25px;top:838px;opacity:0">ТЕМПЕРАТУРА</div>
+<div class="gl" id="s3-g2" style="left:25px;top:1062px;opacity:0">ДАВЛЕНИЕ</div>
 <div class="gl" id="s3-g3" style="left:850px;top:950px;width:200px;opacity:0">УРОВЕНЬ ВОДЫ</div>
 <div class="gl" id="s3-g4" style="left:850px;top:1210px;width:200px;opacity:0">ЗАЩИТЫ</div>
 <div class="kick" id="s3-k" style="opacity:0">Котельное оборудование</div>
@@ -113,7 +113,7 @@ const T=G("s3-tubes");const tubes=[];
 for(let i=0;i<8;i++){const x=345+i*52;mk(T,`<line x1="${x}" y1="1070" x2="${x}" y2="670" stroke="#2a4a7a" stroke-width="16" stroke-linecap="round" class="tb"/><line x1="${x}" y1="1070" x2="${x}" y2="670" stroke="#35c4ff" stroke-width="7" stroke-linecap="round" class="tw"/>`)}
 const BB=G("s3-bubbles");
 for(let i=0;i<8;i++){const c=document.createElementNS(NS,"circle");c.setAttribute("cx",345+i*52);c.setAttribute("cy",1060);c.setAttribute("r",5+(i%3)*2);c.setAttribute("fill","#e8f3ff");c.setAttribute("opacity",0);c.setAttribute("class","bub");BB.appendChild(c)}
-gauge("s3-gaugeL","s3-gt",130,800,75,"#ff8a1f");gauge("s3-gaugeL","s3-gp",130,1040,75,"#35c4ff");
+gauge("s3-gaugeL","s3-gt",130,740,75,"#ff8a1f");gauge("s3-gaugeL","s3-gp",130,960,75,"#35c4ff");
 /* intro */
 tl.fromTo("#s3-k",{opacity:0,x:-30},{opacity:1,x:0,duration:.4},.3);
 tl.fromTo("#s3-t",{opacity:0,y:30},{opacity:1,y:0,duration:.6,ease:"power3.out"},.45);
@@ -139,12 +139,12 @@ flow(tl,"#s3-mainF",6.2,8.4,300);
 tl.fromTo("#s3-ls",{opacity:0,x:20},{opacity:1,x:0,duration:.4},6.4);
 tl.to("#s3-lw",{opacity:0,duration:.3},7.2);tl.to("#s3-lf",{opacity:0,duration:.3},7.2);
 /* gauges 7.3+ */
-tl.fromTo("#s3-gt-n",{rotation:-110,svgOrigin:"130 800"},{rotation:-40,svgOrigin:"130 800",duration:2.5,ease:"power2.out"},3.6);
-tl.fromTo("#s3-gp-n",{rotation:-110,svgOrigin:"130 1040"},{rotation:-60,svgOrigin:"130 1040",duration:2.5,ease:"power2.out"},3.9);
+tl.fromTo("#s3-gt-n",{rotation:-110,svgOrigin:"130 740"},{rotation:-40,svgOrigin:"130 740",duration:2.5,ease:"power2.out"},3.6);
+tl.fromTo("#s3-gp-n",{rotation:-110,svgOrigin:"130 960"},{rotation:-60,svgOrigin:"130 960",duration:2.5,ease:"power2.out"},3.9);
 tl.fromTo("#s3-g1",{opacity:0},{opacity:1,duration:.4},7.5);
-tl.to("#s3-gt-n",{rotation:30,svgOrigin:"130 800",duration:1.6,ease:"sine.inOut"},7.5);tl.to("#s3-gt-n",{rotation:5,svgOrigin:"130 800",duration:1.0,ease:"sine.inOut"},9.2);
+tl.to("#s3-gt-n",{rotation:30,svgOrigin:"130 740",duration:1.6,ease:"sine.inOut"},7.5);tl.to("#s3-gt-n",{rotation:5,svgOrigin:"130 740",duration:1.0,ease:"sine.inOut"},9.2);
 tl.fromTo("#s3-g2",{opacity:0},{opacity:1,duration:.4},8.6);
-tl.to("#s3-gp-n",{rotation:50,svgOrigin:"130 1040",duration:1.6,ease:"sine.inOut"},8.6);tl.to("#s3-gp-n",{rotation:20,svgOrigin:"130 1040",duration:1.0,ease:"sine.inOut"},10.4);
+tl.to("#s3-gp-n",{rotation:50,svgOrigin:"130 960",duration:1.6,ease:"sine.inOut"},8.6);tl.to("#s3-gp-n",{rotation:20,svgOrigin:"130 960",duration:1.0,ease:"sine.inOut"},10.4);
 tl.fromTo("#s3-g3",{opacity:0},{opacity:1,duration:.4},9.7);
 tl.fromTo("#s3-lvl",{y:0,height:74},{y:-20,height:94,duration:1.2,ease:"sine.inOut"},9.7);tl.to("#s3-lvl",{y:-8,height:82,duration:1,ease:"sine.inOut"},11.2);
 tl.fromTo("#s3-g4",{opacity:0},{opacity:1,duration:.4},11.0);

@@ -47,7 +47,7 @@
 <div class="lbl" id="@@l1" style="left:70px;top:520px;opacity:0">КОТЁЛ</div>
 <div class="lbl blue" id="@@l2" style="left:430px;top:560px;opacity:0">ТУРБИНА</div>
 <div class="lbl blue" id="@@l3" style="left:690px;top:610px;opacity:0">ГЕНЕРАТОР</div>
-<div class="lbl" id="@@l4" style="left:760px;top:1010px;opacity:0">ТРАНСФОРМАТОР</div>
+<div class="lbl" id="@@l4" style="left:690px;top:990px;opacity:0">ТРАНСФОРМАТОР</div>
 <div class="lbl blue" id="@@l5" style="left:70px;top:1130px;opacity:0">НАСОСЫ И ТРУБОПРОВОДЫ</div>
 <div class="badge" id="@@b1" style="left:60px;opacity:0">БЕЗОПАСНО</div>
 <div class="badge o" id="@@b2" style="left:390px;opacity:0">НАДЁЖНО</div>
@@ -82,7 +82,7 @@ tl.fromTo("#@@gridr",{opacity:.55},{opacity:.85,duration:.8},1.7);
 /* doc -> blueprint */
 tl.to("#@@doc",{scaleX:0.02,svgOrigin:"540 890",opacity:0,duration:.6,ease:"power2.in"},2.6);
 tl.to("#@@stamp",{opacity:0,scale:.5,duration:.3},2.5);
-tl.fromTo("#@@dia",{opacity:0},{opacity:1,duration:.7},2.9);tl.fromTo("#@@wrap",{y:110,scale:.95,svgOrigin:"540 900"},{y:70,scale:1.12,svgOrigin:"540 900",duration:.9,ease:"power3.out"},2.9);
+tl.fromTo("#@@dia",{opacity:0},{opacity:1,duration:.7},2.9);tl.fromTo("#@@wrap",{y:80,scale:.95,svgOrigin:"540 900"},{y:30,scale:1.0,svgOrigin:"540 900",duration:.9,ease:"power3.out"},2.9);
 tl.fromTo("#@@hl",{opacity:0},{opacity:1,duration:.3},3);
 flow(tl,"#@@steamF",3.2,9,300);flow(tl,"#@@condF",3.2,9,-300);flow(tl,"#@@coolF",3.2,9,300);
 spin(tl,"#@@bladeG",580,900,3,9,12);spin(tl,"#@@rotG",795,900,3,9,12);spin(tl,"#@@pmp",450,1100,3,9,9);
@@ -95,7 +95,7 @@ tl.fromTo("#@@l5",{opacity:0,x:-20},{opacity:1,x:0,duration:.35},6.6);
 tl.fromTo("#@@b1",{opacity:0,y:30,scale:.8},{opacity:1,y:0,scale:1,duration:.4,ease:"back.out(2)"},7.6);
 tl.fromTo("#@@b2",{opacity:0,y:30,scale:.8},{opacity:1,y:0,scale:1,duration:.4,ease:"back.out(2)"},8.8);
 tl.fromTo("#@@b3",{opacity:0,y:30,scale:.8},{opacity:1,y:0,scale:1,duration:.4,ease:"back.out(2)"},9.9);
-tl.to("#@@wrap",{y:50,scale:1.17,svgOrigin:"540 900",duration:7.5,ease:"sine.inOut"},4.2);
+tl.to("#@@wrap",{y:20,scale:1.05,svgOrigin:"540 900",duration:7.5,ease:"sine.inOut"},4.2);
 window.__timelines["s2"]=tl;
 })();
 </script>
