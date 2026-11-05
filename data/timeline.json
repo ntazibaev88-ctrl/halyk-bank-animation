@@ -1,0 +1,131 @@
+{
+  "title": "ШЫМКЕНТ — ГОРОД, КОТОРОМУ БОЛЕЕ 2200 ЛЕТ",
+  "channel": "FACTUM",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "transitionSec": 0.4,
+  "voLeadSec": 0.35,
+  "scenes": [
+    {
+      "id": 1, "slug": "hook", "name": "THE HOOK", "start": 0, "end": 8,
+      "title": "ШЫМКЕНТ: ГОРОД С БОЛЬШОЙ ИСТОРИЕЙ",
+      "narration": "Вы думаете, Шымкент — просто солнечный город на юге Казахстана? Но его история насчитывает более двух тысяч лет. И это только начало.",
+      "highlight": ["Шымкент", "двух", "тысяч", "начало"],
+      "sfx": "whoosh",
+      "shots": [
+        { "sec": 4, "kind": "footage", "cam": "drone, fast push toward city at sunrise", "desc": "Dramatic aerial of Shymkent at sunrise: skyline, avenues, low sun. Fast forward drone movement." },
+        { "sec": 4, "kind": "footage", "cam": "drone descending / tracking", "desc": "Atmospheric transition into the historic centre of Shymkent (low aerial over old streets, mosque minarets, plane trees)." }
+      ]
+    },
+    {
+      "id": 2, "slug": "2200-years", "name": "A CITY WITH 2200 YEARS OF HISTORY", "start": 8, "end": 19,
+      "title": "БОЛЕЕ 2200 ЛЕТ ИСТОРИИ",
+      "narration": "Первый факт. История Шымкента уходит более чем на две тысячи двести лет в прошлое. Археологические находки свидетельствуют о существовании древнего поселения на этой территории ещё до нашей эры.",
+      "highlight": ["двести", "Археологические", "поселения", "эры"],
+      "sfx": "ambience-wind",
+      "shots": [
+        { "sec": 4, "kind": "footage", "cam": "slow slider / tracking", "desc": "Archaeological ruins and excavation trenches in the Shymkent area (real footage or museum-grade reconstruction)." },
+        { "sec": 4, "kind": "footage", "cam": "macro slider", "desc": "Ancient pottery and finds from the Shymkent / South Kazakhstan archaeological collections (museum footage, with permission)." },
+        { "sec": 3, "kind": "graphic", "graphic": "counter2200", "desc": "GENERATED: animated counter 0 → 2200 with timeline rule. No footage needed." }
+      ]
+    },
+    {
+      "id": 3, "slug": "shymqala", "name": "ANCIENT SHYMKALA", "start": 19, "end": 29,
+      "title": "ШЫМҚАЛА — СЛЕДЫ ДРЕВНЕГО ГОРОДА",
+      "narration": "Сегодня увидеть следы древнего города можно в комплексе Шымқала. Здесь сохранились свидетельства разных эпох, а археологи продолжают изучать прошлое города.",
+      "highlight": ["Шымқала", "эпох", "археологи"],
+      "sfx": "ambience-wind",
+      "shots": [
+        { "sec": 3.3, "kind": "footage", "cam": "slow cinematic dolly along walls", "desc": "Shymqala historical-cultural complex: ancient-style walls." },
+        { "sec": 3.3, "kind": "footage", "cam": "slow tilt up", "desc": "Shymqala: towers and archaeological layers/cross-sections." },
+        { "sec": 3.4, "kind": "footage", "cam": "steadicam walk-through", "desc": "Shymqala: narrow historical streets and passages." }
+      ]
+    },
+    {
+      "id": 4, "slug": "silk-road", "name": "THE GREAT SILK ROAD", "start": 29, "end": 39,
+      "title": "ВЕЛИКИЙ ШЁЛКОВЫЙ ПУТЬ",
+      "narration": "Второй факт. Шымкент связан с историей Великого шёлкового пути. Через этот регион проходили торговые маршруты, соединявшие разные культуры, народы и цивилизации.",
+      "highlight": ["Второй", "Великого", "шёлкового", "пути", "цивилизации"],
+      "sfx": "caravan",
+      "shots": [
+        { "sec": 3.3, "kind": "footage", "cam": "tracking", "desc": "Silk Road caravan reconstruction: camels/horses, merchants, steppe light. Must be clearly a reconstruction (real filmed reenactment or licensed historical stock)." },
+        { "sec": 3.4, "kind": "graphic", "graphic": "silkroad-map", "desc": "GENERATED: schematic route map Samarkand – Tashkent – Sayram/Shymkent – Taraz – Almaty. Labelled 'схема'." },
+        { "sec": 3.3, "kind": "footage", "cam": "match-cut from fabrics to street", "desc": "Fabrics at a traditional market, match-cut into modern Shymkent street traffic." }
+      ]
+    },
+    {
+      "id": 5, "slug": "sayram", "name": "ANCIENT SAYRAM", "start": 39, "end": 49,
+      "title": "САЙРАМ — ДРЕВНЕЕ НАСЛЕДИЕ ЮГА",
+      "narration": "Совсем рядом с Шымкентом находится древний Сайрам. Это историческое место связано с именами известных духовных деятелей и многовековой историей региона.",
+      "highlight": ["Сайрам", "духовных", "многовековой"],
+      "sfx": "ambience-birds",
+      "shots": [
+        { "sec": 3.3, "kind": "footage", "cam": "drone orbit", "desc": "Aerial of Sayram (Sayram district, Turkistan region) — the town and the surrounding foothills." },
+        { "sec": 3.3, "kind": "footage", "cam": "slow push-in", "desc": "Sayram historic mausoleums (e.g. Ibrahim-ata, Karashash-ana, Mirali-bab) — verify the exact monument in each clip." },
+        { "sec": 3.4, "kind": "footage", "cam": "handheld close-up", "desc": "Close-ups of traditional architecture, brickwork, tilework; Sayram landscapes." }
+      ]
+    },
+    {
+      "id": 6, "slug": "dendropark", "name": "THE GREEN SIDE OF SHYMKENT", "start": 49, "end": 59,
+      "title": "ДЕНДРОПАРК — ЗЕЛЁНЫЙ ОАЗИС",
+      "narration": "Но Шымкент — это не только древняя история. Город известен своими зелёными парками. Один из самых красивых — дендрологический парк, настоящий оазис посреди мегаполиса.",
+      "highlight": ["зелёными", "парками", "дендрологический", "оазис"],
+      "sfx": "ambience-birds",
+      "shots": [
+        { "sec": 3.3, "kind": "footage", "cam": "tilt up / gimbal", "desc": "Shymkent Dendrological Park: tall trees, canopy, sun rays." },
+        { "sec": 3.3, "kind": "footage", "cam": "drone or gimbal glide", "desc": "Dendropark lakes and walking paths." },
+        { "sec": 3.4, "kind": "footage", "cam": "tracking", "desc": "Families walking, birds, green landscapes in the dendropark." }
+      ]
+    },
+    {
+      "id": 7, "slug": "bazaar-food", "name": "SOUTHERN CULTURE AND FOOD", "start": 59, "end": 69,
+      "title": "ВКУС И ТРАДИЦИИ ЮГА",
+      "narration": "Особая атмосфера Шымкента чувствуется на его базарах. Здесь встречаются ароматы свежих фруктов, горячей самсы, плова и традиционной кухни юга Казахстана.",
+      "highlight": ["базарах", "фруктов", "самсы", "плова"],
+      "sfx": "bazaar",
+      "shots": [
+        { "sec": 3.3, "kind": "footage", "cam": "gimbal tracking through stalls", "desc": "Authentic Shymkent bazaar: fresh fruit and vegetables." },
+        { "sec": 3.3, "kind": "footage", "cam": "macro close-ups", "desc": "Traditional bread (non), samsa from the tandyr, pilaf (plov) in a kazan, lagman." },
+        { "sec": 3.4, "kind": "footage", "cam": "tracking", "desc": "Shoppers and street life at the bazaar." }
+      ]
+    },
+    {
+      "id": 8, "slug": "modern", "name": "MODERN SHYMKENT", "start": 69, "end": 80,
+      "title": "ТРЕТИЙ МЕГАПОЛИС КАЗАХСТАНА",
+      "narration": "Сегодня Шымкент — третий по численности населения город Казахстана и отдельный город республиканского значения. Он развивается, меняется и становится одним из важных центров страны.",
+      "highlight": ["третий", "республиканского", "развивается", "центров"],
+      "sfx": "city-night",
+      "shots": [
+        { "sec": 4, "kind": "footage", "cam": "drone", "desc": "Modern Shymkent skyline and contemporary buildings, aerial." },
+        { "sec": 4, "kind": "footage", "cam": "drone / timelapse", "desc": "Evening traffic, shopping areas, illuminated architecture." },
+        { "sec": 3, "kind": "graphic", "graphic": "rank3", "desc": "GENERATED: big '№3' rank graphic after Almaty and Astana. No population figures shown (they change every year)." }
+      ]
+    },
+    {
+      "id": 9, "slug": "people", "name": "THE CITY OF PEOPLE", "start": 80, "end": 94,
+      "title": "ГОРОД, В КОТОРОМ ЖИВУТ ТРАДИЦИИ",
+      "narration": "Но настоящая душа города — это его люди. Гостеприимство, традиции, семейные ценности и особая атмосфера делают Шымкент непохожим на другие города Казахстана.",
+      "highlight": ["душа", "люди", "Гостеприимство", "традиции", "семейные", "ценности"],
+      "sfx": "ambience-city",
+      "shots": [
+        { "sec": 3.5, "kind": "footage", "cam": "tracking", "desc": "Family walk in a Shymkent park (people with signed releases)." },
+        { "sec": 3.5, "kind": "footage", "cam": "gimbal", "desc": "Young people in the city: cafés, streets, laughter." },
+        { "sec": 3.5, "kind": "footage", "cam": "slow-mo handheld", "desc": "Kazakh traditions: national dress, dombra, hospitality (tea / dastarkhan)." },
+        { "sec": 3.5, "kind": "footage", "cam": "drone", "desc": "Southern landscapes near Shymkent: foothills of the Western Tien Shan / Karatau." }
+      ]
+    },
+    {
+      "id": 10, "slug": "ending", "name": "CINEMATIC ENDING", "start": 94, "end": 105,
+      "title": "ШЫМКЕНТ — ГОРОД, КОТОРЫЙ СТОИТ УЗНАТЬ",
+      "narration": "Шымкент — это город, где древняя история встречается с современностью. И, возможно, мы ещё не знаем всех его историй. А какую историю Шымкента знаете вы?",
+      "highlight": ["древняя", "современностью", "историю", "вы"],
+      "sfx": "swell",
+      "shots": [
+        { "sec": 3.5, "kind": "footage", "cam": "drone, golden hour", "desc": "Golden sunset over Shymkent, wide aerial." },
+        { "sec": 3.5, "kind": "footage", "cam": "drone / gimbal montage", "desc": "Final beauty shots: Shymqala, green parks, modern skyline (can be a quick 3-cut montage)." },
+        { "sec": 4, "kind": "graphic", "graphic": "logo", "desc": "GENERATED: final title + FACTUM logo animation on dark." }
+      ]
+    }
+  ]
+}
