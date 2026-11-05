@@ -1,0 +1,17 @@
+{
+  "name": "almaty-astana-v2",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx --yes hyperframes@0.9.15 preview",
+    "check": "npx --yes hyperframes@0.9.15 check",
+    "render": "npx --yes hyperframes@0.9.15 render",
+    "publish": "npx --yes hyperframes@0.9.15 publish"
+  },
+  "dependencies": {
+    "d3-geo": "^3.1.2",
+    "gsap": "^3.15.1",
+    "topojson-client": "^3.1.0",
+    "world-atlas": "^2.0.2"
+  }
+}

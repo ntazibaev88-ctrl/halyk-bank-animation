@@ -1,0 +1,20 @@
+<template id="sc-trans-template">
+<div data-composition-id="sc-trans" data-width="1080" data-height="1920" style="pointer-events:none">
+  <div id="tr-wrap"></div>
+  <script>
+  (function(){
+    const tl=gsap.timeline({paused:true}), wrap=document.getElementById('tr-wrap');
+    // each cut: a dark slab and a thin accent edge sweep diagonally across the frame, covering the cut
+    const cols=['#37e0b0','#ffb43c','#37e0b0','#ffb43c','#58c8ff','#ffb43c','#37e0b0']; const cuts=TL.scenes.slice(1).map((s,i)=>[s.start,cols[i%7]]);
+    cuts.forEach(([t,c],i)=>{
+      const dir=i%2?-1:1;
+      const slab=document.createElement('div'); slab.className='abs'; slab.style.cssText='left:-300px;top:-200px;width:1700px;height:2300px;background:linear-gradient(100deg,#050b16 0%,#050b16 88%,'+c+' 96%,#fff 100%);transform:translateX(-2000px) skewX(-14deg);will-change:transform';
+      wrap.appendChild(slab);
+      const dur=.42; tl.set(slab,{x: dir>0?-2200:2200, skewX:-14*dir},t-dur-.05);
+      tl.to(slab,{x:0,duration:dur,ease:'power3.in'},t-dur);
+      tl.to(slab,{x: dir>0?2200:-2200,duration:dur+.08,ease:'power3.out'},t+.02);
+    });
+    window.__timelines['sc-trans']=tl;
+  })();
+  </script>
+</div></template>

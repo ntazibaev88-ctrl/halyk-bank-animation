@@ -1,0 +1,48 @@
+<template id="sc-almaty-template">
+<div data-composition-id="sc-almaty" data-width="1080" data-height="1920" class="alm">
+  <canvas class="plate" id="alm-cv" width="1080" height="1920"></canvas>
+  <div class="abs" style="inset:0;background:linear-gradient(180deg,rgba(3,8,18,.62) 0%,rgba(3,8,18,0) 32%,rgba(3,8,18,0) 62%,rgba(3,8,18,.78) 100%)"></div>
+  <div class="hud" id="alm-h1" style="left:72px;top:96px">02 &nbsp;/&nbsp; <b>Алматы</b></div>
+  <div class="hud" id="alm-h2" style="left:72px;top:134px;font-size:20px;color:#9fb8d6">43°14′ с. ш. &nbsp; 76°57′ в. д.</div>
+  <div class="abs glass" id="alm-map" style="right:60px;top:84px;width:238px;height:300px;padding:18px 24px;opacity:0"></div>
+  <div class="lbl" id="alm-l1" style="top:260px"><div class="lbl-k">Горы</div><div class="lbl-t">Заилийский<br>Алатау</div><div class="lbl-s">северный Тянь-Шань у порога города</div><i class="lbl-line"></i></div>
+  <div class="lbl" id="alm-l2" style="top:260px"><div class="lbl-k">Высокогорье</div><div class="lbl-t">Медеу</div><div class="lbl-s">каток на высоте ≈ 1 700 м</div><i class="lbl-line"></i></div>
+  <div class="lbl" id="alm-l3" style="top:260px"><div class="lbl-k">Панорама</div><div class="lbl-t">Кок-Тобе</div><div class="lbl-s">смотровая гора и канатная дорога</div><i class="lbl-line"></i></div>
+  <div class="lbl" id="alm-l4" style="top:260px"><div class="lbl-k">Природа</div><div class="lbl-t">Аллеи<br>и парки</div><div class="lbl-s">тень деревьев в центре города</div><i class="lbl-line"></i></div>
+  <div class="lbl" id="alm-l5" style="top:260px"><div class="lbl-k">Улицы</div><div class="lbl-t">Зелёный<br>мегаполис</div><div class="lbl-s">проспекты, огни и вечерний ритм</div><i class="lbl-line"></i></div>
+  <div class="lbl" id="alm-l6" style="top:260px"><div class="lbl-k">Вечер</div><div class="lbl-t">Город<br>огней</div><div class="lbl-s">южная столица у подножия гор</div><i class="lbl-line"></i></div>
+  <div class="abs" id="alm-elev" style="left:72px;top:1150px;width:936px;height:230px;opacity:0">
+    <svg viewBox="0 0 936 230" width="936" height="230" style="overflow:visible">
+      <line x1="0" y1="200" x2="936" y2="200" stroke="rgba(255,255,255,.35)" stroke-width="2"/>
+      <path d="M0 200 L0 176 C120 170 220 150 320 120 C430 84 520 70 610 44 C690 20 760 12 936 8 L936 200Z" fill="rgba(55,224,176,.14)"/>
+      <path id="alm-prof" d="M0 176 C120 170 220 150 320 120 C430 84 520 70 610 44 C690 20 760 12 936 8" fill="none" stroke="#37e0b0" stroke-width="5" stroke-linecap="round" pathLength="1" stroke-dasharray="1 1.2" stroke-dashoffset="1.1"/>
+      <circle id="alm-prof-dot" r="9" fill="#fff" cx="0" cy="176"/>
+      <text x="0" y="226" fill="#cfe0f5" font-size="24" font-weight="700" letter-spacing="2">ГОРОД · ≈ 800 м</text>
+      <text x="936" y="226" fill="#cfe0f5" font-size="24" font-weight="700" letter-spacing="2" text-anchor="end">ПИК ТАЛГАР · 4 979 м</text>
+    </svg>
+  </div>
+  <script>
+  (function(){
+    const T=TLX('almaty'), $=id=>document.getElementById(id), tl=gsap.timeline({paused:true}); SHOT.init();
+    const g=.05;
+    const shots=[
+      {n:'mountains',a:0,b:T.pa('a2',1),el:$('alm-l1'),la:T.pa('a1',1)-.3},
+      {n:'medeu',a:T.pa('a2',1),b:T.a('a3')-g,el:$('alm-l2')},
+      {n:'koktobe',a:T.a('a3')-g,b:T.a('a4')-g,el:$('alm-l3')},
+      {n:'park',a:T.a('a4')-g,b:T.pa('a4',1)-g,el:$('alm-l4')},
+      {n:'streets',a:T.pa('a4',1)-g,b:T.a('a5')-g,el:$('alm-l5')},
+      {n:'skyline',a:T.a('a5')-g,b:T.dur+.2,el:$('alm-l6')}];
+    SCENE.shotScene({tl,cv:$('alm-cv'),dur:T.dur+.2,shots,tint:'rgba(255,170,90,.16)'});
+    tl.fromTo($('alm-cv'),{scale:1.08,transformOrigin:'50% 50%'},{scale:1,duration:2.4,ease:'power2.out'},0);
+    SCENE.hud(tl,'alm','almaty',T);
+    // elevation profile accompanies "город у подножия Заилийского Алатау"
+    const p0=T.pa('a1',1)-.1, p1=shots[0].b-.35;
+    tl.fromTo($('alm-elev'),{y:40,opacity:0},{y:0,opacity:1,duration:.5,ease:'power3.out'},p0);
+    tl.to($('alm-prof'),{strokeDashoffset:0,duration:1.5,ease:'power2.inOut'},p0+.2);
+    const path=$('alm-prof'),L=path.getTotalLength?path.getTotalLength():900,o={u:0};
+    tl.to(o,{u:1,duration:1.5,ease:'power2.inOut',onUpdate(){const q=path.getPointAtLength(o.u*L);$('alm-prof-dot').setAttribute('cx',q.x);$('alm-prof-dot').setAttribute('cy',q.y);}},p0+.2);
+    tl.to($('alm-elev'),{opacity:0,y:-20,duration:.3,ease:'power2.in'},p1);
+    window.__timelines['sc-almaty']=tl;
+  })();
+  </script>
+</div></template>

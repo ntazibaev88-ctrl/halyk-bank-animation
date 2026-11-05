@@ -1,0 +1,37 @@
+<template id="sc-astana-template">
+<div data-composition-id="sc-astana" data-width="1080" data-height="1920" class="ast">
+  <canvas class="plate" id="ast-cv" width="1080" height="1920"></canvas>
+  <div class="abs" style="inset:0;background:linear-gradient(180deg,rgba(3,8,18,.6) 0%,rgba(3,8,18,0) 32%,rgba(3,8,18,0) 62%,rgba(3,8,18,.8) 100%)"></div>
+  <div class="hud" id="ast-h1" style="left:72px;top:96px">03 &nbsp;/&nbsp; <b>Астана</b></div>
+  <div class="hud" id="ast-h2" style="left:72px;top:134px;font-size:20px;color:#9fb8d6">51°10′ с. ш. &nbsp; 71°27′ в. д.</div>
+  <div class="abs glass" id="ast-map" style="right:60px;top:84px;width:238px;height:300px;padding:18px 24px;opacity:0"></div>
+  <div class="lbl" id="ast-l1" style="top:260px"><div class="lbl-k">Столица</div><div class="lbl-t">С <span id="ast-yr">1990</span><br>года</div><div class="lbl-s">Астана — столица Казахстана</div><i class="lbl-line"></i></div>
+  <div class="lbl" id="ast-l2" style="top:260px"><div class="lbl-k">Символ</div><div class="lbl-t">Байтерек</div><div class="lbl-s">башня высотой <b id="ast-h">0</b> метров</div><i class="lbl-line"></i></div>
+  <div class="lbl" id="ast-l3" style="top:260px"><div class="lbl-k">Форма</div><div class="lbl-t">Хан<br>Шатыр</div><div class="lbl-s">прозрачный шатёр высотой <b id="ast-h2c">0</b> м</div><i class="lbl-line"></i></div>
+  <div class="lbl" id="ast-l4" style="top:260px"><div class="lbl-k">ЭКСПО</div><div class="lbl-t">Нур<br>Алем</div><div class="lbl-s">стеклянная сфера выставки</div><i class="lbl-line"></i></div>
+  <div class="lbl" id="ast-l5" style="top:260px"><div class="lbl-k">Архитектура</div><div class="lbl-t">Смелые<br>формы</div><div class="lbl-s">чистые линии и стекло</div><i class="lbl-line"></i></div>
+  <div class="lbl" id="ast-l6" style="top:260px"><div class="lbl-k">Масштаб</div><div class="lbl-t">Широкие<br>проспекты</div><div class="lbl-s">парадная ось города</div><i class="lbl-line"></i></div>
+  <div class="lbl" id="ast-l7" style="top:260px"><div class="lbl-k">Набережная</div><div class="lbl-t">Река<br>Ишим</div><div class="lbl-s">огни отражаются в воде</div><i class="lbl-line"></i></div>
+  <div class="lbl" id="ast-l8" style="top:260px"><div class="lbl-k">Ночь</div><div class="lbl-t">Море<br>огней</div><div class="lbl-s">Астана после заката</div><i class="lbl-line"></i></div>
+  <script>
+  (function(){
+    const T=TLX('astana'), $=id=>document.getElementById(id), tl=gsap.timeline({paused:true}); SHOT.init();
+    const g=.05, ids=[1,2,3,4,5,6,7,8].map(i=>$('ast-l'+i));
+    const bp=T.wa('s4',0,3)-g, av=T.wa('s5',0,2)-g, rv=T.pa('s5',1)-g;
+    const shots=[
+      {n:'towers',a:0,b:T.a('s2')-g,el:ids[0],la:.5},
+      {n:'baiterek',a:T.a('s2')-g,b:T.a('s3')-g,el:ids[1]},
+      {n:'shatyr',a:T.a('s3')-g,b:T.a('s4')-g,el:ids[2]},
+      {n:'expo',a:T.a('s4')-g,b:bp,el:ids[3]},
+      {n:'blueprint',a:bp,b:T.a('s5')-g,el:ids[4]},
+      {n:'avenue',a:T.a('s5')-g,b:av,el:ids[5]},
+      {n:'river',a:av,b:rv,el:ids[6]},
+      {n:'night',a:rv,b:T.dur+.2,el:ids[7]}];
+    SCENE.shotScene({tl,cv:$('ast-cv'),dur:T.dur+.2,shots,tint:'rgba(120,170,255,.14)',xfade:.36,labelOut:.12});
+    tl.fromTo($('ast-cv'),{scale:1.08,transformOrigin:'50% 50%'},{scale:1,duration:2.4,ease:'power2.out'},0);
+    SCENE.hud(tl,'ast','astana',T);
+    UI.count(tl,$('ast-yr'),1990,1997,.7,1.2); UI.count(tl,$('ast-h'),0,97,shots[1].a+.5,1.4); UI.count(tl,$('ast-h2c'),0,150,shots[2].a+.5,1.4);
+    window.__timelines['sc-astana']=tl;
+  })();
+  </script>
+</div></template>

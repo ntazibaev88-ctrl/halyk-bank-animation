@@ -1,0 +1,12 @@
+<template id="t1-template">
+<div data-composition-id="t1" data-width="1080" data-height="1920" style="position:absolute;inset:0;background:#123">
+  <div id="box" style="position:absolute;left:100px;top:100px;width:200px;height:200px;background:orange"></div>
+  <canvas id="cv" width="400" height="400" style="position:absolute;left:300px;top:600px"></canvas>
+  <style>[data-composition-id=t1] #box{border-radius:10px}</style>
+  <script>
+   const tl=gsap.timeline({paused:true}); tl.to("#box",{x:600,duration:4,ease:"none"},0);
+   const st={t:0}; const cx=document.getElementById("cv").getContext("2d");
+   tl.to(st,{t:1,duration:4,ease:"none",onUpdate(){cx.clearRect(0,0,400,400);cx.fillStyle="#0f0";cx.fillRect(st.t*300,50,60,60)}},0);
+   window.__timelines["t1"]=tl;
+  </script>
+</div></template>

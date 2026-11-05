@@ -1,0 +1,86 @@
+<template id="sc-map-template">
+<div data-composition-id="sc-map" data-width="1080" data-height="1920">
+  <div class="abs" style="inset:0;background:radial-gradient(120% 80% at 50% 40%,#0d2347 0%,#060d1d 60%,#030610 100%)"></div>
+  <svg class="abs" id="mp-grid" viewBox="0 0 1080 1920" width="1080" height="1920" style="left:0;top:0"></svg>
+  <div class="abs" id="mp-world" style="left:0;top:210px;width:1080px;height:1500px;transform-origin:540px 750px">
+    <svg viewBox="0 0 1080 1500" width="1080" height="1500" style="overflow:visible">
+      <defs><linearGradient id="kzf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="rgba(88,200,255,.30)"/><stop offset="1" stop-color="rgba(55,224,176,.10)"/></linearGradient>
+      <filter id="gl"><feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+      <g id="mp-nb"></g>
+      <path id="mp-kz-fill" fill="url(#kzf)" opacity="0"/>
+      <path id="mp-kz" fill="none" stroke="#7fd6ff" stroke-width="5" stroke-linejoin="round" filter="url(#gl)" pathLength="1" stroke-dasharray="1 1.2" stroke-dashoffset="1.1"/>
+      <g id="mp-terrain" opacity="0"></g>
+      <path id="mp-route" fill="none" stroke="#fff" stroke-width="5" stroke-dasharray="4 16" stroke-linecap="round" opacity="0"/>
+      <path id="mp-route-glow" fill="none" stroke="url(#rg)" stroke-width="7" stroke-linecap="round" pathLength="1" stroke-dasharray="1 1.2" stroke-dashoffset="1.1"/>
+      <linearGradient id="rg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#ffb43c"/><stop offset="1" stop-color="#37e0b0"/></linearGradient>
+      <circle id="mp-dot" r="11" fill="#fff" filter="url(#gl)" opacity="0"/>
+      <g id="mp-o-al"><g id="mp-m-al" opacity="0"><circle id="mp-al-p" r="30" fill="none" stroke="#37e0b0" stroke-width="5"/><circle r="17" fill="#37e0b0" filter="url(#gl)"/><circle r="7" fill="#fff"/></g></g>
+      <g id="mp-o-as"><g id="mp-m-as" opacity="0"><circle id="mp-as-p" r="30" fill="none" stroke="#ffb43c" stroke-width="5"/><circle r="17" fill="#ffb43c" filter="url(#gl)"/><circle r="7" fill="#fff"/></g></g>
+    </svg>
+    <div class="tag alm" id="mp-t-al" style="font-size:30px;padding:14px 28px">АЛМАТЫ</div>
+    <div class="tag ast" id="mp-t-as" style="font-size:30px;padding:14px 28px">АСТАНА</div>
+    <div class="abs" id="mp-tt-al" style="font-size:22px;font-weight:700;letter-spacing:.25em;color:var(--alm);opacity:0">▲ ГОРЫ</div>
+    <div class="abs" id="mp-tt-as" style="font-size:22px;font-weight:700;letter-spacing:.25em;color:var(--ast);opacity:0">≈ СТЕПЬ</div>
+  </div>
+  <div class="abs" id="mp-title" style="left:72px;top:120px;opacity:0">
+    <div class="lbl-k" style="font-size:26px;font-weight:700;letter-spacing:.28em;color:#7fd6ff;display:flex;align-items:center;gap:16px;text-transform:uppercase"><span style="width:46px;height:3px;background:#7fd6ff;display:block"></span>Карта страны</div>
+    <div style="font-size:112px;font-weight:900;letter-spacing:-.03em;line-height:1;margin-top:14px">КАЗАХСТАН</div>
+    <div style="margin-top:14px;font-size:32px;color:#cfe0f5;font-weight:500"><b id="mp-n9" style="color:#7fd6ff">9</b>-я страна мира по площади</div>
+  </div>
+  <div class="abs glass" id="mp-dist" style="left:72px;top:1250px;width:520px;padding:26px 34px;opacity:0">
+    <div style="font-size:22px;font-weight:700;letter-spacing:.24em;color:#9db0c9">МЕЖДУ ГОРОДАМИ</div>
+    <div style="font-size:84px;font-weight:900;letter-spacing:-.03em;margin-top:6px">≈ <span id="mp-km">0</span> <span style="font-size:44px;color:#9db0c9">км</span></div>
+    <div style="font-size:22px;color:#9db0c9;margin-top:2px">по прямой</div>
+  </div>
+  <script>
+  (function(){
+    const M=window.MAP, $=id=>document.getElementById(id), tl=gsap.timeline({paused:true});
+    const NS='http://www.w3.org/2000/svg';
+    // graticule
+    let g=''; for(let i=-2;i<14;i++) g+=`<line x1="${i*100}" y1="0" x2="${i*100+260}" y2="1920" stroke="rgba(120,180,255,.07)" stroke-width="1.5"/>`; for(let j=0;j<20;j++) g+=`<line x1="0" y1="${j*100}" x2="1080" y2="${j*100-40}" stroke="rgba(120,180,255,.07)" stroke-width="1.5"/>`; $('mp-grid').innerHTML=g;
+    $('mp-nb').innerHTML=M.neighbors.map(d=>`<path d="${d}" fill="rgba(255,255,255,.035)" stroke="rgba(255,255,255,.14)" stroke-width="2"/>`).join('');
+    $('mp-kz').setAttribute('d',M.kz); $('mp-kz-fill').setAttribute('d',M.kz);
+    const [ax,ay]=M.almaty,[sx,sy]=M.astana;
+    // route: gentle arc
+    const mx=(ax+sx)/2+90,my=(ay+sy)/2+30, d=`M${sx} ${sy} Q ${mx} ${my} ${ax} ${ay}`;
+    $('mp-route').setAttribute('d',d); $('mp-route-glow').setAttribute('d',d);
+    $('mp-o-al').setAttribute('transform',`translate(${ax} ${ay})`); $('mp-o-as').setAttribute('transform',`translate(${sx} ${sy})`);
+    // terrain: peaks near Almaty, steppe dashes near Astana
+    let tr=''; for(let k=0;k<7;k++){const x=ax+30+k*26-(k%2)*10,y=ay+40+(k%3)*22; tr+=`<path d="M${x-16} ${y} L${x} ${y-30} L${x+16} ${y}Z" fill="rgba(55,224,176,.35)" stroke="#37e0b0" stroke-width="2"/>`;}
+    for(let k=0;k<16;k++){const x=sx-90+(k%8)*26,y=sy+50+Math.floor(k/8)*26; tr+=`<line x1="${x}" y1="${y}" x2="${x+14}" y2="${y}" stroke="#ffb43c" stroke-width="3" stroke-linecap="round" opacity=".6"/>`;}
+    $('mp-terrain').innerHTML=tr;
+    $('mp-dot').setAttribute('cx',sx); $('mp-dot').setAttribute('cy',sy);
+    const off=(id,x,y)=>{$(id).style.left=x+'px';$(id).style.top=y+'px'};
+    off('mp-t-al',ax-20,ay+90+0); off('mp-t-as',sx-150,sy-90); off('mp-tt-al',ax+100,ay-70); off('mp-tt-as',sx+50,sy+110);
+    const T=TLX('map');
+    tl.fromTo($('mp-world'),{scale:.92},{scale:1,duration:2.6,ease:'power2.out'},0);
+    tl.fromTo($('mp-title'),{opacity:0,y:-30},{opacity:1,y:0,duration:.8,ease:'power3.out'},.2);
+    tl.to($('mp-kz'),{strokeDashoffset:0,duration:T.b('m1')-.1,ease:'power2.inOut'},.2);
+    tl.to($('mp-kz-fill'),{opacity:1,duration:1.2},T.a('m1')+1.0);
+    tl.fromTo($('mp-grid'),{x:0},{x:-60,duration:T.dur,ease:'none'},0);
+    const t1=T.a('m2')-.2;
+    tl.set($('mp-m-al'),{opacity:1},t1); tl.set($('mp-m-as'),{opacity:1},t1+.25);
+    tl.fromTo($('mp-m-al'),{scale:0,svgOrigin:'0 0'},{scale:1,svgOrigin:'0 0',duration:.6,ease:'back.out(2)'},t1);
+    tl.fromTo($('mp-m-as'),{scale:0,svgOrigin:'0 0'},{scale:1,svgOrigin:'0 0',duration:.6,ease:'back.out(2)'},t1+.25);
+    tl.fromTo($('mp-al-p'),{attr:{r:20},opacity:.9},{attr:{r:80},opacity:0,duration:1.3,repeat:8,ease:'power1.out'},t1+.2);
+    tl.fromTo($('mp-as-p'),{attr:{r:20},opacity:.9},{attr:{r:80},opacity:0,duration:1.3,repeat:8,ease:'power1.out'},t1+.45);
+    tl.to($('mp-t-al'),{opacity:1,duration:.4},t1+.5); tl.to($('mp-t-as'),{opacity:1,duration:.4},t1+.7);
+    const r0=T.a('m2')+.2, rd=T.pb('m2',1)-r0;
+    tl.to($('mp-route-glow'),{strokeDashoffset:0,duration:rd,ease:'power2.inOut'},r0); tl.set($('mp-route'),{opacity:.6},r0);
+    const rp=$('mp-route'),RL=rp.getTotalLength?rp.getTotalLength():900,o={u:0};
+    tl.set($('mp-dot'),{opacity:1},r0);
+    tl.to(o,{u:1,duration:rd,ease:'power2.inOut',onUpdate(){const p=rp.getPointAtLength(o.u*RL);$('mp-dot').setAttribute('cx',p.x);$('mp-dot').setAttribute('cy',p.y)}},r0);
+    tl.to($('mp-route'),{strokeDashoffset:-300,duration:T.dur,ease:'none'},r0);
+    tl.fromTo($('mp-dist'),{opacity:0,y:40},{opacity:1,y:0,duration:.6,ease:'power3.out'},T.pa('m2',1)-.4);
+    const km={v:0}; tl.to(km,{v:1000,duration:T.pb('m2',1)-T.pa('m2',1)+.2,ease:'power2.out',onUpdate(){const v=Math.round(km.v/10)*10;$('mp-km').textContent=v>=1000?'1 000':String(v)}},T.pa('m2',1)-.2);
+    // camera follows the narration: Almaty (mountains) then Astana (steppe)
+    tl.to($('mp-dist'),{opacity:0,duration:.4},T.a('m3')-.2);
+    tl.to($('mp-world'),{scale:1.5,x:-470,y:-240,duration:1.5,ease:'power3.inOut'},T.a('m3')-.5);
+    tl.to($('mp-terrain'),{opacity:1,duration:.5},T.a('m3')+.3); tl.to($('mp-tt-al'),{opacity:1,duration:.4},T.wa('m3',0,2));
+    tl.to($('mp-world'),{scale:1.5,x:-140,y:30,duration:1.6,ease:'power3.inOut'},T.a('m4')-.5);
+    tl.to($('mp-tt-as'),{opacity:1,duration:.4},T.wa('m4',0,2));
+    tl.to($('mp-world'),{scale:1.42,x:-110,y:10,duration:T.dur-T.b('m4'),ease:'sine.inOut'},T.b('m4'));
+    window.__timelines['sc-map']=tl;
+  })();
+  </script>
+</div></template>

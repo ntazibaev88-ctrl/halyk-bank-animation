@@ -1,0 +1,47 @@
+<template id="sc-life-template">
+<div data-composition-id="sc-life" data-width="1080" data-height="1920">
+  <canvas class="plate" id="lf-bg" width="1080" height="1920"></canvas>
+  <div class="abs" style="inset:0;background:linear-gradient(180deg,rgba(7,20,42,.92),rgba(5,11,22,.6))"></div>
+  <div class="abs" style="left:540px;top:300px;width:2px;height:1100px;background:linear-gradient(180deg,transparent,rgba(255,255,255,.25),transparent)" id="lf-axis"></div>
+  <div class="scr-head" id="lf-head" style="opacity:0"><div class="k">06 · Жизнь в городе</div><div class="t">Ритм и характер</div></div>
+  <div class="abs" id="lf-ha" style="left:60px;top:240px;font-size:34px;font-weight:900;letter-spacing:.08em;color:var(--alm);opacity:0">АЛМАТЫ</div>
+  <div class="abs" id="lf-hb" style="right:60px;top:240px;font-size:34px;font-weight:900;letter-spacing:.08em;color:var(--ast);opacity:0">АСТАНА</div>
+  <div id="lf-rows"></div>
+  <script>
+  (function(){
+    const $=id=>document.getElementById(id), tl=gsap.timeline({paused:true});
+    const ico={
+      metro:c=>`<svg viewBox="0 0 120 90"><line x1="0" y1="78" x2="120" y2="78" stroke="${c}" stroke-width="4"/><g class="mv"><rect x="14" y="26" width="92" height="44" rx="14" fill="none" stroke="${c}" stroke-width="5"/><rect x="26" y="36" width="20" height="16" rx="4" fill="${c}"/><rect x="54" y="36" width="20" height="16" rx="4" fill="${c}"/><rect x="82" y="36" width="14" height="16" rx="4" fill="${c}"/></g></svg>`,
+      bus:c=>`<svg viewBox="0 0 120 90"><line x1="0" y1="78" x2="120" y2="78" stroke="${c}" stroke-width="4"/><g class="mv"><rect x="10" y="22" width="100" height="50" rx="10" fill="none" stroke="${c}" stroke-width="5"/><rect x="20" y="32" width="18" height="16" rx="3" fill="${c}"/><rect x="46" y="32" width="18" height="16" rx="3" fill="${c}"/><rect x="72" y="32" width="18" height="16" rx="3" fill="${c}"/><circle cx="34" cy="74" r="8" fill="#07142a" stroke="${c}" stroke-width="4"/><circle cx="86" cy="74" r="8" fill="#07142a" stroke="${c}" stroke-width="4"/></g></svg>`,
+      cup:c=>`<svg viewBox="0 0 120 90"><path d="M26 40 h52 v22 a22 22 0 0 1 -22 22 h-8 a22 22 0 0 1 -22 -22z" fill="none" stroke="${c}" stroke-width="5"/><path d="M78 48 h8 a10 10 0 0 1 0 20 h-10" fill="none" stroke="${c}" stroke-width="5"/><g class="st" stroke="${c}" stroke-width="4" stroke-linecap="round" fill="none"><path d="M40 30 q-8 -10 0 -18"/><path d="M54 30 q-8 -10 0 -18"/><path d="M68 30 q-8 -10 0 -18"/></g></svg>`,
+      tower:c=>`<svg viewBox="0 0 120 90"><line x1="0" y1="84" x2="120" y2="84" stroke="${c}" stroke-width="4"/><path d="M52 84 L58 30 M68 84 L62 30" stroke="${c}" stroke-width="5" fill="none"/><circle cx="60" cy="20" r="14" fill="none" stroke="${c}" stroke-width="5"/><line x1="60" y1="6" x2="60" y2="0" stroke="${c}" stroke-width="4"/></svg>`,
+      mount:c=>`<svg viewBox="0 0 120 90"><path d="M4 84 L40 24 L58 52 L78 16 L116 84Z" fill="none" stroke="${c}" stroke-width="5" stroke-linejoin="round"/><path d="M68 32 L78 16 L88 34 L78 30Z" fill="${c}"/></svg>`,
+      steppe:c=>`<svg viewBox="0 0 120 90"><line x1="0" y1="66" x2="120" y2="66" stroke="${c}" stroke-width="5"/><path d="M10 80 H110 M24 90 H96" stroke="${c}" stroke-width="3" opacity=".5"/><circle cx="86" cy="34" r="14" fill="none" stroke="${c}" stroke-width="5"/></svg>`,
+      walk:c=>`<svg viewBox="0 0 120 90"><circle cx="60" cy="16" r="9" fill="${c}"/><path d="M60 26 L56 52 L40 80 M56 52 L74 66 L72 84 M60 30 L40 44 M60 30 L78 46" stroke="${c}" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+      bldg:c=>`<svg viewBox="0 0 120 90"><rect x="14" y="30" width="30" height="54" fill="none" stroke="${c}" stroke-width="5"/><rect x="50" y="6" width="32" height="78" fill="none" stroke="${c}" stroke-width="5"/><rect x="88" y="40" width="22" height="44" fill="none" stroke="${c}" stroke-width="5"/><g fill="${c}"><rect x="58" y="18" width="6" height="6"/><rect x="68" y="18" width="6" height="6"/><rect x="58" y="34" width="6" height="6"/><rect x="68" y="34" width="6" height="6"/></g></svg>`,
+    };
+    const rows=[
+      ['ТРАНСПОРТ',['metro','Метро, автобусы и канатные дороги'],['bus','Автобусы и широкие проспекты']],
+      ['АТМОСФЕРА',['cup','Кофейни, парки и неспешный ритм'],['tower','Деловой, чёткий и парадный']],
+      ['СРЕДА',['mount','Горы, сады и аллеи'],['steppe','Степь, река Ишим и архитектура']]];
+    let html=''; rows.forEach((r,i)=>{ const y=330+i*360;
+      html+=`<div class="abs" id="lf-r${i}" style="left:0;top:${y}px;width:1080px;height:320px">
+        <div class="abs" style="left:0;width:1080px;top:-34px;text-align:center;font-size:21px;font-weight:800;letter-spacing:.36em;color:#7f96b6">${r[0]}</div>
+        <div class="abs glass alm" id="lf-c${i}a" style="left:40px;top:0;width:476px;height:300px;opacity:0"><div class="abs ico" style="left:30px;top:34px;width:190px;height:140px">${ico[r[1][0]]('#37e0b0')}</div><div class="abs" style="left:30px;right:26px;top:196px;font-size:34px;font-weight:800;line-height:1.14">${r[1][1]}</div></div>
+        <div class="abs glass ast" id="lf-c${i}b" style="left:564px;top:0;width:476px;height:300px;opacity:0"><div class="abs ico" style="left:30px;top:34px;width:190px;height:140px">${ico[r[2][0]]('#ffb43c')}</div><div class="abs" style="left:30px;right:26px;top:196px;font-size:34px;font-weight:800;line-height:1.14">${r[2][1]}</div></div></div>`; });
+    $('lf-rows').innerHTML=html;
+    const T=TLX('life');
+    tl.fromTo($('lf-head'),{opacity:0,y:-24},{opacity:1,y:0,duration:.7,ease:'power3.out'},.2);
+    tl.fromTo($('lf-axis'),{scaleY:0},{scaleY:1,duration:1.2,ease:'power3.out'},.4);
+    tl.fromTo($('lf-ha'),{opacity:0,x:-40},{opacity:1,x:0,duration:.5},T.a('l1')-.2); tl.fromTo($('lf-hb'),{opacity:0,x:40},{opacity:1,x:0,duration:.5},T.a('l2')-.2);
+    const tA=[T.wa('l1',0,3)-.4,T.pa('l1',1)-.1,T.wa('l1',1,3)-.3], tB=[T.wa('l2',0,2)-.3,T.wa('l2',0,5)-.3,T.wa('l2',0,5)+.5];
+    for(let i=0;i<3;i++){ tl.fromTo($('lf-c'+i+'a'),{opacity:0,x:-220,clipPath:'inset(0 100% 0 0)'},{opacity:1,x:0,clipPath:'inset(0 0% 0 0)',duration:.7,ease:'power4.out'},tA[i]);
+      tl.fromTo($('lf-c'+i+'b'),{opacity:0,x:220,clipPath:'inset(0 0 0 100%)'},{opacity:1,x:0,clipPath:'inset(0 0 0 0%)',duration:.7,ease:'power4.out'},tB[i]); }
+    document.querySelectorAll('#lf-rows .mv').forEach((el,i)=>tl.fromTo(el,{x:-30},{x:30,duration:1.4,repeat:5,yoyo:true,ease:'sine.inOut'},[tA[0],tB[0]][i]));
+    document.querySelectorAll('#lf-rows .st').forEach(el=>tl.fromTo(el,{y:4,opacity:.3},{y:-6,opacity:1,duration:.9,repeat:8,yoyo:true,ease:'sine.inOut'},tA[1]));
+    document.querySelectorAll('#lf-rows .glass').forEach((el,i)=>tl.to(el,{y:-6,duration:2,repeat:3,yoyo:true,ease:'sine.inOut'},3+i*.1));
+    BGFX.attach(tl,document.getElementById('lf-bg'),TLX('life').dur+.1);
+    window.__timelines['sc-life']=tl;
+  })();
+  </script>
+</div></template>

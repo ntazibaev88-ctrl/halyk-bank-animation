@@ -1,0 +1,24 @@
+/* Visual identity: deep navy ground, Almaty = emerald, Astana = amber, one display face (Inter Display). */
+:root{
+  --ground:#050b16; --ink:#f5f8fc; --mute:#9db0c9; --line:rgba(255,255,255,.18);
+  --alm:#37e0b0; --alm-d:#0f7f6b; --ast:#ffb43c; --ast-d:#a86a0a; --cyan:#58c8ff;
+  --font:'Inter','Helvetica Neue',Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--ground);font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased}
+[data-composition-id]{position:absolute;left:0;top:0;width:1080px;height:1920px;overflow:hidden}
+canvas.plate{position:absolute;left:0;top:0;width:1080px;height:1920px}
+.abs{position:absolute}
+/* label card */
+.lbl{position:absolute;left:72px;opacity:0;will-change:transform,opacity}
+.lbl-k{font-size:26px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--accent,var(--alm));display:flex;align-items:center;gap:16px}
+.lbl-k::before{content:"";width:46px;height:3px;background:var(--accent,var(--alm));border-radius:2px}
+.lbl-t{margin-top:16px;font-size:84px;line-height:.98;font-weight:900;letter-spacing:-.02em;text-transform:uppercase;text-shadow:0 6px 40px rgba(0,0,0,.55)}
+.lbl-s{margin-top:18px;font-size:32px;font-weight:500;color:#dbe6f5;text-shadow:0 2px 20px rgba(0,0,0,.7)}
+.lbl-line{display:block;margin-top:22px;height:3px;width:360px;background:linear-gradient(90deg,var(--accent,var(--alm)),transparent);transform-origin:left}
+/* HUD */
+.hud{position:absolute;font-size:22px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#cfe0f5;opacity:0}
+.hud b{color:var(--accent,var(--alm));font-weight:800}
+.tag{position:absolute;padding:12px 24px;border-radius:40px;font-size:24px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:rgba(5,11,22,.62);border:1.5px solid var(--accent,var(--alm));color:var(--ink);opacity:0}
+.glass{background:linear-gradient(160deg,rgba(255,255,255,.12),rgba(255,255,255,.04));border:1.5px solid rgba(255,255,255,.2);border-radius:34px;box-shadow:0 30px 80px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.25)}
+.alm{--accent:var(--alm)} .ast{--accent:var(--ast)}
