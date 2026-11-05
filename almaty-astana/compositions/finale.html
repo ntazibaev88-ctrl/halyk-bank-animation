@@ -1,0 +1,54 @@
+<template id="sc-finale-template">
+<div data-composition-id="sc-finale" data-width="1080" data-height="1920">
+  <canvas class="plate" id="fn-cv" width="1080" height="1920"></canvas>
+  <div class="abs" id="fn-shade" style="inset:0;background:linear-gradient(180deg,rgba(3,8,18,.7),rgba(3,8,18,.15) 40%,rgba(3,8,18,.25) 70%,rgba(3,8,18,.85))"></div>
+  <div class="abs" id="fn-t" style="left:72px;top:210px;width:936px">
+    <div id="fn-t1" class="ln" style="font-size:112px;font-weight:900;letter-spacing:-.03em;line-height:1;opacity:0">ДВА ГОРОДА.</div>
+    <div id="fn-t2" class="ln" style="font-size:112px;font-weight:900;letter-spacing:-.03em;line-height:1.02;opacity:0;margin-top:6px;color:var(--alm)">ДВА ХАРАКТЕРА.</div>
+    <div id="fn-t3" class="ln" style="font-size:112px;font-weight:900;letter-spacing:-.03em;line-height:1.02;opacity:0;margin-top:6px;color:var(--ast)">ОДНА СТРАНА.</div>
+  </div>
+  <div class="abs" id="fn-q" style="left:72px;top:520px;width:936px;opacity:0">
+    <div style="font-size:26px;font-weight:700;letter-spacing:.3em;color:#cfe0f5;margin-bottom:22px" id="fn-qk">— ВАШ ВЫБОР</div>
+    <div id="fn-qt" style="font-size:118px;font-weight:900;letter-spacing:-.035em;line-height:1.0;text-shadow:0 8px 60px rgba(0,0,0,.6)"></div>
+  </div>
+  <div class="abs" id="fn-chips" style="left:72px;top:1180px;width:936px;display:flex;gap:24px;opacity:0">
+    <div class="glass alm" style="flex:1;padding:24px 0;text-align:center;font-size:44px;font-weight:900;color:var(--alm)">АЛМАТЫ</div>
+    <div class="glass ast" style="flex:1;padding:24px 0;text-align:center;font-size:44px;font-weight:900;color:var(--ast)">АСТАНА</div>
+  </div>
+  <div class="abs" id="fn-black" style="inset:0;background:#02050b;opacity:0"></div>
+  <script>
+  (function(){
+    const { W,H,ease,prog,lerp,bind,grade,ridge,clamp,mix,sky,glow,rng,rgb } = KIT, $=id=>document.getElementById(id), tl=gsap.timeline({paused:true});
+    const S={ skyA: sky(1300,1000,[[0,'#16294f'],[.45,'#6a5a8e'],[.75,'#f09a76'],[1,'#ffd9a0']],{x:650,y:900,r:700,c0:'rgba(255,230,170,.95)',c1:'rgba(255,150,100,.3)'}),
+      mtn: ridge({w:1500,h:640,base:600,amp:420,freq:.0042,seed:21,rock:['#3a4a78','#b9c6e6'],snowAlt:200,hazeAmt:.35,haze:[240,170,160]}),
+      skyB: sky(1300,1000,[[0,'#02040c'],[.6,'#0a1a3c'],[1,'#1e3f74']],null) };
+    const alm={hy:700,f:300,camH:300,cell:40,nx:10,nz:40,speed:60,z0:0,seed:7,yaw:.28,ground0:[90,110,90],ground1:[60,80,66],fog:[255,190,150],
+      kind:(ix,iz,q)=>{ if(((ix%3)+3)%3===0||((iz%3)+3)%3===0) return {h:0,c:[74,74,92]}; if(q<.24) return {h:0,c:[50,120,64]}; return {h:10+q*q*100,c:[196,176,170],lit:[255,214,140]}; }};
+    const ast={hy:700,f:300,camH:300,cell:40,nx:10,nz:40,speed:60,z0:300,seed:11,yaw:-.28,ground0:[22,30,56],ground1:[10,14,30],fog:[40,70,120],
+      kind:(ix,iz,q)=>{ const xr=Math.round(Math.sin(iz*.22)*4+3); if(Math.abs(ix-xr)<=0) return {h:0,c:[24,70,130]}; if(ix===0) return {h:0,c:[255,210,140]}; if(q<.4) return {h:12+q*q*260,c:[120,150,200],lit:[130,210,255]}; return null; }};
+    bind(tl,$('fn-cv'),10.2,(ctx,t)=>{ ctx.clearRect(0,0,W,H);
+      const aW=1-ease.io(prog(t,3.6,4.6));
+      if(t<4.7){ ctx.save(); ctx.globalAlpha=aW; ctx.drawImage(S.skyA,-110,0,1300,1000); ctx.drawImage(S.skyA,-110,0,1300,1000);
+        ctx.drawImage(S.mtn,-210-Math.sin(t*.35)*40,70-t*8,1500,640);
+        ctx.fillStyle='rgba(255,190,150,.25)'; ctx.fillRect(0,640,W,100);
+        AERIAL.plane(ctx,t,alm); glow(ctx,540,720,500,[255,200,140],.35); ctx.restore(); }
+      if(t>3.6){ ctx.save(); ctx.globalAlpha=1-aW; ctx.drawImage(S.skyB,-110,0,1300,1000); for(let i=0;i<110;i++){const q=rng(i+3)();} 
+        AERIAL.plane(ctx,t-3.6,ast); glow(ctx,540,720,420,[90,160,255],.3);
+        // landmark glow on axis
+        glow(ctx,540,690,70,[255,210,120],.9); ctx.restore(); }
+      grade(ctx,t,{vignette:.65});
+    });
+    tl.fromTo($('fn-cv'),{scale:1.1},{scale:1,duration:10,ease:'power1.out',transformOrigin:'50% 40%'},0);
+    ['fn-t1','fn-t2','fn-t3'].forEach((id,i)=>tl.fromTo($(id),{opacity:0,x:-80,clipPath:'inset(0 100% 0 0)'},{opacity:1,x:0,clipPath:'inset(0 0% 0 0)',duration:.7,ease:'power4.out'},.5+i*.85));
+    tl.to($('fn-t'),{opacity:0,y:-60,filter:'blur(10px)',duration:.6,ease:'power2.in'},4.6);
+    // question: words pop in on the narration (≈ global 75.2s → local 5.2)
+    const words='А КАКОЙ ГОРОД ВЫБРАЛИ БЫ ВЫ?'.split(' '); $('fn-qt').innerHTML=words.map((w,i)=>`<span class="qw" style="display:inline-block;margin-right:.26em;opacity:0;${i>=5?'color:var(--ast)':''}">${w}</span>`).join('');
+    tl.fromTo($('fn-q'),{opacity:0},{opacity:1,duration:.4},5.0);
+    document.querySelectorAll('.qw').forEach((el,i)=>tl.fromTo(el,{opacity:0,y:50,scale:.8},{opacity:1,y:0,scale:1,duration:.5,ease:'back.out(1.8)'},5.2+i*.22));
+    tl.fromTo($('fn-chips'),{opacity:0,y:40},{opacity:1,y:0,duration:.7,ease:'power3.out'},6.8);
+    tl.to($('fn-chips').children[0],{scale:1.05,duration:.6,repeat:3,yoyo:true,ease:'sine.inOut'},7.2); tl.to($('fn-chips').children[1],{scale:1.05,duration:.6,repeat:3,yoyo:true,ease:'sine.inOut'},7.5);
+    tl.to($('fn-black'),{opacity:1,duration:.9,ease:'power2.inOut'},9.2);
+    window.__timelines['sc-finale']=tl;
+  })();
+  </script>
+</div></template>

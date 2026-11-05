@@ -1,0 +1,43 @@
+<template id="sc-astana-template">
+<div data-composition-id="sc-astana" data-width="1080" data-height="1920" class="ast">
+  <canvas class="plate" id="ast-cv" width="1080" height="1920"></canvas>
+  <div class="abs" style="inset:0;background:linear-gradient(180deg,rgba(3,8,18,.6) 0%,rgba(3,8,18,0) 32%,rgba(3,8,18,0) 62%,rgba(3,8,18,.8) 100%)"></div>
+  <div class="hud" id="ast-h1" style="left:72px;top:96px">03 &nbsp;/&nbsp; <b>Астана</b></div>
+  <div class="hud" id="ast-h2" style="left:72px;top:134px;font-size:20px;color:#9fb8d6">51°10′ с. ш. &nbsp; 71°27′ в. д.</div>
+  <div class="abs glass" id="ast-map" style="right:60px;top:84px;width:238px;height:300px;padding:18px 24px;opacity:0"></div>
+  <div class="lbl" id="ast-l1" style="top:260px"><div class="lbl-k">01 · Символ</div><div class="lbl-t">Байтерек</div><div class="lbl-s">башня высотой 97 метров</div><i class="lbl-line"></i></div>
+  <div class="lbl" id="ast-l2" style="top:260px"><div class="lbl-k">02 · Форма</div><div class="lbl-t">Хан<br>Шатыр</div><div class="lbl-s">прозрачный шатёр, 150 метров</div><i class="lbl-line"></i></div>
+  <div class="lbl" id="ast-l3" style="top:260px"><div class="lbl-k">03 · Архитектура</div><div class="lbl-t">Город<br>будущего</div><div class="lbl-s">смелые формы и чистые линии</div><i class="lbl-line"></i></div>
+  <div class="lbl" id="ast-l4" style="top:260px"><div class="lbl-k">04 · Масштаб</div><div class="lbl-t">Широкие<br>проспекты</div><div class="lbl-s">парадная ось города</div><i class="lbl-line"></i></div>
+  <div class="lbl" id="ast-l5" style="top:260px"><div class="lbl-k">05 · Ночь</div><div class="lbl-t">Море<br>огней</div><div class="lbl-s">набережная реки Ишим</div><i class="lbl-line"></i></div>
+  <div class="abs" id="ast-elev" style="left:72px;top:1180px;width:936px;height:230px;opacity:0">
+    <svg viewBox="0 0 936 230" width="936" height="230" style="overflow:visible">
+      <line x1="0" y1="200" x2="936" y2="200" stroke="rgba(255,255,255,.35)" stroke-width="2"/>
+      <path d="M0 200 L0 120 C150 114 300 126 460 118 C620 110 780 124 936 118 L936 200Z" fill="rgba(255,180,60,.14)"/>
+      <path id="ast-prof" d="M0 120 C150 114 300 126 460 118 C620 110 780 124 936 118" fill="none" stroke="#ffb43c" stroke-width="5" stroke-linecap="round" pathLength="1" stroke-dasharray="1 1.2" stroke-dashoffset="1.1"/>
+      <circle id="ast-prof-dot" r="9" fill="#fff" cx="0" cy="120"/>
+      <text x="0" y="226" fill="#cfe0f5" font-size="24" font-weight="700" letter-spacing="2">ГОРОД · ≈ 350 м</text>
+      <text x="936" y="226" fill="#cfe0f5" font-size="24" font-weight="700" letter-spacing="2" text-anchor="end">ОТКРЫТАЯ СТЕПЬ</text>
+    </svg>
+  </div>
+  <script>
+  (function(){
+    const { W,H,shotMix,bind,grade } = KIT; ShotsAstana.init();
+    const shots=[{a:0,b:2},{a:2,b:4},{a:4,b:6},{a:6,b:8},{a:8,b:10.2}];
+    const tl=gsap.timeline({paused:true}), cv=document.getElementById('ast-cv'), $=id=>document.getElementById(id);
+    bind(tl,cv,10.2,(ctx,t)=>{ ctx.clearRect(0,0,W,H); shotMix(ctx,t,shots,(i,c,lt,d)=>ShotsAstana.draw(i,c,lt,d),.34); grade(ctx,t,{vignette:.6,tint:'rgba(120,170,255,.14)'}); });
+    tl.fromTo(cv,{scale:1.08,transformOrigin:'50% 50%'},{scale:1,duration:2.2,ease:'power2.out'},0);
+    UI.fade(tl,$('ast-h1'),.2); UI.fade(tl,$('ast-h2'),.35);
+    const pulse=HUD.miniMap($('ast-map'),'astana');
+    tl.fromTo($('ast-map'),{opacity:0,scale:.85},{opacity:1,scale:1,duration:.6,ease:'back.out(1.6)'},.5);
+    tl.fromTo(pulse,{attr:{r:26},opacity:1},{attr:{r:90},opacity:0,duration:1.1,repeat:8,ease:'power1.out'},.6);
+    ['ast-l1','ast-l2','ast-l3','ast-l4','ast-l5'].forEach((id,i)=>UI.label(tl,$(id),shots[i].a+.35, i<4?shots[i].b-.1:undefined));
+    tl.fromTo($('ast-elev'),{y:40,opacity:0},{y:0,opacity:1,duration:.5,ease:'power3.out'},.9);
+    tl.to($('ast-prof'),{strokeDashoffset:0,duration:1.0,ease:'power2.inOut'},1.0);
+    const path=$('ast-prof'),L=path.getTotalLength?path.getTotalLength():900,o={u:0};
+    tl.to(o,{u:1,duration:1.0,ease:'power2.inOut',onUpdate(){const p=path.getPointAtLength(o.u*L);$('ast-prof-dot').setAttribute('cx',p.x);$('ast-prof-dot').setAttribute('cy',p.y);}},1.0);
+    tl.to($('ast-elev'),{opacity:0,y:-20,duration:.3,ease:'power2.in'},3.8);
+    window.__timelines['sc-astana']=tl;
+  })();
+  </script>
+</div></template>

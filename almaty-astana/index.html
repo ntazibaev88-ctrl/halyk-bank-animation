@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ru" data-resolution="portrait" data-fps="30">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=1080, height=1920"/>
+<title>Алматы vs Астана — два города, два мира</title>
+<link rel="stylesheet" href="styles/theme.css"/><link rel="stylesheet" href="styles/panels.css"/>
+<script src="vendor/gsap.min.js"></script>
+<script src="lib/mapdata.js"></script><script src="lib/subs.js"></script>
+<script src="lib/kit.js"></script><script src="lib/ui.js"></script><script src="lib/hud.js"></script><script src="lib/landmarks.js"></script>
+<script src="lib/aerial.js"></script><script src="lib/shots-almaty.js"></script><script src="lib/shots-astana.js"></script>
+</head>
+<body>
+<!-- ALMATY vs ASTANA — master timeline (80 s). Scenes are sub-compositions; see compositions/. -->
+<div id="root" data-composition-id="main" data-start="0" data-duration="80" data-width="1080" data-height="1920">
+  <div class="clip" data-composition-id="sc-opening"    data-composition-src="compositions/opening.html"    data-start="0"  data-duration="5.2"  data-track-index="1"></div>
+  <div class="clip" data-composition-id="sc-map"        data-composition-src="compositions/map.html"        data-start="5"  data-duration="10.2" data-track-index="1"></div>
+  <div class="clip" data-composition-id="sc-almaty"     data-composition-src="compositions/almaty.html"     data-start="15" data-duration="10.2" data-track-index="1"></div>
+  <div class="clip" data-composition-id="sc-astana"     data-composition-src="compositions/astana.html"     data-start="25" data-duration="10.2" data-track-index="1"></div>
+  <div class="clip" data-composition-id="sc-climate"    data-composition-src="compositions/climate.html"    data-start="35" data-duration="10.2" data-track-index="1"></div>
+  <div class="clip" data-composition-id="sc-life"       data-composition-src="compositions/lifestyle.html"  data-start="45" data-duration="10.2" data-track-index="1"></div>
+  <div class="clip" data-composition-id="sc-board"      data-composition-src="compositions/board.html"      data-start="55" data-duration="15.2" data-track-index="1"></div>
+  <div class="clip" data-composition-id="sc-finale"     data-composition-src="compositions/finale.html"     data-start="70" data-duration="10"   data-track-index="1"></div>
+  <div class="clip" data-composition-id="sc-subs"       data-composition-src="compositions/subtitles.html"  data-start="0"  data-duration="80"   data-track-index="3"></div>
+  <div class="clip" data-composition-id="sc-trans"      data-composition-src="compositions/transitions.html" data-start="0" data-duration="80"   data-track-index="4"></div>
+  <audio id="vo"    src="assets/vo/narration.wav" data-start="0" data-duration="80" data-track-index="10" data-volume="1"></audio>
+  <audio id="score" src="assets/audio/score.wav"  data-start="0" data-duration="80" data-track-index="11" data-volume="1"></audio>
+</div>
+<script>
+window.__timelines=window.__timelines||{};
+const tl=gsap.timeline({paused:true}); window.__timelines["main"]=tl; tl.seek(0);
+</script></body></html>

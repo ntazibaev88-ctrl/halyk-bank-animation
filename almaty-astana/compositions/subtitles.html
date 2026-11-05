@@ -1,0 +1,19 @@
+<template id="sc-subs-template">
+<div data-composition-id="sc-subs" data-width="1080" data-height="1920" style="pointer-events:none">
+  <div id="sb-box" class="abs" style="left:50px;width:980px;top:1470px;height:250px;display:flex;align-items:flex-end;justify-content:center"></div>
+  <script>
+  (function(){
+    const tl=gsap.timeline({paused:true}), box=document.getElementById('sb-box');
+    window.SUBS.forEach((c,i)=>{
+      const el=document.createElement('div'); el.className='abs'; el.style.cssText='left:0;right:0;bottom:0;text-align:center;font-size:60px;line-height:1.14;font-weight:800;letter-spacing:-.01em;color:#fff;opacity:0;text-shadow:0 3px 0 rgba(0,0,0,.55),0 0 18px rgba(0,0,0,.9),0 6px 36px rgba(0,0,0,.8);-webkit-text-stroke:0;padding:0 10px';
+      el.innerHTML=c.w.map((w,k)=>`<span class="sw" style="display:inline-block;margin:0 .13em;transition:none">${w[0]}</span>`).join('');
+      box.appendChild(el);
+      const nx=window.SUBS[i+1], a=c.a-.06, b=Math.min(c.b+.16, nx? nx.a-.07 : 1e9);
+      tl.set(el,{opacity:1},a); tl.fromTo(el,{y:22,scale:.96},{y:0,scale:1,duration:.18,ease:'power2.out'},a); tl.set(el,{opacity:0},b);
+      const sp=el.querySelectorAll('.sw');
+      c.w.forEach((w,k)=>{ tl.set(sp[k],{color:'#ffd36a'},w[1]); tl.set(sp[k],{color:'#ffffff'},Math.min(w[2]+.04, k<c.w.length-1?c.w[k+1][1]:b)); });
+    });
+    window.__timelines['sc-subs']=tl;
+  })();
+  </script>
+</div></template>

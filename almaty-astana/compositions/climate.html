@@ -1,0 +1,51 @@
+<template id="sc-climate-template">
+<div data-composition-id="sc-climate" data-width="1080" data-height="1920">
+  <div class="abs" style="inset:0;background:linear-gradient(180deg,#07142a,#050b16)"></div>
+  <div class="scr-head" id="cl-head" style="opacity:0"><div class="k">05 · Климат</div><div class="t">Два климата</div></div>
+  <!-- ALMATY panel -->
+  <div class="panel alm" id="cl-pa" style="top:250px;height:560px">
+    <div class="bg" style="background:linear-gradient(135deg,rgba(55,224,176,.30),rgba(10,40,60,.9) 70%)"></div>
+    <canvas id="cl-ca" width="984" height="560" class="abs" style="left:0;top:0;opacity:.6"></canvas>
+    <div class="ph"><div class="n" style="color:var(--alm)">АЛМАТЫ</div><div class="d">континентальный климат · горы рядом</div></div>
+    <div class="tile alm" id="cl-a1" style="left:30px;top:200px"><svg class="ic" viewBox="0 0 218 130"><g id="cl-a1s" stroke="#bfe9ff" stroke-width="5" stroke-linecap="round" transform="translate(109 62)"><g id="cl-flake"><line x1="0" y1="-40" x2="0" y2="40"/><line x1="-35" y1="-20" x2="35" y2="20"/><line x1="-35" y1="20" x2="35" y2="-20"/><path d="M-9 -34 L0 -26 L9 -34 M-9 34 L0 26 L9 34" fill="none"/></g></g></svg><div class="nm">Зима</div><div class="tx">мягче, снег и горы</div><div class="pips"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div></div>
+    <div class="tile alm" id="cl-a2" style="left:260px;top:200px"><svg class="ic" viewBox="0 0 218 130"><g transform="translate(109 64)"><g id="cl-sun1"><g stroke="#ffd36a" stroke-width="6" stroke-linecap="round"><line x1="0" y1="-52" x2="0" y2="-36"/><line x1="0" y1="52" x2="0" y2="36"/><line x1="-52" y1="0" x2="-36" y2="0"/><line x1="52" y1="0" x2="36" y2="0"/><line x1="-37" y1="-37" x2="-26" y2="-26"/><line x1="37" y1="37" x2="26" y2="26"/><line x1="-37" y1="37" x2="-26" y2="26"/><line x1="37" y1="-37" x2="26" y2="-26"/></g></g><circle r="24" fill="#ffd36a"/></g></svg><div class="nm">Лето</div><div class="tx">тёплое, местами жаркое</div></div>
+    <div class="tile alm" id="cl-a3" style="left:490px;top:200px"><svg class="ic" viewBox="0 0 218 130"><g fill="none" stroke="#cfe6ff" stroke-width="6" stroke-linecap="round" stroke-dasharray="46 30"><path id="cl-w1a" d="M30 44 H150 q22 0 22 -16 t-18 -12"/><path id="cl-w2a" d="M20 72 H170 q24 0 24 18 t-20 14"/></g></svg><div class="nm">Ветер</div><div class="tx">спокойнее, горы прикрывают</div><div class="pips"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div></div>
+    <div class="tile alm" id="cl-a4" style="left:720px;top:200px"><svg class="ic" viewBox="0 0 218 130"><path id="cl-m1" d="M10 118 L70 34 L100 78 L130 20 L208 118Z" fill="rgba(55,224,176,.25)" stroke="#37e0b0" stroke-width="5" stroke-linejoin="round" pathLength="1" stroke-dasharray="1 1.2" stroke-dashoffset="1.1"/><path d="M118 40 L130 20 L146 44 L136 38Z" fill="#fff"/></svg><div class="nm">Рельеф</div><div class="tx">предгорья, горы рядом</div></div>
+    <div class="abs" style="left:44px;bottom:26px;font-size:21px;font-weight:700;letter-spacing:.16em;color:#9db0c9" id="cl-na">УСЛОВНАЯ ШКАЛА СУРОВОСТИ · БЕЗ ТОЧНЫХ ЦИФР</div>
+  </div>
+  <!-- ASTANA panel -->
+  <div class="panel ast" id="cl-pb" style="top:850px;height:560px">
+    <div class="bg" style="background:linear-gradient(135deg,rgba(255,180,60,.30),rgba(50,30,10,.92) 70%)"></div>
+    <canvas id="cl-cb" width="984" height="560" class="abs" style="left:0;top:0;opacity:.6"></canvas>
+    <div class="ph"><div class="n" style="color:var(--ast)">АСТАНА</div><div class="d">резко континентальный климат · открытая степь</div></div>
+    <div class="tile ast" id="cl-b1" style="left:30px;top:200px"><svg class="ic" viewBox="0 0 218 130"><g transform="translate(109 62)" stroke="#bfe9ff" stroke-width="5" stroke-linecap="round"><g id="cl-flake2"><line x1="0" y1="-40" x2="0" y2="40"/><line x1="-35" y1="-20" x2="35" y2="20"/><line x1="-35" y1="20" x2="35" y2="-20"/><path d="M-9 -34 L0 -26 L9 -34 M-9 34 L0 26 L9 34" fill="none"/></g></g></svg><div class="nm">Зима</div><div class="tx">суровая и долгая</div><div class="pips"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+    <div class="tile ast" id="cl-b2" style="left:260px;top:200px"><svg class="ic" viewBox="0 0 218 130"><g transform="translate(109 64)"><g id="cl-sun2"><g stroke="#ffd36a" stroke-width="6" stroke-linecap="round"><line x1="0" y1="-52" x2="0" y2="-36"/><line x1="0" y1="52" x2="0" y2="36"/><line x1="-52" y1="0" x2="-36" y2="0"/><line x1="52" y1="0" x2="36" y2="0"/><line x1="-37" y1="-37" x2="-26" y2="-26"/><line x1="37" y1="37" x2="26" y2="26"/><line x1="-37" y1="37" x2="-26" y2="26"/><line x1="37" y1="-37" x2="26" y2="-26"/></g></g><circle r="24" fill="#ffd36a"/></g></svg><div class="nm">Лето</div><div class="tx">жаркое и сухое</div></div>
+    <div class="tile ast" id="cl-b3" style="left:490px;top:200px"><svg class="ic" viewBox="0 0 218 130"><g fill="none" stroke="#cfe6ff" stroke-width="7" stroke-linecap="round" stroke-dasharray="60 22"><path id="cl-w1b" d="M14 36 H160 q26 0 26 -18 t-20 -12"/><path id="cl-w2b" d="M24 66 H176 q26 0 26 20 t-22 14"/><path id="cl-w3b" d="M10 96 H140"/></g></svg><div class="nm">Ветер</div><div class="tx">сильные ветра степи</div><div class="pips"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
+    <div class="tile ast" id="cl-b4" style="left:720px;top:200px"><svg class="ic" viewBox="0 0 218 130"><line x1="0" y1="100" x2="218" y2="100" stroke="#ffb43c" stroke-width="5"/><g id="cl-grass" stroke="#ffb43c" stroke-width="4" stroke-linecap="round"></g></svg><div class="nm">Рельеф</div><div class="tx">ровная открытая степь</div></div>
+    <div class="abs" style="left:44px;bottom:26px;font-size:21px;font-weight:700;letter-spacing:.16em;color:#9db0c9">ОБЩИЕ ЧЕРТЫ КЛИМАТА · ТЕМПЕРАТУРЫ НЕ УКАЗАНЫ</div>
+  </div>
+  <script>
+  (function(){
+    const { ease,prog,rng,bind } = KIT, $=id=>document.getElementById(id), tl=gsap.timeline({paused:true});
+    // grass blades
+    let gr=''; for(let i=0;i<20;i++){const x=6+i*11; gr+=`<path d="M${x} 100 q${(i%3)-1} -26 ${(i%5)*2-4} -${18+(i*7)%22}" fill="none"/>`;} $('cl-grass').innerHTML=gr;
+    // falling snow / sun-dust backgrounds (canvas)
+    const mkbg=(id,kind)=>bind(tl,$(id),10.2,(ctx,t)=>{ctx.clearRect(0,0,984,560); const r=rng(kind==='s'?5:9); for(let i=0;i<(kind==='s'?46:36);i++){const x0=r()*984,sp=(kind==='s'?40:90)+r()*60,y=((r()*560+t*sp)%600)-20,x=(x0+Math.sin(t*1.2+i)*20+(kind==='w'?t*140:0))%1000,s=2+r()*3; ctx.fillStyle=kind==='s'?'rgba(255,255,255,.7)':'rgba(255,230,170,.6)'; if(kind==='w'){ctx.fillRect(x,y,26+r()*40,2);} else {ctx.beginPath();ctx.arc(x,y,s,0,7);ctx.fill();}}});
+    mkbg('cl-ca','s'); mkbg('cl-cb','w');
+    tl.fromTo($('cl-head'),{opacity:0,y:-24},{opacity:1,y:0,duration:.7,ease:'power3.out'},.2);
+    const panel=(id,at)=>tl.fromTo($(id),{opacity:0,y:80,scale:.96},{opacity:1,y:0,scale:1,duration:.8,ease:'power4.out'},at);
+    panel('cl-pa',.3); panel('cl-pb',5.0);
+    const tiles=(ids,at,step)=>ids.forEach((id,i)=>tl.fromTo($(id),{opacity:0,y:50,rotateX:-30},{opacity:1,y:0,rotateX:0,duration:.6,ease:'back.out(1.5)'},at+i*step));
+    tiles(['cl-a1','cl-a2','cl-a3','cl-a4'],1.2,.9); tiles(['cl-b1','cl-b2','cl-b3','cl-b4'],5.9,.9);
+    // pips fill
+    document.querySelectorAll('#cl-a1 .pips i,#cl-a3 .pips i,#cl-b1 .pips i,#cl-b3 .pips i').forEach((el,i)=>{ if(el.classList.contains('on')){el.classList.remove('on'); tl.set(el,{className:'on'}, (el.closest('#cl-a1')?1.6:el.closest('#cl-a3')?3.2:el.closest('#cl-b1')?6.3:8.1)+ (i%5)*.12);} });
+    // icon motion
+    tl.to($('cl-flake'),{rotation:360,svgOrigin:'0 0',duration:8,ease:'none'},1.2); tl.to($('cl-flake2'),{rotation:-360,svgOrigin:'0 0',duration:8,ease:'none'},5.9);
+    tl.to($('cl-sun1'),{rotation:360,svgOrigin:'0 0',duration:9,ease:'none'},2.1); tl.to($('cl-sun2'),{rotation:360,svgOrigin:'0 0',duration:9,ease:'none'},6.8);
+    ['cl-w1a','cl-w2a','cl-w1b','cl-w2b','cl-w3b'].forEach((id,i)=>tl.fromTo($(id),{strokeDashoffset:0},{strokeDashoffset:-300,duration:3,repeat:3,ease:'none'},(id.endsWith('a')?3.0:7.6)+i*.1));
+    tl.to($('cl-m1'),{strokeDashoffset:0,duration:1.2,ease:'power2.out'},4.0);
+    tl.fromTo($('cl-grass'),{x:-3},{x:3,duration:.9,repeat:7,yoyo:true,ease:'sine.inOut'},8.5);
+    window.__timelines['sc-climate']=tl;
+  })();
+  </script>
+</div></template>

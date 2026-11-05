@@ -1,0 +1,46 @@
+<template id="sc-board-template">
+<div data-composition-id="sc-board" data-width="1080" data-height="1920">
+  <div class="abs" style="inset:0;background:radial-gradient(90% 60% at 50% 0%,#0d2347,#050b16 70%)"></div>
+  <div class="abs" id="bd-glowa" style="left:-300px;top:300px;width:700px;height:1200px;background:radial-gradient(closest-side,rgba(55,224,176,.22),transparent)"></div>
+  <div class="abs" id="bd-glowb" style="right:-300px;top:300px;width:700px;height:1200px;background:radial-gradient(closest-side,rgba(255,180,60,.22),transparent)"></div>
+  <div class="scr-head" id="bd-head" style="opacity:0"><div class="k">07 · Итог</div><div class="t">Лицом к лицу</div></div>
+  <div class="abs" id="bd-na" style="left:48px;top:250px;width:468px;text-align:center;font-size:66px;font-weight:900;letter-spacing:-.02em;color:var(--alm);opacity:0">АЛМАТЫ</div>
+  <div class="abs" id="bd-nb" style="left:564px;top:250px;width:468px;text-align:center;font-size:66px;font-weight:900;letter-spacing:-.02em;color:var(--ast);opacity:0">АСТАНА</div>
+  <div class="abs" id="bd-vs" style="left:490px;top:262px;width:100px;height:100px;border-radius:50px;background:#050b16;border:3px solid #fff;display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:900;opacity:0">VS</div>
+  <div id="bd-rows"></div>
+  <script>
+  (function(){
+    const $=id=>document.getElementById(id), tl=gsap.timeline({paused:true});
+    // rows: label, A text, B text, optional bar widths (relative, approximate)
+    const R=[
+      ['РЕЛЬЕФ','Предгорья Тянь-Шаня','Открытая степь'],
+      ['ВЫСОТА','≈ 800 м',  '≈ 350 м', .8, .35],
+      ['НАСЕЛЕНИЕ','≈ 2 млн','≈ 1,4 млн', 1, .7],
+      ['СТАТУС','Южная столица','Столица с 1997 года'],
+      ['СИМВОЛ','Кок-Тобе','Байтерек'],
+      ['КЛИМАТ','Мягче, горы рядом','Резко континентальный'],
+      ['ХАРАКТЕР','Горы, уют, культура','Простор, архитектура, будущее']];
+    let h=''; R.forEach((r,i)=>{ const y=400+i*148;
+      const bar=(w,c)=>w?`<div class="abs" style="left:24px;right:24px;bottom:14px;height:8px;border-radius:4px;background:rgba(255,255,255,.1)"><div class="bar" data-w="${w}" style="height:8px;border-radius:4px;background:${c};width:0"></div></div>`:'';
+      h+=`<div class="abs" id="bd-r${i}" style="left:0;top:${y}px;width:1080px;height:136px">
+       <div class="abs" style="left:0;width:1080px;top:-17px;text-align:center;font-size:17px;font-weight:800;letter-spacing:.34em;color:#6f86a6;z-index:3"><span style="background:#07142a;padding:2px 14px;border-radius:12px">${r[0]}</span></div>
+       <div class="abs glass alm" id="bd-r${i}a" style="left:48px;top:0;width:468px;height:130px;opacity:0"><div class="abs txt" style="left:24px;right:24px;top:30px;font-size:${r[3]?52:33}px;font-weight:800;line-height:1.1;letter-spacing:-.01em;color:#fff">${r[1]}</div>${bar(r[3],'#37e0b0')}</div>
+       <div class="abs glass ast" id="bd-r${i}b" style="left:564px;top:0;width:468px;height:130px;opacity:0"><div class="abs txt" style="left:24px;right:24px;top:30px;font-size:${r[3]?52:33}px;font-weight:800;line-height:1.1;letter-spacing:-.01em;color:#fff">${r[2]}</div>${bar(r[4],'#ffb43c')}</div></div>`; });
+    $('bd-rows').innerHTML=h;
+    tl.fromTo($('bd-head'),{opacity:0,y:-24},{opacity:1,y:0,duration:.7,ease:'power3.out'},.2);
+    tl.fromTo($('bd-na'),{opacity:0,y:-40,scale:.9},{opacity:1,y:0,scale:1,duration:.7,ease:'back.out(1.6)'},.5); tl.fromTo($('bd-nb'),{opacity:0,y:-40,scale:.9},{opacity:1,y:0,scale:1,duration:.7,ease:'back.out(1.6)'},.7);
+    tl.fromTo($('bd-vs'),{opacity:0,scale:0,rotation:-180},{opacity:1,scale:1,rotation:0,duration:.8,ease:'back.out(2)'},.9);
+    // narration: Almaty facts first (~0.9–3.0s into scene), Astana (3.0–6.0), then all rows settle
+    for(let i=0;i<R.length;i++){
+      tl.fromTo($('bd-r'+i+'a'),{opacity:0,x:-160,rotateY:25},{opacity:1,x:0,rotateY:0,duration:.6,ease:'power4.out'},1.1+i*.55);
+      tl.fromTo($('bd-r'+i+'b'),{opacity:0,x:160,rotateY:-25},{opacity:1,x:0,rotateY:0,duration:.6,ease:'power4.out'},1.35+i*.55);
+    }
+    document.querySelectorAll('#bd-rows .bar').forEach((b,i)=>tl.to(b,{width:(parseFloat(b.dataset.w)*100)+'%',duration:1.2,ease:'power3.out'},2.2+(i%2)*.25+(i>1?1.1:0)));
+    // closing pulse: both sides glow alternately while narration says "both are magnificent"
+    tl.to($('bd-glowa'),{opacity:.4,duration:.7,repeat:5,yoyo:true,ease:'sine.inOut'},8.2); tl.to($('bd-glowb'),{opacity:1,duration:.7,repeat:5,yoyo:true,ease:'sine.inOut'},8.55);
+    tl.to($('bd-rows'),{y:-10,duration:3,ease:'sine.inOut',yoyo:true,repeat:1},8.0);
+    tl.fromTo($('bd-vs'),{scale:1},{scale:1.25,duration:.5,yoyo:true,repeat:5,ease:'sine.inOut'},9);
+    window.__timelines['sc-board']=tl;
+  })();
+  </script>
+</div></template>

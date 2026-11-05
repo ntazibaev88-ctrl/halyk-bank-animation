@@ -1,0 +1,16 @@
+/* shared infographic components */
+.scr-head{position:absolute;left:72px;top:96px}
+.scr-head .k{font-size:24px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:#9db0c9}
+.scr-head .t{font-size:78px;font-weight:900;letter-spacing:-.03em;line-height:1;margin-top:10px}
+.panel{position:absolute;left:48px;width:984px;border-radius:40px;overflow:hidden;opacity:0}
+.panel .bg{position:absolute;inset:0}
+.panel .ph{position:absolute;left:44px;top:34px}
+.panel .ph .n{font-size:64px;font-weight:900;letter-spacing:-.02em;line-height:1}
+.panel .ph .d{font-size:25px;font-weight:600;color:#d5e3f6;margin-top:8px}
+.tile{position:absolute;width:218px;height:300px;border-radius:26px;background:rgba(5,11,22,.52);border:1.5px solid rgba(255,255,255,.2);opacity:0;overflow:hidden}
+.tile .ic{position:absolute;left:0;top:14px;width:218px;height:130px}
+.tile .nm{position:absolute;left:0;width:218px;top:150px;text-align:center;font-size:21px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+.tile .tx{position:absolute;left:12px;width:194px;top:186px;text-align:center;font-size:25px;line-height:1.18;font-weight:600;color:#fff}
+.pips{position:absolute;left:0;width:218px;bottom:16px;display:flex;justify-content:center;gap:7px}
+.pips i{width:26px;height:8px;border-radius:4px;background:rgba(255,255,255,.2)}
+.pips i.on{background:var(--accent)}
