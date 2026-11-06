@@ -23,6 +23,11 @@
   misses are mostly the small model (e.g. «отпола» for «от пола»), a few are soft consonant clusters
   in the TTS («нет сцепления», «недра сжаты»).
 
+## Final render
+- `renders/gravity_tiktok_1080x1920.mp4`: H.264 High, 1080×1920, 30 fps, 2700 frames, exactly 90.0 s,
+  AAC 256 kb/s 48 kHz stereo, 184 MB. Measured −14.9 LUFS integrated, −1.3 dBFS peak, LRA 2.4 LU.
+- Frames sampled from the encoded file match the snapshots; subtitles stay inside the 168–1330 px band.
+
 ## Not checked by ear
 The audio was measured, not listened to. The voice naturalness and the score's taste need a human pass.
 
