@@ -66,9 +66,8 @@ export const Video: React.FC = () => {
       <CutFlash />
       <HUD />
       <Subtitles />
-      <Audio src={staticFile('audio/voiceover.wav')} volume={1} />
-      <Audio src={staticFile('audio/music.wav')} volume={1} />
-      <Audio src={staticFile('audio/sfx.wav')} volume={1} />
+      {/* Mastered mix of voiceover.wav + music.wav + sfx.wav (built by scripts/sound.py). */}
+      <Audio src={staticFile('audio/mix.wav')} volume={1} />
     </AbsoluteFill>
   );
 };

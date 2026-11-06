@@ -10,6 +10,7 @@ Outputs (48 kHz stereo):
 """
 import json
 import os
+import subprocess
 import wave
 
 import numpy as np
@@ -142,7 +143,7 @@ def impact(d=3.5):
     t = tt(d)
     metal = sum(np.sin(2 * np.pi * f * t) * np.exp(-t * k) * a
                 for f, k, a in [(180, 5, .25), (431, 7, .15), (797, 9, .1), (1290, 12, .06)])
-    crack = hp(noise(d), 2500) * np.exp(-t * 30) * 0.35
+    crack = bp(noise(d), 2000, 8000) * np.exp(-t * 30) * 0.25
     y = x + metal + crack
     return reverb(y / np.abs(y).max(), 2.4, 0.3)
 
@@ -217,7 +218,7 @@ def ocean(d):
     t = tt(d)
     base = lp(brown(d), 700)
     swell = 0.55 + 0.45 * np.sin(2 * np.pi * t / 4.3) ** 2
-    foam = hp(noise(d), 2500) * (0.5 + 0.5 * np.sin(2 * np.pi * t / 4.3 + 1.0)) ** 4 * 0.15
+    foam = bp(noise(d), 900, 4500) * (0.5 + 0.5 * np.sin(2 * np.pi * t / 4.3 + 1.0)) ** 4 * 0.08
     x = base * swell + foam
     return np.stack([x, np.roll(x, int(0.37 * SR))])
 
@@ -250,7 +251,7 @@ def machinery(d):
     hum = sum(np.sin(2 * np.pi * 50 * h * t) / h for h in range(1, 7)) * 0.25
     thump_env = np.exp(-((t % 0.5) * 18))
     thump = lp(noise(d), 200) * thump_env * 0.9
-    hiss = hp(noise(d), 3000) * (0.5 + 0.5 * np.sin(2 * np.pi * 0.5 * t)) * 0.05
+    hiss = bp(noise(d), 1500, 5000) * (0.5 + 0.5 * np.sin(2 * np.pi * 0.5 * t)) * 0.02
     return hum + thump + hiss
 
 
@@ -267,7 +268,7 @@ def riser(d=3.0):
     f = 120 * 2 ** (3 * t / d)
     ph = 2 * np.pi * np.cumsum(f) / SR
     tone = (np.sin(ph) + 0.5 * np.sin(1.5 * ph)) * 0.3
-    nz = hp(noise(d), 1200) * 0.6
+    nz = bp(noise(d), 800, 7000) * 0.5
     env = (t / d) ** 2.2
     x = (tone + nz) * env
     return reverb(x / np.abs(x).max(), 1.5, 0.3)
@@ -294,7 +295,7 @@ def data_chirps(d, rate=9, lo=1400, hi=3600):
     out = np.zeros(int(d * SR))
     for k in range(int(d * rate)):
         at = k / rate + rng.uniform(0, 0.4 / rate)
-        b = blip(rng.uniform(lo, hi), 0.05, rng.choice(["sine", "square"])) * rng.uniform(0.3, 0.8)
+        b = blip(rng.uniform(lo, hi), 0.05, "sine") * rng.uniform(0.3, 0.8)
         i = int(at * SR)
         out[i:i + len(b)] += b[: max(0, len(out) - i)]
     return out
@@ -552,10 +553,23 @@ def main():
     duck = 1 - 0.45 * vo_envelope()      # ~ -5 dB under the voice
     music.L *= duck; music.R *= duck
     sfx = build_sfx()
+    # tame harsh top end of the noise-based effects
+    sfx.L = lp(sfx.L, 11000, 2); sfx.R = lp(sfx.R, 11000, 2)
     normalise(sfx, 0.6)
     write_wav(os.path.join(ROOT, "public", "audio", "music.wav"), music.L, music.R)
     write_wav(os.path.join(ROOT, "public", "audio", "sfx.wav"), sfx.L, sfx.R)
-    print("music + sfx written,", round(TOTAL, 2), "s")
+    # Master: narration + music + sfx -> limiter -> -14 LUFS / -1 dBTP (social media standard)
+    a = os.path.join(ROOT, "public", "audio")
+    subprocess.run([
+        "ffmpeg", "-y", "-loglevel", "error",
+        "-i", os.path.join(a, "voiceover.wav"), "-i", os.path.join(a, "music.wav"), "-i", os.path.join(a, "sfx.wav"),
+        "-filter_complex",
+        "[0]pan=stereo|c0=c0|c1=c0[v];[v][1][2]amix=inputs=3:normalize=0,"
+        "alimiter=limit=0.7:attack=5:release=60:level=disabled,"
+        "loudnorm=I=-14:TP=-1.5:LRA=9,aresample=48000",
+        "-ar", "48000", os.path.join(a, "mix.wav"),
+    ], check=True)
+    print("music + sfx + master mix written,", round(TOTAL, 2), "s")
 
 
 if __name__ == "__main__":

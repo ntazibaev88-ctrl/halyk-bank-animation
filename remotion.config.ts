@@ -6,4 +6,3 @@ Config.setOverwriteOutput(true);
 Config.setConcurrency(4);
 // Use the pre-installed Chromium in this environment (no download needed).
 Config.setBrowserExecutable('/opt/pw-browsers/chromium');
-Config.setChromiumOpenGlRenderer('swangle');
