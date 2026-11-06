@@ -1,0 +1,20 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../video/lib/fonts.css">
+<style>html,body{margin:0;background:#0E1338}</style></head><body>
+<canvas id="c" width="2160" height="1920"></canvas>
+<script src="../video/lib/core.js"></script><script src="../video/lib/characters.js"></script>
+<script>
+Promise.all(['900 40px BrainDisplay','700 40px BrainDisplay'].map(f=>document.fonts.load(f,'ЁёAa'))).then(()=>{
+const {PAL,text,vgrad,glow}=HF, {TIM,ANYA,drawHuman,drawFace,drawBrain}=CHAR;
+const c=document.getElementById('c'),ctx=c.getContext('2d'); HF.setBoil(0);
+vgrad(ctx,[[0,'#151B4A'],[1,'#0A0D2A']],0,0,2160,1920);
+text(ctx,'ТВОЙ МОЗГ ТЕБЕ ВРЁТ · ПЕРСОНАЖИ',1080,80,{size:54,color:PAL.yellow});
+drawHuman(ctx,{x:300,y:1000,s:1,st:TIM},0); text(ctx,'ТИМ',300,1060,{size:40});
+drawHuman(ctx,{x:760,y:1000,s:1,st:ANYA,mouth:'grin',mouthOpen:.5,eyes:'happy',armR:[2.6,0.4]},0); text(ctx,'АНЯ',760,1060,{size:40});
+drawBrain(ctx,{x:1300,y:420,s:1,mood:0},0); text(ctx,'МОЗГ · ХИТРЫЙ',1300,640,{size:34});
+drawBrain(ctx,{x:1800,y:420,s:.85,mood:1,armR:[2.4,0.5],mouthOpen:.6},0); text(ctx,'МОЗГ · ДРУГ',1800,640,{size:34});
+const ex=[['smile',{}],['grin',{mouth:'grin',mouthOpen:.6,squint:.6}],['shock',{mouth:'o',mouthOpen:1,eyeOpen:1.25,pupil:.6,browL:1,browR:1}],['cringe',{mouth:'cringe',eyes:'shut',brow:1,sweat:1}],['suspicious',{mouth:'smirk',lid:.45,look:[1,0],browL:-.6,browR:.5}],['worried',{mouth:'wavy',brow:1,look:[-1,.3],sweat:.8}],['confident',{mouth:'smirk',lid:.25,brow:-.4,headTilt:.08}],['sleepy',{mouth:'flat',lid:.7,brow:.3}]];
+ex.forEach(([n,e],i)=>{const x=1170+(i%4)*250,y=900+Math.floor(i/4)*480; drawFace(ctx,Object.assign({x,y,s:.62,st:TIM},e),0); text(ctx,n,x,y+150,{size:26,color:PAL.lilac,weight:700});});
+[['#0E1338','navy'],['#4E2A8E','purple'],['#7B45D6','violet'],['#B996FF','lavender'],['#FFC93C','yellow'],['#FFF4D6','cream']].forEach(([c2,n],i)=>{ctx.fillStyle=c2;ctx.fillRect(120+i*180,1720,150,90);ctx.strokeStyle='#fff';ctx.lineWidth=3;ctx.strokeRect(120+i*180,1720,150,90);text(ctx,n,195+i*180,1840,{size:22,weight:700});});
+document.title='ready';});
+</script></body></html>

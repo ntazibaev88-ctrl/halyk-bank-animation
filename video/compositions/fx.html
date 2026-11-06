@@ -1,0 +1,29 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; pointer-events: none; }
+    #fx-c { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; mix-blend-mode: overlay; opacity: 0.07; }
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1080" data-height="1920">
+    <canvas id="fx-c" width="540" height="960"></canvas>
+  </div>
+  <script>
+    /* Whole-film finish: fine animated grain (seeded, 4 tiles cycled at 12 fps). */
+    (function () {
+      const DUR = 90;
+      const c = document.getElementById("fx-c"), ctx = c.getContext("2d");
+      const tiles = [];
+      for (let k = 0; k < 4; k++) {
+        const tc = document.createElement("canvas"); tc.width = 540; tc.height = 960;
+        const tx = tc.getContext("2d"), img = tx.createImageData(540, 960), R = HF.rng(900 + k);
+        for (let i = 0; i < img.data.length; i += 4) { const v = 128 + (R() - 0.5) * 255; img.data[i] = img.data[i + 1] = img.data[i + 2] = v; img.data[i + 3] = 255; }
+        tx.putImageData(img, 0, 0); tiles.push(tc);
+      }
+      function draw(t) { ctx.drawImage(tiles[Math.floor(t * 12) % 4], 0, 0); }
+      const st = { t: 0 };
+      const tl = gsap.timeline({ paused: true });
+      tl.to(st, { t: DUR, duration: DUR, ease: "none", onUpdate: () => draw(st.t) }, 0);
+      window.__timelines["fx"] = tl;
+      draw(0);
+    })();
+  </script>
+</template>

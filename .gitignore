@@ -1,0 +1,8 @@
+node_modules/
+video/.hyperframes/
+video/renders/
+renders/render.log
+renders/.hf-segments/
+scripts/voice_cache/
+__pycache__/
+*.pyc

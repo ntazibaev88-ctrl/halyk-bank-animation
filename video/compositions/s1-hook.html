@@ -1,0 +1,121 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #070a1f; }
+    #s1-c { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+  </style>
+  <div id="root" data-composition-id="s1" data-width="1080" data-height="1920">
+    <canvas id="s1-c" width="1080" height="1920"></canvas>
+  </div>
+  <script>
+    /* SCENE 1 — THE HOOK (0–5.28 s)
+       «Ты уверен, что сам принимаешь решения? А что, если твой мозг уже всё решил за тебя?»
+       Tim stares at the viewer; the brain lurks behind him, wakes on «мозг», drops puppet strings on «решил». */
+    (function () {
+      const DUR = 5.28;
+      const { K, S, E, PAL, pop, win, inv, clamp, lerp, text, glow, shake, speedLines, flash, chapter } = HF;
+      const { TIM, drawHuman, drawBrain, string, bodyPoint } = CHAR;
+      const c = document.getElementById("s1-c"), ctx = c.getContext("2d");
+
+      function draw(t) {
+        HF.setBoil(t);
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.globalAlpha = 1; ctx.globalCompositeOperation = "source-over";
+        ctx.fillStyle = "#070A1F"; ctx.fillRect(0, 0, 1080, 1920);
+        // background: deep navy with a violet bloom behind the head
+        const g = ctx.createRadialGradient(540, 640, 40, 540, 760, 1300);
+        g.addColorStop(0, "#3A1E86"); g.addColorStop(0.35, "#191A55"); g.addColorStop(1, "#05061A");
+        ctx.fillStyle = g; ctx.fillRect(0, 0, 1080, 1920);
+
+        const zIn = K(t, [[0, 1.0], [3.3, 1.05], [3.48, 1.14, "out3"], [4.95, 1.2], [5.28, 2.6, "in3"]]);
+        const [shx, shy] = shake(t, 14 * win(t, 3.36, 3.75, 0.02, 0.3), 26);
+        const cam = { x: K(t, [[4.95, 0], [5.28, 70, "in3"]]), y: K(t, [[0, 0], [4.95, -40], [5.28, -330, "in3"]]), z: zIn, sx: shx, sy: shy, r: K(t, [[0, -0.01], [5.28, 0.02]]) };
+
+        // far layer: stars and drifting bokeh (parallax 0.35)
+        HF.withCam(ctx, cam, 0.35, () => {
+          HF.stars(ctx, t, 11, 90, [-100, -100, 1280, 1500], { a: 0.7 });
+          HF.bokeh(ctx, t, 12, 14, { r: 60, a: 0.16 });
+        });
+
+        HF.withCam(ctx, cam, 1, () => {
+          // the brain, a ghost behind Tim until «мозг» (3.38)
+          const wake = E.out3(inv(3.3, 3.62, t));
+          const brain = {
+            x: 540 + Math.sin(t * 0.9) * 10, y: K(t, [[0, 470], [3.3, 470], [3.62, 420, "out3"]]),
+            s: K(t, [[0, 2.05], [3.3, 2.1], [3.62, 2.45, "back"], [5.28, 2.5]]), mood: 0,
+            open: K(t, [[0, 0.32], [0.7, 0.32], [1.0, 0.75, "out3"], [2.4, 0.7], [3.3, 0.55], [3.42, 1.15, "out3"]]),
+            look: K(t, [[0, [0, 0.3]], [2.5, [0, 0.3]], [2.8, [0, 1], "out3"]]),
+            mouth: "grin", mouthOpen: K(t, [[0, 0.05], [3.3, 0.1], [3.5, 0.85, "back"]]),
+            glow: K(t, [[0, 0.45], [3.3, 0.5], [3.5, 1.0]]), eyeGlow: 1 + wake,
+            arms: E.back(inv(4.05, 4.4, t)), armLen: 105,
+            armL: [K(t, [[4.0, 0.5], [4.6, 0.8]]), 0.35], armR: [K(t, [[4.0, 0.5], [4.6, 0.8]]), 0.35],
+            tilt: Math.sin(t * 1.3) * 0.03,
+          };
+          ctx.save(); ctx.globalAlpha = lerp(0.62, 1, wake);
+          const bh = drawBrain(ctx, brain, t);
+          ctx.restore();
+
+          HF.speedLines(ctx, t, 540, 560, 0.55 * win(t, 3.36, 3.9, 0.03, 0.35), 4, PAL.lilac);
+          // Tim
+          const blink = Math.max(win(t, 1.86, 2.0, 0.05, 0.07), win(t, 4.85, 4.98, 0.05, 0.06));
+          const tim = {
+            st: TIM, x: 540, y: 1960, s: 1.72,
+            headTilt: K(t, [[0, 0], [0.8, 0.07], [1.7, 0.04], [2.5, -0.05], [3.38, 0.02], [4.2, -0.03]]),
+            look: K(t, [[0, [0, 0]], [2.45, [0, 0]], [2.62, [-0.55, -1], "out3"], [3.3, [-0.5, -1]], [3.42, [0.15, -1]], [4.8, [0, -0.9]]]),
+            browL: K(t, [[0, 0.1], [0.8, -0.3], [1.7, 0.2], [2.5, 0.5], [3.38, 1.1, "out3"]]),
+            browR: K(t, [[0, 0.1], [0.8, 0.85, "back"], [1.7, 0.4], [2.5, 0.5], [3.38, 1.1, "out3"]]),
+            brow: K(t, [[0, 0], [2.5, 0.5], [3.38, 0.9]]),
+            lid: K(t, [[0, 0.12], [0.85, 0.38], [1.7, 0.08], [2.45, 0]]), blink,
+            eyeOpen: K(t, [[0, 1], [3.3, 1], [3.45, 1.28, "back"]]), pupil: K(t, [[0, 1], [3.32, 1], [3.45, 0.62, "out3"]]),
+            mouth: S(t, [[0, "smirk"], [1.62, "smile"], [2.45, "wavy"], [3.36, "o"], [4.2, "cringe"]]),
+            mouthOpen: K(t, [[3.36, 0.2], [3.5, 0.9, "back"]]), smile: 0.7,
+            sweat: K(t, [[3.6, 0], [3.95, 1, "out3"]]), blush: 0.22,
+            squash: K(t, [[3.24, 0], [3.34, 0.05], [3.5, -0.04, "out3"], [3.75, 0]]),
+            armL: K(t, [[4.12, [0.12, -0.2]], [4.45, [0.75, -1.1], "back"], [5.28, [0.82, -1.25]]]),
+            armR: K(t, [[4.18, [0.12, -0.2]], [4.55, [0.95, -0.85], "back"], [5.28, [0.9, -0.95]]]),
+          };
+          const th = drawHuman(ctx, tim, t);
+
+          // puppet strings drop from the brain's hands onto Tim's hands
+          const sa = inv(4.08, 4.35, t);
+          if (sa > 0 && bh.L && bh.R) {
+            const hL = bodyPoint(tim, th.L[0], th.L[1]), hR = bodyPoint(tim, th.R[0], th.R[1]);
+            const reach = (a, b) => [lerp(a[0], b[0], E.out3(sa)), lerp(a[1], b[1], E.out3(sa))];
+            string(ctx, bh.L, reach(bh.L, hL), t, 1, 1);
+            string(ctx, bh.R, reach(bh.R, hR), t, 1, 2);
+          }
+        });
+
+
+        // hook title, on screen from frame 0, then thrown upward when the brain wakes
+        const out = E.in3(inv(2.25, 2.6, t));
+        if (out < 1) {
+          const sc = 1 + Math.sin(t * 2.4) * 0.012;
+          ctx.save(); ctx.translate(540, 330 - out * 420); ctx.scale(sc, sc); ctx.rotate(-0.035);
+          ctx.globalAlpha = 1 - out;
+          text(ctx, "ТВОЙ МОЗГ", 0, -62, { size: 112, color: PAL.cream, stroke: PAL.ink, sw: 20 });
+          const j = Math.floor(t * 10) % 7 === 0 ? 6 : 0;
+          text(ctx, "ТЕБЕ ВРЁТ", j, 64, { size: 126, color: PAL.yellow, stroke: PAL.ink, sw: 22, shadow: "rgba(255,201,60,0.55)", blur: 40 });
+          ctx.restore();
+        }
+        // «мозг» punch word above the brain
+        const pw = pop(t, 3.4, 0.3) * (1 - inv(4.6, 4.95, t));
+        if (pw > 0) {
+          ctx.save(); ctx.translate(540, 210 + 40); ctx.scale(pw, pw); ctx.rotate(0.04);
+          text(ctx, "ЭТО ОН?", 0, 0, { size: 84, color: PAL.yellow, stroke: PAL.ink, sw: 14 });
+          ctx.restore();
+        }
+        HF.vignette(ctx, 0.6);
+        flash(ctx, t, 3.37, 0.22, PAL.lilac, 0.5);
+        // exit: dive into the brain's eye, flash to the next scene
+        const fo = inv(5.06, 5.24, t);
+        if (fo > 0) { ctx.fillStyle = HF.rgba(PAL.yellow, E.in(fo)); ctx.fillRect(0, 0, 1080, 1920); }
+      }
+
+      const st = { t: 0 };
+      const tl = gsap.timeline({ paused: true });
+      tl.to(st, { t: DUR, duration: DUR, ease: "none", onUpdate: () => draw(st.t) }, 0);
+      window.__timelines["s1"] = tl;
+      draw(0);
+    })();
+  </script>
+</template>

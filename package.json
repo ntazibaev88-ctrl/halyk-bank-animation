@@ -1,0 +1,32 @@
+{
+  "name": "your-brain-is-lying-to-you",
+  "version": "1.0.0",
+  "description": "«Твой мозг тебе врёт» — 90 s vertical 2D animated explainer (HyperFrames)",
+  "scripts": {
+    "voice": "python3 scripts/gen_voice.py && python3 scripts/asr_check.py",
+    "captions": "python3 scripts/build_captions.py",
+    "audio": "python3 scripts/gen_audio.py",
+    "check": "cd video && npx hyperframes check",
+    "snapshot": "cd video && npx hyperframes snapshot --at 0,4,14,24,40,57,72,88",
+    "preview": "cd video && npx hyperframes preview --background",
+    "render": "cd video && npx hyperframes render -q looks --max-bitrate 5M --buffer-size 10M -o ../renders/your-brain-is-lying-to-you.mp4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ntazibaev88-ctrl/halyk-bank-animation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ntazibaev88-ctrl/halyk-bank-animation/issues"
+  },
+  "homepage": "https://github.com/ntazibaev88-ctrl/halyk-bank-animation#readme",
+  "devDependencies": {
+    "@fontsource/montserrat": "^5.3.0",
+    "@fontsource/rubik": "^5.3.0",
+    "@fontsource/unbounded": "^5.3.0",
+    "gsap": "^3.13.0",
+    "hyperframes": "^0.9.19"
+  }
+}

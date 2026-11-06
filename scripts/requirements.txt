@@ -1,0 +1,7 @@
+# Python tools for narration, subtitles and audio (Python 3.11+)
+numpy
+scipy
+soundfile
+onnxruntime
+espeakng-loader
+sherpa-onnx==2.0.1   # Russian ASR used by asr_check.py / best_take.py

@@ -1,0 +1,360 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #0e1338; }
+    #s2-c { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+  </style>
+  <div id="root" data-composition-id="s2" data-width="1080" data-height="1920">
+    <canvas id="s2-c" width="1080" height="1920"></canvas>
+  </div>
+  <script>
+    /* SCENE 2 — THE ILLUSION (5.28–19.93 s, 14.65 s)
+       A 0–3.3   «Каждый день ты принимаешь сотни решений»   decision cards orbit Tim, counter runs
+       B 3.3–6.9 «…происходят почти автоматически»           brain drops in with an AUTOPILOT console; strings work Tim's hands
+       C 6.9–9.5 «…ищет короткий путь»                        top-down maze: long route vs the brain's shortcut
+       D 9.5–11  «экономит энергию»                           brain lounges on a full battery
+       E 11–14.65 «…использует привычные шаблоны»             a brain stamp prints the same day over and over */
+    (function () {
+      const DUR = 14.65;
+      const { K, S, E, PAL, pop, win, inv, clamp, lerp, text, glow, shake, rrect, circle, line, shape, ellipsePts, rgba, rng, flash } = HF;
+      const { TIM, drawHuman, drawBrain, drawFace, string, bodyPoint } = CHAR;
+      const P = PROP;
+      const c = document.getElementById("s2-c"), ctx = c.getContext("2d");
+
+      /* ---------- maze (seeded DFS), solved once ---------- */
+      const COLS = 7, ROWS = 6, CELL = 120, MX = 120, MY = 380;
+      const walls = []; // walls[r][c] = {r: right wall, b: bottom wall}
+      (function build() {
+        const R = rng(42), seen = [];
+        for (let r = 0; r < ROWS; r++) { walls.push([]); seen.push([]); for (let c2 = 0; c2 < COLS; c2++) { walls[r].push({ r: true, b: true }); seen[r].push(false); } }
+        const stack = [[ROWS - 1, 0]]; seen[ROWS - 1][0] = true;
+        while (stack.length) {
+          const [r, c2] = stack[stack.length - 1];
+          const nb = [[r - 1, c2], [r + 1, c2], [r, c2 - 1], [r, c2 + 1]].filter(([a, b]) => a >= 0 && b >= 0 && a < ROWS && b < COLS && !seen[a][b]);
+          if (!nb.length) { stack.pop(); continue; }
+          const [a, b] = nb[Math.floor(R() * nb.length)];
+          if (a === r) walls[r][Math.min(c2, b)].r = false; else walls[Math.min(r, a)][c2].b = false;
+          seen[a][b] = true; stack.push([a, b]);
+        }
+      })();
+      const route = (function solve() {
+        const start = [ROWS - 1, 0], goal = [0, COLS - 1], prev = {}, q = [start], key = (a) => a.join(",");
+        prev[key(start)] = null;
+        while (q.length) {
+          const [r, c2] = q.shift(); if (r === goal[0] && c2 === goal[1]) break;
+          const moves = [];
+          if (c2 < COLS - 1 && !walls[r][c2].r) moves.push([r, c2 + 1]);
+          if (c2 > 0 && !walls[r][c2 - 1].r) moves.push([r, c2 - 1]);
+          if (r < ROWS - 1 && !walls[r][c2].b) moves.push([r + 1, c2]);
+          if (r > 0 && !walls[r - 1][c2].b) moves.push([r - 1, c2]);
+          moves.forEach((m) => { if (!(key(m) in prev)) { prev[key(m)] = [r, c2]; q.push(m); } });
+        }
+        const path = []; let cur = goal;
+        while (cur) { path.unshift(cur); cur = prev[key(cur)]; }
+        return path.map(([r, c2]) => [MX + c2 * CELL + CELL / 2, MY + r * CELL + CELL / 2]);
+      })();
+      function partialPath(pts, u) {
+        const segs = []; let total = 0;
+        for (let i = 1; i < pts.length; i++) { const d = Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]); segs.push(d); total += d; }
+        let rem = total * clamp(u); const out = [pts[0]];
+        for (let i = 1; i < pts.length; i++) {
+          if (rem >= segs[i - 1]) { out.push(pts[i]); rem -= segs[i - 1]; }
+          else { const k = rem / segs[i - 1]; out.push([lerp(pts[i - 1][0], pts[i][0], k), lerp(pts[i - 1][1], pts[i][1], k)]); break; }
+        }
+        return out;
+      }
+
+      /* ---------- segment A/B: Tim, cards, autopilot ---------- */
+      const CARDS = [
+        { x: 230, y: 560, t0: 0.3, kind: "food" },
+        { x: 860, y: 520, t0: 0.65, kind: "phone" },
+        { x: 210, y: 900, t0: 1.0, kind: "talk" },
+        { x: 870, y: 880, t0: 1.35, kind: "shirt" },
+      ];
+      function drawCard(cd, t, a) {
+        const p = pop(t, cd.t0, 0.4) * a; if (p <= 0) return;
+        ctx.save(); ctx.translate(cd.x, cd.y + Math.sin(t * 2 + cd.x) * 8); ctx.rotate(Math.sin(t * 1.3 + cd.y) * 0.05); ctx.scale(p, p);
+        P.card(ctx, 270, 220);
+        if (cd.kind === "food") {
+          ctx.save(); ctx.translate(-62, 6); ctx.scale(0.8, 0.8); P.burger(ctx); ctx.restore();
+          text(ctx, "или", 0, -70, { size: 26, color: PAL.violet, family: "BrainSans" });
+          ctx.save(); ctx.translate(66, 2); ctx.scale(0.8, 0.8); P.salad(ctx); ctx.restore();
+        } else if (cd.kind === "phone") {
+          ctx.save(); ctx.translate(0, 0); P.phone(ctx, { notif: true, glow: 0.5 + 0.5 * Math.sin(t * 8) }); ctx.restore();
+          text(ctx, "+3", 80, -60, { size: 34, color: "#FF4F7B", family: "BrainSans" });
+        } else if (cd.kind === "talk") {
+          ctx.save(); ctx.translate(-10, -6); P.bubble(ctx, 200, 100, -60, 80, { fill: PAL.lilac }); text(ctx, "Привет!", 0, -2, { size: 34, color: PAL.ink, family: "BrainSans" }); ctx.restore();
+        } else {
+          ctx.save(); ctx.translate(-58, 0); ctx.scale(0.85, 0.85); P.shirt(ctx, PAL.violet); ctx.restore();
+          ctx.save(); ctx.translate(58, 0); ctx.scale(0.85, 0.85); P.shirt(ctx, PAL.yellow); ctx.restore();
+        }
+        // decided ✓ stamp on «решений»
+        const ck = pop(t, 2.35 + CARDS.indexOf(cd) * 0.08, 0.25);
+        if (ck > 0) {
+          ctx.save(); ctx.translate(100, -84); ctx.scale(ck, ck);
+          circle(ctx, 0, 0, 34, PAL.yellow, 6);
+          line(ctx, [[-14, 0], [-3, 12], [16, -12]], 8, PAL.ink, { seed: 9 });
+          ctx.restore();
+        }
+        ctx.restore();
+      }
+
+      function console_(t, x, y, lever) {
+        ctx.save(); ctx.translate(x, y);
+        rrect(ctx, -320, -70, 640, 170, 40); ctx.fillStyle = PAL.navy2; ctx.fill(); ctx.lineWidth = 8; ctx.strokeStyle = PAL.ink; ctx.stroke();
+        rrect(ctx, -300, -56, 600, 26, 13); ctx.fillStyle = PAL.indigo; ctx.fill();
+        const R = rng(5);
+        for (let i = 0; i < 9; i++) { const on = Math.sin(t * 6 + i * 1.7) > 0; circle(ctx, -250 + i * 34, 4, 11, on ? (R() > 0.5 ? PAL.yellow : PAL.teal) : PAL.purple, 4); }
+        // lever
+        ctx.save(); ctx.translate(200, 30); ctx.rotate(lerp(-0.7, 0.7, lever));
+        line(ctx, [[0, 0], [0, -110]], 16, PAL.ink, { seed: 31 }); line(ctx, [[0, 0], [0, -110]], 8, PAL.lilac, { seed: 31 });
+        circle(ctx, 0, -118, 26, lever > 0.5 ? PAL.yellow : "#FF4F7B", 7);
+        ctx.restore();
+        circle(ctx, 200, 30, 22, PAL.purple, 6);
+        ctx.restore();
+      }
+
+      /* ---------- segment E: calendar and stamp ---------- */
+      const DAYS = ["ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС", "ПН", "ВТ"];
+      const SLAMS = [11.45, 12.02, 12.74, 13.12, 13.38, 13.62, 13.84, 14.02, 14.18];
+      function routine(ctx2) {
+        // the same mini-day in every cell: phone → coffee → phone
+        [[-66, P.phone], [0, P.coffee], [66, P.phone]].forEach(([x, f], i) => { ctx2.save(); ctx2.translate(x, 18); ctx2.scale(0.42, 0.42); f(ctx2, { glow: 0.8 }); ctx2.restore(); });
+        line(ctx2, [[-40, 18], [-26, 18]], 4, PAL.violet, { boil: 0 }); line(ctx2, [[26, 18], [40, 18]], 4, PAL.violet, { boil: 0 });
+      }
+
+      function draw(t) {
+        HF.setBoil(t);
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.globalAlpha = 1; ctx.globalCompositeOperation = "source-over";
+        ctx.fillStyle = "#070A1F"; ctx.fillRect(0, 0, 1080, 1920);
+        const slamI = SLAMS.findIndex((s, i) => t >= s && t < s + 0.22);
+        const [shx, shy] = shake(t, 22 * win(t, 3.36, 3.6, 0.02, 0.2) + (slamI >= 0 ? 18 * (1 - (t - SLAMS[slamI]) / 0.22) : 0), 30, 2);
+
+        /* ===== A + B (0 – 7.1) ===== */
+        if (t < 7.15) {
+          const cam = { x: 0, y: K(t, [[0, 0], [3.3, -10], [3.7, 30, "out3"], [6.9, 50]]), z: K(t, [[0, 1.0], [3.3, 1.04], [3.6, 1.0, "out3"], [6.9, 1.06]]), sx: shx, sy: shy, r: Math.sin(t * 0.5) * 0.01 };
+          HF.vgrad(ctx, [[0, "#2A2272"], [0.55, "#4A2E9E"], [0.56, "#1B1A5A"], [1, "#0B0D2E"]]);
+          HF.withCam(ctx, cam, 0.4, () => {
+            // perspective floor grid
+            ctx.save(); ctx.globalAlpha = 0.35; ctx.strokeStyle = PAL.lav; ctx.lineWidth = 2;
+            for (let i = -10; i <= 10; i++) { ctx.beginPath(); ctx.moveTo(540 + i * 40, 1075); ctx.lineTo(540 + i * 260, 2000); ctx.stroke(); }
+            for (let j = 0; j < 9; j++) { const y = 1075 + Math.pow(j / 8, 2) * 925 + ((t * 40) % 30) * (j / 8); ctx.beginPath(); ctx.moveTo(-200, y); ctx.lineTo(1280, y); ctx.stroke(); }
+            ctx.restore();
+            HF.bokeh(ctx, t, 21, 10, { r: 70, a: 0.12 });
+          });
+          HF.withCam(ctx, cam, 1, () => {
+            const cardsOut = E.in3(inv(3.25, 3.55, t));
+            CARDS.forEach((cd) => { if (t < 3.6) drawCard(cd, t, 1 - cardsOut); });
+
+            // brain + console drop in (B)
+            const drop = E.back(inv(3.33, 3.85, t));
+            const lever = E.back(inv(5.42, 5.65, t));
+            if (drop > 0) {
+              const by = lerp(-400, 400, drop);
+              const b = drawBrain(ctx, { x: 540, y: by, s: 0.95, mood: 0.05, look: [0, 1], open: K(t, [[3.5, 0.8], [5.4, 0.8], [5.6, 1.1]]), mouth: "grin", mouthOpen: K(t, [[5.4, 0.2], [5.6, 0.8]]), glow: 0.7, armL: [0.4, 0.6], armR: [K(t, [[5.2, 0.4], [5.42, 1.0], [5.65, 0.6]]), 0.9], armLen: 80 }, t);
+              console_(t, 540, by + 210, lever);
+              // AUTOPILOT neon sign
+              const on = lever > 0.5 ? 1 : 0.25 + 0.1 * Math.sin(t * 20);
+              ctx.save(); ctx.globalAlpha = drop;
+              text(ctx, "АВТОПИЛОТ", 540, by - 230, { size: 66, color: on > 0.5 ? PAL.yellow : PAL.lav, stroke: PAL.ink, sw: 12, shadow: on > 0.5 ? "rgba(255,201,60,0.9)" : null, blur: 40 });
+              text(ctx, lever > 0.5 ? "ВКЛ" : "ВЫКЛ", 540, by - 168, { size: 34, color: lever > 0.5 ? PAL.yellow : "#FF4F7B", family: "BrainSans" });
+              ctx.restore();
+            }
+
+            // Tim
+            const robo = (k) => Math.floor(k * 4) / 4; // stepped, puppet-like
+            const autoK = inv(5.5, 5.75, t);
+            const lookAt = (x, y) => [clamp((x - 540) / 360, -1, 1), clamp((y - 900) / 400, -1, 1)];
+            let look = [0, 0], turn = 0;
+            if (t < 3.3) { const idx = CARDS.findIndex((cd, i) => t >= cd.t0 && (i === CARDS.length - 1 || t < CARDS[i + 1].t0)); if (idx >= 0) { look = lookAt(CARDS[idx].x, CARDS[idx].y); turn = look[0] * 0.35; } }
+            else look = K(t, [[3.3, [0, -0.4]], [3.5, [0, -1], "out3"], [5.5, [0, -1]], [5.8, [0.1, 0.2]]]);
+            const tim = {
+              st: TIM, x: 540, y: 1560, s: 0.94, turn, look,
+              headTilt: Math.sin(t * 1.7) * 0.04 + (t > 5.6 ? Math.sin(robo(t) * 6) * 0.04 : 0),
+              lid: K(t, [[0, 0], [5.5, 0], [5.75, 0.58]]),
+              browL: K(t, [[0, 0.3], [3.3, 0.3], [3.45, 0.9], [5.5, 0.6], [5.7, -0.2]]), browR: K(t, [[0, 0.5], [3.3, 0.5], [3.45, 0.9], [5.5, 0.6], [5.7, -0.2]]),
+              brow: K(t, [[0, 0.3], [3.4, 0.7], [5.6, 0]]),
+              eyeOpen: K(t, [[3.3, 1], [3.45, 1.2], [5.5, 1.1], [5.7, 0.9]]), pupil: K(t, [[3.3, 1], [3.45, 0.7], [5.5, 0.75], [5.7, 1]]),
+              mouth: S(t, [[0, "smile"], [1.0, "o"], [1.4, "wavy"], [2.4, "smile"], [3.35, "o"], [5.55, "flat"], [6.1, "open"], [6.35, "flat"]]),
+              mouthOpen: K(t, [[0.9, 0.2], [1.1, 0.5], [3.35, 0.3], [3.5, 0.8]]), smile: 0.8,
+              armR: t < 3.6 ? [0.12, -0.2] : K(robo(t * 2) / 2, [[3.8, [0.12, -0.2]], [4.25, [0.4, -1.9]], [5.75, [0.4, -1.9]], [6.0, [0.15, -2.6]], [6.3, [0.3, -2.1]]]),
+              armL: t < 4.3 ? [0.12, -0.2] : K(robo(t * 2) / 2, [[4.4, [0.12, -0.2]], [4.85, [0.5, -1.7]], [6.4, [0.35, -2.4]]]),
+              propR: t > 4.0 ? (cx, sd, a2) => { cx.save(); cx.rotate(sd * a2); cx.translate(-10 * sd, -24); cx.scale(0.62, 0.62); P.burger(cx); cx.restore(); } : null,
+              propL: t > 4.6 ? (cx, sd, a2) => { cx.save(); cx.rotate(sd * a2); cx.translate(8, -40); cx.scale(0.75, 0.75); P.phone(cx, { notif: true }); cx.restore(); } : null,
+              sweat: K(t, [[3.4, 0], [3.7, 0.8], [5.5, 0.8], [5.7, 0]]),
+              squash: K(t, [[3.3, 0], [3.38, 0.05], [3.55, -0.03], [3.75, 0]]),
+            };
+            const th = drawHuman(ctx, tim, t);
+            // strings from the console to Tim's hands (B)
+            const sa = inv(3.9, 4.2, t) * (1 - inv(6.9, 7.1, t));
+            if (sa > 0) {
+              const by = lerp(-400, 400, drop);
+              const hL = bodyPoint(tim, th.L[0], th.L[1]), hR = bodyPoint(tim, th.R[0], th.R[1]);
+              string(ctx, [380, by + 280], [lerp(380, hL[0], sa), lerp(by + 280, hL[1], sa)], t, 1, 3);
+              string(ctx, [700, by + 280], [lerp(700, hR[0], sa), lerp(by + 280, hR[1], sa)], t, 1, 4);
+            }
+            // counter (A)
+            const ca = win(t, 0.2, 3.35, 0.25, 0.2);
+            if (ca > 0) {
+              const n = Math.floor(E.out3(inv(0.3, 2.5, t)) * 312);
+              ctx.save(); ctx.globalAlpha = ca;
+              text(ctx, "РЕШЕНИЙ СЕГОДНЯ", 540, 236, { size: 32, color: PAL.lilac, family: "BrainSans", track: 3 });
+              text(ctx, String(n), 540, 318, { size: 104, color: PAL.yellow, stroke: PAL.ink, sw: 16 });
+              ctx.restore();
+            }
+          });
+        }
+
+        /* ===== C + D (6.9 – 11.2): maze, then battery ===== */
+        if (t >= 6.85 && t < 11.25) {
+          const inC = E.out3(inv(6.85, 7.2, t));
+          ctx.save(); ctx.translate(0, (1 - inC) * 1920);
+          const cam = { x: 0, y: 0, z: K(t, [[6.9, 1.08], [9.4, 1.0, "io"], [9.6, 0.92, "out3"]]), sx: shx, sy: shy, r: K(t, [[6.9, 0.03], [9.4, 0]]) };
+          HF.vgrad(ctx, [[0, "#140F3F"], [1, "#07081F"]]);
+          HF.neurons(ctx, t, 77, [-40, 1180, 1160, 760], 0.8);
+          HF.neurons(ctx, t, 78, [-40, 120, 1160, 300], 0.35);
+          HF.withCam(ctx, cam, 1, () => {
+            const dim = 1 - 0.75 * inv(9.4, 9.7, t);
+            ctx.save(); ctx.globalAlpha = dim;
+            // board
+            rrect(ctx, MX - 30, MY - 30, COLS * CELL + 60, ROWS * CELL + 60, 36); ctx.fillStyle = "#1A1555"; ctx.fill(); ctx.lineWidth = 8; ctx.strokeStyle = PAL.ink; ctx.stroke();
+            ctx.lineCap = "round"; ctx.strokeStyle = PAL.lav; ctx.lineWidth = 10;
+            ctx.beginPath(); ctx.rect(MX, MY, COLS * CELL, ROWS * CELL); ctx.stroke();
+            for (let r = 0; r < ROWS; r++) for (let c2 = 0; c2 < COLS; c2++) {
+              const x = MX + c2 * CELL, y = MY + r * CELL;
+              ctx.beginPath();
+              if (walls[r][c2].r && c2 < COLS - 1) { ctx.moveTo(x + CELL, y); ctx.lineTo(x + CELL, y + CELL); }
+              if (walls[r][c2].b && r < ROWS - 1) { ctx.moveTo(x, y + CELL); ctx.lineTo(x + CELL, y + CELL); }
+              ctx.stroke();
+            }
+            // long route, slowly
+            const lu = inv(7.2, 9.4, t) * 0.62;
+            ctx.save(); ctx.setLineDash([18, 16]); ctx.lineDashOffset = -t * 60;
+            const lp = partialPath(route, lu);
+            ctx.beginPath(); lp.forEach(([x, y], i) => (i ? ctx.lineTo(x, y) : ctx.moveTo(x, y))); ctx.lineWidth = 12; ctx.strokeStyle = rgba(PAL.lilac, 0.55); ctx.stroke();
+            ctx.restore();
+            const head = lp[lp.length - 1];
+            drawFace(ctx, { st: TIM, x: head[0], y: head[1], s: 0.26, mouth: "wavy", brow: 0.8, look: [0.6, -0.5] }, t);
+            // shortcut, fast, glowing
+            const su = E.io3(inv(8.5, 9.15, t));
+            const a0 = route[0], a1 = route[route.length - 1];
+            const sp = [a0, [a0[0] + 120, a0[1] - 380], [a1[0] - 200, a1[1] + 200], a1];
+            if (su > 0) {
+              const pp = []; for (let i = 0; i <= 40 * su; i++) { const k = i / 40; const u = 1 - k; pp.push([u * u * u * sp[0][0] + 3 * u * u * k * sp[1][0] + 3 * u * k * k * sp[2][0] + k * k * k * sp[3][0], u * u * u * sp[0][1] + 3 * u * u * k * sp[1][1] + 3 * u * k * k * sp[2][1] + k * k * k * sp[3][1]]); }
+              ctx.save(); ctx.shadowColor = PAL.yellow; ctx.shadowBlur = 30;
+              ctx.beginPath(); pp.forEach(([x, y], i) => (i ? ctx.lineTo(x, y) : ctx.moveTo(x, y))); ctx.lineWidth = 16; ctx.strokeStyle = PAL.yellow; ctx.lineCap = "round"; ctx.stroke(); ctx.restore();
+              const e = pp[pp.length - 1];
+              drawBrain(ctx, { x: e[0], y: e[1], s: 0.3, mood: 0.1, open: 1, mouth: "grin", mouthOpen: 0.7, arms: 0, glow: 0.8, still: true }, t);
+            }
+            // goal
+            ctx.save(); ctx.translate(a1[0], a1[1]); ctx.rotate(t * 1.5); P.star4(ctx, 0, 0, 52 * (1 + 0.1 * Math.sin(t * 6)), PAL.yellow); ctx.restore();
+            ctx.restore();
+            const la = win(t, 7.3, 9.5, 0.2, 0.2) * dim;
+            ctx.save(); ctx.globalAlpha = la;
+            text(ctx, "ДОЛГО", 250, MY - 40, { size: 44, color: PAL.lilac, stroke: PAL.ink, sw: 10 });
+            ctx.globalAlpha = win(t, 8.6, 9.5, 0.15, 0.2) * dim;
+            text(ctx, "БЫСТРО!", 760, MY - 40, { size: 60, color: PAL.yellow, stroke: PAL.ink, sw: 12, shadow: "rgba(255,201,60,0.8)", blur: 30 });
+            ctx.restore();
+            ctx.save(); ctx.globalAlpha = win(t, 7.0, 9.5, 0.3, 0.2) * dim;
+            text(ctx, "КОРОТКИЙ ПУТЬ", 540, 236, { size: 46, color: PAL.cream, family: "BrainDisplay", track: 2 });
+            ctx.restore();
+
+            // D: battery + lounging brain
+            const bp = E.back(inv(9.45, 9.8, t));
+            if (bp > 0) {
+              ctx.save(); ctx.translate(540, 840); ctx.scale(bp * 2.4, bp * 2.4);
+              const lvl = 0.35 + 0.65 * E.out3(inv(9.8, 10.6, t));
+              P.battery(ctx, lvl, { fill: PAL.yellow });
+              text(ctx, Math.round(lvl * 100) + "%", -6, 2, { size: 30, color: PAL.ink, family: "BrainSans" });
+              ctx.restore();
+              drawBrain(ctx, { x: 520, y: 640 + (1 - bp) * -300, s: 0.6, mood: 0.35, open: 0.35, mouth: "smirk", glow: 0.5, tilt: -0.15, armL: [2.6, 0.6], armR: [2.6, 0.6], armLen: 70 }, t);
+              // zzz
+              for (let i = 0; i < 3; i++) {
+                const k = ((t * 0.9 + i / 3) % 1);
+                ctx.save(); ctx.globalAlpha = Math.sin(k * Math.PI) * bp;
+                text(ctx, "z", 660 + k * 70 + i * 8, 560 - k * 140, { size: 34 + i * 10, color: PAL.lilac });
+                ctx.restore();
+              }
+              ctx.save(); ctx.globalAlpha = bp;
+              text(ctx, "РЕЖИМ ЭКОНОМИИ", 540, 1080, { size: 50, color: PAL.yellow, stroke: PAL.ink, sw: 12 });
+              ctx.restore();
+            }
+          });
+          ctx.restore();
+        }
+
+        /* ===== E (10.95 – 14.65): the stamp ===== */
+        if (t >= 10.95) {
+          const inE = E.out3(inv(10.95, 11.25, t));
+          ctx.save(); ctx.translate((1 - inE) * 1080, 0);
+          HF.vgrad(ctx, [[0, "#2B1F6E"], [1, "#0D0F33"]]);
+          const cam = { x: 0, y: 0, z: K(t, [[10.95, 1.1], [14.2, 1.0]]), sx: shx, sy: shy, r: 0 };
+          // identical clones marching in lockstep along the bottom
+          ctx.save(); ctx.globalAlpha = inv(11.3, 11.8, t);
+          for (let i = -1; i < 6; i++) {
+            const x = ((i * 230 + t * 120) % 1610) - 150;
+            drawHuman(ctx, { st: TIM, x, y: 1880, s: 0.36, legs: "walk", phase: t * 7, lid: 0.55, mouth: "flat", armL: [0.1, -1.9], propL: (cx, sd, a2) => { cx.save(); cx.rotate(sd * a2); cx.translate(6, -40); cx.scale(0.75, 0.75); P.phone(cx, {}); cx.restore(); } }, 0);
+          }
+          ctx.restore();
+          HF.withCam(ctx, cam, 1, () => {
+            const W = 270, H = 230, gx = 540 - W * 1.5 - 15, gy = 380;
+            DAYS.forEach((d, i) => {
+              const x = gx + (i % 3) * (W + 15), y = gy + Math.floor(i / 3) * (H + 15);
+              rrect(ctx, x, y, W, H, 26); ctx.fillStyle = PAL.cream; ctx.fill(); ctx.lineWidth = 6; ctx.strokeStyle = PAL.ink; ctx.stroke();
+              rrect(ctx, x, y, W, 52, 26); ctx.fillStyle = PAL.violet; ctx.fill();
+              ctx.fillStyle = PAL.violet; ctx.fillRect(x, y + 26, W, 26);
+              text(ctx, d, x + W / 2, y + 28, { size: 28, color: PAL.cream });
+              const sIdx = i; const st = SLAMS[sIdx];
+              if (t >= st) {
+                const k = E.out3(inv(st, st + 0.12, t));
+                ctx.save(); ctx.translate(x + W / 2, y + 135); ctx.globalAlpha = 0.6 + 0.4 * k; ctx.scale(lerp(1.15, 1, k), lerp(1.15, 1, k));
+                routine(ctx);
+                ctx.restore();
+              }
+            });
+            // the stamp: lifts, travels to the next cell, slams
+            const next = SLAMS.findIndex((s) => t < s + 0.2);
+            const idx = next < 0 ? SLAMS.length - 1 : next;
+            const tgt = (i) => [gx + (i % 3) * (W + 15) + W / 2, gy + Math.floor(i / 3) * (H + 15) + 135];
+            const prevT = idx > 0 ? SLAMS[idx - 1] : 11.0, st = SLAMS[idx];
+            const [px, py] = idx > 0 ? tgt(idx - 1) : [540, 200];
+            const [nx, ny] = tgt(idx);
+            const u = inv(prevT + 0.12, st, t);
+            let sx2 = lerp(px, nx, E.io(u)), sy2 = lerp(py, ny, E.io(u)) - 170 * Math.sin(Math.PI * u) - (t < st ? 120 * (1 - E.in3(inv(st - 0.12, st, t))) : 0);
+            if (t > 14.3) sy2 -= E.in3(inv(14.3, 14.6, t)) * 900;
+            ctx.save(); ctx.translate(sx2, sy2 - 60);
+            const press = t >= st && t < st + 0.15 ? 0.12 : 0;
+            ctx.scale(1 + press, 1 - press);
+            rrect(ctx, -110, 20, 220, 50, 14); ctx.fillStyle = "#FF5C7A"; ctx.fill(); ctx.lineWidth = 7; ctx.strokeStyle = PAL.ink; ctx.stroke();
+            rrect(ctx, -90, -30, 180, 54, 14); ctx.fillStyle = PAL.purple; ctx.fill(); ctx.stroke();
+            rrect(ctx, -26, -150, 52, 124, 20); ctx.fillStyle = PAL.lav; ctx.fill(); ctx.stroke();
+            ctx.restore();
+            drawBrain(ctx, { x: sx2, y: sy2 - 270, s: 0.32, mood: 0.1, open: 1, mouth: "grin", mouthOpen: 0.6, arms: 0, glow: 0.4, still: true }, t);
+            // ШАБЛОН stamp text
+            const sh = pop(t, 13.0, 0.3, "back2");
+            if (sh > 0) {
+              ctx.save(); ctx.translate(540, 1200 - 300); ctx.rotate(-0.18); ctx.scale(lerp(2.2, 1, sh), lerp(2.2, 1, sh)); ctx.globalAlpha = Math.min(1, sh * 1.5);
+              rrect(ctx, -330, -80, 660, 160, 30); ctx.lineWidth = 14; ctx.strokeStyle = PAL.yellow; ctx.stroke();
+              text(ctx, "ШАБЛОН", 0, 6, { size: 120, color: PAL.yellow, stroke: PAL.ink, sw: 16 });
+              ctx.restore();
+            }
+          });
+          ctx.restore();
+        }
+
+        HF.vignette(ctx, 0.5);
+        { const fy = 1 - inv(0, 0.4, t); if (fy > 0) { ctx.fillStyle = rgba(PAL.yellow, fy * fy); ctx.fillRect(0, 0, 1080, 1920); } }
+        flash(ctx, t, 3.36, 0.18, PAL.white, 0.35);
+        // lights out into the night scene
+        const lo = inv(14.3, 14.65, t);
+        if (lo > 0) { ctx.fillStyle = rgba(PAL.navy0, E.in(lo)); ctx.fillRect(0, 0, 1080, 1920); }
+      }
+
+      const st = { t: 0 };
+      const tl = gsap.timeline({ paused: true });
+      tl.to(st, { t: DUR, duration: DUR, ease: "none", onUpdate: () => draw(st.t) }, 0);
+      window.__timelines["s2"] = tl;
+      draw(0);
+    })();
+  </script>
+</template>
