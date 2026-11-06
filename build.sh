@@ -12,5 +12,5 @@ tools/render_video.sh             # build/video.mp4 (1080x1920, 30 fps)
 ffmpeg -y -v error -i build/video.mp4 -i build/mix.wav -i out/subtitles_ru.srt \
   -map 0:v -map 1:a -map 2:s -c:v copy -c:a aac -b:a 192k -c:s mov_text \
   -metadata title="Астана 1997–2026: преображение столицы" -metadata:s:a:0 language=rus -metadata:s:s:0 language=rus \
-  -movflags +faststart -shortest out/astana_1997_2026.mp4
+  -af apad -t 150 -movflags +faststart out/astana_1997_2026.mp4
 echo "done: out/astana_1997_2026.mp4"
