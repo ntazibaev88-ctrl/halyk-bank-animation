@@ -75,12 +75,12 @@ export default () => {
 <div class="hud" id="s5-tE" style="left:0;right:0;top:215px;text-align:center"><div class="hud-tag warn" style="position:relative"><span class="hud-dot"></span>МГНОВЕННЫЙ ВЗРЫВ<span id="s5-strike" style="position:absolute;left:14px;right:14px;top:50%;height:5px;background:#ff4a3d;transform-origin:0 50%"></span></div></div>
 <div class="hud" id="s5-tD" style="left:0;right:0;top:215px;text-align:center"><div class="hud-tag"><span class="hud-dot"></span>МЕДЛЕННЫЙ РАСПАД</div></div>
 <div class="vignette"></div>
-${grain("s5-grain")}
+
 </div>`;
   const css = `#s5-tG,#s5-tP,#s5-tM,#s5-tE,#s5-tD{opacity:0}`;
   const js = `
 const A = (t) => +(t - ${T0}).toFixed(3);
-Kit.grain(tl,"#s5-grain",15.5);
+
 Kit.stars($("#s5-stars"),505,650);
 const cam=$("#s5-cam");
 tl.fromTo(cam,{scale:2.4,filter:"blur(14px)",opacity:.4},{scale:1,filter:"blur(0px)",opacity:1,duration:1.1,ease:"expo.out"},0);
@@ -97,13 +97,13 @@ tl.fromTo(w,{a:0},{a:Math.PI/2,duration:1.2,ease:"power3.inOut",onUpdate:setW},A
 tl.fromTo("#s5-in-arrows",{opacity:0},{opacity:1,duration:.4},A(50.15));
 tl.fromTo(".s5-ai",{y:-16},{y:6,duration:.55,ease:"sine.inOut",yoyo:true,repeat:7},A(50.15));
 tl.fromTo("#s5-tG",{opacity:0,y:-14},{opacity:1,y:0,duration:.4,ease:"expo.out"},A(50.3));
-tl.to("#s5-tG",{opacity:0,duration:.2},A(52.55));
-tl.fromTo("#s5-tP",{opacity:0,scale:.9},{opacity:1,scale:1,duration:.35,ease:"expo.out"},A(52.7));
+tl.to("#s5-tG",{opacity:0,duration:.15},A(52.4));
+tl.fromTo("#s5-tP",{opacity:0,scale:.9},{opacity:1,scale:1,duration:.35,ease:"expo.out"},A(52.55));
 tl.fromTo("#s5-coreglow",{opacity:.5,scale:1,svgOrigin:"${CX} ${CY}"},{opacity:1,scale:1.25,duration:.5,ease:"sine.inOut",yoyo:true,repeat:2},A(52.7));
-tl.to("#s5-tP",{opacity:0,duration:.2},A(54.05));
+tl.to("#s5-tP",{opacity:0,duration:.15},A(54.3));
 tl.to(["#s5-lb0","#s5-lb1","#s5-lb2","#s5-lb3"],{opacity:0,duration:.3},A(54.0));
 // remove gravity: 100% → 0%
-tl.fromTo("#s5-tM",{opacity:0},{opacity:1,duration:.3},A(54.2));
+tl.fromTo("#s5-tM",{opacity:0},{opacity:1,duration:.3},A(54.45));
 const g={v:100}, pct=$("#s5-pct");
 tl.fromTo(g,{v:100},{v:0,duration:2,ease:"power2.inOut",onUpdate:()=>{pct.textContent=Math.round(g.v)+"%";}},A(54.45));
 tl.fromTo("#s5-bar",{scaleX:1},{scaleX:0,duration:2,ease:"power2.inOut"},A(54.45));

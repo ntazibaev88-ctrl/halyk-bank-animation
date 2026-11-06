@@ -27,7 +27,7 @@ export const HUD_CSS = `
 .hud-tag{display:inline-flex;align-items:center;gap:14px;padding:14px 22px;border:2px solid rgba(127,216,255,.75);border-radius:14px;background:rgba(5,14,40,.62);font-weight:800;font-size:34px;box-shadow:0 0 28px rgba(63,169,255,.35), inset 0 0 18px rgba(63,169,255,.15);}
 .hud-tag.warn{border-color:rgba(255,120,60,.9);box-shadow:0 0 28px rgba(255,90,40,.4), inset 0 0 18px rgba(255,90,40,.18);}
 .hud-tag .v{color:#ff9a4d;text-transform:none;}
-.hud-small{font-weight:600;font-size:26px;letter-spacing:.08em;color:#9fd2ff;}
+.hud-small{font-weight:600;font-size:28px;letter-spacing:.08em;color:#9fd2ff;}
 .hud-dot{width:14px;height:14px;border-radius:50%;background:#7fd8ff;box-shadow:0 0 12px #7fd8ff;}
 .hud-tag.warn .hud-dot{background:#ff7a3d;box-shadow:0 0 12px #ff7a3d;}
 .grain{position:absolute;inset:-10%;opacity:.07;mix-blend-mode:overlay;pointer-events:none;}
@@ -39,7 +39,7 @@ export function sceneFile({ id, css = "", body, js, dur }) {
 <style>
 ${FONT_CSS}
 ${HUD_CSS}
-#root{position:absolute;inset:0;overflow:hidden;background:#030716;font-family:"Mont",sans-serif;}
+#root{position:absolute;inset:0;overflow:hidden;background:transparent;font-family:"Mont",sans-serif;}
 ${css}
 </style>
 <div id="root" data-composition-id="${id}" data-width="1080" data-height="1920" data-start="0" data-duration="${dur}">

@@ -90,12 +90,12 @@ export default () => {
 <div class="hud" id="s3-tagF" style="left:0;right:0;top:250px;text-align:center"><div class="hud-tag warn"><span class="hud-dot"></span>ТРЕНИЕ <span class="v">= 0</span></div><div class="hud-small" style="margin-top:14px">без веса колёса не держат дорогу</div></div>
 <div class="hud" id="s3-tagP" style="left:70px;top:230px"><div class="hud-tag warn"><span class="hud-dot"></span>ДАВЛЕНИЕ <span class="v" id="s3-pval">101&nbsp;кПа</span> ↓</div></div>
 <div class="vignette"></div>
-${grain("s3-grain")}
+
 </div>`;
   const css = `#s3-tagF,#s3-tagP{opacity:0} .hud .v{text-transform:none}`;
   const js = `
 const A = (t) => +(t - ${T0}).toFixed(3);
-Kit.grain(tl,"#s3-grain",14.5);
+
 ["s3a","s3b","s3c"].forEach(p=>{Kit.rigInit(p);gsap.set("#"+p+"-root",{svgOrigin:"0 0"});Kit.poseSet(p,"stand");});
 gsap.set("#s3b-root",{scaleX:-1});
 // parallax camera: each layer follows the camera by its own factor

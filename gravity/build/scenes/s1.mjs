@@ -23,7 +23,7 @@ export default () => {
 </svg>
 </div>
 <div class="vignette"></div>
-${grain("s1-grain")}
+
 <div id="s1-title">
   <div class="s1-kicker"><span>ГИПОТЕТИЧЕСКИЙ СЦЕНАРИЙ</span></div>
   <div class="s1-l" id="s1-l1"><span class="s1-w" id="s1-w0">ЧТО,</span> <span class="s1-w" id="s1-w1">ЕСЛИ</span> <span class="s1-w" id="s1-w2">ЗАВТРА</span></div>
@@ -48,7 +48,7 @@ gsap.set(["#s1a-root","#s1b-root"], { svgOrigin: "0 0" });
 gsap.set("#s1a-root", { rotation: -90 });
 Kit.poseSet("s1a", "lie"); Kit.poseSet("s1b", "stand");
 gsap.set("#s1a-eyeO", { opacity: 0 }); gsap.set("#s1a-eyeC", { opacity: 1 });
-Kit.grain(tl, "#s1-grain", 7.5);
+
 // camera: slow push, then whip to the feet, then pull back wide with a dutch tilt
 Kit.cam(tl, cam, { cx: 540, cy: 1010, s: 1.0 }, 0, 0);
 Kit.cam(tl, cam, { cx: 430, cy: 1130, s: 1.22 }, 0, 3.6, "sine.inOut");

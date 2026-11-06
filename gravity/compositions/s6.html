@@ -16,13 +16,13 @@
 .hud-tag{display:inline-flex;align-items:center;gap:14px;padding:14px 22px;border:2px solid rgba(127,216,255,.75);border-radius:14px;background:rgba(5,14,40,.62);font-weight:800;font-size:34px;box-shadow:0 0 28px rgba(63,169,255,.35), inset 0 0 18px rgba(63,169,255,.15);}
 .hud-tag.warn{border-color:rgba(255,120,60,.9);box-shadow:0 0 28px rgba(255,90,40,.4), inset 0 0 18px rgba(255,90,40,.18);}
 .hud-tag .v{color:#ff9a4d;text-transform:none;}
-.hud-small{font-weight:600;font-size:26px;letter-spacing:.08em;color:#9fd2ff;}
+.hud-small{font-weight:600;font-size:28px;letter-spacing:.08em;color:#9fd2ff;}
 .hud-dot{width:14px;height:14px;border-radius:50%;background:#7fd8ff;box-shadow:0 0 12px #7fd8ff;}
 .hud-tag.warn .hud-dot{background:#ff7a3d;box-shadow:0 0 12px #ff7a3d;}
 .grain{position:absolute;inset:-10%;opacity:.07;mix-blend-mode:overlay;pointer-events:none;}
 .vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 75% 62% at 50% 48%,rgba(0,0,0,0) 55%,rgba(0,2,10,.72) 100%);}
 
-#root{position:absolute;inset:0;overflow:hidden;background:#030716;font-family:"Mont",sans-serif;}
+#root{position:absolute;inset:0;overflow:hidden;background:transparent;font-family:"Mont",sans-serif;}
 #s6-tO,#s6-tP,#s6-tC,#s6-tU{opacity:0}
 </style>
 <div id="root" data-composition-id="s6" data-width="1080" data-height="1920" data-start="0" data-duration="14.5">
@@ -118,7 +118,7 @@
   <div class="hud-small" style="margin-top:12px;color:#ffd2b0">до потери сознания</div></div>
 <div class="hud" id="s6-tU" style="left:70px;top:220px"><div class="hud-tag warn"><span class="hud-dot"></span>УФ И РАДИАЦИЯ</div></div>
 <div class="vignette"></div>
-<svg id="s6-grain" class="grain" viewBox="0 0 400 400" preserveAspectRatio="none"><filter id="s6-grain-f"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .9 0"/></filter><rect width="400" height="400" filter="url(#s6-grain-f)"/></svg>
+
 </div>
 </div>
 <script>
@@ -128,7 +128,7 @@ const $ = (s) => document.querySelector(s);
 const $$ = (s) => Array.from(document.querySelectorAll(s));
 
 const A = (t) => +(t - 63).toFixed(3);
-Kit.grain(tl,"#s6-grain",14.5);
+
 Kit.stars($("#s6-stars"),606,800);
 Kit.rigInit("s6m"); gsap.set("#s6m-root",{svgOrigin:"0 -40"}); Kit.poseSet("s6m","float");
 const G = Kit.Globe($("#s6-cv"), 9), K = Kit, rg=(t,a,b)=>K.range(t,A(a),A(b));
@@ -141,7 +141,7 @@ Kit.canvasClock(tl, 14.5, (t) => {
         ctx.strokeStyle="rgba(255,120,40,.35)"; ctx.lineWidth=14; ctx.stroke(); ctx.strokeStyle="rgba(255,200,120,.8)"; ctx.lineWidth=3; ctx.stroke(); }
       ctx.restore(); } });
 });
-tl.fromTo("#s6-in",{opacity:0},{opacity:1,duration:.5,ease:"power2.out"},0);
+tl.fromTo("#s6-in",{opacity:0},{opacity:1,duration:.3,ease:"power2.out"},0);
 tl.fromTo("#s6-cam",{scale:1.25},{scale:1,duration:3,ease:"power2.out"},0);
 tl.to("#s6-cam",{scale:1.12,y:-40,duration:A(72.8)-A(66),ease:"sine.inOut"},A(66));
 tl.to("#s6-cam",{scale:1.0,y:0,duration:A(77.5)-A(72.8),ease:"sine.inOut"},A(72.8));

@@ -16,13 +16,13 @@
 .hud-tag{display:inline-flex;align-items:center;gap:14px;padding:14px 22px;border:2px solid rgba(127,216,255,.75);border-radius:14px;background:rgba(5,14,40,.62);font-weight:800;font-size:34px;box-shadow:0 0 28px rgba(63,169,255,.35), inset 0 0 18px rgba(63,169,255,.15);}
 .hud-tag.warn{border-color:rgba(255,120,60,.9);box-shadow:0 0 28px rgba(255,90,40,.4), inset 0 0 18px rgba(255,90,40,.18);}
 .hud-tag .v{color:#ff9a4d;text-transform:none;}
-.hud-small{font-weight:600;font-size:26px;letter-spacing:.08em;color:#9fd2ff;}
+.hud-small{font-weight:600;font-size:28px;letter-spacing:.08em;color:#9fd2ff;}
 .hud-dot{width:14px;height:14px;border-radius:50%;background:#7fd8ff;box-shadow:0 0 12px #7fd8ff;}
 .hud-tag.warn .hud-dot{background:#ff7a3d;box-shadow:0 0 12px #ff7a3d;}
 .grain{position:absolute;inset:-10%;opacity:.07;mix-blend-mode:overlay;pointer-events:none;}
 .vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 75% 62% at 50% 48%,rgba(0,0,0,0) 55%,rgba(0,2,10,.72) 100%);}
 
-#root{position:absolute;inset:0;overflow:hidden;background:#030716;font-family:"Mont",sans-serif;}
+#root{position:absolute;inset:0;overflow:hidden;background:transparent;font-family:"Mont",sans-serif;}
 #s5-tG,#s5-tP,#s5-tM,#s5-tE,#s5-tD{opacity:0}
 </style>
 <div id="root" data-composition-id="s5" data-width="1080" data-height="1920" data-start="0" data-duration="15.5">
@@ -68,7 +68,7 @@
 <div class="hud" id="s5-tE" style="left:0;right:0;top:215px;text-align:center"><div class="hud-tag warn" style="position:relative"><span class="hud-dot"></span>МГНОВЕННЫЙ ВЗРЫВ<span id="s5-strike" style="position:absolute;left:14px;right:14px;top:50%;height:5px;background:#ff4a3d;transform-origin:0 50%"></span></div></div>
 <div class="hud" id="s5-tD" style="left:0;right:0;top:215px;text-align:center"><div class="hud-tag"><span class="hud-dot"></span>МЕДЛЕННЫЙ РАСПАД</div></div>
 <div class="vignette"></div>
-<svg id="s5-grain" class="grain" viewBox="0 0 400 400" preserveAspectRatio="none"><filter id="s5-grain-f"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .9 0"/></filter><rect width="400" height="400" filter="url(#s5-grain-f)"/></svg>
+
 </div>
 </div>
 <script>
@@ -78,7 +78,7 @@ const $ = (s) => document.querySelector(s);
 const $$ = (s) => Array.from(document.querySelectorAll(s));
 
 const A = (t) => +(t - 48).toFixed(3);
-Kit.grain(tl,"#s5-grain",15.5);
+
 Kit.stars($("#s5-stars"),505,650);
 const cam=$("#s5-cam");
 tl.fromTo(cam,{scale:2.4,filter:"blur(14px)",opacity:.4},{scale:1,filter:"blur(0px)",opacity:1,duration:1.1,ease:"expo.out"},0);
@@ -95,13 +95,13 @@ tl.fromTo(w,{a:0},{a:Math.PI/2,duration:1.2,ease:"power3.inOut",onUpdate:setW},A
 tl.fromTo("#s5-in-arrows",{opacity:0},{opacity:1,duration:.4},A(50.15));
 tl.fromTo(".s5-ai",{y:-16},{y:6,duration:.55,ease:"sine.inOut",yoyo:true,repeat:7},A(50.15));
 tl.fromTo("#s5-tG",{opacity:0,y:-14},{opacity:1,y:0,duration:.4,ease:"expo.out"},A(50.3));
-tl.to("#s5-tG",{opacity:0,duration:.2},A(52.55));
-tl.fromTo("#s5-tP",{opacity:0,scale:.9},{opacity:1,scale:1,duration:.35,ease:"expo.out"},A(52.7));
+tl.to("#s5-tG",{opacity:0,duration:.15},A(52.4));
+tl.fromTo("#s5-tP",{opacity:0,scale:.9},{opacity:1,scale:1,duration:.35,ease:"expo.out"},A(52.55));
 tl.fromTo("#s5-coreglow",{opacity:.5,scale:1,svgOrigin:"540 880"},{opacity:1,scale:1.25,duration:.5,ease:"sine.inOut",yoyo:true,repeat:2},A(52.7));
-tl.to("#s5-tP",{opacity:0,duration:.2},A(54.05));
+tl.to("#s5-tP",{opacity:0,duration:.15},A(54.3));
 tl.to(["#s5-lb0","#s5-lb1","#s5-lb2","#s5-lb3"],{opacity:0,duration:.3},A(54.0));
 // remove gravity: 100% → 0%
-tl.fromTo("#s5-tM",{opacity:0},{opacity:1,duration:.3},A(54.2));
+tl.fromTo("#s5-tM",{opacity:0},{opacity:1,duration:.3},A(54.45));
 const g={v:100}, pct=$("#s5-pct");
 tl.fromTo(g,{v:100},{v:0,duration:2,ease:"power2.inOut",onUpdate:()=>{pct.textContent=Math.round(g.v)+"%";}},A(54.45));
 tl.fromTo("#s5-bar",{scaleX:1},{scaleX:0,duration:2,ease:"power2.inOut"},A(54.45));

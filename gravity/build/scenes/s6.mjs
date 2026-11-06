@@ -28,12 +28,12 @@ export default () => {
   <div class="hud-small" style="margin-top:12px;color:#ffd2b0">до потери сознания</div></div>
 <div class="hud" id="s6-tU" style="left:70px;top:220px"><div class="hud-tag warn"><span class="hud-dot"></span>УФ И РАДИАЦИЯ</div></div>
 <div class="vignette"></div>
-${grain("s6-grain")}
+
 </div>`;
   const css = `#s6-tO,#s6-tP,#s6-tC,#s6-tU{opacity:0}`;
   const js = `
 const A = (t) => +(t - ${T0}).toFixed(3);
-Kit.grain(tl,"#s6-grain",14.5);
+
 Kit.stars($("#s6-stars"),606,800);
 Kit.rigInit("s6m"); gsap.set("#s6m-root",{svgOrigin:"0 -40"}); Kit.poseSet("s6m","float");
 const G = Kit.Globe($("#s6-cv"), 9), K = Kit, rg=(t,a,b)=>K.range(t,A(a),A(b));
@@ -46,7 +46,7 @@ Kit.canvasClock(tl, 14.5, (t) => {
         ctx.strokeStyle="rgba(255,120,40,.35)"; ctx.lineWidth=14; ctx.stroke(); ctx.strokeStyle="rgba(255,200,120,.8)"; ctx.lineWidth=3; ctx.stroke(); }
       ctx.restore(); } });
 });
-tl.fromTo("#s6-in",{opacity:0},{opacity:1,duration:.5,ease:"power2.out"},0);
+tl.fromTo("#s6-in",{opacity:0},{opacity:1,duration:.3,ease:"power2.out"},0);
 tl.fromTo("#s6-cam",{scale:1.25},{scale:1,duration:3,ease:"power2.out"},0);
 tl.to("#s6-cam",{scale:1.12,y:-40,duration:A(72.8)-A(66),ease:"sine.inOut"},A(66));
 tl.to("#s6-cam",{scale:1.0,y:0,duration:A(77.5)-A(72.8),ease:"sine.inOut"},A(72.8));

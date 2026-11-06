@@ -4,7 +4,7 @@ const T0 = 77;
 export default () => {
   const body = `
 <div id="s7-in" style="position:absolute;inset:0">
-<div id="s7-cam" style="position:absolute;inset:0;transform-origin:600px 900px">
+<div id="s7-cam" style="position:absolute;inset:0;transform-origin:400px 900px">
 <canvas id="s7-stars" width="1680" height="2720" style="position:absolute;left:-300px;top:-400px"></canvas>
 <canvas id="s7-cv" width="1680" height="2720" style="position:absolute;left:-300px;top:-400px"></canvas>
 <svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0;overflow:visible">
@@ -21,7 +21,7 @@ export default () => {
   <div class="s7-l s7-hero"><span class="s7-w" id="s7-w4">СОЛНЦЕ?</span></div>
 </div>
 <div class="vignette"></div>
-${grain("s7-grain")}
+
 </div>`;
   const css = `#s7-tS,#s7-tO{opacity:0}
 #s7-q{position:absolute;left:0;right:0;top:640px;text-align:center;color:#fff;font-weight:900;}
@@ -32,7 +32,7 @@ ${grain("s7-grain")}
 .s7-w{display:inline-block;opacity:0;}`;
   const js = `
 const A = (t) => +(t - ${T0}).toFixed(3);
-Kit.grain(tl,"#s7-grain",13);
+
 Kit.stars($("#s7-stars"),707,1300);
 const cv=$("#s7-cv"), ctx=cv.getContext("2d"), K=Kit, rg=(t,a,b)=>K.range(t,A(a),A(b));
 const SX=130, SY=860, OR=660, EA=Math.atan2(990-SY,700-SX);
@@ -63,8 +63,8 @@ Kit.canvasClock(tl,13,(t)=>{
     const fg=ctx.createLinearGradient(-30,-30,30,30); fg.addColorStop(0,"#b39070"); fg.addColorStop(.5,"#5a4636"); fg.addColorStop(1,"#1c140e");
     ctx.fillStyle=fg; ctx.fill(); ctx.strokeStyle=\`rgba(255,140,60,\${.7*glow})\`; ctx.lineWidth=2; ctx.stroke(); ctx.restore();}
 });
-tl.fromTo("#s7-in",{opacity:0},{opacity:1,duration:.5,ease:"power2.out"},0);
-tl.fromTo("#s7-cam",{scale:1.5},{scale:1.08,duration:2.2,ease:"power3.out"},0);
+tl.fromTo("#s7-in",{opacity:0},{opacity:1,duration:.35,ease:"power2.out"},0);
+tl.fromTo("#s7-cam",{scale:1.3},{scale:1.04,duration:2.2,ease:"power3.out"},0);
 tl.to("#s7-cam",{scale:.86,duration:A(85.4)-A(79.2),ease:"sine.inOut"},A(79.2));
 tl.fromTo("#s7-arrow",{opacity:0},{opacity:1,duration:.4},A(77.4));
 tl.fromTo("#s7-tS",{opacity:0,y:12},{opacity:1,y:0,duration:.4,ease:"expo.out"},A(77.4));

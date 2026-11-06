@@ -16,13 +16,13 @@
 .hud-tag{display:inline-flex;align-items:center;gap:14px;padding:14px 22px;border:2px solid rgba(127,216,255,.75);border-radius:14px;background:rgba(5,14,40,.62);font-weight:800;font-size:34px;box-shadow:0 0 28px rgba(63,169,255,.35), inset 0 0 18px rgba(63,169,255,.15);}
 .hud-tag.warn{border-color:rgba(255,120,60,.9);box-shadow:0 0 28px rgba(255,90,40,.4), inset 0 0 18px rgba(255,90,40,.18);}
 .hud-tag .v{color:#ff9a4d;text-transform:none;}
-.hud-small{font-weight:600;font-size:26px;letter-spacing:.08em;color:#9fd2ff;}
+.hud-small{font-weight:600;font-size:28px;letter-spacing:.08em;color:#9fd2ff;}
 .hud-dot{width:14px;height:14px;border-radius:50%;background:#7fd8ff;box-shadow:0 0 12px #7fd8ff;}
 .hud-tag.warn .hud-dot{background:#ff7a3d;box-shadow:0 0 12px #ff7a3d;}
 .grain{position:absolute;inset:-10%;opacity:.07;mix-blend-mode:overlay;pointer-events:none;}
 .vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 75% 62% at 50% 48%,rgba(0,0,0,0) 55%,rgba(0,2,10,.72) 100%);}
 
-#root{position:absolute;inset:0;overflow:hidden;background:#030716;font-family:"Mont",sans-serif;}
+#root{position:absolute;inset:0;overflow:hidden;background:transparent;font-family:"Mont",sans-serif;}
 
 #s1-title{position:absolute;left:0;right:0;top:186px;text-align:center;color:#fff;text-shadow:0 6px 30px rgba(0,0,0,.7),0 2px 4px rgba(0,0,0,.6);}
 .s1-kicker{font-weight:700;font-size:24px;letter-spacing:.32em;color:#7fd8ff;margin-bottom:22px;}
@@ -235,7 +235,7 @@
 </svg>
 </div>
 <div class="vignette"></div>
-<svg id="s1-grain" class="grain" viewBox="0 0 400 400" preserveAspectRatio="none"><filter id="s1-grain-f"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .9 0"/></filter><rect width="400" height="400" filter="url(#s1-grain-f)"/></svg>
+
 <div id="s1-title">
   <div class="s1-kicker"><span>ГИПОТЕТИЧЕСКИЙ СЦЕНАРИЙ</span></div>
   <div class="s1-l" id="s1-l1"><span class="s1-w" id="s1-w0">ЧТО,</span> <span class="s1-w" id="s1-w1">ЕСЛИ</span> <span class="s1-w" id="s1-w2">ЗАВТРА</span></div>
@@ -256,7 +256,7 @@ gsap.set(["#s1a-root","#s1b-root"], { svgOrigin: "0 0" });
 gsap.set("#s1a-root", { rotation: -90 });
 Kit.poseSet("s1a", "lie"); Kit.poseSet("s1b", "stand");
 gsap.set("#s1a-eyeO", { opacity: 0 }); gsap.set("#s1a-eyeC", { opacity: 1 });
-Kit.grain(tl, "#s1-grain", 7.5);
+
 // camera: slow push, then whip to the feet, then pull back wide with a dutch tilt
 Kit.cam(tl, cam, { cx: 540, cy: 1010, s: 1.0 }, 0, 0);
 Kit.cam(tl, cam, { cx: 430, cy: 1130, s: 1.22 }, 0, 3.6, "sine.inOut");

@@ -69,7 +69,7 @@ export default () => {
 <div class="hud" id="s2-dN" style="left:0;right:0;top:230px;text-align:center"><span class="hud-small" style="opacity:.6">схема, не в масштабе</span></div>
 </div>
 <div class="vignette"></div>
-${grain("s2-grain")}
+
 </div>`;
   const css = `#s2-tagF,#s2-tagR,#s2-tagI,#s2-dT,#s2-dR,#s2-dG,#s2-dN{opacity:0}`;
   const js = `
@@ -77,7 +77,7 @@ const A = (t) => +(t - ${T0}).toFixed(3);
 const cam = $("#s2-cam");
 Kit.rigInit("s2m"); gsap.set("#s2m-root",{svgOrigin:"0 0"});
 Kit.poseSet("s2m","surprise"); gsap.set("#s2m-mouthN",{opacity:0}); gsap.set("#s2m-mouthO",{opacity:1});
-Kit.grain(tl,"#s2-grain",13.5);
+
 gsap.set(["#s2-force","#s2-rocket","#s2-x","#s2-dia"],{opacity:0});
 // entrance: blur swap over the last frames of scene 1
 tl.fromTo("#s2-in",{opacity:0,filter:"blur(14px)"},{opacity:1,filter:"blur(0px)",duration:.45,ease:"power2.out"},0);
@@ -113,7 +113,7 @@ tl.fromTo("#s2-blob",{attr:{rx:34,ry:30}},{attr:{rx:28,ry:36},duration:.45,ease:
 tl.fromTo(".s2-drop",{x:0,y:0},{x:(i)=>[-60,50,30][i],y:(i)=>[40,30,-50][i],duration:13.5,ease:"none"},0);
 tl.to(".s2-path",{opacity:.7,duration:.5,stagger:.08},A(13.1));
 tl.to(".s2-vec",{opacity:1,duration:.4,stagger:.08,ease:"power2.out"},A(13.4));
-tl.fromTo("#s2-tagI",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:.3,ease:"power2.out"},A(14.8));
+tl.fromTo("#s2-tagI",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:.3,ease:"power2.out"},A(13.5));
 // the room shrinks into a house on the curved Earth
 tl.to("#s2-tagI",{opacity:0,duration:.2},A(15.55));
 tl.to(cam,{scale:.04,x:0,y:60,opacity:0,duration:.7,ease:"power3.in"},A(15.6));
@@ -133,7 +133,7 @@ const upd=()=>{const a=th.a; eg.setAttribute("transform",\`rotate(\${(a*180/Math
 upd();
 tl.fromTo(th,{a:0},{a:0.44,duration:A(19.5)-A(16.3),ease:"none",onUpdate:upd},A(16.3));
 tl.to("#s2-gap",{opacity:1,duration:.3},A(17.4));
-tl.fromTo("#s2-dG",{opacity:0,y:16},{opacity:1,y:0,duration:.4,ease:"expo.out"},A(18.3));
+tl.fromTo("#s2-dG",{opacity:0,y:16},{opacity:1,y:0,duration:.4,ease:"expo.out"},A(17.55));
 // dive into the city
 tl.to(["#s2-dT","#s2-dR","#s2-dG","#s2-dN"],{opacity:0,duration:.2},A(19.45));
 tl.to("#s2-dia",{scale:7,filter:"blur(10px)",duration:.9,ease:"power3.in"},A(19.55));
