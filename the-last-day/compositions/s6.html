@@ -1,0 +1,26 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #000; overflow: hidden; }
+    #root canvas { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    .s1-title { position: absolute; left: 0; top: 600px; width: 1080px; text-align: center; }
+    .s1-title-main { position: absolute; left: 0; top: 0; width: 1080px; font-family: "Oswald", sans-serif; font-weight: 700; font-size: 156px; line-height: 0.98; letter-spacing: 0.03em; white-space: nowrap; color: #e9edf2; text-shadow: 0 4px 30px rgba(0,0,0,0.9), 0 0 2px #000; }
+    .s1-ghost { color: #d0141c; mix-blend-mode: screen; }
+    .s1-title-ep { position: absolute; left: 0; top: 345px; width: 1080px; font-family: "Oswald", sans-serif; font-weight: 500; font-size: 40px; letter-spacing: 0.55em; color: #ff4a4a; text-shadow: 0 2px 12px rgba(0,0,0,0.9); }
+  </style>
+  <!-- The message. Picture is drawn by FILM.scenes.s6 (assets/scenes/s6.js) from scene time. -->
+  <div id="root" data-composition-id="s6" data-width="1080" data-height="1920">
+    <canvas id="s6-cv" width="1080" height="1920"></canvas>
+  </div>
+  <script>
+    (function () {
+      const cv = document.getElementById("s6-cv"), ctx = cv.getContext("2d");
+      const D = 10.0;
+      // GSAP drives a getter/setter, so every seek redraws the canvas at exactly that time
+      const clock = { _t: 0, t(v) { if (v === undefined) return this._t; this._t = v; window.FILM.scenes.s6(ctx, v); } };
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo(clock, { t: 0 }, { t: D, duration: D, ease: "none" }, 0);
+      window.FILM.scenes.s6(ctx, 0);
+      window.__timelines["s6"] = tl;
+    })();
+  </script>
+</template>
