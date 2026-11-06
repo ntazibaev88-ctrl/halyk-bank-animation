@@ -41,7 +41,8 @@ video/                     HyperFrames project (render this)
 scripts/
   narration.py             the Russian script, split into clauses with pauses
   ru_tts.py                espeak-ng phonemes (with stress fixes) → Piper "Ruslan" ONNX voice
-  gen_voice.py             builds voice.wav + timing.json (per-clause cache)
+  gen_voice.py             builds voice.wav + timing.json (per-clause takes, cached); each clause starts where the animation expects it
+  build_warp.py            lib/warp.js: smooth per-scene time-warp so animation beats land on the current narration's words
   asr_check.py, best_take.py  back-transcribe with a Russian ASR; refine word times; pick best takes
   build_captions.py        captions.html + SRT/VTT from timing.json
   gen_audio.py             music bed (ducked under the voice) + SFX stem
@@ -57,7 +58,7 @@ npm install                       # hyperframes CLI (pinned 0.9.19), gsap, fonts
 pip install -r scripts/requirements.txt
 # voice models (GitHub release assets from k2-fsa/sherpa-onnx) go in /home/user/tts:
 #   tts-models/vits-piper-ru_RU-ruslan-medium.tar.bz2, asr-models/sherpa-onnx-zipformer-ru-2024-09-18.tar.bz2
-npm run voice      # only if the script changes (re-times every scene)
+npm run voice      # new narration (keeps every clause start), then: python3 scripts/build_warp.py
 npm run captions
 npm run audio
 npm run check
@@ -68,6 +69,6 @@ Live preview / editing: `cd video && npx hyperframes preview` (or open the folde
 
 ## Notes
 
-- **Voice** is a local neural TTS (Piper «Ruslan», ru_RU), pitched down ~1.4 semitones with formants preserved and lightly mastered. Stress was checked word by word (espeak-ng phonemes) and fixed where needed; a Russian speech recognizer transcribes the track back to the script. It is clear and natural for TTS, but it is not a human voice actor — for a release, a recorded narrator (or a premium cloud voice) can replace `video/assets/audio/voice.wav` and `npm run voice` timings can be re-derived with `asr_check.py`.
+- **Voice** (profile v2: a young 20–25 documentary presenter) is a local neural TTS (Piper «Ruslan», ru_RU) spoken ~10 % faster than v1, lifted +1 semitone, with no bass boost, a presence lift and a light dry room; per sentence the most expressive of up to 8 takes that the ASR transcribes word-for-word is kept. Stress was checked word by word (espeak-ng phonemes) and fixed where needed; a Russian speech recognizer transcribes the track back to the script. It is clear and natural for TTS, but it is not a human voice actor — for a release, a recorded narrator (or a premium cloud voice) can replace `video/assets/audio/voice.wav` and `npm run voice` timings can be re-derived with `asr_check.py`.
 - **Music and SFX** are synthesized in code (`scripts/gen_audio.py`) because no music/SFX library was reachable from the build machine. Levels were measured, not listened to: final mix −15.0 LUFS integrated, −1.3 dBTP true peak; the music bed sits ~14 dB under the voice and ducks further during speech.
 - Fonts: Unbounded and Montserrat (SIL Open Font License), via @fontsource.

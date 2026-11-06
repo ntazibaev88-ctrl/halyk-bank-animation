@@ -57,14 +57,17 @@ def pad_note(m, dur, amp, bright=1800, seed=0):
 # section plan: (start, end, chords [(root-midi list)], bar seconds, style)
 DM, BB, F_, C_, GM, AM = [50, 57, 62, 65], [46, 58, 62, 65], [41, 57, 60, 65], [48, 55, 60, 64], [43, 58, 62, 67], [45, 57, 61, 64]
 FMAJ, BBM, CM, DMIN = [41, 60, 65, 69], [46, 62, 65, 70], [48, 60, 64, 67], [50, 62, 65, 69]
+import sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from build_warp import old_to_new
+POOF = SC["s6"] + old_to_new("s6", 13.76)  # the transformation: music lifts here
 plan = [
     (0.0, SC["s2"], [DM, BB], 2.64, "dark"),
     (SC["s2"], SC["s3"], [DM, BB, F_, C_], 2.67, "pulse"),
     (SC["s3"], SC["s4"], [DM, GM, BB, AM], 3.5, "night"),
     (SC["s4"], SC["s5"], [DM, BB, GM, AM], 2.67, "tick"),
     (SC["s5"], SC["s6"], [F_, C_, DM, BB], 2.67, "play"),
-    (SC["s6"], SC["s6"] + 13.76, [DM, BB, F_, C_], 2.67, "build"),
-    (SC["s6"] + 13.76, DUR, [FMAJ, CM, DMIN, BBM], 2.6, "hope"),
+    (SC["s6"], POOF, [DM, BB, F_, C_], 2.67, "build"),
+    (POOF, DUR, [FMAJ, CM, DMIN, BBM], 2.6, "hope"),
 ]
 for (a, b, chords, bar, style) in plan:
     t, i = a, 0
@@ -212,6 +215,14 @@ E += [(s6 + 6.41, crack(195), 0.6, 0.2), (s6 + 6.41, impact(196, 90, 0.6), 0.5, 
       (s6 + 16.6, pop(205, 900), 0.3, 0), (s6 + 18.6, pop(206, 700), 0.5, 0), (s6 + 19.3, impact(207, 80, 0.8), 0.45, 0), (s6 + 19.3, shimmer(208, 1.0), 0.35, 0),
       (s6 + 20.48, hp(noise(int(0.15 * SR), 209), 1200) * np.exp(-np.arange(int(0.15 * SR)) / SR * 40), 0.6, 0.3)]
 
+# effects were authored against the animation's clock; move them onto the film's clock (see build_warp.py)
+import sys; sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from build_warp import old_to_new
+def film_time(t):
+    for sid in ["s6", "s5", "s4", "s3", "s2", "s1"]:
+        if t >= SC[sid] - 0.3: return SC[sid] + old_to_new(sid, t - SC[sid])
+    return t
+E = [(film_time(t0), x, g, pan) for t0, x, g, pan in E]
 for t0, x, g, pan in E:
     # nudge so the sound's peak lands one frame after the picture
     pk = int(np.argmax(np.abs(x))) / SR

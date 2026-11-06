@@ -12,9 +12,15 @@
 - `hyperframes check`: passes (0 errors). Warnings kept on purpose: two scene files over 300 lines (one file per scene keeps Studio editing simple); canvases touching the frame edge (full-bleed by design).
 - Snapshots of every scene, `snapshot --review` (scene starts/middles, the 5 cuts, phone width): all reviewed; fixed a missing flash on the S1→S2 cut, a non-clearing canvas in S4, labels colliding with the subtitle band, a speech bubble overflowing the frame, a floating character, an easing curve that leaked a frame early.
 - **Narration:** stress checked word by word from espeak-ng phonemes (fixed «уже», «по-разному», spelled-out prepositions); the whole track was back-transcribed with a Russian ASR model and matches the script except unstressed endings that sound identical in speech. Not heard by a human.
-- **Sound:** measured, not heard. Final mix −15.0 LUFS integrated, −1.3 dBTP (the render came out at −17 LUFS; the delivered MP4 got +2 dB on the audio with the picture stream copied, and the same +2 dB is set in `index.html` volumes). Narration −16.5 LUFS before that gain; music bed ~14 dB under it and ducked further while the voice speaks; SFX peaks land one frame after their picture. Music and effects are synthesized in code because no music/SFX source was reachable from this machine.
+- **Sound:** measured, not heard. Final mix −15.5 LUFS integrated, −1.4 dBTP; music bed ~14 dB under it and ducked further while the voice speaks; SFX peaks land one frame after their picture. Music and effects are synthesized in code because no music/SFX source was reachable from this machine.
 
 - **Render:** 1080×1920, 30 fps, H.264 + AAC, 90.00 s, 56 MB (capped at 5 Mbit/s for upload and git).
+
+## Voice v2 (young documentary presenter)
+
+- Compared the three Russian male voices reachable offline on the full script: Ruslan 119 Hz, 5.8 st pitch movement, 95 % ASR; Denis 146 Hz, 4.0 st, heavier low end; Dmitri 187 Hz, 2.5 st (monotone), 90 % ASR. Kept Ruslan as the most natural and expressive. The "older trailer" quality of v1 came from processing (−1.4 st, +3.5 dB at 140 Hz, heavy compression), now removed: +1 st, high-pass 90 Hz, low-mid cut, +3 dB at 3.5 kHz, lighter compression, smaller room. Result: median pitch 125 Hz, 5.0 st movement, bass ratio 0.02.
+- Pace ~10 % faster with crisper pauses. Every clause still starts at its original time; `lib/warp.js` re-times each scene so beats land within 0.12 s of their words (playback speed stays 0.4×–1.5×, mostly ≈1×). SFX moved with the same map; music ducking follows the new voice.
+- Final mix −15.5 LUFS, −1.4 dBTP (rendered directly, no post gain).
 
 ## Weakest parts / next steps
 

@@ -113,7 +113,7 @@
 
       const st = { t: 0 };
       const tl = gsap.timeline({ paused: true });
-      tl.to(st, { t: DUR, duration: DUR, ease: "none", onUpdate: () => draw(st.t) }, 0);
+      tl.to(st, { t: DUR, duration: DUR, ease: "none", onUpdate: () => draw(HF.warp("s1", st.t)) }, 0);
       window.__timelines["s1"] = tl;
       draw(0);
     })();
