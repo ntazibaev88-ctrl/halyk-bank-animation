@@ -69,5 +69,5 @@ Live preview / editing: `cd video && npx hyperframes preview` (or open the folde
 ## Notes
 
 - **Voice** is a local neural TTS (Piper «Ruslan», ru_RU), pitched down ~1.4 semitones with formants preserved and lightly mastered. Stress was checked word by word (espeak-ng phonemes) and fixed where needed; a Russian speech recognizer transcribes the track back to the script. It is clear and natural for TTS, but it is not a human voice actor — for a release, a recorded narrator (or a premium cloud voice) can replace `video/assets/audio/voice.wav` and `npm run voice` timings can be re-derived with `asr_check.py`.
-- **Music and SFX** are synthesized in code (`scripts/gen_audio.py`) because no music/SFX library was reachable from the build machine. Levels were measured, not listened to: voice −16.5 LUFS, music bed ~14 dB under it (ducked during speech), true peaks below −4 dBTP.
+- **Music and SFX** are synthesized in code (`scripts/gen_audio.py`) because no music/SFX library was reachable from the build machine. Levels were measured, not listened to: final mix −15.0 LUFS integrated, −1.3 dBTP true peak; the music bed sits ~14 dB under the voice and ducks further during speech.
 - Fonts: Unbounded and Montserrat (SIL Open Font License), via @fontsource.
