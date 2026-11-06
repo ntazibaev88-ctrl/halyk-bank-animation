@@ -1,0 +1,6 @@
+.hyperframes/
+project/.hyperframes/
+node_modules/
+*.premaster.wav
+.FINAL_*hf-transaction*/
+work-*/

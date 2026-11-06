@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>KASPI VS HALYK — КТО СИЛЬНЕЕ В 2026 ГОДУ?</title>
+<style>
+@font-face{font-family:Unb;src:url(assets/fonts/unbounded-cyrillic-700-normal.woff2) format("woff2");font-weight:700;unicode-range:U+0400-045F,U+2116}
+@font-face{font-family:Unb;src:url(assets/fonts/unbounded-latin-700-normal.woff2) format("woff2");font-weight:700}
+@font-face{font-family:Unb;src:url(assets/fonts/unbounded-cyrillic-800-normal.woff2) format("woff2");font-weight:800;unicode-range:U+0400-045F,U+2116}
+@font-face{font-family:Unb;src:url(assets/fonts/unbounded-latin-800-normal.woff2) format("woff2");font-weight:800}
+@font-face{font-family:Unb;src:url(assets/fonts/unbounded-cyrillic-900-normal.woff2) format("woff2");font-weight:900;unicode-range:U+0400-045F,U+2116}
+@font-face{font-family:Unb;src:url(assets/fonts/unbounded-latin-900-normal.woff2) format("woff2");font-weight:900}
+@font-face{font-family:Mont;src:url(assets/fonts/montserrat-cyrillic-500-normal.woff2) format("woff2");font-weight:500;unicode-range:U+0400-045F,U+2116}
+@font-face{font-family:Mont;src:url(assets/fonts/montserrat-latin-500-normal.woff2) format("woff2");font-weight:500}
+@font-face{font-family:Mont;src:url(assets/fonts/montserrat-cyrillic-600-normal.woff2) format("woff2");font-weight:600;unicode-range:U+0400-045F,U+2116}
+@font-face{font-family:Mont;src:url(assets/fonts/montserrat-latin-600-normal.woff2) format("woff2");font-weight:600}
+@font-face{font-family:Mont;src:url(assets/fonts/montserrat-cyrillic-700-normal.woff2) format("woff2");font-weight:700;unicode-range:U+0400-045F,U+2116}
+@font-face{font-family:Mont;src:url(assets/fonts/montserrat-latin-700-normal.woff2) format("woff2");font-weight:700}
+@font-face{font-family:Mont;src:url(assets/fonts/montserrat-cyrillic-800-normal.woff2) format("woff2");font-weight:800;unicode-range:U+0400-045F,U+2116}
+@font-face{font-family:Mont;src:url(assets/fonts/montserrat-latin-800-normal.woff2) format("woff2");font-weight:800}
+@font-face{font-family:Mont;src:url(assets/fonts/montserrat-cyrillic-900-normal.woff2) format("woff2");font-weight:900;unicode-range:U+0400-045F,U+2116}
+@font-face{font-family:Mont;src:url(assets/fonts/montserrat-latin-900-normal.woff2) format("woff2");font-weight:900}
+
+:root{--k:#F14635;--kd:#A8121C;--kl:#FF8A7A;--h:#14A75E;--hd:#0A5C35;--hl:#49DB93;--gold:#FFC83D;--navy:#070B1A;--muted:#A9B3D1}
+html,body{margin:0;padding:0;background:var(--navy)}
+#root{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--navy);color:#fff;font-family:Mont,sans-serif}
+.abs{position:absolute}
+svg{display:block}
+.layer{position:absolute;left:0;top:0;width:1080px;height:1920px}
+
+/* background */
+#bg{background:radial-gradient(120% 70% at 50% 0%,#18224A 0%,#0B1130 45%,#060915 100%)}
+#bg .glowK{left:-420px;top:200px;width:1000px;height:1300px;border-radius:50%;background:radial-gradient(closest-side,rgba(241,70,53,.38),rgba(241,70,53,0))}
+#bg .glowH{left:500px;top:500px;width:1000px;height:1300px;border-radius:50%;background:radial-gradient(closest-side,rgba(20,167,94,.36),rgba(20,167,94,0))}
+#bg .grid{left:-200px;top:1100px;width:1480px;height:1000px;background-image:linear-gradient(rgba(255,255,255,.06) 2px,transparent 2px),linear-gradient(90deg,rgba(255,255,255,.06) 2px,transparent 2px);background-size:90px 90px;transform:perspective(700px) rotateX(62deg);transform-origin:50% 0}
+.star{position:absolute;width:4px;height:4px;border-radius:50%;background:#fff}
+#vignette{background:radial-gradient(120% 90% at 50% 45%,rgba(0,0,0,0) 55%,rgba(0,0,0,.55) 100%);pointer-events:none}
+
+/* scenes */
+.scene{visibility:hidden;opacity:0}
+.cam{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:50% 50%}
+.head{left:60px;top:150px;width:960px;text-align:center}
+.head .chip{display:inline-block;font-family:Unb;font-weight:800;font-size:24px;letter-spacing:4px;padding:10px 22px;border-radius:40px;background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.18);color:#DDE3F7}
+.head .h{margin-top:18px;font-family:Unb;font-weight:900;font-size:62px;line-height:1.08;text-transform:uppercase;letter-spacing:-1px;text-shadow:0 6px 30px rgba(0,0,0,.5)}
+.head .bar{margin:18px auto 0;width:220px;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--k) 0 50%,var(--h) 50% 100%)}
+.note{font-family:Mont;font-weight:600;font-size:22px;color:var(--muted);text-align:center;letter-spacing:.3px}
+.k{color:var(--k)} .hh{color:var(--h)} .g{color:var(--gold)}
+.brand{font-family:Unb;font-weight:900;letter-spacing:1px}
+.panel{background:linear-gradient(180deg,rgba(25,33,70,.92),rgba(12,17,40,.92));border:2px solid rgba(255,255,255,.12);border-radius:36px;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.pill{display:inline-block;font-family:Unb;font-weight:800;border-radius:60px;padding:14px 30px}
+
+/* metric rows (scene 2) */
+.metric{left:60px;width:960px;height:240px;padding:0}
+.metric .lbl{position:absolute;left:36px;top:26px;font-family:Unb;font-weight:800;font-size:30px;letter-spacing:2px;color:#E5E9F8}
+.metric .row{position:absolute;left:36px;width:888px;height:70px}
+.metric .row .nm{position:absolute;left:0;top:18px;width:170px;font-family:Unb;font-weight:900;font-size:28px}
+.metric .row .track{position:absolute;left:170px;top:14px;width:440px;height:42px;border-radius:21px;background:rgba(255,255,255,.07);overflow:hidden}
+.metric .row .fill{position:absolute;left:0;top:0;height:42px;border-radius:21px;transform-origin:0 50%}
+.metric .row .val{position:absolute;left:630px;top:8px;width:258px;text-align:right;font-family:Unb;font-weight:900;font-size:44px;white-space:nowrap}
+.metric .row .val small{font-size:24px;font-weight:700;color:#DDE3F7}
+
+/* chart (scene 3) */
+.chart{left:60px;top:470px;width:960px;height:560px}
+.chart .ttl{position:absolute;left:40px;top:30px;font-family:Unb;font-weight:800;font-size:30px;letter-spacing:1px}
+.chart .legend{position:absolute;right:40px;top:34px;font-family:Unb;font-weight:800;font-size:22px}
+.chart .legend span{display:inline-block;width:20px;height:20px;border-radius:6px;margin:0 8px -2px 18px}
+.chart .base{position:absolute;left:40px;right:40px;top:470px;height:3px;background:rgba(255,255,255,.25)}
+.chart .grp{position:absolute;top:110px;width:260px;height:360px}
+.chart .bar{position:absolute;bottom:0;width:96px;border-radius:16px 16px 4px 4px;transform-origin:50% 100%}
+.chart .bv{position:absolute;width:140px;text-align:center;font-family:Unb;font-weight:800;font-size:28px}
+.chart .yr{position:absolute;top:480px;width:260px;text-align:center;font-family:Unb;font-weight:800;font-size:28px;color:#C7CEE6}
+
+/* data table (scene 4) */
+.drow{left:60px;width:960px;height:220px}
+.drow .lbl{position:absolute;left:32px;top:22px;font-family:Unb;font-weight:800;font-size:25px;letter-spacing:1px;color:#E5E9F8}
+.cell{position:absolute;top:70px;width:430px;height:128px;border-radius:24px}
+.cell .who{position:absolute;left:24px;top:14px;font-family:Unb;font-weight:900;font-size:22px}
+.cell .v{position:absolute;left:24px;top:44px;font-family:Unb;font-weight:900;font-size:42px;white-space:nowrap}
+.cell .s{position:absolute;left:24px;top:96px;font-family:Mont;font-weight:700;font-size:19px;color:#C9D0E8;white-space:nowrap}
+.cell.nd{border:3px dashed rgba(255,255,255,.35);background:rgba(255,255,255,.04)}
+.cell.nd .v{font-size:25px;top:52px;line-height:1.15;color:#E8ECFA;white-space:normal;width:390px}
+
+/* services grid (scene 5) */
+.sgrid{left:60px;top:330px;width:960px;height:1010px}
+.srow{position:absolute;left:30px;width:900px;height:112px;border-bottom:2px solid rgba(255,255,255,.08)}
+.srow .ic{position:absolute;left:6px;top:24px;width:64px;height:64px}
+.srow .t{position:absolute;left:92px;top:36px;font-family:Mont;font-weight:800;font-size:34px}
+.chk{position:absolute;top:22px;width:68px;height:68px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+
+/* scoreboard (scene 6) */
+.score{left:40px;top:378px;width:1000px;height:900px}
+.sb{position:absolute;left:24px;width:952px;height:132px;border-radius:26px;background:rgba(255,255,255,.05)}
+.sb .ic{position:absolute;left:22px;top:30px;width:72px;height:72px}
+.sb .t{position:absolute;left:112px;top:26px;font-family:Mont;font-weight:900;font-size:33px;white-space:nowrap}
+.sb .d{position:absolute;left:112px;top:76px;font-family:Mont;font-weight:700;font-size:21px;color:#B8C1DE;white-space:nowrap}
+.badge{position:absolute;right:20px;top:24px;width:300px;height:84px;border-radius:20px;display:flex;align-items:center;justify-content:center;text-align:center;font-family:Unb;font-weight:900;font-size:34px;line-height:1.1}
+.badge.small{font-size:17px;font-weight:800;padding:0 12px;box-sizing:border-box}
+
+/* subtitles */
+#subs{left:40px;top:1420px;width:1000px;height:220px}
+.sub{position:absolute;left:0;top:0;width:1000px;text-align:center;opacity:0}
+.sub .box{display:inline-block;padding:16px 30px 20px;border-radius:26px;background:rgba(6,9,22,.62);font-family:Mont;font-weight:800;font-size:56px;line-height:1.18;color:#fff;letter-spacing:-.3px;text-shadow:0 3px 0 rgba(0,0,0,.45);max-width:940px}
+.sub .w{opacity:.55;display:inline-block}
+.sub .w.kaspi{color:#FF5B48}
+.sub .w.halyk{color:#2FD07F}
+.sub .w.plus{color:#3EE08A}
+.sub .w.minus{color:#FF6B5A}
+
+/* top bar */
+#topbar{left:0;top:0;width:1080px;height:120px}
+#topbar .prog{position:absolute;left:0;top:0;height:8px;width:1080px;transform-origin:0 50%;background:linear-gradient(90deg,var(--k),var(--gold),var(--h))}
+#topbar .tag{position:absolute;left:44px;top:46px;font-family:Unb;font-weight:800;font-size:22px;letter-spacing:3px;color:rgba(255,255,255,.75)}
+#topbar .tag b{color:var(--k)} #topbar .tag i{font-style:normal;color:var(--h)}
+#topbar .yr{position:absolute;right:44px;top:46px;font-family:Unb;font-weight:800;font-size:22px;letter-spacing:3px;color:rgba(255,255,255,.75)}
+
+/* transitions */
+#wipe{pointer-events:none}
+#wipe .wk,#wipe .wh{position:absolute;top:-300px;width:1300px;height:2520px}
+#wipe .wk{left:-1720px;background:linear-gradient(90deg,#7E0E15,var(--k));transform:skewX(-12deg)}
+#wipe .wh{left:1500px;background:linear-gradient(90deg,var(--h),#063D22);transform:skewX(-12deg)}
+#wipe .seam{position:absolute;left:530px;top:-200px;width:20px;height:2320px;background:#fff;filter:blur(6px);opacity:0;transform:skewX(-12deg)}
+#flash{background:#fff;opacity:0;pointer-events:none}
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="root" data-width="1080" data-height="1920" data-start="0" data-duration="90" data-fps="30">
+
+  <div id="bg" class="layer">
+    <div class="abs glowK"></div><div class="abs glowH"></div>
+    <div class="abs grid"></div>
+    <div id="stars" class="layer"></div>
+  </div>
+
+  <!-- SCENE 1 — HOOK -->
+  <section id="s1" class="layer scene"><div class="cam">
+    <div class="abs far" style="left:0;top:780px;width:1080px;height:640px;opacity:.45"></div>
+    <div class="abs near" style="left:0;top:1000px;width:1080px;height:420px;opacity:.75"></div>
+    <div class="abs tk" style="left:-6px;top:300px;width:380px"></div>
+    <div class="abs th" style="left:690px;top:300px;width:400px"></div>
+    <div class="abs ground" style="left:-100px;top:1390px;width:1280px;height:600px;background:linear-gradient(180deg,#141B38,#05070F)"></div>
+    <div class="abs heroW" style="left:420px;top:880px;width:240px;height:520px"></div>
+    <div class="abs cardK" style="left:60px;top:1000px;width:330px"></div>
+    <div class="abs cardH" style="left:690px;top:1000px;width:330px"></div>
+  </div>
+    <div class="abs shade1" style="left:-200px;top:120px;width:1480px;height:900px;background:radial-gradient(closest-side,rgba(4,6,16,.88),rgba(4,6,16,0))"></div>
+    <div class="abs title" style="left:0;top:250px;width:1080px;text-align:center">
+      <div class="t1 brand" style="font-size:170px;line-height:1;color:var(--k);text-shadow:0 10px 50px rgba(241,70,53,.6)">KASPI</div>
+      <div class="t2 brand" style="font-size:84px;line-height:1.1;color:var(--gold);margin:6px 0">VS</div>
+      <div class="t3 brand" style="font-size:170px;line-height:1;color:var(--h);text-shadow:0 10px 50px rgba(20,167,94,.6)">HALYK</div>
+      <div class="t4" style="margin-top:28px;font-family:Unb;font-weight:800;font-size:44px;letter-spacing:1px"><span class="pill" style="background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.25)">КТО СИЛЬНЕЕ В 2026 ГОДУ?</span></div>
+    </div>
+  </section>
+
+  <!-- SCENE 2 — WHO HAS MORE MONEY -->
+  <section id="s2" class="layer scene"><div class="cam">
+    <div class="abs coins layer"></div>
+    <div class="abs head"><div class="chip">02 / 07</div><div class="h">У кого больше денег?</div><div class="bar"></div></div>
+    <div class="abs vK" style="left:90px;top:415px;width:360px"></div>
+    <div class="abs vH" style="left:630px;top:415px;width:360px"></div>
+    <div class="abs lK" style="left:90px;top:792px;width:360px;text-align:center"><span class="pill brand" style="font-size:26px;background:var(--k)">KASPI.KZ</span></div>
+    <div class="abs lH" style="left:630px;top:792px;width:360px;text-align:center"><span class="pill brand" style="font-size:26px;background:var(--h)">HALYK</span></div>
+    <div class="abs note n2" style="left:60px;top:372px;width:960px">МСФО · консолидированная отчётность групп · на 31.12.2025</div>
+    <div class="abs metric panel m1" style="top:895px;height:205px">
+      <div class="lbl">АКТИВЫ</div>
+      <div class="row" style="top:62px"><div class="nm k">KASPI</div><div class="track"><div class="fill" style="width:440px;background:linear-gradient(90deg,var(--kd),var(--k))"></div></div><div class="val"><span class="cnt" data-k="a1">0,00</span> <small>трлн ₸</small></div></div>
+      <div class="row" style="top:128px"><div class="nm hh">HALYK</div><div class="track"><div class="fill" style="width:440px;background:linear-gradient(90deg,var(--hd),var(--h))"></div></div><div class="val"><span class="cnt" data-k="a2">0,00</span> <small>трлн ₸</small></div></div>
+    </div>
+    <div class="abs metric panel m2" style="top:1118px;height:205px">
+      <div class="lbl">СОБСТВЕННЫЙ КАПИТАЛ</div>
+      <div class="row" style="top:62px"><div class="nm k">KASPI</div><div class="track"><div class="fill" style="width:440px;background:linear-gradient(90deg,var(--kd),var(--k))"></div></div><div class="val"><span class="cnt" data-k="e1">0,00</span> <small>трлн ₸</small></div></div>
+      <div class="row" style="top:128px"><div class="nm hh">HALYK</div><div class="track"><div class="fill" style="width:440px;background:linear-gradient(90deg,var(--hd),var(--h))"></div></div><div class="val"><span class="cnt" data-k="e2">0,00</span> <small>трлн ₸</small></div></div>
+    </div>
+    <div class="abs sbadge" style="left:0;top:790px;width:1080px;text-align:center"><span class="pill" style="font-size:34px;background:linear-gradient(90deg,var(--hd),var(--h));box-shadow:0 12px 40px rgba(20,167,94,.5)">HALYK ≈ В 1,9 РАЗА БОЛЬШЕ ПО АКТИВАМ</span></div>
+  </div></section>
+
+  <!-- SCENE 3 — WHO EARNS MORE -->
+  <section id="s3" class="layer scene"><div class="cam">
+    <div class="abs head"><div class="chip">03 / 07</div><div class="h">Кто зарабатывает больше?</div><div class="bar"></div></div>
+    <div class="abs fK" style="left:30px;top:520px;width:480px"></div>
+    <div class="abs fH" style="left:570px;top:520px;width:480px"></div>
+    <div class="abs heroW" style="left:450px;top:930px;width:180px;height:390px"></div>
+    <div class="abs flow layer"></div>
+    <div class="abs chart panel">
+      <div class="ttl">ЧИСТАЯ ПРИБЫЛЬ, трлн ₸</div>
+      <div class="legend"><span style="background:var(--k)"></span>KASPI<span style="background:var(--h)"></span>HALYK</div>
+      <div class="base"></div>
+    </div>
+    <div class="abs growth" style="left:60px;top:1046px;width:960px;text-align:center">
+      <span class="pill g1" style="font-size:25px;background:rgba(241,70,53,.18);border:2px solid var(--k);margin-right:12px">KASPI: +26% С 2023</span>
+      <span class="pill g2" style="font-size:25px;background:rgba(20,167,94,.18);border:2px solid var(--h)">HALYK: +53% С 2023</span>
+    </div>
+    <div class="abs rev" style="left:60px;top:1130px;width:960px;height:220px">
+      <div class="abs panel rk" style="left:0;top:0;width:470px;height:210px">
+        <div class="abs brand k" style="left:28px;top:24px;font-size:19px">KASPI · ВЫРУЧКА 2025</div>
+        <div class="abs brand" style="left:28px;top:66px;font-size:52px"><span class="cnt" data-k="r1">0,00</span> <span style="font-size:30px">трлн ₸</span></div>
+        <div class="abs note" style="left:28px;top:146px;text-align:left;font-size:20px;width:420px">рост в основном за счёт<br>консолидации бизнеса в Турции</div>
+      </div>
+      <div class="abs panel rh" style="left:490px;top:0;width:470px;height:210px">
+        <div class="abs brand hh" style="left:28px;top:24px;font-size:19px">HALYK · ЧИСТЫЙ ПРОЦ. ДОХОД</div>
+        <div class="abs brand" style="left:28px;top:66px;font-size:52px"><span class="cnt" data-k="r2">0,00</span> <span style="font-size:30px">трлн ₸</span></div>
+        <div class="abs note" style="left:28px;top:146px;text-align:left;font-size:20px;width:420px">показатель «выручка» банк<br>отдельно не раскрывает</div>
+      </div>
+    </div>
+    <div class="abs note n3" style="left:60px;top:372px;width:960px">МСФО · консолидированные данные · 2023–2025</div>
+  </div></section>
+
+  <!-- SCENE 4 — DEVELOPMENT SPENDING -->
+  <section id="s4" class="layer scene"><div class="cam">
+    <div class="abs head"><div class="chip">04 / 07</div><div class="h">Кто больше тратит на развитие?</div><div class="bar"></div></div>
+    <div class="abs lab layer">
+      <div class="abs svL" style="left:40px;top:470px;width:170px"></div>
+      <div class="abs svR" style="left:870px;top:470px;width:170px"></div>
+      <div class="abs ph" style="left:390px;top:440px;width:300px"></div>
+      <div class="abs dvL" style="left:110px;top:900px;width:300px"></div>
+      <div class="abs dvR" style="left:670px;top:900px;width:300px"></div>
+      <div class="abs mg" style="left:770px;top:350px;width:200px"></div>
+      <div class="abs icons layer"></div>
+      <div class="abs lines layer"></div>
+    </div>
+    <div class="abs tbl layer">
+      <div class="abs drow panel d1" style="top:400px">
+        <div class="lbl">ТЕХНОЛОГИИ И РАЗРАБОТКА · 2025</div>
+        <div class="cell" style="left:22px;background:linear-gradient(135deg,rgba(241,70,53,.35),rgba(241,70,53,.12))"><div class="who k">KASPI</div><div class="v">208,6 млрд ₸</div><div class="s">≈ 17,4 млрд ₸ в месяц*</div></div>
+        <div class="cell nd" style="left:508px"><div class="who hh">HALYK</div><div class="v">НЕ РАСКРЫВАЕТСЯ ОТДЕЛЬНО</div></div>
+      </div>
+      <div class="abs drow panel d2" style="top:640px">
+        <div class="lbl">МАРКЕТИНГ · 2025</div>
+        <div class="cell" style="left:22px;background:linear-gradient(135deg,rgba(241,70,53,.35),rgba(241,70,53,.12))"><div class="who k">KASPI</div><div class="v">146,2 млрд ₸</div><div class="s">из них ≈ 84 млрд — Турция</div></div>
+        <div class="cell nd" style="left:508px"><div class="who hh">HALYK</div><div class="v">НЕ РАСКРЫВАЕТСЯ ОТДЕЛЬНО</div></div>
+      </div>
+      <div class="abs drow panel d3" style="top:880px">
+        <div class="lbl">ВСЕ ОПЕРАЦИОННЫЕ РАСХОДЫ · 2025</div>
+        <div class="cell nd" style="left:22px"><div class="who k">KASPI</div><div class="v">ИНАЯ СТРУКТУРА ОТЧЁТА</div></div>
+        <div class="cell" style="left:508px;background:linear-gradient(135deg,rgba(20,167,94,.38),rgba(20,167,94,.12))"><div class="who hh">HALYK</div><div class="v">308,0 млрд ₸</div><div class="s">≈ 25,7 млрд ₸ в месяц*</div></div>
+      </div>
+      <div class="abs note fn4" style="left:60px;top:1120px;width:960px;font-size:21px;line-height:1.4">* расчётное среднее: годовая сумма ÷ 12. Фактические помесячные<br>расходы не раскрываются. У Halyk в отчёте — одна строка «операционные расходы».</div>
+      <div class="abs note" style="left:60px;top:1210px;width:960px;font-size:21px">Kaspi.kz — форма 20-F 2025 · Halyk — МСФО 2025 (аудит)</div>
+    </div>
+  </div></section>
+
+  <!-- SCENE 5 — SERVICES -->
+  <section id="s5" class="layer scene"><div class="cam">
+    <div class="abs head"><div class="chip">05 / 07</div><div class="h">Битва сервисов</div><div class="bar"></div></div>
+    <div class="abs worlds layer">
+      <div class="abs wK" style="left:-60px;top:360px;width:640px;height:1050px;background:linear-gradient(160deg,rgba(241,70,53,.5),rgba(120,10,20,.15));clip-path:polygon(0 0,100% 0,82% 100%,0 100%);border-radius:0"></div>
+      <div class="abs wH" style="left:500px;top:360px;width:640px;height:1050px;background:linear-gradient(200deg,rgba(20,167,94,.5),rgba(5,60,30,.15));clip-path:polygon(18% 0,100% 0,100% 100%,0 100%)"></div>
+      <div class="abs brand" style="left:60px;top:390px;font-size:44px;color:#fff">KASPI</div>
+      <div class="abs brand" style="left:800px;top:390px;font-size:44px;color:#fff">HALYK</div>
+      <div class="abs kPhone" style="left:70px;top:520px;width:170px"></div>
+      <div class="abs kPhone2" style="left:300px;top:640px;width:110px"></div>
+      <div class="abs kCoin" style="left:200px;top:700px;width:60px"></div>
+      <div class="abs kQr" style="left:90px;top:930px;width:170px"></div>
+      <div class="abs kBeam" style="left:84px;top:930px;width:182px;height:8px;background:#FF5B48;box-shadow:0 0 24px 6px rgba(255,91,72,.8);border-radius:4px"></div>
+      <div class="abs kBag1" style="left:300px;top:900px;width:110px"></div>
+      <div class="abs kBag2" style="left:360px;top:960px;width:90px"></div>
+      <div class="abs hAtm" style="left:820px;top:500px;width:200px"></div>
+      <div class="abs hCard" style="left:640px;top:880px;width:220px"></div>
+      <div class="abs hWaves" style="left:860px;top:860px;width:140px"></div>
+      <div class="abs hPig" style="left:860px;top:1050px;width:150px"></div>
+      <div class="abs hCoin" style="left:900px;top:960px;width:56px"></div>
+      <div class="abs heroW" style="left:430px;top:900px;width:220px;height:477px"></div>
+    </div>
+    <div class="abs sgrid panel">
+      <div class="abs brand k" style="left:560px;top:28px;font-size:30px;width:160px;text-align:center">KASPI</div>
+      <div class="abs brand hh" style="left:760px;top:28px;font-size:30px;width:160px;text-align:center">HALYK</div>
+      <div class="abs note fn5" style="left:30px;top:930px;width:900px;font-size:21px;line-height:1.4">Ставки, тарифы и комиссии часто меняются — проверяйте<br>условия на kaspi.kz и halykbank.kz</div>
+    </div>
+  </div></section>
+
+  <!-- SCENE 6 — CATEGORY WINNERS -->
+  <section id="s6" class="layer scene"><div class="cam">
+    <div class="abs head"><div class="chip">06 / 07</div><div class="h">Победители по категориям</div><div class="bar"></div></div>
+    <div class="abs score"></div>
+    <div class="abs tally" style="left:0;top:1240px;width:1080px;text-align:center;font-family:Unb;font-weight:900;font-size:64px">
+      <span class="k">KASPI</span> <span class="tn1">1</span><span style="color:#8D97B8"> : </span><span class="tn2">1</span> <span class="hh">HALYK</span>
+    </div>
+  </div></section>
+
+  <!-- SCENE 7 — VERDICT -->
+  <section id="s7" class="layer scene"><div class="cam">
+    <div class="abs far" style="left:0;top:820px;width:1080px;height:600px;opacity:.5"></div>
+    <div class="abs tk" style="left:40px;top:420px;width:340px"></div>
+    <div class="abs th" style="left:700px;top:420px;width:360px"></div>
+    <div class="abs ground" style="left:-100px;top:1390px;width:1280px;height:600px;background:linear-gradient(180deg,#141B38,#05070F)"></div>
+    <div class="abs heroB" style="left:430px;top:900px;width:220px;height:477px"></div>
+    <div class="abs heroW" style="left:430px;top:900px;width:220px;height:477px"></div>
+    <div class="abs lab1" style="left:0;top:700px;width:1080px;text-align:center"><span class="pill" style="font-size:34px;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.3)">ФИНАНСОВАЯ МОЩЬ</span></div>
+    <div class="abs lab2" style="left:0;top:800px;width:1080px;text-align:center"><span class="pill" style="font-size:34px;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.3)">УДОБСТВО И ВЫГОДА</span></div>
+    <div class="abs confetti layer"></div>
+  </div>
+    <div class="abs shade7" style="left:-200px;top:80px;width:1480px;height:1000px;background:radial-gradient(closest-side,rgba(4,6,16,.9),rgba(4,6,16,0))"></div>
+    <div class="abs final" style="left:0;top:230px;width:1080px;text-align:center">
+      <div class="f1 brand" style="font-size:150px;line-height:1;color:var(--k);text-shadow:0 10px 50px rgba(241,70,53,.6)">KASPI</div>
+      <div class="f2 brand" style="font-size:72px;line-height:1.2;color:#fff">ИЛИ</div>
+      <div class="f3 brand" style="font-size:150px;line-height:1;color:var(--h);text-shadow:0 10px 50px rgba(20,167,94,.6)">HALYK?</div>
+    </div>
+    <div class="abs cta" style="left:0;top:740px;width:1080px;text-align:center">
+      <span class="pill" style="font-size:44px;background:linear-gradient(90deg,var(--k),#C2186B 50%,var(--h));box-shadow:0 16px 50px rgba(0,0,0,.5);padding:22px 40px">ПИШИ В КОММЕНТАРИЯХ!</span>
+    </div>
+  </section>
+
+  <div id="vignette" class="layer"></div>
+  <div id="subs" class="abs"></div>
+  <div id="topbar" class="abs"><div class="prog"></div><div class="tag"><b>KASPI</b> VS <i>HALYK</i></div><div class="yr">2026</div></div>
+  <div id="wipe" class="layer"><div class="wk"></div><div class="wh"></div><div class="seam"></div></div>
+  <div id="flash" class="layer"></div>
+
+  <audio id="soundtrack" src="audio/soundtrack.wav" data-start="0" data-duration="90" data-volume="1"></audio>
+</div>
+<script src="assets/gsap.min.js"></script>
+<script src="data/vo.js"></script>
+<script src="js/art.js"></script>
+<script src="js/scenes.js"></script>
+</body>
+</html>
