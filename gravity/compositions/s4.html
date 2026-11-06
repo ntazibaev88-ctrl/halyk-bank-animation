@@ -1,0 +1,89 @@
+<template>
+<style>
+
+@font-face{font-family:"Mont";font-weight:500;font-style:normal;font-display:block;src:url("assets/fonts/montserrat-cyrillic-500-normal.woff2") format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+@font-face{font-family:"Mont";font-weight:500;font-style:normal;font-display:block;src:url("assets/fonts/montserrat-latin-500-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:"Mont";font-weight:600;font-style:normal;font-display:block;src:url("assets/fonts/montserrat-cyrillic-600-normal.woff2") format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+@font-face{font-family:"Mont";font-weight:600;font-style:normal;font-display:block;src:url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:"Mont";font-weight:700;font-style:normal;font-display:block;src:url("assets/fonts/montserrat-cyrillic-700-normal.woff2") format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+@font-face{font-family:"Mont";font-weight:700;font-style:normal;font-display:block;src:url("assets/fonts/montserrat-latin-700-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:"Mont";font-weight:800;font-style:normal;font-display:block;src:url("assets/fonts/montserrat-cyrillic-800-normal.woff2") format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+@font-face{font-family:"Mont";font-weight:800;font-style:normal;font-display:block;src:url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:"Mont";font-weight:900;font-style:normal;font-display:block;src:url("assets/fonts/montserrat-cyrillic-900-normal.woff2") format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+@font-face{font-family:"Mont";font-weight:900;font-style:normal;font-display:block;src:url("assets/fonts/montserrat-latin-900-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+
+.hud{position:absolute;font-family:"Mont",sans-serif;color:#eaf4ff;letter-spacing:.06em;text-transform:uppercase;}
+.hud-tag{display:inline-flex;align-items:center;gap:14px;padding:14px 22px;border:2px solid rgba(127,216,255,.75);border-radius:14px;background:rgba(5,14,40,.62);font-weight:800;font-size:34px;box-shadow:0 0 28px rgba(63,169,255,.35), inset 0 0 18px rgba(63,169,255,.15);}
+.hud-tag.warn{border-color:rgba(255,120,60,.9);box-shadow:0 0 28px rgba(255,90,40,.4), inset 0 0 18px rgba(255,90,40,.18);}
+.hud-tag .v{color:#ff9a4d;text-transform:none;}
+.hud-small{font-weight:600;font-size:26px;letter-spacing:.08em;color:#9fd2ff;}
+.hud-dot{width:14px;height:14px;border-radius:50%;background:#7fd8ff;box-shadow:0 0 12px #7fd8ff;}
+.hud-tag.warn .hud-dot{background:#ff7a3d;box-shadow:0 0 12px #ff7a3d;}
+.grain{position:absolute;inset:-10%;opacity:.07;mix-blend-mode:overlay;pointer-events:none;}
+.vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 75% 62% at 50% 48%,rgba(0,0,0,0) 55%,rgba(0,2,10,.72) 100%);}
+
+#root{position:absolute;inset:0;overflow:hidden;background:#030716;font-family:"Mont",sans-serif;}
+#s4-tA,#s4-tP,#s4-tX,#s4-tO{opacity:0}
+</style>
+<div id="root" data-composition-id="s4" data-width="1080" data-height="1920" data-start="0" data-duration="14.5">
+
+<div id="s4-in" style="position:absolute;inset:0">
+<canvas id="s4-stars" width="1080" height="1920" style="position:absolute;inset:0"></canvas>
+<div id="s4-sun" style="position:absolute;left:-420px;top:-380px;width:1100px;height:1100px;border-radius:50%;background:radial-gradient(circle,rgba(255,236,200,.55) 0%,rgba(255,170,90,.18) 28%,rgba(255,140,60,0) 62%)"></div>
+<div id="s4-gw" style="position:absolute;inset:0;transform-origin:540px 900px"><canvas id="s4-cv" width="1080" height="1920" style="position:absolute;inset:0"></canvas></div>
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0;overflow:visible">
+  <g id="s4-lead1" opacity="0"><path id="s4-l1p" d="M250 420 L250 470 L196 560" stroke="#7fd8ff" stroke-width="3" fill="none"/><circle cx="196" cy="560" r="8" fill="#7fd8ff"/></g>
+  <g id="s4-lead2" opacity="0"><path d="M700 1060 L790 1130" stroke="#ff8a3d" stroke-width="3" fill="none"/><circle cx="700" cy="1060" r="8" fill="#ff8a3d"/></g>
+</svg>
+<div class="hud" id="s4-tA" style="left:90px;top:330px"><div class="hud-tag"><span class="hud-dot"></span>АТМОСФЕРА</div></div>
+<div class="hud" id="s4-tP" style="left:0;right:0;top:215px;text-align:center"><div class="hud-tag warn"><span class="hud-dot"></span>ДАВЛЕНИЕ <span class="v" id="s4-pv">101&nbsp;кПа</span> ↓</div></div>
+<div class="hud" id="s4-tX" style="left:560px;top:330px"><span class="hud-small">воздух уходит<br>в космос →</span></div>
+<div class="hud" id="s4-tO" style="left:0;right:0;top:320px;text-align:center"><div class="hud-tag warn"><span class="hud-dot"></span>ОКЕАНЫ КИПЯТ</div><div class="hud-small" style="margin-top:14px;text-transform:none;font-size:27px">при низком давлении вода кипит даже при +20&nbsp;°C</div></div>
+<div id="s4-flash" style="position:absolute;inset:0;background:#eef4ff"></div>
+<div class="vignette"></div>
+<svg id="s4-grain" class="grain" viewBox="0 0 400 400" preserveAspectRatio="none"><filter id="s4-grain-f"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .9 0"/></filter><rect width="400" height="400" filter="url(#s4-grain-f)"/></svg>
+</div>
+</div>
+<script>
+(function(){
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll(s));
+
+const A = (t) => +(t - 34).toFixed(3);
+Kit.grain(tl,"#s4-grain",14.5);
+Kit.stars($("#s4-stars"),404,700);
+const G = Kit.Globe($("#s4-cv"), 7);
+const K = Kit, rg = (t,a,b)=>K.range(t,A(a),A(b));
+Kit.canvasClock(tl, 14.5, (t) => {
+  const zin = K.outExpo(rg(t,34.0,36.6));
+  const zout = K.inQuad(rg(t,47.7,48.5));
+  const r = K.lerp(1500, 480, zin) - 40*K.inOut(rg(t,36.6,47.5)) + 1400*zout;
+  const cy = K.lerp(1750, 910, zin) + 300*zout;
+  G.draw({ cx: 540, cy, r, rotate: [-8 - t*2.2, -20, 0], sun: [-0.75,-0.6],
+    strip: K.inOut(rg(t,37.4,47.8)), boil: K.inOut(rg(t,41.2,48)), haze: K.inOut(rg(t,44.2,48.3)),
+    dry: 0.75*K.inOut(rg(t,43,48.3)), clouds: 1 - 0.75*K.inOut(rg(t,40.5,47.5)), cloudShift: t*1.2 });
+});
+tl.fromTo("#s4-flash",{opacity:1},{opacity:0,duration:.6,ease:"power2.out"},0);
+tl.fromTo("#s4-sun",{opacity:.5,scale:.8},{opacity:1,scale:1,duration:4,ease:"sine.out"},0);
+tl.to("#s4-gw",{filter:"blur(10px)",duration:.6,ease:"power2.in"},A(47.9));
+// atmosphere label
+tl.to("#s4-lead1",{opacity:1,duration:.3},A(34.3));
+tl.fromTo("#s4-tA",{opacity:0,x:-24},{opacity:1,x:0,duration:.4,ease:"expo.out"},A(34.3));
+tl.to(["#s4-tA","#s4-lead1"],{opacity:0,filter:"blur(6px)",duration:.25},A(40.6));
+// pressure falls
+tl.fromTo("#s4-tP",{opacity:0,y:-16},{opacity:1,y:0,duration:.4,ease:"expo.out"},A(37.4));
+const pv={v:101}, pel=$("#s4-pv");
+tl.fromTo(pv,{v:101},{v:1,duration:A(47.6)-A(38),ease:"power1.inOut",onUpdate:()=>{pel.textContent=Math.max(1,Math.round(pv.v))+"\u00a0кПа";}},A(38));
+tl.fromTo("#s4-tX",{opacity:0},{opacity:1,duration:.35},A(38.6));
+tl.to("#s4-tX",{opacity:0,duration:.25},A(40.6));
+// oceans boil
+tl.fromTo("#s4-tO",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:.3,ease:"power2.out"},A(43.0));
+tl.fromTo("#s4-lead2",{opacity:0},{opacity:0,duration:.1},A(43.0));
+tl.to(["#s4-tP","#s4-tO"],{opacity:0,filter:"blur(8px)",duration:.3},A(47.6));
+
+window.__timelines = window.__timelines || {};
+window.__timelines["s4"] = tl;
+})();
+</script>
+</template>

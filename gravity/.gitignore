@@ -1,0 +1,7 @@
+node_modules/
+.hyperframes/
+audio-src/vo/
+audio-src/vo_proc.wav
+audio-src/mix_preview.wav
+renders/
+*.mp4

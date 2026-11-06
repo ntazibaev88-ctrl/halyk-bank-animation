@@ -1,0 +1,179 @@
+<template>
+<style>
+
+@font-face{font-family:"Mont";font-weight:500;font-style:normal;font-display:block;src:url("assets/fonts/montserrat-cyrillic-500-normal.woff2") format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+@font-face{font-family:"Mont";font-weight:500;font-style:normal;font-display:block;src:url("assets/fonts/montserrat-latin-500-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:"Mont";font-weight:600;font-style:normal;font-display:block;src:url("assets/fonts/montserrat-cyrillic-600-normal.woff2") format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+@font-face{font-family:"Mont";font-weight:600;font-style:normal;font-display:block;src:url("assets/fonts/montserrat-latin-600-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:"Mont";font-weight:700;font-style:normal;font-display:block;src:url("assets/fonts/montserrat-cyrillic-700-normal.woff2") format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+@font-face{font-family:"Mont";font-weight:700;font-style:normal;font-display:block;src:url("assets/fonts/montserrat-latin-700-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:"Mont";font-weight:800;font-style:normal;font-display:block;src:url("assets/fonts/montserrat-cyrillic-800-normal.woff2") format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+@font-face{font-family:"Mont";font-weight:800;font-style:normal;font-display:block;src:url("assets/fonts/montserrat-latin-800-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+@font-face{font-family:"Mont";font-weight:900;font-style:normal;font-display:block;src:url("assets/fonts/montserrat-cyrillic-900-normal.woff2") format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}
+@font-face{font-family:"Mont";font-weight:900;font-style:normal;font-display:block;src:url("assets/fonts/montserrat-latin-900-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+
+.hud{position:absolute;font-family:"Mont",sans-serif;color:#eaf4ff;letter-spacing:.06em;text-transform:uppercase;}
+.hud-tag{display:inline-flex;align-items:center;gap:14px;padding:14px 22px;border:2px solid rgba(127,216,255,.75);border-radius:14px;background:rgba(5,14,40,.62);font-weight:800;font-size:34px;box-shadow:0 0 28px rgba(63,169,255,.35), inset 0 0 18px rgba(63,169,255,.15);}
+.hud-tag.warn{border-color:rgba(255,120,60,.9);box-shadow:0 0 28px rgba(255,90,40,.4), inset 0 0 18px rgba(255,90,40,.18);}
+.hud-tag .v{color:#ff9a4d;text-transform:none;}
+.hud-small{font-weight:600;font-size:26px;letter-spacing:.08em;color:#9fd2ff;}
+.hud-dot{width:14px;height:14px;border-radius:50%;background:#7fd8ff;box-shadow:0 0 12px #7fd8ff;}
+.hud-tag.warn .hud-dot{background:#ff7a3d;box-shadow:0 0 12px #ff7a3d;}
+.grain{position:absolute;inset:-10%;opacity:.07;mix-blend-mode:overlay;pointer-events:none;}
+.vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 75% 62% at 50% 48%,rgba(0,0,0,0) 55%,rgba(0,2,10,.72) 100%);}
+
+#root{position:absolute;inset:0;overflow:hidden;background:#030716;font-family:"Mont",sans-serif;}
+#s6-tO,#s6-tP,#s6-tC,#s6-tU{opacity:0}
+</style>
+<div id="root" data-composition-id="s6" data-width="1080" data-height="1920" data-start="0" data-duration="14.5">
+
+<div id="s6-in" style="position:absolute;inset:0">
+<canvas id="s6-stars" width="1080" height="1920" style="position:absolute;inset:0"></canvas>
+<div id="s6-cam" style="position:absolute;inset:0;transform-origin:540px 900px">
+<canvas id="s6-cv" width="1080" height="1920" style="position:absolute;inset:0"></canvas>
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;inset:0;overflow:visible">
+  <defs><radialGradient id="s6-sg" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffffff"/><stop offset=".08" stop-color="#fff4d6"/><stop offset=".22" stop-color="#ffc070" stop-opacity=".55"/><stop offset=".6" stop-color="#ff7a3a" stop-opacity=".12"/><stop offset="1" stop-color="#ff7a3a" stop-opacity="0"/></radialGradient></defs>
+  <g id="s6-sun" transform="translate(900 300)"><g id="s6-rays" style="mix-blend-mode:screen"><path d="M0 -6 L382 -1.5 L382 1.5 L0 6 Z" transform="rotate(1.2)" fill="#fff1d0" opacity="0.2"/><path d="M0 -6 L626.9 -1.5 L626.9 1.5 L0 6 Z" transform="rotate(31.6)" fill="#fff1d0" opacity="0.3"/><path d="M0 -6 L381.9 -1.5 L381.9 1.5 L0 6 Z" transform="rotate(51.8)" fill="#fff1d0" opacity="0.2"/><path d="M0 -6 L381.1 -1.5 L381.1 1.5 L0 6 Z" transform="rotate(79.3)" fill="#fff1d0" opacity="0.1"/><path d="M0 -6 L630.3 -1.5 L630.3 1.5 L0 6 Z" transform="rotate(110.6)" fill="#fff1d0" opacity="0.2"/><path d="M0 -6 L791.2 -1.5 L791.2 1.5 L0 6 Z" transform="rotate(135.4)" fill="#fff1d0" opacity="0.2"/><path d="M0 -6 L766.2 -1.5 L766.2 1.5 L0 6 Z" transform="rotate(159.5)" fill="#fff1d0" opacity="0.2"/><path d="M0 -6 L682 -1.5 L682 1.5 L0 6 Z" transform="rotate(181.2)" fill="#fff1d0" opacity="0.3"/><path d="M0 -6 L457 -1.5 L457 1.5 L0 6 Z" transform="rotate(207.2)" fill="#fff1d0" opacity="0.1"/><path d="M0 -6 L496 -1.5 L496 1.5 L0 6 Z" transform="rotate(235.2)" fill="#fff1d0" opacity="0.2"/><path d="M0 -6 L456.8 -1.5 L456.8 1.5 L0 6 Z" transform="rotate(261.9)" fill="#fff1d0" opacity="0.2"/><path d="M0 -6 L427.2 -1.5 L427.2 1.5 L0 6 Z" transform="rotate(284.6)" fill="#fff1d0" opacity="0.2"/><path d="M0 -6 L799.2 -1.5 L799.2 1.5 L0 6 Z" transform="rotate(313.2)" fill="#fff1d0" opacity="0.3"/><path d="M0 -6 L700.7 -1.5 L700.7 1.5 L0 6 Z" transform="rotate(342.1)" fill="#fff1d0" opacity="0.2"/></g><circle r="420" fill="url(#s6-sg)"/></g>
+  <g id="s6-man" transform="translate(540 760) scale(1.55)" style="--skin:#e8b08a;--skinS:#b97a5a;--hair:#1c140f;--top:#2b5c9e;--topS:#1b3b6c;--pants:#23262f;--pantsS:#16181e;--shoe:#dfe4ee;--shoeS:#9aa3b5;--rim:#9fdcff;--rim:#ffc08a;filter:drop-shadow(-3px 3px 0 rgba(90,170,255,.35)) drop-shadow(4px -4px 10px rgba(255,150,70,.55))"><g id="s6m-root"><g opacity="1" style="filter:brightness(.72)"><g id="s6m-thighB">
+  <line x1="0" y1="4" x2="0" y2="96" stroke="var(--pantsS)" stroke-width="36" stroke-linecap="round"/>
+  <line x1="2.5" y1="4" x2="2.5" y2="96" stroke="var(--pants)" stroke-width="30" stroke-linecap="round"/>
+  <line x1="16" y1="8" x2="16" y2="92" stroke="var(--rim)" stroke-width="2.5" stroke-linecap="round" opacity=".55"/>
+  <g id="s6m-shinB">
+  <line x1="0" y1="96" x2="0" y2="172" stroke="var(--pantsS)" stroke-width="30" stroke-linecap="round"/>
+  <line x1="2.5" y1="96" x2="2.5" y2="172" stroke="var(--pants)" stroke-width="24" stroke-linecap="round"/>
+  <line x1="13" y1="100" x2="13" y2="168" stroke="var(--rim)" stroke-width="2.5" stroke-linecap="round" opacity=".55"/>
+  <g id="s6m-footB">
+      <path d="M-13 176 Q-14 196 -6 199 L36 199 Q44 198 42 190 Q38 182 22 180 L8 172 Z" fill="var(--shoeS)"/>
+      <path d="M-11 176 Q-12 192 -5 194 L35 194 Q41 193 39 188 Q35 182 21 181 L8 174 Z" fill="var(--shoe)"/>
+      <path d="M-6 195 L38 195" stroke="var(--shoeS)" stroke-width="3"/>
+    </g>
+</g>
+</g></g><g><g id="s6m-thighF">
+  <line x1="0" y1="4" x2="0" y2="96" stroke="var(--pantsS)" stroke-width="36" stroke-linecap="round"/>
+  <line x1="2.5" y1="4" x2="2.5" y2="96" stroke="var(--pants)" stroke-width="30" stroke-linecap="round"/>
+  <line x1="16" y1="8" x2="16" y2="92" stroke="var(--rim)" stroke-width="2.5" stroke-linecap="round" opacity=".55"/>
+  <g id="s6m-shinF">
+  <line x1="0" y1="96" x2="0" y2="172" stroke="var(--pantsS)" stroke-width="30" stroke-linecap="round"/>
+  <line x1="2.5" y1="96" x2="2.5" y2="172" stroke="var(--pants)" stroke-width="24" stroke-linecap="round"/>
+  <line x1="13" y1="100" x2="13" y2="168" stroke="var(--rim)" stroke-width="2.5" stroke-linecap="round" opacity=".55"/>
+  <g id="s6m-footF">
+      <path d="M-13 176 Q-14 196 -6 199 L36 199 Q44 198 42 190 Q38 182 22 180 L8 172 Z" fill="var(--shoeS)"/>
+      <path d="M-11 176 Q-12 192 -5 194 L35 194 Q41 193 39 188 Q35 182 21 181 L8 174 Z" fill="var(--shoe)"/>
+      <path d="M-6 195 L38 195" stroke="var(--shoeS)" stroke-width="3"/>
+    </g>
+</g>
+</g></g><g id="s6m-torso">
+    <g style="filter:brightness(.68)"><g id="s6m-uArmB">
+  <line x1="4" y1="-132" x2="4" y2="-66" stroke="var(--topS)" stroke-width="26" stroke-linecap="round"/>
+  <line x1="6.5" y1="-132" x2="6.5" y2="-66" stroke="var(--top)" stroke-width="20" stroke-linecap="round"/>
+  <line x1="15" y1="-128" x2="15" y2="-70" stroke="var(--rim)" stroke-width="2.5" stroke-linecap="round" opacity=".55"/>
+  <g id="s6m-fArmB">
+  <line x1="4" y1="-66" x2="5" y2="-18" stroke="var(--topS)" stroke-width="23" stroke-linecap="round"/>
+  <line x1="6.5" y1="-66" x2="7.5" y2="-18" stroke="var(--top)" stroke-width="17" stroke-linecap="round"/>
+  <line x1="13.5" y1="-62" x2="14.5" y2="-22" stroke="var(--rim)" stroke-width="2.5" stroke-linecap="round" opacity=".55"/>
+  <rect x="-7" y="-22" width="23" height="9" rx="4" fill="var(--topS)"/><g><ellipse cx="6" cy="-4" rx="11" ry="13" fill="var(--skinS)"/><ellipse cx="7" cy="-6" rx="9" ry="11" fill="var(--skin)"/><path d="M12 -12 Q18 -6 14 2" stroke="var(--skinS)" stroke-width="3" fill="none" stroke-linecap="round"/></g>
+</g>
+</g></g>
+    <path d="M-30 -150 Q-38 -168 -20 -170 Q-4 -168 -2 -150 Z" fill="var(--topS)"/>
+    <path d="M-24 10 Q-30 -60 -28 -128 Q-26 -148 -6 -150 L16 -150 Q30 -146 32 -126 Q36 -80 30 -30 Q28 -4 26 10 Z" fill="var(--top)"/>
+    <path d="M-24 10 Q-30 -60 -28 -128 Q-26 -148 -10 -150 Q-16 -110 -14 -60 Q-12 -20 -6 10 Z" fill="var(--topS)" opacity=".8"/>
+    <path d="M30 -122 Q34 -80 28 -32" stroke="var(--rim)" stroke-width="3" fill="none" opacity=".5" stroke-linecap="round"/>
+    <path d="M-2 -40 L26 -40 L28 -6 L2 -6 Z" fill="var(--topS)" opacity=".55"/>
+    <path d="M16 -146 L18 -118 M22 -146 L25 -122" stroke="#e8eef8" stroke-width="2.5" stroke-linecap="round" opacity=".8"/>
+    <path d="M-26 4 L28 4" stroke="var(--topS)" stroke-width="6" stroke-linecap="round"/>
+    <g id="s6m-head"><g style="filter:blur(3px)"><circle class="s6-vap" cx="46" cy="-176" r="6" fill="#e8f4ff" opacity="0"/><circle class="s6-vap" cx="49" cy="-172" r="7.5" fill="#e8f4ff" opacity="0"/><circle class="s6-vap" cx="52" cy="-168" r="9" fill="#e8f4ff" opacity="0"/><circle class="s6-vap" cx="55" cy="-176" r="10.5" fill="#e8f4ff" opacity="0"/><circle class="s6-vap" cx="58" cy="-172" r="12" fill="#e8f4ff" opacity="0"/><circle class="s6-vap" cx="61" cy="-168" r="13.5" fill="#e8f4ff" opacity="0"/><circle class="s6-vap" cx="64" cy="-176" r="15" fill="#e8f4ff" opacity="0"/></g>
+    <path d="M-6 -146 L-6 -160 L14 -160 L14 -146 Z" fill="var(--skinS)"/>
+    <path d="M-20 -196 Q-22 -224 6 -230 Q36 -232 42 -204 L44 -190 Q46 -176 40 -168 Q30 -156 12 -156 Q-6 -158 -14 -172 Q-22 -182 -20 -196 Z" fill="var(--skin)"/>
+    <path d="M40 -196 L50 -184 Q51 -181 47 -180 L41 -180" fill="var(--skin)" stroke="var(--skinS)" stroke-width="2"/>
+    <path d="M-14 -172 Q-6 -158 12 -156 Q26 -156 34 -162 Q20 -160 6 -166 Q-6 -172 -14 -186 Z" fill="var(--skinS)" opacity=".55"/>
+    <ellipse cx="-2" cy="-190" rx="7" ry="10" fill="var(--skinS)"/>
+    <path d="M-24 -192 Q-30 -222 -4 -236 Q24 -246 44 -224 Q50 -214 44 -206 Q34 -216 18 -214 Q8 -220 4 -208 Q2 -198 -6 -196 Q-12 -186 -16 -176 Q-22 -180 -24 -192 Z" fill="var(--hair)"/>
+    <path d="M-10 -232 Q10 -244 34 -232" stroke="rgba(255,255,255,.18)" stroke-width="3" fill="none" stroke-linecap="round"/>
+    
+    <g id="s6m-eyeO"><ellipse cx="30" cy="-196" rx="4.5" ry="5.5" fill="#fff"/><circle cx="32" cy="-196" r="3" fill="#1a1410"/><circle cx="33" cy="-197.5" r="1" fill="#fff"/></g>
+    <path id="s6m-eyeC" d="M25 -195 Q30 -192 35 -195" stroke="#1a1410" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0"/>
+    <path id="s6m-brow" d="M23 -207 Q31 -211 38 -207" stroke="var(--hair)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path id="s6m-mouthN" d="M34 -171 Q39 -171 42 -173" stroke="#7a3b2e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <ellipse id="s6m-mouthO" cx="38" cy="-171" rx="4" ry="5" fill="#4a1d18" opacity="0"/>
+  </g>
+    <g><g id="s6m-uArmF">
+  <line x1="4" y1="-132" x2="4" y2="-66" stroke="var(--topS)" stroke-width="26" stroke-linecap="round"/>
+  <line x1="6.5" y1="-132" x2="6.5" y2="-66" stroke="var(--top)" stroke-width="20" stroke-linecap="round"/>
+  <line x1="15" y1="-128" x2="15" y2="-70" stroke="var(--rim)" stroke-width="2.5" stroke-linecap="round" opacity=".55"/>
+  <g id="s6m-fArmF">
+  <line x1="4" y1="-66" x2="5" y2="-18" stroke="var(--topS)" stroke-width="23" stroke-linecap="round"/>
+  <line x1="6.5" y1="-66" x2="7.5" y2="-18" stroke="var(--top)" stroke-width="17" stroke-linecap="round"/>
+  <line x1="13.5" y1="-62" x2="14.5" y2="-22" stroke="var(--rim)" stroke-width="2.5" stroke-linecap="round" opacity=".55"/>
+  <rect x="-7" y="-22" width="23" height="9" rx="4" fill="var(--topS)"/><g><ellipse cx="6" cy="-4" rx="11" ry="13" fill="var(--skinS)"/><ellipse cx="7" cy="-6" rx="9" ry="11" fill="var(--skin)"/><path d="M12 -12 Q18 -6 14 2" stroke="var(--skinS)" stroke-width="3" fill="none" stroke-linecap="round"/></g>
+</g>
+</g></g>
+  </g></g></g>
+</svg></div>
+<div id="s6-warm" style="position:absolute;inset:0;background:radial-gradient(circle at 85% 15%,rgba(255,190,110,.55),rgba(255,120,60,.15) 45%,rgba(255,120,60,0) 75%);mix-blend-mode:screen;opacity:0"></div>
+<div id="s6-dark" style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 48% at 50% 42%,rgba(0,0,0,0) 30%,rgba(0,0,0,.96) 100%);opacity:0"></div>
+<div class="hud" id="s6-tO" style="left:70px;top:220px"><div class="hud-tag warn"><span class="hud-dot"></span>КИСЛОРОД <span class="v">0%</span></div></div>
+<div class="hud" id="s6-tP" style="left:70px;top:310px"><div class="hud-tag warn"><span class="hud-dot"></span>ДАВЛЕНИЕ <span class="v">0&nbsp;кПа</span></div></div>
+<div class="hud" id="s6-tC" style="left:60px;top:210px;text-align:center;width:330px">
+  <svg width="170" height="170" viewBox="0 0 170 170" style="display:block;margin:0 auto"><circle cx="85" cy="85" r="70" fill="rgba(5,14,40,.6)" stroke="rgba(255,120,60,.25)" stroke-width="10"/><circle id="s6-ring" cx="85" cy="85" r="70" fill="none" stroke="#ff7a3d" stroke-width="10" stroke-linecap="round" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="0" transform="rotate(-90 85 85)"/><text x="85" y="97" text-anchor="middle" font-family="Mont" font-weight="900" font-size="38" fill="#fff">~15 с</text></svg>
+  <div class="hud-small" style="margin-top:12px;color:#ffd2b0">до потери сознания</div></div>
+<div class="hud" id="s6-tU" style="left:70px;top:220px"><div class="hud-tag warn"><span class="hud-dot"></span>УФ И РАДИАЦИЯ</div></div>
+<div class="vignette"></div>
+<svg id="s6-grain" class="grain" viewBox="0 0 400 400" preserveAspectRatio="none"><filter id="s6-grain-f"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .9 0"/></filter><rect width="400" height="400" filter="url(#s6-grain-f)"/></svg>
+</div>
+</div>
+<script>
+(function(){
+const tl = gsap.timeline({ paused: true });
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => Array.from(document.querySelectorAll(s));
+
+const A = (t) => +(t - 63).toFixed(3);
+Kit.grain(tl,"#s6-grain",14.5);
+Kit.stars($("#s6-stars"),606,800);
+Kit.rigInit("s6m"); gsap.set("#s6m-root",{svgOrigin:"0 -40"}); Kit.poseSet("s6m","float");
+const G = Kit.Globe($("#s6-cv"), 9), K = Kit, rg=(t,a,b)=>K.range(t,A(a),A(b));
+const cr = K.rng(77), cracks=[];
+for(let i=0;i<9;i++){const pts=[];let lon=cr()*120-60, lat=cr()*80-20;for(let k=0;k<7;k++){pts.push([lon,lat]);lon+=(cr()-.3)*14;lat+=(cr()-.5)*12;}cracks.push(pts);}
+Kit.canvasClock(tl, 14.5, (t) => {
+  G.draw({ cx: 540, cy: 2330, r: 1180, rotate: [20 - t*1.6, -38, 8], sun: [0.6,-0.8], dry: .85, atm: .3, clouds: .12, lights: .25, haze: .35, strip: .05,
+    overlay: (ctx, proj) => { ctx.save(); ctx.globalCompositeOperation="lighter"; ctx.lineJoin="round";
+      for (const c of cracks){ ctx.beginPath(); let first=true; for(const p of c){const xy=proj(p); if(!xy) continue; if(first){ctx.moveTo(xy[0],xy[1]);first=false;} else ctx.lineTo(xy[0],xy[1]);}
+        ctx.strokeStyle="rgba(255,120,40,.35)"; ctx.lineWidth=14; ctx.stroke(); ctx.strokeStyle="rgba(255,200,120,.8)"; ctx.lineWidth=3; ctx.stroke(); }
+      ctx.restore(); } });
+});
+tl.fromTo("#s6-in",{opacity:0},{opacity:1,duration:.5,ease:"power2.out"},0);
+tl.fromTo("#s6-cam",{scale:1.25},{scale:1,duration:3,ease:"power2.out"},0);
+tl.to("#s6-cam",{scale:1.12,y:-40,duration:A(72.8)-A(66),ease:"sine.inOut"},A(66));
+tl.to("#s6-cam",{scale:1.0,y:0,duration:A(77.5)-A(72.8),ease:"sine.inOut"},A(72.8));
+tl.fromTo("#s6m-root",{rotation:-10,x:-30,y:0},{rotation:30,x:40,y:-40,duration:14.5,ease:"none"},0);
+tl.fromTo("#s6-rays",{rotation:0},{rotation:24,svgOrigin:"0 0",duration:14.5,ease:"none"},0);
+Kit.pose(tl,"s6m","swim",A(64),1.6,"sine.inOut");
+// no air: a gasp, the breath leaves as vapour
+tl.set("#s6m-mouthN",{opacity:0},A(66.3)); tl.set("#s6m-mouthO",{opacity:1},A(66.3));
+tl.to("#s6m-brow",{y:-5,rotation:-8,svgOrigin:"30 -208",duration:.25},A(66.3));
+Kit.pose(tl,"s6m",{uArmF:30,fArmF:110,uArmB:60,fArmB:90,head:-12},A(66.4),.5,"power2.out");
+tl.fromTo(".s6-vap",{opacity:0,x:0,y:0,scale:.4},{opacity:.85,x:(i)=>30+i*14,y:(i)=>(i%3-1)*16,scale:1.6,duration:.8,ease:"power2.out",stagger:.07},A(66.45));
+tl.to(".s6-vap",{opacity:0,scale:3,duration:1.2,ease:"power1.out",stagger:.07},A(67.15));
+tl.fromTo("#s6-tO",{opacity:0,x:-24},{opacity:1,x:0,duration:.4,ease:"expo.out"},A(66.42));
+tl.fromTo("#s6-tP",{opacity:0,x:-24},{opacity:1,x:0,duration:.4,ease:"expo.out"},A(66.9));
+tl.to(["#s6-tO","#s6-tP"],{opacity:0,filter:"blur(6px)",duration:.25},A(68.6));
+// consciousness fades
+tl.fromTo("#s6-tC",{opacity:0,scale:.9},{opacity:1,scale:1,duration:.35,ease:"expo.out"},A(69.0));
+tl.fromTo("#s6-ring",{attr:{"stroke-dashoffset":0}},{attr:{"stroke-dashoffset":1},duration:A(72.6)-A(71.1),ease:"none"},A(71.1));
+tl.to("#s6-tC",{opacity:0,duration:.3},A(72.7));
+tl.to("#s6-dark",{opacity:.85,duration:A(72.4)-A(69.5),ease:"power1.in"},A(69.5));
+tl.to("#s6-dark",{opacity:.35,duration:1.6,ease:"power2.out"},A(72.8));
+Kit.pose(tl,"s6m","limp",A(71.2),1.8,"sine.inOut");
+tl.set("#s6m-mouthO",{opacity:0},A(71.8)); tl.set("#s6m-mouthN",{opacity:1},A(71.8));
+tl.set("#s6m-eyeO",{opacity:0},A(71.85)); tl.set("#s6m-eyeC",{opacity:1},A(71.85));
+// silence, vacuum, the Sun's radiation
+tl.fromTo("#s6-sun",{scale:1,svgOrigin:"900 300"},{scale:1.35,duration:A(76.8)-A(72.9),ease:"sine.inOut"},A(72.9));
+tl.to("#s6-warm",{opacity:1,duration:A(76.5)-A(73.5),ease:"sine.inOut"},A(73.5));
+tl.fromTo("#s6-tU",{opacity:0,y:12},{opacity:1,y:0,duration:.35,ease:"expo.out"},A(75.5));
+tl.to("#s6-tU",{opacity:0,duration:.25},A(77.0));
+
+window.__timelines = window.__timelines || {};
+window.__timelines["s6"] = tl;
+})();
+</script>
+</template>
