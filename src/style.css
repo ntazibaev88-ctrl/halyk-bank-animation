@@ -1,0 +1,65 @@
+:root {
+  --navy: #0a1630; --navy2: #0f2147; --blue: #1f5fbf; --blue2: #2f86ff; --sky: #63b3ff;
+  --white: #f4f7fb; --orange: #ff8a1f; --orange2: #ffb347; --yellow: #ffd23f; --red: #ff3b3b; --green: #2ecc71;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: #050b18; }
+#frame { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--navy);
+  font-family: 'Montserrat', sans-serif; color: var(--white); }
+.scene { position: absolute; inset: 0; overflow: hidden; }
+.scene > svg.art { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+.abs { position: absolute; }
+
+/* headers */
+.hdr { position: absolute; left: 70px; right: 70px; top: 170px; }
+.chip { display: inline-flex; align-items: center; gap: 14px; padding: 10px 22px 10px 12px; border-radius: 40px;
+  background: rgba(255,138,31,0.14); border: 2px solid rgba(255,138,31,0.55); font-weight: 800; font-size: 28px;
+  letter-spacing: 3px; color: var(--orange2); }
+.chip b { display: inline-grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: var(--orange);
+  color: #1a0d00; font-size: 24px; letter-spacing: 0; }
+.htitle { margin-top: 26px; font-weight: 900; font-size: 76px; line-height: 1.04; letter-spacing: -1px; text-transform: uppercase;
+  text-shadow: 0 6px 30px rgba(0,0,0,0.45); }
+.htitle .o { color: var(--orange); }
+.hsub { margin-top: 14px; font-weight: 600; font-size: 38px; color: #a9c4ea; line-height: 1.2; }
+.uline { height: 8px; width: 220px; margin-top: 22px; border-radius: 4px; background: linear-gradient(90deg, var(--orange), var(--yellow));
+  transform-origin: left center; }
+
+/* cards */
+.card { position: absolute; border-radius: 30px; background: linear-gradient(160deg, rgba(31,95,191,0.30), rgba(10,22,48,0.85));
+  border: 2px solid rgba(99,179,255,0.35); box-shadow: 0 20px 60px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.12); }
+.card.warn { background: linear-gradient(160deg, rgba(255,59,59,0.28), rgba(40,8,12,0.88)); border-color: rgba(255,90,90,0.6); }
+.pill { position: absolute; display: flex; align-items: center; gap: 22px; padding: 18px 28px; border-radius: 26px;
+  background: linear-gradient(120deg, rgba(20,45,95,0.92), rgba(10,22,48,0.92)); border: 2px solid rgba(99,179,255,0.35);
+  font-weight: 700; font-size: 38px; line-height: 1.15; box-shadow: 0 14px 40px rgba(0,0,0,0.4); }
+.pill .ic { flex: none; width: 84px; height: 84px; border-radius: 22px; display: grid; place-items: center;
+  background: linear-gradient(140deg, var(--orange), #e0600a); }
+.pill .ic svg { width: 56px; height: 56px; }
+.tag { position: absolute; padding: 8px 18px; border-radius: 12px; background: var(--orange); color: #1a0d00; font-weight: 800; font-size: 30px; }
+
+/* subtitles */
+#subs { position: absolute; left: 40px; right: 40px; top: 1395px; height: 260px; display: flex; justify-content: center; align-items: flex-start;
+  pointer-events: none; z-index: 20; }
+.subbox { padding: 18px 34px 20px; border-radius: 26px; background: rgba(4, 10, 26, 0.68); text-align: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.07); }
+.subline { font-weight: 800; font-size: 54px; line-height: 1.28; white-space: nowrap; letter-spacing: -0.3px; }
+.subline .w { color: rgba(255,255,255,0.58); transition: none; }
+.subline .w.on { color: #ffffff; }
+.subline .w.hl { color: rgba(255,138,31,0.6); }
+.subline .w.hl.on { color: var(--orange); }
+.subline .w.now { text-shadow: 0 0 22px rgba(255,255,255,0.35); }
+
+/* transitions */
+#trans { position: absolute; inset: 0; z-index: 40; pointer-events: none; overflow: hidden; }
+#trans .bar { position: absolute; top: -100px; right: -400px; height: 2120px; }
+#trans .b0 { background: var(--orange); width: 2300px; }
+#trans .b1 { background: #2f86ff; width: 2150px; }
+#trans .b2 { background: #13306a; width: 2020px; }
+#trans .b3 { background: #0a1630; width: 1900px; }
+
+#progress { position: absolute; left: 0; top: 0; height: 7px; width: 1080px; background: linear-gradient(90deg, var(--orange), var(--yellow));
+  transform-origin: left center; z-index: 30; opacity: 0.9; }
+#vignette { position: absolute; inset: 0; z-index: 19; pointer-events: none;
+  background: radial-gradient(ellipse 80% 65% at 50% 45%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.5) 100%); }
+#brand { position: absolute; left: 70px; top: 70px; z-index: 21; display: flex; align-items: center; gap: 14px; font-weight: 800;
+  font-size: 26px; letter-spacing: 4px; color: rgba(255,255,255,0.72); }
+#brand i { width: 16px; height: 16px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 14px var(--orange); }
