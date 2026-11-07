@@ -143,7 +143,7 @@
       const C = MC.cues("s03-cues"), D = C.dur;
       const tl = gsap.timeline({ paused: true });
       const $ = (id) => document.getElementById(id);
-      const tCap = MC.word(C, "n06", "капитан") - 0.1, tName = MC.word(C, "n06", "бенджамин") - 0.05;
+      const tCap = MC.word(C, "n06", "капитан") - 0.1, tName = tCap + 0.05;
       const tWife = MC.word(C, "n06", "жена") - 0.25, tKid = MC.word(C, "n06", "дочь") - 0.3;
       const tCrew = MC.word(C, "n06", "семь") - 0.25;
 

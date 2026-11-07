@@ -3,3 +3,4 @@ node_modules/
 renders/*.log
 renders/verify/
 __pycache__/
+renders/*.raw.mp4
