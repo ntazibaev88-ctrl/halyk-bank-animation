@@ -1,0 +1,180 @@
+<template>
+  <style data-fonts>
+@font-face{font-family:'MC Display';font-weight:400;font-display:block;src:url('assets/fonts/oswald-latin-400-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Display';font-weight:400;font-display:block;src:url('assets/fonts/oswald-cyrillic-400-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Display';font-weight:500;font-display:block;src:url('assets/fonts/oswald-latin-500-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Display';font-weight:500;font-display:block;src:url('assets/fonts/oswald-cyrillic-500-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Display';font-weight:600;font-display:block;src:url('assets/fonts/oswald-latin-600-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Display';font-weight:600;font-display:block;src:url('assets/fonts/oswald-cyrillic-600-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Display';font-weight:700;font-display:block;src:url('assets/fonts/oswald-latin-700-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Display';font-weight:700;font-display:block;src:url('assets/fonts/oswald-cyrillic-700-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Sans';font-weight:400;font-display:block;src:url('assets/fonts/inter-latin-400-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Sans';font-weight:400;font-display:block;src:url('assets/fonts/inter-cyrillic-400-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Sans';font-weight:500;font-display:block;src:url('assets/fonts/inter-latin-500-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Sans';font-weight:500;font-display:block;src:url('assets/fonts/inter-cyrillic-500-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Sans';font-weight:600;font-display:block;src:url('assets/fonts/inter-latin-600-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Sans';font-weight:600;font-display:block;src:url('assets/fonts/inter-cyrillic-600-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Sans';font-weight:700;font-display:block;src:url('assets/fonts/inter-latin-700-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Sans';font-weight:700;font-display:block;src:url('assets/fonts/inter-cyrillic-700-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Sans';font-weight:800;font-display:block;src:url('assets/fonts/inter-latin-800-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Sans';font-weight:800;font-display:block;src:url('assets/fonts/inter-cyrillic-800-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Serif';font-weight:400;font-display:block;src:url('assets/fonts/playfair-display-latin-400-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Serif';font-weight:400;font-display:block;src:url('assets/fonts/playfair-display-cyrillic-400-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Serif';font-weight:600;font-display:block;src:url('assets/fonts/playfair-display-latin-600-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Serif';font-weight:600;font-display:block;src:url('assets/fonts/playfair-display-cyrillic-600-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Serif';font-weight:700;font-display:block;src:url('assets/fonts/playfair-display-latin-700-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Serif';font-weight:700;font-display:block;src:url('assets/fonts/playfair-display-cyrillic-700-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Mono';font-weight:400;font-display:block;src:url('assets/fonts/jetbrains-mono-latin-400-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Mono';font-weight:400;font-display:block;src:url('assets/fonts/jetbrains-mono-cyrillic-400-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Mono';font-weight:600;font-display:block;src:url('assets/fonts/jetbrains-mono-latin-600-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Mono';font-weight:600;font-display:block;src:url('assets/fonts/jetbrains-mono-cyrillic-600-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+</style>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #0c0805; }
+    #s8-desk { position: absolute; left: -80px; top: -80px; width: 1240px; height: 2080px; transform-origin: 380px 560px; }
+    #s8-wood { position: absolute; inset: 0; background: url("assets/img/wood.jpg") center / cover; filter: brightness(0.8); }
+    #s8-pool { position: absolute; left: -200px; top: 0; width: 1600px; height: 1700px; mix-blend-mode: soft-light;
+      background: radial-gradient(ellipse 45% 38% at 50% 40%, rgba(255, 214, 150, 0.95) 0%, rgba(255, 190, 120, 0.25) 45%, rgba(0, 0, 0, 0.85) 100%); }
+    .s8-paper { position: absolute; background: url("assets/img/paper.jpg") center / cover; box-shadow: 0 22px 46px rgba(0, 0, 0, 0.6), 0 3px 8px rgba(0, 0, 0, 0.5); }
+    #s8-chart { left: 130px; top: 300px; width: 640px; height: 520px; overflow: hidden; }
+    #s8-chart-map { position: absolute; left: -1182px; top: -436px; width: 2448px; height: 1183px; filter: sepia(1) brightness(0.62) contrast(1.4); opacity: 0.85; }
+    #s8-chart svg { position: absolute; inset: 0; width: 640px; height: 520px; }
+    #s8-chart .s8-cap { position: absolute; left: 26px; top: 20px; font-family: "MC Serif", serif; font-weight: 700; font-size: 30px; color: #2a1d10; }
+    #s8-crew { left: 600px; top: 640px; width: 470px; height: 640px; padding: 34px 34px; }
+    #s8-crew h3 { font-family: "MC Serif", serif; font-weight: 700; font-size: 34px; color: #24180c; margin-bottom: 16px; border-bottom: 2px solid #6b5532; padding-bottom: 10px; }
+    #s8-crew li { list-style: none; font-family: "MC Serif", serif; font-weight: 400; font-size: 29px; line-height: 1.5; color: #2a1d10; }
+    #s8-stamp { position: absolute; left: 640px; top: 860px; padding: 10px 20px; border: 6px solid #b5261d; color: #b5261d; opacity: 0;
+      font-family: "MC Display", sans-serif; font-weight: 700; font-size: 58px; line-height: 1.0; text-align: center; text-transform: uppercase; }
+    #s8-log { left: 150px; top: 900px; width: 420px; height: 250px; padding: 28px 30px; }
+    #s8-log .s8-k { display: block; font-family: "MC Sans", sans-serif; font-weight: 700; font-size: 28px; letter-spacing: 0.12em; text-transform: uppercase; color: #6b5532; }
+    #s8-log .s8-v { display: block; margin-top: 10px; font-family: "MC Serif", serif; font-weight: 700; font-size: 40px; line-height: 1.12; color: #24180c; }
+    #s8-strings { position: absolute; left: 0; top: 0; width: 1240px; height: 2080px; }
+    #s8-compass { position: absolute; left: 140px; top: 1430px; width: 340px; height: 340px; }
+    #s8-lens { position: absolute; left: 0; top: 0; width: 300px; height: 520px; }
+
+    #s8-dim { position: absolute; inset: 0; background: rgba(4, 6, 9, 0.84); opacity: 0; }
+    #s8-time { position: absolute; left: 70px; right: 70px; top: 300px; opacity: 0; }
+    #s8-time svg { width: 940px; height: 120px; display: block; }
+    .s8-yr { position: absolute; top: 100px; font-family: "MC Display", sans-serif; font-weight: 600; font-size: 64px; color: var(--mist); }
+    #s8-y0 { left: 0; }
+    #s8-y1 { right: 0; color: var(--ink); }
+    #s8-span { position: absolute; left: 0; right: 0; top: 24px; text-align: center; font-size: 30px; color: var(--gold); }
+    #s8-big { position: absolute; left: 0; right: 0; top: 520px; text-align: center; opacity: 0; }
+    #s8-big-n { display: block; font-family: "MC Display", sans-serif; font-weight: 700; font-size: 210px; line-height: 0.9; color: var(--gold); }
+    #s8-big-l { display: block; font-family: "MC Display", sans-serif; font-weight: 600; font-size: 54px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink); }
+    #s8-title { position: absolute; left: 60px; right: 60px; top: 870px; text-align: center; font-size: 88px; line-height: 1.02; opacity: 0; }
+    #s8-iris { position: absolute; inset: 0; background: #03060a; opacity: 0; }
+  </style>
+
+  <div id="root" data-composition-id="s08-investigation" data-width="1080" data-height="1920">
+    <div id="s8-desk">
+      <div id="s8-wood"></div>
+      <div id="s8-chart" class="s8-paper">
+        <img id="s8-chart-map" src="assets/img/atlantic-land.svg" alt="Карта: Азорские острова" />
+        <svg viewBox="0 0 640 520">
+          <path d="M60 470 C 160 430 230 420 300 330 C 340 280 360 250 420 240" fill="none" stroke="#5a3a1a" stroke-width="3" stroke-dasharray="10 8" />
+          <g stroke="#b5261d" stroke-width="7" stroke-linecap="round"><path d="M398 218 L442 262 M442 218 L398 262" /></g>
+          <circle cx="420" cy="240" r="42" fill="none" stroke="#b5261d" stroke-width="3" />
+          <text x="470" y="300" font-family="MC Sans" font-weight="700" font-size="30" fill="#7a1a14">4.12.1872</text>
+        </svg>
+        <span class="s8-cap">Азорские острова</span>
+      </div>
+      <div id="s8-log" class="s8-paper" data-layout-allow-overlap><span class="s8-k">Судовой журнал</span><span class="s8-v">Последняя запись: 25 ноября 1872</span></div>
+      <div id="s8-crew" class="s8-paper" data-layout-allow-overlap>
+        <h3>На борту — 10 человек</h3>
+        <ul>
+          <li>Капитан</li><li>Жена капитана</li><li>Дочь, 2 года</li><li>Старший помощник</li><li>Второй помощник</li>
+          <li>Стюард-кок</li><li>Четыре матроса</li>
+        </ul>
+      </div>
+      <div id="s8-stamp" data-layout-allow-overlap>Пропали<br />без вести</div>
+      <svg id="s8-strings" viewBox="0 0 1240 2080" data-layout-ignore>
+        <g fill="#b5261d"><circle cx="550" cy="540" r="11" /><circle cx="835" cy="700" r="11" /><circle cx="360" cy="930" r="11" /></g>
+        <path id="s8-s1" d="M550 540 Q 700 560 835 700" fill="none" stroke="#c22a20" stroke-width="4" />
+        <path id="s8-s2" d="M550 540 Q 420 700 360 930" fill="none" stroke="#c22a20" stroke-width="4" />
+        <path id="s8-s3" d="M360 930 Q 600 900 835 700" fill="none" stroke="#c22a20" stroke-width="4" />
+      </svg>
+      <svg id="s8-compass" viewBox="-170 -170 340 340">
+        <circle r="160" fill="#2a1d10" stroke="#a68548" stroke-width="10" />
+        <circle r="128" fill="#d9ccae" />
+        <g id="s8-needle"><path d="M0 -112 L16 0 L0 112 L-16 0 Z" fill="#2a1d10" /><path d="M0 -112 L16 0 L-16 0 Z" fill="#b5261d" /></g>
+        <circle r="10" fill="#a68548" />
+      </svg>
+      <div id="s8-pool"></div>
+    </div>
+    <svg id="s8-lens" viewBox="0 0 300 520">
+      <circle cx="150" cy="150" r="120" fill="rgba(220, 235, 245, 0.08)" stroke="#2c2016" stroke-width="22" />
+      <circle cx="150" cy="150" r="120" fill="none" stroke="#a68548" stroke-width="6" />
+      <path d="M105 80 A 90 90 0 0 1 220 110" fill="none" stroke="rgba(255,255,255,0.45)" stroke-width="6" stroke-linecap="round" />
+      <path d="M150 282 L150 500" stroke="#2c2016" stroke-width="34" stroke-linecap="round" />
+    </svg>
+
+    <div id="s8-dim"></div>
+    <div id="s8-time">
+      <svg viewBox="0 0 940 120"><path d="M10 60 H930" stroke="rgba(198,208,217,0.3)" stroke-width="4" />
+        <path id="s8-tline" d="M10 60 H930" stroke="#d2ad62" stroke-width="6" />
+        <circle cx="10" cy="60" r="12" fill="#d2ad62" /><circle id="s8-tdot" cx="10" cy="60" r="12" fill="#f3f5f7" /></svg>
+      <span id="s8-y0" class="s8-yr">1872</span><span id="s8-y1" class="s8-yr">1872</span>
+    </div>
+    <div id="s8-big"><span id="s8-big-n">0</span><span id="s8-big-l">лет без ответа</span></div>
+    <div id="s8-title" class="mc-display mc-shadow">Тайна осталась <em>неразгаданной.</em></div>
+    <div id="s8-iris"></div>
+
+    <audio id="s8-sfx-paper1" class="clip" data-hf-media-start-basis="local" src="assets/audio/sfx/paper-2.wav" data-start="0.3" data-duration="0.7" data-track-index="7" data-volume="0.5" data-end="1"></audio>
+    <audio id="s8-sfx-paper2" class="clip" data-hf-media-start-basis="local" src="assets/audio/sfx/paper-1.wav" data-start="0.75" data-duration="0.6" data-track-index="8" data-volume="0.45" data-end="1.35"></audio>
+    <audio id="s8-sfx-stamp" class="clip" data-hf-media-start-basis="local" src="assets/audio/sfx/impact-bass-1.mp3" data-start="3.75" data-duration="1.5" data-track-index="9" data-volume="0.45" data-end="5.25"></audio>
+    <audio id="s8-sfx-tick1" class="clip" data-hf-media-start-basis="local" src="assets/audio/sfx/tick-1.wav" data-start="5.6" data-duration="0.15" data-track-index="10" data-volume="0.4" data-end="5.75"></audio>
+    <audio id="s8-sfx-tick2" class="clip" data-hf-media-start-basis="local" src="assets/audio/sfx/tick-2.wav" data-start="7.2" data-duration="0.15" data-track-index="10" data-volume="0.4" data-end="7.3500000000000005"></audio>
+    <audio id="s8-sfx-out" class="clip" data-hf-media-start-basis="local" src="assets/audio/sfx/whoosh-cinematic.mp3" data-start="9.4" data-duration="0.8" data-track-index="11" data-volume="0.3" data-end="10.200000000000001"></audio>
+  </div>
+
+  <script type="application/json" id="s08-cues">{"dur": 10.11, "seg": {"n15": {"s": 0.3, "e": 4.844, "w": [["Ни", 0.3, 0.566], ["капитана,", 0.566, 1.068], ["ни", 1.352, 1.455], ["его", 1.455, 1.622], ["семью,", 1.622, 2.048], ["ни", 2.37, 2.499], ["членов", 2.499, 2.885], ["экипажа", 2.885, 3.414], ["больше", 3.414, 3.813], ["никто", 3.813, 4.122], ["не", 4.122, 4.238], ["видел.", 4.238, 4.638]]}, "n16": {"s": 5.594, "e": 9.559, "w": [["Прошло", 5.594, 6.015], ["более", 6.015, 6.35], ["полутора", 6.35, 6.762], ["веков,", 6.762, 7.2], ["но", 7.42, 7.626], ["точный", 7.626, 8.064], ["ответ", 8.064, 8.438], ["так", 8.438, 8.695], ["и", 8.695, 8.734], ["не", 8.734, 8.837], ["найден.", 8.837, 9.327]]}}}</script>
+  <script>
+    (function () {
+      const C = MC.cues("s08-cues"), D = C.dur;
+      const tl = gsap.timeline({ paused: true });
+      const $ = (id) => document.getElementById(id);
+      const tNone = MC.word(C, "n15", "никто") - 0.1, t16 = C.seg.n16.s, tCent = MC.word(C, "n16", "полутора") - 0.2;
+      const tAns = MC.word(C, "n16", "ответ") - 0.2;
+
+      /* camera: from the chart's X, back to the whole desk, slowly drifting */
+      tl.fromTo("#s8-desk", { scale: 1.75, x: 0, y: 0, rotation: 0 }, { scale: 1.0, duration: 1.8, ease: "power3.inOut" }, 0);
+      tl.to("#s8-desk", { scale: 1.05, x: -20, y: -30, rotation: 0.6, duration: D - 1.8, ease: "none" }, 1.8);
+      tl.fromTo("#s8-chart", { rotation: -4 }, { rotation: -4, duration: 0.01 }, 0);
+      tl.fromTo("#s8-crew", { x: 520, rotation: 12 }, { x: 0, rotation: 3, duration: 0.7, ease: "expo.out" }, 0.35);
+      tl.fromTo("#s8-log", { x: -560, rotation: -12 }, { x: 0, rotation: -2, duration: 0.7, ease: "expo.out" }, 0.8);
+      ["#s8-s1", "#s8-s2", "#s8-s3"].forEach((s, i) => {
+        const el = document.querySelector(s), l = el.getTotalLength() || 420;
+        tl.fromTo(el, { attr: { "stroke-dasharray": l, "stroke-dashoffset": l } }, { attr: { "stroke-dashoffset": 0 }, duration: 0.45, ease: "power2.out" }, 1.5 + i * 0.4);
+      });
+      // magnifier and lamp light move over the evidence
+      const lens = MC.keys([[0, { x: 760, y: 260 }], [1.6, { x: 330, y: 280 }], [3.4, { x: 560, y: 560 }], [5.2, { x: 380, y: 300 }]]);
+      MC.drive(tl, D, (t) => {
+        const p = lens(t);
+        $("s8-lens").style.transform = `translate(${p.x}px, ${p.y}px) rotate(${-24 + Math.sin(t * 0.8) * 4}deg)`;
+        $("s8-pool").style.transform = `translate(${Math.sin(t * 0.35) * 60}px, ${Math.cos(t * 0.3) * 40}px)`;
+        $("s8-needle").setAttribute("transform", `rotate(${20 + Math.sin(t * 1.3) * 14 + Math.sin(t * 3.1) * 4})`);
+      });
+
+      /* "...больше никто не видел." */
+      tl.fromTo("#s8-stamp", { opacity: 0, scale: 2.4, rotation: -20 }, { opacity: 1, scale: 1, rotation: -9, duration: 0.18, ease: "power4.in" }, tNone);
+
+      /* n16 — more than a century and a half; the answer never found */
+      tl.fromTo("#s8-dim", { opacity: 0 }, { opacity: 1, duration: 0.4 }, t16 - 0.25);
+      tl.to("#s8-lens", { opacity: 0, duration: 0.3 }, t16 - 0.25);
+      tl.fromTo("#s8-time", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, t16 - 0.1);
+      const tline = $("s8-tline");
+      tl.fromTo(tline, { attr: { "stroke-dasharray": 920, "stroke-dashoffset": 920 } }, { attr: { "stroke-dashoffset": 0 }, duration: 1.6, ease: "power2.inOut" }, t16 + 0.1);
+      tl.fromTo("#s8-tdot", { attr: { cx: 10 } }, { attr: { cx: 930 }, duration: 1.6, ease: "power2.inOut" }, t16 + 0.1);
+      MC.count(tl, $("s8-y1"), t16 + 0.1, 1872, 2026, 1.6);
+      tl.fromTo("#s8-big", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3 }, tCent);
+      MC.count(tl, $("s8-big-n"), tCent, 100, 154, 0.9);
+      MC.blurWords(tl, $("s8-title"), tAns, { stagger: 0.12, dur: 0.3 });
+
+      /* exit — into the dark sea */
+      tl.to(["#s8-time", "#s8-big", "#s8-title"], { opacity: 0, filter: "blur(10px)", duration: 0.3, ease: "power2.in" }, D - 0.45);
+      tl.fromTo("#s8-iris", { opacity: 0 }, { opacity: 1, duration: 0.3 }, D - 0.3);
+      window.__timelines["s08-investigation"] = tl;
+    })();
+  </script>
+</template>

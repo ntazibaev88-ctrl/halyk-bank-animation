@@ -1,0 +1,225 @@
+<template>
+  <style data-fonts>
+@font-face{font-family:'MC Display';font-weight:400;font-display:block;src:url('assets/fonts/oswald-latin-400-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Display';font-weight:400;font-display:block;src:url('assets/fonts/oswald-cyrillic-400-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Display';font-weight:500;font-display:block;src:url('assets/fonts/oswald-latin-500-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Display';font-weight:500;font-display:block;src:url('assets/fonts/oswald-cyrillic-500-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Display';font-weight:600;font-display:block;src:url('assets/fonts/oswald-latin-600-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Display';font-weight:600;font-display:block;src:url('assets/fonts/oswald-cyrillic-600-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Display';font-weight:700;font-display:block;src:url('assets/fonts/oswald-latin-700-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Display';font-weight:700;font-display:block;src:url('assets/fonts/oswald-cyrillic-700-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Sans';font-weight:400;font-display:block;src:url('assets/fonts/inter-latin-400-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Sans';font-weight:400;font-display:block;src:url('assets/fonts/inter-cyrillic-400-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Sans';font-weight:500;font-display:block;src:url('assets/fonts/inter-latin-500-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Sans';font-weight:500;font-display:block;src:url('assets/fonts/inter-cyrillic-500-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Sans';font-weight:600;font-display:block;src:url('assets/fonts/inter-latin-600-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Sans';font-weight:600;font-display:block;src:url('assets/fonts/inter-cyrillic-600-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Sans';font-weight:700;font-display:block;src:url('assets/fonts/inter-latin-700-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Sans';font-weight:700;font-display:block;src:url('assets/fonts/inter-cyrillic-700-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Sans';font-weight:800;font-display:block;src:url('assets/fonts/inter-latin-800-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Sans';font-weight:800;font-display:block;src:url('assets/fonts/inter-cyrillic-800-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Serif';font-weight:400;font-display:block;src:url('assets/fonts/playfair-display-latin-400-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Serif';font-weight:400;font-display:block;src:url('assets/fonts/playfair-display-cyrillic-400-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Serif';font-weight:600;font-display:block;src:url('assets/fonts/playfair-display-latin-600-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Serif';font-weight:600;font-display:block;src:url('assets/fonts/playfair-display-cyrillic-600-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Serif';font-weight:700;font-display:block;src:url('assets/fonts/playfair-display-latin-700-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Serif';font-weight:700;font-display:block;src:url('assets/fonts/playfair-display-cyrillic-700-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Mono';font-weight:400;font-display:block;src:url('assets/fonts/jetbrains-mono-latin-400-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Mono';font-weight:400;font-display:block;src:url('assets/fonts/jetbrains-mono-cyrillic-400-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Mono';font-weight:600;font-display:block;src:url('assets/fonts/jetbrains-mono-latin-600-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Mono';font-weight:600;font-display:block;src:url('assets/fonts/jetbrains-mono-cyrillic-600-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+</style>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #03060a; }
+    #s1-cam { position: absolute; inset: 0; }
+    #s1-world { position: absolute; inset: 0; }
+    #s1-sky { position: absolute; inset: 0;
+      background: linear-gradient(180deg, #03070c 0%, #0a1622 38%, #1b2e42 55%, #22374c 58%, #0a1420 100%); }
+    .s1-cloud { position: absolute; left: 0; width: 4096px; height: 1024px; background-repeat: repeat-x; }
+    #s1-cloud-a { top: 80px; background-image: url("assets/img/fog-2.png"); opacity: 0.22; filter: brightness(0.45); }
+    #s1-cloud-b { top: 420px; background-image: url("assets/img/fog-1.png"); opacity: 0.18; filter: brightness(0.6); }
+    #s1-flash { position: absolute; inset: 0; opacity: 0;
+      background: radial-gradient(ellipse 70% 40% at 28% 18%, rgba(210, 225, 245, 0.85), rgba(120, 150, 190, 0.25) 55%, rgba(0, 0, 0, 0) 80%); }
+    #s1-horizon-fog { position: absolute; left: 0; top: 640px; width: 4096px; height: 520px;
+      background: url("assets/img/fog-1.png") repeat-x; background-size: 2048px 520px; opacity: 0.45; }
+    .s1-sea { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #s1-ship { position: absolute; left: 90px; top: 670px; width: 900px; height: 600px; transform-origin: 50% 75%; }
+    #s1-ship img { width: 100%; height: 100%; display: block; }
+    #s1-rain { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+    .s1-fog-front { position: absolute; left: 0; width: 4096px; height: 1024px; background-repeat: repeat-x; }
+    #s1-fog-f1 { top: 1150px; background-image: url("assets/img/fog-2.png"); opacity: 0.2; }
+    #s1-flood { position: absolute; inset: 0; opacity: 0;
+      background: radial-gradient(ellipse at 50% 55%, #9fb1c2 0%, #42586c 55%, #0b1520 100%); }
+
+    /* hook: sonar + radar */
+    #s1-sonar { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #s1-sweep { position: absolute; left: -460px; top: -10px; width: 2000px; height: 2000px; border-radius: 50%; opacity: 0;
+      background: conic-gradient(from 0deg, rgba(224, 57, 47, 0) 0deg, rgba(224, 57, 47, 0) 300deg, rgba(224, 57, 47, 0.28) 356deg, rgba(255, 110, 96, 0.9) 359.6deg, rgba(224, 57, 47, 0) 360deg); }
+    #s1-dark { position: absolute; inset: 0; background: #020406; opacity: 0; }
+
+    /* titles */
+    .s1-title { position: absolute; left: 70px; right: 70px; text-align: center; opacity: 0; }
+    #s1-t1 { top: 330px; font-size: 132px; }
+    #s1-t2 { top: 300px; font-size: 104px; line-height: 1.04; }
+    #s1-t2 .s1-sub { display: block; font-size: 104px; }
+
+    /* investigative callouts */
+    .s1-call { position: absolute; top: 1084px; opacity: 0; }
+    .s1-call .s1-plate { display: inline-block; padding: 14px 22px 12px; background: rgba(6, 12, 18, 0.78);
+      border-left: 5px solid var(--gold); font-family: "MC Sans", sans-serif; font-weight: 700; font-size: 34px;
+      letter-spacing: 0.08em; color: var(--ink); text-transform: uppercase; }
+    #s1-call-cargo { left: 70px; }
+    #s1-call-hull { left: 600px; }
+    .s1-leader { position: absolute; width: 3px; background: var(--gold); transform-origin: 50% 100%; }
+    #s1-lead-cargo { left: 330px; top: 990px; height: 94px; }
+    #s1-lead-hull { left: 660px; top: 1004px; height: 80px; }
+    .s1-dot { position: absolute; width: 18px; height: 18px; border-radius: 50%; border: 3px solid var(--gold); background: rgba(210, 173, 98, 0.25); }
+    #s1-dot-cargo { left: 322px; top: 976px; }
+    #s1-dot-hull { left: 652px; top: 990px; }
+
+    #s1-scan { position: absolute; left: 130px; top: 820px; width: 220px; height: 330px; border: 3px solid var(--red);
+      background: linear-gradient(90deg, rgba(224, 57, 47, 0) 0%, rgba(224, 57, 47, 0.18) 100%); opacity: 0; }
+    #s1-count { position: absolute; left: 0; right: 0; top: 250px; text-align: center; opacity: 0; }
+    #s1-count .mc-label { display: block; margin-bottom: 10px; color: var(--mist); }
+    #s1-count-n { font-family: "MC Display", sans-serif; font-weight: 700; font-size: 220px; line-height: 0.95; color: var(--ink); }
+  </style>
+
+  <div id="root" data-composition-id="s01-mystery" data-width="1080" data-height="1920">
+    <div id="s1-cam">
+      <div id="s1-world">
+        <div id="s1-sky"></div>
+        <div id="s1-cloud-a" class="s1-cloud"></div>
+        <div id="s1-cloud-b" class="s1-cloud"></div>
+        <div id="s1-flash"></div>
+        <div id="s1-horizon-fog"></div>
+        <canvas id="s1-sea-back" class="s1-sea" width="1080" height="1920"></canvas>
+        <div id="s1-ship"><img src="assets/img/brigantine.svg" alt="Бригантина — силуэт" /></div>
+        <canvas id="s1-sea-front" class="s1-sea" width="1080" height="1920"></canvas>
+        <div id="s1-fog-f1" class="s1-fog-front"></div>
+        <canvas id="s1-rain" width="1080" height="1920"></canvas>
+      </div>
+    </div>
+    <div id="s1-dark"></div>
+    <div id="s1-sweep" data-layout-ignore></div>
+    <svg id="s1-sonar" viewBox="0 0 1080 1920" data-layout-ignore>
+      <g fill="none" stroke="#9fc3d8">
+        <circle id="s1-ring-1" cx="540" cy="930" r="120" stroke-width="3" />
+        <circle id="s1-ring-2" cx="540" cy="930" r="120" stroke-width="2" />
+      </g>
+      <g id="s1-grid" stroke="#7d97ab" stroke-opacity="0.25" fill="none">
+        <circle cx="540" cy="930" r="260" /><circle cx="540" cy="930" r="520" /><circle cx="540" cy="930" r="780" />
+        <path d="M540 120 L540 1740 M-200 930 L1280 930" />
+      </g>
+    </svg>
+
+    <div id="s1-call-cargo" class="s1-call"><span class="s1-plate">Груз на месте</span></div>
+    <div id="s1-call-hull" class="s1-call"><span class="s1-plate">Корпус цел</span></div>
+    <div id="s1-lead-cargo" class="s1-leader"></div>
+    <div id="s1-lead-hull" class="s1-leader"></div>
+    <div id="s1-dot-cargo" class="s1-dot"></div>
+    <div id="s1-dot-hull" class="s1-dot"></div>
+    <div id="s1-scan"></div>
+    <div id="s1-count"><span class="mc-label">Людей на борту</span><span id="s1-count-n">10</span></div>
+
+    <div id="s1-t1" class="s1-title mc-display mc-shadow"><em>10</em> человек исчезли.</div>
+    <div id="s1-t2" class="s1-title mc-display mc-shadow">Корабль остался.<span class="s1-sub"><em>Люди — нет.</em></span></div>
+
+    <div id="s1-flood"></div>
+
+    <audio id="s1-sfx-sonar" class="clip" data-hf-media-start-basis="local" src="assets/audio/sfx/sonar-1.wav" data-start="0.1" data-duration="3" data-track-index="7" data-volume="0.55" data-end="3.1"></audio>
+    <audio id="s1-sfx-push" class="clip" data-hf-media-start-basis="local" src="assets/audio/sfx/whoosh-short.mp3" data-start="0.82" data-duration="0.6" data-track-index="8" data-volume="0.5" data-end="1.42"></audio>
+    <audio id="s1-sfx-hit1" class="clip" data-hf-media-start-basis="local" src="assets/audio/sfx/impact-bass-1.mp3" data-start="0.98" data-duration="2" data-track-index="9" data-volume="0.75" data-end="2.98"></audio>
+    <audio id="s1-sfx-hit2" class="clip" data-hf-media-start-basis="local" src="assets/audio/sfx/impact-bass-2.mp3" data-start="1.95" data-duration="2.5" data-track-index="10" data-volume="0.9" data-end="4.45"></audio>
+    <audio id="s1-sfx-thunder1" class="clip" data-hf-media-start-basis="local" src="assets/audio/sfx/thunder-1.wav" data-start="2.0" data-duration="4.4" data-track-index="11" data-volume="0.55" data-end="6.4"></audio>
+    <audio id="s1-sfx-creak" class="clip" data-hf-media-start-basis="local" src="assets/audio/sfx/creak-2.wav" data-start="4.6" data-duration="1.4" data-track-index="7" data-volume="0.4" data-end="6"></audio>
+    <audio id="s1-sfx-thunder2" class="clip" data-hf-media-start-basis="local" src="assets/audio/sfx/thunder-2.wav" data-start="7.0" data-duration="5.4" data-track-index="8" data-volume="0.38" data-end="12.4"></audio>
+    <audio id="s1-sfx-scan" class="clip" data-hf-media-start-basis="local" src="assets/audio/sfx/sonar-2.wav" data-start="9.8" data-duration="3" data-track-index="9" data-volume="0.4" data-end="12.8"></audio>
+    <audio id="s1-sfx-out" class="clip" data-hf-media-start-basis="local" src="assets/audio/sfx/whoosh-cinematic.mp3" data-start="11.4" data-duration="1.3" data-track-index="10" data-volume="0.35" data-end="12.700000000000001"></audio>
+  </div>
+
+  <script type="application/json" id="s01-cues">{"dur": 12.74, "seg": {"n01": {"s": 2.6, "e": 6.012, "w": [["Представьте:", 2.6, 3.291], ["посреди", 3.562, 4.0], ["океана", 4.0, 4.477], ["обнаруживают", 4.477, 5.25], ["корабль.", 5.25, 5.804]]}, "n02": {"s": 6.312, "e": 9.443, "w": [["Он", 6.312, 6.63], ["цел.", 6.63, 7.107], ["Груз", 7.985, 8.539], ["на", 8.539, 8.693], ["месте.", 8.693, 9.235]]}, "n03": {"s": 9.793, "e": 12.241, "w": [["Но", 9.793, 10.059], ["на", 10.059, 10.149], ["борту", 10.149, 10.561], ["нет", 10.561, 10.871], ["ни", 10.871, 11.013], ["одного", 11.013, 11.309], ["человека.", 11.309, 12.018]]}}}</script>
+  <script>
+    (function () {
+      const C = MC.cues("s01-cues"), D = C.dur;
+      const tl = gsap.timeline({ paused: true });
+      const $ = (id) => document.getElementById(id);
+
+      /* ── procedural world: sea, ship bob, rain, drifting cloud and fog ── */
+      const seaOpts = { layers: 8, storm: 0.85, seed: 1872, far: [58, 82, 106], near: [2, 6, 10], spread: 0.62 };
+      const back = MC.sea($("s1-sea-back"), { ...seaOpts, only: [0, 3] });
+      const front = MC.sea($("s1-sea-front"), { ...seaOpts, only: [4, 7] });
+      const rain = MC.motes($("s1-rain"), { seed: 5, count: 220, vx: -120, vy: 1500, streak: 46, alpha: 0.22, color: "170,190,210" });
+      const ship = $("s1-ship");
+      const H = 900; // horizon
+      MC.drive(tl, D, (t) => {
+        back(t, { horizon: H }); front(t, { horizon: H }); rain(t);
+        // the hull rides layer 4: its waterline (1127 px) sits just under that surface
+        const xs = [220, 380, 540, 700, 860].map((x) => front.height(4, x, t, H));
+        const y = Math.min(...xs) * 0.6 + (xs.reduce((a, b) => a + b) / 5) * 0.4 - 6, yl = xs[0], yr = xs[4];
+        const rot = Math.atan2(yr - yl, 560) * 57.3 * 0.7;
+        ship.style.transform = `translate(0px, ${y + 14 - 1127}px) rotate(${rot}deg)`;
+        $("s1-cloud-a").style.transform = `translateX(${-t * 22}px)`;
+        $("s1-cloud-b").style.transform = `translateX(${-t * 38 - 600}px)`;
+        $("s1-horizon-fog").style.transform = `translateX(${-t * 30}px)`;
+        $("s1-fog-f1").style.transform = `translateX(${-t * 70 - 300}px)`;
+      });
+
+      /* ── 0.0–2.0 hook: sonar finds a ship in the dark; push; title ── */
+      tl.fromTo("#s1-dark", { opacity: 0.86 }, { opacity: 0.6, duration: 0.9, ease: "power1.out" }, 0);
+      tl.fromTo("#s1-ring-1", { attr: { r: 30 }, opacity: 0.95 }, { attr: { r: 820 }, opacity: 0, duration: 1.6, ease: "power2.out" }, 0.1);
+      tl.fromTo("#s1-ring-2", { attr: { r: 30 }, opacity: 0.6 }, { attr: { r: 820 }, opacity: 0, duration: 1.6, ease: "power2.out" }, 0.45);
+      tl.fromTo("#s1-grid", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0.15);
+      tl.to("#s1-grid", { opacity: 0, duration: 0.2 }, 1.9);
+      tl.fromTo("#s1-cam", { scale: 1.0, transformOrigin: "540px 930px", filter: "blur(0px)" },
+        { scale: 1.42, duration: 1.0, ease: "power3.in" }, 0.92);
+      tl.to("#s1-cam", { filter: "blur(6px)", duration: 0.5, ease: "power2.in" }, 1.42);
+      tl.fromTo("#s1-sweep", { rotation: -40, opacity: 0 }, { rotation: 320, opacity: 1, duration: 1.0, ease: "power1.inOut" }, 0.95);
+      tl.to("#s1-sweep", { opacity: 0, duration: 0.1 }, 1.96);
+      MC.slam(tl, $("s1-t1"), 1.0, { from: 1.5, dur: 0.32 });
+      tl.to("#s1-t1", { opacity: 0, filter: "blur(10px)", scale: 0.96, duration: 0.12, ease: "power2.in" }, 1.86);
+
+      /* ── 2.0 impact: lights up, the ship alone in the Atlantic ── */
+      tl.set("#s1-cam", { scale: 1.0, filter: "blur(0px)" }, 1.98);
+      tl.set("#s1-dark", { opacity: 0 }, 1.98);
+      tl.fromTo("#s1-flash", { opacity: 0 }, { opacity: 1, duration: 0.05 }, 1.98);
+      tl.to("#s1-flash", { opacity: 0.15, duration: 0.12 }, 2.05);
+      tl.to("#s1-flash", { opacity: 0.7, duration: 0.05 }, 2.2);
+      tl.to("#s1-flash", { opacity: 0, duration: 0.6, ease: "power2.out" }, 2.27);
+      MC.slam(tl, $("s1-t2"), 2.0, { from: 1.12, dur: 0.3 });
+      tl.to("#s1-cam", { scale: 1.1, duration: 4.2, ease: "power1.inOut" }, 2.0);
+      MC.out(tl, "#s1-t2", 5.1, 0.25);
+
+      /* ── n02 "Он цел. Груз на месте." — closer, callouts ── */
+      const tHull = MC.word(C, "n02", "цел") - 0.1, tCargo = MC.word(C, "n02", "груз") - 0.1;
+      tl.set("#s1-cam", { scale: 1.5, y: -170 }, C.seg.n02.s - 0.25);
+      tl.to("#s1-cam", { scale: 1.58, y: -190, duration: 3.6, ease: "none" }, C.seg.n02.s - 0.25);
+      [["hull", tHull], ["cargo", tCargo]].forEach(([k, at]) => {
+        tl.fromTo("#s1-dot-" + k, { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(1.6)" }, at);
+        tl.fromTo("#s1-lead-" + k, { scaleY: 0 }, { scaleY: 1, duration: 0.25, ease: "power2.out" }, at + 0.08);
+        MC.wipe(tl, $("s1-call-" + k), at + 0.18, { dur: 0.4 });
+      });
+      const callsOut = C.seg.n03.s - 0.2;
+      tl.to(["#s1-call-hull", "#s1-call-cargo", "#s1-lead-hull", "#s1-lead-cargo", "#s1-dot-hull", "#s1-dot-cargo"],
+        { opacity: 0, duration: 0.2 }, callsOut);
+
+      /* ── n03 "Но на борту нет ни одного человека." — deck scan, 10 → 0 ── */
+      const t3 = C.seg.n03.s;
+      tl.set("#s1-cam", { scale: 1.22, y: -60 }, t3 - 0.15);
+      tl.to("#s1-cam", { scale: 1.12, y: -30, duration: D - t3, ease: "power1.inOut" }, t3 - 0.15);
+      tl.fromTo("#s1-flash", { opacity: 0 }, { opacity: 0.55, duration: 0.05 }, t3 - 0.15);
+      tl.to("#s1-flash", { opacity: 0, duration: 0.5 }, t3 - 0.1);
+      tl.fromTo("#s1-scan", { opacity: 0, x: 0 }, { opacity: 1, duration: 0.2 }, t3 + 0.1);
+      tl.to("#s1-scan", { x: 600, duration: 1.7, ease: "power1.inOut" }, t3 + 0.2);
+      tl.to("#s1-scan", { opacity: 0, duration: 0.25 }, t3 + 1.9);
+      MC.blurWords(tl, $("s1-count"), t3 + 0.15, { stagger: 0.06 });
+      MC.count(tl, $("s1-count-n"), t3 + 0.35, 10, 0, 1.5);
+      tl.to("#s1-count-n", { color: "#e0392f", duration: 0.15 }, t3 + 1.85);
+
+      /* ── exit: fog floods the frame ── */
+      tl.to("#s1-count", { opacity: 0, filter: "blur(8px)", duration: 0.25 }, D - 0.95);
+      tl.fromTo("#s1-flood", { opacity: 0 }, { opacity: 1, duration: 0.75, ease: "power2.in" }, D - 0.75);
+
+      window.__timelines["s01-mystery"] = tl;
+    })();
+  </script>
+</template>

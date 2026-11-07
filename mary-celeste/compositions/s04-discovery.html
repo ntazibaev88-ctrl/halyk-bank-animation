@@ -1,0 +1,134 @@
+<template>
+  <style data-fonts>
+@font-face{font-family:'MC Display';font-weight:400;font-display:block;src:url('assets/fonts/oswald-latin-400-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Display';font-weight:400;font-display:block;src:url('assets/fonts/oswald-cyrillic-400-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Display';font-weight:500;font-display:block;src:url('assets/fonts/oswald-latin-500-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Display';font-weight:500;font-display:block;src:url('assets/fonts/oswald-cyrillic-500-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Display';font-weight:600;font-display:block;src:url('assets/fonts/oswald-latin-600-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Display';font-weight:600;font-display:block;src:url('assets/fonts/oswald-cyrillic-600-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Display';font-weight:700;font-display:block;src:url('assets/fonts/oswald-latin-700-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Display';font-weight:700;font-display:block;src:url('assets/fonts/oswald-cyrillic-700-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Sans';font-weight:400;font-display:block;src:url('assets/fonts/inter-latin-400-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Sans';font-weight:400;font-display:block;src:url('assets/fonts/inter-cyrillic-400-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Sans';font-weight:500;font-display:block;src:url('assets/fonts/inter-latin-500-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Sans';font-weight:500;font-display:block;src:url('assets/fonts/inter-cyrillic-500-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Sans';font-weight:600;font-display:block;src:url('assets/fonts/inter-latin-600-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Sans';font-weight:600;font-display:block;src:url('assets/fonts/inter-cyrillic-600-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Sans';font-weight:700;font-display:block;src:url('assets/fonts/inter-latin-700-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Sans';font-weight:700;font-display:block;src:url('assets/fonts/inter-cyrillic-700-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Sans';font-weight:800;font-display:block;src:url('assets/fonts/inter-latin-800-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Sans';font-weight:800;font-display:block;src:url('assets/fonts/inter-cyrillic-800-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Serif';font-weight:400;font-display:block;src:url('assets/fonts/playfair-display-latin-400-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Serif';font-weight:400;font-display:block;src:url('assets/fonts/playfair-display-cyrillic-400-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Serif';font-weight:600;font-display:block;src:url('assets/fonts/playfair-display-latin-600-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Serif';font-weight:600;font-display:block;src:url('assets/fonts/playfair-display-cyrillic-600-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Serif';font-weight:700;font-display:block;src:url('assets/fonts/playfair-display-latin-700-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Serif';font-weight:700;font-display:block;src:url('assets/fonts/playfair-display-cyrillic-700-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Mono';font-weight:400;font-display:block;src:url('assets/fonts/jetbrains-mono-latin-400-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Mono';font-weight:400;font-display:block;src:url('assets/fonts/jetbrains-mono-cyrillic-400-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Mono';font-weight:600;font-display:block;src:url('assets/fonts/jetbrains-mono-latin-600-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Mono';font-weight:600;font-display:block;src:url('assets/fonts/jetbrains-mono-cyrillic-600-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+</style>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #0b141d; }
+    #s4-world { position: absolute; inset: 0; }
+    #s4-sky { position: absolute; inset: 0;
+      background: linear-gradient(180deg, #0c1620 0%, #1f2f3e 34%, #4b5d6e 50%, #5d6f80 52%, #1b2a38 70%, #09121b 100%); }
+    .s4-fog { position: absolute; left: 0; width: 4096px; background-repeat: repeat-x; }
+    #s4-fog-far { top: 620px; height: 700px; background-image: url("assets/img/fog-1.png"); background-size: 2048px 700px; opacity: 0.75; }
+    #s4-sea { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #s4-mc { position: absolute; left: 330px; top: 640px; width: 600px; height: 400px; transform-origin: 50% 75%; }
+    #s4-mc img { width: 100%; height: 100%; filter: brightness(0.78) contrast(0.9); }
+    #s4-fog-mid { top: 700px; height: 900px; background-image: url("assets/img/fog-2.png"); background-size: 2048px 900px; opacity: 0.85; }
+    #s4-dg { position: absolute; left: -760px; top: 300px; width: 1800px; height: 1200px; transform-origin: 50% 75%; }
+    #s4-dg img { width: 100%; height: 100%; filter: brightness(0.18) blur(3px); }
+    #s4-fog-near { top: 980px; height: 1100px; background-image: url("assets/img/fog-1.png"); background-size: 2048px 1100px; opacity: 0.55; }
+
+    #s4-radar { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; opacity: 0; }
+    #s4-date { position: absolute; left: 0; right: 0; top: 250px; text-align: center; font-size: 104px; }
+    #s4-dg-label { position: absolute; left: 70px; top: 1060px; opacity: 0; padding: 12px 20px; background: rgba(4, 9, 14, 0.62); border-left: 4px solid var(--gold); }
+    #s4-dg-label .mc-label { font-size: 28px; color: var(--gold); display: block; }
+    #s4-dg-label b { font-family: "MC Serif", serif; font-weight: 700; font-size: 44px; color: var(--ink); }
+    #s4-coords { position: absolute; left: 0; right: 0; top: 410px; text-align: center; font-size: 36px; color: var(--mist); opacity: 0; }
+    #s4-zoom { position: absolute; inset: 0; background: #070b10; opacity: 0; }
+  </style>
+
+  <div id="root" data-composition-id="s04-discovery" data-width="1080" data-height="1920">
+    <div id="s4-world">
+      <div id="s4-sky"></div>
+      <div id="s4-fog-far" class="s4-fog"></div>
+      <div id="s4-mc"><img src="assets/img/brigantine.svg" alt="«Мэри Селеста» в тумане" /></div>
+      <canvas id="s4-sea" width="1080" height="1920"></canvas>
+      <div id="s4-fog-mid" class="s4-fog"></div>
+      <div id="s4-dg"><img src="assets/img/brigantine.svg" alt="Второе судно на переднем плане" /></div>
+      <div id="s4-fog-near" class="s4-fog"></div>
+    </div>
+    <svg id="s4-radar" viewBox="0 0 1080 1920" data-layout-ignore>
+      <g id="s4-mark" fill="none" stroke="#e0392f">
+        <circle id="s4-r1" cx="0" cy="0" r="150" stroke-width="3" />
+        <circle id="s4-r2" cx="0" cy="0" r="210" stroke-width="2" stroke-opacity="0.5" stroke-dasharray="10 12" />
+        <path d="M-250 0H-170M170 0H250M0 -250V-170M0 170V250" stroke-width="3" />
+        <circle id="s4-ping" cx="0" cy="0" r="150" stroke-width="2" />
+      </g>
+    </svg>
+    <div id="s4-date" class="mc-display mc-shadow"><span class="mc-gold">4 декабря</span> 1872 года</div>
+    <div id="s4-coords" class="mc-mono mc-shadow">38°20′ N · 17°15′ W</div>
+    <div id="s4-dg-label"><span class="mc-label">Другое судно</span><b>«Деи Грация»</b></div>
+    <div id="s4-zoom"></div>
+
+    <audio id="s4-sfx-creak" class="clip" data-hf-media-start-basis="local" src="assets/audio/sfx/creak-1.wav" data-start="0.4" data-duration="1.1" data-track-index="7" data-volume="0.35"></audio>
+    <audio id="s4-sfx-sonar" class="clip" data-hf-media-start-basis="local" src="assets/audio/sfx/sonar-1.wav" data-start="2.55" data-duration="3" data-track-index="8" data-volume="0.45"></audio>
+    <audio id="s4-sfx-type" class="clip" data-hf-media-start-basis="local" src="assets/audio/sfx/key-press.mp3" data-start="2.95" data-duration="0.4" data-track-index="9" data-volume="0.4"></audio>
+    <audio id="s4-sfx-zoom" class="clip" data-hf-media-start-basis="local" src="assets/audio/sfx/whoosh-cinematic.mp3" data-start="4.45" data-duration="0.8" data-track-index="10" data-volume="0.35"></audio>
+  </div>
+
+  <script type="application/json" id="s04-cues">{"dur": 5.19, "seg": {"n07": {"s": 0.304, "e": 4.948, "w": [["Спустя", 0.304, 0.742], ["несколько", 0.742, 1.206], ["недель", 1.206, 1.592], ["другой", 1.592, 2.017], ["корабль", 2.017, 2.417], ["обнаружил", 2.417, 3.113], ["его", 3.113, 3.345], ["в", 3.345, 3.396], ["Атлантическом", 3.396, 4.105], ["океане.", 4.105, 4.685]]}}}</script>
+  <script>
+    (function () {
+      const C = MC.cues("s04-cues"), D = C.dur;
+      const tl = gsap.timeline({ paused: true });
+      const $ = (id) => document.getElementById(id);
+      const sea = MC.sea($("s4-sea"), { layers: 7, storm: 0.3, seed: 41, far: [86, 104, 122], near: [8, 14, 21], spread: 0.75, foam: 0.6 });
+      const H = 1000;
+      const pan = MC.keys([[0, { p: 0 }], [D - 0.7, { p: 1 }, "power1.inOut"]]);
+      const tMark = MC.word(C, "n07", "обнаружил") - 0.1;
+
+      // camera tracks right, from the second ship toward the abandoned one (2.5D parallax)
+      MC.drive(tl, D, (t) => {
+        const p = pan(t).p;
+        sea(t, { horizon: H, sway: p * 900 });
+        const xs = [380, 630, 880].map((x) => sea.height(1, x + p * 900 * sea.layers[1].z, t, H));
+        const y = Math.min(...xs) - 4;
+        $("s4-mc").style.transform = `translate(${180 - p * 260}px, ${y - (640 + 400 * 0.76)}px) rotate(${(xs[2] - xs[0]) * 0.05}deg)`;
+        $("s4-dg").style.transform = `translate(${-p * 1100}px, ${Math.sin(t * 1.3) * 10}px) rotate(${Math.sin(t * 1.1) * 1.2}deg)`;
+        $("s4-fog-far").style.transform = `translateX(${-p * 140 - t * 12}px)`;
+        $("s4-fog-mid").style.transform = `translateX(${-p * 500 - t * 30 - 400}px)`;
+        $("s4-fog-near").style.transform = `translateX(${-p * 1300 - t * 50 - 800}px)`;
+        const mx = 330 + 300 + 180 - p * 260, my = y - 140;
+        $("s4-mark").setAttribute("transform", `translate(${mx} ${my})`);
+      });
+
+      // the fog thins as the ship comes into view
+      tl.fromTo("#s4-world", { filter: "blur(10px)" }, { filter: "blur(0px)", duration: 0.4, ease: "power2.out" }, 0);
+      tl.fromTo("#s4-fog-mid", { opacity: 0.95 }, { opacity: 0.35, duration: D - 1, ease: "power1.inOut" }, 0.4);
+      tl.fromTo("#s4-mc img", { opacity: 0.25 }, { opacity: 1, duration: 2.0, ease: "power1.inOut" }, 0.8);
+      tl.fromTo("#s4-dg-label", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, 0.45);
+      tl.to("#s4-dg-label", { opacity: 0, duration: 0.25 }, tMark - 0.2);
+      MC.blurWords(tl, $("s4-date"), 0.25, { stagger: 0.09 });
+
+      // radar marker locks on the abandoned ship
+      tl.fromTo("#s4-radar", { opacity: 0 }, { opacity: 1, duration: 0.2 }, tMark);
+      tl.fromTo("#s4-r1", { attr: { r: 320 } }, { attr: { r: 150 }, duration: 0.45, ease: "expo.out" }, tMark);
+      tl.fromTo("#s4-r2", { attr: { r: 400 }, rotation: 0 }, { attr: { r: 210 }, duration: 0.6, ease: "expo.out" }, tMark);
+      tl.fromTo("#s4-ping", { attr: { r: 150 }, opacity: 0.9 }, { attr: { r: 380 }, opacity: 0, duration: 1.1, ease: "power2.out" }, tMark + 0.3);
+      MC.type(tl, $("s4-coords"), tMark + 0.35, 30);
+
+      // exit: zoom through the abandoned ship
+      tl.to("#s4-world", { scale: 2.6, transformOrigin: "62% 42%", filter: "blur(10px)", duration: 0.6, ease: "power3.in" }, D - 0.6);
+      tl.to(["#s4-radar", "#s4-date", "#s4-coords"], { opacity: 0, duration: 0.25 }, D - 0.6);
+      tl.fromTo("#s4-zoom", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.in" }, D - 0.3);
+
+      window.__timelines["s04-discovery"] = tl;
+    })();
+  </script>
+</template>

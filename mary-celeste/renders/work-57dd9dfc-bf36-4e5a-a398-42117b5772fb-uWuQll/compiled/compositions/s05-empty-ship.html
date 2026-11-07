@@ -1,0 +1,187 @@
+<template>
+  <style data-fonts>
+@font-face{font-family:'MC Display';font-weight:400;font-display:block;src:url('assets/fonts/oswald-latin-400-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Display';font-weight:400;font-display:block;src:url('assets/fonts/oswald-cyrillic-400-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Display';font-weight:500;font-display:block;src:url('assets/fonts/oswald-latin-500-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Display';font-weight:500;font-display:block;src:url('assets/fonts/oswald-cyrillic-500-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Display';font-weight:600;font-display:block;src:url('assets/fonts/oswald-latin-600-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Display';font-weight:600;font-display:block;src:url('assets/fonts/oswald-cyrillic-600-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Display';font-weight:700;font-display:block;src:url('assets/fonts/oswald-latin-700-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Display';font-weight:700;font-display:block;src:url('assets/fonts/oswald-cyrillic-700-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Sans';font-weight:400;font-display:block;src:url('assets/fonts/inter-latin-400-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Sans';font-weight:400;font-display:block;src:url('assets/fonts/inter-cyrillic-400-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Sans';font-weight:500;font-display:block;src:url('assets/fonts/inter-latin-500-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Sans';font-weight:500;font-display:block;src:url('assets/fonts/inter-cyrillic-500-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Sans';font-weight:600;font-display:block;src:url('assets/fonts/inter-latin-600-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Sans';font-weight:600;font-display:block;src:url('assets/fonts/inter-cyrillic-600-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Sans';font-weight:700;font-display:block;src:url('assets/fonts/inter-latin-700-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Sans';font-weight:700;font-display:block;src:url('assets/fonts/inter-cyrillic-700-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Sans';font-weight:800;font-display:block;src:url('assets/fonts/inter-latin-800-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Sans';font-weight:800;font-display:block;src:url('assets/fonts/inter-cyrillic-800-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Serif';font-weight:400;font-display:block;src:url('assets/fonts/playfair-display-latin-400-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Serif';font-weight:400;font-display:block;src:url('assets/fonts/playfair-display-cyrillic-400-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Serif';font-weight:600;font-display:block;src:url('assets/fonts/playfair-display-latin-600-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Serif';font-weight:600;font-display:block;src:url('assets/fonts/playfair-display-cyrillic-600-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Serif';font-weight:700;font-display:block;src:url('assets/fonts/playfair-display-latin-700-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Serif';font-weight:700;font-display:block;src:url('assets/fonts/playfair-display-cyrillic-700-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Mono';font-weight:400;font-display:block;src:url('assets/fonts/jetbrains-mono-latin-400-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Mono';font-weight:400;font-display:block;src:url('assets/fonts/jetbrains-mono-cyrillic-400-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:'MC Mono';font-weight:600;font-display:block;src:url('assets/fonts/jetbrains-mono-latin-600-normal.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'MC Mono';font-weight:600;font-display:block;src:url('assets/fonts/jetbrains-mono-cyrillic-600-normal.woff2') format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+</style>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #06090d; }
+    /* shot A — the sails, seen from the deck */
+    #s5-a { position: absolute; inset: 0; background: linear-gradient(180deg, #2a3a4a 0%, #536677 60%, #33465a 100%); }
+    #s5-sails { position: absolute; left: -1130px; top: 230px; width: 2600px; height: 1733px; transform-origin: 1670px 650px; }
+    #s5-sails img { width: 100%; height: 100%; }
+    #s5-fog-a { position: absolute; left: 0; top: 200px; width: 4096px; height: 1400px; background: url("assets/img/fog-2.png") repeat-x; background-size: 2048px 1400px; opacity: 0.5; }
+
+    /* shot B — the captain's cabin */
+    #s5-b { position: absolute; inset: 0; opacity: 0; }
+    #s5-cabin { position: absolute; left: -60px; top: 0; width: 1200px; height: 1920px; transform-origin: 600px 900px; }
+    #s5-wall { position: absolute; left: 0; top: 0; width: 1200px; height: 1240px; background: url("assets/img/wood.jpg") center / cover; filter: brightness(0.55); }
+    #s5-floor { position: absolute; left: 0; top: 1240px; width: 1200px; height: 680px; background: linear-gradient(180deg, #1c120a, #090604); }
+    #s5-svg { position: absolute; left: 0; top: 0; width: 1200px; height: 1920px; }
+    #s5-beam { position: absolute; left: 0; top: 0; width: 1200px; height: 1920px; mix-blend-mode: screen; }
+    #s5-dust { position: absolute; left: 0; top: 0; width: 1200px; height: 1920px; }
+    #s5-lamp { position: absolute; left: 830px; top: 0; width: 120px; height: 560px; transform-origin: 60px 0px; }
+    #s5-lamp-glow { position: absolute; left: 530px; top: 220px; width: 720px; height: 720px; border-radius: 50%; mix-blend-mode: screen;
+      background: radial-gradient(circle, rgba(255, 190, 110, 0.32) 0%, rgba(255, 170, 90, 0.1) 35%, rgba(0, 0, 0, 0) 70%); }
+    #s5-shadow { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 62% 52%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.75) 100%); }
+    #s5-store { position: absolute; left: 70px; top: 1072px; opacity: 0; padding: 12px 20px; background: rgba(6, 5, 3, 0.72); border-left: 4px solid var(--gold); }
+    #s5-store .mc-label { display: block; color: var(--gold); font-size: 28px; }
+    #s5-store b { font-family: "MC Sans", sans-serif; font-weight: 700; font-size: 38px; color: var(--ink); text-transform: uppercase; letter-spacing: 0.04em; }
+    #s5-tag { position: absolute; left: 0; right: 0; top: 196px; text-align: center; font-size: 28px; opacity: 0; color: rgba(230, 220, 200, 0.75); }
+    #s5-title { position: absolute; left: 60px; right: 60px; top: 300px; text-align: center; font-size: 112px; opacity: 0; }
+    #s5-dip { position: absolute; inset: 0; background: #000; opacity: 0; }
+  </style>
+
+  <div id="root" data-composition-id="s05-empty-ship" data-width="1080" data-height="1920">
+    <div id="s5-a">
+      <div id="s5-sails"><img src="assets/img/brigantine.svg" alt="Паруса бригантины снизу" /></div>
+      <div id="s5-fog-a"></div>
+    </div>
+
+    <div id="s5-b">
+      <div id="s5-cabin">
+        <div id="s5-wall"></div>
+        <div id="s5-floor"></div>
+        <svg id="s5-svg" viewBox="0 0 1200 1920">
+          <defs>
+            <linearGradient id="s5-cloth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfc6b2" /><stop offset="1" stop-color="#8a8170" /></linearGradient>
+            <radialGradient id="s5-port" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#cfe0ee" /><stop offset="0.7" stop-color="#7d97ad" /><stop offset="1" stop-color="#3b4f61" /></radialGradient>
+            <linearGradient id="s5-barrel" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2a1a0e" /><stop offset="0.45" stop-color="#6a4426" /><stop offset="1" stop-color="#1e130a" /></linearGradient>
+          </defs>
+          <!-- ceiling beams -->
+          <g fill="#120c07"><rect x="0" y="0" width="1200" height="70" /><rect x="0" y="150" width="1200" height="34" /></g>
+          <!-- porthole -->
+          <circle cx="300" cy="520" r="96" fill="#2a1d12" /><circle cx="300" cy="520" r="78" fill="url(#s5-port)" />
+          <circle cx="300" cy="520" r="78" fill="none" stroke="#b08a4a" stroke-width="8" />
+          <!-- curtain beside the porthole -->
+          <path id="s5-curtain" d="M150 400 C 160 520 140 640 160 760 L 210 760 C 196 640 214 520 204 400 Z" fill="#5a2620" opacity="0.9" />
+          <!-- stores: water casks and food barrels -->
+          <g id="s5-casks">
+            <rect x="10" y="1000" width="170" height="250" rx="40" fill="url(#s5-barrel)" />
+            <rect x="160" y="1040" width="150" height="215" rx="36" fill="url(#s5-barrel)" />
+            <g stroke="#1a0f07" stroke-width="7"><path d="M14 1060H176M14 1190H176M164 1095H306M164 1205H306" /></g>
+            <rect x="40" y="880" width="140" height="125" rx="10" fill="#3d2a17" /><path d="M40 905H180" stroke="#1a0f07" stroke-width="6" />
+          </g>
+          <!-- empty chair pushed back, a second at the table -->
+          <g fill="#1a110a">
+            <path d="M330 900 L350 900 L362 1180 L346 1180 Z M330 900 L470 880 L474 900 L338 920 Z" />
+            <rect x="320" y="1000" width="170" height="20" /><path d="M330 1020 L344 1240 L356 1240 L346 1020 Z M476 1020 L470 1240 L482 1240 L490 1020 Z" />
+            <path d="M960 880 L980 880 L990 1190 L972 1190 Z M960 880 L1110 900 L1106 920 L966 900 Z" />
+            <rect x="950" y="1010" width="160" height="20" /><path d="M960 1030 L968 1240 L980 1240 L974 1030 Z M1100 1030 L1094 1240 L1106 1240 L1110 1030 Z" />
+          </g>
+          <!-- table, cloth, settings -->
+          <path d="M420 960 L960 960 L1010 1040 L380 1040 Z" fill="url(#s5-cloth)" />
+          <path d="M380 1040 L1010 1040 L1006 1110 L384 1110 Z" fill="#7a7262" />
+          <path d="M430 1110 L440 1290 L458 1290 L462 1110 Z M930 1110 L938 1290 L956 1290 L962 1110 Z" fill="#140d07" />
+          <g>
+            <ellipse cx="520" cy="1000" rx="62" ry="17" fill="#e9e4da" /><ellipse cx="520" cy="998" rx="40" ry="10" fill="#d4cdbf" />
+            <ellipse cx="860" cy="1000" rx="62" ry="17" fill="#e9e4da" /><ellipse cx="860" cy="998" rx="40" ry="10" fill="#d4cdbf" />
+            <path d="M640 940 L650 1004 L700 1004 L710 940 Z" fill="#9aa9b4" opacity="0.9" />
+            <path d="M650 948 C 640 920 712 920 702 948" fill="none" stroke="#c4cfd6" stroke-width="5" />
+            <path d="M752 900 L752 960 C 740 970 740 1000 752 1006 L 786 1006 C 798 1000 798 970 786 960 L786 900 Z" fill="#26402e" />
+            <path d="M560 990 C 570 960 630 960 640 990 Z" fill="#a57a42" />
+            <rect x="598" y="990" width="6" height="14" fill="#6b4a24" />
+            <path d="M904 988 L944 988 L940 1004 L908 1004 Z" fill="#cfd6dc" />
+          </g>
+          <!-- door ajar, right wall -->
+          <path d="M1120 560 L1200 540 L1200 1250 L1120 1240 Z" fill="#0c0805" />
+          <path id="s5-door" d="M1120 560 L1176 572 L1176 1236 L1120 1240 Z" fill="#3a2614" />
+        </svg>
+        <canvas id="s5-beam" width="1200" height="1920"></canvas>
+        <canvas id="s5-dust" width="1200" height="1920"></canvas>
+        <div id="s5-lamp-glow"></div>
+        <svg id="s5-lamp" viewBox="0 0 120 560">
+          <path d="M60 0 V 420" stroke="#1b130b" stroke-width="4" />
+          <path d="M30 420 L90 420 L82 500 L38 500 Z" fill="#3a2a16" />
+          <path d="M38 438 L82 438 L78 492 L42 492 Z" fill="#ffcf8a" opacity="0.85" />
+          <path d="M26 500 L94 500 L88 520 L32 520 Z" fill="#1b130b" />
+        </svg>
+      </div>
+      <div id="s5-shadow"></div>
+      <div id="s5-store"><span class="mc-label">Запасы еды и воды</span><b>на шесть месяцев</b></div>
+      <div id="s5-tag" class="mc-label">Художественная реконструкция</div>
+      <div id="s5-title" class="mc-display mc-shadow">Ни одного <em>человека.</em></div>
+    </div>
+    <div id="s5-dip"></div>
+
+    <audio id="s5-sfx-wind" class="clip" data-hf-media-start-basis="local" src="assets/audio/sfx/whoosh-cinematic.mp3" data-start="0.0" data-duration="1.6" data-track-index="7" data-volume="0.25" data-end="1.6"></audio>
+    <audio id="s5-sfx-creak1" class="clip" data-hf-media-start-basis="local" src="assets/audio/sfx/creak-3.wav" data-start="2.0" data-duration="0.8" data-track-index="8" data-volume="0.45" data-end="2.8"></audio>
+    <audio id="s5-sfx-creak2" class="clip" data-hf-media-start-basis="local" src="assets/audio/sfx/creak-1.wav" data-start="4.1" data-duration="1.1" data-track-index="9" data-volume="0.4" data-end="5.199999999999999"></audio>
+    <audio id="s5-sfx-hit" class="clip" data-hf-media-start-basis="local" src="assets/audio/sfx/boom.wav" data-start="5.25" data-duration="1.5" data-track-index="10" data-volume="0.55" data-end="6.75"></audio>
+  </div>
+
+  <script type="application/json" id="s05-cues">{"dur": 6.8, "seg": {"n08": {"s": 0.298, "e": 4.639, "w": [["Паруса", 0.298, 0.796], ["были", 0.796, 1.028], ["подняты,", 1.028, 1.491], ["запасы", 1.814, 2.316], ["еды", 2.316, 2.69], ["и", 2.69, 2.793], ["воды", 2.793, 3.128], ["оставались", 3.128, 3.76], ["на", 3.76, 3.888], ["месте.", 3.888, 4.378]]}, "n09": {"s": 4.989, "e": 6.247, "w": [["Но", 4.989, 5.268], ["людей", 5.268, 5.681], ["не", 5.681, 5.861], ["было.", 5.861, 6.248]]}}}</script>
+  <script>
+    (function () {
+      const C = MC.cues("s05-cues"), D = C.dur;
+      const tl = gsap.timeline({ paused: true });
+      const $ = (id) => document.getElementById(id);
+      const tStore = MC.word(C, "n08", "запасы") - 0.3, tNo = MC.word(C, "n09", "людей") - 0.15;
+
+      /* shot A — tilt up the set sails; they breathe in the wind */
+      tl.fromTo("#s5-a", { filter: "blur(12px)", scale: 1.25 }, { filter: "blur(0px)", scale: 1, duration: 0.5, ease: "power3.out" }, 0);
+      tl.fromTo("#s5-sails", { y: -220, rotation: -2 }, { y: 120, rotation: 1.5, duration: tStore, ease: "power1.inOut" }, 0);
+
+      /* shot B — the cabin: light through the porthole, dust, nobody */
+      const bctx = $("s5-beam").getContext("2d");
+      function beam(t) {
+        bctx.clearRect(0, 0, 1200, 1920);
+        const a = 0.18 + 0.04 * Math.sin(t * 0.9);
+        const g = bctx.createLinearGradient(300, 520, 760, 1150);
+        g.addColorStop(0, `rgba(170,200,225,${a})`); g.addColorStop(1, "rgba(170,200,225,0)");
+        bctx.fillStyle = g; bctx.beginPath();
+        bctx.moveTo(240, 470); bctx.lineTo(360, 560); bctx.lineTo(980, 1240); bctx.lineTo(520, 1240); bctx.closePath(); bctx.fill();
+      }
+      const inBeam = (x, y) => { const u = (y - 520) / 720; if (u < 0 || u > 1) return 0; const l = 300 + u * 220, r = 360 + u * 620; return x > l && x < r ? 1 : 0.12; };
+      const dust = MC.motes($("s5-dust"), { seed: 55, count: 260, vx: 6, vy: -3, alpha: 0.75, size: 1.5, color: "220,228,236", mask: inBeam });
+      MC.drive(tl, D, (t) => {
+        $("s5-fog-a").style.transform = `translateX(${-t * 90}px)`;
+        $("s5-lamp").style.transform = `rotate(${Math.sin(t * 1.7) * 6}deg)`;
+        $("s5-lamp-glow").style.transform = `translateX(${Math.sin(t * 1.7) * 24}px)`;
+        $("s5-door").setAttribute("d", `M1120 560 L${1176 - 10 * Math.sin(t * 1.1)} 572 L${1176 - 10 * Math.sin(t * 1.1)} 1236 L1120 1240 Z`);
+        $("s5-curtain").setAttribute("d", `M150 400 C ${160 + 8 * Math.sin(t * 1.3)} 520 ${140 + 10 * Math.sin(t * 1.6)} 640 ${160 + 6 * Math.sin(t * 1.2)} 760 L 210 760 C 196 640 214 520 204 400 Z`);
+        beam(t); dust(t);
+      });
+
+      tl.fromTo("#s5-b", { opacity: 0 }, { opacity: 1, duration: 0.35, ease: "power2.inOut" }, tStore - 0.2);
+      tl.fromTo("#s5-cabin", { x: 30, y: -30, scale: 1.45 }, { x: -40, y: -60, scale: 1.3, duration: D - tStore, ease: "power1.out" }, tStore - 0.2);
+      tl.fromTo("#s5-tag", { opacity: 0 }, { opacity: 1, duration: 0.4 }, tStore + 0.2);
+      tl.fromTo("#s5-store", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.4, ease: "power3.out" }, tStore + 0.35);
+      tl.to("#s5-store", { opacity: 0, duration: 0.25 }, tNo - 0.1);
+
+      /* "Но людей не было." */
+      tl.fromTo("#s5-lamp-glow", { opacity: 1 }, { opacity: 0.55, duration: 0.08 }, tNo);
+      tl.to("#s5-lamp-glow", { opacity: 1, duration: 0.12 }, tNo + 0.1);
+      MC.blurWords(tl, $("s5-title"), tNo + 0.05, { stagger: 0.14, dur: 0.3 });
+
+      /* exit — dip to black */
+      tl.fromTo("#s5-dip", { opacity: 0 }, { opacity: 0.45, duration: 0.1 }, D - 0.12);
+      window.__timelines["s05-empty-ship"] = tl;
+    })();
+  </script>
+</template>

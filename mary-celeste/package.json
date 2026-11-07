@@ -1,0 +1,28 @@
+{
+  "name": "halyk-bank-animation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ntazibaev88-ctrl/halyk-bank-animation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ntazibaev88-ctrl/halyk-bank-animation/issues"
+  },
+  "homepage": "https://github.com/ntazibaev88-ctrl/halyk-bank-animation#readme",
+  "dependencies": {
+    "@fontsource/inter": "5.2.5",
+    "@fontsource/jetbrains-mono": "5.2.5",
+    "@fontsource/oswald": "5.2.5",
+    "@fontsource/playfair-display": "5.2.5",
+    "gsap": "3.13.0",
+    "hyperframes": "0.8.190"
+  }
+}

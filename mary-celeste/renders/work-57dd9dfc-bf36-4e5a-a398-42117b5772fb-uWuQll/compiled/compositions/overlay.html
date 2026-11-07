@@ -1,0 +1,30 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+    #ov-grain {
+      position: absolute; left: -256px; top: -256px; width: 1592px; height: 2432px;
+      background: url("assets/img/grain.png") repeat; mix-blend-mode: overlay; opacity: 0.16;
+    }
+    #ov-vignette {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 78% 62% at 50% 46%, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.55) 100%);
+    }
+  </style>
+  <div id="root" data-composition-id="overlay" data-width="1080" data-height="1920">
+    <div id="ov-vignette"></div>
+    <div id="ov-grain" data-layout-ignore></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const grain = document.getElementById("ov-grain");
+      const total = 120; // longer than the film; the host clips it
+      // grain jumps to a new offset every frame (24 fps cadence for a filmic flicker)
+      MC.drive(tl, total, (t) => {
+        const f = Math.floor(t * 24);
+        grain.style.transform = `translate(${(f * 137) % 256}px, ${(f * 311) % 256}px)`;
+      });
+      window.__timelines["overlay"] = tl;
+    })();
+  </script>
+</template>
