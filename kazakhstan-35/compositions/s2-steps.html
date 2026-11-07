@@ -1,0 +1,213 @@
+<template>
+  <style>
+    @font-face { font-family: "KZ Sans"; src: url("assets/fonts/Montserrat-Black.woff2") format("woff2"); font-weight: 900; }
+    @font-face { font-family: "KZ Sans"; src: url("assets/fonts/Montserrat-Bold.woff2") format("woff2"); font-weight: 700; }
+    @font-face { font-family: "KZ Serif"; src: url("assets/fonts/PlayfairDisplay-Black.woff2") format("woff2"); font-weight: 900; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #s2-wipe { position: absolute; inset: 0; overflow: hidden; }
+    #s2-bg { position: absolute; inset: 0; background: linear-gradient(180deg, #0A1E40 0%, #06122A 55%, #040B1C 100%); }
+    #s2-grid { position: absolute; left: 0; top: -200px; width: 1080px; height: 2400px; opacity: .5;
+      background-image: linear-gradient(rgba(111,166,216,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(111,166,216,.07) 1px, transparent 1px); background-size: 90px 90px; }
+    #s2-edge { position: absolute; left: 0; right: 0; top: 0; height: 4px; background: linear-gradient(90deg, transparent, #F6C453 30%, #FFF1C4 50%, #F6C453 70%, transparent); box-shadow: 0 0 30px 6px rgba(246,196,83,.55); }
+    #s2-track { position: absolute; left: 0; top: 0; width: 1080px; height: 3000px; }
+    #s2-spine { position: absolute; left: 92px; top: 470px; width: 3px; height: 2240px; background: linear-gradient(180deg, #F6C453, rgba(246,196,83,.25)); transform-origin: 50% 0; }
+    .s2-node { position: absolute; left: 80px; width: 27px; height: 27px; border-radius: 50%; background: #06122A; border: 3px solid #F6C453; box-shadow: 0 0 22px rgba(246,196,83,.6); }
+    .s2-node::after { content: ""; position: absolute; left: 5px; top: 5px; width: 11px; height: 11px; border-radius: 50%; background: #F6C453; }
+    #s2-head { position: absolute; left: 0; right: 0; top: 250px; text-align: center; }
+    #s2-head h1 { font-family: "KZ Sans", sans-serif; font-weight: 900; font-size: 96px; line-height: 1.02; color: #FFF; letter-spacing: .01em; }
+    #s2-head h1 .w { display: inline-block; }
+    #s2-ruler { margin: 30px auto 0; width: 760px; height: 60px; position: relative; }
+    #s2-ruler .ln { position: absolute; left: 0; right: 0; top: 18px; height: 2px; background: rgba(246,196,83,.5); transform-origin: 0 50%; }
+    #s2-ruler .tk { position: absolute; top: 34px; font-family: "KZ Sans", sans-serif; font-weight: 700; font-size: 30px; color: #F6C453; letter-spacing: .08em; transform: translateX(-50%); }
+    #s2-ruler .dt { position: absolute; top: 12px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: #F6C453; }
+    .s2-ch { position: absolute; left: 130px; width: 900px; }
+    .s2-year { font-family: "KZ Serif", serif; font-weight: 900; font-size: 112px; line-height: 1; color: #F6C453; }
+    .s2-kick { margin-top: 8px; font-family: "KZ Sans", sans-serif; font-weight: 700; font-size: 30px; letter-spacing: .22em; color: #CFE6FF; }
+    .s2-card { position: relative; margin-top: 26px; width: 860px; height: 470px; border-radius: 28px; overflow: hidden; border: 1.5px solid rgba(246,196,83,.55);
+      background: linear-gradient(160deg, #123468 0%, #0A1E40 60%, #071530 100%); box-shadow: 0 30px 80px rgba(0,0,0,.45); }
+    .s2-card svg { position: absolute; left: 0; top: 0; width: 860px; height: 470px; }
+    .s2-card::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 120px; background: linear-gradient(180deg, rgba(6,18,42,0), rgba(6,18,42,.9)); }
+    .s2-label { z-index: 2; position: absolute; left: 30px; bottom: 24px; font-family: "KZ Sans", sans-serif; font-weight: 900; font-size: 32px; letter-spacing: .04em; color: #FFF; text-shadow: 0 2px 12px rgba(0,0,0,.6); }
+    .s2-label b { color: #F6C453; font-weight: 900; }
+    #s2-coin { position: absolute; left: 380px; top: 880px; width: 120px; height: 120px; margin: -60px 0 0 -60px; border-radius: 50%; opacity: 0;
+      background: radial-gradient(circle at 38% 34%, #FFF4D2 0%, #F6C453 42%, #B47B22 100%); }
+  </style>
+  <div id="root" data-composition-id="s2-steps" data-width="1080" data-height="1920" data-duration="13.4">
+    <div id="s2-wipe">
+      <div id="s2-bg"></div>
+      <div id="s2-grid"></div>
+      <div id="s2-track">
+        <div id="s2-spine"></div>
+        <div id="s2-head">
+          <h1><span class="w">АЛҒАШҚЫ</span><br /><span class="w" style="color:#F6C453">ҚАДАМДАР</span></h1>
+          <div id="s2-ruler">
+            <div class="ln"></div>
+            <div class="dt" style="left:0%"></div><div class="tk" style="left:0%">1991</div>
+            <div class="dt" style="left:50%"></div><div class="tk" style="left:50%">1992</div>
+            <div class="dt" style="left:100%"></div><div class="tk" style="left:100%">1993</div>
+          </div>
+        </div>
+
+        <!-- 1992: United Nations -->
+        <div class="s2-node" style="top:500px" id="s2-n1"></div>
+        <div class="s2-ch" id="s2-ch1" style="top:470px">
+          <div class="s2-year">1992</div>
+          <div class="s2-kick">2 НАУРЫЗ · НЬЮ-ЙОРК</div>
+          <div class="s2-card">
+            <svg viewBox="0 0 860 470">
+              <defs>
+                <linearGradient id="s2-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B4C8C" /><stop offset=".7" stop-color="#3B78B8" /><stop offset="1" stop-color="#F2C27A" /></linearGradient>
+                <linearGradient id="s2-glass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#7FB2DE" /><stop offset=".5" stop-color="#3F78B4" /><stop offset="1" stop-color="#2A5A92" /></linearGradient>
+                <pattern id="s2-mull" width="9" height="13" patternUnits="userSpaceOnUse"><rect width="9" height="13" fill="none" /><path d="M8.5,0 V13 M0,12.5 H9" stroke="rgba(10,30,60,.35)" stroke-width="1" /></pattern>
+              </defs>
+              <rect width="860" height="470" fill="url(#s2-sky)" />
+              <g id="s2-un-bld">
+                <rect x="452" y="38" width="176" height="400" fill="url(#s2-glass)" />
+                <rect x="452" y="38" width="176" height="400" fill="url(#s2-mull)" />
+                <rect x="446" y="30" width="188" height="10" fill="#D7E3F0" />
+                <rect x="446" y="430" width="188" height="10" fill="#D7E3F0" />
+                <path d="M120,440 V350 Q260,320 400,350 V440 Z" fill="#C9D6E6" />
+                <path d="M190,340 Q260,300 330,340 Z" fill="#B7C6DA" />
+              </g>
+              <rect x="0" y="436" width="860" height="34" fill="#0B1F40" />
+              <g id="s2-poles"></g>
+              <g id="s2-kzpole">
+                <rect x="412" y="250" width="4" height="190" fill="#E8EEF6" />
+                <g id="s2-kzflag"><g transform="translate(416,254)" id="s2-kzflag-in"></g></g>
+              </g>
+            </svg>
+            <div class="s2-label">БІРІККЕН ҰЛТТАР ҰЙЫМЫНА <b>МҮШЕЛІК</b></div>
+          </div>
+        </div>
+
+        <!-- 1992: state symbols -->
+        <div class="s2-node" style="top:1320px" id="s2-n2"></div>
+        <div class="s2-ch" id="s2-ch2" style="top:1290px">
+          <div class="s2-year">1992</div>
+          <div class="s2-kick">4 МАУСЫМ · МЕМЛЕКЕТТІК РӘМІЗДЕР</div>
+          <div class="s2-card">
+            <svg viewBox="0 0 860 470">
+              <defs><radialGradient id="s2-halo" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#F6C453" stop-opacity=".35" /><stop offset="1" stop-color="#F6C453" stop-opacity="0" /></radialGradient></defs>
+              <circle cx="640" cy="210" r="200" fill="url(#s2-halo)" />
+              <g id="s2-symflag" transform="translate(40,120)"><g id="s2-symflag-in"></g></g>
+              <g id="s2-emb" transform="translate(640,205)"><g id="s2-emb-in"></g></g>
+              <text x="210" y="365" text-anchor="middle" font-family="KZ Sans" font-weight="700" font-size="28" letter-spacing="6" fill="#CFE6FF" id="s2-t1">ТУ</text>
+              <text x="640" y="380" text-anchor="middle" font-family="KZ Sans" font-weight="700" font-size="28" letter-spacing="6" fill="#CFE6FF" id="s2-t2">ЕЛТАҢБА</text>
+            </svg>
+            <div class="s2-label">КӨК ТУ МЕН <b>ЕЛТАҢБА</b> ҚАБЫЛДАНДЫ</div>
+          </div>
+        </div>
+
+        <!-- 1993: tenge -->
+        <div class="s2-node" style="top:2140px" id="s2-n3"></div>
+        <div class="s2-ch" id="s2-ch3" style="top:2110px">
+          <div class="s2-year">1993</div>
+          <div class="s2-kick">15 ҚАРАША · ҰЛТТЫҚ ВАЛЮТА</div>
+          <div class="s2-card">
+            <svg viewBox="0 0 860 470">
+              <defs>
+                <linearGradient id="s2-note1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2C8FB8" /><stop offset="1" stop-color="#0E4E7A" /></linearGradient>
+                <linearGradient id="s2-note2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6BAF8E" /><stop offset="1" stop-color="#2D6650" /></linearGradient>
+                <linearGradient id="s2-note3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D9B26A" /><stop offset="1" stop-color="#8E6526" /></linearGradient>
+                <radialGradient id="s2-coinfill" cx="38%" cy="34%" r="70%"><stop offset="0" stop-color="#FFF4D2" /><stop offset=".45" stop-color="#F6C453" /><stop offset="1" stop-color="#A26E1E" /></radialGradient>
+              </defs>
+              <g id="s2-notes" transform="translate(560,250)"></g>
+              <g id="s2-bigcoin" transform="translate(250,230)">
+                <circle r="150" fill="url(#s2-coinfill)" />
+                <circle r="132" fill="none" stroke="#9C6A1E" stroke-width="3" stroke-dasharray="2 7" />
+                <text y="62" text-anchor="middle" font-family="KZ Sans" font-weight="900" font-size="190" fill="#7A4F12" opacity=".9">₸</text>
+              </g>
+              <g id="s2-coins"></g>
+            </svg>
+            <div class="s2-label">ТӨЛ ТЕҢГЕ <b>АЙНАЛЫМҒА ЕНДІ</b></div>
+          </div>
+        </div>
+      </div>
+      <div id="s2-coin"></div>
+    </div>
+    <div id="s2-edge"></div>
+  </div>
+  <script>
+    (function () {
+      const D = 13.4, K = window.KZ, q = (s) => document.querySelector(s);
+      // flag row in front of the UN
+      const r = K.rng(1992), cols = ["#C8102E", "#1F4E9A", "#F2B705", "#2E8B57", "#E8EEF6", "#8C1D40", "#0F7AAF", "#D35400"];
+      let poles = "";
+      for (let i = 0; i < 12; i++) {
+        const x = 30 + i * 70 + (i >= 6 ? 30 : 0);
+        if (Math.abs(x - 414) < 40) continue;
+        const c1 = cols[Math.floor(r() * cols.length)], c2 = cols[Math.floor(r() * cols.length)];
+        poles += `<rect x="${x}" y="292" width="3" height="148" fill="#E8EEF6"/><g class="s2-gf" transform="translate(${x + 3},296)"><rect width="44" height="14" fill="${c1}"/><rect y="14" width="44" height="14" fill="${c2}"/></g>`;
+      }
+      q("#s2-poles").innerHTML = poles;
+      q("#s2-kzflag-in").innerHTML = `<g transform="scale(0.075)">${K.flagSVG(800)}</g>`;
+      q("#s2-symflag-in").innerHTML = `<rect x="-3" y="-3" width="346" height="176" rx="6" fill="rgba(0,0,0,.25)"/>` + `<g transform="scale(0.425)">${K.flagSVG(800)}</g>`;
+      q("#s2-emb-in").innerHTML = K.emblemSVG(150);
+      // banknotes: stylised, not copies of real notes
+      let notes = "";
+      [["s2-note3", -14], ["s2-note2", -4], ["s2-note1", 8]].forEach(([g, a], i) => {
+        notes += `<g class="s2-note" transform="rotate(${a})"><rect x="-150" y="-80" width="300" height="160" rx="10" fill="url(#${g})" stroke="rgba(255,240,200,.6)" stroke-width="2"/>
+          <rect x="-138" y="-68" width="276" height="136" rx="6" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.5" stroke-dasharray="6 4"/>
+          <circle cx="70" cy="0" r="44" fill="rgba(255,255,255,.18)"/><text x="70" y="22" text-anchor="middle" font-family="KZ Sans" font-weight="900" font-size="64" fill="rgba(255,255,255,.85)">₸</text>
+          <text x="-120" y="-34" font-family="KZ Sans" font-weight="700" font-size="20" letter-spacing="3" fill="rgba(255,255,255,.85)">ТЕҢГЕ</text>
+          <rect x="-120" y="20" width="110" height="8" rx="4" fill="rgba(255,255,255,.3)"/><rect x="-120" y="36" width="70" height="8" rx="4" fill="rgba(255,255,255,.2)"/></g>`;
+      });
+      q("#s2-notes").innerHTML = notes;
+      let coins = "";
+      [[520, 120, 30], [610, 90, 22], [700, 150, 26], [470, 370, 24], [770, 360, 30]].forEach(([x, y, rr], i) => {
+        coins += `<g transform="translate(${x},${y})"><g class="s2-sc"><g class="s2-sci"><circle r="${rr}" fill="url(#s2-coinfill)"/><text y="${rr * 0.36}" text-anchor="middle" font-family="KZ Sans" font-weight="900" font-size="${rr}" fill="#7A4F12">₸</text></g></g></g>`;
+      });
+      q("#s2-coins").innerHTML = coins;
+
+      const tl = gsap.timeline({ paused: true });
+      // entrance: golden wipe from the bottom, continuing the light of scene 1
+      tl.fromTo("#s2-wipe", { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.6, ease: "power3.inOut" }, 0);
+      tl.fromTo("#s2-edge", { y: 1920, opacity: 1 }, { y: 0, duration: 0.6, ease: "power3.inOut" }, 0);
+      tl.to("#s2-edge", { opacity: 0, duration: 0.25 }, 0.6);
+      tl.fromTo("#s2-grid", { y: 0 }, { y: -260, duration: D, ease: "none" }, 0);
+      // heading
+      tl.fromTo("#s2-head .w", { opacity: 0, filter: "blur(10px)", y: 10 }, { opacity: 1, filter: "blur(0px)", y: 0, duration: 0.35, ease: "power3.out", stagger: 0.14 }, 0.35);
+      tl.fromTo("#s2-ruler .ln", { scaleX: 0 }, { scaleX: 1, duration: 1.4, ease: "power2.inOut" }, 0.6);
+      tl.fromTo("#s2-ruler .dt, #s2-ruler .tk", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)", stagger: 0.22 }, 0.7);
+      // camera: centred heading → chapter 1 → 2 → 3
+      tl.fromTo("#s2-track", { y: 260 }, { y: 0, duration: 0.9, ease: "power3.inOut" }, 2.2);
+      tl.to("#s2-track", { y: -820, duration: 0.85, ease: "power3.inOut" }, 6.0);
+      tl.to("#s2-track", { y: -1640, duration: 0.85, ease: "power3.inOut" }, 8.95);
+      tl.to("#s2-head", { opacity: 0.0, duration: 0.5 }, 2.6);
+      tl.fromTo("#s2-spine", { scaleY: 0 }, { scaleY: 1, duration: 8.5, ease: "power1.inOut" }, 2.4);
+      tl.fromTo(".s2-node", { scale: 0 }, { scale: 1, duration: 0.45, ease: "back.out(2.5)", stagger: { each: 3.2 } }, 2.75);
+      // chapter 1 — UN
+      tl.fromTo("#s2-ch1 .s2-year", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "expo.out" }, 2.85);
+      tl.fromTo("#s2-ch1 .s2-kick", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 3.1);
+      tl.fromTo("#s2-ch1 .s2-card", { opacity: 0, y: 60, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.7, ease: "expo.out" }, 3.0);
+      tl.fromTo("#s2-un-bld", { y: 40 }, { y: 0, duration: 3.5, ease: "power1.out" }, 3.0);
+      tl.fromTo(".s2-gf", { skewY: -4 }, { skewY: 4, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 7, stagger: 0.08 }, 3.0);
+      tl.fromTo("#s2-kzflag", { y: 150 }, { y: 0, duration: 1.4, ease: "power2.inOut" }, 4.0);
+      tl.fromTo("#s2-ch1 .s2-label", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 4.4);
+      // chapter 2 — flag & emblem
+      tl.fromTo("#s2-ch2 .s2-year", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "expo.out" }, 6.45);
+      tl.fromTo("#s2-ch2 .s2-kick", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 6.6);
+      tl.fromTo("#s2-ch2 .s2-card", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 6.4);
+      tl.fromTo("#s2-symflag", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.8, ease: "power3.inOut" }, 6.45);
+      tl.fromTo("#s2-symflag-in", { skewY: 0 }, { skewY: -1.5, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: 4 }, 6.7);
+      tl.fromTo("#s2-emb-in", { scale: 0.4, rotation: -60, opacity: 0, transformOrigin: "50% 50%" }, { scale: 1, rotation: 0, opacity: 1, duration: 1.1, ease: "expo.out" }, 6.95);
+      tl.fromTo("#s2-emb-in .emb-ray", { opacity: 0 }, { opacity: 1, duration: 0.2, stagger: 0.02 }, 7.3);
+      tl.fromTo("#s2-emb-in .emb-star", { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.5, ease: "back.out(3)" }, 8.0);
+      tl.fromTo(["#s2-t1", "#s2-t2"], { opacity: 0 }, { opacity: 1, duration: 0.4, stagger: 0.3 }, 7.6);
+      tl.fromTo("#s2-ch2 .s2-label", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 7.5);
+      // chapter 3 — tenge
+      tl.fromTo("#s2-ch3 .s2-year", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "expo.out" }, 9.4);
+      tl.fromTo("#s2-ch3 .s2-kick", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 9.6);
+      tl.fromTo("#s2-ch3 .s2-card", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, 9.35);
+      tl.fromTo(".s2-note", { opacity: 0, x: -120, rotation: -30 }, { opacity: 1, x: 0, rotation: (i) => [-14, -4, 8][i], duration: 0.8, ease: "expo.out", stagger: 0.12 }, 10.6);
+      tl.fromTo("#s2-bigcoin", { scale: 0, rotation: -120, transformOrigin: "0 0" }, { scale: 1, rotation: 0, duration: 0.9, ease: "back.out(1.6)" }, 10.55);
+      tl.fromTo(".s2-sc", { y: -260, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "bounce.out", stagger: 0.09 }, 10.9);
+      tl.fromTo(".s2-sci", { scaleX: 1 }, { scaleX: 0.2, duration: 0.18, ease: "sine.inOut", yoyo: true, repeat: 5, stagger: 0.1 }, 10.9);
+      tl.fromTo("#s2-ch3 .s2-label", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 10.8);
+      // exit: the coin becomes the world
+      tl.fromTo("#s2-coin", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.25, ease: "power2.out" }, 12.6);
+      tl.to("#s2-coin", { scale: 26, duration: 0.55, ease: "power3.in" }, 12.85);
+      window.__timelines["s2-steps"] = tl;
+    })();
+  </script>
+</template>
