@@ -63,3 +63,5 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: #050b1
 #brand { position: absolute; left: 70px; top: 70px; z-index: 21; display: flex; align-items: center; gap: 14px; font-weight: 800;
   font-size: 26px; letter-spacing: 4px; color: rgba(255,255,255,0.72); }
 #brand i { width: 16px; height: 16px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 14px var(--orange); }
+.shine { background: linear-gradient(100deg, #ffffff 0%, #ffffff 40%, #ffd9a8 50%, #ffffff 60%, #ffffff 100%); background-size: 300% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 8px 30px rgba(0,0,0,.5)); }

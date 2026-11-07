@@ -83,12 +83,13 @@ PROG = [(50, [62, 65, 69]), (46, [58, 62, 65]), (53, [60, 65, 69]), (48, [60, 64
 PROG_END = [(46, [62, 65, 70]), (48, [64, 67, 72]), (50, [62, 65, 69]), (53, [65, 69, 72])]
 
 hook_end = SC['hook']['end']
+hook_start = SC['hook']['start']
 fin_start = SC['final2']['start']
 
 
 def intensity(t):
     """0..1 music energy by section"""
-    for sid, v in [('hook', 0.5), ('pte', 0.55), ('tb', 0.55), ('equip', 0.65), ('before', 0.55), ('monitor', 0.65),
+    for sid, v in [('intro', 0.6), ('hook', 0.5), ('pte', 0.55), ('tb', 0.55), ('equip', 0.65), ('before', 0.55), ('monitor', 0.65),
                    ('forbid', 0.8), ('permit', 0.6), ('emergency', 0.85), ('fire', 0.7), ('rules', 0.8), ('final', 0.85),
                    ('module2', 0.75), ('pipes', 0.55), ('cooling', 0.6), ('light', 0.65), ('tools', 0.6), ('move', 0.7),
                    ('checklist', 0.65), ('mech1', 0.6), ('mech2', 0.6), ('mech3', 0.75), ('mech4', 0.65), ('mech5', 0.6), ('alc', 0.7), ('final2', 0.9)]:
@@ -135,7 +136,7 @@ while t < DUR:
         tt = t_arr(0.5)
         f = note_hz(m)
         y = (np.sin(2 * np.pi * f * tt) + 0.25 * np.sin(4 * np.pi * f * tt)) * np.exp(-tt * 9) * np.minimum(1, tt / 0.004)
-        g = 0.07 if at > hook_end - 0.5 else 0.0
+        g = 0.07 if (at > hook_end - 0.5 or at < hook_start - 0.6) else 0.0
         add(arp, at, y, g * (0.6 + 0.6 * intensity(at)))
     # drums
     for b in range(8):
@@ -143,7 +144,7 @@ while t < DUR:
         if bt >= DUR:
             break
         inten = intensity(bt)
-        if bt < hook_end - 0.5 and bt < 2.6:
+        if (hook_start - 0.6 <= bt < hook_start + 2.6) or bt < 4.0:
             continue
         if b % 2 == 0:  # kick
             tt = t_arr(0.45)
@@ -172,7 +173,7 @@ ienv = np.convolve(ienv, np.ones(SR // 2) / (SR // 2), mode='same')
 music *= 0.55 + 0.6 * ienv
 # intro fade-in, quiet before the title slam, fade-out
 music *= np.clip(tt / 1.5, 0, 1)
-music *= 1 - 0.55 * ((tt > 0) & (tt < 2.6))
+music *= 1 - 0.55 * ((tt > hook_start - 0.4) & (tt < hook_start + 2.6))
 music *= np.clip((DUR - 0.3 - tt) / 3.0, 0, 1)
 
 # ---------------- SFX ----------------
@@ -273,11 +274,25 @@ for s in TL['scenes'][1:]:
 
 # hook
 h0 = SC['hook']['start']
-add(sfx, 0, hum(SC['hook']['end'] + 0.3, 45, (1, 2, 3, 5), 0.05), 0.05)
-add(sfx, 0, lp(rng.standard_normal(int(12 * SR)), 300) * np.minimum(1, t_arr(12) / 1.5) * np.minimum(1, (12 - t_arr(12)) / 1), 0.12)
-add(sfx, 0.3, hiss(9.0, 3500), 0.035)
-add(sfx, 2.65, impact(), 0.55)
-add(sfx, 2.5, alarm(5.5), 0.06)
+add(sfx, h0, hum(SC['hook']['end'] - h0 + 0.3, 45, (1, 2, 3, 5), 0.05), 0.05)
+add(sfx, h0, lp(rng.standard_normal(int(12 * SR)), 300) * np.minimum(1, t_arr(12) / 1.5) * np.minimum(1, (12 - t_arr(12)) / 1), 0.12)
+add(sfx, h0 + 0.3, hiss(9.0, 3500), 0.035)
+add(sfx, h0 + 2.65, impact(), 0.55)
+add(sfx, h0 + 2.5, alarm(5.5), 0.06)
+
+# corporate intro: plant ambience, name reveal, title, move into the boiler room
+i0 = SC['intro']['start']; ie = SC['intro']['end']
+add(sfx, i0, hum(ie - i0, 42, (1, 2, 3), 0.03), 0.04)
+add(sfx, i0 + 0.2, hiss(2.6, 3500), 0.03)
+add(sfx, i0 + 1.75, whoosh(0.7, 300, 3500), 0.12)
+add(sfx, i0 + 2.05, impact() * 0.55, 0.35)
+add(sfx, i0 + 2.2, chime(1318.5), 0.06)
+add(sfx, i0 + 3.85, whoosh(0.6, 300, 3500), 0.1)
+add(sfx, i0 + 4.1, chime(987.8), 0.08); add(sfx, i0 + 4.25, chime(1318.5), 0.06)
+add(sfx, i0 + 6.0, thud(), 0.12)
+add(sfx, i0 + 7.6, whoosh(1.1, 200, 2500), 0.12)
+for k, c_ in enumerate(('today', 'eq', 'rules')):
+    add(sfx, cue('intro', c_) - 0.1, blip(900 + k * 150, 0.16), 0.08)
 
 # PTE pops
 for i in range(1, 5):

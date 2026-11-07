@@ -1,6 +1,6 @@
 # ПТЭ және ТБ — Жылу электр орталығында қауіпсіз және дұрыс жұмыс істеу
 
-Vertical (9:16, 1080×1920, 30 fps) 2D animated explainer in Kazakh, ~10:29 (part 1: PTE/TB basics, part 2: practical boiler-room module).
+Vertical (9:16, 1080×1920, 30 fps) 2D animated explainer in Kazakh, ~10:49 (corporate intro, part 1: PTE/TB basics, part 2: practical boiler-room module).
 
 **Finished video:** `output/PTE_TB_TEC_kk_1080x1920.mp4`
 **Subtitles (separate):** `output/PTE_TB_TEC_kk.srt` (also burned into the video)
@@ -8,6 +8,7 @@ Vertical (9:16, 1080×1920, 30 fps) 2D animated explainer in Kazakh, ~10:29 (par
 ## Scenes
 | # | Scene | What's animated |
 |---|-------|-----------------|
+| — | Corporate intro | KAZAKHMYS DISTRIBUTION (typography only, no logo) → ПТЭ ЖӘНЕ ТБ / ҚАУІПСІЗДІК ЕРЕЖЕЛЕРІ → worker → camera flies into the boiler room; agenda synced to narration |
 | — | Hook | Night CHP plant, steam plumes, worker walking the catwalk, rotating warning beacons, red alarm, title slam |
 | 1 | ПТЭ | Blueprint drawing, gears, rule book page flip, 4 key points synced to narration |
 | 2 | ТБ | Worker gets PPE item by item (helmet, gloves, glasses, boots, uniform) with callouts |
