@@ -91,7 +91,7 @@ def intensity(t):
     for sid, v in [('hook', 0.5), ('pte', 0.55), ('tb', 0.55), ('equip', 0.65), ('before', 0.55), ('monitor', 0.65),
                    ('forbid', 0.8), ('permit', 0.6), ('emergency', 0.85), ('fire', 0.7), ('rules', 0.8), ('final', 0.85),
                    ('module2', 0.75), ('pipes', 0.55), ('cooling', 0.6), ('light', 0.65), ('tools', 0.6), ('move', 0.7),
-                   ('checklist', 0.65), ('quiz', 0.75), ('final2', 0.9)]:
+                   ('checklist', 0.65), ('mech1', 0.6), ('mech2', 0.6), ('mech3', 0.75), ('mech4', 0.65), ('mech5', 0.6), ('alc', 0.7), ('final2', 0.9)]:
         if SC[sid]['start'] <= t < SC[sid]['end'] + 0.01:
             return v
     return 0.5
@@ -428,15 +428,78 @@ for c_ in ('c1', 'c2', 'c3'):
         add(sfx, g['start'] + (j + 0.7) / n * (g['end'] - g['start']), blip(1000 + j * 70, 0.14), 0.07)
     add(sfx, g['start'] - 0.3, whoosh(0.6, 400, 3000), 0.07)
 add(sfx, cue('checklist', 'c4'), chime(1046.5), 0.12)
-# quiz: question whoosh, ticking countdown, correct chime
-for i in range(1, 6):
-    g = [x for x in SC['quiz']['segments'] if x.get('cue') == f'q{i}'][0]
-    add(sfx, g['start'] - 0.3, whoosh(0.6, 400, 3000), 0.07)
-    a_ = cue('quiz', f'a{i}')
-    t_ = g['end']
-    while t_ < a_ - 0.2:
-        add(sfx, t_, click(), 0.1); t_ += 0.5
-    add(sfx, a_, chime(1046.5), 0.11); add(sfx, a_ + 0.12, chime(1318.5), 0.08)
+# machinery & repair
+def motor(d, ramps, f=90):
+    """motor hum whose level/pitch follows a speed profile (list of (t0,t1,v0,v1) in scene seconds, v 0..1)"""
+    tt = t_arr(d)
+    v = np.zeros_like(tt)
+    for a_, b_, v0, v1 in ramps:
+        m = tt >= b_; v[m] = v1
+        m = (tt >= a_) & (tt < b_); v[m] = v0 + (v1 - v0) * (tt[m] - a_) / max(1e-3, b_ - a_)
+    ph = np.cumsum(2 * np.pi * f * (0.4 + 0.6 * v) / SR)
+    y = (np.sin(ph) + 0.5 * np.sin(2 * ph) + 0.25 * np.sin(3 * ph)) * v + lp(rng.standard_normal(len(tt)), 700) * 0.3 * v
+    return y
+M = {k: SC[k] for k in ('mech1', 'mech2', 'mech3', 'mech4', 'mech5', 'alc')}
+rel = lambda sc_, c_: cue(sc_, c_) - M[sc_]['start']
+d1 = M['mech1']['end'] - M['mech1']['start']; h_ = rel('mech1', 'how')
+add(sfx, M['mech1']['start'], motor(d1, [(h_, h_ + 1.6, 0, 1)]), 0.06)
+for i, n in enumerate(('насостар', 'желдеткіштер', 'дымосостар', 'турбина', 'генератор')):
+    w = word('mech1', 'list', n)
+    if w: add(sfx, w - 0.1, blip(900 + i * 80), 0.07)
+for n in ('электр', 'муфта', 'білік', 'мойынтіректер', 'жұмыс'):
+    w = word('mech1', 'parts', n)
+    if w: add(sfx, w, click(), 0.18)
+add(sfx, cue('mech1', 'guard'), chime(880), 0.09)
+d2 = M['mech2']['end'] - M['mech2']['start']; r_ = rel('mech2', 'run') - 0.2; s_ = rel('mech2', 'stop') + 0.2
+add(sfx, M['mech2']['start'], motor(d2, [(r_ + 0.3, r_ + 2.3, 0, 1), (s_ + 0.2, s_ + 3.2, 1, 0)]), 0.07)
+add(sfx, cue('mech2', 'run') - 0.2, click(), 0.35); add(sfx, cue('mech2', 'stop') + 0.2, click(), 0.35)
+g_ = [x for x in SC['mech2']['segments'] if x.get('cue') == 'pre'][0]
+for j in range(4): add(sfx, g_['start'] + (j + 0.65) / 4 * (g_['end'] - g_['start']), blip(1000 + j * 90, 0.14), 0.07)
+add(sfx, cue('mech2', 'zero'), chime(784), 0.08)
+d3 = M['mech3']['end'] - M['mech3']['start']
+add(sfx, M['mech3']['start'], motor(d3, [(0, 0.01, 1, 1)]), 0.06)
+s1 = cue('mech3', 's1'); add(sfx, s1, hum(2.2, 23, (1, 2, 3), 0.6), 0.12)
+s2 = cue('mech3', 's2')
+for k in range(8): add(sfx, s2 + k * 0.22, click(), 0.14)
+add(sfx, cue('mech3', 's4'), hiss(2.0, 3000), 0.06)
+for k, c_ in enumerate(('s1', 's2', 's3', 's4', 's5')): add(sfx, cue('mech3', c_) - 0.1, buzzer(0.25), 0.04)
+add(sfx, cue('mech3', 'away'), alarm(1.6, 880, 660, 1.6), 0.05)
+rp = cue('mech3', 'report'); add(sfx, rp + 0.2, blip(1800, 0.12), 0.12); add(sfx, rp + 0.35, blip(1800, 0.12), 0.12)
+add(sfx, cue('mech3', 'log') + 0.5, hp(rng.standard_normal(int(1.4 * SR)), 3000) * 0.3 * np.exp(-((t_arr(1.4) - 0.7) ** 2) * 6), 0.07)
+d4 = M['mech4']['end'] - M['mech4']['start']; e_ = rel('mech4', 'el') + 0.6; z_ = rel('mech4', 'stop0') + 1.6
+add(sfx, M['mech4']['start'], motor(d4, [(0, 0.01, 1, 1), (e_, z_, 1, 0)]), 0.05)
+add(sfx, cue('mech4', 'el') + 0.5, thud(), 0.3); add(sfx, cue('mech4', 'el') + 0.55, click(), 0.3)
+for n, f0 in (('бу', 0.2), ('су', 0.8), ('қысым', 1.4)):
+    w = word('mech4', 'en', n) or cue('mech4', 'en') + f0
+    add(sfx, w, click(), 0.25); add(sfx, w + 0.05, hiss(0.6, 2500), 0.05)
+lk = cue('mech4', 'lock')
+for k in range(4): add(sfx, lk + 0.6 + k * 0.15, click(), 0.25)
+add(sfx, lk + 0.45, thud(), 0.25)
+add(sfx, cue('mech4', 'stop0') + 1.7, chime(784), 0.09)
+w = word('mech4', 'test', 'кездейсоқ') or cue('mech4', 'test') + 2
+add(sfx, w, click(), 0.3); add(sfx, w + 0.15, buzzer(0.4), 0.07)
+add(sfx, cue('mech4', 'ban'), thud(), 0.35); add(sfx, cue('mech4', 'ban'), buzzer(0.5), 0.06)
+d5 = M['mech5']['end'] - M['mech5']['start']; t5 = rel('mech5', 'test')
+add(sfx, M['mech5']['start'], motor(d5, [(t5 + 0.8, t5 + 2.6, 0, 1)]), 0.06)
+for k in range(3): add(sfx, M['mech5']['start'] + 1.2 + k * 0.7, click(), 0.12)
+for n in ('құралдар', 'қорғаныш', 'адамдар', 'бұғаттарды'):
+    w = word('mech5', None, n)
+    if w: add(sfx, w + 0.5, blip(1100, 0.14), 0.07)
+for n in ('қысым', 'діріл', 'шу', 'температура'):
+    w = word('mech5', 'params', n)
+    if w: add(sfx, w + 0.5, blip(1300, 0.14), 0.07)
+add(sfx, cue('mech5', 'ok') + 0.3, thud(), 0.35); add(sfx, cue('mech5', 'ok') + 0.35, chime(1046.5), 0.1)
+# alcohol & drugs
+for k, c_ in enumerate(('a1', 'a2', 'a3')):
+    add(sfx, cue('alc', c_) - 0.1, whoosh(0.5, 400, 3000), 0.06)
+    add(sfx, cue('alc', c_) + 0.5, thud(), 0.3)
+a4 = cue('alc', 'a4')
+for k in range(5): add(sfx, a4 + 0.1 + k * 0.45, thud() * 0.5, 0.1)
+add(sfx, a4 + 2.3, blip(1500, 0.2), 0.1); add(sfx, a4 + 2.4, chime(988), 0.1)
+w = word('alc', 'a5', 'басшыға') or cue('alc', 'a5') + 2.5
+add(sfx, w, blip(1800, 0.12), 0.12); add(sfx, w + 0.15, blip(1800, 0.12), 0.12)
+add(sfx, cue('alc', 'a6'), chime(1046.5), 0.1); add(sfx, cue('alc', 'a6') + 0.12, chime(1318.5), 0.07)
+
 # final 2
 add(sfx, SC['final2']['start'] + 0.5, impact() * 0.6, 0.3)
 add(sfx, cue('final2', 'slogan'), chime(1046.5), 0.12)

@@ -1,6 +1,6 @@
 # ПТЭ және ТБ — Жылу электр орталығында қауіпсіз және дұрыс жұмыс істеу
 
-Vertical (9:16, 1080×1920, 30 fps) 2D animated explainer in Kazakh, ~7:59 (part 1: PTE/TB basics, part 2: practical boiler-room module).
+Vertical (9:16, 1080×1920, 30 fps) 2D animated explainer in Kazakh, ~10:29 (part 1: PTE/TB basics, part 2: practical boiler-room module).
 
 **Finished video:** `output/PTE_TB_TEC_kk_1080x1920.mp4`
 **Subtitles (separate):** `output/PTE_TB_TEC_kk.srt` (also burned into the video)
@@ -25,9 +25,14 @@ Vertical (9:16, 1080×1920, 30 fps) 2D animated explainer in Kazakh, ~7:59 (part
 | 12 | Cooling system | Animated loop: pump → condenser → heat exchanger → cooling tower → back; hot/cold water flow |
 | 13 | Insufficient lighting | Dark boiler room, worker stops and reports to shift supervisor, approved portable work light |
 | 14 | Tools | 10 tools with Kazakh names (Russian in parentheses) and purpose; pre-use inspection, defective tool rejected |
-| 15 | Moving around site | Walkway, forklift, overhead crane with suspended load and danger zone, rotating machinery, restricted area |
-| 16 | Safety checklist | Before / during / after work, every box ticked in sync with narration |
-| 17 | Knowledge test | 5 multiple-choice questions with countdown, green check for correct, red warning for wrong |
+| 15.1 | Mechanisms | Main mechanisms and purposes; pump unit cutaway: motor, coupling, shaft, bearings, impeller; how torque reaches the water; guards over rotating parts |
+| 15.2 | Start-up / shut-down | Control panel, pre-start checks, start, monitoring pressure/current/vibration/noise, stop, wait for full standstill |
+| 15.3 | Fault signs | Vibration, knocking noise, bearing heat, leak/smoke/smell, pressure/current deviation; keep away, report, fault log |
+| 15.4 | Preparing for repair | Work permit, electrical and other energy sources isolated, lock & tag, rotation to zero, no-voltage check, start attempt blocked, ban on touching running machinery |
+| 15.5 | Repair & test | Only qualified authorised staff on a stopped, locked unit; tools collected, guards back, people out, locks removed by responsible person, test run, accepted |
+| 16 | Moving around site | Walkway, forklift, overhead crane with suspended load and danger zone, rotating machinery, restricted area |
+| 17 | Alcohol & drugs | Bans on alcohol, drugs/psychotropic substances, operating equipment while impaired; arrive sober; report feeling unwell |
+| 18 | Safety checklist | Before / during / after work, every box ticked in sync with narration |
 | — | Final | Clean, safely operating boiler room, worker, "Қауіпсіздік өзіңнен басталады!" |
 
 ## How it's built

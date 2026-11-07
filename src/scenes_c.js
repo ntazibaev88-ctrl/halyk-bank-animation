@@ -28,9 +28,9 @@ SCENES.module2 = {
       <div data-k="t1" style="font-weight:900;font-size:88px;line-height:1.02;margin-top:30px">ПРАКТИКАЛЫҚ<br><span style="color:#ff8a1f">БӨЛІМ</span></div>
       <div data-k="t2" style="font-weight:700;font-size:38px;line-height:1.25;margin-top:24px;color:#cfe0f7">Қазандық цехындағы жұмыс<br>және өнеркәсіптік қауіпсіздік<br><span style="font-size:28px;color:#8fa9cf">(котельный цех)</span></div></div>`);
     root.appendChild(c.card); c.cr = refs(c.card);
-    const topics = [['pipe', 'Құбырлар'], ['cool', 'Салқындату'], ['bulb', 'Жарық'], ['wrench', 'Құралдар'], ['walk', 'Қозғалыс'], ['list', 'Чек-парақ'], ['quiz', 'Тест']];
+    const topics = [['pipe', 'Құбырлар'], ['cool', 'Салқындату'], ['bulb', 'Жарық'], ['wrench', 'Құралдар'], ['gearCheck', 'Механизмдер'], ['walk', 'Қозғалыс'], ['shield', 'Сергектік'], ['list', 'Чек-парақ']];
     c.topics = topics.map(([ic, tx], i) => {
-      const el = html(`<div class="abs" style="left:${70 + (i % 4) * 240 + (i >= 4 ? 120 : 0)}px;top:${1000 + Math.floor(i / 4) * 190}px;width:220px;text-align:center">
+      const el = html(`<div class="abs" style="left:${70 + (i % 4) * 240}px;top:${1000 + Math.floor(i / 4) * 190}px;width:220px;text-align:center">
         <div style="width:96px;height:96px;margin:0 auto;border-radius:26px;display:grid;place-items:center;background:linear-gradient(140deg,#ff8a1f,#e0600a);box-shadow:0 10px 30px rgba(0,0,0,.4)"><svg width="62" height="62" viewBox="-50 -50 100 100">${ICON[ic]}</svg></div>
         <div style="font-weight:800;font-size:28px;margin-top:10px">${11 + i} · ${tx}</div></div>`);
       root.appendChild(el); return el;
@@ -377,7 +377,7 @@ SCENES.move = {
     c.fg = layer(svg, ''); c.fl = svgFrag(forkliftSVG('fk')); c.fg.appendChild(c.fl); c.fr = refs(c.fl);
     // walker
     c.wkg = layer(svg, ''); c.wk = new Walker(c.wkg, 'mvw');
-    c.H = header(root, '15', 'Аумақта<br><span class="o">қауіпсіз жүру</span>', null, { chip: 'ҚОЗҒАЛЫС' });
+    c.H = header(root, '16', 'Аумақта<br><span class="o">қауіпсіз жүру</span>', null, { chip: 'ҚОЗҒАЛЫС' });
     const signs = [['walk', 'Жаяу жүргінші жолы', '#1a6b46', 'v1'], ['alert', 'Жүк астында тұрма!', '#c9161c', 'v2'], ['noEntry', 'Қауіпті аймаққа кірме!', '#c9161c', 'v3']];
     c.signs = signs.map(([ic, tx, col, cue], i) => {
       const el = html(`<div class="abs" style="left:${40 + i * 340}px;top:1420px;width:320px;padding:14px;border-radius:22px;display:flex;gap:12px;align-items:center;background:${col};border:3px solid #ffd23f;font-weight:800;font-size:25px;line-height:1.15">
@@ -425,7 +425,7 @@ SCENES.checklist = {
   build(root, info) {
     const svg = stage(root, `<rect width="1080" height="1920" fill="url(#bgNavy)"/><rect width="1080" height="1920" fill="url(#gridS)"/>`);
     const c = {};
-    c.H = header(root, '16', 'Қауіпсіздік<br><span class="o">чек-парағы</span>', null, { chip: 'ЧЕК-ПАРАҚ' });
+    c.H = header(root, '18', 'Қауіпсіздік<br><span class="o">чек-парағы</span>', null, { chip: 'ЧЕК-ПАРАҚ' });
     c.tabs = CHECK.map(([t, col], i) => {
       const el = html(`<div class="abs" style="left:${60 + i * 325}px;top:470px;width:305px;padding:14px 6px;border-radius:20px;text-align:center;font-weight:900;font-size:25px;border:3px solid ${col};background:rgba(10,22,48,.9)">${i + 1}. ${t}</div>`);
       root.appendChild(el); return el;
