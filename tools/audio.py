@@ -83,13 +83,15 @@ PROG = [(50, [62, 65, 69]), (46, [58, 62, 65]), (53, [60, 65, 69]), (48, [60, 64
 PROG_END = [(46, [62, 65, 70]), (48, [64, 67, 72]), (50, [62, 65, 69]), (53, [65, 69, 72])]
 
 hook_end = SC['hook']['end']
-fin_start = SC['final']['start']
+fin_start = SC['final2']['start']
 
 
 def intensity(t):
     """0..1 music energy by section"""
     for sid, v in [('hook', 0.5), ('pte', 0.55), ('tb', 0.55), ('equip', 0.65), ('before', 0.55), ('monitor', 0.65),
-                   ('forbid', 0.8), ('permit', 0.6), ('emergency', 0.85), ('fire', 0.7), ('rules', 0.8), ('final', 0.9)]:
+                   ('forbid', 0.8), ('permit', 0.6), ('emergency', 0.85), ('fire', 0.7), ('rules', 0.8), ('final', 0.85),
+                   ('module2', 0.75), ('pipes', 0.55), ('cooling', 0.6), ('light', 0.65), ('tools', 0.6), ('move', 0.7),
+                   ('checklist', 0.65), ('quiz', 0.75), ('final2', 0.9)]:
         if SC[sid]['start'] <= t < SC[sid]['end'] + 0.01:
             return v
     return 0.5
@@ -374,6 +376,71 @@ for i in range(1, 11):
 add(sfx, SC['final']['start'] + 0.5, impact() * 0.6, 0.3)
 add(sfx, cue('final', 'slogan'), chime(1046.5), 0.12)
 add(sfx, cue('final', 'slogan') + 0.1, chime(1318.5), 0.08)
+
+# ---------------- PRACTICAL MODULE ----------------
+add(sfx, SC['module2']['start'] + 0.4, impact() * 0.6, 0.3)
+for i in range(7):
+    add(sfx, cue('module2', 'topic') + i * 0.18, blip(800 + i * 90), 0.06)
+# pipes
+for pre in ('ø32', 'ø40', 'ø50', 'ø60'):
+    w = word('pipes', 'sizes', pre)
+    if w: add(sfx, w, click(), 0.2)
+for c_ in ('dia', 'wall', 'dn'):
+    add(sfx, cue('pipes', c_), blip(1100), 0.08)
+add(sfx, cue('pipes', 'doc'), thud(), 0.2)
+add(sfx, cue('pipes', 'route') - 0.2, whoosh(1.2, 300, 2500), 0.08)
+for pre in ('тіректер', 'қамытпен', 'фланец', 'дәнекерлеу', 'оқшаулағышпен'):
+    w = word('pipes', None, pre)
+    if w: add(sfx, w, click(), 0.18)
+add(sfx, cue('pipes', 'warn'), buzzer(0.5), 0.07); add(sfx, cue('pipes', 'warn'), thud(), 0.3)
+# cooling: water flow + pump hum + tower
+k2 = cue('cooling', 'k2'); ce = SC['cooling']['end']
+add(sfx, k2, hum(ce - k2, 75, (1, 2, 3, 4), 0.25), 0.05)
+add(sfx, cue('cooling', 'k3'), splash(ce - cue('cooling', 'k3')) * 0.6, 0.06)
+add(sfx, cue('cooling', 'k5'), buzzer(0.5), 0.07); add(sfx, cue('cooling', 'k5'), thud(), 0.3)
+# light: flicker, stop, radio, lamp on
+L0 = SC['light']['start']
+for k in range(4):
+    add(sfx, L0 + 0.5 + k * 0.17, click(), 0.12)
+add(sfx, L0 + 1.2, powerdown(), 0.15)
+w = word('light', 'l1', 'болмайды'); add(sfx, (w or cue('light', 'l1') + 2.5), thud(), 0.3)
+l2 = cue('light', 'l2'); add(sfx, l2 + 0.3, blip(1800, 0.12), 0.12); add(sfx, l2 + 0.45, blip(1800, 0.12), 0.12)
+l3 = cue('light', 'l3'); add(sfx, l3 + 0.8, click(), 0.35); add(sfx, l3 + 0.85, chime(1046), 0.1); add(sfx, l3 + 1.6, chime(784), 0.08)
+# tools
+for i in range(1, 11):
+    add(sfx, cue('tools', f't{i}') - 0.15, click(), 0.18); add(sfx, cue('tools', f't{i}') - 0.1, blip(900 + i * 60, 0.15), 0.05)
+add(sfx, cue('tools', 'check') + 0.6, chime(988), 0.08)
+add(sfx, cue('tools', 'check') + 1.4, buzzer(0.4), 0.06)
+add(sfx, cue('tools', 'bad'), thud(), 0.3)
+# movement: forklift engine + reverse beeper-ish horn, crane hum
+m0 = SC['move']['start']; me = SC['move']['end']
+add(sfx, m0, hum(me - m0, 48, (1, 2, 3, 5), 0.15) * 0.8, 0.05)
+add(sfx, m0, hum(me - m0, 120, (1, 2), 0.0) * 0.3, 0.03)
+for k in range(int((me - m0) / 1.1)):
+    add(sfx, m0 + 0.5 + k * 1.1, blip(1500, 0.2), 0.025)
+for c_ in ('v1', 'v2', 'v3'):
+    add(sfx, cue('move', c_), chime(880), 0.07)
+# checklist ticks
+for c_ in ('c1', 'c2', 'c3'):
+    g = [x for x in SC['checklist']['segments'] if x.get('cue') == c_][0]
+    n = {'c1': 8, 'c2': 7, 'c3': 6}[c_]
+    for j in range(n):
+        add(sfx, g['start'] + (j + 0.7) / n * (g['end'] - g['start']), blip(1000 + j * 70, 0.14), 0.07)
+    add(sfx, g['start'] - 0.3, whoosh(0.6, 400, 3000), 0.07)
+add(sfx, cue('checklist', 'c4'), chime(1046.5), 0.12)
+# quiz: question whoosh, ticking countdown, correct chime
+for i in range(1, 6):
+    g = [x for x in SC['quiz']['segments'] if x.get('cue') == f'q{i}'][0]
+    add(sfx, g['start'] - 0.3, whoosh(0.6, 400, 3000), 0.07)
+    a_ = cue('quiz', f'a{i}')
+    t_ = g['end']
+    while t_ < a_ - 0.2:
+        add(sfx, t_, click(), 0.1); t_ += 0.5
+    add(sfx, a_, chime(1046.5), 0.11); add(sfx, a_ + 0.12, chime(1318.5), 0.08)
+# final 2
+add(sfx, SC['final2']['start'] + 0.5, impact() * 0.6, 0.3)
+add(sfx, cue('final2', 'slogan'), chime(1046.5), 0.12)
+add(sfx, cue('final2', 'slogan') + 0.1, chime(1318.5), 0.08)
 
 # ---------------- MIX ----------------
 with wave.open(os.path.join(ROOT, 'build', 'voice.wav')) as wf:

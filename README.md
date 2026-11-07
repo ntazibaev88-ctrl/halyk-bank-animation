@@ -1,6 +1,6 @@
 # ПТЭ және ТБ — Жылу электр орталығында қауіпсіз және дұрыс жұмыс істеу
 
-Vertical (9:16, 1080×1920, 30 fps) 2D animated explainer in Kazakh, ~3:54.
+Vertical (9:16, 1080×1920, 30 fps) 2D animated explainer in Kazakh, ~7:59 (part 1: PTE/TB basics, part 2: practical boiler-room module).
 
 **Finished video:** `output/PTE_TB_TEC_kk_1080x1920.mp4`
 **Subtitles (separate):** `output/PTE_TB_TEC_kk.srt` (also burned into the video)
@@ -19,7 +19,16 @@ Vertical (9:16, 1080×1920, 30 fps) 2D animated explainer in Kazakh, ~3:54.
 | 8 | Emergencies | Steam leak, burst pipe, pump failure, fire, power loss; worker moves away and reports |
 | 9 | Fire safety | Extinguisher types and fire classes, evacuation route, 101 / 112 |
 | 10 | 10 golden rules | Rules appear one by one with icons |
-| — | Final | Plant in normal operation, worker, closing title |
+| — | Part 1 close | Plant in normal operation, worker, title (bridges into part 2) |
+| — | Part 2 card | "Практикалық бөлім": boiler room work and industrial safety, topic overview |
+| 11 | Pipes Ø32–60 mm | Pipe sizes, outer/inner diameter, wall thickness s = (Dн − Dв)/2, DN; routing, slope, supports, clamps, flange/weld, expansion loop, insulation; dimensions only from approved drawings |
+| 12 | Cooling system | Animated loop: pump → condenser → heat exchanger → cooling tower → back; hot/cold water flow |
+| 13 | Insufficient lighting | Dark boiler room, worker stops and reports to shift supervisor, approved portable work light |
+| 14 | Tools | 10 tools with Kazakh names (Russian in parentheses) and purpose; pre-use inspection, defective tool rejected |
+| 15 | Moving around site | Walkway, forklift, overhead crane with suspended load and danger zone, rotating machinery, restricted area |
+| 16 | Safety checklist | Before / during / after work, every box ticked in sync with narration |
+| 17 | Knowledge test | 5 multiple-choice questions with countdown, green check for correct, red warning for wrong |
+| — | Final | Clean, safely operating boiler room, worker, "Қауіпсіздік өзіңнен басталады!" |
 
 ## How it's built
 Everything is generated from code in this repo — no stock footage, images or music.

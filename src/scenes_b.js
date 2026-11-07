@@ -542,7 +542,7 @@ SCENES.final = {
     popIn(c.tr.t2, lt, 0.9, { dy: 60 });
     popIn(c.ok, lt, 1.6, { dy: 20, s0: 0.8 });
     const endA = info.segs[info.segs.length - 1].e + 0.4;
-    popIn(c.end, lt, endA, { dy: 40 });
-    O(c.black, ep(lt, info.dur - 0.9, 0.8, E.inOutSine));
+    // part 1 ending now bridges into the practical module: no end card / fade here
+    O(c.end, 0); O(c.black, 0);
   },
 };

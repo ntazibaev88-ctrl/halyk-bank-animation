@@ -90,16 +90,17 @@ async def main():
     for sc in cfg["scenes"]:
         for seg in sc["segments"]:
             say = seg.get("say", seg["text"])
-            h = hashlib.sha1(f'{cfg["voice"]}|{cfg["rate"]}|{cfg["pitch"]}|{say}'.encode()).hexdigest()[:12]
+            rate = sc.get("rate", cfg["rate"])
+            h = hashlib.sha1(f'{cfg["voice"]}|{rate}|{cfg["pitch"]}|{say}'.encode()).hexdigest()[:12]
             seg["_path"] = os.path.join(vdir, h + ".mp3")
             if not os.path.exists(seg["_path"] + ".json"):
-                jobs.append((say, seg["_path"]))
+                jobs.append((say, seg["_path"], rate))
     sem = asyncio.Semaphore(4)
 
-    async def run(say, p):
+    async def run(say, p, rate):
         async with sem:
             print("TTS:", say)
-            await synth(say, cfg["voice"], cfg["rate"], cfg["pitch"], p)
+            await synth(say, cfg["voice"], rate, cfg["pitch"], p)
     await asyncio.gather(*[run(*j) for j in jobs])
 
     t = 0.0
@@ -125,7 +126,7 @@ async def main():
                          "exact": exact})
             t += seg_len
             if i < len(sc["segments"]) - 1:
-                t += GAP_COMMA if seg["text"].rstrip().endswith(",") else sc.get("gap", GAP)
+                t += seg["pause"] if "pause" in seg else (GAP_COMMA if seg["text"].rstrip().endswith(",") else sc.get("gap", GAP))
         t += sc.get("padAfter", 0.5)
         timeline["scenes"].append({"id": sc["id"], "start": round(s_start, 3), "end": round(t, 3), "segments": segs})
     timeline["duration"] = round(t, 3)
