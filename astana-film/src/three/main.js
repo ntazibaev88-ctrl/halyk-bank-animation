@@ -43,7 +43,9 @@ async function init() {
 
 function applyState(shot, t) {
   const st = shot.state || {};
-  const year = YEAR(t);
+  // keep each plate's era consistent inside its 0.5 s handles
+  const tt = PLATE.scene === 's1' ? Math.min(t, 9.98) : PLATE.scene === 's2' ? Math.max(t, 10.0) : t;
+  const year = YEAR(tt);
   const night = shot.look.night || 0;
   const s = { ...st, t, year, night };
   shared.uTime.value = t;
