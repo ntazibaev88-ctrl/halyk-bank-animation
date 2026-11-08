@@ -618,7 +618,7 @@ export function buildShots(ctx) {
 
   /* ---- FINALE · Astana at sunrise from the west, along the boulevard; the flag; the golden 35 ---- */
   const sunrise = sunVec(4.5, 98);
-  const finaleLook = { exposure: 0.95, temp: 0.12, tint: -0.02, sat: 0.95, contrast: 1.1, lift: [0.0, 0.008, 0.022], gain: [1.03, 1.0, 0.96], shadowTint: [-0.005, 0.01, 0.04], highTint: [0.05, 0.025, 0.0], vignette: 0.42, grain: 0.035, bloom: 0.55, bloomThr: 1.05, rays: 0.41, raysThr: 1.0, flare: 0.40, halation: 0.12 };
+  const finaleLook = { exposure: 0.95, temp: 0.12, tint: -0.02, sat: 0.95, contrast: 1.1, lift: [0.0, 0.008, 0.022], gain: [1.03, 1.0, 0.96], shadowTint: [-0.005, 0.01, 0.04], highTint: [0.05, 0.025, 0.0], vignette: 0.42, grain: 0.035, bloom: 0.55, bloomThr: 1.05, rays: 0.22, raysThr: 1.35, flare: 0.40, halation: 0 };
   // final vantage: west of the city, looking east along the boulevard into the sunrise
   const FC = V3(-1760, 250, 230), FT = V3(0, 60, 0);
   const FF = FT.clone().sub(FC).normalize(), FL = new THREE.Vector3().crossVectors(V3(0, 1, 0), FF).normalize();
@@ -649,7 +649,7 @@ export function buildShots(ctx) {
     const hill = new THREE.Mesh(new THREE.SphereGeometry(80, 48, 16, 0, Math.PI * 2, 0, Math.PI / 2), new THREE.MeshLambertMaterial({ map: noiseTex(97, 128, [120, 110, 80], 25, [8, 8]) })); hill.scale.y = 0.18; hill.position.set(-2950, 0, -200); w.scene.add(hill);
     const crew = new THREE.Group(); crew.position.set(-2930, 14.2, -200); crew.rotation.y = Math.PI / 2 + 0.1; w.scene.add(crew);
     [[-2.4, 1.72, "short", false, 0], [-0.8, 1.64, "long", false, 0], [0.8, 1.8, "short", true, 0.9], [2.4, 1.68, "long", false, 0]].forEach(([x, h, hair, bag, raise], i) => { const p = A.person(400 + i, { height: h, hair, bag, raise }); p.position.set(x, 0, 0); p.rotation.y = (i - 1.5) * 0.08; crew.add(p); });
-    return { scene: w.scene, camera: c, look: { ...finaleLook, focus: 10, focusRange: 12, dof: 0.45, rays: 0.52, flare: 0.45 },
+    return { scene: w.scene, camera: c, look: { ...finaleLook, focus: 10, focusRange: 12, dof: 0.45, rays: 0.18, flare: 0.35 },
       update(lt, t) { A.setEnv(env.sunrise); w.flag.at(t, 96.0, w.anchor); w.water.material.uniforms.time.value = t;
         const cp = crew.position; path(c, lt, [[0, cp.clone().add(V3(-10, 0.6, 3)), cp.clone().add(V3(300, 30, -10))], [2.75, cp.clone().add(V3(-8.5, 1.0, 1.5)), cp.clone().add(V3(300, 34, 0))]]);
         this.sunWorld = c.position.clone().addScaledVector(sunrise, 20000); } };

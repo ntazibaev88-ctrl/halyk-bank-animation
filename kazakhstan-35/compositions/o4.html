@@ -9,10 +9,10 @@
     .year { font-family: "KZ Serif", serif; font-weight: 900; font-size: 150px; line-height: 1; letter-spacing: .01em;
       background: linear-gradient(180deg, #FFF3CC 0%, #F6C453 48%, #B47B22 100%); -webkit-background-clip: text; background-clip: text; color: transparent;
       filter: drop-shadow(0 6px 24px rgba(0,0,0,.55)); }
-    .kicker { font-family: "KZ Sans", sans-serif; font-weight: 700; font-size: 32px; letter-spacing: .28em; color: #FFE6A3; text-shadow: 0 2px 14px rgba(0,0,0,.8), 0 0 2px rgba(0,0,0,.6); }
+    .kicker { font-family: "KZ Sans", sans-serif; font-weight: 700; font-size: 32px; letter-spacing: .28em; color: #FFE6A3; background: rgba(6,16,36,.55); padding: 8px 20px 8px 28px; border-radius: 30px; text-shadow: 0 2px 14px rgba(0,0,0,.8), 0 0 2px rgba(0,0,0,.6); }
     .title { font-family: "KZ Sans", sans-serif; font-weight: 900; font-size: 84px; line-height: 1.02; color: #FFFFFF; letter-spacing: .015em;
       text-shadow: 0 4px 30px rgba(0,0,0,.65), 0 1px 3px rgba(0,0,0,.6); }
-    .big { font-family: "KZ Sans", sans-serif; font-weight: 900; font-size: 150px; line-height: 1; color: #FFFFFF; letter-spacing: .08em; text-shadow: 0 8px 40px rgba(0,0,0,.6); }
+    .big { font-family: "KZ Sans", sans-serif; font-weight: 900; font-size: 150px; line-height: 1; color: #FFFFFF; letter-spacing: .08em; text-shadow: 0 0 24px rgba(0,0,0,.75), 0 6px 40px rgba(0,0,0,.7), 0 2px 4px rgba(0,0,0,.7); }
     .g { color: #F6C453; }
     .chip { font-family: "KZ Sans", sans-serif; font-weight: 700; font-size: 32px; letter-spacing: .08em; color: #FFFFFF; padding: 14px 26px; border-radius: 40px;
       background: rgba(6,16,36,.62); border: 1.5px solid rgba(246,196,83,.85); box-shadow: 0 10px 30px rgba(0,0,0,.35); max-width: 900px; }
@@ -28,7 +28,7 @@
     .word { font-family: "KZ Sans", sans-serif; font-weight: 900; font-size: 50px; letter-spacing: .08em; color: #F6C453; text-shadow: 0 4px 24px rgba(0,0,0,.7); }
     .box { font-family: "KZ Sans", sans-serif; font-weight: 900; font-size: 44px; line-height: 1.14; color: #FFFFFF; padding: 18px 34px 20px; border-radius: 26px;
       background: rgba(6,16,36,.66); border: 2px solid rgba(246,196,83,.9); box-shadow: 0 16px 50px rgba(0,0,0,.4); }
-    .years { font-family: "KZ Sans", sans-serif; font-weight: 700; font-size: 32px; letter-spacing: .4em; color: #FFFFFF; text-shadow: 0 2px 16px rgba(0,0,0,.8); }
+    .years { font-family: "KZ Sans", sans-serif; font-weight: 700; font-size: 32px; letter-spacing: .4em; color: #FFFFFF; background: rgba(6,16,36,.55); padding: 8px 18px 8px 30px; border-radius: 30px; text-shadow: 0 2px 16px rgba(0,0,0,.8); }
   </style>
   <div id="root" data-composition-id="o4" data-width="1080" data-height="1920" data-duration="16.4">
     <div id="o4-k" class="clip ov" data-start="0.5" data-duration="3.1" data-track-index="1" style="top:260px"><div class="kicker">ТӘУЕЛСІЗДІК ЖЫЛДАРЫ</div></div>
@@ -36,7 +36,7 @@
     <div id="o4-c0" class="clip ov" data-start="0.9" data-duration="2.7" data-track-index="1" style="top:1010px"><div class="chip">МҰНАЙ · ГАЗ</div></div>
     <div id="o4-c1" class="clip ov" data-start="4.0" data-duration="2.5" data-track-index="1" style="top:300px"><div class="chip">МЕТАЛЛУРГИЯ</div></div>
     <div id="o4-c2" class="clip ov" data-start="6.75" data-duration="1.25" data-track-index="1" style="top:300px"><div class="chip">ТАУ-КЕН ӨНДІРІСІ</div></div>
-    <div id="o4-f" class="clip ov" data-start="6.9" data-duration="1.1" data-track-index="1" style="top:372px"><div class="fact">ҚАЗАҚСТАН — ӘЛЕМДЕГІ №1 УРАН ӨНДІРУШІ (2009 ЖЫЛДАН БЕРІ)</div></div>
+    <div id="o4-f" class="clip ov" data-start="5.1" data-duration="2.9" data-track-index="1" style="top:372px"><div class="fact">ҚАЗАҚСТАН — ӘЛЕМДЕГІ №1 УРАН ӨНДІРУШІ (2009 ЖЫЛДАН БЕРІ)</div></div>
     <div id="o4-c3" class="clip ov" data-start="8.25" data-duration="1.25" data-track-index="1" style="top:300px"><div class="chip">АСТЫҚ · АУЫЛ ШАРУАШЫЛЫҒЫ</div></div>
     <div id="o4-c4" class="clip ov" data-start="9.75" data-duration="2.75" data-track-index="1" style="top:300px"><div class="chip">ТЕМІР ЖОЛ · КӨЛІК ДӘЛІЗДЕРІ</div></div>
     <div id="o4-t2" class="clip ov" data-start="12.75" data-duration="3.45" data-track-index="1" style="top:260px"><div class="title">ЕҢБЕКҚОР<br /><span class="g">ХАЛЫҚ</span></div></div>
@@ -53,7 +53,7 @@
   inOut("#o4-c0 > div", 0.9, 3.6, "chip", false);
   inOut("#o4-c1 > div", 4.0, 6.5, "chip", false);
   inOut("#o4-c2 > div", 6.75, 8.0, "chip", false);
-  inOut("#o4-f > div", 6.9, 8.0, "fact", false);
+  inOut("#o4-f > div", 5.1, 8.0, "fact", false);
   inOut("#o4-c3 > div", 8.25, 9.5, "chip", false);
   inOut("#o4-c4 > div", 9.75, 12.5, "chip", false);
   inOut("#o4-t2 > div", 12.75, 16.2, "title", false);
