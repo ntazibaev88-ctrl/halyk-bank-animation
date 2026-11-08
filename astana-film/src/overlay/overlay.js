@@ -126,7 +126,7 @@ export function update(t, D) {
 
   // main title (S1 -> into S2)
   const T1 = cues.title1;
-  const tw = win(t, T1 - 0.15, 12.6, 0.2, 0.9);
+  const tw = win(t, T1 - 0.15, 11.55, 0.2, 0.55);
   D.title.style.opacity = tw;
   [...D.title.querySelectorAll('.word span')].forEach((s, i) => {
     const k = easeOut(smooth(T1 - 0.1 + i * 0.06, T1 + 0.5 + i * 0.06, t));
@@ -135,10 +135,10 @@ export function update(t, D) {
   const ts = smooth(T1 + 0.45, T1 + 1.1, t);
   D.title.querySelector('.sub').style.opacity = ts;
   D.title.querySelector('.sub').style.letterSpacing = `${0.32 + 0.08 * ts}em`;
-  D.title.style.transform = `scale(${1.04 - 0.04 * smooth(T1, 12.5, t)})`;
+  D.title.style.transform = `scale(${1.04 - 0.04 * smooth(T1, 11.6, t)})`;
 
   // history
-  const hv = win(t, 11.2, 30.0, 0.6, 0.6);
+  const hv = win(t, 11.5, 30.0, 0.5, 0.6);
   D.hist.style.opacity = hv;
   let ai = -1;
   HISTORY.forEach((h, i) => { if (t >= cues.years[h.year] - 0.1) ai = i; });
