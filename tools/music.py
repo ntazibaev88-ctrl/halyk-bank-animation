@@ -29,6 +29,7 @@ n_chords = int(np.ceil(T / chord_len)) + 1
 def section_level(t):
     """energy curve driven by scenes: intro soft, build through history, peak on population/LRT, resolve."""
     pts = [(0, .6), (7, .55), (18, .7), (40, .8), (53, .85), (67, .9), (82, 1.0), (99, .85), (107, .6), (110, .4)]
+    pts = [(x * T / 110, y) for x, y in pts]
     xs, ys = zip(*pts); return np.interp(t, xs, ys)
 
 # Pads

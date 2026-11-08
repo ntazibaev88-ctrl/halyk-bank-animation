@@ -1,7 +1,8 @@
 // Scene engine: render(t) draws the full 1080x1920 frame for time t (seconds) as SVG.
 'use strict';
 
-const W = 1080, HGT = 1920, GROUND = 1240;
+const W = 1080, HGT = 1920, GROUND = 1100;
+let revEnd = 3;
 const { clamp, lerp, prog, easeOut, easeInOut, back, rnd, f } = H;
 let TL = null;
 
@@ -109,6 +110,17 @@ function ground(preset, u, opts = {}) {
       s += `<g transform="translate(${f(x)} ${GROUND + 8}) scale(${f(sc)})"><rect x="-3" y="-30" width="6" height="30" fill="#3B2F2A"/><ellipse cx="0" cy="-48" rx="26" ry="30" fill="${preset === 'night' ? '#1E3B2E' : preset === 'dusk' ? '#3E3A55' : '#3F7A45'}"/><ellipse cx="-7" cy="-56" rx="12" ry="12" fill="#FFFFFF" opacity=".08"/></g>`;
     }
   }
+  {
+    const ry = GROUND + 380;
+    s += `<rect x="-200" y="${ry}" width="${W + 400}" height="96" fill="${preset === 'night' ? '#141C2C' : '#3A4150'}"/>`;
+    for (let i = 0; i < 12; i++) s += `<rect x="${f(((i * 120 - u * 90) % 1440 + 1440) % 1440 - 180)}" y="${ry + 46}" width="60" height="5" fill="#E6E6E6" opacity=".55"/>`;
+    const cr = rnd(23), cols = ['#E8443A', '#F5F5F5', '#2F7DD1', '#F5B820', '#3A3F4A'];
+    for (let i = 0; i < 7; i++) {
+      const lane = i % 2, sp = (lane ? -1 : 1) * (110 + cr() * 80), x0 = cr() * 1600;
+      const x = ((x0 + u * sp) % 1600 + 1600) % 1600 - 260, y = ry + (lane ? 14 : 58), c = cols[i % 5];
+      s += `<g transform="translate(${f(x)} ${y})"><rect x="0" y="0" width="86" height="26" rx="9" fill="${c}"/><rect x="18" y="-14" width="48" height="18" rx="6" fill="${c}"/><rect x="24" y="-10" width="16" height="11" rx="2" fill="#BFD9F2"/><rect x="44" y="-10" width="16" height="11" rx="2" fill="#BFD9F2"/><circle cx="20" cy="27" r="7" fill="#15181E"/><circle cx="66" cy="27" r="7" fill="#15181E"/>${preset === 'night' || preset === 'dusk' ? `<circle cx="${lane ? 2 : 84}" cy="12" r="5" fill="#FFF3B0"/>` : ''}</g>`;
+    }
+  }
   if (opts.trees !== false) {
     const dx2 = -u * 48;
     for (let i = 0; i < 10; i++) {
@@ -181,16 +193,16 @@ function brand(t) {
 const YEARS = [1997, 1998, 2002, 2004, 2006, 2010, 2012, 2017, 2019, 2022, 2026];
 function timelineBar(pos, alpha) {
   if (alpha <= 0) return '';
-  const x0 = 90, x1 = 990, y = 1545;
+  const x0 = 90, x1 = 870, y = 1290;
   const X = (i) => x0 + (x1 - x0) * i / (YEARS.length - 1);
   const px = lerp(X(Math.floor(pos)), X(Math.min(YEARS.length - 1, Math.floor(pos) + 1)), pos - Math.floor(pos));
-  let s = `<g opacity="${f(alpha)}"><rect x="40" y="${y - 52}" width="1000" height="104" rx="26" fill="rgba(6,14,34,.55)"/>`;
+  let s = `<g opacity="${f(alpha)}"><rect x="40" y="${y - 36}" width="880" height="76" rx="22" fill="rgba(6,14,34,.55)"/>`;
   s += `<line x1="${x0}" y1="${y - 8}" x2="${x1}" y2="${y - 8}" stroke="rgba(255,255,255,.3)" stroke-width="4" stroke-linecap="round"/>`;
   s += `<line x1="${x0}" y1="${y - 8}" x2="${f(px)}" y2="${y - 8}" stroke="#FFD24A" stroke-width="5" stroke-linecap="round"/>`;
   YEARS.forEach((yr, i) => {
     const act = 1 - clamp(Math.abs(pos - i)), done = i <= pos + 0.01;
     s += `<circle cx="${f(X(i))}" cy="${y - 8}" r="${f(7 + 6 * act)}" fill="${done ? '#FFD24A' : '#0B1A3A'}" stroke="#FFD24A" stroke-width="3"/>`;
-    s += `<text x="${f(X(i))}" y="${y + 34}" font-size="${f(20 + 8 * act)}" font-weight="${act > .5 ? 800 : 600}" fill="${act > .5 ? '#FFD24A' : '#FFFFFF'}" opacity="${f(0.65 + 0.35 * act)}" text-anchor="middle">${yr}</text>`;
+    s += `<text x="${f(X(i))}" y="${y + 28}" font-size="${f(19 + 7 * act)}" font-weight="${act > .5 ? 800 : 600}" fill="${act > .5 ? '#FFD24A' : '#FFFFFF'}" opacity="${f(0.65 + 0.35 * act)}" text-anchor="middle">${yr}</text>`;
   });
   return s + '</g>';
 }
@@ -212,11 +224,11 @@ function subtitles(t) {
   const sub = TL.subs.find((s) => t >= s.start - 0.05 && t < s.end + 0.12);
   if (!sub) return '';
   const a = clamp(Math.min((t - sub.start + 0.05) / 0.12, (sub.end + 0.12 - t) / 0.12));
-  const lines = wrapLines(sub.text);
-  const size = 46, lh = 60, y0 = 1390 - (lines.length - 1) * lh / 2;
+  const lines = wrapLines(sub.text, 27);
+  const size = 44, lh = 58, y0 = 1180 - (lines.length - 1) * lh / 2;
   const w = Math.max(...lines.map((l) => textW(l, size, 600))) + 70;
-  let s = `<g opacity="${f(a)}"><rect x="${f(540 - w / 2)}" y="${f(y0 - lh / 2 - 28)}" width="${f(w)}" height="${lines.length * lh + 34}" rx="22" fill="rgba(4,10,26,.72)"/>`;
-  lines.forEach((l, i) => { s += `<text x="540" y="${f(y0 + i * lh + 4)}" font-size="${size}" font-weight="600" fill="#FFFFFF" text-anchor="middle">${esc(l)}</text>`; });
+  let s = `<g opacity="${f(a)}"><rect x="${f(500 - w / 2)}" y="${f(y0 - lh / 2 - 28)}" width="${f(w)}" height="${lines.length * lh + 34}" rx="22" fill="rgba(4,10,26,.72)"/>`;
+  lines.forEach((l, i) => { s += `<text x="500" y="${f(y0 + i * lh + 4)}" font-size="${size}" font-weight="600" fill="#FFFFFF" text-anchor="middle">${esc(l)}</text>`; });
   return s + '</g>';
 }
 
@@ -249,8 +261,10 @@ function landmarkScene(u, sc, o) {
   s += `<g>${skylineLayer(CITY.far, o.cityYear, P.far, P.lit * 0.6, camX * 0.25 + 40, 1, prog(u, 0.2, 2.5))}</g>`;
   s += `<g>${skylineLayer(CITY.near.filter((b) => Math.abs(b.x + b.w / 2 - 540) > (o.gap || 330)), o.cityYear, P.near, P.lit, camX * 0.5, 0.9, prog(u, 0.2, 2.5))}</g>`;
   if (o.extraBack) s += o.extraBack(u);
-  const p = prog(u, o.revealAt ?? 0.2, (o.revealAt ?? 0.2) + (o.revealDur ?? 2.4));
-  s += `<g transform="translate(540 ${GROUND}) scale(.84) translate(-540 ${-GROUND})">`;
+  const rd = o.revealDur ?? clamp(d * 0.38, 2.4, 3.6);
+  const p = prog(u, o.revealAt ?? 0.2, (o.revealAt ?? 0.2) + rd);
+  revEnd = (o.revealAt ?? 0.2) + rd;
+  s += `<g transform="translate(540 ${GROUND}) scale(.8) translate(-540 ${-GROUND})">`;
   s += reveal(o.draw(u), 540 + (o.dx || 0), GROUND + 2, o.scale || 1, o.h, p);
   if (o.extraFront) s += o.extraFront(u, p);
   s += '</g>';
@@ -270,18 +284,19 @@ function dimLine(x, yTop, yBot, label, k) {
 // ---------------------------------------------------------------- scenes
 const SCENES = {};
 
-SCENES.title = (u, sc) => {
-  const P = SKY.dusk, cam = 1.08 - 0.08 * easeInOut(prog(u, 0, 7));
+SCENES.title = (u0, sc) => {
+  const u = u0 + 1.4;
+  const P = SKY.dusk, cam = 1.08 - 0.08 * easeInOut(prog(u0, 0, 7.5));
   let s = sky('dusk', u, [540, 900]);
   s += clouds(u, 'dusk', 5, 4);
   s += `<g transform="translate(540 ${GROUND}) scale(${f(cam)}) translate(-540 ${-GROUND})">`;
-  s += `<g>${skylineLayer(CITY.far, 2026, P.far, .8, 30 - u * 6, 1.1, 1)}</g>`;
+  s += `<g>${skylineLayer(CITY.far, 2026, P.far, .8, 30 - u0 * 6, 1.1, 1)}</g>`;
   const row = [['palace', 80, .3, -10], ['akorda', 225, .27, -12], ['baiterek', 350, .42, -14], ['abudhabi', 480, .46, -16], ['khanshatyr', 625, .36, -18], ['hazrat', 770, .3, -20], ['grandmosque', 915, .3, -22], ['nuralem', 1045, .3, -24]];
   row.forEach(([n, x, scl, sp], i) => {
     const k = easeOut(prog(u, 0.1 + i * 0.12, 1.3 + i * 0.12));
-    s += `<g transform="translate(${f(x + sp * u * 0.4)} ${f(GROUND + 2 + 120 * (1 - k))}) scale(${scl})" opacity="${f(k)}">${LM[n](u, 0.8)}</g>`;
+    s += `<g transform="translate(${f(x + sp * u0 * 0.4)} ${f(GROUND + 2 + 120 * (1 - k))}) scale(${scl})" opacity="${f(k)}">${LM[n](u, 0.8)}</g>`;
   });
-  s += `<g>${skylineLayer(CITY.near.filter((b, i) => i % 3 === 0), 2026, P.near, 1, -u * 14, 0.55, 1)}</g>`;
+  s += `<g>${skylineLayer(CITY.near.filter((b, i) => i % 3 === 0), 2026, P.near, 1, -u0 * 14, 0.55, 1)}</g>`;
   s += ground('dusk', u);
   s += '</g>';
   const k2 = easeOut(prog(u, 0.9, 2.0)), k3 = easeOut(prog(u, 1.4, 2.6));
@@ -299,7 +314,7 @@ SCENES.title = (u, sc) => {
 
 // Kazakhstan outline (lon, lat), simplified
 const KZ = [[46.5,48.4],[47.6,50.4],[48.7,50.6],[50.8,51.6],[52.3,51.8],[55.7,50.6],[58.3,51.1],[59.9,50.8],[61.4,50.8],[61.0,52.0],[60.0,52.4],[61.0,53.0],[62.0,53.9],[65.2,54.6],[68.2,55.0],[69.2,55.4],[70.8,55.3],[73.4,53.5],[76.3,54.1],[77.8,53.3],[80.0,50.8],[83.4,51.0],[85.1,50.1],[87.3,49.1],[85.7,47.1],[83.0,47.2],[82.4,45.5],[80.1,45.0],[80.0,42.6],[77.6,42.9],[75.6,42.8],[74.2,43.3],[71.8,42.9],[70.9,42.3],[69.1,41.4],[68.6,40.7],[66.0,42.0],[66.0,43.0],[64.9,43.7],[62.0,43.5],[58.6,45.6],[56.0,45.0],[56.0,41.3],[55.0,41.3],[52.8,41.5],[52.4,42.3],[52.7,42.6],[51.3,43.2],[50.8,44.6],[51.3,45.4],[53.0,45.3],[53.2,46.2],[51.2,47.0],[49.2,46.4],[48.6,46.6],[48.9,47.6],[47.0,48.0]];
-const proj = ([lon, lat]) => [70 + (lon - 46.5) * 23.1, 1260 - (lat - 40.5) * 34.5];
+const proj = ([lon, lat]) => [70 + (lon - 46.5) * 23.1, 1030 - (lat - 40.5) * 34.5];
 
 SCENES.y1997 = (u, sc) => {
   const d = sc.end - sc.start, sp = sc.sentences[0];
@@ -318,7 +333,7 @@ SCENES.y1997 = (u, sc) => {
   s += `<path d="M${f(ak[0] - 90)} ${f(ak[1] - 30)} C ${f(ak[0] - 30)} ${f(ak[1] + 10)} ${f(ak[0] + 20)} ${f(ak[1] - 20)} ${f(ak[0] + 110)} ${f(ak[1] + 30)}" stroke="#5FC8FF" stroke-width="3" fill="none" opacity="${f(0.6 * mk)}"/>`;
   // Almaty
   const ka = easeOut(prog(u, 0.8, 1.6));
-  s += `<circle cx="${f(al[0])}" cy="${f(al[1])}" r="${f(12 * ka)}" fill="#FFFFFF"/><text x="${f(al[0] - 20)}" y="${f(al[1] + 56)}" font-size="40" font-weight="700" fill="#FFFFFF" opacity="${f(ka)}" text-anchor="middle">Алматы</text>`;
+  s += `<circle cx="${f(al[0])}" cy="${f(al[1])}" r="${f(12 * ka)}" fill="#FFFFFF"/><text x="${f(al[0] - 30)}" y="${f(al[1] - 26)}" font-size="40" font-weight="700" fill="#FFFFFF" opacity="${f(ka)}" text-anchor="middle">Алматы</text>`;
   // arc Almaty → Akmola
   const kArc = easeInOut(prog(u, sp.start - sc.start + 1.5, sp.start - sc.start + 4.2));
   const c = [(al[0] + ak[0]) / 2 + 210, (al[1] + ak[1]) / 2 + 10];
@@ -372,7 +387,7 @@ SCENES.y1998 = (u, sc) => {
 };
 
 SCENES.baiterek = (u, sc) => landmarkScene(u, sc, { sky: 'golden', sun: [880, 820], cityYear: 2002, draw: () => LM.baiterek(u), h: LM.baiterek.h, scale: 0.98, revealAt: 0.2,
-  extraFront: (uu) => dimLine(860, GROUND - 0.98 * 870, GROUND - 2, '97 м', prog(uu, 2.0, 2.8)) })
+  extraFront: (uu) => dimLine(860, GROUND - 0.98 * 870, GROUND - 2, '97 м', prog(uu, revEnd + 0.1, revEnd + 0.9)) })
   + header(u, sc, 2002, 'Бәйтерек', [{ text: '97 метр' }, { text: 'алтын шар', at: 1.4 }]);
 
 SCENES.akorda = (u, sc) => landmarkScene(u, sc, { sky: 'day', sun: [180, 640], cityYear: 2004, draw: () => LM.akorda(), h: LM.akorda.h, scale: 1.05, revealAt: 0.2, gap: 470,
@@ -386,8 +401,8 @@ SCENES.akorda = (u, sc) => landmarkScene(u, sc, { sky: 'day', sun: [180, 640], c
 
 SCENES.palace = (u, sc) => landmarkScene(u, sc, { sky: 'day', sun: [860, 620], cityYear: 2006, draw: () => LM.palace(), h: LM.palace.h, scale: 1.12, revealAt: 0.2, seed: 9, gap: 520,
   extraFront: (uu) => {
-    const t2 = 1.6;
-    let s = dimLine(940, GROUND - 1.12 * 720, GROUND - 1.12 * 70, '62 м', prog(uu, 2.0, 2.8));
+    const t2 = sc.sentences[1].start - sc.start;
+    let s = dimLine(940, GROUND - 1.12 * 720, GROUND - 1.12 * 70, '62 м', prog(uu, revEnd + 0.1, revEnd + 0.9));
     // doves circling the apex during the 2nd sentence
     const kd = prog(uu, t2 - 0.4, t2 + 0.6);
     for (let i = 0; i < 5; i++) {
@@ -400,8 +415,8 @@ SCENES.palace = (u, sc) => landmarkScene(u, sc, { sky: 'day', sun: [860, 620], c
 
 SCENES.khanshatyr = (u, sc) => landmarkScene(u, sc, { sky: 'dusk', sun: [200, 900], cityYear: 2010, draw: () => LM.khanshatyr(u, prog(u, 4, 6)), h: LM.khanshatyr.h, scale: 0.95, revealAt: 0.2, seed: 4,
   extraFront: (uu) => {
-    const t2 = 99;
-    let s = dimLine(980, GROUND - 0.95 * 905, GROUND - 2, '150 м', prog(uu, 2.0, 2.8));
+    const t2 = sc.sentences[1].start - sc.start;
+    let s = dimLine(980, GROUND - 0.95 * 905, GROUND - 2, '150 м', prog(uu, revEnd + 0.1, revEnd + 0.9));
     const icons = [['🌳', 'саябақ'], ['🛍', 'дүкендер'], ['🏖', 'жағажай']];
     icons.forEach(([ic, label], i) => {
       const kk = back(prog(uu, t2 + 0.3 + i * 0.5, t2 + 0.8 + i * 0.5));
@@ -414,7 +429,7 @@ SCENES.khanshatyr = (u, sc) => landmarkScene(u, sc, { sky: 'dusk', sun: [200, 90
   + header(u, sc, 2010, 'Хан Шатыр', [{ text: '150 метр' }, { text: 'сәулетші Норман Фостер', at: 1.2 }]);
 
 SCENES.hazrat = (u, sc) => landmarkScene(u, sc, { sky: 'golden', sun: [180, 760], cityYear: 2012, draw: () => LM.hazrat(), h: LM.hazrat.h, scale: 1.08, revealAt: 0.2, seed: 12, gap: 520,
-  extraFront: (uu) => dimLine(1000, GROUND - 1.08 * 720, GROUND - 2, '77 м', prog(uu, 2.0, 2.8)) })
+  extraFront: (uu) => dimLine(1000, GROUND - 1.08 * 720, GROUND - 2, '77 м', prog(uu, revEnd + 0.1, revEnd + 0.9)) })
   + header(u, sc, 2012, 'Әзірет Сұлтан мешіті', [{ text: '4 мұнара' }, { text: '77 метр', at: 1.2 }]);
 
 SCENES.expo = (u, sc) => landmarkScene(u, sc, { sky: 'day', sun: [900, 560], cityYear: 2017, draw: () => LM.nuralem(u), h: LM.nuralem.h, scale: 1.0, revealAt: 0.2, seed: 21, gap: 600,
@@ -428,7 +443,7 @@ SCENES.expo = (u, sc) => landmarkScene(u, sc, { sky: 'day', sun: [900, 560], cit
       + `<circle cx="${f(540 - w)}" cy="${cy}" r="8" fill="#FFD24A"/><circle cx="${f(540 + w)}" cy="${cy}" r="8" fill="#FFD24A"/>`
       + `<rect x="430" y="${cy - 100}" width="220" height="70" rx="16" fill="rgba(8,20,48,.8)"/><text x="540" y="${cy - 52}" font-size="44" font-weight="800" fill="#FFD24A" text-anchor="middle">Ø 80 м</text></g>`;
   } })
-  + header(u, sc, 2017, 'ЭКСПО-2017 · Нұр Әлем', [{ text: '«Болашақ энергиясы»' }, { text: 'шар Ø 80 м', at: sc.sentences[1].start - sc.start + 0.4 }]);
+  + header(u, sc, 2017, 'EXPO-2017 · Нұр Әлем', [{ text: '«Болашақ энергиясы»' }, { text: 'шар Ø 80 м', at: sc.sentences[1].start - sc.start + 0.4 }]);
 
 // 2019: rename to Nur-Sultan, then Abu Dhabi Plaza rises
 SCENES.y2019 = (u, sc) => {
@@ -452,14 +467,14 @@ SCENES.y2019 = (u, sc) => {
 SCENES.y2022 = (u, sc) => {
   const t2 = sc.sentences[1].start - sc.start;
   const signA = 1 - prog(u, t2 - 0.7, t2);
-  let s = landmarkScene(u, sc, { sky: 'morning', sun: [880, 640], cityYear: 2022, draw: () => LM.grandmosque(), h: LM.grandmosque.h, scale: 0.96, revealAt: t2 - 0.3, revealDur: 2.0, seed: 40, gap: 560,
+  let s = landmarkScene(u, sc, { sky: 'morning', sun: [880, 640], cityYear: 2022, draw: () => LM.grandmosque(), h: LM.grandmosque.h, scale: 0.96, revealAt: t2 - 0.3, revealDur: 2.6, seed: 40, gap: 560,
     extraFront: (uu) => dimLine(1010, GROUND - 0.96 * 880, GROUND - 2, '130 м', prog(uu, t2 + 1.8, t2 + 2.6)) });
   s += `<rect x="40" y="${700}" width="1000" height="200" rx="30" fill="rgba(8,20,48,.62)" opacity="${f(signA * easeOut(prog(u, 0.3, 0.9)))}"/>`;
   s += nameFlip(540, 845, 'НҰР-СҰЛТАН', 'АСТАНА', prog(u, 1.0, 3.0), 118, signA * easeOut(prog(u, 0.3, 0.9)));
   const tA = 1 - prog(u, t2 - 0.4, t2), tB = prog(u, t2, t2 + 0.6);
   s += header(u, sc, 2022, null, []);
   s += `<text x="72" y="390" font-size="62" font-weight="700" fill="#FFFFFF" opacity="${f(tA * easeOut(prog(u, .35, 1)))}" filter="url(#tshadow)">Нұр-Сұлтан → Астана</text>`;
-  s += `<text x="72" y="390" font-size="56" font-weight="700" fill="#FFFFFF" opacity="${f(tB)}" filter="url(#tshadow)">Астананың Ұлы мешіті</text>`;
+  s += `<text x="72" y="390" font-size="56" font-weight="700" fill="#FFFFFF" opacity="${f(tB)}" filter="url(#tshadow)">Астана Бас мешіті</text>`;
   s += chip(72, 458, 'қыркүйек 2022', prog(u, 0.9, 1.4) * tA);
   s += chip(72, 458, 'Орталық Азиядағы ең ірі', prog(u, t2 + 0.6, t2 + 1.1));
   return s;
@@ -485,23 +500,23 @@ SCENES.population = (u, sc) => {
   // counter
   const kc = easeOut(prog(u, 0, 0.8));
   s += `<g opacity="${f(kc)}" filter="url(#tshadow)">`;
-  s += `<text x="540" y="560" font-size="46" font-weight="700" fill="#FFD24A" text-anchor="middle" letter-spacing="2">${esc(yearLabel)}</text>`;
+  s += `<text x="540" y="470" font-size="46" font-weight="700" fill="#FFD24A" text-anchor="middle" letter-spacing="2">${esc(yearLabel)}</text>`;
   const big = fmtNum(val);
-  s += `<text x="540" y="740" font-size="${big.length > 9 ? 158 : 170}" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="-3">${big}</text>`;
-  s += `<text x="540" y="810" font-size="44" font-weight="600" fill="#FFFFFF" opacity=".85" text-anchor="middle">тұрғын</text></g>`;
+  s += `<text x="540" y="630" font-size="${big.length > 9 ? 150 : 160}" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="-3">${big}</text>`;
+  s += `<text x="540" y="695" font-size="44" font-weight="600" fill="#FFFFFF" opacity=".85" text-anchor="middle">тұрғын</text></g>`;
   // bar chart
   const bars = [['1998', 326000, S[0]], ['2022', 1262000, S[1]], ['2026', 1700385, S[2]]];
   bars.forEach(([lab, v, t0], i) => {
     const k = easeOut(prog(u, t0 + 0.2, t0 + 2.2));
     if (k <= 0) return;
-    const x = 300 + i * 200, hh = 300 * v / 1700385 * k;
-    s += `<rect x="${x - 55}" y="${f(1180 - hh)}" width="110" height="${f(hh)}" rx="10" fill="${i === 2 ? '#FFD24A' : '#5FC8FF'}" opacity=".92"/>`;
-    s += `<text x="${x}" y="1225" font-size="34" font-weight="700" fill="#FFFFFF" text-anchor="middle" filter="url(#tshadow)">${lab}</text>`;
-    s += `<text x="${x}" y="${f(1165 - hh)}" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle" opacity="${f(k)}">${v >= 1e6 ? (v / 1e6).toFixed(2).replace('.', ',') + ' млн' : Math.round(v / 1000) + ' мың'}</text>`;
+    const x = 300 + i * 200, hh = 240 * v / 1700385 * k;
+    s += `<rect x="${x - 55}" y="${f(1040 - hh)}" width="110" height="${f(hh)}" rx="10" fill="${i === 2 ? '#FFD24A' : '#5FC8FF'}" opacity=".92"/>`;
+    s += `<text x="${x}" y="1074" font-size="34" font-weight="700" fill="#FFFFFF" text-anchor="middle" filter="url(#tshadow)">${lab}</text>`;
+    s += `<text x="${x}" y="${f(1025 - hh)}" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle" opacity="${f(k)}">${v >= 1e6 ? (v / 1e6).toFixed(2).replace('.', ',') + ' млн' : Math.round(v / 1000) + ' мың'}</text>`;
   });
   // ×5 badge
   const kx = back(prog(u, S[3] + 0.1, S[3] + 0.7));
-  if (kx > 0) s += `<g transform="translate(870 960) scale(${f(kx)}) rotate(-8)"><circle r="96" fill="#FFD24A"/><text y="10" font-size="62" font-weight="800" fill="#0B1A3A" text-anchor="middle">×5,2</text><text y="52" font-size="24" font-weight="700" fill="#0B1A3A" text-anchor="middle">өсім</text></g>`;
+  if (kx > 0) s += `<g transform="translate(830 840) scale(${f(kx)}) rotate(-8)"><circle r="96" fill="#FFD24A"/><text y="10" font-size="62" font-weight="800" fill="#0B1A3A" text-anchor="middle">×5,2</text><text y="52" font-size="24" font-weight="700" fill="#0B1A3A" text-anchor="middle">өсім</text></g>`;
   s += header(u, sc, null, null);
   s += `<text x="72" y="300" font-size="92" font-weight="800" fill="#FFFFFF" opacity="${f(easeOut(prog(u, 0.05, 0.7)))}" filter="url(#tshadow)">ХАЛЫҚ САНЫ</text>`;
   s += `<rect x="72" y="330" width="${f(260 * easeOut(prog(u, 0.3, 1)))}" height="8" rx="4" fill="#FFD24A"/>`;
@@ -509,7 +524,7 @@ SCENES.population = (u, sc) => {
 };
 
 // LRT route: schematic polyline from Airport to Nurly Zhol, 18 stations
-const LRT_ROUTE = [[120, 800], [200, 730], [260, 680], [300, 630], [330, 585], [380, 555], [450, 540], [520, 535], [575, 565], [600, 610], [630, 660], [650, 700], [660, 740]];
+const LRT_ROUTE = [[120, 745], [200, 698], [260, 662], [300, 626], [330, 592], [380, 570], [450, 560], [520, 556], [575, 576], [600, 606], [630, 640], [650, 668], [660, 694]];
 function polyLen(pts) { let L = 0; for (let i = 1; i < pts.length; i++) L += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]); return L; }
 function polyAt(pts, k) {
   let L = polyLen(pts) * k;
@@ -532,7 +547,7 @@ SCENES.lrt = (u, sc) => {
   s += `<g>${skylineLayer(CITY.near.filter((b, i) => i % 2), 2026, P.near, 0, -u * 12, 0.7, 1)}</g>`;
   s += ground('morning', u, { trees: false });
   // elevated guideway (viaduct)
-  const deckY = GROUND - 150, build = easeInOut(prog(u, 0.2, 2.2));
+  const deckY = GROUND - 110, build = easeInOut(prog(u, 0.2, 2.2));
   let via = '';
   const off = -(u * 40) % 220;
   for (let x = off - 220; x < W + 220; x += 220) {
@@ -545,7 +560,7 @@ SCENES.lrt = (u, sc) => {
   via += `<rect x="-100" y="${deckY - 14}" width="${f(dw)}" height="8" fill="#C5CCD6"/>`;
   // station canopy
   const stX = 780 - u * 40 % 2000;
-  via += `<g transform="translate(${f(760)} ${deckY - 6})" opacity="${f(build)}"><rect x="-170" y="-150" width="340" height="14" rx="6" fill="#FFFFFF"/><path d="M-180 -150 Q 0 -200 180 -150" fill="#00A7C8" opacity=".9"/><rect x="-150" y="-140" width="8" height="134" fill="#B9C2CE"/><rect x="142" y="-140" width="8" height="134" fill="#B9C2CE"/><rect x="-170" y="-6" width="340" height="14" fill="#D4DAE2"/></g>`;
+  via += `<g transform="translate(${f(760)} ${deckY - 6}) scale(.8)" opacity="${f(build)}"><rect x="-170" y="-150" width="340" height="14" rx="6" fill="#FFFFFF"/><path d="M-180 -150 Q 0 -200 180 -150" fill="#00A7C8" opacity=".9"/><rect x="-150" y="-140" width="8" height="134" fill="#B9C2CE"/><rect x="142" y="-140" width="8" height="134" fill="#B9C2CE"/><rect x="-170" y="-6" width="340" height="14" fill="#D4DAE2"/></g>`;
   s += via;
   // driverless train glides in and stops at the station, then departs
   const stopX = 930 - 776;
@@ -555,10 +570,10 @@ SCENES.lrt = (u, sc) => {
   // route map card (top)
   const km = easeOut(prog(u, 0.6, 1.4));
   s += `<g opacity="${f(km)}" transform="translate(0 ${f(30 * (1 - km))})">`;
-  s += `<rect x="40" y="500" width="640" height="372" rx="28" fill="rgba(6,16,40,.82)"/>`;
+  s += `<rect x="40" y="500" width="640" height="300" rx="28" fill="rgba(6,16,40,.82)"/>`;
   s += `<text x="70" y="548" font-size="28" font-weight="700" fill="#9FDCF5" letter-spacing="2">ЖЕЛІ СЫЗБАСЫ</text>`;
   // Ishim river on the schematic
-  s += `<path d="M60 700 C 200 640 300 620 420 680 S 600 800 670 760" stroke="#3E86C8" stroke-width="14" fill="none" opacity=".55" stroke-linecap="round"/>`;
+  s += `<path d="M60 680 C 200 630 300 615 420 655 S 600 745 670 720" stroke="#3E86C8" stroke-width="14" fill="none" opacity=".55" stroke-linecap="round"/>`;
   const lineK = easeInOut(prog(u, S[1] - 0.2, S[1] + 2.4));
   const pts = LRT_ROUTE.map(([x, y]) => [x, y]);
   const Lp = polyLen(pts);
@@ -570,8 +585,8 @@ SCENES.lrt = (u, sc) => {
     s += `<circle cx="${f(x)}" cy="${f(y)}" r="${end ? 13 : 8}" fill="${end ? '#FFD24A' : '#FFFFFF'}" stroke="#00C2E0" stroke-width="4"/>`;
   }
   const kEnds = prog(u, S[3] - 0.2, S[3] + 0.5);
-  s += `<text x="150" y="812" font-size="30" font-weight="700" fill="#FFD24A" opacity="${f(Math.max(kEnds, 0.0))}">✈ Әуежай</text>`;
-  s += `<text x="520" y="790" font-size="30" font-weight="700" fill="#FFD24A" text-anchor="middle" opacity="${f(kEnds)}">Нұрлы жол 🚉</text>`;
+  s += `<text x="150" y="784" font-size="28" font-weight="700" fill="#FFD24A" opacity="${f(Math.max(kEnds, 0.0))}">✈ Әуежай</text>`;
+  s += `<text x="600" y="738" font-size="28" font-weight="700" fill="#FFD24A" text-anchor="middle" opacity="${f(kEnds)}">Нұрлы жол 🚉</text>`;
   if (kEnds > 0 && kEnds < 1.01) {
     const pk = (u - S[3]) * 0.45 % 1;
     const [x, y] = polyAt(pts, clamp(pk));
@@ -583,18 +598,18 @@ SCENES.lrt = (u, sc) => {
   cards.forEach(([big, small, t0], i) => {
     const k = back(prog(u, t0, t0 + 0.5));
     if (k <= 0) return;
-    const y = 500 + i * 94;
-    s += `<g transform="translate(${f(700 + 360 * (1 - clamp(k)))} ${y})" opacity="${f(clamp(k * 1.5))}"><rect width="340" height="84" rx="20" fill="#FFFFFF" opacity=".94"/><rect width="10" height="84" rx="5" fill="#00A7C8"/>`
-      + `<text x="28" y="42" font-size="${big.length > 10 ? 32 : 38}" font-weight="800" fill="#0B1A3A">${esc(big)}</text><text x="28" y="70" font-size="23" font-weight="600" fill="#45607F">${esc(small)}</text></g>`;
+    const y = 500 + i * 76;
+    s += `<g transform="translate(${f(700 + 360 * (1 - clamp(k)))} ${y})" opacity="${f(clamp(k * 1.5))}"><rect width="340" height="68" rx="18" fill="#FFFFFF" opacity=".94"/><rect width="10" height="68" rx="5" fill="#00A7C8"/>`
+      + `<text x="28" y="34" font-size="${big.length > 10 ? 28 : 32}" font-weight="800" fill="#0B1A3A">${esc(big)}</text><text x="28" y="58" font-size="20" font-weight="600" fill="#45607F">${esc(small)}</text></g>`;
   });
   s += header(u, sc, 2026, 'Tarlan Astana LRT', [{ text: 'мамыр 2026' }, { text: 'алғашқы желі', at: 1.6 }]);
   return s;
 };
 
 const RECAP = [
-  [1997, 'Ақмола — елорда'], [1998, 'Қала Астана атанды'], [2002, 'Бәйтерек'], [2004, 'Ақорда'],
-  [2006, 'Бейбітшілік және келісім сарайы'], [2010, 'Хан Шатыр'], [2012, 'Әзірет Сұлтан мешіті'], [2017, 'ЭКСПО-2017 және Нұр Әлем'],
-  [2019, 'Нұр-Сұлтан; Абу-Даби Плаза'], [2022, 'Қайтадан Астана; Ұлы мешіт'], [2026, 'Tarlan Astana LRT іске қосылды'],
+  [1997, 'Ақмола — астана'], [1998, 'Қала Астана атанды'], [2002, 'Бәйтерек'], [2004, 'Ақорда'],
+  [2006, 'Бейбітшілік және келісім сарайы'], [2010, 'Хан Шатыр'], [2012, 'Әзірет Сұлтан мешіті'], [2017, 'EXPO-2017 және Нұр Әлем'],
+  [2019, 'Нұр-Сұлтан; Абу-Даби Плаза'], [2022, 'Қайтадан Астана; Бас мешіт'], [2026, 'Tarlan Astana LRT іске қосылды'],
 ];
 
 SCENES.outro = (u, sc) => {
@@ -694,11 +709,10 @@ function render(t) {
     return cur;
   })();
   let ui = `<rect width="${W}" height="${HGT}" fill="url(#vign)"/><rect width="${W}" height="600" fill="url(#topScrim)"/>`;
-  if (sc.id !== 'title' || t > 3) ui += `<g opacity="${f(clamp((t - 2.5) / 1))}">${brand(t)}</g>`;
   ui += timelineBar(timelinePos(t), tlAlpha);
   ui += subtitles(t);
   // global fade in / out
-  const fade = Math.min(clamp(t / 0.6), clamp((TL.total - t) / 1.0));
+  const fade = clamp((TL.total - t) / 1.0);
   ui += `<rect width="${W}" height="${HGT}" fill="#000" opacity="${f(1 - fade)}"/>`;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${HGT}" viewBox="0 0 ${W} ${HGT}" font-family="Inter, 'DejaVu Sans', sans-serif">${DEFS}${body}${ui}</svg>`;
 }

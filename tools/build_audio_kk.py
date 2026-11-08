@@ -1,5 +1,6 @@
-"""Kazakh narration: synthesize with a neural voice (edge-tts), fit every section into its fixed time window,
-time subtitle cards from word boundaries, write build/timeline.json, build/voice.wav, out/subtitles_kk.srt."""
+"""Kazakh narration: synthesize every sentence with a neural voice (edge-tts) at a calm rate, lay them out with natural
+pauses so the film lands on the target length, time subtitle cards from word boundaries.
+Writes build/timeline.json, build/voice.wav, out/subtitles_kk.srt."""
 import asyncio, json, os, subprocess, sys
 import numpy as np
 import edge_tts
@@ -7,9 +8,9 @@ import edge_tts
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 SR = 48000
-LEAD, TAIL, SENT_GAP = 0.35, 0.35, 0.22
+HEAD, TAIL = 0.5, 3.8
 script = json.load(open('narration/script_kk.json'))
-TOTAL = script['total']
+TARGET = script['target']
 PROXY = os.environ.get('HTTPS_PROXY')
 os.makedirs('build/tts_kk', exist_ok=True)
 
@@ -17,7 +18,7 @@ async def synth(text, rate, path):
     """Returns (samples, [(char_offset, start_s), ...]) with leading/trailing silence trimmed."""
     for attempt in range(4):
         try:
-            c = edge_tts.Communicate(text, script['voice'], rate=f'{rate:+d}%', proxy=PROXY, boundary='WordBoundary')
+            c = edge_tts.Communicate(text, script['voice'], rate=f'{rate:+d}%', pitch=f"{script.get('pitch', 0):+d}Hz", proxy=PROXY, boundary='WordBoundary')
             audio, words = bytearray(), []
             async for ch in c.stream():
                 if ch['type'] == 'audio': audio += ch['data']
@@ -41,54 +42,48 @@ async def synth(text, rate, path):
 def sentence_text(cards): return ' '.join(c['tts'] for c in cards)
 
 async def main():
-    voice = np.zeros(int(TOTAL * SR), np.float32)
+    rate = script['rate']
+    clips = {}
+    for sc in script['scenes']:
+        for i, cards in enumerate(sc['sentences']):
+            clips[(sc['id'], i)] = await synth(sentence_text(cards), rate, f"build/tts_kk/{sc['id']}_{i}.mp3")
+    speech = sum(len(c[0]) for c in clips.values()) / SR
+    n_sent = len(clips); n_sc = len(script['scenes'])
+    n_inner = n_sent - n_sc
+    # pauses: a breath between sentences, a longer beat between scenes; scaled together to hit the target
+    base_inner, base_scene = 0.6, 1.2
+    k = (TARGET - HEAD - TAIL - speech) / (n_inner * base_inner + (n_sc - 1) * base_scene)
+    k = max(0.6, min(k, 1.6))
+    sent_gap, scene_gap = base_inner * k, base_scene * k
+    TOTAL = round(HEAD + speech + n_inner * sent_gap + (n_sc - 1) * scene_gap + TAIL, 1)
+    print(f'rate {rate:+d}%  speech {speech:.1f}s  sentence pause {sent_gap:.2f}s  scene pause {scene_gap:.2f}s  total {TOTAL}s')
+    globals()['TOTAL'] = TOTAL
+    voice = np.zeros(int((TOTAL + 1) * SR), np.float32)
     scenes, subs = [], []
-    for si, sec in enumerate(script['sections']):
-        sents = [(sc, i, s) for sc in sec['scenes'] for i, s in enumerate(sec['scenes'][sec['scenes'].index(sc)]['sentences'])]
-        window = sec['end'] - sec['start']
-        n_gaps = len(sents) - 1
-        rate = 0
-        for it in range(5):
-            clips = [await synth(sentence_text(s), rate, f"build/tts_kk/{sc['id']}_{i}.mp3") for sc, i, s in sents]
-            speech = sum(len(c[0]) for c in clips) / SR
-            budget = window - LEAD - TAIL - n_gaps * SENT_GAP
-            if speech <= budget or rate >= 30: break
-            rate = min(30, rate + int(np.ceil((speech / budget - 1) * 100)) + 2)
-        assert speech <= budget + 0.05, f'section {si} does not fit: {speech:.2f}s > {budget:.2f}s'
-        slack = budget - speech
-        # split slack: extra breathing room between scenes of a section and between sentences
-        n_scene_gaps = len(sec['scenes']) - 1
-        last = si == len(script['sections']) - 1
-        scene_extra = min(slack * 0.7 / n_scene_gaps, 0.8) if n_scene_gaps else 0
-        sent_extra = 0 if last else (min(slack * (0.3 if n_scene_gaps else 0.6) / n_gaps, 0.45) if n_gaps else 0)
-        print(f"section {si} [{sec['start']}-{sec['end']}] rate {rate:+d}%  speech {speech:.2f}s  slack {slack:.2f}s")
-        t = sec['start'] + LEAD
-        prev_scene, cur = None, None
-        for (sc, i, cards), (x, marks) in zip(sents, clips):
-            if sc is not prev_scene:
-                if prev_scene is not None: t += SENT_GAP + scene_extra
-                cur = {'id': sc['id'], 'year': sc['year'], 'speechStart': t, 'sentences': [], 'section': si}
-                scenes.append(cur); prev_scene = sc
-            else:
-                t += SENT_GAP + sent_extra
+    t = HEAD
+    for si, sc in enumerate(script['scenes']):
+        if si: t += scene_gap
+        cur = {'id': sc['id'], 'year': sc['year'], 'speechStart': t, 'sentences': []}
+        scenes.append(cur)
+        for i, cards in enumerate(sc['sentences']):
+            if i: t += sent_gap
+            x, marks = clips[(sc['id'], i)]
             st = int(round(t * SR)); voice[st:st + len(x)] += x
             d = len(x) / SR
             cur['sentences'].append({'start': round(t, 3), 'end': round(t + d, 3), 'sub': ' '.join(c['sub'] for c in cards)})
-            # card start = time of first word at/after the card's first character
-            text, off, starts = sentence_text(cards), 0, []
+            off, starts = 0, []
             for c in cards:
-                m = next((tt for k, tt in marks if k >= off), 0.0)
+                m = next((tt for kk, tt in marks if kk >= off), 0.0)
                 starts.append(0.0 if not starts else max(m - 0.05, 0)); off += len(c['tts']) + 1
             for j, c in enumerate(cards):
                 e = starts[j + 1] if j + 1 < len(cards) else d
                 subs.append({'start': round(t + starts[j], 3), 'end': round(t + e, 3), 'text': c['sub']})
             t += d
-            cur['speechEnd'] = round(t, 3)
+        cur['speechEnd'] = round(t, 3)
+    voice = voice[:int(TOTAL * SR)]
     # scene boundaries: sections are fixed; scenes inside a section split at the middle of the pause
     for i, sc in enumerate(scenes):
-        sec = script['sections'][sc['section']]
-        first = i == 0 or scenes[i - 1]['section'] != sc['section']
-        sc['start'] = sec['start'] if first else round((scenes[i - 1]['speechEnd'] + sc['speechStart']) / 2, 3)
+        sc['start'] = 0.0 if i == 0 else round((scenes[i - 1]['speechEnd'] + sc['speechStart']) / 2, 3)
     for i, sc in enumerate(scenes):
         sc['end'] = TOTAL if i == len(scenes) - 1 else scenes[i + 1]['start']
         sc['speechStart'] = round(sc['speechStart'], 3)

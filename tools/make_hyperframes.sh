@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+# Assemble the HyperFrames composition (hyperframes/) from the engine, timeline, soundtrack and fonts.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+H=hyperframes; mkdir -p $H/assets/fonts
+cp web/landmarks.js web/scenes.js $H/assets/
+cp $H/node_modules/gsap/dist/gsap.min.js $H/assets/gsap.min.js
+cp build/mix.wav $H/assets/soundtrack.wav
+echo "window.TIMELINE = $(cat build/timeline.json);" > $H/assets/timeline.js
+for w in Regular SemiBold Bold ExtraBold; do cp /usr/share/fonts/opentype/inter/Inter-$w.otf $H/assets/fonts/; done
+DUR=$(python3 -c "import json;print(json.load(open('build/timeline.json'))['total'])")
+cat > $H/index.html <<HTML
+<!doctype html>
+<html lang="kk">
+<head>
+<meta charset="utf-8">
+<title>Астана 1997–2026: Елорданың өзгеру жолы</title>
+<style>
+  @font-face { font-family: 'Inter'; src: url('assets/fonts/Inter-Regular.otf'); font-weight: 400; }
+  @font-face { font-family: 'Inter'; src: url('assets/fonts/Inter-SemiBold.otf'); font-weight: 600; }
+  @font-face { font-family: 'Inter'; src: url('assets/fonts/Inter-Bold.otf'); font-weight: 700; }
+  @font-face { font-family: 'Inter'; src: url('assets/fonts/Inter-ExtraBold.otf'); font-weight: 800; }
+  html, body { margin: 0; background: #000; }
+  #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #0A1838; }
+  #stage { position: absolute; inset: 0; }
+  /* blueprint line style used by the architectural reveals */
+  .bp * { fill: none !important; stroke: #9BE7FF !important; stroke-width: 2px !important; stroke-dasharray: 2600; filter: none !important; }
+</style>
+<script src="assets/gsap.min.js"></script>
+<script src="assets/landmarks.js"></script>
+<script src="assets/scenes.js"></script>
+<script src="assets/timeline.js"></script>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="$DUR" data-width="1080" data-height="1920">
+  <div id="stage" class="clip" data-start="0" data-duration="$DUR" data-track-index="1" data-track-kind="graphics" data-layout-ignore></div>
+  <audio id="soundtrack" class="clip" src="assets/soundtrack.wav" data-start="0" data-duration="$DUR" data-track-index="2" data-volume="1"></audio>
+</div>
+<script>
+  // Every frame is a pure function of timeline time: render(t) draws the whole 1080x1920 frame as SVG.
+  setup(window.TIMELINE);
+  const stage = document.getElementById('stage');
+  function renderAt(t) { stage.innerHTML = render(t); }
+  window.addEventListener('hf-seek', (e) => renderAt(e.detail.time));
+  // One paused timeline: a linear tween of the film clock; every update redraws the frame for that time.
+  const clock = { t: 0 };
+  const tl = gsap.timeline({ paused: true });
+  tl.fromTo(clock, { t: 0 }, { t: $DUR, duration: $DUR, ease: 'none', onUpdate: () => renderAt(clock.t) }, 0);
+  window.__timelines = window.__timelines || {};
+  window.__timelines['main'] = tl;
+  renderAt(0);
+</script>
+</body>
+</html>
+HTML
+echo "hyperframes composition: $DUR s"

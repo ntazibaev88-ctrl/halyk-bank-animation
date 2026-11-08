@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
-# Full pipeline: narration -> timeline -> music -> mix -> frames -> final MP4.
-# Requirements: python3 + numpy + edge-tts (pip install edge-tts; needs network access to the Microsoft speech service),
-#   ffmpeg, node + playwright (Chromium).
+# Full pipeline: Kazakh narration -> timeline -> music -> mix -> HyperFrames composition -> render -> final MP4.
+# Requirements: python3 + numpy + edge-tts (pip install edge-tts; needs access to the Microsoft speech service),
+#   ffmpeg, Node >= 22. HyperFrames and GSAP are pinned in hyperframes/package.json.
 set -euo pipefail
 cd "$(dirname "$0")"
 mkdir -p build out
-SSL_CERT_FILE=${SSL_CERT_FILE:-/root/.ccr/ca-bundle.crt} python3 tools/build_audio_kk.py   # Kazakh voice + build/timeline.json + out/subtitles_kk.srt
-python3 tools/music.py            # build/music.wav
-tools/mix_audio.sh                # build/mix.wav
-tools/render_video.sh             # build/video.mp4 (1080x1920, 30 fps)
-ffmpeg -y -v error -i build/video.mp4 -i build/mix.wav -i out/subtitles_kk.srt \
-  -map 0:v -map 1:a -map 2:s -c:v copy -c:a aac -b:a 192k -c:s mov_text \
+SSL_CERT_FILE=${SSL_CERT_FILE:-/root/.ccr/ca-bundle.crt} python3 tools/build_audio_kk.py   # voice, timeline, Kazakh SRT
+python3 tools/music.py                    # build/music.wav
+tools/mix_audio.sh                        # build/mix.wav (voice + ducked music, -14 LUFS)
+(cd hyperframes && npm install --no-audit --no-fund)
+tools/make_hyperframes.sh                 # hyperframes/index.html + assets
+(cd hyperframes && npx hyperframes check --json > /dev/null && npx hyperframes render -o ../build/hf_render.mp4 --workers 4 --quality delivery --fps 30)
+# add the Kazakh subtitle track (subtitles are also drawn into the picture)
+ffmpeg -y -v error -i build/hf_render.mp4 -i out/subtitles_kk.srt -map 0:v -map 0:a -map 1:s -c:v copy -c:a copy -c:s mov_text \
   -metadata title="Астана 1997–2026: Елорданың өзгеру жолы" -metadata:s:a:0 language=kaz -metadata:s:s:0 language=kaz \
-  -af apad -t 110 -movflags +faststart out/astana_1997_2026_kk.mp4
+  -movflags +faststart out/astana_1997_2026_kk.mp4
 echo "done: out/astana_1997_2026_kk.mp4"

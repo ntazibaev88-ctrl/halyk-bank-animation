@@ -1,0 +1,15 @@
+{
+  "name": "astana-1997-2026",
+  "private": true,
+  "description": "АСТАНА 1997–2026: ЕЛОРДАНЫҢ ӨЗГЕРУ ЖОЛЫ — HyperFrames composition",
+  "scripts": {
+    "check": "hyperframes check --json",
+    "render": "hyperframes render -o ../out/astana_1997_2026_kk.mp4"
+  },
+  "devDependencies": {
+    "hyperframes": "0.8.193"
+  },
+  "dependencies": {
+    "gsap": "^3.12.5"
+  }
+}

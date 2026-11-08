@@ -1,2 +1,6 @@
 build/
 node_modules/
+hyperframes/node_modules/
+hyperframes/.hyperframes/
+hyperframes/renders/
+hyperframes/assets/
