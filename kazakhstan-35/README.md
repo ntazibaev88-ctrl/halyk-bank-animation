@@ -8,7 +8,7 @@ Vertical 1080×1920 · 30 fps · 109 s · Kazakh voiceover and subtitles. The pi
 | --- | --- |
 | Rendered video (3D) | `renders/kazakhstan-35-years-3d.mp4` |
 | Earlier 2D version | `renders/kazakhstan-35-years.mp4` |
-| TikTok cover (1080×1920) | `renders/cover.png` |
+| TikTok cover (1080×1920) | `renders/cover-3d.png` (3D), `renders/cover.png` (2D) |
 | Editable HyperFrames project | `index.html` + `compositions/*.html` (titles `o1…o7`, captions) |
 | Editable 3D film source | `world3d/` (engine, models, 24 shots; see `world3d/README.md`) |
 | 3D plate (no text) | `assets/plate/plate.mp4` |
