@@ -1,0 +1,24 @@
+{
+  "name": "astana-documentary",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:3d": "esbuild src/three/main.js --bundle --format=iife --minify --loader:.json=json --outfile=plate-project/film3d.js",
+    "build:overlay": "esbuild src/overlay/main.js --bundle --format=iife --minify --loader:.json=json --outfile=overlay.bundle.js",
+    "build": "node tools/make_plates.mjs && npm run build:3d && npm run build:overlay",
+    "render": "tools/render_final.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gsap": "^3.15.1",
+    "hyperframes": "^0.9.22",
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  },
+  "private": true
+}

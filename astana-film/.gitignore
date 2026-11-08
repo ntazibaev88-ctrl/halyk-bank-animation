@@ -1,0 +1,10 @@
+node_modules/
+plates/out/
+plates/preview.html.bak
+assets/audio/mixtest.wav
+assets/audio/vo/*.raw.mp3
+*.log
+renders/work-*
+plates/out/
+renders/master.mp4
+.hyperframes/

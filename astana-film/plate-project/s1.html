@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="kk" data-resolution="portrait"><head><meta charset="UTF-8"/><meta name="viewport" content="width=1080, height=1920"/>
+<script src="gsap.min.js"></script>
+<style>
+@font-face{font-family:Montserrat;src:url("Montserrat[wght].ttf") format("truetype");font-weight:100 900;}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#000}
+#gl{position:absolute;left:0;top:0;width:1080px;height:1920px;display:block}
+</style></head><body>
+<div id="root" data-composition-id="s1" data-start="0" data-duration="10.500" data-width="1080" data-height="1920">
+  <canvas id="gl" class="clip" data-start="0" data-duration="10.500"></canvas>
+</div>
+<script>window.PLATE = { scene: "s1", t0: 0, scale: 0.75 };</script>
+<script src="film3d.js"></script>
+<script>
+  window.__timelines = window.__timelines || {};
+  const tl = gsap.timeline({ paused: true });
+  tl.to({}, { duration: 10.500 }, 0);
+  window.__timelines["s1"] = tl;
+</script>
+</body></html>
