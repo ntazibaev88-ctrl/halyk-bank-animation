@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="kk">
+<head>
+<meta charset="utf-8" />
+<title>Қазақстан — 35 жыл · 3D plate</title>
+<style>
+  @font-face { font-family: "KZ Sans"; src: url("../assets/fonts/Montserrat-Black.woff2") format("woff2"); font-weight: 900; }
+  @font-face { font-family: "KZ Sans"; src: url("../assets/fonts/Montserrat-Bold.woff2") format("woff2"); font-weight: 700; }
+  html, body { margin: 0; background: #000; overflow: hidden; }
+  canvas { display: block; width: 1080px; height: 1920px; }
+</style>
+<script type="importmap">{ "imports": { "three": "./vendor/three/build/three.module.js", "three/addons/": "./vendor/three/addons/" } }</script>
+<script src="../assets/vendor/kz-map-data.js"></script>
+<script src="../assets/vendor/kz-art.js"></script>
+</head>
+<body>
+<canvas id="c"></canvas>
+<script type="module" src="./main.js"></script>
+</body>
+</html>

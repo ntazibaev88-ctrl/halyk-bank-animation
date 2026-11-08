@@ -1,43 +1,47 @@
 # Қазақстан — 35 жыл (1991–2026)
 
-A 2D animated documentary trailer for Independence Day, 16 December 2026.
-Vertical 1080×1920 · 30 fps · 109 s · Kazakh voiceover and subtitles. Built with [HyperFrames](https://hyperframes.heygen.com) (HTML + GSAP rendered to MP4).
+A cinematic 3D documentary trailer for Independence Day, 16 December 2026.
+Vertical 1080×1920 · 30 fps · 109 s · Kazakh voiceover and subtitles. The picture is a deterministic Three.js 3D film (`world3d/`), baked to a plate video and composited with titles, captions and audio in [HyperFrames](https://hyperframes.heygen.com).
 
 ## Deliverables
 | What | Where |
 | --- | --- |
-| Rendered video | `renders/kazakhstan-35-years.mp4` |
+| Rendered video (3D) | `renders/kazakhstan-35-years-3d.mp4` |
+| Earlier 2D version | `renders/kazakhstan-35-years.mp4` |
 | TikTok cover (1080×1920) | `renders/cover.png` |
-| Editable HyperFrames project | `index.html` + `compositions/*.html` |
-| Animation assets (vector art library, map, fonts, grain) | `assets/vendor/kz-art.js`, `assets/vendor/kz-map-data.js`, `assets/fonts/`, `assets/grain.png` |
+| Editable HyperFrames project | `index.html` + `compositions/*.html` (titles `o1…o7`, captions) |
+| Editable 3D film source | `world3d/` (engine, models, 24 shots; see `world3d/README.md`) |
+| 3D plate (no text) | `assets/plate/plate.mp4` |
+| 3D assets | `world3d/assets/` (real Alatau elevation, HDR skies, Earth maps, glyph outlines), flag artwork `assets/vendor/kz-art.js` |
 | Kazakh voiceover | `assets/voice/voiceover_full.wav` (full track) and `assets/voice/l01…l26.wav` (per line) |
 | Subtitles | `subtitles/kazakhstan-35.kk.srt`, `subtitles/kazakhstan-35.kk.vtt`; burned-in captions in `compositions/captions.html` |
 | Music | `assets/music/score.wav` (ducked under the voice), `assets/music/score_raw.wav` (dry) |
 | Script | `script/narration_kk.md` (text + timecodes), `script/narration.json`, `script/timeline.json` |
 | Notes | `REVIEW.md` |
 
-## Scenes
-| # | Time | Scene |
+## Shots (24) and eras
+| Time | Era · look | Shots |
 | --- | --- | --- |
-| 1 | 0–10 s | 1991: the map draws itself, the flag rises — «1991. Жаңа дәуірдің басталуы» |
-| 2 | 10–23 s | First steps timeline: UN 1992, state symbols 1992, tenge 1993 |
-| 3 | 23–35 s | Capital moves Almaty → Akmola (1997); old town becomes Astana; Baiterek |
-| 4 | 35–51 s | Economy map; oil & steel; wheat; rail corridors; working people |
-| 5 | 51–64 s | EXPO-2017, Nur Alem, "Future Energy", 100+ countries under one shanyrak |
-| 6 | 64–86 s | Digital era, AI & e-government, universities, factories, solar & wind, young professionals — «Сен!» |
-| 7 | 86–109 s | Sunrise over Astana, the flag, future goals, golden «35», «Бірлік. Еңбек. Болашақ.», «16 желтоқсан — Тәуелсіздік күні құтты болсын!» |
+| 0–10 s | 1991 · nostalgic dawn, grain, halation | Aerial over the steppe toward the real Alatau peaks; the flag rises and unfurls (cloth simulation) |
+| 10–23 s | 1992–93 · archival | Winter Almaty panel blocks; UN headquarters with the flag raised; flag fabric macro; gold State Emblem; the tenge coin and notes |
+| 23–35 s | 1997–2010 · golden-hour construction | 3D map: the capital moves Almaty → Akmola; time-lapse construction on the Esil; Baiterek hero rise |
+| 35–51 s | Industry · teal-orange sunset | Oil field and refinery; steel pour; open-pit mine; wheat and combine; freight train; workers |
+| 51–64 s | 2017 · blue hour | EXPO site with Nur Alem and fireworks; Nur Alem close; Earth with partnership arcs |
+| 64–86 s | 2026 · clean, cool | Night Astana with data streams; AI data centre; campus; robot factory; solar and wind; young people over the city — «Сен!» |
+| 86–109 s | Finale · sunrise | Aerial of Astana at sunrise with the flag waving; young people on a hill (future goals); golden 3D «35» and the final titles |
 
 ## Edit and re-render
 ```bash
 npx hyperframes@0.9.20 preview          # Studio preview in the browser
 npx hyperframes@0.9.20 check            # lint + layout + motion + audio checks
-npx hyperframes@0.9.20 render -o renders/kazakhstan-35-years.mp4
+npx hyperframes@0.9.20 render -o renders/kazakhstan-35-years-3d.mp4   # after baking assets/plate/plate.mp4 (world3d/README.md)
 ```
 - Change the narration: edit `script/narration.json` → `python3 tools/tts.py` → `python3 tools/build_voice_captions.py` (rebuilds voice clips, subtitles and captions; keep `script/timeline.json` in step).
 - Change the score: `python3 tools/compose_score.py` (needs `numpy scipy soundfile`), or drop your own track at `assets/music/score.wav`.
 - Replace the synthetic voice with a recorded narrator: overwrite `assets/voice/lNN.wav` (same names), then retime `script/timeline.json` if needed.
 
 ## Credits
+- 3D: three.js (MIT); terrain from AWS Terrain Tiles; HDR skies and water normals from Poly Haven (CC0); Earth textures from the three.js examples.
 - Map outline: Natural Earth 1:50m via `world-atlas` (public domain).
 - Fonts: Montserrat, Playfair Display, Cormorant Garamond, Inter — SIL Open Font License.
 - Voice: Microsoft Azure neural TTS `kk-KZ-DauletNeural` via `edge-tts`.

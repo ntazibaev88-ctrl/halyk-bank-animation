@@ -1,0 +1,55 @@
+<template>
+  <style>
+    @font-face { font-family: "KZ Sans"; src: url("assets/fonts/Montserrat-Black.woff2") format("woff2"); font-weight: 900; }
+    @font-face { font-family: "KZ Sans"; src: url("assets/fonts/Montserrat-Bold.woff2") format("woff2"); font-weight: 700; }
+    @font-face { font-family: "KZ Serif"; src: url("assets/fonts/PlayfairDisplay-Black.woff2") format("woff2"); font-weight: 900; }
+    #root { position: absolute; inset: 0; pointer-events: none; }
+    .ov { position: absolute; left: 0; right: 0; text-align: center; }
+    .ov > div { display: inline-block; }
+    .year { font-family: "KZ Serif", serif; font-weight: 900; font-size: 150px; line-height: 1; letter-spacing: .01em;
+      background: linear-gradient(180deg, #FFF3CC 0%, #F6C453 48%, #B47B22 100%); -webkit-background-clip: text; background-clip: text; color: transparent;
+      filter: drop-shadow(0 6px 24px rgba(0,0,0,.55)); }
+    .kicker { font-family: "KZ Sans", sans-serif; font-weight: 700; font-size: 32px; letter-spacing: .28em; color: #FFE6A3; text-shadow: 0 2px 14px rgba(0,0,0,.8), 0 0 2px rgba(0,0,0,.6); }
+    .title { font-family: "KZ Sans", sans-serif; font-weight: 900; font-size: 84px; line-height: 1.02; color: #FFFFFF; letter-spacing: .015em;
+      text-shadow: 0 4px 30px rgba(0,0,0,.65), 0 1px 3px rgba(0,0,0,.6); }
+    .big { font-family: "KZ Sans", sans-serif; font-weight: 900; font-size: 150px; line-height: 1; color: #FFFFFF; letter-spacing: .08em; text-shadow: 0 8px 40px rgba(0,0,0,.6); }
+    .g { color: #F6C453; }
+    .chip { font-family: "KZ Sans", sans-serif; font-weight: 700; font-size: 32px; letter-spacing: .08em; color: #FFFFFF; padding: 14px 26px; border-radius: 40px;
+      background: rgba(6,16,36,.62); border: 1.5px solid rgba(246,196,83,.85); box-shadow: 0 10px 30px rgba(0,0,0,.35); max-width: 900px; }
+    .fact { font-family: "KZ Sans", sans-serif; font-weight: 900; font-size: 30px; letter-spacing: .04em; color: #06122A; padding: 12px 22px; border-radius: 12px;
+      background: linear-gradient(180deg, #FFE6A3, #F6C453); max-width: 900px; }
+    .role { font-family: "KZ Sans", sans-serif; font-weight: 900; font-size: 46px; letter-spacing: .08em; color: #FFFFFF; text-shadow: 0 4px 24px rgba(0,0,0,.8); }
+    .role::before { content: ""; display: inline-block; width: 34px; height: 4px; margin: 0 18px 12px 0; background: #F6C453; vertical-align: middle; }
+    .goal { font-family: "KZ Sans", sans-serif; font-weight: 700; font-size: 30px; letter-spacing: .03em; color: #FFFFFF; text-align: left; padding: 16px 24px; border-radius: 18px;
+      background: rgba(6,16,36,.7); border: 1.5px solid rgba(246,196,83,.75); width: 880px; }
+    .goal b { font-weight: 900; color: #F6C453; margin-right: 16px; }
+    .goal i { float: right; font-style: normal; color: #6FE3F2; }
+    .word { font-family: "KZ Sans", sans-serif; font-weight: 900; font-size: 60px; letter-spacing: .08em; color: #F6C453; text-shadow: 0 4px 24px rgba(0,0,0,.7); }
+    .box { font-family: "KZ Sans", sans-serif; font-weight: 900; font-size: 46px; line-height: 1.16; color: #FFFFFF; padding: 22px 34px 24px; border-radius: 26px;
+      background: rgba(6,16,36,.66); border: 2px solid rgba(246,196,83,.9); box-shadow: 0 16px 50px rgba(0,0,0,.4); }
+    .years { font-family: "KZ Sans", sans-serif; font-weight: 700; font-size: 32px; letter-spacing: .4em; color: #FFFFFF; text-shadow: 0 2px 16px rgba(0,0,0,.8); }
+  </style>
+  <div id="root" data-composition-id="o5" data-width="1080" data-height="1920" data-duration="13.8">
+    <div id="o5-t" class="clip ov" data-start="0.6" data-duration="4.1" data-track-index="1" style="top:250px"><div class="title">ЭКСПО-<span class="g">2017</span></div></div>
+    <div id="o5-k" class="clip ov" data-start="2.4" data-duration="2.3" data-track-index="1" style="top:360px"><div class="kicker">АСТАНА · 10.06 — 10.09.2017</div></div>
+    <div id="o5-t2" class="clip ov" data-start="4.95" data-duration="2.65" data-track-index="1" style="top:250px"><div class="title">«БОЛАШАҚ<br /><span class="g">ЭНЕРГИЯСЫ</span>»</div></div>
+    <div id="o5-c" class="clip ov" data-start="6.55" data-duration="2.95" data-track-index="1" style="top:450px"><div class="chip">100-ДЕН АСТАМ МЕМЛЕКЕТ</div></div>
+    <div id="o5-c2" class="clip ov" data-start="9.75" data-duration="3.85" data-track-index="1" style="top:260px"><div class="chip">ӘЛЕМГЕ АШЫҚ</div></div>
+    <div id="o5-c3" class="clip ov" data-start="10.95" data-duration="2.65" data-track-index="1" style="top:340px"><div class="chip">СЕНІМДІ СЕРІКТЕС</div></div>
+  </div>
+  <script>
+  const tl = gsap.timeline({ paused: true });
+  function inOut(sel, a, b, kind, hold) {
+    const big = kind === "year" || kind === "big" || kind === "title";
+    tl.fromTo(sel, { opacity: 0, y: big ? 0 : 18, scale: big ? 1.12 : 1, filter: "blur(10px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: big ? 0.6 : 0.4, ease: "expo.out" }, a);
+    if (!hold) tl.to(sel, { opacity: 0, filter: "blur(6px)", duration: 0.22, ease: "power2.in" }, b - 0.24);
+  }
+  inOut("#o5-t > div", 0.6, 4.7, "title", false);
+  inOut("#o5-k > div", 2.4, 4.7, "kicker", false);
+  inOut("#o5-t2 > div", 4.95, 7.6, "title", false);
+  inOut("#o5-c > div", 6.55, 9.5, "chip", false);
+  inOut("#o5-c2 > div", 9.75, 13.6, "chip", false);
+  inOut("#o5-c3 > div", 10.95, 13.6, "chip", false);
+  window.__timelines["o5"] = tl;
+  </script>
+</template>

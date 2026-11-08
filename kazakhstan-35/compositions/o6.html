@@ -1,0 +1,69 @@
+<template>
+  <style>
+    @font-face { font-family: "KZ Sans"; src: url("assets/fonts/Montserrat-Black.woff2") format("woff2"); font-weight: 900; }
+    @font-face { font-family: "KZ Sans"; src: url("assets/fonts/Montserrat-Bold.woff2") format("woff2"); font-weight: 700; }
+    @font-face { font-family: "KZ Serif"; src: url("assets/fonts/PlayfairDisplay-Black.woff2") format("woff2"); font-weight: 900; }
+    #root { position: absolute; inset: 0; pointer-events: none; }
+    .ov { position: absolute; left: 0; right: 0; text-align: center; }
+    .ov > div { display: inline-block; }
+    .year { font-family: "KZ Serif", serif; font-weight: 900; font-size: 150px; line-height: 1; letter-spacing: .01em;
+      background: linear-gradient(180deg, #FFF3CC 0%, #F6C453 48%, #B47B22 100%); -webkit-background-clip: text; background-clip: text; color: transparent;
+      filter: drop-shadow(0 6px 24px rgba(0,0,0,.55)); }
+    .kicker { font-family: "KZ Sans", sans-serif; font-weight: 700; font-size: 32px; letter-spacing: .28em; color: #FFE6A3; text-shadow: 0 2px 14px rgba(0,0,0,.8), 0 0 2px rgba(0,0,0,.6); }
+    .title { font-family: "KZ Sans", sans-serif; font-weight: 900; font-size: 84px; line-height: 1.02; color: #FFFFFF; letter-spacing: .015em;
+      text-shadow: 0 4px 30px rgba(0,0,0,.65), 0 1px 3px rgba(0,0,0,.6); }
+    .big { font-family: "KZ Sans", sans-serif; font-weight: 900; font-size: 150px; line-height: 1; color: #FFFFFF; letter-spacing: .08em; text-shadow: 0 8px 40px rgba(0,0,0,.6); }
+    .g { color: #F6C453; }
+    .chip { font-family: "KZ Sans", sans-serif; font-weight: 700; font-size: 32px; letter-spacing: .08em; color: #FFFFFF; padding: 14px 26px; border-radius: 40px;
+      background: rgba(6,16,36,.62); border: 1.5px solid rgba(246,196,83,.85); box-shadow: 0 10px 30px rgba(0,0,0,.35); max-width: 900px; }
+    .fact { font-family: "KZ Sans", sans-serif; font-weight: 900; font-size: 30px; letter-spacing: .04em; color: #06122A; padding: 12px 22px; border-radius: 12px;
+      background: linear-gradient(180deg, #FFE6A3, #F6C453); max-width: 900px; }
+    .role { font-family: "KZ Sans", sans-serif; font-weight: 900; font-size: 46px; letter-spacing: .08em; color: #FFFFFF; text-shadow: 0 4px 24px rgba(0,0,0,.8); }
+    .role::before { content: ""; display: inline-block; width: 34px; height: 4px; margin: 0 18px 12px 0; background: #F6C453; vertical-align: middle; }
+    .goal { font-family: "KZ Sans", sans-serif; font-weight: 700; font-size: 30px; letter-spacing: .03em; color: #FFFFFF; text-align: left; padding: 16px 24px; border-radius: 18px;
+      background: rgba(6,16,36,.7); border: 1.5px solid rgba(246,196,83,.75); width: 880px; }
+    .goal b { font-weight: 900; color: #F6C453; margin-right: 16px; }
+    .goal i { float: right; font-style: normal; color: #6FE3F2; }
+    .word { font-family: "KZ Sans", sans-serif; font-weight: 900; font-size: 60px; letter-spacing: .08em; color: #F6C453; text-shadow: 0 4px 24px rgba(0,0,0,.7); }
+    .box { font-family: "KZ Sans", sans-serif; font-weight: 900; font-size: 46px; line-height: 1.16; color: #FFFFFF; padding: 22px 34px 24px; border-radius: 26px;
+      background: rgba(6,16,36,.66); border: 2px solid rgba(246,196,83,.9); box-shadow: 0 16px 50px rgba(0,0,0,.4); }
+    .years { font-family: "KZ Sans", sans-serif; font-weight: 700; font-size: 32px; letter-spacing: .4em; color: #FFFFFF; text-shadow: 0 2px 16px rgba(0,0,0,.8); }
+  </style>
+  <div id="root" data-composition-id="o6" data-width="1080" data-height="1920" data-duration="22.4">
+    <div id="o6-k" class="clip ov" data-start="0.7" data-duration="2.5" data-track-index="1" style="top:260px"><div class="kicker">БҮГІНГІ ҚАЗАҚСТАН</div></div>
+    <div id="o6-t" class="clip ov" data-start="1.6" data-duration="1.6" data-track-index="1" style="top:310px"><div class="title">ЦИФРЛЫҚ<br /><span class="g">ДӘУІР</span></div></div>
+    <div id="o6-c1" class="clip ov" data-start="3.55" data-duration="2.15" data-track-index="1" style="top:280px"><div class="chip">ЖАСАНДЫ ИНТЕЛЛЕКТ</div></div>
+    <div id="o6-c2" class="clip ov" data-start="4.7" data-duration="1.0" data-track-index="1" style="top:360px"><div class="chip">ЭЛЕКТРОНДЫҚ ҮКІМЕТ</div></div>
+    <div id="o6-c3" class="clip ov" data-start="6.0" data-duration="1.2" data-track-index="1" style="top:280px"><div class="chip">ЗАМАНАУИ УНИВЕРСИТЕТТЕР</div></div>
+    <div id="o6-c4" class="clip ov" data-start="7.4" data-duration="0.95" data-track-index="1" style="top:280px"><div class="chip">ЖАҢА ЗАУЫТТАР</div></div>
+    <div id="o6-c5" class="clip ov" data-start="8.5" data-duration="4.2" data-track-index="1" style="top:280px"><div class="chip">КҮН МЕН ЖЕЛ ЭНЕРГИЯСЫ</div></div>
+    <div id="o6-f" class="clip ov" data-start="10.2" data-duration="2.5" data-track-index="1" style="top:360px"><div class="fact">БҮГІН ЖҮЗЕГЕ АСЫП ЖАТЫР</div></div>
+    <div id="o6-r1" class="clip ov" data-start="15.1" data-duration="3.7" data-track-index="1" style="top:300px"><div class="role">ИНЖЕНЕРЛЕР</div></div>
+    <div id="o6-r2" class="clip ov" data-start="15.95" data-duration="2.85" data-track-index="1" style="top:372px"><div class="role">БАҒДАРЛАМАШЫЛАР</div></div>
+    <div id="o6-r3" class="clip ov" data-start="16.9" data-duration="1.9" data-track-index="1" style="top:444px"><div class="role">ҒАЛЫМДАР</div></div>
+    <div id="o6-r4" class="clip ov" data-start="17.58" data-duration="1.22" data-track-index="1" style="top:516px"><div class="role">КӘСІПКЕРЛЕР</div></div>
+    <div id="o6-sen" class="clip ov" data-start="19.05" data-duration="3.15" data-track-index="1" style="top:330px"><div class="big"><span class="g">СЕН!</span></div></div>
+  </div>
+  <script>
+  const tl = gsap.timeline({ paused: true });
+  function inOut(sel, a, b, kind, hold) {
+    const big = kind === "year" || kind === "big" || kind === "title";
+    tl.fromTo(sel, { opacity: 0, y: big ? 0 : 18, scale: big ? 1.12 : 1, filter: "blur(10px)" }, { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: big ? 0.6 : 0.4, ease: "expo.out" }, a);
+    if (!hold) tl.to(sel, { opacity: 0, filter: "blur(6px)", duration: 0.22, ease: "power2.in" }, b - 0.24);
+  }
+  inOut("#o6-k > div", 0.7, 3.2, "kicker", false);
+  inOut("#o6-t > div", 1.6, 3.2, "title", false);
+  inOut("#o6-c1 > div", 3.55, 5.7, "chip", false);
+  inOut("#o6-c2 > div", 4.7, 5.7, "chip", false);
+  inOut("#o6-c3 > div", 6.0, 7.2, "chip", false);
+  inOut("#o6-c4 > div", 7.4, 8.35, "chip", false);
+  inOut("#o6-c5 > div", 8.5, 12.7, "chip", false);
+  inOut("#o6-f > div", 10.2, 12.7, "fact", false);
+  inOut("#o6-r1 > div", 15.1, 18.8, "role", false);
+  inOut("#o6-r2 > div", 15.95, 18.8, "role", false);
+  inOut("#o6-r3 > div", 16.9, 18.8, "role", false);
+  inOut("#o6-r4 > div", 17.58, 18.8, "role", false);
+  inOut("#o6-sen > div", 19.05, 22.2, "big", false);
+  window.__timelines["o6"] = tl;
+  </script>
+</template>
