@@ -1,7 +1,7 @@
 // Scene engine: render(t) draws the full 1080x1920 frame for time t (seconds) as SVG.
 'use strict';
 
-const W = 1080, HGT = 1920, GROUND = 1400;
+const W = 1080, HGT = 1920, GROUND = 1240;
 const { clamp, lerp, prog, easeOut, easeInOut, back, rnd, f } = H;
 let TL = null;
 
@@ -109,6 +109,13 @@ function ground(preset, u, opts = {}) {
       s += `<g transform="translate(${f(x)} ${GROUND + 8}) scale(${f(sc)})"><rect x="-3" y="-30" width="6" height="30" fill="#3B2F2A"/><ellipse cx="0" cy="-48" rx="26" ry="30" fill="${preset === 'night' ? '#1E3B2E' : preset === 'dusk' ? '#3E3A55' : '#3F7A45'}"/><ellipse cx="-7" cy="-56" rx="12" ry="12" fill="#FFFFFF" opacity=".08"/></g>`;
     }
   }
+  if (opts.trees !== false) {
+    const dx2 = -u * 48;
+    for (let i = 0; i < 10; i++) {
+      const x = ((i * 210 + dx2) % 2100 + 2100) % 2100 - 500;
+      s += `<g transform="translate(${f(x)} ${GROUND + 560}) scale(2.3)"><rect x="-3" y="-30" width="6" height="30" fill="#1E1A18"/><ellipse cx="0" cy="-50" rx="28" ry="32" fill="${preset === 'night' ? '#0F2219' : preset === 'dusk' ? '#24203A' : '#24502E'}"/></g>`;
+    }
+  }
   return s;
 }
 
@@ -155,7 +162,7 @@ function header(u, sc, year, title, chips = [], titleK = null) {
   }
   const tk = titleK === null ? easeOut(prog(u, 0.35, 1)) : titleK;
   if (title) {
-    const size = title.length > 22 ? 52 : 62;
+    const size = title.length > 26 ? 48 : title.length > 20 ? 54 : 62;
     s += `<text x="${f(72 - 30 * (1 - tk))}" y="390" font-size="${size}" font-weight="700" fill="#FFFFFF" opacity="${f(tk)}" ${shadow}>${esc(title)}</text>`;
   }
   let cx = 72;
@@ -174,7 +181,7 @@ function brand(t) {
 const YEARS = [1997, 1998, 2002, 2004, 2006, 2010, 2012, 2017, 2019, 2022, 2026];
 function timelineBar(pos, alpha) {
   if (alpha <= 0) return '';
-  const x0 = 90, x1 = 990, y = 1830;
+  const x0 = 90, x1 = 990, y = 1545;
   const X = (i) => x0 + (x1 - x0) * i / (YEARS.length - 1);
   const px = lerp(X(Math.floor(pos)), X(Math.min(YEARS.length - 1, Math.floor(pos) + 1)), pos - Math.floor(pos));
   let s = `<g opacity="${f(alpha)}"><rect x="40" y="${y - 52}" width="1000" height="104" rx="26" fill="rgba(6,14,34,.55)"/>`;
@@ -206,7 +213,7 @@ function subtitles(t) {
   if (!sub) return '';
   const a = clamp(Math.min((t - sub.start + 0.05) / 0.12, (sub.end + 0.12 - t) / 0.12));
   const lines = wrapLines(sub.text);
-  const size = 46, lh = 60, y0 = 1650 - (lines.length - 1) * lh / 2;
+  const size = 46, lh = 60, y0 = 1390 - (lines.length - 1) * lh / 2;
   const w = Math.max(...lines.map((l) => textW(l, size, 600))) + 70;
   let s = `<g opacity="${f(a)}"><rect x="${f(540 - w / 2)}" y="${f(y0 - lh / 2 - 28)}" width="${f(w)}" height="${lines.length * lh + 34}" rx="22" fill="rgba(4,10,26,.72)"/>`;
   lines.forEach((l, i) => { s += `<text x="540" y="${f(y0 + i * lh + 4)}" font-size="${size}" font-weight="600" fill="#FFFFFF" text-anchor="middle">${esc(l)}</text>`; });
@@ -242,9 +249,11 @@ function landmarkScene(u, sc, o) {
   s += `<g>${skylineLayer(CITY.far, o.cityYear, P.far, P.lit * 0.6, camX * 0.25 + 40, 1, prog(u, 0.2, 2.5))}</g>`;
   s += `<g>${skylineLayer(CITY.near.filter((b) => Math.abs(b.x + b.w / 2 - 540) > (o.gap || 330)), o.cityYear, P.near, P.lit, camX * 0.5, 0.9, prog(u, 0.2, 2.5))}</g>`;
   if (o.extraBack) s += o.extraBack(u);
-  const p = prog(u, o.revealAt ?? 0.3, (o.revealAt ?? 0.3) + (o.revealDur ?? 3.2));
+  const p = prog(u, o.revealAt ?? 0.2, (o.revealAt ?? 0.2) + (o.revealDur ?? 2.4));
+  s += `<g transform="translate(540 ${GROUND}) scale(.84) translate(-540 ${-GROUND})">`;
   s += reveal(o.draw(u), 540 + (o.dx || 0), GROUND + 2, o.scale || 1, o.h, p);
   if (o.extraFront) s += o.extraFront(u, p);
+  s += '</g>';
   s += ground(o.sky, u);
   s += '</g>';
   return s;
@@ -262,31 +271,28 @@ function dimLine(x, yTop, yBot, label, k) {
 const SCENES = {};
 
 SCENES.title = (u, sc) => {
-  const d = sc.end - sc.start;
-  let s = sky('dawn', u, [760, 1080 - 40 * u]);
-  s += clouds(u, 'dawn', 5, 4);
-  // ghost blueprint of the future skyline draws in
-  const ghost = prog(u, 4.5, 10);
-  s += `<g opacity="${f(0.55 * ghost)}" class="bp" style="stroke-dashoffset:${f(2600 * (1 - ghost))}">`;
-  s += `<g transform="translate(180 ${GROUND}) scale(.42)">${LM.baiterek()}</g>`;
-  s += `<g transform="translate(470 ${GROUND}) scale(.42)">${LM.abudhabi()}</g>`;
-  s += `<g transform="translate(720 ${GROUND}) scale(.4)">${LM.khanshatyr()}</g>`;
-  s += `<g transform="translate(930 ${GROUND}) scale(.38)">${LM.palace()}</g></g>`;
-  // small 1997 town
-  s += `<g>${skylineLayer(CITY.near, 1997, SKY.dawn.near, 0.4, -u * 8, 0.9, 1)}</g>`;
-  s += ground('dawn', u);
-  // title
-  const k1 = easeOut(prog(u, 0.2, 1.4)), k2 = easeOut(prog(u, 1.0, 2.2)), k3 = easeOut(prog(u, 1.6, 2.8));
-  const word = 'АСТАНА';
-  s += `<g filter="url(#tshadow)">`;
-  [...word].forEach((ch, i) => {
-    const kk = easeOut(prog(u, 0.2 + i * 0.09, 1.0 + i * 0.09));
-    s += `<text x="${f(540 + (i - 2.5) * 142)}" y="${f(560 + 60 * (1 - kk))}" font-size="200" font-weight="800" fill="#FFFFFF" opacity="${f(kk)}" text-anchor="middle">${ch}</text>`;
+  const P = SKY.dusk, cam = 1.08 - 0.08 * easeInOut(prog(u, 0, 7));
+  let s = sky('dusk', u, [540, 900]);
+  s += clouds(u, 'dusk', 5, 4);
+  s += `<g transform="translate(540 ${GROUND}) scale(${f(cam)}) translate(-540 ${-GROUND})">`;
+  s += `<g>${skylineLayer(CITY.far, 2026, P.far, .8, 30 - u * 6, 1.1, 1)}</g>`;
+  const row = [['palace', 80, .3, -10], ['akorda', 225, .27, -12], ['baiterek', 350, .42, -14], ['abudhabi', 480, .46, -16], ['khanshatyr', 625, .36, -18], ['hazrat', 770, .3, -20], ['grandmosque', 915, .3, -22], ['nuralem', 1045, .3, -24]];
+  row.forEach(([n, x, scl, sp], i) => {
+    const k = easeOut(prog(u, 0.1 + i * 0.12, 1.3 + i * 0.12));
+    s += `<g transform="translate(${f(x + sp * u * 0.4)} ${f(GROUND + 2 + 120 * (1 - k))}) scale(${scl})" opacity="${f(k)}">${LM[n](u, 0.8)}</g>`;
   });
-  s += `<rect x="${f(540 - 380 * k2)}" y="610" width="${f(760 * k2)}" height="8" rx="4" fill="#FFD24A"/>`;
-  s += `<text x="540" y="740" font-size="110" font-weight="800" fill="#FFD24A" text-anchor="middle" opacity="${f(k2)}" letter-spacing="4">1997–2026</text>`;
-  s += `<text x="540" y="840" font-size="54" font-weight="700" fill="#FFFFFF" text-anchor="middle" opacity="${f(k3)}" letter-spacing="6">ПРЕОБРАЖЕНИЕ СТОЛИЦЫ</text>`;
-  s += `<text x="540" y="900" font-size="30" font-weight="600" fill="#FFFFFF" text-anchor="middle" opacity="${f(0.75 * k3)}" letter-spacing="5">THE TRANSFORMATION OF A CAPITAL</text>`;
+  s += `<g>${skylineLayer(CITY.near.filter((b, i) => i % 3 === 0), 2026, P.near, 1, -u * 14, 0.55, 1)}</g>`;
+  s += ground('dusk', u);
+  s += '</g>';
+  const k2 = easeOut(prog(u, 0.9, 2.0)), k3 = easeOut(prog(u, 1.4, 2.6));
+  s += `<g filter="url(#tshadow)">`;
+  [...'АСТАНА'].forEach((ch, i) => {
+    const kk = easeOut(prog(u, 0.15 + i * 0.08, 0.95 + i * 0.08));
+    s += `<text x="${f(540 + (i - 2.5) * 142)}" y="${f(420 + 60 * (1 - kk))}" font-size="200" font-weight="800" fill="#FFFFFF" opacity="${f(kk)}" text-anchor="middle">${ch}</text>`;
+  });
+  s += `<rect x="${f(540 - 380 * k2)}" y="470" width="${f(760 * k2)}" height="8" rx="4" fill="#FFD24A"/>`;
+  s += `<text x="540" y="590" font-size="110" font-weight="800" fill="#FFD24A" text-anchor="middle" opacity="${f(k2)}" letter-spacing="4">1997–2026</text>`;
+  s += `<text x="540" y="680" font-size="54" font-weight="700" fill="#FFFFFF" text-anchor="middle" opacity="${f(k3)}" letter-spacing="4">ЕЛОРДАНЫҢ ӨЗГЕРУ ЖОЛЫ</text>`;
   s += `</g>`;
   return s;
 };
@@ -327,15 +333,15 @@ SCENES.y1997 = (u, sc) => {
     const pulse = 1 + 0.25 * Math.sin(u * 5);
     s += `<circle cx="${f(ak[0])}" cy="${f(ak[1])}" r="${f(40 * kk * pulse)}" fill="#FFD24A" opacity=".25"/>`;
     s += `<path transform="translate(${f(ak[0])} ${f(ak[1])}) scale(${f(kk)})" d="M0 -26 L7 -8 L26 -8 L11 4 L17 23 L0 12 L-17 23 L-11 4 L-26 -8 L-7 -8 Z" fill="#FFD24A"/>`;
-    s += `<text x="${f(ak[0])}" y="${f(ak[1] - 46)}" font-size="${f(46)}" font-weight="800" fill="#FFD24A" text-anchor="middle" opacity="${f(clamp(kk))}">Акмола</text>`;
+    s += `<text x="${f(ak[0])}" y="${f(ak[1] - 46)}" font-size="${f(46)}" font-weight="800" fill="#FFD24A" text-anchor="middle" opacity="${f(clamp(kk))}">Ақмола</text>`;
   }
   s += '</g>';
-  s += header(u, sc, 1997, 'Новая столица — Акмола', [{ text: '10 декабря 1997' }, { text: 'Алматы → Акмола', at: 2.4 }]);
+  s += header(u, sc, 1997, 'Жаңа елорда — Ақмола', [{ text: '10 желтоқсан 1997' }, { text: 'Алматы → Ақмола', at: 2.4 }]);
   return s;
 };
 
 SCENES.y1998 = (u, sc) => {
-  const d = sc.end - sc.start, s1 = sc.sentences[1].start - sc.start;
+  const d = sc.end - sc.start, s1 = 2.2;
   const P = SKY.morning;
   let s = sky('morning', u, [850, 700]);
   s += clouds(u, 'morning', 8);
@@ -352,22 +358,22 @@ SCENES.y1998 = (u, sc) => {
   // name change sign
   const k = prog(u, 1.2, 3.2);
   s += `<rect x="90" y="${640}" width="900" height="200" rx="30" fill="rgba(8,20,48,.6)" opacity="${f(easeOut(prog(u, 0.4, 1)))}"/>`;
-  s += nameFlip(540, 785, 'АКМОЛА', 'АСТАНА', k, 140, easeOut(prog(u, 0.4, 1)));
+  s += nameFlip(540, 785, 'АҚМОЛА', 'АСТАНА', k, 140, easeOut(prog(u, 0.4, 1)));
   // meaning card
   const km = prog(u, s1 + 0.3, s1 + 0.9);
   if (km > 0) {
     s += `<g opacity="${f(clamp(km * 1.5))}" transform="translate(540 ${f(960 + 30 * (1 - easeOut(km)))})">`
       + `<rect x="-340" y="-62" width="680" height="124" rx="24" fill="#FFFFFF" opacity=".92"/>`
-      + `<text x="0" y="-8" font-size="36" font-weight="600" fill="#2A3A5A" text-anchor="middle">каз. «Астана» =</text>`
-      + `<text x="0" y="44" font-size="48" font-weight="800" fill="#0B5FA5" text-anchor="middle">«столица»</text></g>`;
+      + `<text x="0" y="-8" font-size="36" font-weight="600" fill="#2A3A5A" text-anchor="middle">«Астана» сөзі —</text>`
+      + `<text x="0" y="44" font-size="48" font-weight="800" fill="#0B5FA5" text-anchor="middle">«бас қала»</text></g>`;
   }
-  s += header(u, sc, 1998, 'Акмола → Астана', [{ text: '6 мая 1998' }]);
+  s += header(u, sc, 1998, 'Ақмола → Астана', [{ text: '6 мамыр 1998' }]);
   return s;
 };
 
 SCENES.baiterek = (u, sc) => landmarkScene(u, sc, { sky: 'golden', sun: [880, 820], cityYear: 2002, draw: () => LM.baiterek(u), h: LM.baiterek.h, scale: 0.98, revealAt: 0.2,
-  extraFront: (uu) => dimLine(860, GROUND - 0.98 * 870, GROUND - 2, '97 м', prog(uu, 3.6, 4.6)) })
-  + header(u, sc, 2002, 'Байтерек', [{ text: '97 метров' }, { text: 'золотой шар', at: 3.2 }]);
+  extraFront: (uu) => dimLine(860, GROUND - 0.98 * 870, GROUND - 2, '97 м', prog(uu, 2.0, 2.8)) })
+  + header(u, sc, 2002, 'Бәйтерек', [{ text: '97 метр' }, { text: 'алтын шар', at: 1.4 }]);
 
 SCENES.akorda = (u, sc) => landmarkScene(u, sc, { sky: 'day', sun: [180, 640], cityYear: 2004, draw: () => LM.akorda(), h: LM.akorda.h, scale: 1.05, revealAt: 0.2, gap: 470,
   extraFront: (uu, p) => {
@@ -376,12 +382,12 @@ SCENES.akorda = (u, sc) => landmarkScene(u, sc, { sky: 'day', sun: [180, 640], c
     const wv = Math.sin(uu * 4) * 6;
     return `<g transform="translate(${540 - 250 * 1.05} ${GROUND - 352 * 1.05})"><rect x="-2" y="-110" width="4" height="110" fill="#DDD"/><path d="M2 -110 q 50 ${f(wv)} 100 0 v60 q -50 ${f(-wv)} -100 0 Z" fill="#00AFCA"/><circle cx="52" cy="-80" r="12" fill="#FEC50C"/></g>`;
   } })
-  + header(u, sc, 2004, 'Ак Орда', [{ text: 'резиденция президента' }, { text: 'голубой купол', at: 2.6 }]);
+  + header(u, sc, 2004, 'Ақорда', [{ text: 'Президент резиденциясы' }, { text: 'көгілдір күмбез', at: 1.4 }]);
 
 SCENES.palace = (u, sc) => landmarkScene(u, sc, { sky: 'day', sun: [860, 620], cityYear: 2006, draw: () => LM.palace(), h: LM.palace.h, scale: 1.12, revealAt: 0.2, seed: 9, gap: 520,
   extraFront: (uu) => {
-    const t2 = sc.sentences[1].start - sc.start;
-    let s = dimLine(940, GROUND - 1.12 * 720, GROUND - 1.12 * 70, '62 м', prog(uu, 3.4, 4.4));
+    const t2 = 1.6;
+    let s = dimLine(940, GROUND - 1.12 * 720, GROUND - 1.12 * 70, '62 м', prog(uu, 2.0, 2.8));
     // doves circling the apex during the 2nd sentence
     const kd = prog(uu, t2 - 0.4, t2 + 0.6);
     for (let i = 0; i < 5; i++) {
@@ -390,13 +396,13 @@ SCENES.palace = (u, sc) => landmarkScene(u, sc, { sky: 'day', sun: [860, 620], c
     }
     return s;
   } })
-  + header(u, sc, 2006, 'Дворец мира и согласия', [{ text: '62 метра' }, { text: 'арх. Норман Фостер', at: 1.8 }]);
+  + header(u, sc, 2006, 'Бейбітшілік және келісім сарайы', [{ text: '62 метр' }, { text: 'сәулетші Норман Фостер', at: 1.2 }]);
 
 SCENES.khanshatyr = (u, sc) => landmarkScene(u, sc, { sky: 'dusk', sun: [200, 900], cityYear: 2010, draw: () => LM.khanshatyr(u, prog(u, 4, 6)), h: LM.khanshatyr.h, scale: 0.95, revealAt: 0.2, seed: 4,
   extraFront: (uu) => {
-    const t2 = sc.sentences[1].start - sc.start;
-    let s = dimLine(980, GROUND - 0.95 * 905, GROUND - 2, '150 м', prog(uu, 3.6, 4.6));
-    const icons = [['🌳', 'парк'], ['🛍', 'магазины'], ['🏖', 'пляж']];
+    const t2 = 99;
+    let s = dimLine(980, GROUND - 0.95 * 905, GROUND - 2, '150 м', prog(uu, 2.0, 2.8));
+    const icons = [['🌳', 'саябақ'], ['🛍', 'дүкендер'], ['🏖', 'жағажай']];
     icons.forEach(([ic, label], i) => {
       const kk = back(prog(uu, t2 + 0.3 + i * 0.5, t2 + 0.8 + i * 0.5));
       if (kk <= 0) return;
@@ -405,11 +411,11 @@ SCENES.khanshatyr = (u, sc) => landmarkScene(u, sc, { sky: 'dusk', sun: [200, 90
     });
     return s;
   } })
-  + header(u, sc, 2010, 'Хан Шатыр', [{ text: '150 метров' }, { text: 'арх. Норман Фостер', at: 1.8 }]);
+  + header(u, sc, 2010, 'Хан Шатыр', [{ text: '150 метр' }, { text: 'сәулетші Норман Фостер', at: 1.2 }]);
 
 SCENES.hazrat = (u, sc) => landmarkScene(u, sc, { sky: 'golden', sun: [180, 760], cityYear: 2012, draw: () => LM.hazrat(), h: LM.hazrat.h, scale: 1.08, revealAt: 0.2, seed: 12, gap: 520,
-  extraFront: (uu) => dimLine(1000, GROUND - 1.08 * 720, GROUND - 2, '77 м', prog(uu, 3.4, 4.4)) })
-  + header(u, sc, 2012, 'Мечеть Хазрет Султан', [{ text: '4 минарета' }, { text: '77 метров', at: 1.8 }]);
+  extraFront: (uu) => dimLine(1000, GROUND - 1.08 * 720, GROUND - 2, '77 м', prog(uu, 2.0, 2.8)) })
+  + header(u, sc, 2012, 'Әзірет Сұлтан мешіті', [{ text: '4 мұнара' }, { text: '77 метр', at: 1.2 }]);
 
 SCENES.expo = (u, sc) => landmarkScene(u, sc, { sky: 'day', sun: [900, 560], cityYear: 2017, draw: () => LM.nuralem(u), h: LM.nuralem.h, scale: 1.0, revealAt: 0.2, seed: 21, gap: 600,
   extraFront: (uu) => {
@@ -422,40 +428,40 @@ SCENES.expo = (u, sc) => landmarkScene(u, sc, { sky: 'day', sun: [900, 560], cit
       + `<circle cx="${f(540 - w)}" cy="${cy}" r="8" fill="#FFD24A"/><circle cx="${f(540 + w)}" cy="${cy}" r="8" fill="#FFD24A"/>`
       + `<rect x="430" y="${cy - 100}" width="220" height="70" rx="16" fill="rgba(8,20,48,.8)"/><text x="540" y="${cy - 52}" font-size="44" font-weight="800" fill="#FFD24A" text-anchor="middle">Ø 80 м</text></g>`;
   } })
-  + header(u, sc, 2017, 'ЭКСПО-2017 · Нур Алем', [{ text: '«Энергия будущего»' }, { text: 'сфера Ø 80 м', at: sc.sentences[1].start - sc.start + 0.4 }]);
+  + header(u, sc, 2017, 'ЭКСПО-2017 · Нұр Әлем', [{ text: '«Болашақ энергиясы»' }, { text: 'шар Ø 80 м', at: sc.sentences[1].start - sc.start + 0.4 }]);
 
 // 2019: rename to Nur-Sultan, then Abu Dhabi Plaza rises
 SCENES.y2019 = (u, sc) => {
   const t2 = sc.sentences[1].start - sc.start;
   const signA = 1 - prog(u, t2 - 0.6, t2 + 0.2);
-  let s = landmarkScene(u, sc, { sky: 'dusk', sun: [860, 980], cityYear: 2019, draw: () => LM.abudhabi(u, prog(u, t2 + 2, t2 + 4)), h: LM.abudhabi.h, scale: 0.86, revealAt: t2 - 0.2, revealDur: 3.4, seed: 30, gap: 420,
-    extraFront: (uu) => dimLine(890, GROUND - 0.86 * 1010, GROUND - 2, '311 м', prog(uu, t2 + 2.6, t2 + 3.6)) });
+  let s = landmarkScene(u, sc, { sky: 'dusk', sun: [860, 980], cityYear: 2019, draw: () => LM.abudhabi(u, prog(u, t2 + 2, t2 + 4)), h: LM.abudhabi.h, scale: 0.86, revealAt: t2 - 0.3, revealDur: 2.3, seed: 30, gap: 420,
+    extraFront: (uu) => dimLine(890, GROUND - 0.86 * 1010, GROUND - 2, '311 м', prog(uu, t2 + 1.8, t2 + 2.6)) });
   s += `<rect x="40" y="${700}" width="1000" height="200" rx="30" fill="rgba(8,20,48,.62)" opacity="${f(signA * easeOut(prog(u, 0.3, 0.9)))}"/>`;
-  s += nameFlip(540, 845, 'АСТАНА', 'НУР-СУЛТАН', prog(u, 1.0, 3.0), 118, signA * easeOut(prog(u, 0.3, 0.9)));
+  s += nameFlip(540, 845, 'АСТАНА', 'НҰР-СҰЛТАН', prog(u, 1.0, 3.0), 118, signA * easeOut(prog(u, 0.3, 0.9)));
   const tA = 1 - prog(u, t2 - 0.4, t2), tB = prog(u, t2, t2 + 0.6);
   s += header(u, sc, 2019, null, []);
-  s += `<text x="72" y="390" font-size="62" font-weight="700" fill="#FFFFFF" opacity="${f(tA * easeOut(prog(u, .35, 1)))}" filter="url(#tshadow)">Астана → Нур-Султан</text>`;
+  s += `<text x="72" y="390" font-size="62" font-weight="700" fill="#FFFFFF" opacity="${f(tA * easeOut(prog(u, .35, 1)))}" filter="url(#tshadow)">Астана → Нұр-Сұлтан</text>`;
   s += `<text x="72" y="390" font-size="62" font-weight="700" fill="#FFFFFF" opacity="${f(tB)}" filter="url(#tshadow)">Абу-Даби Плаза</text>`;
-  s += chip(72, 458, 'март 2019', prog(u, 0.9, 1.4) * tA);
-  s += chip(72, 458, 'декабрь 2019', prog(u, t2 + 0.3, t2 + 0.8));
-  s += chip(370, 458, 'самый высокий в Центральной Азии', prog(u, t2 + 2.2, t2 + 2.7));
+  s += chip(72, 458, 'наурыз 2019', prog(u, 0.9, 1.4) * tA);
+  s += chip(72, 458, 'желтоқсан 2019', prog(u, t2 + 0.3, t2 + 0.8));
+  s += chip(400, 458, 'Орталық Азиядағы ең биік', prog(u, t2 + 2.2, t2 + 2.7));
   return s;
 };
 
 // 2022: back to Astana + Grand Mosque
 SCENES.y2022 = (u, sc) => {
   const t2 = sc.sentences[1].start - sc.start;
-  const signA = 1 - prog(u, t2 - 0.6, t2 + 0.2);
-  let s = landmarkScene(u, sc, { sky: 'morning', sun: [880, 640], cityYear: 2022, draw: () => LM.grandmosque(), h: LM.grandmosque.h, scale: 0.96, revealAt: t2 - 0.2, revealDur: 3.0, seed: 40, gap: 560,
-    extraFront: (uu) => dimLine(1010, GROUND - 0.96 * 880, GROUND - 2, '130 м', prog(uu, t2 + 2.4, t2 + 3.4)) });
+  const signA = 1 - prog(u, t2 - 0.7, t2);
+  let s = landmarkScene(u, sc, { sky: 'morning', sun: [880, 640], cityYear: 2022, draw: () => LM.grandmosque(), h: LM.grandmosque.h, scale: 0.96, revealAt: t2 - 0.3, revealDur: 2.0, seed: 40, gap: 560,
+    extraFront: (uu) => dimLine(1010, GROUND - 0.96 * 880, GROUND - 2, '130 м', prog(uu, t2 + 1.8, t2 + 2.6)) });
   s += `<rect x="40" y="${700}" width="1000" height="200" rx="30" fill="rgba(8,20,48,.62)" opacity="${f(signA * easeOut(prog(u, 0.3, 0.9)))}"/>`;
-  s += nameFlip(540, 845, 'НУР-СУЛТАН', 'АСТАНА', prog(u, 1.0, 3.0), 118, signA * easeOut(prog(u, 0.3, 0.9)));
+  s += nameFlip(540, 845, 'НҰР-СҰЛТАН', 'АСТАНА', prog(u, 1.0, 3.0), 118, signA * easeOut(prog(u, 0.3, 0.9)));
   const tA = 1 - prog(u, t2 - 0.4, t2), tB = prog(u, t2, t2 + 0.6);
   s += header(u, sc, 2022, null, []);
-  s += `<text x="72" y="390" font-size="62" font-weight="700" fill="#FFFFFF" opacity="${f(tA * easeOut(prog(u, .35, 1)))}" filter="url(#tshadow)">Нур-Султан → Астана</text>`;
-  s += `<text x="72" y="390" font-size="56" font-weight="700" fill="#FFFFFF" opacity="${f(tB)}" filter="url(#tshadow)">Большая мечеть Астаны</text>`;
-  s += chip(72, 458, 'сентябрь 2022', prog(u, 0.9, 1.4) * tA);
-  s += chip(72, 458, 'крупнейшая в Центральной Азии', prog(u, t2 + 0.6, t2 + 1.1));
+  s += `<text x="72" y="390" font-size="62" font-weight="700" fill="#FFFFFF" opacity="${f(tA * easeOut(prog(u, .35, 1)))}" filter="url(#tshadow)">Нұр-Сұлтан → Астана</text>`;
+  s += `<text x="72" y="390" font-size="56" font-weight="700" fill="#FFFFFF" opacity="${f(tB)}" filter="url(#tshadow)">Астананың Ұлы мешіті</text>`;
+  s += chip(72, 458, 'қыркүйек 2022', prog(u, 0.9, 1.4) * tA);
+  s += chip(72, 458, 'Орталық Азиядағы ең ірі', prog(u, t2 + 0.6, t2 + 1.1));
   return s;
 };
 
@@ -466,7 +472,7 @@ SCENES.population = (u, sc) => {
   let val = 0, yearLabel = '1998';
   for (const [t0, a, b] of steps) if (u >= t0 - 0.2) { val = lerp(a, b, easeOut(prog(u, t0 + 0.2, t0 + 2.2))); }
   if (u >= S[1] - 0.2) yearLabel = '2022';
-  if (u >= S[2] - 0.2) yearLabel = '1 сентября 2026';
+  if (u >= S[2] - 0.2) yearLabel = '1 қыркүйек 2026';
   // city grows with the counter
   const cityYear = lerp(1997, 2026, clamp(val / 1700385));
   let s = sky('night', u, [880, 640]);
@@ -482,7 +488,7 @@ SCENES.population = (u, sc) => {
   s += `<text x="540" y="560" font-size="46" font-weight="700" fill="#FFD24A" text-anchor="middle" letter-spacing="2">${esc(yearLabel)}</text>`;
   const big = fmtNum(val);
   s += `<text x="540" y="740" font-size="${big.length > 9 ? 158 : 170}" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="-3">${big}</text>`;
-  s += `<text x="540" y="810" font-size="44" font-weight="600" fill="#FFFFFF" opacity=".85" text-anchor="middle">жителей</text></g>`;
+  s += `<text x="540" y="810" font-size="44" font-weight="600" fill="#FFFFFF" opacity=".85" text-anchor="middle">тұрғын</text></g>`;
   // bar chart
   const bars = [['1998', 326000, S[0]], ['2022', 1262000, S[1]], ['2026', 1700385, S[2]]];
   bars.forEach(([lab, v, t0], i) => {
@@ -491,19 +497,19 @@ SCENES.population = (u, sc) => {
     const x = 300 + i * 200, hh = 300 * v / 1700385 * k;
     s += `<rect x="${x - 55}" y="${f(1180 - hh)}" width="110" height="${f(hh)}" rx="10" fill="${i === 2 ? '#FFD24A' : '#5FC8FF'}" opacity=".92"/>`;
     s += `<text x="${x}" y="1225" font-size="34" font-weight="700" fill="#FFFFFF" text-anchor="middle" filter="url(#tshadow)">${lab}</text>`;
-    s += `<text x="${x}" y="${f(1165 - hh)}" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle" opacity="${f(k)}">${v >= 1e6 ? (v / 1e6).toFixed(2).replace('.', ',') + ' млн' : Math.round(v / 1000) + ' тыс.'}</text>`;
+    s += `<text x="${x}" y="${f(1165 - hh)}" font-size="28" font-weight="700" fill="#FFFFFF" text-anchor="middle" opacity="${f(k)}">${v >= 1e6 ? (v / 1e6).toFixed(2).replace('.', ',') + ' млн' : Math.round(v / 1000) + ' мың'}</text>`;
   });
   // ×5 badge
   const kx = back(prog(u, S[3] + 0.1, S[3] + 0.7));
-  if (kx > 0) s += `<g transform="translate(870 960) scale(${f(kx)}) rotate(-8)"><circle r="96" fill="#FFD24A"/><text y="10" font-size="62" font-weight="800" fill="#0B1A3A" text-anchor="middle">×5,2</text><text y="52" font-size="24" font-weight="700" fill="#0B1A3A" text-anchor="middle">рост</text></g>`;
+  if (kx > 0) s += `<g transform="translate(870 960) scale(${f(kx)}) rotate(-8)"><circle r="96" fill="#FFD24A"/><text y="10" font-size="62" font-weight="800" fill="#0B1A3A" text-anchor="middle">×5,2</text><text y="52" font-size="24" font-weight="700" fill="#0B1A3A" text-anchor="middle">өсім</text></g>`;
   s += header(u, sc, null, null);
-  s += `<text x="72" y="300" font-size="92" font-weight="800" fill="#FFFFFF" opacity="${f(easeOut(prog(u, 0.05, 0.7)))}" filter="url(#tshadow)">НАСЕЛЕНИЕ</text>`;
+  s += `<text x="72" y="300" font-size="92" font-weight="800" fill="#FFFFFF" opacity="${f(easeOut(prog(u, 0.05, 0.7)))}" filter="url(#tshadow)">ХАЛЫҚ САНЫ</text>`;
   s += `<rect x="72" y="330" width="${f(260 * easeOut(prog(u, 0.3, 1)))}" height="8" rx="4" fill="#FFD24A"/>`;
   return s;
 };
 
 // LRT route: schematic polyline from Airport to Nurly Zhol, 18 stations
-const LRT_ROUTE = [[120, 840], [200, 760], [260, 700], [300, 640], [330, 580], [380, 545], [450, 530], [520, 520], [575, 560], [600, 620], [640, 680], [680, 720], [720, 780]];
+const LRT_ROUTE = [[120, 800], [200, 730], [260, 680], [300, 630], [330, 585], [380, 555], [450, 540], [520, 535], [575, 565], [600, 610], [630, 660], [650, 700], [660, 740]];
 function polyLen(pts) { let L = 0; for (let i = 1; i < pts.length; i++) L += Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]); return L; }
 function polyAt(pts, k) {
   let L = polyLen(pts) * k;
@@ -549,8 +555,8 @@ SCENES.lrt = (u, sc) => {
   // route map card (top)
   const km = easeOut(prog(u, 0.6, 1.4));
   s += `<g opacity="${f(km)}" transform="translate(0 ${f(30 * (1 - km))})">`;
-  s += `<rect x="40" y="500" width="640" height="420" rx="28" fill="rgba(6,16,40,.82)"/>`;
-  s += `<text x="70" y="548" font-size="28" font-weight="700" fill="#9FDCF5" letter-spacing="2">СХЕМА ЛИНИИ</text>`;
+  s += `<rect x="40" y="500" width="640" height="372" rx="28" fill="rgba(6,16,40,.82)"/>`;
+  s += `<text x="70" y="548" font-size="28" font-weight="700" fill="#9FDCF5" letter-spacing="2">ЖЕЛІ СЫЗБАСЫ</text>`;
   // Ishim river on the schematic
   s += `<path d="M60 700 C 200 640 300 620 420 680 S 600 800 670 760" stroke="#3E86C8" stroke-width="14" fill="none" opacity=".55" stroke-linecap="round"/>`;
   const lineK = easeInOut(prog(u, S[1] - 0.2, S[1] + 2.4));
@@ -564,8 +570,8 @@ SCENES.lrt = (u, sc) => {
     s += `<circle cx="${f(x)}" cy="${f(y)}" r="${end ? 13 : 8}" fill="${end ? '#FFD24A' : '#FFFFFF'}" stroke="#00C2E0" stroke-width="4"/>`;
   }
   const kEnds = prog(u, S[3] - 0.2, S[3] + 0.5);
-  s += `<text x="110" y="890" font-size="30" font-weight="700" fill="#FFD24A" opacity="${f(Math.max(kEnds, 0.0))}">✈ Аэропорт</text>`;
-  s += `<text x="560" y="830" font-size="30" font-weight="700" fill="#FFD24A" text-anchor="middle" opacity="${f(kEnds)}">Нурлы Жол 🚉</text>`;
+  s += `<text x="150" y="812" font-size="30" font-weight="700" fill="#FFD24A" opacity="${f(Math.max(kEnds, 0.0))}">✈ Әуежай</text>`;
+  s += `<text x="520" y="790" font-size="30" font-weight="700" fill="#FFD24A" text-anchor="middle" opacity="${f(kEnds)}">Нұрлы жол 🚉</text>`;
   if (kEnds > 0 && kEnds < 1.01) {
     const pk = (u - S[3]) * 0.45 % 1;
     const [x, y] = polyAt(pts, clamp(pk));
@@ -573,22 +579,22 @@ SCENES.lrt = (u, sc) => {
   }
   s += '</g>';
   // stat cards (right column), each synced to the narration
-  const cards = [['≈ 22,4 км', 'длина линии', S[1] + 0.2], ['18', 'станций', S[1] + 1.8], ['Без машиниста', 'беспилотные поезда', S[2]], ['Аэропорт ⇄', 'Нурлы Жол', S[3] + 0.2]];
+  const cards = [['≈ 22,4 км', 'желі ұзындығы', S[1] + 0.2], ['18', 'бекет', S[1] + 1.8], ['Жүргізушісіз', 'автоматты пойыздар', S[2]], ['Әуежай ⇄', 'Нұрлы жол', S[3] + 0.2]];
   cards.forEach(([big, small, t0], i) => {
     const k = back(prog(u, t0, t0 + 0.5));
     if (k <= 0) return;
-    const y = 500 + i * 108;
-    s += `<g transform="translate(${f(700 + 360 * (1 - clamp(k)))} ${y})" opacity="${f(clamp(k * 1.5))}"><rect width="340" height="96" rx="20" fill="#FFFFFF" opacity=".94"/><rect width="10" height="96" rx="5" fill="#00A7C8"/>`
-      + `<text x="28" y="48" font-size="${big.length > 10 ? 32 : 40}" font-weight="800" fill="#0B1A3A">${esc(big)}</text><text x="28" y="80" font-size="24" font-weight="600" fill="#45607F">${esc(small)}</text></g>`;
+    const y = 500 + i * 94;
+    s += `<g transform="translate(${f(700 + 360 * (1 - clamp(k)))} ${y})" opacity="${f(clamp(k * 1.5))}"><rect width="340" height="84" rx="20" fill="#FFFFFF" opacity=".94"/><rect width="10" height="84" rx="5" fill="#00A7C8"/>`
+      + `<text x="28" y="42" font-size="${big.length > 10 ? 32 : 38}" font-weight="800" fill="#0B1A3A">${esc(big)}</text><text x="28" y="70" font-size="23" font-weight="600" fill="#45607F">${esc(small)}</text></g>`;
   });
-  s += header(u, sc, 2026, 'Tarlan Astana LRT', [{ text: 'май 2026' }, { text: 'первая линия', at: 1.6 }]);
+  s += header(u, sc, 2026, 'Tarlan Astana LRT', [{ text: 'мамыр 2026' }, { text: 'алғашқы желі', at: 1.6 }]);
   return s;
 };
 
 const RECAP = [
-  [1997, 'Акмола становится столицей'], [1998, 'Город переименован в Астану'], [2002, 'Байтерек'], [2004, 'Ак Орда'],
-  [2006, 'Дворец мира и согласия'], [2010, 'Хан Шатыр'], [2012, 'Мечеть Хазрет Султан'], [2017, 'ЭКСПО-2017 и Нур Алем'],
-  [2019, 'Нур-Султан; Абу-Даби Плаза'], [2022, 'Снова Астана; Большая мечеть'], [2026, 'Запуск Tarlan Astana LRT'],
+  [1997, 'Ақмола — елорда'], [1998, 'Қала Астана атанды'], [2002, 'Бәйтерек'], [2004, 'Ақорда'],
+  [2006, 'Бейбітшілік және келісім сарайы'], [2010, 'Хан Шатыр'], [2012, 'Әзірет Сұлтан мешіті'], [2017, 'ЭКСПО-2017 және Нұр Әлем'],
+  [2019, 'Нұр-Сұлтан; Абу-Даби Плаза'], [2022, 'Қайтадан Астана; Ұлы мешіт'], [2026, 'Tarlan Astana LRT іске қосылды'],
 ];
 
 SCENES.outro = (u, sc) => {
@@ -621,8 +627,7 @@ SCENES.outro = (u, sc) => {
     s += `<text x="540" y="620" font-size="170" font-weight="800" fill="#FFFFFF" text-anchor="middle">АСТАНА</text>`;
     s += `<text x="540" y="740" font-size="100" font-weight="800" fill="#FFD24A" text-anchor="middle" letter-spacing="4">1997–2026</text>`;
     s += `<rect x="${f(540 - 300 * ke)}" y="780" width="${f(600 * ke)}" height="6" rx="3" fill="#FFD24A"/>`;
-    s += `<text x="540" y="860" font-size="52" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="5">ПРЕОБРАЖЕНИЕ СТОЛИЦЫ</text>`;
-    s += `<text x="540" y="915" font-size="30" font-weight="600" fill="#FFFFFF" opacity=".8" text-anchor="middle" letter-spacing="5">THE TRANSFORMATION OF A CAPITAL</text></g>`;
+    s += `<text x="540" y="860" font-size="54" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="4">ЕЛОРДАНЫҢ ӨЗГЕРУ ЖОЛЫ</text></g>`;
   }
   return s;
 };

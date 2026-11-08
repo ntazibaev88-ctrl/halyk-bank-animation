@@ -28,7 +28,7 @@ n_chords = int(np.ceil(T / chord_len)) + 1
 
 def section_level(t):
     """energy curve driven by scenes: intro soft, build through history, peak on population/LRT, resolve."""
-    pts = [(0, .35), (11, .55), (28, .7), (64, .8), (100, .9), (122, 1.0), (139, .85), (147, .6), (150, .4)]
+    pts = [(0, .6), (7, .55), (18, .7), (40, .8), (53, .85), (67, .9), (82, 1.0), (99, .85), (107, .6), (110, .4)]
     xs, ys = zip(*pts); return np.interp(t, xs, ys)
 
 # Pads
@@ -52,7 +52,7 @@ def pluck(m, dur=0.6):
     s = (np.sin(2 * np.pi * f * tt) + .3 * np.sin(4 * np.pi * f * tt) + .12 * np.sin(6 * np.pi * f * tt)) * np.exp(-tt * 7)
     s[:120] *= np.linspace(0, 1, 120); pluck_cache[m] = s; return s
 pattern = [0, 1, 2, 3, 2, 1, 2, 3]
-t0 = 11.3
+t0 = 7.0
 k = 0
 while t0 + k * beat / 2 < T - 3:
     t = t0 + k * beat / 2
@@ -67,15 +67,15 @@ def kick():
     f = 42 + 60 * np.exp(-tt * 30)
     return np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-tt * 9)
 K = kick()
-t = 19.8
+t = 7.0
 while t < T - 4:
     lvl = section_level(t)
     add(K, t, 0.22 * lvl)
-    if t > 64: add(K, t + 2 * beat, 0.16 * lvl)
+    if t > 40: add(K, t + 2 * beat, 0.16 * lvl)
     t += bar
 for k in range(n_chords):
     st = k * chord_len
-    if st < 19.8 or st > T - 3: continue
+    if st < 7.0 or st > T - 3: continue
     n = int(chord_len * SR); tt = np.arange(n) / SR
     root = midi(prog[k % 4][0] - 12)
     add(np.sin(2 * np.pi * root * tt) * env(n, .3, .6) * 0.05, st, section_level(st))
@@ -83,7 +83,7 @@ for k in range(n_chords):
 # Soft shaker (hi-hat-ish noise) in the busy part
 hat = rng.standard_normal(int(0.06 * SR)) * np.exp(-np.arange(int(0.06 * SR)) / SR * 70)
 hat = np.diff(hat, prepend=0)
-t = 64.2
+t = 40.2
 while t < T - 5:
     add(hat, t + beat / 2, 0.02 * section_level(t), pan=0.4); t += beat
 
