@@ -1,0 +1,6 @@
+node_modules/
+.hyperframes/
+renders/master.mp4
+renders/work-*
+renders/.*
+assets/audio/vo/*.raw.mp3

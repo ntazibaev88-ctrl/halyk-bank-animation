@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="kk" data-resolution="portrait">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<title>Астана — даладан елордаға дейін</title>
+<script src="vendor/gsap.min.js"></script>
+<style>
+  @font-face { font-family: Montserrat; src: url("assets/fonts/Montserrat[wght].ttf") format("truetype"); font-weight: 100 900; }
+  @font-face { font-family: InterK; src: url("assets/fonts/Inter-SemiBold.otf") format("opentype"); font-weight: 600; }
+  @font-face { font-family: InterK; src: url("assets/fonts/Inter-Bold.otf") format("opentype"); font-weight: 700; }
+  :root { --gold: #f2c14e; --gold-grad: linear-gradient(180deg, #fff6d6 0%, #f7d47c 40%, #d9a039 72%, #fbe3a1 100%); --cyan: #7fd6ff; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+  #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #061026; font-family: Montserrat, InterK, sans-serif; color: #fff; }
+  #stage, #ui, .scene, .world, .layer { position: absolute; inset: 0; }
+  .world { transform-origin: 50% 55%; }
+  .layer svg { position: absolute; inset: 0; display: block; overflow: visible; }
+  .mapcity { font: 600 34px Montserrat; fill: #5a4630; }
+  .mapcity.strong { font-weight: 800; fill: #c2462f; font-size: 42px; }
+  .dlabel { font: 700 26px Montserrat; fill: #cfe3ff; letter-spacing: 3px; }
+  .secname { font: 600 30px Montserrat; fill: #ffffff; }
+  .coin { font: 800 120px Montserrat; fill: #7a4b0c; }
+  .flagwrap { position: absolute; left: 40px; top: 1060px; width: 620px; height: 980px; filter: drop-shadow(0 10px 20px rgba(0,0,0,.35)); }
+  #vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0) 55%, rgba(0,0,0,.45) 100%); }
+  #grain { position: absolute; inset: -128px; opacity: .06; mix-blend-mode: overlay; pointer-events: none; }
+  #ui > div { position: absolute; }
+  .l, .sp { display: inline-block; }
+  .w { display: inline-block; white-space: nowrap; }
+  .g { color: var(--gold); }
+  .kicker { top: 260px; left: 0; right: 0; display: flex; justify-content: center; align-items: center; gap: 22px; font: 600 28px Montserrat; letter-spacing: .5em; color: var(--gold); text-shadow: 0 2px 12px rgba(0,0,0,.5); }
+  .kicker i { width: 80px; height: 2px; background: var(--gold); display: block; }
+  .title { top: 330px; left: 0; right: 0; text-align: center; perspective: 800px; }
+  .title .word, .finale .l1 { font-weight: 800; }
+  .title .word { font-size: 164px; letter-spacing: .1em; padding-left: .1em; line-height: 1; white-space: nowrap; }
+  .title .word .l, .growth .t1 .l, .finale .l1 .l { background: var(--gold-grad); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 8px 30px rgba(0,0,0,.45)); }
+  .title .sub { margin-top: 30px; display: flex; justify-content: center; align-items: center; gap: 18px; font: 700 34px Montserrat; letter-spacing: .16em; white-space: nowrap; text-shadow: 0 3px 18px rgba(0,0,0,.6); }
+  .title .sub i { width: 48px; height: 2px; background: var(--gold); display: block; }
+  .hist { top: 230px; left: 70px; right: 150px; }
+  .hist .it { display: flex; align-items: baseline; gap: 22px; margin-bottom: 14px; transform-origin: 0 50%; }
+  .hist .it b { font: 800 84px Montserrat; background: var(--gold-grad); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 4px 14px rgba(0,0,0,.4)); min-width: 220px; }
+  .hist .it span { font: 700 38px Montserrat; color: #fff; text-shadow: 0 3px 16px rgba(0,0,0,.7); }
+  .hist .rail { position: relative; height: 4px; margin-top: 18px; background: rgba(255,255,255,.3); border-radius: 2px; }
+  .hist .rail .fill { position: absolute; inset: 0; background: var(--gold); border-radius: 2px; }
+  .growth { top: 280px; left: 0; right: 0; text-align: center; }
+  .growth .t1 { font: 800 98px Montserrat; letter-spacing: .04em; line-height: 1.05; white-space: nowrap; }
+  .growth .t2 { margin-top: 16px; display: inline-block; font: 700 46px Montserrat; letter-spacing: .3em; padding: 12px 28px 12px 40px; background: rgba(6,16,38,.55); border-left: 6px solid var(--gold); }
+  .stat { left: 60px; right: 140px; text-align: center; }
+  .stat .num, .stat .big { font: 800 136px Montserrat; line-height: 1.02; letter-spacing: .01em; font-variant-numeric: tabular-nums; text-shadow: 0 8px 36px rgba(0,0,0,.55); }
+  .stat .unit { font: 700 46px Montserrat; letter-spacing: .3em; color: var(--gold); margin-top: 6px; }
+  .stat .lab, .stat .date { font: 700 32px Montserrat; letter-spacing: .08em; margin-top: 14px; text-shadow: 0 3px 16px rgba(0,0,0,.6); }
+  .stat .src { font: 500 22px Montserrat; color: rgba(255,255,255,.75); margin-top: 18px; line-height: 1.35; }
+  .pop { top: 250px; }
+  .pop .chip { display: inline-block; padding: 10px 26px; border: 2px solid var(--gold); border-radius: 40px; color: var(--gold); font: 700 30px Montserrat; letter-spacing: .2em; background: rgba(6,16,38,.5); margin-bottom: 16px; }
+  .chips { top: 300px; left: 60px; right: 140px; display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+  .chips span { font: 700 34px Montserrat; letter-spacing: .12em; padding: 14px 26px; border-radius: 12px; background: rgba(6,16,38,.62); border: 2px solid rgba(242,193,78,.8); }
+  .grp { top: 560px; } .grp .big { font-size: 230px; background: var(--gold-grad); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: none; filter: drop-shadow(0 8px 30px rgba(0,0,0,.5)); }
+  .bud { top: 480px; } .bud .big { font-size: 200px; background: var(--gold-grad); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: none; }
+  .budsmall { top: 250px; left: 60px; right: 140px; text-align: center; }
+  .budsmall b { display: block; font: 800 64px Montserrat; color: var(--gold); }
+  .budsmall span { display: block; font: 700 28px Montserrat; letter-spacing: .06em; margin-top: 6px; }
+  .note { top: 1395px; left: 80px; right: 160px; text-align: center; font: 500 24px Montserrat; color: rgba(255,255,255,.8); line-height: 1.35; }
+  .lmcap { left: 70px; top: 1170px; display: flex; align-items: center; gap: 20px; }
+  .lmcap i { width: 70px; height: 4px; background: var(--gold); display: block; }
+  .lmcap span { font: 800 50px Montserrat; letter-spacing: .14em; text-shadow: 0 3px 22px rgba(0,0,0,.75); white-space: nowrap; }
+  .tour { top: 240px; } .tour .yr { font: 700 30px Montserrat; letter-spacing: .3em; color: var(--gold); margin-bottom: 4px; }
+  .tour .row2 { margin-top: 22px; display: flex; flex-direction: column; align-items: center; }
+  .tour .row2 span { font: 800 96px Montserrat; color: #dff4ff; text-shadow: 0 6px 28px rgba(0,0,0,.5); font-variant-numeric: tabular-nums; }
+  .tour .row2 em { font: 700 34px Montserrat; font-style: normal; letter-spacing: .2em; }
+  .finale { top: 250px; left: 60px; right: 60px; text-align: center; }
+  .finale .l1 { font-size: 66px; line-height: 1.2; letter-spacing: .04em; }
+  .finale .l2 { margin-top: 30px; font: 700 40px Montserrat; letter-spacing: .1em; text-shadow: 0 3px 22px rgba(0,0,0,.7); }
+  .subs { left: 60px; right: 140px; bottom: 420px; height: 160px; }
+  .subs .card { position: absolute; left: 0; right: 0; bottom: 0; text-align: center; display: none; font: 600 50px InterK, Montserrat, sans-serif; line-height: 1.26; text-wrap: balance; text-shadow: 0 2px 4px rgba(0,0,0,.9), 0 4px 22px rgba(0,0,0,.85); }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="120" data-width="1080" data-height="1920" data-fps="30">
+  <div id="stage"></div>
+  <div id="vignette"></div>
+  <div id="ui"></div>
+  <div id="grain"></div>
+  <audio id="vo" src="assets/audio/vo.wav" data-start="0" data-duration="120" data-volume="1"></audio>
+  <audio id="score" src="assets/audio/score.wav" data-start="0" data-duration="120" data-volume="1"></audio>
+</div>
+<script src="app.bundle.js"></script>
+</body>
+</html>
