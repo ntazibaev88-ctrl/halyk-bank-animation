@@ -8,3 +8,5 @@ renders/work-*
 plates/out/
 renders/master.mp4
 .hyperframes/
+renders/.*
+renders/*.tmp
