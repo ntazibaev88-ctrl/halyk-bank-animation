@@ -666,7 +666,7 @@ export function buildShots(ctx) {
         c.position.copy(FC).addScaledVector(FF, lerp(-20, 10, k)).add(V3(0, lerp(0, 6, k), 0)); c.lookAt(FT.clone().lerp(POLE.clone().setY(200), 0.18).add(V3(0, lerp(10, 20, k), 0)));
         const fwd = new THREE.Vector3(); c.getWorldDirection(fwd);
         const k35 = ease.out(clamp((lt - 0.15) / 1.7, 0, 1));
-        n35.position.copy(c.position).addScaledVector(fwd, 140).add(V3(0, lerp(-80, -24, k35), 0));
+        n35.position.copy(c.position).addScaledVector(fwd, 140).add(V3(0, lerp(-70, 12, k35), 0));
         n35.quaternion.copy(c.quaternion); n35.rotateY(lerp(-1.0, 0.0, k35) + Math.sin(t * 0.4) * 0.03);
         glint.position.copy(n35.position).add(V3(80, 60, -60));
         sparkle.update(t); sparkle.visible = lt > 0.5;

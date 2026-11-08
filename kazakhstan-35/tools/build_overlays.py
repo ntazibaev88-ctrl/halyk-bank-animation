@@ -70,12 +70,12 @@ SPEC = {
     ("o7-gh", 96.15, 98.5, "kicker", "АЛДАҒЫ МАҚСАТТАР", 280),
     ("o7-g1", 96.35, 98.5, "goal", "2030|ЖАҢАРТЫЛАТЫН ЭНЕРГИЯ — 15%", 340),
     ("o7-g2", 96.6, 98.5, "goal", "2060|КӨМІРТЕГІ БЕЙТАРАПТЫҒЫ", 430),
-    ("o7-t1", 98.8, 109.0, "title", "ҚАЗАҚСТАН —|*35 ЖЫЛ*", 236),
-    ("o7-w1", 100.9, 109.0, "word", "БІРЛІК.", 468),
-    ("o7-w2", 101.4, 109.0, "word", "ЕҢБЕК.", 468),
-    ("o7-w3", 102.79, 109.0, "word", "БОЛАШАҚ.", 468),
-    ("o7-box", 103.95, 109.0, "box", "*16 ЖЕЛТОҚСАН —*|ТӘУЕЛСІЗДІК КҮНІ|*ҚҰТТЫ БОЛСЫН!*", 1180),
-    ("o7-yrs", 105.4, 109.0, "years", "1991 — 2026", 560),
+    ("o7-t1", 98.8, 109.0, "titleS", "ҚАЗАҚСТАН — *35 ЖЫЛ*", 958),
+    ("o7-w1", 100.9, 109.0, "word", "БІРЛІК.", 1036),
+    ("o7-w2", 101.4, 109.0, "word", "ЕҢБЕК.", 1036),
+    ("o7-w3", 102.79, 109.0, "word", "БОЛАШАҚ.", 1036),
+    ("o7-box", 103.95, 109.0, "box", "*16 ЖЕЛТОҚСАН —*|ТӘУЕЛСІЗДІК КҮНІ|*ҚҰТТЫ БОЛСЫН!*", 1112),
+    ("o7-yrs", 99.4, 109.0, "years", "1991 — 2026", 250),
  ]),
 }
 
@@ -104,8 +104,9 @@ CSS = """
       background: rgba(6,16,36,.7); border: 1.5px solid rgba(246,196,83,.75); width: 880px; }
     .goal b { font-weight: 900; color: #F6C453; margin-right: 16px; }
     .goal i { float: right; font-style: normal; color: #6FE3F2; }
-    .word { font-family: "KZ Sans", sans-serif; font-weight: 900; font-size: 60px; letter-spacing: .08em; color: #F6C453; text-shadow: 0 4px 24px rgba(0,0,0,.7); }
-    .box { font-family: "KZ Sans", sans-serif; font-weight: 900; font-size: 46px; line-height: 1.16; color: #FFFFFF; padding: 22px 34px 24px; border-radius: 26px;
+    .titleS { font-family: "KZ Sans", sans-serif; font-weight: 900; font-size: 62px; line-height: 1; color: #FFFFFF; letter-spacing: .02em; white-space: nowrap; text-shadow: 0 4px 26px rgba(0,0,0,.7), 0 1px 3px rgba(0,0,0,.6); }
+    .word { font-family: "KZ Sans", sans-serif; font-weight: 900; font-size: 50px; letter-spacing: .08em; color: #F6C453; text-shadow: 0 4px 24px rgba(0,0,0,.7); }
+    .box { font-family: "KZ Sans", sans-serif; font-weight: 900; font-size: 44px; line-height: 1.14; color: #FFFFFF; padding: 18px 34px 20px; border-radius: 26px;
       background: rgba(6,16,36,.66); border: 2px solid rgba(246,196,83,.9); box-shadow: 0 16px 50px rgba(0,0,0,.4); }
     .years { font-family: "KZ Sans", sans-serif; font-weight: 700; font-size: 32px; letter-spacing: .4em; color: #FFFFFF; text-shadow: 0 2px 16px rgba(0,0,0,.8); }
 """
@@ -146,7 +147,7 @@ def build(cid, start, end, items):
   <script>
   const tl = gsap.timeline({{ paused: true }});
   function inOut(sel, a, b, kind, hold) {{
-    const big = kind === "year" || kind === "big" || kind === "title";
+    const big = kind === "year" || kind === "big" || kind === "title" || kind === "titleS";
     tl.fromTo(sel, {{ opacity: 0, y: big ? 0 : 18, scale: big ? 1.12 : 1, filter: "blur(10px)" }}, {{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: big ? 0.6 : 0.4, ease: "expo.out" }}, a);
     if (!hold) tl.to(sel, {{ opacity: 0, filter: "blur(6px)", duration: 0.22, ease: "power2.in" }}, b - 0.24);
   }}
