@@ -1,0 +1,22 @@
+{
+  "_doc": "Footage slots. Drop a clip named <id>.mp4 (or .mov/.webm) into footage/ and re-run `npm run build`. 'a'/'b' are the slot's start/end as fractions of its scene. 'in' is the trim point in seconds. 'focus' is the CSS object-position used when cropping landscape footage to 9:16.",
+  "slots": [
+    {"id": "01", "scene": "s1", "a": 0,    "b": 0.52, "in": 0, "focus": "50% 50%", "grade": "warm-daylight", "want": "Aerial drone: Almaty city with the mountains behind, golden hour, slow forward move", "fallback": {"kind": "aerial", "pal": "golden", "seed": 11}},
+    {"id": "02", "scene": "s1", "a": 0.52, "b": 1,    "in": 0, "focus": "50% 50%", "grade": "warm-daylight", "want": "Slow panoramic drone pan across the city toward the Trans-Ili Alatau", "fallback": {"kind": "panorama", "pal": "golden", "seed": 12}},
+    {"id": "03", "scene": "s2", "a": 0,    "b": 0.34, "in": 0, "focus": "50% 50%", "grade": "soft-boost",    "want": "Street-level tracking shot on a busy Almaty street, people walking", "fallback": {"kind": "street", "pal": "day", "seed": 13}},
+    {"id": "04", "scene": "s2", "a": 0.34, "b": 0.66, "in": 0, "focus": "50% 50%", "grade": "soft-boost",    "want": "Modern architecture: glass towers, slow tilt or orbit", "fallback": {"kind": "towers", "pal": "day", "seed": 14}},
+    {"id": "05", "scene": "s2", "a": 0.66, "b": 1,    "in": 0, "focus": "50% 50%", "grade": "warm-daylight", "want": "Cafe terrace or city park with people, warm light", "fallback": {"kind": "park", "pal": "warm", "seed": 15}},
+    {"id": "06", "scene": "s3", "a": 0.25, "b": 0.6,  "in": 0, "enter": "under-graphic", "focus": "50% 50%", "grade": "neutral",       "want": "Snow-capped Trans-Ili Alatau peaks with clouds moving over them", "fallback": {"kind": "peaks", "pal": "alpine", "seed": 16}},
+    {"id": "07", "scene": "s3", "a": 0.6,  "b": 1,    "in": 0, "focus": "50% 50%", "grade": "neutral",       "want": "Drone over green fir forest on the mountain slopes", "fallback": {"kind": "forest", "pal": "alpine", "seed": 17}},
+    {"id": "08", "scene": "s4", "a": 0,    "b": 0.33, "in": 0, "focus": "50% 50%", "grade": "neutral",       "want": "Medeu high-mountain skating rink with skaters", "fallback": {"kind": "rink", "pal": "winter", "seed": 18}},
+    {"id": "09", "scene": "s4", "a": 0.33, "b": 0.66, "in": 0, "focus": "50% 50%", "grade": "neutral",       "split": "top",    "want": "Cable car gondolas moving between Medeu and Shymbulak (top half of split screen)", "fallback": {"kind": "cablecar", "pal": "winter", "seed": 19}},
+    {"id": "10", "scene": "s4", "a": 0.33, "b": 1,    "in": 0, "focus": "50% 50%", "grade": "neutral",       "split": "bottom", "want": "Shymbulak resort: snowy slopes, peaks, tourists (bottom half of split, then expands to full screen)", "fallback": {"kind": "slopes", "pal": "winter", "seed": 20}},
+    {"id": "11", "scene": "s5", "a": 0,    "b": 0.44, "in": 0, "focus": "50% 50%", "grade": "warm-daylight", "want": "Kok Tobe viewpoint panorama over the city, people enjoying the view", "fallback": {"kind": "viewpoint", "pal": "sunset", "seed": 21}},
+    {"id": "12", "scene": "s5", "a": 0.44, "b": 0.72, "in": 0, "focus": "50% 50%", "grade": "warm-daylight", "want": "Sunset over Almaty", "fallback": {"kind": "sunsetcity", "pal": "sunset", "seed": 22}},
+    {"id": "13", "scene": "s5", "a": 0.72, "b": 1,    "in": 0, "focus": "50% 50%", "grade": "night-lift",    "want": "Evening city lights, traffic light trails", "fallback": {"kind": "nightcity", "pal": "night", "seed": 23}},
+    {"id": "14", "scene": "s6", "a": 0,    "b": 0.5,  "in": 0, "focus": "50% 50%", "grade": "soft-boost",    "want": "Panfilov Park and the wooden Ascension Cathedral", "fallback": {"kind": "cathedral", "pal": "day", "seed": 24}},
+    {"id": "15", "scene": "s6", "a": 0.5,  "b": 1,    "in": 0, "focus": "50% 50%", "grade": "warm-daylight", "want": "Young people on a pedestrian street, everyday modern city life", "fallback": {"kind": "street", "pal": "warm", "seed": 25, "variant": "walk"}},
+    {"id": "16", "scene": "s7", "a": 0,    "b": 0.38, "in": 0, "focus": "50% 50%", "grade": "warm-daylight", "want": "Mountain silhouettes at dusk", "fallback": {"kind": "peaks", "pal": "dusk", "seed": 26}},
+    {"id": "17", "scene": "s7", "a": 0.38, "b": 1,    "in": 0, "focus": "50% 50%", "grade": "night-lift",    "want": "Wide aerial of Almaty at sunset with city lights, slow pull-back", "fallback": {"kind": "aerial", "pal": "dusk", "seed": 27, "pullback": true}}
+  ]
+}

@@ -1,0 +1,4 @@
+node_modules/
+.hyperframes/
+renders/*-raw.mp4
+data/vo_cache/

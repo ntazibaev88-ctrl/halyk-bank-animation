@@ -1,0 +1,160 @@
+:root {
+  --ink: #ffffff;
+  --gold: #f4c46a;
+  --gold-deep: #d99a3e;
+  --teal: #7fd6d0;
+  --night: #071318;
+  --glass: rgba(10, 18, 24, 0.58);
+  --line: rgba(255, 255, 255, 0.28);
+  --sans: "Montserrat", sans-serif;
+  --mono: "IBM Plex Mono", "Montserrat", monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+#root { position: relative; width: 1080px; height: 1920px; overflow: hidden; font-family: var(--sans); color: var(--ink); background: #000; }
+.mono { font-family: var(--mono); letter-spacing: 0.06em; }
+.dim { opacity: 0.6; }
+
+/* ---------- footage ---------- */
+#stage { position: absolute; inset: 0; }
+.shot { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; overflow: hidden; background: #000; }
+.shot > video, .shot > svg { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.gl { display: inline-block; }
+#splitline { position: absolute; left: 0; top: 948px; width: 1080px; height: 24px; background: #0a0f12; z-index: 40; opacity: 0; }
+
+/* ---------- finishing ---------- */
+#haze { position: absolute; inset: 0; z-index: 50; pointer-events: none; mix-blend-mode: soft-light;
+  background: linear-gradient(180deg, rgba(255, 190, 120, 0.22) 0%, rgba(255, 170, 110, 0.05) 45%, rgba(40, 70, 110, 0.18) 100%); }
+#vignette { position: absolute; inset: 0; z-index: 51; pointer-events: none;
+  background: radial-gradient(ellipse 85% 70% at 50% 46%, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.5) 100%); }
+#shade-top { position: absolute; left: 0; top: 0; width: 100%; height: 420px; z-index: 52;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)); }
+#shade-bottom { position: absolute; left: 0; bottom: 0; width: 100%; height: 900px; z-index: 52;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.45) 45%, rgba(0, 0, 0, 0)); }
+#leak { position: absolute; inset: -200px; z-index: 53; opacity: 0; mix-blend-mode: screen; pointer-events: none;
+  background: radial-gradient(ellipse 60% 40% at 20% 30%, rgba(255, 170, 80, 0.9), rgba(255, 120, 60, 0.0) 70%),
+              radial-gradient(ellipse 50% 50% at 85% 75%, rgba(255, 220, 160, 0.7), rgba(255, 200, 120, 0) 70%); }
+#black { position: absolute; inset: 0; background: #000; z-index: 200; opacity: 1; }
+
+/* ---------- scene 1 title ---------- */
+#topo-lines { position: absolute; inset: 0; z-index: 54; opacity: 0; }
+#topo-lines path { fill: none; stroke: rgba(255, 236, 200, 0.35); stroke-width: 1.4; }
+#title-block { position: absolute; left: 0; top: 520px; width: 1080px; z-index: 60; text-align: center; }
+#pin { position: relative; width: 56px; height: 74px; margin: 0 auto 26px; }
+#pin svg { width: 56px; height: 74px; }
+#pin path { fill: var(--gold); }
+#pin circle { fill: #1a1208; }
+#pin .ring { position: absolute; left: 50%; top: 66px; width: 90px; height: 30px; margin-left: -45px; border: 2px solid var(--gold); border-radius: 50%; opacity: 0; }
+#coords { font-size: 26px; color: rgba(255, 255, 255, 0.85); margin-bottom: 24px; }
+#title { font-weight: 800; font-size: 178px; letter-spacing: 0.08em; line-height: 1; margin-right: -0.08em;
+  text-shadow: 0 10px 50px rgba(0, 0, 0, 0.45); }
+#title .ch { display: inline-block; }
+#tagline { display: flex; align-items: center; justify-content: center; gap: 22px; margin-top: 30px; }
+#tagline .tg { font-weight: 600; font-size: 34px; letter-spacing: 0.24em; color: var(--gold); text-shadow: 0 2px 18px rgba(0, 0, 0, 0.6); }
+#tagline .rule { display: block; width: 70px; height: 2px; background: var(--gold); }
+
+/* ---------- cards ---------- */
+.card { position: absolute; z-index: 60; left: 70px; width: 940px; border-radius: 28px; padding: 26px 20px 22px;
+  background: var(--glass); border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45); backdrop-filter: blur(14px); opacity: 0; }
+.card-head { display: flex; gap: 18px; align-items: baseline; padding: 0 16px 10px; font-weight: 700; font-size: 30px; letter-spacing: 0.18em; }
+.card-head .mono { font-size: 22px; font-weight: 400; letter-spacing: 0.08em; }
+.card-head .right { margin-left: auto; }
+#kzcard { top: 250px; }
+#kzmap { width: 900px; height: 560px; display: block; }
+#kzmap .grat path { fill: none; stroke: rgba(255, 255, 255, 0.08); stroke-width: 1; }
+#kzmap .nb path { fill: rgba(255, 255, 255, 0.03); stroke: rgba(255, 255, 255, 0.22); stroke-width: 1.2; }
+#kz-fill { fill: rgba(127, 214, 208, 0.16); opacity: 0; }
+#kz-line { fill: none; stroke: var(--teal); stroke-width: 3; stroke-dasharray: 1; stroke-dashoffset: 1; stroke-linejoin: round; }
+#astana circle { fill: rgba(255, 255, 255, 0.7); }
+#astana text { fill: rgba(255, 255, 255, 0.75); font-size: 22px; font-weight: 500; }
+#almaty-pin .dot { fill: var(--gold); stroke: #1a1208; stroke-width: 3; }
+#almaty-pin .pulse { fill: none; stroke: var(--gold); stroke-width: 3; }
+#almaty-label .leader { fill: none; stroke: var(--gold); stroke-width: 2.5; stroke-dasharray: 1; stroke-dashoffset: 1; }
+#almaty-label text { fill: #fff; }
+#almaty-label .big { font-size: 38px; font-weight: 800; letter-spacing: 0.14em; }
+#almaty-label .small { font-size: 20px; fill: var(--gold); }
+.card-foot { display: flex; gap: 14px; padding: 12px 16px 0; }
+.stat { flex: 1; border-top: 1px solid var(--line); padding-top: 14px; }
+.stat b { display: block; font-size: 44px; font-weight: 800; color: var(--gold); letter-spacing: 0.02em; }
+.stat span { font-size: 21px; font-weight: 500; opacity: 0.8; letter-spacing: 0.04em; }
+
+/* ---------- topo interlude ---------- */
+.full { position: absolute; inset: 0; z-index: 45; opacity: 0; overflow: hidden; }
+#topo-map { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+#topo-grid line { stroke: rgba(127, 214, 208, 0.07); stroke-width: 1; }
+#topo-c path { fill: none; stroke: rgba(127, 214, 208, 0.55); stroke-width: 1.6; stroke-dasharray: 1; stroke-dashoffset: 1; }
+#topo-c path:nth-child(4n) { stroke: rgba(244, 196, 106, 0.75); stroke-width: 2.2; }
+#topo-city circle { fill: var(--gold); }
+#topo-city .halo { fill: rgba(244, 196, 106, 0.16); }
+#topo-city text { fill: #fff; font-size: 40px; font-weight: 700; letter-spacing: 0.06em; }
+#topo-peak path { fill: #fff; }
+#topo-peak text { fill: #fff; font-size: 34px; font-weight: 700; }
+#topo-peak text.sm { font-size: 28px; fill: var(--gold); font-weight: 400; }
+#topo-title { position: absolute; left: 80px; top: 230px; z-index: 2; }
+#topo-title h2 { font-weight: 800; font-size: 104px; letter-spacing: 0.04em; line-height: 1.05; margin: 14px 0; }
+#topo-title .mono { font-size: 24px; }
+#topo-north { position: absolute; right: 150px; top: 250px; font-size: 26px; opacity: 0.7; }
+
+/* ---------- route band ---------- */
+#route { position: absolute; left: 0; top: 880px; width: 1080px; height: 160px; z-index: 61; opacity: 0; }
+#route svg { position: absolute; left: 0; top: 20px; width: 1080px; height: 120px; }
+#route .base { stroke: rgba(255, 255, 255, 0.25); stroke-width: 3; stroke-dasharray: 2 10; }
+#route-line { stroke: var(--gold); stroke-width: 4; stroke-dasharray: 1; stroke-dashoffset: 1; }
+#route .stop { fill: #0a0f12; stroke: var(--gold); stroke-width: 4; }
+#gondola rect { fill: var(--gold); }
+#gondola line { stroke: var(--gold); stroke-width: 3; }
+#route .rl { position: absolute; top: -34px; display: flex; flex-direction: column; text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8); }
+#route .rl b { font-size: 30px; font-weight: 800; letter-spacing: 0.12em; }
+#route .rl span { font-size: 22px; color: var(--gold); }
+#route .left { left: 90px; }
+#route .right { right: 90px; text-align: right; align-items: flex-end; }
+
+/* ---------- city map card ---------- */
+#citycard { top: 240px; }
+#citymap { width: 900px; height: 640px; display: block; }
+#citymap .hills path { fill: none; stroke: rgba(244, 196, 106, 0.22); stroke-width: 1.5; }
+#citymap .streets line { stroke: rgba(255, 255, 255, 0.35); stroke-dasharray: 1; stroke-dashoffset: 1; }
+#citymap .rivers path { fill: none; stroke: rgba(127, 214, 208, 0.7); stroke-width: 3; stroke-dasharray: 1; stroke-dashoffset: 1; }
+#citymap .cpin circle { fill: #fff; }
+#citymap .cpin text { fill: #fff; font-size: 26px; font-weight: 600; }
+#citymap .cpin.main circle { fill: var(--gold); }
+#citymap .cpin.main .pulse { fill: none; stroke: var(--gold); stroke-width: 3; }
+#citymap .cpin.main text { font-size: 34px; font-weight: 800; letter-spacing: 0.06em; }
+#evening-word { position: absolute; left: 0; top: 330px; width: 1080px; z-index: 60; text-align: center; opacity: 0; }
+#evening-word > span { display: block; font-weight: 300; font-size: 120px; letter-spacing: 0.32em; margin-right: -0.32em; line-height: 1.08; text-shadow: 0 6px 40px rgba(0, 0, 0, 0.5); }
+#evening-word > span + span { font-weight: 800; color: var(--gold); }
+
+/* ---------- editorial year ---------- */
+#year { position: absolute; right: 80px; top: 300px; z-index: 60; text-align: right; opacity: 0; text-shadow: 0 4px 30px rgba(0, 0, 0, 0.55); }
+#year .mono { display: block; font-size: 22px; }
+#year b { display: block; font-weight: 200; font-size: 210px; line-height: 1; letter-spacing: -0.02em; font-weight: 300; }
+#year .cap { display: block; font-style: italic; font-weight: 500; font-size: 28px; color: var(--gold); }
+
+/* ---------- chapter + location labels (inside TikTok safe area) ---------- */
+#chapter { position: absolute; left: 80px; top: 200px; z-index: 70; display: flex; align-items: center; gap: 18px; opacity: 0; text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6); }
+#chapter .n { font-size: 26px; color: var(--gold); }
+#chapter .bar { display: block; width: 64px; height: 2px; background: var(--gold); transform-origin: left center; }
+#chapter .nm { font-size: 28px; font-weight: 700; letter-spacing: 0.22em; }
+.loc { position: absolute; left: 80px; top: 1130px; z-index: 70; display: flex; align-items: center; gap: 18px; opacity: 0;
+  padding: 16px 28px 16px 20px; border-radius: 999px; background: rgba(8, 12, 16, 0.5); border: 1px solid rgba(255, 255, 255, 0.18); backdrop-filter: blur(10px); }
+.loc .ico { width: 18px; height: 18px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 6px rgba(244, 196, 106, 0.25); }
+.loc .txt { font-size: 30px; font-weight: 700; letter-spacing: 0.12em; }
+.loc .sub { font-size: 24px; color: var(--gold); }
+.loc .sub:empty { display: none; }
+
+/* ---------- subtitles ---------- */
+#subs { position: absolute; left: 100px; width: 820px; bottom: 420px; z-index: 80; }
+.cue { position: absolute; left: 0; bottom: 0; width: 820px; text-align: center; opacity: 0;
+  font-weight: 700; font-size: 54px; line-height: 1.22; letter-spacing: 0.005em; text-wrap: balance;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.55), 0 4px 22px rgba(0, 0, 0, 0.55); }
+.cue .w { display: inline-block; opacity: 0.42; }
+.cue .w.k { color: var(--gold); }
+
+/* ---------- finale ---------- */
+#final { position: absolute; left: 0; top: 640px; width: 1080px; z-index: 90; text-align: center; text-shadow: 0 8px 50px rgba(0, 0, 0, 0.6); }
+#final > div { opacity: 0; }
+#final .l1 { font-weight: 800; font-size: 150px; letter-spacing: 0.06em; margin-right: -0.06em; }
+#final .l2 { font-weight: 300; font-size: 66px; letter-spacing: 0.16em; margin: 18px 0 4px; margin-right: -0.16em; }
+#final .l3 { font-weight: 800; font-size: 66px; letter-spacing: 0.16em; color: var(--gold); margin-right: -0.16em; }
+#final .sig { font-size: 24px; margin-top: 44px; opacity: 0.75; }

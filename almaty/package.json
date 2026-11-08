@@ -1,0 +1,29 @@
+{
+  "name": "almaty-documentary",
+  "version": "1.0.0",
+  "description": "Almaty — 9:16 Kazakh-language documentary short built with HyperFrames",
+  "scripts": {
+    "voiceover": "python3 scripts/voiceover.py",
+    "build": "node scripts/build.mjs",
+    "audio": "python3 scripts/audio.py",
+    "check": "hyperframes lint .",
+    "snapshot": "hyperframes snapshot --at 3,15,31,48,54,64,75,87,101",
+    "render": "hyperframes render -o renders/almaty-raw.mp4 -f 30 -q delivery -w 4 && bash scripts/finalize.sh",
+    "all": "npm run voiceover && npm run build && npm run audio && npm run check && npm run render"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "hyperframes": "0.9.23"
+  },
+  "devDependencies": {
+    "@fontsource/ibm-plex-mono": "^5.2.6",
+    "@fontsource/montserrat": "^5.2.6",
+    "d3-contour": "^4.0.2",
+    "d3-geo": "^3.1.1",
+    "gsap": "^3.13.0",
+    "topojson-client": "^3.1.0",
+    "world-atlas": "^2.0.2"
+  },
+  "private": true
+}
