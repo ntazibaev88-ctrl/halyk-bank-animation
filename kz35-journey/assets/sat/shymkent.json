@@ -1,0 +1,25 @@
+{
+ "name": "shymkent",
+ "scene": "S2B_42TWM_20240729_0_L2A",
+ "date": "2024-07-29",
+ "lat": 42.32,
+ "lon": 69.6,
+ "bbox_utm": [
+  540440.9235884653,
+  4668040.0,
+  558440.9235884653,
+  4700040.0
+ ],
+ "crs": "EPSG:32642",
+ "width_km": 18.0,
+ "height_km": 32.0,
+ "px": [
+  1080,
+  1920
+ ],
+ "target_px": [
+  540.0,
+  873.6
+ ],
+ "credit": "Contains modified Copernicus Sentinel data 2024"
+}

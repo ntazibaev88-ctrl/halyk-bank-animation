@@ -1,0 +1,25 @@
+{
+ "name": "bozzhyra",
+ "scene": "S2B_39TYJ_20240829_0_L2A",
+ "date": "2024-08-29",
+ "lat": 43.42,
+ "lon": 54.07,
+ "bbox_utm": [
+  741776.2647111403,
+  4800035.53293403,
+  755276.2647111403,
+  4824035.53293403
+ ],
+ "crs": "EPSG:32639",
+ "width_km": 13.5,
+ "height_km": 24.0,
+ "px": [
+  1080,
+  1920
+ ],
+ "target_px": [
+  540.0,
+  960.0
+ ],
+ "credit": "Contains modified Copernicus Sentinel data 2024"
+}

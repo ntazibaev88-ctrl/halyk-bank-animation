@@ -1,0 +1,25 @@
+{
+ "name": "almaty",
+ "scene": "S2B_43TFH_20250827_0_L2A",
+ "date": "2025-08-27",
+ "lat": 43.215,
+ "lon": 76.905,
+ "bbox_utm": [
+  641232.7511319937,
+  4752000.0,
+  668232.7511319937,
+  4800000.0
+ ],
+ "crs": "EPSG:32643",
+ "width_km": 27.0,
+ "height_km": 48.0,
+ "px": [
+  1350,
+  2400
+ ],
+ "target_px": [
+  675.0,
+  677.4
+ ],
+ "credit": "Contains modified Copernicus Sentinel data 2025"
+}

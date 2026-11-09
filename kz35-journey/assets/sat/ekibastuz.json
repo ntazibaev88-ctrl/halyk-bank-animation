@@ -1,0 +1,25 @@
+{
+ "name": "ekibastuz",
+ "scene": "S2A_43UET_20240919_0_L2A",
+ "date": "2024-09-19",
+ "lat": 51.8,
+ "lon": 75.35,
+ "bbox_utm": [
+  510634.58582422807,
+  5714851.953064864,
+  537634.5858242281,
+  5762851.953064864
+ ],
+ "crs": "EPSG:32643",
+ "width_km": 27.0,
+ "height_km": 48.0,
+ "px": [
+  1080,
+  1920
+ ],
+ "target_px": [
+  540.0,
+  960.0
+ ],
+ "credit": "Contains modified Copernicus Sentinel data 2024"
+}

@@ -1,0 +1,25 @@
+{
+ "name": "wheat",
+ "scene": "S2B_41UNV_20250825_0_L2A",
+ "date": "2025-08-25",
+ "lat": 53.55,
+ "lon": 64.4,
+ "bbox_utm": [
+  583753.5119925009,
+  5918367.929009928,
+  601753.5119925009,
+  5950367.929009928
+ ],
+ "crs": "EPSG:32641",
+ "width_km": 18.0,
+ "height_km": 32.0,
+ "px": [
+  1080,
+  1920
+ ],
+ "target_px": [
+  540.0,
+  960.0
+ ],
+ "credit": "Contains modified Copernicus Sentinel data 2025"
+}

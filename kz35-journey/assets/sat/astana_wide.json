@@ -1,0 +1,21 @@
+{
+ "name": "astana_wide",
+ "scene": "S2A_42UXB_20240925_0_L2A",
+ "date": "2024-09-25",
+ "lat": 51.14,
+ "lon": 71.44,
+ "bbox_utm": [
+  653812.121050216,
+  5638224.446013841,
+  687562.121050216,
+  5698224.446013841
+ ],
+ "crs": "EPSG:32642",
+ "width_km": 33.75,
+ "height_km": 60.0,
+ "px": [
+  1215,
+  2160
+ ],
+ "credit": "Contains modified Copernicus Sentinel data 2024"
+}

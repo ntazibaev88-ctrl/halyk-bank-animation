@@ -1,0 +1,21 @@
+{
+ "name": "karaganda",
+ "scene": "S2B_43UCR_20250826_0_L2A",
+ "date": "2025-08-26",
+ "lat": 49.82,
+ "lon": 73.1,
+ "bbox_utm": [
+  353204.00981086894,
+  5502349.425787771,
+  373454.00981086894,
+  5538349.425787771
+ ],
+ "crs": "EPSG:32643",
+ "width_km": 20.25,
+ "height_km": 36.0,
+ "px": [
+  1080,
+  1920
+ ],
+ "credit": "Contains modified Copernicus Sentinel data 2025"
+}

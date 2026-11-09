@@ -1,0 +1,25 @@
+{
+ "name": "alatau_drape",
+ "scene": "S2B_43TFH_20250827_0_L2A",
+ "date": "2025-08-27",
+ "lat": 43.08,
+ "lon": 77.0,
+ "bbox_utm": [
+  647807.3234575025,
+  4756639.946782851,
+  677807.3234575025,
+  4786639.946782851
+ ],
+ "crs": "EPSG:32643",
+ "width_km": 30.0,
+ "height_km": 30.0,
+ "px": [
+  1800,
+  1800
+ ],
+ "target_px": [
+  900.0,
+  900.0
+ ],
+ "credit": "Contains modified Copernicus Sentinel data 2025"
+}

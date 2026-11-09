@@ -1,0 +1,25 @@
+{
+ "name": "khorgos",
+ "scene": "S2B_44TMP_20240809_0_L2A",
+ "date": "2024-08-09",
+ "lat": 44.19,
+ "lon": 80.33,
+ "bbox_utm": [
+  439705.0275780762,
+  4876020.0,
+  453205.0275780762,
+  4900020.0
+ ],
+ "crs": "EPSG:32644",
+ "width_km": 13.5,
+ "height_km": 24.0,
+ "px": [
+  1080,
+  1920
+ ],
+ "target_px": [
+  540.0,
+  546.1
+ ],
+ "credit": "Contains modified Copernicus Sentinel data 2024"
+}

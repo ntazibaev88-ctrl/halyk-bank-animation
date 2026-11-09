@@ -1,0 +1,21 @@
+{
+ "name": "astana",
+ "scene": "S2B_42UXB_20250720_0_L2A",
+ "date": "2025-07-20",
+ "lat": 51.128,
+ "lon": 71.43,
+ "bbox_utm": [
+  663281.75840313,
+  5654867.0634320425,
+  676781.75840313,
+  5678867.0634320425
+ ],
+ "crs": "EPSG:32642",
+ "width_km": 13.5,
+ "height_km": 24.0,
+ "px": [
+  1350,
+  2400
+ ],
+ "credit": "Contains modified Copernicus Sentinel data 2025"
+}

@@ -1,0 +1,25 @@
+{
+ "name": "burabay",
+ "scene": "S2A_42UWD_20240928_0_L2A",
+ "date": "2024-09-28",
+ "lat": 53.08,
+ "lon": 70.3,
+ "bbox_utm": [
+  578080.063512711,
+  5865959.781807065,
+  596080.063512711,
+  5897959.781807065
+ ],
+ "crs": "EPSG:32642",
+ "width_km": 18.0,
+ "height_km": 32.0,
+ "px": [
+  1080,
+  1920
+ ],
+ "target_px": [
+  540.0,
+  960.0
+ ],
+ "credit": "Contains modified Copernicus Sentinel data 2024"
+}

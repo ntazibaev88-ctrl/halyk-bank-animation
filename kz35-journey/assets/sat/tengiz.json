@@ -1,0 +1,25 @@
+{
+ "name": "tengiz",
+ "scene": "S2C_39TXM_20250723_1_L2A",
+ "date": "2025-07-23",
+ "lat": 46.13,
+ "lon": 53.42,
+ "bbox_utm": [
+  676819.7481327794,
+  5093338.544356233,
+  697069.7481327794,
+  5129338.544356233
+ ],
+ "crs": "EPSG:32639",
+ "width_km": 20.25,
+ "height_km": 36.0,
+ "px": [
+  1080,
+  1920
+ ],
+ "target_px": [
+  540.0,
+  960.0
+ ],
+ "credit": "Contains modified Copernicus Sentinel data 2025"
+}

@@ -1,0 +1,25 @@
+{
+ "name": "charyn",
+ "scene": "S2C_44TLP_20250829_0_L2A",
+ "date": "2025-08-29",
+ "lat": 43.355,
+ "lon": 79.075,
+ "bbox_utm": [
+  339501.01155755506,
+  4794037.602340712,
+  348501.01155755506,
+  4810037.602340712
+ ],
+ "crs": "EPSG:32644",
+ "width_km": 9.0,
+ "height_km": 16.0,
+ "px": [
+  1080,
+  1920
+ ],
+ "target_px": [
+  540.0,
+  960.0
+ ],
+ "credit": "Contains modified Copernicus Sentinel data 2025"
+}

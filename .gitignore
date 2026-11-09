@@ -4,3 +4,5 @@ kazakhstan-35/renders/.hf-segments/
 __pycache__/
 kazakhstan-35/world3d/*.mjs.log
 kazakhstan-35/assets/plate/plate.mp4
+kz35-journey/.hyperframes/
+kz35-journey/node_modules/

@@ -1,0 +1,25 @@
+{
+ "name": "wheat2",
+ "scene": "S2B_42UXD_20250829_0_L2A",
+ "date": "2025-08-29",
+ "lat": 52.4,
+ "lon": 70.6,
+ "bbox_utm": [
+  602105.5718250991,
+  5794733.215218394,
+  615605.5718250991,
+  5818733.215218394
+ ],
+ "crs": "EPSG:32642",
+ "width_km": 13.5,
+ "height_km": 24.0,
+ "px": [
+  1080,
+  1920
+ ],
+ "target_px": [
+  540.0,
+  960.0
+ ],
+ "credit": "Contains modified Copernicus Sentinel data 2025"
+}

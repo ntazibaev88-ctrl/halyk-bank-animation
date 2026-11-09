@@ -1,0 +1,25 @@
+{
+ "name": "bigalmaty",
+ "scene": "S2B_43TFH_20250827_0_L2A",
+ "date": "2025-08-27",
+ "lat": 43.052,
+ "lon": 76.985,
+ "bbox_utm": [
+  657159.8259454332,
+  4760501.413880985,
+  666159.8259454332,
+  4776501.413880985
+ ],
+ "crs": "EPSG:32643",
+ "width_km": 9.0,
+ "height_km": 16.0,
+ "px": [
+  1080,
+  1920
+ ],
+ "target_px": [
+  540.0,
+  960.0
+ ],
+ "credit": "Contains modified Copernicus Sentinel data 2025"
+}

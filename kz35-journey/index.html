@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="kk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <title>Қазақстан — 35 жылдағы даму жолы</title>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/vendor/kz-map-data.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #050b18; }
+      #root { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: #050b18; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="120" data-width="1080" data-height="1920">
+      <!-- EIGHT SCENES · real Sentinel-2 imagery, baked 3D clips (world3d/), maps, timeline, titles -->
+      <div id="s1-opening" data-composition-id="s1-opening" data-composition-src="compositions/s1-opening.html" data-start="0" data-duration="13.9" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:1"></div>
+      <div id="s2-beginning" data-composition-id="s2-beginning" data-composition-src="compositions/s2-beginning.html" data-start="13.9" data-duration="17.6" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:2"></div>
+      <div id="s3-cities" data-composition-id="s3-cities" data-composition-src="compositions/s3-cities.html" data-start="31.5" data-duration="12.0" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:3"></div>
+      <div id="s4-industry" data-composition-id="s4-industry" data-composition-src="compositions/s4-industry.html" data-start="43.5" data-duration="18.8" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:4"></div>
+      <div id="s5-agro" data-composition-id="s5-agro" data-composition-src="compositions/s5-agro.html" data-start="62.3" data-duration="9.5" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:5"></div>
+      <div id="s6-culture" data-composition-id="s6-culture" data-composition-src="compositions/s6-culture.html" data-start="71.8" data-duration="12.4" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:6"></div>
+      <div id="s7-modern" data-composition-id="s7-modern" data-composition-src="compositions/s7-modern.html" data-start="84.2" data-duration="9.8" data-track-index="1" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:7"></div>
+      <div id="s8-future" data-composition-id="s8-future" data-composition-src="compositions/s8-future.html" data-start="94.0" data-duration="26.0" data-track-index="2" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:8"></div>
+
+      <!-- KAZAKH CAPTIONS, synced to the voice -->
+      <div id="captions" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="120" data-track-index="5" data-track-kind="captions" data-width="1080" data-height="1920" style="z-index:50"></div>
+
+      <!-- AUDIO · voiceover lines, original score (ducked under the voice), soft transitions -->
+      <audio id="vo-l01" class="clip" src="assets/voice/l01.wav" data-start="1.4" data-duration="1.919" data-track-index="10" data-volume="1"></audio>
+      <audio id="vo-l02" class="clip" src="assets/voice/l02.wav" data-start="2.7" data-duration="5.927" data-track-index="11" data-volume="1"></audio>
+      <audio id="vo-l03" class="clip" src="assets/voice/l03.wav" data-start="8.2" data-duration="6.287" data-track-index="10" data-volume="1"></audio>
+      <audio id="vo-l04" class="clip" src="assets/voice/l04.wav" data-start="14.3" data-duration="4.343" data-track-index="11" data-volume="1"></audio>
+      <audio id="vo-l05" class="clip" src="assets/voice/l05.wav" data-start="18.2" data-duration="4.247" data-track-index="10" data-volume="1"></audio>
+      <audio id="vo-l06" class="clip" src="assets/voice/l06.wav" data-start="22.0" data-duration="4.895" data-track-index="11" data-volume="1"></audio>
+      <audio id="vo-l07" class="clip" src="assets/voice/l07.wav" data-start="26.4" data-duration="5.639" data-track-index="10" data-volume="1"></audio>
+      <audio id="vo-l08" class="clip" src="assets/voice/l08.wav" data-start="32.0" data-duration="6.215" data-track-index="11" data-volume="1"></audio>
+      <audio id="vo-l09" class="clip" src="assets/voice/l09.wav" data-start="44.0" data-duration="3.263" data-track-index="10" data-volume="1"></audio>
+      <audio id="vo-l10" class="clip" src="assets/voice/l10.wav" data-start="46.8" data-duration="7.799" data-track-index="11" data-volume="1"></audio>
+      <audio id="vo-l11" class="clip" src="assets/voice/l11.wav" data-start="54.3" data-duration="8.351" data-track-index="10" data-volume="1"></audio>
+      <audio id="vo-l12" class="clip" src="assets/voice/l12.wav" data-start="62.8" data-duration="4.103" data-track-index="11" data-volume="1"></audio>
+      <audio id="vo-l13" class="clip" src="assets/voice/l13.wav" data-start="66.4" data-duration="5.711" data-track-index="10" data-volume="1"></audio>
+      <audio id="vo-l14" class="clip" src="assets/voice/l14.wav" data-start="72.3" data-duration="6.503" data-track-index="11" data-volume="1"></audio>
+      <audio id="vo-l15" class="clip" src="assets/voice/l15.wav" data-start="78.4" data-duration="5.999" data-track-index="10" data-volume="1"></audio>
+      <audio id="vo-l16" class="clip" src="assets/voice/l16.wav" data-start="84.7" data-duration="9.695" data-track-index="11" data-volume="1"></audio>
+      <audio id="vo-l17" class="clip" src="assets/voice/l17.wav" data-start="94.4" data-duration="3.911" data-track-index="10" data-volume="1"></audio>
+      <audio id="vo-l18" class="clip" src="assets/voice/l18.wav" data-start="98.0" data-duration="5.927" data-track-index="11" data-volume="1"></audio>
+      <audio id="vo-l19" class="clip" src="assets/voice/l19.wav" data-start="103.6" data-duration="3.311" data-track-index="10" data-volume="1"></audio>
+      <audio id="vo-l20" class="clip" src="assets/voice/l20.wav" data-start="106.3" data-duration="4.895" data-track-index="11" data-volume="1"></audio>
+      <audio id="vo-l21" class="clip" src="assets/voice/l21.wav" data-start="110.8" data-duration="2.855" data-track-index="10" data-volume="1"></audio>
+      <audio id="vo-l22" class="clip" src="assets/voice/l22.wav" data-start="113.1" data-duration="3.287" data-track-index="11" data-volume="1"></audio>
+      <audio id="vo-l23" class="clip" src="assets/voice/l23.wav" data-start="116.0" data-duration="2.711" data-track-index="10" data-volume="1"></audio>
+      <audio id="music" class="clip" src="assets/music/score.wav" data-start="0" data-duration="120" data-track-index="12" data-volume="0.75"></audio>
+      <audio id="sfx-0" class="clip" src="assets/sfx/whoosh-cinematic.mp3" data-start="11.1" data-duration="4" data-track-index="13" data-volume="0.25"></audio>
+      <audio id="sfx-1" class="clip" src="assets/sfx/whoosh-cinematic.mp3" data-start="40.7" data-duration="4" data-track-index="13" data-volume="0.25"></audio>
+      <audio id="sfx-2" class="clip" src="assets/sfx/whoosh-cinematic.mp3" data-start="81.5" data-duration="4" data-track-index="13" data-volume="0.25"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

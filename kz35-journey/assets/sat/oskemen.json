@@ -1,0 +1,21 @@
+{
+ "name": "oskemen",
+ "scene": "S2B_44UPA_20240627_0_L2A",
+ "date": "2024-06-27",
+ "lat": 49.96,
+ "lon": 82.62,
+ "bbox_utm": [
+  607194.3098368694,
+  5519441.1010678,
+  625194.3098368694,
+  5551441.1010678
+ ],
+ "crs": "EPSG:32644",
+ "width_km": 18.0,
+ "height_km": 32.0,
+ "px": [
+  1080,
+  1920
+ ],
+ "credit": "Contains modified Copernicus Sentinel data 2024"
+}

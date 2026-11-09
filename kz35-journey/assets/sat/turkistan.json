@@ -1,0 +1,25 @@
+{
+ "name": "turkistan",
+ "scene": "S2A_42TVP_20250813_0_L2A",
+ "date": "2025-08-13",
+ "lat": 43.297,
+ "lon": 68.268,
+ "bbox_utm": [
+  436123.961898702,
+  4790220.0,
+  445123.961898702,
+  4806220.0
+ ],
+ "crs": "EPSG:32642",
+ "width_km": 9.0,
+ "height_km": 16.0,
+ "px": [
+  1080,
+  1920
+ ],
+ "target_px": [
+  540.0,
+  1459.5
+ ],
+ "credit": "Contains modified Copernicus Sentinel data 2025"
+}

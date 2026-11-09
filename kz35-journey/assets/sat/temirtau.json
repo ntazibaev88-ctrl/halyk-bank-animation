@@ -1,0 +1,25 @@
+{
+ "name": "temirtau",
+ "scene": "S2B_43UCR_20250826_0_L2A",
+ "date": "2025-08-26",
+ "lat": 50.06,
+ "lon": 72.98,
+ "bbox_utm": [
+  348667.99093728,
+  5535256.289069927,
+  362167.99093728,
+  5559256.289069927
+ ],
+ "crs": "EPSG:32643",
+ "width_km": 13.5,
+ "height_km": 24.0,
+ "px": [
+  1080,
+  1920
+ ],
+ "target_px": [
+  540.0,
+  960.0
+ ],
+ "credit": "Contains modified Copernicus Sentinel data 2025"
+}

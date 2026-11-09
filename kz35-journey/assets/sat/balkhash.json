@@ -1,0 +1,25 @@
+{
+ "name": "balkhash",
+ "scene": "S2A_43TDM_20240621_0_L2A",
+ "date": "2024-06-21",
+ "lat": 46.86,
+ "lon": 74.98,
+ "bbox_utm": [
+  489475.521328906,
+  5168020.0,
+  507475.521328906,
+  5200020.0
+ ],
+ "crs": "EPSG:32643",
+ "width_km": 18.0,
+ "height_km": 32.0,
+ "px": [
+  1080,
+  1920
+ ],
+ "target_px": [
+  540.0,
+  624.8
+ ],
+ "credit": "Contains modified Copernicus Sentinel data 2024"
+}
