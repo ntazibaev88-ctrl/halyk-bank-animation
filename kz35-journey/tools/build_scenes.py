@@ -31,7 +31,7 @@ SHOTS = {
    ("clip", dict(src="assets/clips/opening.mp4", t0=0.0, t1=6.0, fin=0, fout=0.6)),
    ("clip", dict(src="assets/clips/flag_dawn.mp4", t0=5.4, t1=10.4, fin=0.6, fout=0.6)),
    ("map", dict(t0=9.8, t1=13.9, draw=1.6, cities=["astana", "almaty", "shymkent", "karaganda", "aktau", "oskemen", "turkistan"], glow=True)),
-   ("text", dict(id="t-kz", t0=1.25, t1=5.3, kind="hero", text="ҚАЗАҚСТАН", top=780)),
+   ("text", dict(id="t-kz", t0=0.25, t1=5.3, kind="hero", text="ҚАЗАҚСТАН", top=780)),
    ("text", dict(id="t-years", t0=5.9, t1=9.6, kind="kicker", text="1991 — 2026", top=300)),
    ("text", dict(id="t-title", t0=6.3, t1=9.6, kind="title", text="35 ЖЫЛДАҒЫ|*ДАМУ ЖОЛЫ*", top=360)),
    ("text", dict(id="t-1991", t0=8.25, t1=13.75, kind="year", text="1991", top=330)),
@@ -111,6 +111,7 @@ SHOTS = {
    ("text", dict(id="t-35b", t0=103.6, t1=106.1, kind="title", text="*35 ЖЫЛ*", top=300)),
    ("text", dict(id="t-path", t0=106.3, t1=110.5, kind="words", text="ТӘЖІРИБЕ|ЖЕТІСТІК|МҮМКІНДІК", top=300, at=[106.4, 107.7, 108.7])),
    ("clip", dict(src="assets/clips/finale.mp4", t0=110.4, t1=120.0, fin=0.5, fout=0)),
+   ("shade", dict(t0=110.7, t1=120.0, top=380, h=420)),
    ("text", dict(id="t-final", t0=110.9, t1=120.0, kind="titleS", text="ҚАЗАҚСТАН — *35 ЖЫЛ*", top=480, hold=True)),
    ("text", dict(id="t-values", t0=111.6, t1=120.0, kind="words", text="БІРЛІК.|ЕҢБЕК.|ДАМУ.|БОЛАШАҚ.", top=562, at=[111.6, 112.1, 112.6, 113.1], hold=True, row=True)),
    ("text", dict(id="t-ours", t0=116.0, t1=120.0, kind="box", text="*БІЗДІҢ ЕЛ.* БІЗДІҢ БОЛАШАҚ.", top=640, hold=True)),
@@ -165,7 +166,7 @@ CSS = """
     .note { font: 500 28px/1 "KZ Sans", sans-serif; letter-spacing: .08em; color: rgba(255,255,255,.75); }
     .word { display: block; font: 900 64px/1.15 "KZ Sans", sans-serif; letter-spacing: .06em; color: #fff; text-shadow: 0 4px 26px rgba(0,0,0,.75); }
     .word:nth-child(2n) { color: #E6B85C; }
-    .row .word { display: inline-block; margin: 0 10px; font-size: 46px; color: #E6B85C; }
+    .row .word { display: inline-block; margin: 0 10px; font-size: 48px; color: #F3D891; text-shadow: 0 2px 4px rgba(0,0,0,.6), 0 4px 24px rgba(0,0,0,.8); }
     .box { font: 900 40px/1.15 "KZ Sans", sans-serif; color: #fff; padding: 20px 40px 22px; border-radius: 26px; background: rgba(6,14,32,.62); border: 2px solid rgba(230,184,92,.9); }
     .chap { position: absolute; left: 0; right: 0; top: 560px; text-align: center; }
     .chap .num { font: 700 34px/1 "KZ Serif", serif; letter-spacing: .4em; color: #E6B85C; }
@@ -277,6 +278,9 @@ def build(sid, layers):
                         f'<div class="num" id="{lid}-n">{html.escape(o["num"])}</div><div class="yr" id="{lid}-y">{html.escape(o["years"])}</div><div class="rule" id="{lid}-r"></div>'
                         f'<div class="tt" id="{lid}-t">{markup(o["title"])}</div></div></div>')
             js.append(f'  chapter("{lid}", {a}, {d});')
+        elif kind == "shade":
+            body.append(f'    <div id="{lid}" class="clip lay" data-start="{a}" data-duration="{d}" data-track-index="7" style="z-index:{z + 30}"><div id="{lid}-s" style="position:absolute;left:0;right:0;top:{o["top"]}px;height:{o["h"]}px;background:radial-gradient(60% 50% at 50% 50%, rgba(4,10,24,.62), rgba(4,10,24,0))"></div></div>')
+            js.append(f'  tl.fromTo("#{lid}-s", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.8 }}, {a});')
         elif kind == "fade":
             body.append(f'    <div id="{lid}" class="clip lay" data-start="{a}" data-duration="{d}" data-track-index="7" style="z-index:90"><div class="fadeout" id="{lid}-f"></div></div>')
             js.append(f'  tl.fromTo("#{lid}-f", {{ opacity: 0 }}, {{ opacity: 1, duration: {d}, ease: "power1.in" }}, {a});')

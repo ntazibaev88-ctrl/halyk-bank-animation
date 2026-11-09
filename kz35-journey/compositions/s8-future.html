@@ -44,7 +44,7 @@
     .note { font: 500 28px/1 "KZ Sans", sans-serif; letter-spacing: .08em; color: rgba(255,255,255,.75); }
     .word { display: block; font: 900 64px/1.15 "KZ Sans", sans-serif; letter-spacing: .06em; color: #fff; text-shadow: 0 4px 26px rgba(0,0,0,.75); }
     .word:nth-child(2n) { color: #E6B85C; }
-    .row .word { display: inline-block; margin: 0 10px; font-size: 46px; color: #E6B85C; }
+    .row .word { display: inline-block; margin: 0 10px; font-size: 48px; color: #F3D891; text-shadow: 0 2px 4px rgba(0,0,0,.6), 0 4px 24px rgba(0,0,0,.8); }
     .box { font: 900 40px/1.15 "KZ Sans", sans-serif; color: #fff; padding: 20px 40px 22px; border-radius: 26px; background: rgba(6,14,32,.62); border: 2px solid rgba(230,184,92,.9); }
     .chap { position: absolute; left: 0; right: 0; top: 560px; text-align: center; }
     .chap .num { font: 700 34px/1 "KZ Serif", serif; letter-spacing: .4em; color: #E6B85C; }
@@ -77,11 +77,12 @@
     <div id="t-35b" class="clip ov" data-start="9.6" data-duration="2.5" data-track-index="8" style="top:300px;z-index:48"><div class="title"><span class="g">35 ЖЫЛ</span></div></div>
     <div id="t-path" class="clip ov" data-start="12.3" data-duration="4.2" data-track-index="8" style="top:300px;z-index:49"><div class=""><span class="word" id="t-path-0">ТӘЖІРИБЕ</span><span class="word" id="t-path-1">ЖЕТІСТІК</span><span class="word" id="t-path-2">МҮМКІНДІК</span></div></div>
     <video id="s8-clip9" class="clip" src="assets/clips/finale.mp4" data-hf-media-start-basis="local" data-start="16.4" data-duration="9.6" data-track-index="3" muted playsinline style="position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;z-index:10"></video>
-    <div id="t-final" class="clip ov" data-start="16.9" data-duration="9.1" data-track-index="8" style="top:480px;z-index:51"><div class="titleS">ҚАЗАҚСТАН — <span class="g">35 ЖЫЛ</span></div></div>
-    <div id="t-values" class="clip ov" data-start="17.6" data-duration="8.4" data-track-index="8" style="top:562px;z-index:52"><div class="row"><span class="word" id="t-values-0">БІРЛІК.</span><span class="word" id="t-values-1">ЕҢБЕК.</span><span class="word" id="t-values-2">ДАМУ.</span><span class="word" id="t-values-3">БОЛАШАҚ.</span></div></div>
-    <div id="t-ours" class="clip ov" data-start="22.0" data-duration="4.0" data-track-index="8" style="top:640px;z-index:53"><div class="box"><span class="g">БІЗДІҢ ЕЛ.</span> БІЗДІҢ БОЛАШАҚ.</div></div>
-    <div id="t-yrs" class="clip ov" data-start="17.2" data-duration="8.8" data-track-index="8" style="top:412px;z-index:54"><div class="kicker">1991 — 2026</div></div>
-    <div id="s8-fade14" class="clip lay" data-start="24.6" data-duration="1.4" data-track-index="7" style="z-index:90"><div class="fadeout" id="s8-fade14-f"></div></div>
+    <div id="s8-shade10" class="clip lay" data-start="16.7" data-duration="9.3" data-track-index="7" style="z-index:41"><div id="s8-shade10-s" style="position:absolute;left:0;right:0;top:380px;height:420px;background:radial-gradient(60% 50% at 50% 50%, rgba(4,10,24,.62), rgba(4,10,24,0))"></div></div>
+    <div id="t-final" class="clip ov" data-start="16.9" data-duration="9.1" data-track-index="8" style="top:480px;z-index:52"><div class="titleS">ҚАЗАҚСТАН — <span class="g">35 ЖЫЛ</span></div></div>
+    <div id="t-values" class="clip ov" data-start="17.6" data-duration="8.4" data-track-index="8" style="top:562px;z-index:53"><div class="row"><span class="word" id="t-values-0">БІРЛІК.</span><span class="word" id="t-values-1">ЕҢБЕК.</span><span class="word" id="t-values-2">ДАМУ.</span><span class="word" id="t-values-3">БОЛАШАҚ.</span></div></div>
+    <div id="t-ours" class="clip ov" data-start="22.0" data-duration="4.0" data-track-index="8" style="top:640px;z-index:54"><div class="box"><span class="g">БІЗДІҢ ЕЛ.</span> БІЗДІҢ БОЛАШАҚ.</div></div>
+    <div id="t-yrs" class="clip ov" data-start="17.2" data-duration="8.8" data-track-index="8" style="top:412px;z-index:55"><div class="kicker">1991 — 2026</div></div>
+    <div id="s8-fade15" class="clip lay" data-start="24.6" data-duration="1.4" data-track-index="7" style="z-index:90"><div class="fadeout" id="s8-fade15-f"></div></div>
     <div id="s8-credit" class="clip" data-start="0" data-duration="26.0" data-track-index="9" data-layout-ignore style="position:absolute;inset:0;z-index:95;pointer-events:none"><div class="credit">Спутниктік түсірілім: Copernicus Sentinel-2 (ESA), 2024–2025</div></div>
   </div>
   <script>
@@ -165,6 +166,7 @@
   tl.fromTo("#t-path-2", { opacity: 0, y: 24, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.4, ease: "expo.out" }, 14.7);
   tl.to("#t-path > div", { opacity: 0, duration: 0.22 }, 16.26);
   fade("#s8-clip9", 16.4, 9.6, 0.5, 0);
+  tl.fromTo("#s8-shade10-s", { opacity: 0 }, { opacity: 1, duration: 0.8 }, 16.7);
   inOut("#t-final > div", 16.9, 26.0, "titleS", true);
   tl.fromTo("#t-values-0", { opacity: 0, y: 24, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.4, ease: "expo.out" }, 17.6);
   tl.fromTo("#t-values-1", { opacity: 0, y: 24, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.4, ease: "expo.out" }, 18.1);
@@ -172,7 +174,7 @@
   tl.fromTo("#t-values-3", { opacity: 0, y: 24, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.4, ease: "expo.out" }, 19.1);
   inOut("#t-ours > div", 22.0, 26.0, "box", true);
   inOut("#t-yrs > div", 17.2, 26.0, "kicker", true);
-  tl.fromTo("#s8-fade14-f", { opacity: 0 }, { opacity: 1, duration: 1.4, ease: "power1.in" }, 24.6);
+  tl.fromTo("#s8-fade15-f", { opacity: 0 }, { opacity: 1, duration: 1.4, ease: "power1.in" }, 24.6);
   window.__timelines["s8-future"] = tl;
   </script>
 </template>

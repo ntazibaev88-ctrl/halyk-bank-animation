@@ -44,7 +44,7 @@
     .note { font: 500 28px/1 "KZ Sans", sans-serif; letter-spacing: .08em; color: rgba(255,255,255,.75); }
     .word { display: block; font: 900 64px/1.15 "KZ Sans", sans-serif; letter-spacing: .06em; color: #fff; text-shadow: 0 4px 26px rgba(0,0,0,.75); }
     .word:nth-child(2n) { color: #E6B85C; }
-    .row .word { display: inline-block; margin: 0 10px; font-size: 46px; color: #E6B85C; }
+    .row .word { display: inline-block; margin: 0 10px; font-size: 48px; color: #F3D891; text-shadow: 0 2px 4px rgba(0,0,0,.6), 0 4px 24px rgba(0,0,0,.8); }
     .box { font: 900 40px/1.15 "KZ Sans", sans-serif; color: #fff; padding: 20px 40px 22px; border-radius: 26px; background: rgba(6,14,32,.62); border: 2px solid rgba(230,184,92,.9); }
     .chap { position: absolute; left: 0; right: 0; top: 560px; text-align: center; }
     .chap .num { font: 700 34px/1 "KZ Serif", serif; letter-spacing: .4em; color: #E6B85C; }
@@ -70,7 +70,7 @@
     <video id="s1-clip0" class="clip" src="assets/clips/opening.mp4" data-hf-media-start-basis="local" data-start="0.0" data-duration="6.0" data-track-index="2" muted playsinline style="position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;z-index:1"></video>
     <video id="s1-clip1" class="clip" src="assets/clips/flag_dawn.mp4" data-hf-media-start-basis="local" data-start="5.4" data-duration="5.0" data-track-index="3" muted playsinline style="position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;z-index:2"></video>
     <div id="s1-map2" class="clip lay" data-start="9.8" data-duration="4.1" data-track-index="5" style="z-index:3"><div class="navy"></div><svg class="map" id="s1-map2-svg" viewBox="0 0 940 620"></svg></div>
-    <div id="t-kz" class="clip ov" data-start="1.25" data-duration="4.05" data-track-index="8" style="top:780px;z-index:44"><div class="hero">ҚАЗАҚСТАН</div></div>
+    <div id="t-kz" class="clip ov" data-start="0.25" data-duration="5.05" data-track-index="8" style="top:780px;z-index:44"><div class="hero">ҚАЗАҚСТАН</div></div>
     <div id="t-years" class="clip ov" data-start="5.9" data-duration="3.7" data-track-index="8" style="top:300px;z-index:45"><div class="kicker">1991 — 2026</div></div>
     <div id="t-title" class="clip ov" data-start="6.3" data-duration="3.3" data-track-index="8" style="top:360px;z-index:46"><div class="title">35 ЖЫЛДАҒЫ<br /><span class="g">ДАМУ ЖОЛЫ</span></div></div>
     <div id="t-1991" class="clip ov" data-start="8.25" data-duration="5.5" data-track-index="8" style="top:330px;z-index:47"><div class="year">1991</div></div>
@@ -136,7 +136,7 @@
   fade("#s1-clip1", 5.4, 5.0, 0.6, 0.6);
   buildMap("s1-map2", {"cities": ["astana", "almaty", "shymkent", "karaganda", "aktau", "oskemen", "turkistan"], "border": null, "tenge": null, "uranium": null, "network": null, "glow": true, "draw": 1.6}, 9.8, 4.1);
   fade("#s1-map2", 9.8, 4.1, 0.4, 0.4);
-  inOut("#t-kz > div", 1.25, 5.3, "hero", false);
+  inOut("#t-kz > div", 0.25, 5.3, "hero", false);
   inOut("#t-years > div", 5.9, 9.6, "kicker", false);
   inOut("#t-title > div", 6.3, 9.6, "title", false);
   inOut("#t-1991 > div", 8.25, 13.75, "year", false);
