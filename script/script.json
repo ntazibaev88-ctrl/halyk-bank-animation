@@ -1,0 +1,189 @@
+{
+ "title": "Қазақстан. Тәуелсіздік жолы",
+ "duration": 130,
+ "voice": "kk-KZ-DauletNeural",
+ "chapters": [
+  {
+   "id": 1,
+   "start": 0,
+   "end": 14,
+   "title": "Ұлы дала",
+   "en": "Emotional introduction",
+   "lines": [
+    {
+     "at": 1.6,
+     "kk": "Шексіз дала. Көкке ұмтылған асқар таулар.",
+     "en": "Endless steppe. Lofty mountains reaching for the sky."
+    },
+    {
+     "at": 0,
+     "kk": "Ғасырлар бойы ұрпақтан ұрпаққа аманат болып келе жатқан қасиетті мекен.",
+     "en": "A sacred land, passed down from generation to generation for centuries."
+    },
+    {
+     "at": 0,
+     "kk": "Бұл — Қазақстан.",
+     "en": "This is Kazakhstan."
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "start": 14,
+   "end": 30,
+   "title": "Тәуелсіздік",
+   "en": "Independence, 1991",
+   "lines": [
+    {
+     "at": 14.8,
+     "kk": "Бір мың тоғыз жүз тоқсан бірінші жылғы он алтыншы желтоқсан.",
+     "en": "The sixteenth of December, 1991."
+    },
+    {
+     "at": 0,
+     "kk": "Қазақстан өзінің мемлекеттік тәуелсіздігін жариялады.",
+     "en": "Kazakhstan proclaimed its state independence."
+    },
+    {
+     "at": 0,
+     "kk": "Ата-бабаларымыздың сан ғасырлық арманы орындалып, жас мемлекеттің жаңа тарихы басталды.",
+     "en": "The centuries-old dream of our ancestors came true, and a new history of a young state began."
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "start": 30,
+   "end": 46,
+   "title": "Астана",
+   "en": "The development of Astana",
+   "lines": [
+    {
+     "at": 30.9,
+     "kk": "Бір мың тоғыз жүз тоқсан жетінші жылы елорда Есіл өзенінің жағасына көшірілді.",
+     "en": "In 1997 the capital was moved to the banks of the Yesil River."
+    },
+    {
+     "at": 0,
+     "kk": "Кең дала төсінде жаңа қала бой көтерді.",
+     "en": "A new city rose in the heart of the wide steppe."
+    },
+    {
+     "at": 0,
+     "kk": "Бүгінде Астана — тәуелсіз еліміздің жүрегі мен мақтанышы.",
+     "en": "Today Astana is the heart and pride of our independent country."
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "start": 46,
+   "end": 64,
+   "title": "Еңбек пен береке",
+   "en": "Economy: mining, metallurgy, energy, agriculture",
+   "lines": [
+    {
+     "at": 47.2,
+     "kk": "Жер қойнауымыз — ұшан-теңіз байлық.",
+     "en": "Our land holds immeasurable wealth."
+    },
+    {
+     "at": 0,
+     "kk": "Мұнай мен газ, кен өндіру мен металлургия, энергетика — ел экономикасының берік тірегі.",
+     "en": "Oil and gas, mining and metallurgy, energy are the solid pillars of the economy."
+    },
+    {
+     "at": 0,
+     "kk": "Ал алтын масақты кең егістік — халқымыздың ырысы мен берекесі.",
+     "en": "And the vast fields of golden wheat are our people's abundance and prosperity."
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "start": 64,
+   "end": 80,
+   "title": "Білім мен ғылым",
+   "en": "Education, science and technology",
+   "lines": [
+    {
+     "at": 65.2,
+     "kk": "Байқоңыр ғарыш айлағы орналасқан қазақ даласы — жұлдыздарға жол ашқан мекен.",
+     "en": "The Kazakh steppe, home of the Baikonur Cosmodrome, opened the road to the stars."
+    },
+    {
+     "at": 0,
+     "kk": "Бүгін жас ұрпақ білім мен ғылымды, озық технологияларды игеріп, болашақты өз қолымен жасауда.",
+     "en": "Today the young generation masters knowledge, science and advanced technology, building the future with their own hands."
+    }
+   ]
+  },
+  {
+   "id": 6,
+   "start": 80,
+   "end": 96,
+   "title": "Спорт пен мәдениет",
+   "en": "Sports and Kazakh culture",
+   "lines": [
+    {
+     "at": 81.2,
+     "kk": "Қазақстандық спортшылар әлемдік додаларда ел намысын абыроймен қорғап келеді.",
+     "en": "Kazakhstani athletes proudly defend the nation's honour in world competitions."
+    },
+    {
+     "at": 0,
+     "kk": "Ал домбыраның қоңыр үні, киіз үйдің жылуы мен ұлттық салт-дәстүр — рухымыздың мәңгі бастауы.",
+     "en": "And the warm voice of the dombra, the warmth of the yurt and national traditions are the eternal source of our spirit."
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "start": 96,
+   "end": 112,
+   "title": "Табиғат пен мұра",
+   "en": "Nature and national heritage",
+   "lines": [
+    {
+     "at": 97.2,
+     "kk": "Алатаудың ақбас шыңдары, Шарынның қызыл шатқалдары, Каспийдің толқыны мен Бурабайдың қарағайлы орманы.",
+     "en": "The snow-capped peaks of Alatau, the red canyons of Charyn, the waves of the Caspian and the pine forests of Burabay."
+    },
+    {
+     "at": 0,
+     "kk": "Қожа Ахмет Ясауи кесенесі мен Таңбалы тастағы көне суреттер — ата-бабадан жеткен асыл мұра.",
+     "en": "The Mausoleum of Khoja Ahmed Yasawi and the ancient petroglyphs of Tamgaly are a precious heritage from our ancestors."
+    }
+   ]
+  },
+  {
+   "id": 8,
+   "start": 112,
+   "end": 130,
+   "title": "Мәңгілік ел",
+   "en": "Patriotic finale",
+   "lines": [
+    {
+     "at": 113.4,
+     "kk": "Біз — бір халықпыз, бір елміз.",
+     "en": "We are one people, one nation."
+    },
+    {
+     "at": 0,
+     "kk": "Тарихымыз терең, болашағымыз жарқын.",
+     "en": "Our history is deep, our future is bright."
+    },
+    {
+     "at": 0,
+     "kk": "Тәуелсіз Қазақстан — біздің мақтанышымыз.",
+     "en": "Independent Kazakhstan is our pride."
+    },
+    {
+     "at": 0,
+     "kk": "Мәңгі жаса, Қазақстан!",
+     "en": "Live forever, Kazakhstan!"
+    }
+   ]
+  }
+ ]
+}

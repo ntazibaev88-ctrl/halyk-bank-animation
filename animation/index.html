@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="kk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Қазақстан. Тәуелсіздік жолы</title>
+<style>
+  html, body { margin: 0; background: #000; height: 100%; }
+  body { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  canvas { width: 100%; max-width: 100vw; max-height: calc(100vh - 40px); aspect-ratio: 16 / 9; object-fit: contain; }
+  input { width: min(960px, 92vw); }
+  .render input, .render audio { display: none; }
+  .render canvas { width: 1920px; height: 1080px; max-height: none; }
+</style>
+</head>
+<body>
+<canvas id="c" width="1920" height="1080"></canvas>
+<input id="bar" type="range" min="0" max="1000" value="0">
+<audio id="a" src="../output/documentary_audio.m4a" preload="auto"></audio>
+<script>if (/render/.test(location.search)) document.body.className = 'render';</script>
+<script src="timeline.js"></script>
+<script src="js/core.js"></script>
+<script src="js/scene1_2.js"></script>
+<script src="js/scene3_4.js"></script>
+<script src="js/scene5_6.js"></script>
+<script src="js/scene7_8.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
