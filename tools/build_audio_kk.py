@@ -15,7 +15,13 @@ PROXY = os.environ.get('HTTPS_PROXY')
 os.makedirs('build/tts_kk', exist_ok=True)
 
 async def synth(text, rate, path):
-    """Returns (samples, [(char_offset, start_s), ...]) with leading/trailing silence trimmed."""
+    """Returns (samples, [(char_offset, start_s), ...]) with leading/trailing silence trimmed.
+    Clips are cached (audio + word timings) so re-running keeps the exact same voice recording."""
+    meta = path + '.json'
+    key = {'text': text, 'rate': rate, 'pitch': script.get('pitch', 0), 'voice': script['voice']}
+    if os.path.exists(path) and os.path.exists(meta) and json.load(open(meta))['key'] == key:
+        words = [tuple(w) for w in json.load(open(meta))['words']]
+        return decode(path, text, words)
     for attempt in range(4):
         try:
             c = edge_tts.Communicate(text, script['voice'], rate=f'{rate:+d}%', pitch=f"{script.get('pitch', 0):+d}Hz", proxy=PROXY, boundary='WordBoundary')
@@ -27,6 +33,10 @@ async def synth(text, rate, path):
         except Exception as e:
             print('retry', e); await asyncio.sleep(2 ** attempt)
     open(path, 'wb').write(audio)
+    json.dump({'key': key, 'words': words}, open(meta, 'w'), ensure_ascii=False)
+    return decode(path, text, words)
+
+def decode(path, text, words):
     pcm = subprocess.run(['ffmpeg', '-v', 'error', '-i', path, '-ar', str(SR), '-ac', '1', '-f', 'f32le', '-'], capture_output=True, check=True).stdout
     x = np.frombuffer(pcm, np.float32)
     idx = np.where(np.abs(x) > 0.01)[0]
@@ -94,6 +104,10 @@ async def main():
               open('build/timeline.json', 'w'), ensure_ascii=False, indent=1)
     voice.tofile('build/voice.f32')
     subprocess.run(['ffmpeg', '-y', '-v', 'error', '-f', 'f32le', '-ar', str(SR), '-ac', '1', '-i', 'build/voice.f32', 'build/voice.wav'], check=True)
+    # the approved narration master is kept in the repo; use it when present so the voice never changes
+    if os.path.exists('narration/voice_kk.wav'):
+        import shutil; shutil.copy('narration/voice_kk.wav', 'build/voice.wav')
+        print('using approved narration master narration/voice_kk.wav')
     os.remove('build/voice.f32')
     def ts(x):
         ms = int(round(x * 1000)); h, ms = divmod(ms, 3600000); m, ms = divmod(ms, 60000); s, ms = divmod(ms, 1000)
