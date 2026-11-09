@@ -125,7 +125,7 @@ function ground(preset, u, opts = {}) {
     const dx2 = -u * 48;
     for (let i = 0; i < 10; i++) {
       const x = ((i * 210 + dx2) % 2100 + 2100) % 2100 - 500;
-      s += `<g transform="translate(${f(x)} ${GROUND + 560}) scale(2.3)"><rect x="-3" y="-30" width="6" height="30" fill="#1E1A18"/><ellipse cx="0" cy="-50" rx="28" ry="32" fill="${preset === 'night' ? '#0F2219' : preset === 'dusk' ? '#24203A' : '#24502E'}"/></g>`;
+      s += `<g transform="translate(${f(x)} ${GROUND + 800}) scale(2.3)"><rect x="-3" y="-30" width="6" height="30" fill="#1E1A18"/><ellipse cx="0" cy="-50" rx="28" ry="32" fill="${preset === 'night' ? '#0F2219' : preset === 'dusk' ? '#24203A' : '#24502E'}"/></g>`;
     }
   }
   return s;
@@ -220,15 +220,62 @@ function wrapLines(text, max = 32) {
   return lines;
 }
 
+// Subtitles: bottom of the frame (~87% of the height), centred, max 2 balanced lines,
+// years / numbers / names in gold, soft fade with a small upward drift.
+const SUB_Y = 1672, SUB_SIZE = 50, SUB_LH = 66, SUB_MAXW = 980;
+const SUB_TERMS = ['Tarlan Astana LRT', 'Астана Бас мешіті', 'Абу-Даби Плаза', 'Бейбітшілік және келісім сарайы', 'Бейбітшілік және', 'келісім сарайы',
+  'Әзірет Сұлтан', 'Хан Шатыр', 'Нұр Әлем', 'Нұр-Сұлтан', 'Нұрлы жол', 'Болашақ энергиясы', 'Норман Фостердің', 'Самұрық', 'Бәйтерек', 'Ақорда',
+  'EXPO', 'Ақмола', 'Алматыдан', 'Астанада', 'Астана'];
+const NUM_RE = /\d[\d,]*(?:\s+(?:миллион|мың(?:ға)?)(?:\s+\d[\d,]*)?)*/g;
+
+function subHighlights(text) {
+  const hl = new Array(text.length).fill(false);
+  const mark = (i, n) => { for (let k = i; k < i + n; k++) hl[k] = true; };
+  for (const m of text.matchAll(NUM_RE)) mark(m.index, m[0].length);
+  for (const term of SUB_TERMS) { let i = -1; while ((i = text.indexOf(term, i + 1)) >= 0) mark(i, term.length); }
+  return hl;
+}
+
+function subLines(text) {
+  const maxChars = Math.floor((SUB_MAXW - 80) / (SUB_SIZE * 0.6));
+  if (text.length <= maxChars) return [text];
+  // two lines, split at the space that best balances them
+  let best = null;
+  for (let i = text.indexOf(' '); i > 0; i = text.indexOf(' ', i + 1)) {
+    const d = Math.max(i, text.length - i - 1);
+    if (!best || d < best.d) best = { i, d };
+  }
+  return [text.slice(0, best.i), text.slice(best.i + 1)];
+}
+
 function subtitles(t) {
-  const sub = TL.subs.find((s) => t >= s.start - 0.05 && t < s.end + 0.12);
+  const IN = 0.14, OUT = 0.16, LEAD = 0.1;
+  const sub = TL.subs.find((s) => t >= s.start - LEAD && t < s.end + OUT);
   if (!sub) return '';
-  const a = clamp(Math.min((t - sub.start + 0.05) / 0.12, (sub.end + 0.12 - t) / 0.12));
-  const lines = wrapLines(sub.text, 27);
-  const size = 44, lh = 58, y0 = 1180 - (lines.length - 1) * lh / 2;
-  const w = Math.max(...lines.map((l) => textW(l, size, 600))) + 70;
-  let s = `<g opacity="${f(a)}"><rect x="${f(500 - w / 2)}" y="${f(y0 - lh / 2 - 28)}" width="${f(w)}" height="${lines.length * lh + 34}" rx="22" fill="rgba(4,10,26,.72)"/>`;
-  lines.forEach((l, i) => { s += `<text x="500" y="${f(y0 + i * lh + 4)}" font-size="${size}" font-weight="600" fill="#FFFFFF" text-anchor="middle">${esc(l)}</text>`; });
+  const kIn = easeOut(clamp((t - (sub.start - LEAD)) / (IN + 0.08)));
+  const a = Math.min(clamp((t - (sub.start - LEAD)) / IN), clamp((sub.end + OUT - t) / OUT));
+  const rise = 16 * (1 - kIn);
+  const text = sub.text, hl = subHighlights(text), lines = subLines(text);
+  const n = lines.length, padY = 26;
+  const boxH = n * SUB_LH + padY * 2 - 14;
+  const w = Math.min(SUB_MAXW, Math.max(...lines.map((l) => l.length * SUB_SIZE * 0.6)) + 84);
+  const top = SUB_Y - boxH / 2;
+  let s = `<g opacity="${f(a)}" transform="translate(0 ${f(rise)})">`;
+  s += `<rect x="${f(540 - w / 2)}" y="${f(top)}" width="${f(w)}" height="${f(boxH)}" rx="28" fill="rgba(10,24,56,.74)" stroke="rgba(255,255,255,.08)" stroke-width="1.5" filter="url(#subShadow)"/>`;
+  let off = 0;
+  lines.forEach((line, li) => {
+    const y = top + padY + SUB_LH * li + SUB_SIZE * 0.82;
+    let spans = '', cur = null, buf = '';
+    const flush = () => { if (buf) spans += cur ? `<tspan fill="#FFD24A">${esc(buf)}</tspan>` : esc(buf); buf = ''; };
+    for (let i = 0; i < line.length; i++) {
+      const g = hl[off + i];
+      if (g !== cur) { flush(); cur = g; }
+      buf += line[i];
+    }
+    flush();
+    off += line.length + 1;
+    s += `<text x="540" y="${f(y)}" font-size="${SUB_SIZE}" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing=".2">${spans}</text>`;
+  });
   return s + '</g>';
 }
 
@@ -654,6 +701,7 @@ const DEFS = `<defs>${LM.defs}
 <filter id="tshadow" x="-10%" y="-30%" width="120%" height="160%"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity=".45"/></filter>
 <pattern id="mapHatch" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="16" stroke="#2F6DB0" stroke-width="3"/></pattern>
 <linearGradient id="topScrim" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#030A1E" stop-opacity=".55"/><stop offset=".7" stop-color="#030A1E" stop-opacity=".18"/><stop offset="1" stop-color="#030A1E" stop-opacity="0"/></linearGradient>
+<filter id="subShadow" x="-10%" y="-30%" width="120%" height="170%"><feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity=".38"/></filter>
 <radialGradient id="vign" cx=".5" cy=".45" r=".75"><stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".45"/></radialGradient>
 </defs>`;
 
