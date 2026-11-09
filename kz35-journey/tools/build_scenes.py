@@ -67,10 +67,10 @@ SHOTS = {
    ("sat", dict(name="tengiz", t0=46.7, t1=48.7, fin=0.3, fout=0.3, s=(1.15, 1.0), tag=("МҰНАЙ · ГАЗ", "ТЕҢІЗ, АТЫРАУ ОБЛЫСЫ"))),
    ("sat", dict(name="ekibastuz", t0=48.5, t1=50.4, fin=0.3, fout=0.3, s=(1.0, 1.15), tag=("КӨМІР", "ЕКІБАСТҰЗ, ПАВЛОДАР ОБЛЫСЫ"))),
    ("sat", dict(name="balkhash", t0=50.2, t1=52.1, fin=0.3, fout=0.3, s=(1.15, 1.0), tag=("МЫС", "БАЛҚАШ, ҚАРАҒАНДЫ ОБЛЫСЫ"))),
-   ("map", dict(t0=51.9, t1=53.9, draw=0.01, uranium=True, cities=[])),
-   ("text", dict(id="t-uran", t0=52.1, t1=53.8, kind="chip", text="УРАН", top=300)),
-   ("text", dict(id="t-uranf", t0=52.3, t1=53.8, kind="fact", text="ҚАЗАҚСТАН — УРАН ӨНДІРУДЕН ӘЛЕМДЕ 1-ОРЫНДА (2009 ЖЫЛДАН БЕРІ)", top=390)),
-   ("sat", dict(name="temirtau", t0=53.8, t1=56.1, fin=0.3, fout=0.3, s=(1.0, 1.18), tag=("МЕТАЛЛУРГИЯ", "ТЕМІРТАУ, ҚАРАҒАНДЫ ОБЛЫСЫ"))),
+   ("map", dict(t0=51.9, t1=54.4, draw=0.01, uranium=True, cities=[])),
+   ("text", dict(id="t-uran", t0=52.0, t1=54.3, kind="chip", text="УРАН", top=300)),
+   ("text", dict(id="t-uranf", t0=52.0, t1=54.3, kind="fact", text="ҚАЗАҚСТАН — УРАН ӨНДІРУДЕН ӘЛЕМДЕ 1-ОРЫНДА (2009 ЖЫЛДАН БЕРІ)", top=390)),
+   ("sat", dict(name="temirtau", t0=54.1, t1=56.1, fin=0.3, fout=0.3, s=(1.0, 1.18), tag=("МЕТАЛЛУРГИЯ", "ТЕМІРТАУ, ҚАРАҒАНДЫ ОБЛЫСЫ"))),
    ("sat", dict(name="ekibastuz", t0=55.9, t1=57.9, fin=0.3, fout=0.3, s=(1.35, 1.6), rot=-4, tag=("ЭНЕРГЕТИКА", "ЕКІБАСТҰЗ, ПАВЛОДАР ОБЛЫСЫ"))),
    ("sat", dict(name="khorgos", t0=57.7, t1=59.6, fin=0.3, fout=0.3, s=(1.0, 1.15), tag=("ТЕМІР ЖОЛ · КӨЛІК", "ҚОРҒАС, ЖЕТІСУ ОБЛЫСЫ"))),
    ("sat", dict(name="charyn", t0=59.4, t1=60.9, fin=0.3, fout=0.3, s=(1.12, 1.0), tag=("ТАБИҒАТ", "ШАРЫН ШАТҚАЛЫ"))),
@@ -92,7 +92,7 @@ SHOTS = {
  ],
  "s7-modern": [
    ("sat", dict(name="astana", t0=84.2, t1=86.4, fin=0.4, fout=0.4, s=(1.4, 1.75), focus=(51.089, 71.416), labels=[("ЭКСПО-2017", (51.0890, 71.4161))], lab_t=84.6)),
-   ("chapter", dict(t0=84.3, t1=86.3, num="III ТАРАУ", years="2017 — 2026", title="ЗАМАНАУИ ҚАЗАҚСТАН|*ЖӘНЕ БОЛАШАҚ*")),
+   ("chapter", dict(t0=84.3, t1=86.9, num="III ТАРАУ", years="2017 — 2026", title="ЗАМАНАУИ ҚАЗАҚСТАН|*ЖӘНЕ БОЛАШАҚ*")),
    ("clip", dict(src="assets/clips/datacenter.mp4", t0=86.1, t1=89.4, fin=0.4, fout=0.4, illus=True)),
    ("text", dict(id="t-digital", t0=86.6, t1=89.2, kind="title", text="ЦИФРЛЫҚ|*ДАМУ*", top=260)),
    ("text", dict(id="t-ai", t0=87.6, t1=89.2, kind="chip", text="ЖАСАНДЫ ИНТЕЛЛЕКТ", top=470)),
@@ -111,10 +111,10 @@ SHOTS = {
    ("text", dict(id="t-35b", t0=103.6, t1=106.1, kind="title", text="*35 ЖЫЛ*", top=300)),
    ("text", dict(id="t-path", t0=106.3, t1=110.5, kind="words", text="ТӘЖІРИБЕ|ЖЕТІСТІК|МҮМКІНДІК", top=300, at=[106.4, 107.7, 108.7])),
    ("clip", dict(src="assets/clips/finale.mp4", t0=110.4, t1=120.0, fin=0.5, fout=0)),
-   ("text", dict(id="t-final", t0=110.9, t1=120.0, kind="titleS", text="ҚАЗАҚСТАН — *35 ЖЫЛ*", top=958, hold=True)),
-   ("text", dict(id="t-values", t0=111.6, t1=120.0, kind="words", text="БІРЛІК.|ЕҢБЕК.|ДАМУ.|БОЛАШАҚ.", top=1040, at=[111.6, 112.1, 112.6, 113.1], hold=True, row=True)),
-   ("text", dict(id="t-ours", t0=116.0, t1=120.0, kind="box", text="*БІЗДІҢ ЕЛ.*|БІЗДІҢ БОЛАШАҚ.", top=1110, hold=True)),
-   ("text", dict(id="t-yrs", t0=111.2, t1=120.0, kind="kicker", text="1991 — 2026", top=250, hold=True)),
+   ("text", dict(id="t-final", t0=110.9, t1=120.0, kind="titleS", text="ҚАЗАҚСТАН — *35 ЖЫЛ*", top=480, hold=True)),
+   ("text", dict(id="t-values", t0=111.6, t1=120.0, kind="words", text="БІРЛІК.|ЕҢБЕК.|ДАМУ.|БОЛАШАҚ.", top=562, at=[111.6, 112.1, 112.6, 113.1], hold=True, row=True)),
+   ("text", dict(id="t-ours", t0=116.0, t1=120.0, kind="box", text="*БІЗДІҢ ЕЛ.* БІЗДІҢ БОЛАШАҚ.", top=640, hold=True)),
+   ("text", dict(id="t-yrs", t0=111.2, t1=120.0, kind="kicker", text="1991 — 2026", top=412, hold=True)),
    ("fade", dict(t0=118.6, t1=120.0)),
  ],
 }
@@ -149,7 +149,7 @@ CSS = """
     .tag .p { margin-top: 12px; font: 700 28px/1.2 "KZ Sans", sans-serif; letter-spacing: .16em; color: #E6B85C; text-shadow: 0 2px 10px rgba(0,0,0,.85); }
     .tag::before { content: ""; display: block; width: 80px; height: 4px; background: #E6B85C; margin-bottom: 18px; }
     .credit { position: absolute; left: 0; right: 0; top: 1872px; text-align: center; font: 500 18px/1 "KZ Sans", sans-serif; letter-spacing: .06em; color: rgba(255,255,255,.55); }
-    .illus { position: absolute; right: 40px; top: 190px; font: 700 20px/1 "KZ Sans", sans-serif; letter-spacing: .2em; color: rgba(255,255,255,.6); }
+    .illus { position: absolute; right: 40px; top: 190px; font: 700 26px/1 "KZ Sans", sans-serif; letter-spacing: .2em; color: rgba(255,255,255,.6); }
     .navy { position: absolute; inset: 0; background: radial-gradient(90% 60% at 50% 42%, #0f2a5e 0%, #071631 55%, #040a18 100%); }
     .map { position: absolute; left: 50px; top: 600px; width: 980px; height: 646px; overflow: visible; }
     .ov { position: absolute; left: 0; right: 0; text-align: center; }
@@ -162,11 +162,11 @@ CSS = """
     .g { color: #E6B85C; }
     .chip { font: 700 32px/1.2 "KZ Sans", sans-serif; letter-spacing: .08em; color: #fff; padding: 14px 26px; border-radius: 40px; background: rgba(6,14,32,.66); border: 1.5px solid rgba(230,184,92,.9); max-width: 940px; }
     .fact { font: 900 29px/1.25 "KZ Sans", sans-serif; letter-spacing: .03em; color: #071226; padding: 12px 22px; border-radius: 12px; background: linear-gradient(180deg, #F6DFA0, #E6B85C); max-width: 900px; }
-    .note { font: 500 24px/1 "KZ Sans", sans-serif; letter-spacing: .08em; color: rgba(255,255,255,.75); }
+    .note { font: 500 28px/1 "KZ Sans", sans-serif; letter-spacing: .08em; color: rgba(255,255,255,.75); }
     .word { display: block; font: 900 64px/1.15 "KZ Sans", sans-serif; letter-spacing: .06em; color: #fff; text-shadow: 0 4px 26px rgba(0,0,0,.75); }
     .word:nth-child(2n) { color: #E6B85C; }
     .row .word { display: inline-block; margin: 0 10px; font-size: 46px; color: #E6B85C; }
-    .box { font: 900 50px/1.15 "KZ Sans", sans-serif; color: #fff; padding: 20px 40px 22px; border-radius: 26px; background: rgba(6,14,32,.62); border: 2px solid rgba(230,184,92,.9); }
+    .box { font: 900 40px/1.15 "KZ Sans", sans-serif; color: #fff; padding: 20px 40px 22px; border-radius: 26px; background: rgba(6,14,32,.62); border: 2px solid rgba(230,184,92,.9); }
     .chap { position: absolute; left: 0; right: 0; top: 560px; text-align: center; }
     .chap .num { font: 700 34px/1 "KZ Serif", serif; letter-spacing: .4em; color: #E6B85C; }
     .chap .yr { margin-top: 14px; font: 900 44px/1 "KZ Sans", sans-serif; letter-spacing: .2em; color: #fff; }
@@ -244,7 +244,7 @@ def build(sid, layers):
         elif kind == "clip":
             body.append(f'    <video id="{lid}" class="clip" src="{o["src"]}" data-hf-media-start-basis="local" data-start="{a}" data-duration="{d}" data-track-index="{2 + li % 2}" muted playsinline style="position:absolute;left:0;top:0;width:1080px;height:1920px;object-fit:cover;z-index:{z}"></video>')
             if o.get("illus"):
-                body.append(f'    <div id="{lid}-il" class="clip" data-start="{a}" data-duration="{d}" data-track-index="4" style="position:absolute;inset:0;z-index:{z}"><div class="illus">ИЛЛЮСТРАЦИЯ</div></div>')
+                body.append(f'    <div id="{lid}-il" class="clip" data-layout-ignore data-start="{a}" data-duration="{d}" data-track-index="4" style="position:absolute;inset:0;z-index:{z}"><div class="illus">ИЛЛЮСТРАЦИЯ</div></div>')
             js.append(f'  fade("#{lid}", {a}, {d}, {o.get("fin", 0.4)}, {o.get("fout", 0.4)});')
         elif kind == "map":
             body.append(f'    <div id="{lid}" class="clip lay" data-start="{a}" data-duration="{d}" data-track-index="5" style="z-index:{z}"><div class="navy"></div>'
@@ -256,7 +256,7 @@ def build(sid, layers):
             yrs = o["marks"]; marks = ""
             for k, (y, lb) in enumerate(yrs):
                 p = (y - 1991) / 35 * 100
-                marks += f'<div class="mk" style="left:{p:.2f}%"></div><div class="yr" id="{lid}-y{k}" style="left:{p:.2f}%">{y}</div><div class="lb" id="{lid}-l{k}" style="left:{p:.2f}%">{html.escape(lb)}</div>'
+                marks += f'<div class="mk" style="left:{p:.2f}%"></div><div class="yr" id="{lid}-y{k}" style="left:{p:.2f}%;top:40px">{y}</div><div class="lb" id="{lid}-l{k}" style="left:{p:.2f}%;top:{-70 if k % 2 == 0 else 104}px">{html.escape(lb)}</div>'
             body.append(f'    <div id="{lid}" class="clip lay" data-start="{a}" data-duration="{d}" data-track-index="5" style="z-index:{z}"><div class="navy"></div>'
                         f'<div class="ruler" id="{lid}-r"><div class="ln" id="{lid}-ln"></div>{marks}<div class="dot" id="{lid}-dot" style="left:0%"></div></div></div>')
             js.append(f'  tl.fromTo("#{lid}-ln", {{ scaleX: 0 }}, {{ scaleX: 1, duration: {round(d * 0.7, 2)}, ease: "power2.inOut" }}, {round(a + 0.2, 3)});')
@@ -327,7 +327,7 @@ def build(sid, layers):
     els.forEach((e, i) => {{ const L = (e.getTotalLength && e.getTotalLength()) || 600; e.style.strokeDasharray = L + " " + (L + 10); tl.fromTo(e, {{ strokeDashoffset: L }}, {{ strokeDashoffset: 0, duration: 1.4, ease: "power2.inOut" }}, a + 0.15 + i * 0.08); }});
     tl.fromTo("#" + id + "-svg", {{ scale: 0.96 }}, {{ scale: 1.03, duration: d, ease: "none" }}, a);
     tl.fromTo("#" + id + "-t", {{ opacity: 0, y: 20 }}, {{ opacity: 1, y: 0, duration: 0.6, ease: "expo.out" }}, a + 0.5);
-    tl.fromTo("#" + id + "-s", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.5 }}, a + 0.9);
+    tl.fromTo("#" + id + "-s", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.4 }}, a + 0.45);
     // national ornament bands (qoshqar müiiz)
     ["-o1", "-o2"].forEach((s, k) => {{ const el = Q("#" + id + s); let p = ""; for (let i = 0; i < 18; i++) {{ const x = 30 + i * 60; p += `M${{x}},30 c10,-24 34,-24 30,-6 c-3,10 -14,8 -12,-2 M${{x}},30 c-10,-24 -34,-24 -30,-6 c3,10 14,8 12,-2 M${{x}},30 c10,24 34,24 30,6 c-3,-10 -14,-8 -12,2 M${{x}},30 c-10,24 -34,24 -30,6 c3,-10 14,-8 12,2 `; }}
       el.innerHTML = `<svg viewBox="0 0 1080 60" width="1080" height="60"><path d="${{p}}" fill="none" stroke="#E6B85C" stroke-width="2.4"/></svg>`;
@@ -343,7 +343,7 @@ def build(sid, layers):
     s += `<path id="${{id}}-line" d="${{M.kz}}" fill="none" stroke="#E6B85C" stroke-width="2.6" stroke-linejoin="round" pathLength="1000" stroke-dasharray="1000 1100"/>`;
     const names = {{ astana: "АСТАНА", almaty: "АЛМАТЫ", shymkent: "ШЫМКЕНТ", karaganda: "ҚАРАҒАНДЫ", aktau: "АҚТАУ", oskemen: "ӨСКЕМЕН", turkistan: "ТҮРКІСТАН" }};
     (cfg.cities || []).forEach((k, i) => {{ const p = M.cities[k]; s += `<g class="${{id}}-c" opacity="0"><circle cx="${{p[0]}}" cy="${{p[1]}}" r="${{k === "astana" ? 8 : 5.5}}" fill="#fff"/><circle cx="${{p[0]}}" cy="${{p[1]}}" r="14" fill="none" stroke="#E6B85C" stroke-width="2"/>
-      <text x="${{p[0] + (k === "aktau" ? 16 : 0)}}" y="${{p[1] - 20}}" text-anchor="${{k === "aktau" ? "start" : "middle"}}" font-family="KZ Sans" font-weight="700" font-size="21" letter-spacing="2" fill="#fff">${{names[k]}}</text></g>`; }});
+      <text x="${{p[0] + (k === "aktau" ? 16 : 0)}}" y="${{p[1] - 20}}" text-anchor="${{k === "aktau" ? "start" : "middle"}}" font-family="KZ Sans" font-weight="700" font-size="27" letter-spacing="2" fill="#fff" stroke="#071226" stroke-width="5" paint-order="stroke">${{names[k]}}</text></g>`; }});
     if (cfg.network) {{ const ks = cfg.cities; for (let i = 0; i < ks.length; i++) for (let j = i + 1; j < ks.length; j++) {{ const A = M.cities[ks[i]], B = M.cities[ks[j]]; if (Math.hypot(A[0] - B[0], A[1] - B[1]) < 470) s += `<path class="${{id}}-n" d="M${{A[0]}},${{A[1]}} Q${{(A[0] + B[0]) / 2}},${{(A[1] + B[1]) / 2 - 60}} ${{B[0]}},${{B[1]}}" fill="none" stroke="#6fd3ff" stroke-width="2" pathLength="100" stroke-dasharray="100 120" stroke-dashoffset="100"/>`; }} }}
     if (cfg.uranium) {{ s += `<ellipse id="${{id}}-u" cx="470" cy="430" rx="150" ry="70" fill="#E6B85C" fill-opacity=".22" stroke="#E6B85C" stroke-width="2" stroke-dasharray="6 6"/><text x="470" y="438" text-anchor="middle" font-family="KZ Sans" font-weight="900" font-size="28" letter-spacing="4" fill="#F3D891">U</text>`; }}
     if (cfg.tenge) {{ s += `<g id="${{id}}-t" opacity="0"><circle cx="760" cy="120" r="58" fill="#E6B85C"/><text x="760" y="146" text-anchor="middle" font-family="KZ Sans" font-weight="900" font-size="74" fill="#071226">₸</text></g>`; }}
@@ -352,7 +352,7 @@ def build(sid, layers):
     if (dr > 0.05) {{ tl.fromTo(["#" + id + "-line", "#" + id + "-glow"], {{ attr: {{ "stroke-dashoffset": 1000 }} }}, {{ attr: {{ "stroke-dashoffset": 0 }}, duration: dr, ease: "power2.inOut" }}, a + 0.1);
       tl.fromTo("#" + id + "-fill", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.8 }}, a + dr * 0.7); }}
     else tl.set(["#" + id + "-line", "#" + id + "-glow"], {{ attr: {{ "stroke-dashoffset": 0 }} }}, a);
-    tl.fromTo("." + id + "-c", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.3, stagger: 0.12 }}, a + Math.max(0.3, dr * 0.8));
+    if (document.querySelector("." + id + "-c")) tl.fromTo("." + id + "-c", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.3, stagger: 0.12 }}, a + Math.max(0.3, dr * 0.8));
     if (cfg.network) tl.to("." + id + "-n", {{ attr: {{ "stroke-dashoffset": 0 }}, duration: 0.7, ease: "power2.out", stagger: 0.05 }}, a + 0.3);
     if (cfg.uranium) tl.fromTo("#" + id + "-u", {{ opacity: 0, scale: 0.7, transformOrigin: "50% 50%" }}, {{ opacity: 1, scale: 1, duration: 0.6, ease: "back.out(2)" }}, a + 0.3);
     if (cfg.tenge) tl.fromTo("#" + id + "-t", {{ opacity: 0, scale: 0.4, transformOrigin: "50% 50%" }}, {{ opacity: 1, scale: 1, duration: 0.6, ease: "back.out(2)" }}, a + 2.5);

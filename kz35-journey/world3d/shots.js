@@ -183,7 +183,7 @@ export function buildShots(ctx) {
     const flag = new ClothFlag({ width: 40, height: 20, nx: 40, ny: 20, material: flagMat(env.sunrise.env), windDir: Lf.clone().negate(), wind: 12, seed: 2026 }); w.scene.add(flag.mesh);
     const anchor = () => POLE.clone().add(V3(0, 19.5, 0)).addScaledVector(Lf, -1);
     A.setEnv(env.sunrise);
-    const n35 = goldGlyphs(SVGLoader, GLYPHS.n35, { size: 34, depth: 7, bevel: 1.3, material: A.M.gold }); w.scene.add(n35);
+    const n35 = goldGlyphs(SVGLoader, GLYPHS.n35, { size: 27, depth: 6, bevel: 1.1, material: A.M.gold }); w.scene.add(n35);
     const glint = new THREE.PointLight(0xffe2b0, 14000, 500, 1.8); w.scene.add(glint);
     const sparkle = pointsCloud(400, 35, (tt, s) => { const life = (tt * 0.1 + s[0]) % 1; return [n35.position.x + (s[1] - 0.5) * 70, n35.position.y - 40 + life * 100, n35.position.z + (s[2] - 0.5) * 70]; }, { size: 1.2, color: 0xffd27a, map: softDot() });
     sparkle.material.color.setRGB(4, 3, 1.4); w.scene.add(sparkle);
@@ -194,7 +194,7 @@ export function buildShots(ctx) {
         c.position.copy(CP).addScaledVector(F, lerp(-40, 20, k)).add(V3(0, lerp(0, 25, k), 0)); c.lookAt(CT.clone().add(V3(0, lerp(300, 450, k), 0)));
         const fwd = new THREE.Vector3(); c.getWorldDirection(fwd);
         const k35 = ease.out(clamp((lt - 0.2) / 1.8, 0, 1));
-        n35.position.copy(c.position).addScaledVector(fwd, 140).add(V3(0, lerp(-80, -2, k35), 0));
+        n35.position.copy(c.position).addScaledVector(fwd, 140).add(V3(0, lerp(-80, 2, k35), 0));
         n35.quaternion.copy(c.quaternion); n35.rotateY(lerp(-1.0, 0, k35) + Math.sin(tt * 0.4) * 0.03);
         glint.position.copy(n35.position).add(V3(80, 60, -60)); sparkle.update(tt); sparkle.visible = lt > 0.5;
         this.sunWorld = c.position.clone().addScaledVector(sun, 100000); } };
