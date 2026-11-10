@@ -10,6 +10,8 @@
 
 ## What was measured
 
+- Final file: 1080×1920, 30 fps, 4158 frames, 138.6 s, H.264 + AAC stereo.
+
 - `hyperframes check`: 0 errors, 0 warnings (lint, runtime, layout, contrast, craft, audio).
 - Frames inspected on contact sheets at ~60 timestamps across all scenes and seams.
 - Audio: integrated loudness −16.0 LUFS, peak −1.0 dBFS (ffmpeg `ebur128`); the music-only ending sits around −22 LUFS. **The sound was measured, not heard** — nobody has listened to the narration or the score.
