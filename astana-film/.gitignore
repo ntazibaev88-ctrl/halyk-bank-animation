@@ -1,0 +1,6 @@
+.hyperframes/
+node_modules/
+tools/music.wav
+.dbg.html
+renders/work-*/
+renders/.*

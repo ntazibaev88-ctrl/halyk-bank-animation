@@ -1,0 +1,11 @@
+{
+  "name": "astana-film",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "python3 tools/build.py",
+    "dev": "npx --yes hyperframes@0.9.28 preview",
+    "check": "npx --yes hyperframes@0.9.28 check",
+    "render": "npx --yes hyperframes@0.9.28 render -q high -o renders/astana-bolashaqtyn-qalasy.mp4"
+  }
+}

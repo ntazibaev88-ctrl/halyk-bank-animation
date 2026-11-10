@@ -1,0 +1,147 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #0A1D3D; font-family: 'Astana Sans', sans-serif; }
+    #s4-map svg { position: absolute; left: -300px; top: -200px; }
+    #s4-scrim { background: linear-gradient(180deg, rgba(7,20,43,0.92) 0%, rgba(7,20,43,0.55) 22%, rgba(7,20,43,0) 40%, rgba(7,20,43,0) 78%, rgba(7,20,43,0.6) 100%); }
+    #s4-kicker { top: 200px; }
+    #s4-h1 { top: 250px; font-size: 82px; }
+    #s4-h1 span { display: inline-block; }
+    #s4-stat { left: 70px; top: 232px; width: 940px; height: 392px; background: rgba(7, 20, 43, 0.93); }
+    #s4-stat .lab { position: absolute; left: 0; top: 24px; width: 940px; text-align: center; font-weight: 700; font-size: 34px; letter-spacing: 0.16em; text-transform: uppercase; color: #fff; }
+    #s4-num { position: absolute; left: 0; top: 62px; width: 940px; text-align: center; font-weight: 900; font-size: 132px; line-height: 150px; color: #F7C55A; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    #s4-date { position: absolute; left: 0; top: 206px; width: 940px; text-align: center; font-weight: 700; font-size: 32px; color: #BFE3FA; }
+    #s4-spark { position: absolute; left: 60px; top: 252px; }
+    #s4-plus { position: absolute; left: 0; top: 296px; width: 940px; text-align: center; font-weight: 800; font-size: 34px; color: #fff; white-space: nowrap; }
+    #s4-plus b { color: #6CE5DC; font-weight: 900; }
+    #s4-src { position: absolute; left: 0; top: 344px; width: 940px; text-align: center; }
+    .s4-pin { position: absolute; width: 22px; height: 22px; border-radius: 50%; background: #F7C55A; border: 5px solid #fff; }
+    .s4-stem { position: absolute; width: 4px; background: #fff; border-radius: 2px; }
+    #s4-flood { background: #EAF6FE; }
+  </style>
+  <div id="root" data-composition-id="s4" data-width="1080" data-height="1920">
+    <div id="s4-zoom" class="layer" data-layout-allow-overflow>
+      <div id="s4-map" class="layer"></div>
+    </div>
+    <div id="s4-scrim" class="fill"></div>
+    <div id="s4-head" class="clip" data-start="0" data-duration="17.6" data-track-index="2">
+      <div id="s4-kicker" class="txt kicker">Халық және өсу</div>
+      <div id="s4-h1" class="txt h1"><span>Қала</span> <span>өсіп</span> <span>келеді</span></div>
+    </div>
+    <div id="s4-stat" class="card clip" data-start="0" data-duration="17.6" data-track-index="3">
+      <div class="lab">Астана халқы</div>
+      <div id="s4-num">1 639 176</div>
+      <div id="s4-date">2026 жылғы 1 қазан</div>
+      <svg id="s4-spark" width="820" height="44" viewBox="0 0 820 44"></svg>
+      <div id="s4-plus"><b>+67 974 адам</b> — жыл басынан бері</div>
+      <div id="s4-src" class="src">Дерек: Ұлттық статистика бюросы</div>
+    </div>
+    <div id="s4-pins" class="layer">
+      <div id="s4-p0" class="clip" data-start="0" data-duration="17.6" data-track-index="4"><div class="s4-stem" style="left:238px;top:716px;height:70px"></div><div class="s4-pin" style="left:224px;top:780px"></div><div class="chip" style="left:90px;top:640px"><i><svg width="56" height="56"><path d="M14 29 L28 15 L42 29 V42 H32 V33 H24 V42 H14Z" fill="#F7C55A"/></svg></i>Тұрғын үйлер</div></div>
+      <div id="s4-p1" class="clip" data-start="0" data-duration="17.6" data-track-index="5"><div class="s4-stem" style="left:838px;top:806px;height:70px"></div><div class="s4-pin" style="left:824px;top:870px"></div><div class="chip" style="left:640px;top:730px"><i><svg width="56" height="56"><path d="M9 24 L28 14 L47 24 L28 34Z" fill="#F7C55A"/><path d="M17 31 V39 Q28 46 39 39 V31 L28 37Z" fill="#F7C55A"/></svg></i>Мектептер</div></div>
+      <div id="s4-p2" class="clip" data-start="0" data-duration="17.6" data-track-index="6"><div class="s4-stem" style="left:268px;top:906px;height:70px"></div><div class="s4-pin" style="left:254px;top:970px"></div><div class="chip" style="left:110px;top:830px"><i><svg width="56" height="56"><path d="M23 13 H33 V23 H43 V33 H33 V43 H23 V33 H13 V23 H23Z" fill="#F7C55A"/></svg></i>Ауруханалар</div></div>
+      <div id="s4-p3" class="clip" data-start="0" data-duration="17.6" data-track-index="7"><div class="s4-stem" style="left:718px;top:1006px;height:70px"></div><div class="s4-pin" style="left:704px;top:1070px"></div><div class="chip" style="left:440px;top:930px"><i><svg width="56" height="56"><circle cx="28" cy="23" r="12" fill="#F7C55A"/><rect x="26" y="32" width="4" height="12" fill="#F7C55A"/></svg></i>Қоғамдық кеңістіктер</div></div>
+    </div>
+    <div id="s4-flood" class="seam" data-layout-ignore></div>
+  </div>
+  <script>
+    (function () {
+      const A = window.Astana, D = 17.6, rnd = A.rng(4242), CX = 540, CY = 1010;
+      const $ = function (id) { return document.getElementById(id); };
+      const river = function (x) { return 1290 + 105 * Math.sin((x - 80) / 200) - 70 * Math.cos(x / 420); };
+      // ---- the map ----
+      let s = '<rect x="0" y="0" width="1680" height="2320" fill="#0E2444"/><g transform="translate(300 200)">';
+      let rp = "";
+      for (let x = -320; x <= 1400; x += 20) rp += (rp ? "L" : "M") + x + " " + river(x).toFixed(1);
+      // roads
+      const roads = [];
+      [430, 640, 850, 1060, 1530, 1740].forEach(function (y) { roads.push("M-320 " + y + " H1400"); });
+      [-20, 190, 400, 680, 890, 1100].forEach(function (x) { roads.push("M" + x + " -220 V2140"); });
+      roads.push("M-320 300 L1400 1900", "M1400 420 L-320 1700");
+      s += '<g fill="none" stroke="#1D3D6E" stroke-width="16" stroke-linecap="round">';
+      roads.forEach(function (d) { s += '<path class="s4-road" pathLength="1" d="' + d + '"/>'; });
+      s += '<ellipse class="s4-road" pathLength="1" cx="' + CX + '" cy="' + CY + '" rx="590" ry="800"/></g>';
+      s += '<path class="s4-axis" pathLength="1" d="M' + CX + ' 240 V1900" fill="none" stroke="#F2B84B" stroke-width="7" stroke-dasharray="1" stroke-linecap="round" opacity="0.9"/>';
+      // blocks grow outwards from the old centre
+      const blocks = [];
+      for (let gy = 0; gy < 21; gy++) for (let gx = 0; gx < 15; gx++) {
+        const x = -270 + gx * 105 + 8, y = -150 + gy * 105 + 8, cx = x + 44, cy = y + 44;
+        if (Math.abs(cy - river(cx)) < 92) continue;
+        if (Math.abs(cx - CX) < 30) continue;
+        const r = Math.hypot((cx - CX) * 1.15, (cy - CY) * 0.8);
+        blocks.push({ x: x, y: y, r: r, k: rnd() });
+      }
+      blocks.forEach(function (b) {
+        const park = b.k > 0.86, fresh = b.r > 520, col = park ? "#2FAE8C" : fresh ? "#F2B84B" : b.r > 300 ? "#3E8FD6" : "#2B62A6";
+        s += '<g class="s4-blk" data-r="' + b.r.toFixed(0) + '">';
+        if (park) {
+          s += '<rect x="' + b.x + '" y="' + b.y + '" width="88" height="88" rx="18" fill="#1B6F6A"/><circle cx="' + (b.x + 28) + '" cy="' + (b.y + 30) + '" r="16" fill="' + col + '"/><circle cx="' + (b.x + 60) + '" cy="' + (b.y + 54) + '" r="20" fill="#3CC6A0"/><circle cx="' + (b.x + 30) + '" cy="' + (b.y + 66) + '" r="12" fill="' + col + '"/>';
+        } else {
+          const op = fresh ? 0.95 : 0.9;
+          if (b.k < 0.3) s += '<rect x="' + b.x + '" y="' + b.y + '" width="88" height="40" rx="6" fill="' + col + '" opacity="' + op + '"/><rect x="' + b.x + '" y="' + (b.y + 48) + '" width="40" height="40" rx="6" fill="' + col + '" opacity="' + (op - 0.2) + '"/><rect x="' + (b.x + 48) + '" y="' + (b.y + 48) + '" width="40" height="40" rx="6" fill="' + col + '" opacity="' + op + '"/>';
+          else if (b.k < 0.6) s += '<rect x="' + b.x + '" y="' + b.y + '" width="40" height="88" rx="6" fill="' + col + '" opacity="' + op + '"/><rect x="' + (b.x + 48) + '" y="' + b.y + '" width="40" height="52" rx="6" fill="' + col + '" opacity="' + (op - 0.25) + '"/><rect x="' + (b.x + 48) + '" y="' + (b.y + 60) + '" width="40" height="28" rx="6" fill="' + col + '" opacity="' + op + '"/>';
+          else s += '<path d="M' + b.x + " " + b.y + " h88 v30 h-58 v58 h-30Z" + '" fill="' + col + '" opacity="' + op + '"/><rect x="' + (b.x + 42) + '" y="' + (b.y + 42) + '" width="46" height="46" rx="6" fill="' + col + '" opacity="' + (op - 0.3) + '"/>';
+        }
+        s += "</g>";
+      });
+      // river on top of the grid
+      s += '<path id="s4-river" pathLength="1" d="' + rp + '" fill="none" stroke="#3CC6C0" stroke-width="58" stroke-linecap="round" stroke-linejoin="round"/><path id="s4-river2" pathLength="1" d="' + rp + '" fill="none" stroke="#8EF0E6" stroke-width="10" stroke-linecap="round" opacity="0.55" transform="translate(0 -10)"/>';
+      for (let i = 0; i < 10; i++) s += '<circle class="s4-car" r="7" fill="' + (i % 2 ? "#fff" : "#F7C55A") + '" cx="0" cy="0"/>';
+      s += '<circle id="s4-core" cx="' + CX + '" cy="' + CY + '" r="20" fill="#F7C55A"/><circle id="s4-corering" cx="' + CX + '" cy="' + CY + '" r="20" fill="none" stroke="#F7C55A" stroke-width="5"/></g>';
+      $("s4-map").innerHTML = '<svg width="1680" height="2320" viewBox="0 0 1680 2320">' + s + "</svg>";
+      // sparkline: 2026, real monthly points (1 Jan, 1 Jun, 1 Aug, 1 Sep, 1 Oct)
+      const pts = [[0, 1639176], [5, 1674699], [7, 1690605], [8, 1700385], [9, 1707150]];
+      const sx = function (m) { return 10 + m * 88.8; }, sy = function (v) { return 38 - (v - 1639176) / 67974 * 32; };
+      let sp = '<path id="s4-sl" pathLength="1" d="' + pts.map(function (p, i) { return (i ? "L" : "M") + sx(p[0]).toFixed(1) + " " + sy(p[1]).toFixed(1); }).join(" ") + '" fill="none" stroke="#6CE5DC" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>';
+      pts.forEach(function (p, i) { sp += '<circle class="s4-sd" cx="' + sx(p[0]).toFixed(1) + '" cy="' + sy(p[1]).toFixed(1) + '" r="' + (i === 4 ? 9 : 6) + '" fill="' + (i === 4 ? "#F7C55A" : "#fff") + '"/>'; });
+      $("s4-spark").innerHTML = sp;
+
+      const tl = gsap.timeline({ paused: true });
+      const w = function (p, n, f) { return A.word("s4", p, n, f); };
+      const tHome = w("үйлер", 0, 4.8), tSch = w("мектеп", 0, 5.2), tHos = w("аурухана", 0, 6.0), tPub = w("қоғамдық", 0, 7.1), tEl = w("Елорда", 0, 10.1), tPop = w("халық", 0, 11.2), tGrow = w("өсуімен", 0, 12.0);
+      // seam in: landing from the whip
+      tl.fromTo("#s4-zoom", { x: 900, filter: "blur(24px)" }, { x: 0, filter: "blur(0px)", duration: 0.5, ease: "power3.out" }, 0);
+      tl.fromTo("#s4-map", { scale: 1.55, transformOrigin: CX + "px " + CY + "px" }, { scale: 1, duration: 9.5, ease: "power2.out" }, 0);
+      tl.fromTo("#s4-map", { rotation: -4 }, { rotation: 2.5, duration: D, ease: "none" }, 0);
+      A.draw(tl, "#s4-river", 0.05, 1.3); A.draw(tl, "#s4-river2", 0.25, 1.5);
+      A.draw(tl, ".s4-road", 0.05, 1.5, 0.06);
+      tl.fromTo(".s4-axis", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 1.6, ease: "power2.inOut" }, 0.2);
+      tl.fromTo("#s4-corering", { scale: 1, opacity: 0.9, transformOrigin: "50% 50%" }, { scale: 7, opacity: 0, duration: 1.6, ease: "power2.out", repeat: 9, repeatDelay: 0.2 }, 0.6);
+      gsap.utils.toArray(".s4-blk").forEach(function (g) {
+        const r = +g.getAttribute("data-r");
+        tl.fromTo(g, { scale: 0, opacity: 0, transformOrigin: "50% 50%" }, { scale: 1, opacity: 1, duration: 0.55, ease: "back.out(1.6)" }, 0.35 + (r / 950) * 9.0);
+      });
+      // traffic
+      gsap.utils.toArray(".s4-car").forEach(function (cEl, i) {
+        const hor = i % 2 === 0, lane = hor ? [430, 640, 850, 1530, 1740][i % 5] : [190, 400, 680, 890, 1100][i % 5], dir = i % 4 < 2 ? 1 : -1;
+        const from = dir > 0 ? -340 : 1420, to = dir > 0 ? 1420 : -340, off = (i * 0.37) % 1;
+        const p = hor ? { x: [from, to], y: lane } : { y: [from - 200, to + 300], x: lane };
+        tl.fromTo(cEl, hor ? { x: from + (to - from) * off * 0.4, y: lane } : { y: from + (to - from) * off * 0.4, x: lane }, hor ? { x: to, duration: D * (1 - off * 0.4) * 0.9, ease: "none" } : { y: to, duration: D * (1 - off * 0.4) * 0.9, ease: "none" }, 0);
+        tl.fromTo(cEl, { opacity: 0 }, { opacity: 1, duration: 0.5 }, 2.6);
+      });
+      // heading
+      tl.fromTo("#s4-kicker", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.2);
+      A.blurIn(tl, "#s4-h1 span", 0.3, 0.1, 0.3);
+      tl.to("#s4-head", { opacity: 0, duration: 0.25, ease: "power2.in" }, tPop - 0.75);
+      // pins on the words
+      [["#s4-p0", tHome], ["#s4-p1", tSch], ["#s4-p2", tHos], ["#s4-p3", tPub]].forEach(function (p) {
+        tl.fromTo(p[0] + " .s4-pin", { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(2.6)" }, p[1] - 0.2);
+        tl.fromTo(p[0] + " .s4-stem", { scaleY: 0, transformOrigin: "50% 100%" }, { scaleY: 1, duration: 0.3, ease: "power2.out" }, p[1] - 0.1);
+        tl.fromTo(p[0] + " .chip", { opacity: 0, scale: 0.7, transformOrigin: "20% 100%" }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.7)" }, p[1]);
+      });
+      // population card
+      const tc = tPop - 0.5;
+      tl.fromTo("#s4-stat", { opacity: 0, y: -40, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "expo.out" }, tc);
+      A.count(tl, "#s4-num", 1639176, 1707150, tc + 0.25, 2.4);
+      tl.fromTo("#s4-date", { opacity: 0 }, { opacity: 1, duration: 0.4 }, tc + 0.5);
+      A.draw(tl, "#s4-sl", tGrow - 0.2, 1.4, 0, "power2.out");
+      tl.fromTo(".s4-sd", { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.3, ease: "back.out(2.5)", stagger: 0.28 }, tGrow - 0.2);
+      tl.fromTo("#s4-plus", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.35, ease: "power2.out" }, tGrow + 0.9);
+      tl.fromTo("#s4-src", { opacity: 0 }, { opacity: 1, duration: 0.4 }, tGrow + 1.2);
+      // seam out: dive into the centre
+      tl.to("#s4-zoom", { scale: 3.4, transformOrigin: CX + "px " + CY + "px", duration: 0.5, ease: "power3.in" }, D - 0.5);
+      tl.fromTo("#s4-flood", { opacity: 0 }, { opacity: 1, duration: 0.32, ease: "power2.in" }, D - 0.33);
+      tl.set({}, {}, D);
+      window.__timelines["s4"] = tl;
+    })();
+  </script>
+</template>

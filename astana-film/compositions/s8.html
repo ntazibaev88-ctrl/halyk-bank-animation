@@ -1,0 +1,100 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #061229; font-family: 'Astana Sans', sans-serif; }
+    #s8-sky { background: linear-gradient(180deg, #050E22 0%, #0A1B3D 45%, #17366B 72%, #2B4C86 80%); }
+    #s8-rays { position: absolute; left: -360px; top: -160px; width: 1800px; height: 1800px; border-radius: 50%;
+      background: repeating-conic-gradient(from 0deg, rgba(247,197,90,0.22) 0deg 4deg, rgba(247,197,90,0) 4deg 15deg);
+      -webkit-mask-image: radial-gradient(circle, #000 0%, rgba(0,0,0,0.5) 30%, transparent 62%); mask-image: radial-gradient(circle, #000 0%, rgba(0,0,0,0.5) 30%, transparent 62%); }
+    #s8-halo { position: absolute; left: 90px; top: 290px; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(255,236,170,0.85) 0%, rgba(247,197,90,0.4) 22%, rgba(247,197,90,0.12) 45%, rgba(247,197,90,0) 66%); }
+    #s8-bank { position: absolute; left: -200px; top: 1326px; width: 1480px; height: 50px; background: #050E22; }
+    #s8-river { position: absolute; left: -200px; top: 1372px; width: 1480px; height: 600px; background: linear-gradient(180deg, #17366B 0%, #0D2247 40%, #050E22 100%); }
+    .s8-gl { position: absolute; height: 6px; border-radius: 3px; }
+    #s8-l1 { top: 214px; font-size: 128px; color: #F7C55A; }
+    #s8-l1 span { display: inline-block; }
+    #s8-l2 { top: 356px; font-size: 59px; letter-spacing: 0.02em; }
+    #s8-l2 span { display: inline-block; }
+    #s8-rule { position: absolute; left: 290px; top: 452px; width: 500px; }
+    #s8-l3 { top: 480px; font-weight: 800; font-size: 40px; letter-spacing: 0.2em; color: #F7C55A; white-space: nowrap; }
+    #s8-l3 span { display: inline-block; }
+    .s8-sp { position: absolute; left: 0; top: 0; width: 8px; height: 8px; border-radius: 50%; }
+    #s8-out { background: #050E22; }
+  </style>
+  <div id="root" data-composition-id="s8" data-width="1080" data-height="1920">
+    <div id="s8-cam" class="layer" data-layout-allow-overflow>
+      <div id="s8-sky" class="fill"></div>
+      <div id="s8-stars" class="layer"></div>
+      <div id="s8-rays"></div>
+      <div id="s8-halo"></div>
+      <div id="s8-far" class="layer"></div>
+      <div id="s8-mid" class="layer"></div>
+      <div id="s8-hero" class="layer"></div>
+      <div id="s8-bank"></div>
+      <div id="s8-river"></div>
+      <div id="s8-glints" class="layer"></div>
+    </div>
+    <div id="s8-fw" class="layer" data-layout-ignore></div>
+    <div id="s8-text" class="clip" data-start="0" data-duration="14" data-track-index="2">
+      <div id="s8-l1" class="txt h1"><span>А</span><span>С</span><span>Т</span><span>А</span><span>Н</span><span>А</span><span>&nbsp;—</span></div>
+      <div id="s8-l2" class="txt h1"><span>ТӘУЕЛСІЗДІКТІҢ</span> <span>БЕЛГІСІ</span></div>
+      <div id="s8-rule" class="rule"></div>
+      <div id="s8-l3" class="txt"><span>БОЛАШАҚҚА</span> <span>БАСТАР</span> <span>ҚАЛА</span></div>
+    </div>
+    <div id="s8-out" class="seam" data-layout-ignore></div>
+  </div>
+  <script>
+    (function () {
+      const A = window.Astana, D = 14, rnd = A.rng(8080), c = A.theme.night, G = 1332;
+      const $ = function (id) { return document.getElementById(id); };
+      $("s8-stars").innerHTML = '<div style="position:absolute;left:-300px;top:-500px">' + A.stars(240, 1680, 1500, rnd) + "</div>";
+      $("s8-far").innerHTML = A.place(A.skyline(2000, A.sil("#102A57"), A.rng(81), { minH: 100, maxH: 420, minW: 50, maxW: 100, gap: 8 }), { x: 540, base: G });
+      let h = A.place(A.skyline(2100, c, A.rng(82), { minH: 110, maxH: 330, minW: 64, maxW: 120, gap: 16, windows: true, lit: true }), { x: 540, base: G });
+      h += A.place(A.khanShatyr(c), { x: 130, base: G, s: 0.6 }) + A.place(A.akorda(c), { x: 900, base: G, s: 0.56 });
+      $("s8-mid").innerHTML = h;
+      h = A.place(A.tower(1, 130, 470, c, rnd, { windows: true, lit: true }), { x: 300, base: G }) + A.place(A.tower(4, 124, 430, c, rnd, { windows: true, lit: true }), { x: 770, base: G });
+      h += A.place(A.baiterek({ body: "#FFE9B0", shade: "#B9862E", dark: "#0A1A36", gold: "#FFD76A", gold2: "#F2A93A", line: "#F7C55A" }), { x: 540, base: G, s: 1.02, id: "s8-bt", style: "filter:drop-shadow(0 0 26px rgba(247,197,90,0.75))" });
+      $("s8-hero").innerHTML = h;
+      h = "";
+      for (let i = 0; i < 34; i++) {
+        const centre = i % 3 === 0, wv = centre ? 50 + rnd() * 150 : 20 + rnd() * 70, y = 1392 + i * 15 + rnd() * 6, x = centre ? 540 - wv / 2 + (rnd() - 0.5) * (40 + i * 5) : rnd() * 1060;
+        h += '<div class="s8-gl" style="left:' + x.toFixed(0) + "px;top:" + y.toFixed(0) + "px;width:" + wv.toFixed(0) + "px;background:" + (centre ? "#F7C55A" : i % 2 ? "#6FB7EA" : "#FFE2A6") + ";opacity:" + (centre ? 0.85 - i * 0.015 : 0.4).toFixed(2) + '"></div>';
+      }
+      $("s8-glints").innerHTML = h;
+      // fireworks: three bursts of sparks
+      const bursts = [[250, 760, "#F7C55A"], [840, 700, "#6CE5DC"], [560, 610, "#FFE9B0"]];
+      h = "";
+      bursts.forEach(function (b, bi) { for (let k = 0; k < 22; k++) h += '<div class="s8-sp s8-b' + bi + '" style="background:' + b[2] + '"></div>'; });
+      $("s8-fw").innerHTML = h;
+
+      const tl = gsap.timeline({ paused: true });
+      const w = function (p, n, f) { return A.word("s8", p, n, f); };
+      const tOnyn = w("Оның", 0, 5.5), tAl = w("Ал", 0, 8.2), tQol = w("қолымызда", 0, 9.3);
+      // seam in: the camera tilts down from the stars onto the glowing monument, then pulls away
+      tl.fromTo("#s8-cam", { y: -900 }, { y: 0, duration: 1.5, ease: "power3.out" }, 0);
+      tl.fromTo("#s8-cam", { scale: 2.0, transformOrigin: "540px 820px" }, { scale: 1, duration: 9.2, ease: "power2.inOut" }, 0.2);
+      tl.fromTo("#s8-rays", { rotation: 0 }, { rotation: 38, duration: D, ease: "none" }, 0);
+      tl.fromTo("#s8-halo", { scale: 0.75, opacity: 0.7 }, { scale: 1.12, opacity: 1, duration: 3.5, ease: "sine.inOut", repeat: 3, yoyo: true }, 0);
+      tl.fromTo("#s8-far", { x: 70 }, { x: -70, duration: D, ease: "none" }, 0);
+      tl.fromTo("#s8-mid", { x: 120 }, { x: -120, duration: D, ease: "none" }, 0);
+      for (let k = 0; k < 3; k++) tl.fromTo("#s8-stars .st" + k, { opacity: 0.25 }, { opacity: 1, duration: 0.9 + k * 0.35, ease: "sine.inOut", repeat: 14, yoyo: true }, k * 0.3);
+      for (let k = 0; k < 4; k++) tl.fromTo("#s8-cam .wl" + k, { opacity: 0.08 }, { opacity: 1, duration: 0.6, stagger: { each: 0.002, from: "random" } }, 1.2 + k * 1.5);
+      gsap.utils.toArray(".s8-gl").forEach(function (el, i) { tl.fromTo(el, { x: -18, scaleX: 0.55 }, { x: 18, scaleX: 1.25, duration: 1.2 + (i % 5) * 0.22, ease: "sine.inOut", repeat: 12, yoyo: true }, (i % 5) * 0.3); });
+      // closing lines
+      tl.fromTo("#s8-l1 span", { opacity: 0, filter: "blur(12px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.45, ease: "power2.out", stagger: 0.09 }, tOnyn - 0.4);
+      tl.fromTo("#s8-l2 span", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.4, ease: "power2.out", stagger: 0.25 }, tOnyn + 0.45);
+      tl.fromTo("#s8-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "expo.out" }, tAl - 0.1);
+      tl.fromTo("#s8-l3 span", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.35, ease: "power2.out", stagger: 0.22 }, tAl + 0.1);
+      // fireworks on the last word
+      bursts.forEach(function (b, bi) {
+        const t0 = tQol + 0.15 + bi * 0.55;
+        gsap.utils.toArray(".s8-b" + bi).forEach(function (el, k) {
+          const a = (k / 22) * Math.PI * 2 + bi, r = 150 + ((k * 37) % 90);
+          tl.fromTo(el, { x: b[0], y: b[1], scale: 0, opacity: 1 }, { x: b[0] + Math.cos(a) * r, y: b[1] + Math.sin(a) * r + 50, scale: 1.4, duration: 1.3, ease: "power3.out" }, t0);
+          tl.to(el, { opacity: 0, duration: 0.7, ease: "power1.in" }, t0 + 0.8);
+        });
+      });
+      tl.fromTo("#s8-out", { opacity: 0 }, { opacity: 1, duration: 0.7, ease: "power2.inOut" }, D - 0.75);
+      tl.set({}, {}, D);
+      window.__timelines["s8"] = tl;
+    })();
+  </script>
+</template>

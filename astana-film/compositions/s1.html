@@ -1,0 +1,113 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #0B1D3A; font-family: 'Astana Sans', sans-serif; }
+    #s1-sky { background: linear-gradient(180deg, #0A1B3D 0%, #1C3A74 24%, #55609C 42%, #E98A4E 56%, #F7B655 62%, #FBD88A 66%); }
+    #s1-sunglow { position: absolute; left: 140px; top: 760px; width: 800px; height: 800px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,240,190,0.95) 0%, rgba(251,216,138,0.55) 22%, rgba(247,182,85,0.18) 48%, rgba(247,182,85,0) 68%); }
+    #s1-sun { position: absolute; left: 420px; top: 1040px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle at 50% 45%, #FFFBE6 0%, #FFE9A8 55%, #FBD07A 100%); }
+    #s1-haze { position: absolute; left: 0; top: 980px; width: 1080px; height: 280px; background: linear-gradient(180deg, rgba(251,216,138,0) 0%, rgba(251,200,120,0.5) 70%, rgba(251,200,120,0.15) 100%); }
+    #s1-river { position: absolute; left: -200px; top: 1262px; width: 1480px; height: 700px; background: linear-gradient(180deg, #F2A65C 0%, #C77A63 14%, #4B4F86 38%, #14295A 70%, #0A1B3D 100%); }
+    #s1-bank { position: absolute; left: -200px; top: 1226px; width: 1480px; height: 44px; background: #142552; border-radius: 4px; }
+    .s1-glint { position: absolute; height: 7px; border-radius: 4px; background: #FFE9A8; }
+    #s1-title { position: absolute; left: 0; top: 0; width: 1080px; height: 640px; }
+    #s1-kicker { top: 236px; }
+    #s1-name { top: 292px; font-size: 184px; }
+    #s1-name span { display: inline-block; text-shadow: 0 10px 40px rgba(7,20,43,0.45); }
+    #s1-rule { position: absolute; left: 240px; top: 506px; width: 600px; }
+    #s1-sub { top: 536px; font-weight: 800; font-size: 50px; letter-spacing: 0.2em; color: #fff; white-space: nowrap; text-shadow: 0 6px 24px rgba(7,20,43,0.5); }
+    #s1-sub span { display: inline-block; }
+    #s1-flood { position: absolute; left: 340px; top: 960px; width: 400px; height: 400px; border-radius: 50%; background: #F7C55A; z-index: 40; }
+    #s1-vig { background: radial-gradient(ellipse at 50% 45%, rgba(7,20,43,0) 55%, rgba(7,20,43,0.5) 100%); }
+  </style>
+  <div id="root" data-composition-id="s1" data-width="1080" data-height="1920">
+    <div id="s1-cam" class="layer" data-layout-allow-overflow>
+      <div id="s1-sky" class="fill"></div>
+      <div id="s1-stars" class="layer"></div>
+      <div id="s1-sunglow"></div>
+      <div id="s1-sun"></div>
+      <div id="s1-clouds" class="layer"></div>
+      <div id="s1-far" class="layer"></div>
+      <div id="s1-haze"></div>
+      <div id="s1-mid" class="layer"></div>
+      <div id="s1-hero" class="layer"></div>
+      <div id="s1-river"></div>
+      <div id="s1-glints" class="layer"></div>
+      <div id="s1-bank"></div>
+      <div id="s1-front" class="layer"></div>
+    </div>
+    <div id="s1-vig" class="fill"></div>
+    <div id="s1-title" class="clip" data-start="0" data-duration="14" data-track-index="2">
+      <div id="s1-kicker" class="txt kicker">Қазақстан елордасы</div>
+      <div id="s1-name" class="txt h1"><span>А</span><span>С</span><span>Т</span><span>А</span><span>Н</span><span>А</span></div>
+      <div id="s1-rule" class="rule"></div>
+      <div id="s1-sub" class="txt"><span>БОЛАШАҚТЫҢ</span> <span>ҚАЛАСЫ</span></div>
+    </div>
+    <div id="s1-flood" data-layout-ignore></div>
+  </div>
+  <script>
+    (function () {
+      const A = window.Astana, D = 14, rnd = A.rng(11);
+      const $ = function (id) { return document.getElementById(id); };
+      // ---- art ----
+      $("s1-stars").innerHTML = A.stars(60, 1080, 700, rnd);
+      let h = "";
+      [[120, 420, 1.1, 0.5], [760, 610, 0.8, 0.42], [420, 760, 1.4, 0.3], [960, 880, 1.0, 0.36], [-60, 900, 0.9, 0.3]].forEach(function (c, i) {
+        h += A.place(A.cloud(i % 2 ? "#FBD9B0" : "#F6C3A0", c[3]), { x: c[0], base: c[1], s: c[2], cls: "s1-cloud" });
+      });
+      $("s1-clouds").innerHTML = h;
+      $("s1-far").innerHTML = A.place(A.skyline(1700, A.sil("#8E79A8"), A.rng(5), { minH: 60, maxH: 250, minW: 40, maxW: 86 }), { x: 540, base: 1232, s: 1 });
+      const midc = A.sil("#3A3F7C");
+      h = A.place(A.skyline(1800, midc, A.rng(23), { minH: 90, maxH: 330, minW: 54, maxW: 110, gap: 10 }), { x: 540, base: 1236, s: 1 });
+      h += A.place(A.khanShatyr(midc), { x: 150, base: 1236, s: 0.52 });
+      h += A.place(A.akorda(midc), { x: 890, base: 1236, s: 0.5 });
+      h += A.place(A.pyramid(A.sil("#2C3470")), { x: 1180, base: 1236, s: 0.5 });
+      $("s1-mid").innerHTML = h;
+      const tw = A.theme.dusk;
+      h = A.place(A.tower(1, 120, 430, A.sil("#232B66"), rnd), { x: 250, base: 1240 });
+      h += A.place(A.tower(2, 96, 360, A.sil("#232B66"), rnd), { x: 380, base: 1240 });
+      h += A.place(A.tower(4, 110, 400, A.sil("#232B66"), rnd), { x: 730, base: 1240 });
+      h += A.place(A.tower(5, 100, 330, A.sil("#232B66"), rnd), { x: 860, base: 1240 });
+      h += A.place(A.baiterek(tw), { x: 540, base: 1240, s: 0.9, id: "s1-bt" });
+      $("s1-hero").innerHTML = h;
+      h = "";
+      for (let i = 0; i < 16; i++) {
+        const w = 40 + rnd() * 150, y = 1290 + i * 34 + rnd() * 10, sp = (y - 1262) / 5;
+        h += '<div class="s1-glint" style="left:' + (540 - w / 2 + (rnd() - 0.5) * sp).toFixed(0) + "px;top:" + y.toFixed(0) + "px;width:" + w.toFixed(0) + "px;opacity:" + (0.75 - i * 0.035).toFixed(2) + '"></div>';
+      }
+      $("s1-glints").innerHTML = h;
+      h = "";
+      for (let i = 0; i < 12; i++) h += A.place(i % 3 ? A.tree("#0B1B40", "#0E2350", "#07142B") : A.pine("#0A1838"), { x: -120 + i * 125 + rnd() * 40, base: 1960 - (i % 2) * 20, s: 2 + rnd() * 0.9 });
+      $("s1-front").innerHTML = h;
+
+      // ---- motion ----
+      const tl = gsap.timeline({ paused: true });
+      // aerial descent, then a steady lateral glide with parallax
+      tl.fromTo("#s1-cam", { scale: 1.32, y: 150, transformOrigin: "540px 1100px" }, { scale: 1, y: 0, duration: 7.5, ease: "power2.out" }, 0);
+      tl.fromTo("#s1-far", { x: 60 }, { x: -40, duration: D, ease: "none" }, 0);
+      tl.fromTo("#s1-mid", { x: 110 }, { x: -90, duration: D, ease: "none" }, 0);
+      tl.fromTo("#s1-hero", { x: 26 }, { x: -22, duration: D, ease: "none" }, 0);
+      tl.fromTo("#s1-front", { x: 240 }, { x: -200, duration: D, ease: "none" }, 0);
+      tl.fromTo("#s1-clouds", { x: -70 }, { x: 150, duration: D, ease: "none" }, 0);
+      tl.fromTo("#s1-sun", { y: 150 }, { y: -70, duration: D, ease: "power1.out" }, 0);
+      tl.fromTo("#s1-sunglow", { y: 150, scale: 0.8 }, { y: -70, scale: 1.15, duration: D, ease: "power1.out" }, 0);
+      tl.fromTo("#s1-stars", { opacity: 0.9 }, { opacity: 0, duration: 6, ease: "power1.in" }, 0);
+      gsap.utils.toArray(".s1-glint").forEach(function (g, i) {
+        tl.fromTo(g, { scaleX: 0.5, x: -14 }, { scaleX: 1.25, x: 14, duration: 1.3 + (i % 4) * 0.25, ease: "sine.inOut", repeat: Math.ceil(D / 1.3), yoyo: true }, (i % 5) * 0.3);
+      });
+      // title: on screen from the first frame, letters resolve in the first beat
+      tl.fromTo("#s1-kicker", { opacity: 0.0 }, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0.25);
+      tl.fromTo("#s1-name span", { opacity: 0.35, filter: "blur(9px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.5, ease: "power2.out", stagger: 0.09 }, 0.0);
+      tl.fromTo("#s1-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "expo.out" }, 0.75);
+      A.blurIn(tl, "#s1-sub span", 1.05, 0.14, 0.4);
+      // "Бұл — Астана!": the name turns gold with the sun
+      const tA = A.word("s1", "Астана", 0, 12.2);
+      tl.to("#s1-name span", { color: "#F7C55A", duration: 0.35, ease: "power2.out", stagger: 0.05 }, tA - 0.15);
+      tl.fromTo("#s1-bt", { filter: "brightness(1)" }, { filter: "brightness(1.25)", duration: 0.5, ease: "power2.out" }, tA - 0.1);
+      // seam: the sunrise floods the frame
+      tl.fromTo("#s1-flood", { scale: 0, opacity: 1 }, { scale: 6.4, duration: 0.55, ease: "power3.in" }, D - 0.57);
+      tl.to("#s1-title", { opacity: 0, duration: 0.25, ease: "power2.in" }, D - 0.4);
+      tl.set({}, {}, D);
+      window.__timelines["s1"] = tl;
+    })();
+  </script>
+</template>

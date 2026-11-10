@@ -1,0 +1,103 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: linear-gradient(180deg, #1F6FC4 0%, #4FA8E8 30%, #BFE3FA 52%, #EAF6FE 59%); font-family: 'Astana Sans', sans-serif; }
+    #s3-sunray { position: absolute; left: 540px; top: -260px; width: 1200px; height: 1200px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.12) 40%, rgba(255,255,255,0) 66%); }
+    #s3-ground { position: absolute; left: -200px; top: 1118px; width: 7200px; height: 820px; background: linear-gradient(180deg, #5FD0B4 0%, #3CC6A0 8%, #2BA58E 40%, #177A78 100%); }
+    #s3-path { position: absolute; left: -200px; top: 1380px; width: 7200px; height: 150px; background: #EAF6FE; opacity: 0.9; }
+    #s3-path2 { position: absolute; left: -200px; top: 1448px; width: 7200px; height: 8px; background: repeating-linear-gradient(90deg, #F2B84B 0 60px, transparent 60px 120px); }
+    #s3-world, #s3-far, #s3-fore, #s3-clouds { width: 6800px; }
+    .s3-lab { position: absolute; left: 0; top: 0; width: 1080px; height: 420px; }
+    .s3-lab .kicker { top: 204px; }
+    .s3-lab .h1 { top: 256px; font-size: 104px; color: #fff; text-shadow: 0 8px 30px rgba(11,29,58,0.35); }
+    .s3-lab .h1.sm { font-size: 66px; line-height: 1.12; white-space: normal; top: 250px; }
+    .s3-lab .rule { position: absolute; left: 390px; top: 190px; width: 300px; }
+    .s3-lab .kicker { color: #0B1D3A; }
+    #s3-in { background: #0B1D3A; }
+  </style>
+  <div id="root" data-composition-id="s3" data-width="1080" data-height="1920">
+    <div id="s3-sunray"></div>
+    <div id="s3-cam" class="layer" data-layout-allow-overflow>
+      <div id="s3-clouds" class="layer"></div>
+      <div id="s3-far" class="layer"></div>
+      <div id="s3-world" class="layer">
+        <div id="s3-ground"></div>
+        <div id="s3-path"></div>
+        <div id="s3-path2"></div>
+        <div id="s3-bld" class="layer"></div>
+      </div>
+      <div id="s3-fore" class="layer"></div>
+    </div>
+    <div id="s3-l0" class="s3-lab clip" data-start="0" data-duration="18" data-track-index="2"><div class="txt kicker">Сәулет</div><div class="txt h1 sm" style="font-size:84px;top:256px">Астана келбеті</div></div>
+    <div id="s3-l1" class="s3-lab clip" data-start="0" data-duration="18" data-track-index="3"><div class="txt kicker">Елорда символы</div><div class="txt h1">Бәйтерек</div></div>
+    <div id="s3-l2" class="s3-lab clip" data-start="0" data-duration="18" data-track-index="4"><div class="txt kicker">Президент резиденциясы</div><div class="txt h1">Ақорда</div></div>
+    <div id="s3-l3" class="s3-lab clip" data-start="0" data-duration="18" data-track-index="5"><div class="txt kicker">Алып шатыр</div><div class="txt h1">Хан Шатыр</div></div>
+    <div id="s3-l4" class="s3-lab clip" data-start="0" data-duration="18" data-track-index="6"><div class="txt kicker">«Нұр Әлем» сферасы</div><div class="txt h1">EXPO</div></div>
+    <div id="s3-l5" class="s3-lab clip" data-start="0" data-duration="18" data-track-index="7"><div class="txt h1 sm">Бейбітшілік және<br />келісім сарайы</div></div>
+    <div id="s3-l6" class="s3-lab clip" data-start="0" data-duration="18" data-track-index="8"><div class="txt h1 sm" style="font-size:76px;top:256px">Әзірет Сұлтан<br />мешіті</div></div>
+    <div id="s3-in" class="seam" data-layout-ignore></div>
+  </div>
+  <script>
+    (function () {
+      const A = window.Astana, D = 18, rnd = A.rng(303), c = A.theme.day, G = 1124, STEP = 1080;
+      const $ = function (id) { return document.getElementById(id); };
+      let h = "";
+      for (let i = 0; i < 16; i++) h += A.place(A.cloud("#fff", 0.7 + rnd() * 0.3), { x: 100 + i * 330 + rnd() * 120, base: 560 + rnd() * 380, s: 0.6 + rnd() * 0.9 });
+      $("s3-clouds").innerHTML = h;
+      $("s3-far").innerHTML = A.place(A.skyline(5200, A.sil("#9CCBEF"), A.rng(8), { minH: 80, maxH: 380, minW: 50, maxW: 110, gap: 12 }), { x: 2600, base: G + 4 }) +
+        A.place(A.skyline(5200, A.sil("#7DB6E6"), A.rng(31), { minH: 50, maxH: 240, minW: 60, maxW: 130, gap: 40 }), { x: 2700, base: G + 4 });
+      const arts = [[A.baiterek(c), 1.14], [A.akorda(c), 1.6], [A.khanShatyr(c), 1.62], [A.expo(c), 1.75], [A.pyramid(c), 2.0], [A.mosque(c), 1.6]];
+      h = "";
+      arts.forEach(function (a, i) {
+        const cx = 540 + i * STEP;
+        // flanking glass towers give each stop its own depth
+        h += A.place(A.tower(i + 1, 110, 300 + rnd() * 160, { body: "#CFE6F8", shade: "#B4D6F0", dark: "#8FB9DD", gold: c.gold, win: "#fff", winOp: 0.6 }, rnd, { windows: true }), { x: cx - 420 - rnd() * 40, base: G, cls: "s3-side" });
+        h += A.place(A.tower(i + 3, 120, 260 + rnd() * 200, { body: "#CFE6F8", shade: "#B4D6F0", dark: "#8FB9DD", gold: c.gold, win: "#fff", winOp: 0.6 }, rnd, { windows: true }), { x: cx + 430 + rnd() * 40, base: G, cls: "s3-side" });
+        h += '<div class="lm" style="left:' + (cx - 330) + "px;top:" + (G - 14) + 'px;width:660px;height:40px;border-radius:50%;background:rgba(11,29,58,0.18)"></div>';
+        h += A.place(a[0], { x: cx, base: G, s: a[1], id: "s3-b" + i });
+      });
+      $("s3-bld").innerHTML = h;
+      h = "";
+      for (let i = 0; i < 44; i++) {
+        const big = i % 3 === 0;
+        h += A.place(i % 4 === 1 ? A.pine("#12706C") : A.tree("#1E9C86", "#27B594", "#0F4E55"), { x: -300 + i * 230 + rnd() * 90, base: big ? 1960 : 1700 + rnd() * 60, s: big ? 2.6 + rnd() : 1.2 + rnd() * 0.5 });
+      }
+      $("s3-fore").innerHTML = h;
+
+      const tl = gsap.timeline({ paused: true });
+      const w = function (p, n, f) { return A.word("s3", p, n, f); };
+      const tB = w("Бәйтерек", 0, 3.9), tA = w("Ақорда", 0, 7.9), tK = w("Хан", 0, 11.9), tE = w("ЭКСПО", 0, 12.8), tEnd = 16.2;
+      // camera stops: [time the move starts, station]
+      const tP = tE + 1.75, tM = tP + 1.65;
+      const moves = [[tA - 0.65, 1], [tK - 0.85, 2], [tE - 0.25, 3], [tP, 4], [tM, 5]];
+      tl.fromTo("#s3-in", { yPercent: 0 }, { yPercent: -101, duration: 0.5, ease: "power3.out" }, 0);
+      tl.fromTo("#s3-cam", { scale: 1.12, transformOrigin: "540px 1124px" }, { scale: 1, duration: 3.2, ease: "power2.out" }, 0);
+      tl.set(["#s3-world", "#s3-far", "#s3-fore", "#s3-clouds"], { x: 0 }, 0);
+      moves.forEach(function (m) {
+        const x = -m[1] * STEP;
+        tl.to("#s3-world", { x: x, duration: 0.75, ease: "power3.inOut" }, m[0]);
+        tl.to("#s3-far", { x: x * 0.42, duration: 0.75, ease: "power3.inOut" }, m[0]);
+        tl.to("#s3-clouds", { x: x * 0.2, duration: 0.75, ease: "power3.inOut" }, m[0]);
+        tl.to("#s3-fore", { x: x * 1.5, duration: 0.75, ease: "power3.inOut" }, m[0]);
+        tl.fromTo("#s3-bld", { filter: "blur(0px)" }, { filter: "blur(9px)", duration: 0.375, ease: "sine.in", immediateRender: false }, m[0]);
+        tl.to("#s3-bld", { filter: "blur(0px)", duration: 0.375, ease: "sine.out" }, m[0] + 0.375);
+      });
+      // gentle drift between the stops so the frame never freezes
+      tl.fromTo("#s3-cam", { x: 18 }, { x: -18, duration: D - 0.37, ease: "none" }, 0);
+      // construction of each landmark as the camera arrives
+      A.build(tl, "#s3-b0", 0.35, 2.6, "power2.out");
+      moves.forEach(function (m) { A.build(tl, "#s3-b" + m[1], m[0] + 0.3, 0.9, "power3.out"); });
+      // labels
+      const labs = [["#s3-l0", 0.5, tB - 0.35], ["#s3-l1", tB - 0.1, moves[0][0] + 0.1], ["#s3-l2", tA, moves[1][0] + 0.1], ["#s3-l3", tK - 0.2, moves[2][0] + 0.1], ["#s3-l4", tE + 0.2, moves[3][0] + 0.1], ["#s3-l5", tP + 0.45, moves[4][0] + 0.1], ["#s3-l6", tM + 0.45, D - 0.35]];
+      labs.forEach(function (l) {
+        tl.fromTo(l[0], { opacity: 0 }, { opacity: 1, duration: 0.05 }, l[1]);
+        tl.fromTo(l[0] + " .h1", { opacity: 0, filter: "blur(12px)", scale: 1.06 }, { opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.32, ease: "power3.out" }, l[1]);
+        if (document.querySelector(l[0] + " .kicker")) tl.fromTo(l[0] + " .kicker", { opacity: 0 }, { opacity: 1, duration: 0.3 }, l[1] + 0.12);
+        tl.to(l[0], { opacity: 0, duration: 0.2, ease: "power2.in" }, l[2]);
+      });
+      // seam out: whip to the right
+      tl.to("#s3-cam", { x: -1500, filter: "blur(24px)", duration: 0.36, ease: "power3.in" }, D - 0.37);
+      tl.set({}, {}, D);
+      window.__timelines["s3"] = tl;
+    })();
+  </script>
+</template>

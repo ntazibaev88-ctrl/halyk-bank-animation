@@ -1,0 +1,148 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #0E2F63; font-family: 'Astana Sans', sans-serif; }
+    #s5-sky { background: linear-gradient(180deg, #0E2F63 0%, #2F7FD1 28%, #8CCBF3 50%, #FBD9A0 68%, #F7C55A 78%); }
+    #s5-road { position: absolute; left: -100px; top: 1500px; width: 1280px; height: 150px; background: #12305C; }
+    #s5-lane { position: absolute; left: -100px; top: 1570px; width: 1280px; height: 8px; background: repeating-linear-gradient(90deg, #F7C55A 0 70px, transparent 70px 140px); }
+    #s5-yard { position: absolute; left: -100px; top: 1650px; width: 1280px; height: 300px; background: linear-gradient(180deg, #0B1D3A, #07142B); }
+    .s5-floor { position: absolute; left: 0; width: 170px; height: 56px; border: 6px solid #F2B84B; border-bottom-width: 8px; background: repeating-linear-gradient(90deg, rgba(242,184,75,0.0) 0 36px, #F2B84B 36px 42px); }
+    .s5-mast { position: absolute; width: 16px; background: repeating-linear-gradient(180deg, #F2B84B 0 6px, #D9952A 6px 22px); }
+    .s5-jib { position: absolute; height: 12px; background: repeating-linear-gradient(90deg, #F2B84B 0 6px, #D9952A 6px 26px); }
+    .s5-cable { position: absolute; width: 3px; background: #0B1D3A; }
+    .s5-load { position: absolute; width: 54px; height: 34px; background: #3CC6C0; border-radius: 4px; }
+    #s5-kicker { top: 200px; }
+    #s5-h1 { top: 250px; font-size: 118px; line-height: 1.04; white-space: normal; text-shadow: 0 8px 30px rgba(11,29,58,0.4); }
+    #s5-h1 span { display: inline-block; }
+    .s5-tile { width: 455px; height: 172px; }
+    .s5-tile i { position: absolute; left: 24px; top: 36px; width: 100px; height: 100px; border-radius: 50%; background: #F7C55A; }
+    .s5-tile span { position: absolute; left: 144px; top: 0; width: 300px; height: 172px; display: flex; align-items: center; font-weight: 800; font-size: 37px; line-height: 1.14; color: #fff; }
+    #s5-stat { left: 70px; top: 232px; width: 940px; height: 384px; background: rgba(7, 20, 43, 0.93); }
+    #s5-stat .lab { position: absolute; left: 0; top: 26px; width: 940px; text-align: center; font-weight: 700; font-size: 33px; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; white-space: nowrap; }
+    #s5-num { position: absolute; left: 0; top: 64px; width: 940px; text-align: center; font-weight: 900; font-size: 140px; line-height: 156px; color: #F7C55A; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    #s5-num small { font-size: 54px; font-weight: 800; color: #fff; margin-left: 14px; }
+    #s5-per { position: absolute; left: 0; top: 222px; width: 940px; text-align: center; font-weight: 700; font-size: 32px; color: #BFE3FA; }
+    #s5-idx { position: absolute; left: 0; top: 272px; width: 940px; text-align: center; font-weight: 800; font-size: 32px; color: #fff; white-space: nowrap; }
+    #s5-idx b { color: #6CE5DC; font-weight: 900; }
+    #s5-src { position: absolute; left: 0; top: 328px; width: 940px; text-align: center; }
+    #s5-in { background: #EAF6FE; }
+    .s5-bar { position: absolute; left: -2500px; top: -300px; width: 1900px; height: 2600px; z-index: 40; }
+  </style>
+  <div id="root" data-composition-id="s5" data-width="1080" data-height="1920">
+    <div id="s5-cam" class="layer" data-layout-allow-overflow>
+      <div id="s5-sky" class="fill"></div>
+      <div id="s5-clouds" class="layer"></div>
+      <div id="s5-plane" class="lm" style="left:0;top:700px;width:150px;height:50px"></div>
+      <div id="s5-far" class="layer"></div>
+      <div id="s5-mid" class="layer"></div>
+      <div id="s5-site" class="layer"></div>
+      <div id="s5-road"></div>
+      <div id="s5-lane"></div>
+      <div id="s5-trucks" class="layer"></div>
+      <div id="s5-yard"></div>
+      <div id="s5-cont" class="layer"></div>
+    </div>
+    <div id="s5-head" class="clip" data-start="0" data-duration="21.2" data-track-index="2">
+      <div id="s5-kicker" class="txt kicker">Экономика</div>
+      <div id="s5-h1" class="txt h1"><span>Іскерлік</span><br /><span>орталық</span></div>
+    </div>
+    <div id="s5-t0" class="card s5-tile clip" style="left:70px;top:250px" data-start="0" data-duration="21.2" data-track-index="3"><i><svg width="100" height="100"><path d="M22 44 L50 26 L78 44Z M26 48 h8 v22 h-8Z M46 48 h8 v22 h-8Z M66 48 h8 v22 h-8Z M20 72 h60 v7 h-60Z" fill="#0B1D3A"/></svg></i><span>Мемлекеттік мекемелер</span></div>
+    <div id="s5-t1" class="card s5-tile clip" style="left:555px;top:250px" data-start="0" data-duration="21.2" data-track-index="4"><i><svg width="100" height="100"><path d="M30 78 V30 h24 v48Z M58 78 V46 h16 v32Z" fill="#0B1D3A"/><path d="M36 38 h5 v6 h-5Z M44 38 h5 v6 h-5Z M36 50 h5 v6 h-5Z M44 50 h5 v6 h-5Z M36 62 h5 v6 h-5Z M44 62 h5 v6 h-5Z" fill="#F7C55A"/></svg></i><span>Ірі компаниялар</span></div>
+    <div id="s5-t2" class="card s5-tile clip" style="left:70px;top:446px" data-start="0" data-duration="21.2" data-track-index="5"><i><svg width="100" height="100"><path d="M16 44 L50 28 L84 44 L50 60Z M30 56 V68 Q50 82 70 68 V56 L50 66Z" fill="#0B1D3A"/></svg></i><span>Білім беру</span></div>
+    <div id="s5-t3" class="card s5-tile clip" style="left:555px;top:446px" data-start="0" data-duration="21.2" data-track-index="6"><i><svg width="100" height="100"><path d="M41 24 H59 V41 H76 V59 H59 V76 H41 V59 H24 V41 H41Z" fill="#0B1D3A"/></svg></i><span>Медицина орталықтары</span></div>
+    <div id="s5-stat" class="card clip" data-start="0" data-duration="21.2" data-track-index="7">
+      <div class="lab">Негізгі капиталға инвестиция</div>
+      <div id="s5-num"><span id="s5-n">0,0</span><small>млрд теңге</small></div>
+      <div id="s5-per">2026 жылғы қаңтар–тамыз</div>
+      <div id="s5-idx">2025 жылғы осы кезеңге қарағанда — <b>102,7 %</b></div>
+      <div id="s5-src" class="src">Дерек: Ұлттық статистика бюросы</div>
+    </div>
+    <div id="s5-c0" class="chip clip" style="left:96px;top:650px" data-start="0" data-duration="21.2" data-track-index="8"><i><svg width="56" height="56"><path d="M14 40 h28 v6 h-28Z M17 30 h10 v8 h-10Z M29 30 h10 v8 h-10Z M23 20 h10 v8 h-10Z" fill="#F7C55A"/></svg></i>Құрылыс</div>
+    <div id="s5-c1" class="chip clip" style="left:500px;top:650px" data-start="0" data-duration="21.2" data-track-index="9"><i><svg width="56" height="56"><circle cx="28" cy="21" r="8" fill="#F7C55A"/><path d="M13 44 Q28 26 43 44Z" fill="#F7C55A"/></svg></i>Қызмет көрсету</div>
+    <div id="s5-c2" class="chip clip" style="left:156px;top:764px" data-start="0" data-duration="21.2" data-track-index="10"><i><svg width="56" height="56"><path d="M16 22 h24 l-3 22 h-18Z" fill="#F7C55A"/><path d="M22 23 v-4 a6 6 0 0 1 12 0 v4" fill="none" stroke="#F7C55A" stroke-width="3"/></svg></i>Сауда</div>
+    <div id="s5-c3" class="chip clip" style="left:500px;top:764px" data-start="0" data-duration="21.2" data-track-index="11"><i><svg width="56" height="56"><path d="M13 40 L23 30 L30 36 L42 20" fill="none" stroke="#F7C55A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M34 18 h10 v10Z" fill="#F7C55A"/></svg></i>Инвестиция</div>
+    <div id="s5-in" class="seam" data-layout-ignore></div>
+    <div id="s5-b0" class="s5-bar" style="background:#F7C55A" data-layout-ignore></div>
+    <div id="s5-b1" class="s5-bar" style="background:#3CC6C0" data-layout-ignore></div>
+    <div id="s5-b2" class="s5-bar" style="background:#0B1D3A" data-layout-ignore></div>
+  </div>
+  <script>
+    (function () {
+      const A = window.Astana, D = 21.2, rnd = A.rng(555), c = A.theme.day, G = 1500;
+      const $ = function (id) { return document.getElementById(id); };
+      let h = "";
+      [[160, 620, 1.0], [820, 760, 0.8], [480, 880, 1.2], [1020, 980, 0.9]].forEach(function (k) { h += A.place(A.cloud("#fff", 0.75), { x: k[0], base: k[1], s: k[2] }); });
+      $("s5-clouds").innerHTML = h;
+      $("s5-plane").innerHTML = '<svg width="150" height="50" viewBox="0 0 150 50"><rect x="-420" y="24" width="440" height="5" rx="2" fill="#fff" opacity="0.6"/><path d="M20 22 H112 Q140 22 146 30 Q140 36 112 36 H20 Q8 34 6 26Z" fill="#fff"/><path d="M70 30 L44 50 H60 L96 32Z M24 24 L8 4 H22 L44 24Z" fill="#D3E1F0"/></svg>';
+      $("s5-far").innerHTML = A.place(A.skyline(1500, A.sil("#8FC3EE"), A.rng(77), { minH: 160, maxH: 560, minW: 60, maxW: 120, gap: 8 }), { x: 540, base: G });
+      h = "";
+      [[90, 560, 0], [250, 700, 1], [410, 520, 2], [560, 780, 4], [700, 600, 5], [1010, 660, 3]].forEach(function (t, i) {
+        h += A.place(A.tower(t[2], 130, t[1], c, rnd, { windows: true }), { x: t[0], base: G, cls: "s5-tw" });
+      });
+      $("s5-mid").innerHTML = h;
+      // construction site: floors stack up under a working crane
+      h = '<div class="lm" style="left:770px;top:' + (G - 600) + 'px;width:170px;height:600px">';
+      for (let i = 0; i < 10; i++) h += '<div class="s5-floor" style="top:' + (600 - 56 * (i + 1)) + 'px"></div>';
+      h += "</div>";
+      h += '<div class="s5-mast" style="left:960px;top:' + (G - 860) + 'px;height:860px"></div><div id="s5-jib" class="s5-jib" style="left:668px;top:' + (G - 860) + 'px;width:420px"></div>' +
+        '<div id="s5-hook" class="lm" style="left:760px;top:' + (G - 850) + 'px;width:54px;height:300px"><div class="s5-cable" style="left:26px;top:0;height:230px"></div><div class="s5-load" style="left:0;top:230px"></div></div>';
+      h += '<div class="s5-mast" style="left:330px;top:' + (G - 640) + 'px;height:640px;opacity:0.9"></div><div id="s5-jib2" class="s5-jib" style="left:210px;top:' + (G - 640) + 'px;width:330px;opacity:0.9"></div>';
+      $("s5-site").innerHTML = h;
+      const truck = function (col, flip) {
+        return '<svg width="250" height="90" viewBox="0 0 250 90"' + (flip ? ' style="transform:scaleX(-1)"' : "") + '><rect x="0" y="6" width="170" height="60" rx="6" fill="' + col + '"/><path d="M176 26 H222 L246 48 V66 H176Z" fill="#fff"/><path d="M196 32 H220 L234 46 H196Z" fill="#3E8FD6"/><circle cx="40" cy="72" r="15" fill="#07142B"/><circle cx="130" cy="72" r="15" fill="#07142B"/><circle cx="210" cy="72" r="15" fill="#07142B"/><rect x="14" y="20" width="142" height="6" fill="#fff" opacity="0.35"/></svg>';
+      };
+      $("s5-trucks").innerHTML = '<div id="s5-tr0" class="lm" style="left:0;top:1465px">' + truck("#F2B84B") + '</div><div id="s5-tr1" class="lm" style="left:0;top:1545px">' + truck("#3CC6C0", true) + '</div><div id="s5-tr2" class="lm" style="left:0;top:1465px">' + truck("#EAF6FE") + "</div>";
+      h = "";
+      const cols = ["#F2B84B", "#3CC6C0", "#2F7FD1", "#EAF6FE", "#F28C38"];
+      for (let i = 0; i < 9; i++) for (let j = 0; j < 1 + Math.floor(rnd() * 3); j++)
+        h += '<div class="lm" style="left:' + (-20 + i * 128) + "px;top:" + (1850 - j * 66) + 'px;width:120px;height:62px;border-radius:5px;background:repeating-linear-gradient(90deg,' + cols[Math.floor(rnd() * 5)] + ' 0 10px, rgba(7,20,43,0.25) 10px 13px);opacity:0.92"></div>';
+      $("s5-cont").innerHTML = h;
+
+      const tl = gsap.timeline({ paused: true });
+      const w = function (p, n, f) { return A.word("s5", p, n, f); };
+      const tMun = w("Мұнда", 0, 6.6), tMek = w("мемлекеттік", 0, 6.8), tIri = w("ірі", 0, 8.2), tBil = w("білім", 0, 9.4), tMed = w("медицина", 0, 10.5),
+        tQala = w("Қала", 0, 13.8), tQur = w("құрылыс", 0, 14.9), tQyz = w("қызмет", 0, 15.6), tSau = w("сауда", 0, 16.8), tInv = w("инвестиция", 0, 17.6);
+      tl.fromTo("#s5-in", { opacity: 1 }, { opacity: 0, duration: 0.45, ease: "power2.out" }, 0);
+      tl.fromTo("#s5-cam", { scale: 1.22, transformOrigin: "540px 1300px" }, { scale: 1, duration: 1.6, ease: "expo.out" }, 0);
+      tl.fromTo("#s5-far", { x: 40 }, { x: -40, duration: D, ease: "none" }, 0);
+      tl.fromTo("#s5-clouds", { x: -60 }, { x: 90, duration: D, ease: "none" }, 0);
+      gsap.utils.toArray(".s5-tw").forEach(function (el, i) { A.build(tl, el, 0.25 + i * 0.22, 1.5); });
+      gsap.utils.toArray(".s5-floor").forEach(function (el, i) { tl.fromTo(el, { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.2 + i * 1.75); });
+      // cranes: the jib swings (seen side-on) while the hook lowers each floor
+      tl.fromTo("#s5-jib", { scaleX: 1, transformOrigin: "300px 6px" }, { scaleX: 0.55, duration: 3.5, ease: "sine.inOut", repeat: 5, yoyo: true }, 0);
+      tl.fromTo("#s5-jib2", { scaleX: 0.6, transformOrigin: "128px 6px" }, { scaleX: 1, duration: 4.4, ease: "sine.inOut", repeat: 4, yoyo: true }, 0);
+      tl.fromTo("#s5-hook", { y: -150 }, { y: 120, duration: 1.75, ease: "sine.inOut", repeat: 11, yoyo: true }, 0.3);
+      tl.fromTo("#s5-hook", { x: -40 }, { x: 60, duration: 3.5, ease: "sine.inOut", repeat: 5, yoyo: true }, 0);
+      tl.fromTo("#s5-plane", { x: -260, y: 60 }, { x: 1300, y: -120, duration: 9, ease: "none" }, 1.5);
+      tl.fromTo("#s5-tr0", { x: -300 }, { x: 1200, duration: 7.5, ease: "none" }, 0.6);
+      tl.fromTo("#s5-tr1", { x: 1200 }, { x: -320, duration: 9, ease: "none" }, 4.5);
+      tl.fromTo("#s5-tr2", { x: -300 }, { x: 1200, duration: 8, ease: "none" }, 11.5);
+      tl.fromTo("#s5-cont", { x: 50 }, { x: -50, duration: D, ease: "none" }, 0);
+      // beat 1: headline
+      tl.fromTo("#s5-kicker", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.5);
+      tl.fromTo("#s5-h1 span", { opacity: 0, filter: "blur(14px)", scale: 1.08 }, { opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.45, ease: "power3.out", stagger: 0.16 }, 0.6);
+      tl.to("#s5-head", { opacity: 0, duration: 0.25, ease: "power2.in" }, tMun - 0.35);
+      // beat 2: who is concentrated here
+      [["#s5-t0", tMek], ["#s5-t1", tIri], ["#s5-t2", tBil], ["#s5-t3", tMed]].forEach(function (t, i) {
+        tl.fromTo(t[0], { opacity: 0, scale: 0.8, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(1.5)" }, t[1] - 0.1);
+        tl.fromTo(t[0] + " i", { scale: 0 }, { scale: 1, duration: 0.45, ease: "back.out(2.2)" }, t[1]);
+        tl.to(t[0], { opacity: 0, scale: 0.92, duration: 0.22, ease: "power2.in" }, tQala - 0.55 + i * 0.05);
+      });
+      // beat 3: the verified figure and the four directions
+      const tc = tQala - 0.2;
+      tl.fromTo("#s5-stat", { opacity: 0, y: -40, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "expo.out" }, tc);
+      A.count(tl, "#s5-n", 0, 1515.2, tc + 0.25, 2.6, function (v) { return A.fmt(Math.floor(v)) + "," + Math.round((v - Math.floor(v)) * 10) % 10; });
+      tl.fromTo("#s5-per", { opacity: 0 }, { opacity: 1, duration: 0.4 }, tc + 0.5);
+      tl.fromTo("#s5-idx", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.35 }, tc + 2.6);
+      tl.fromTo("#s5-src", { opacity: 0 }, { opacity: 1, duration: 0.4 }, tc + 3.0);
+      [["#s5-c0", tQur], ["#s5-c1", tQyz], ["#s5-c2", tSau], ["#s5-c3", tInv]].forEach(function (p) {
+        tl.fromTo(p[0], { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.8)" }, p[1] - 0.05);
+      });
+      // seam out: three colour bands sweep across
+      ["#s5-b0", "#s5-b1", "#s5-b2"].forEach(function (b, i) {
+        tl.fromTo(b, { x: 0, rotation: 12 }, { x: i === 2 ? 2090 : 3900, duration: i === 2 ? 0.4 : 0.55, ease: "power2.in" }, D - 0.66 + i * 0.13);
+      });
+      tl.set({}, {}, D);
+      window.__timelines["s5"] = tl;
+    })();
+  </script>
+</template>

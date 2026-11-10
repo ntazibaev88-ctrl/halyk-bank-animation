@@ -1,0 +1,17 @@
+/* Shared film styles (scene roots are styled inside each scene file). */
+.lm { position: absolute; overflow: visible; }
+.lm svg, .layer svg { display: block; overflow: visible; }
+.layer { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+.fill { position: absolute; inset: 0; }
+.seam { position: absolute; inset: 0; z-index: 40; pointer-events: none; }
+
+.kicker { font-weight: 700; font-size: 30px; letter-spacing: 0.34em; text-transform: uppercase; color: #F7C55A; white-space: nowrap; }
+.h1 { font-weight: 900; color: #fff; line-height: 1; letter-spacing: -0.01em; white-space: nowrap; }
+.rule { height: 4px; border-radius: 2px; background: linear-gradient(90deg, rgba(242,184,75,0), #F2B84B 20%, #F7C55A 80%, rgba(242,184,75,0)); }
+.txt { position: absolute; left: 0; width: 1080px; text-align: center; }
+.src { font-weight: 500; font-size: 28px; color: rgba(255,255,255,0.72); letter-spacing: 0.01em; white-space: nowrap; }
+.card { position: absolute; border-radius: 34px; background: rgba(9, 26, 56, 0.78); border: 2px solid rgba(247,197,90,0.38); box-shadow: 0 24px 60px rgba(2, 8, 22, 0.4); }
+.chip { position: absolute; display: flex; align-items: center; gap: 18px; padding: 16px 30px 16px 18px; border-radius: 999px; background: rgba(255,255,255,0.96);
+  color: #0B1D3A; font-weight: 800; font-size: 34px; box-shadow: 0 14px 34px rgba(2, 8, 22, 0.28); white-space: nowrap; }
+.chip i { display: block; width: 56px; height: 56px; border-radius: 50%; background: #0B1D3A; flex: none; }
+.chip i svg { display: block; }

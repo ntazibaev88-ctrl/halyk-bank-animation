@@ -1,0 +1,157 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #1E7F9A; font-family: 'Astana Sans', sans-serif; }
+    #s6-sky { background: linear-gradient(180deg, #17708F 0%, #3CC6C0 26%, #A8E6DC 46%, #FBE3C0 60%, #F6B578 69%); }
+    .s6-tint { position: absolute; inset: 0; opacity: 0; }
+    #s6-prom { position: absolute; left: -100px; top: 1300px; width: 1280px; height: 130px; background: linear-gradient(180deg, #FBEBDA, #E7C7A6); }
+    #s6-rail { position: absolute; left: -100px; top: 1268px; width: 1280px; height: 40px; background: repeating-linear-gradient(90deg, #0B1D3A 0 8px, transparent 8px 64px); border-top: 8px solid #0B1D3A; }
+    #s6-river { position: absolute; left: -100px; top: 1430px; width: 1280px; height: 520px; background: linear-gradient(180deg, #2FA9B8 0%, #1E7F9A 30%, #12456E 70%, #0B1D3A 100%); }
+    .s6-wave { position: absolute; height: 6px; border-radius: 3px; background: #BFF3EC; opacity: 0.5; }
+    #s6-kicker { top: 200px; color: #0B1D3A; }
+    #s6-h1 { top: 250px; font-size: 112px; line-height: 1.04; white-space: normal; text-shadow: 0 8px 30px rgba(11,29,58,0.35); }
+    #s6-h1 span { display: inline-block; }
+    .s6-card { position: absolute; left: 190px; top: 300px; width: 700px; height: 640px; border-radius: 30px; background: #fff; box-shadow: 0 30px 70px rgba(7,20,43,0.4); }
+    .s6-pic { position: absolute; left: 20px; top: 20px; width: 660px; height: 490px; border-radius: 16px; overflow: hidden; }
+    .s6-cap { position: absolute; left: 0; top: 526px; width: 700px; text-align: center; font-weight: 900; font-size: 50px; line-height: 60px; color: #0B1D3A; white-space: nowrap; }
+    .s6-sub { position: absolute; left: 0; top: 584px; width: 700px; text-align: center; font-weight: 700; font-size: 32px; letter-spacing: 0.16em; text-transform: uppercase; color: #A86A12; white-space: nowrap; }
+    #s6-skick { top: 214px; color: #0B1D3A; }
+    .s6-season { position: absolute; top: 300px; width: 220px; height: 300px; }
+    .s6-season i { position: absolute; left: 15px; top: 0; width: 190px; height: 190px; border-radius: 50%; box-shadow: 0 18px 40px rgba(7,20,43,0.3); }
+    .s6-season b { position: absolute; left: 0; top: 208px; width: 220px; text-align: center; font-weight: 900; font-size: 44px; color: #fff; text-shadow: 0 4px 18px rgba(7,20,43,0.5); }
+    .s6-fl { position: absolute; top: -40px; width: 18px; height: 18px; border-radius: 50% 0 50% 50%; background: #fff; }
+    #s6-in { position: absolute; left: -410px; top: -300px; width: 1900px; height: 2600px; background: #0B1D3A; z-index: 40; }
+    #s6-out { background: #061229; }
+  </style>
+  <div id="root" data-composition-id="s6" data-width="1080" data-height="1920">
+    <div id="s6-cam" class="layer" data-layout-allow-overflow>
+      <div id="s6-sky" class="fill"></div>
+      <div id="s6-ti0" class="s6-tint" style="background:linear-gradient(180deg,#DCEFFB,#BFE3FA 60%,#fff)"></div>
+      <div id="s6-ti1" class="s6-tint" style="background:linear-gradient(180deg,#8FD3F0,#F9C9D8 60%,#FBE3EA)"></div>
+      <div id="s6-ti2" class="s6-tint" style="background:linear-gradient(180deg,#2F9FE0,#8FE0C8 60%,#FFF1B8)"></div>
+      <div id="s6-ti3" class="s6-tint" style="background:linear-gradient(180deg,#C8643A,#F2A65C 55%,#F7C55A)"></div>
+      <div id="s6-clouds" class="layer"></div>
+      <div id="s6-far" class="layer"></div>
+      <div id="s6-wheel" class="lm" style="left:690px;top:870px;width:360px;height:440px"></div>
+      <div id="s6-trees" class="layer"></div>
+      <div id="s6-prom"></div>
+      <div id="s6-rail"></div>
+      <div id="s6-people" class="layer"></div>
+      <div id="s6-river"></div>
+      <div id="s6-waves" class="layer"></div>
+      <div id="s6-boat" class="lm" style="left:0;top:1500px;width:300px;height:110px"></div>
+    </div>
+    <div id="s6-fall" class="layer" data-layout-ignore></div>
+    <div id="s6-head" class="clip" data-start="0" data-duration="17.6" data-track-index="2">
+      <div id="s6-kicker" class="txt kicker" data-layout-allow-overlap>Туризм және мәдениет</div>
+      <div id="s6-h1" class="txt h1"><span>Қонақжай</span><br /><span>қала</span></div>
+    </div>
+    <div id="s6-k0" class="s6-card clip" data-layout-allow-overlap data-layout-allow-occlusion data-start="0" data-duration="17.6" data-track-index="3"><div id="s6-pic0" class="s6-pic"></div><div class="s6-cap" data-layout-allow-overlap data-layout-allow-occlusion>Ұлттық музей</div><div class="s6-sub" data-layout-allow-overlap data-layout-allow-occlusion>Тарих</div></div>
+    <div id="s6-k1" class="s6-card clip" data-layout-allow-overlap data-layout-allow-occlusion data-start="0" data-duration="17.6" data-track-index="4"><div id="s6-pic1" class="s6-pic"></div><div class="s6-cap" data-layout-allow-overlap data-layout-allow-occlusion>Хан Шатыр · Бәйтерек</div><div class="s6-sub" data-layout-allow-overlap data-layout-allow-occlusion>Сәулет өнері</div></div>
+    <div id="s6-k2" class="s6-card clip" data-layout-allow-overlap data-layout-allow-occlusion data-start="0" data-duration="17.6" data-track-index="5"><div id="s6-pic2" class="s6-pic"></div><div class="s6-cap" data-layout-allow-overlap data-layout-allow-occlusion>«Астана Опера»</div><div class="s6-sub" data-layout-allow-overlap data-layout-allow-occlusion>Мәдениет</div></div>
+    <div id="s6-seasons" class="clip" data-start="0" data-duration="17.6" data-track-index="6">
+      <div id="s6-skick" class="txt kicker" data-layout-allow-overlap>Жылдың әр мезгілінде</div>
+      <div id="s6-se0" class="s6-season" style="left:40px"><i style="background:#EAF6FE"><svg width="190" height="190"><g stroke="#2F7FD1" stroke-width="9" stroke-linecap="round"><path d="M95 40 V150 M47 67 L143 123 M47 123 L143 67"/><path d="M80 50 L95 64 L110 50 M80 140 L95 126 L110 140"/></g></svg></i><b>Қыс</b></div>
+      <div id="s6-se1" class="s6-season" style="left:300px"><i style="background:#FBE3EA"><svg width="190" height="190"><g fill="#F28CA8"><circle cx="95" cy="62" r="24"/><circle cx="126" cy="86" r="24"/><circle cx="114" cy="122" r="24"/><circle cx="76" cy="122" r="24"/><circle cx="64" cy="86" r="24"/></g><circle cx="95" cy="96" r="17" fill="#F7C55A"/></svg></i><b>Көктем</b></div>
+      <div id="s6-se2" class="s6-season" style="left:560px"><i style="background:#FFF1B8"><svg width="190" height="190"><circle cx="95" cy="95" r="34" fill="#F28C38"/><g stroke="#F28C38" stroke-width="9" stroke-linecap="round"><path d="M95 30 V46 M95 144 V160 M30 95 H46 M144 95 H160 M49 49 L60 60 M130 130 L141 141 M141 49 L130 60 M60 130 L49 141"/></g></svg></i><b>Жаз</b></div>
+      <div id="s6-se3" class="s6-season" style="left:820px"><i style="background:#FBD9A0"><svg width="190" height="190"><path d="M95 36 C140 50 150 110 95 150 C40 110 50 50 95 36Z" fill="#D9783E"/><path d="M95 54 V166 M95 90 L118 74 M95 112 L72 96" stroke="#7A3A1E" stroke-width="6" stroke-linecap="round" fill="none"/></svg></i><b>Күз</b></div>
+    </div>
+    <div id="s6-in" data-layout-ignore></div>
+    <div id="s6-out" class="seam" data-layout-ignore></div>
+  </div>
+  <script>
+    (function () {
+      const A = window.Astana, D = 17.6, rnd = A.rng(606), G = 1300;
+      const $ = function (id) { return document.getElementById(id); };
+      let h = "";
+      [[200, 520, 1.1], [760, 640, 0.9], [460, 800, 1.3]].forEach(function (k) { h += A.place(A.cloud("#fff", 0.8), { x: k[0], base: k[1], s: k[2] }); });
+      $("s6-clouds").innerHTML = h;
+      const sc = A.sil("#4FB3BC");
+      $("s6-far").innerHTML = A.place(A.skyline(1500, A.sil("#7FD0CF"), A.rng(61), { minH: 80, maxH: 330, minW: 50, maxW: 100, gap: 10 }), { x: 540, base: G }) +
+        A.place(A.opera(sc), { x: 250, base: G, s: 0.72 }) + A.place(A.baiterek(sc), { x: 560, base: G, s: 0.52 }) + A.place(A.museum(A.sil("#3FA3AE")), { x: 80, base: G, s: 0.5 });
+      // ferris wheel
+      let s = '<svg width="360" height="440" viewBox="0 0 360 440"><path d="M180 180 L110 440 H130 L180 200 L230 440 H250Z" fill="#0B1D3A"/><g id="s6-spin"><circle cx="180" cy="180" r="166" fill="none" stroke="#0B1D3A" stroke-width="9"/><circle cx="180" cy="180" r="130" fill="none" stroke="#0B1D3A" stroke-width="4"/>';
+      for (let i = 0; i < 12; i++) {
+        const a = (i * Math.PI) / 6, x = 180 + Math.cos(a) * 166, y = 180 + Math.sin(a) * 166;
+        s += '<path d="M180 180 L' + x.toFixed(1) + " " + y.toFixed(1) + '" stroke="#0B1D3A" stroke-width="4"/><circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="17" fill="' + ["#F7C55A", "#F28C38", "#fff"][i % 3] + '"/>';
+      }
+      s += '</g><circle cx="180" cy="180" r="18" fill="#F7C55A"/></svg>';
+      $("s6-wheel").innerHTML = s;
+      h = "";
+      for (let i = 0; i < 9; i++) h += A.place(A.tree("#1E9C86", "#27B594", "#0F4E55"), { x: 40 + i * 140 + rnd() * 30, base: G + 4, s: 1.3 + rnd() * 0.5 });
+      $("s6-trees").innerHTML = h;
+      // people on the embankment
+      const pal = [["#F28C38", "#0B1D3A"], ["#2F7FD1", "#12305C"], ["#fff", "#0B1D3A"], ["#F7C55A", "#12305C"], ["#D9783E", "#07142B"], ["#3CC6C0", "#0B1D3A"]];
+      const skins = ["#F4C9A4", "#E2A77C", "#C98A62"];
+      h = "";
+      for (let i = 0; i < 12; i++) {
+        const v = i % 4 === 2 ? 2 : i % 4 === 3 ? 3 : i % 2, p = pal[i % 6], child = v === 2;
+        h += A.place(A.person(p[0], p[1], skins[i % 3], v), { x: 0, base: 1408 + (i % 3) * 8, s: child ? 0.95 : 1.45, cls: "s6-p" });
+      }
+      $("s6-people").innerHTML = h;
+      h = "";
+      for (let i = 0; i < 22; i++) h += '<div class="s6-wave" style="left:' + (rnd() * 1000).toFixed(0) + "px;top:" + (1460 + i * 20 + rnd() * 8).toFixed(0) + "px;width:" + (50 + rnd() * 130).toFixed(0) + 'px"></div>';
+      $("s6-waves").innerHTML = h;
+      $("s6-boat").innerHTML = '<svg width="300" height="110" viewBox="0 0 300 110"><path d="M10 70 H290 L262 104 H40Z" fill="#fff"/><rect x="60" y="38" width="170" height="34" rx="6" fill="#EAF6FE"/><rect x="60" y="30" width="170" height="10" rx="4" fill="#F7C55A"/><g fill="#2F7FD1"><rect x="74" y="46" width="22" height="16" rx="3"/><rect x="106" y="46" width="22" height="16" rx="3"/><rect x="138" y="46" width="22" height="16" rx="3"/><rect x="170" y="46" width="22" height="16" rx="3"/><rect x="202" y="46" width="22" height="16" rx="3"/></g><rect x="10" y="78" width="270" height="6" fill="#F28C38"/></svg>';
+      // postcards
+      const d = A.theme.day;
+      const pic = function (bg, inner) { return '<div class="fill" style="background:' + bg + '"></div>' + inner + '<div style="position:absolute;left:0;top:440px;width:660px;height:50px;background:#27B594"></div>'; };
+      $("s6-pic0").innerHTML = pic("linear-gradient(180deg,#2F7FD1,#BFE3FA)", A.place(A.cloud("#fff", 0.9), { x: 520, base: 130, s: 0.6 }) + A.place(A.museum(d), { x: 330, base: 446, s: 1.0, cls: "s6-art" }));
+      $("s6-pic1").innerHTML = pic("linear-gradient(180deg,#F28C38,#FBD9A0)", A.place(A.khanShatyr(A.theme.dusk), { x: 210, base: 446, s: 0.86, cls: "s6-art" }) + A.place(A.baiterek(A.theme.dusk), { x: 520, base: 446, s: 0.66, cls: "s6-art" }));
+      $("s6-pic2").innerHTML = pic("linear-gradient(180deg,#12305C,#3E7CC0 70%,#F2B84B)", A.stars(26, 660, 240, rnd) + A.place(A.opera(A.theme.dusk), { x: 330, base: 446, s: 1.08, cls: "s6-art" }));
+      h = "";
+      for (let i = 0; i < 30; i++) h += '<div class="s6-fl" style="left:' + (rnd() * 1060).toFixed(0) + 'px"></div>';
+      $("s6-fall").innerHTML = h;
+
+      const tl = gsap.timeline({ paused: true });
+      const w = function (p, n, f) { return A.word("s6", p, n, f); };
+      const tMun = w("Мұнда", 0, 4.6), tMuz = w("мұражай", 0, 5.3), tSau = w("сәулет", 0, 7.3), tMad = w("мәдени", 0, 8.9), tQala = w("Қала", 1, 12.2), tJyl = w("жылдың", 0, 13.1);
+      tl.fromTo("#s6-in", { x: 0, rotation: 12 }, { x: 2100, duration: 0.55, ease: "power2.out" }, 0);
+      tl.fromTo("#s6-cam", { scale: 1.1, transformOrigin: "540px 1300px" }, { scale: 1, duration: 4, ease: "power2.out" }, 0);
+      tl.fromTo("#s6-far", { x: 40 }, { x: -40, duration: D, ease: "none" }, 0);
+      tl.fromTo("#s6-clouds", { x: -50 }, { x: 110, duration: D, ease: "none" }, 0);
+      tl.fromTo("#s6-spin", { rotation: 0, svgOrigin: "180 180" }, { rotation: 150, duration: D, ease: "none" }, 0);
+      tl.fromTo("#s6-boat", { x: -340 }, { x: 1120, duration: D, ease: "none" }, 0);
+      tl.fromTo("#s6-boat", { y: 0 }, { y: 7, duration: 1.1, ease: "sine.inOut", repeat: 15, yoyo: true }, 0);
+      gsap.utils.toArray(".s6-wave").forEach(function (el, i) { tl.fromTo(el, { x: -30, scaleX: 0.6 }, { x: 30, scaleX: 1.2, duration: 1.4 + (i % 5) * 0.2, ease: "sine.inOut", repeat: 12, yoyo: true }, (i % 4) * 0.35); });
+      gsap.utils.toArray(".s6-p").forEach(function (el, i) {
+        const dir = i % 3 === 0 ? -1 : 1, sp = 16 + (i % 5) * 7, x0 = dir > 0 ? ((i * 97) % 900) - 160 : 300 + ((i * 131) % 800);
+        tl.fromTo(el, { x: x0 - dir * sp * 2 }, { x: x0 + dir * sp * D, duration: D, ease: "none" }, 0);
+        tl.fromTo(el, { y: 0 }, { y: -5, duration: 0.26 + (i % 3) * 0.03, ease: "sine.inOut", repeat: Math.ceil(D / 0.26), yoyo: true }, 0);
+      });
+      // beat 1
+      tl.fromTo("#s6-kicker", { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0.5);
+      tl.fromTo("#s6-h1 span", { opacity: 0, filter: "blur(14px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.4, ease: "power2.out", stagger: 0.14 }, 0.6);
+      tl.to("#s6-head", { opacity: 0, duration: 0.25, ease: "power2.in" }, tMun - 0.2);
+      // beat 2: three postcards thrown onto the table
+      const cards = [["#s6-k0", tMuz - 0.45, -4], ["#s6-k1", tSau - 0.5, 3], ["#s6-k2", tMad - 0.35, -2]];
+      cards.forEach(function (k, i) {
+        tl.fromTo(k[0], { x: 1000, y: 120, rotation: 22, opacity: 1 }, { x: 0, y: 0, rotation: k[2], duration: 0.6, ease: "expo.out" }, k[1]);
+        tl.fromTo(k[0] + " .s6-art", { y: 60, clipPath: "inset(100% 0% 0% 0%)" }, { y: 0, clipPath: "inset(-20% 0% 0% 0%)", duration: 0.8, ease: "power3.out", stagger: 0.15 }, k[1] + 0.25);
+        if (i < 2) tl.to(k[0], { x: -34 * (2 - i) + 10, y: -26 * (2 - i) + 10, scale: 0.93, rotation: k[2] * 2.2, duration: 0.5, ease: "power2.inOut" }, cards[i + 1][1]);
+        tl.to(k[0], { y: -1100, rotation: k[2] - 14, duration: 0.45, ease: "power3.in" }, tQala - 0.5 + i * 0.07);
+      });
+      // beat 3: four seasons flood the sky
+      tl.fromTo("#s6-skick", { opacity: 0 }, { opacity: 1, duration: 0.3 }, tQala + 0.1);
+      const st = [tQala + 0.25, tQala + 1.35, tQala + 2.45, tQala + 3.55];
+      const flc = ["#FFFFFF", "#F28CA8", "#FFE08A", "#E2742E"];
+      st.forEach(function (t, i) {
+        tl.fromTo("#s6-se" + i + " i", { scale: 0 }, { scale: 1, duration: 0.5, ease: "back.out(1.8)" }, t);
+        tl.fromTo("#s6-se" + i + " b", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3 }, t + 0.15);
+        tl.fromTo("#s6-ti" + i, { opacity: 0 }, { opacity: 0.92, duration: 0.5, ease: "power2.inOut" }, t);
+        if (i < 3) tl.to("#s6-ti" + i, { opacity: 0, duration: 0.5, ease: "power2.inOut" }, st[i + 1]);
+        if (i) tl.to(".s6-fl", { backgroundColor: flc[i], duration: 0.4 }, t);
+        if (i < 3) tl.to("#s6-se" + i + " i", { opacity: 0.6, scale: 0.86, duration: 0.4 }, st[i + 1]);
+      });
+      tl.set(".s6-fl", { backgroundColor: flc[0] }, 0);
+      gsap.utils.toArray(".s6-fl").forEach(function (el, i) {
+        const dur = 3.2 + (i % 6) * 0.5;
+        tl.fromTo(el, { y: -60, x: 0, rotation: 0, opacity: 0.95 }, { y: 2050, x: 90 * ((i % 3) - 1), rotation: 300, duration: dur, ease: "none", repeat: 1 }, tQala + (i % 10) * 0.28);
+      });
+      tl.fromTo("#s6-fall", { opacity: 0 }, { opacity: 1, duration: 0.3 }, tQala);
+      // seam out: night falls
+      tl.fromTo("#s6-out", { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power2.in" }, D - 0.52);
+      tl.set({}, {}, D);
+      window.__timelines["s6"] = tl;
+    })();
+  </script>
+</template>
