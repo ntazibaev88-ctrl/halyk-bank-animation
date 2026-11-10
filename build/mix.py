@@ -42,8 +42,9 @@ act = (np.abs(voice) > 0.02).astype(float)
 k = int(0.35 * SR)
 act = np.convolve(act, np.ones(k) / k, mode="same")
 act = np.clip(act * 3, 0, 1)
-duck_db = np.where(np.arange(N) / SR < 113.0, -7.5, -4.0)        # finale stays big
-music_gain = 10 ** (duck_db * act / 20)
+MUSIC_DB = -4.0                                                  # overall score level vs. narration
+duck_db = np.where(np.arange(N) / SR < 113.0, -8.0, -6.5)        # finale ducks less so it stays big
+music_gain = 10 ** ((MUSIC_DB + duck_db * act) / 20)
 mix = music * music_gain + voice[None, :] * 0.95
 # fade in / out
 fade = np.ones(N)
