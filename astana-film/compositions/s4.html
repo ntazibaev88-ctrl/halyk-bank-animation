@@ -45,7 +45,7 @@
   </div>
   <script>
     (function () {
-      const A = window.Astana, D = 17.6, rnd = A.rng(4242), CX = 540, CY = 1010;
+      const A = window.Astana, D = A.T.s4.dur, rnd = A.rng(4242), CX = 540, CY = 1010;
       const $ = function (id) { return document.getElementById(id); };
       const river = function (x) { return 1290 + 105 * Math.sin((x - 80) / 200) - 70 * Math.cos(x / 420); };
       // ---- the map ----

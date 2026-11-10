@@ -4,12 +4,21 @@ import json, os, re
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 W, H, FPS = 1080, 1920, 30
 # scene id -> (duration, voiceover offset inside the scene)
-SCENES = [("s1", 14.0, 1.2), ("s2", 16.8, 1.0), ("s3", 18.0, 1.0), ("s4", 17.6, 1.0),
-          ("s5", 21.2, 1.0), ("s6", 17.6, 1.0), ("s7", 16.8, 1.0), ("s8", 14.0, 1.0)]
+# scene id -> (voiceover offset inside the scene, tail after the last word); the voice is the clock,
+# so each scene lasts exactly as long as its narration needs
+PLAN = [("s1", 1.2, 1.3), ("s2", 1.0, 1.4), ("s3", 1.0, 2.7), ("s4", 1.0, 1.4),
+        ("s5", 1.0, 1.4), ("s6", 1.0, 1.5), ("s7", 1.0, 1.5), ("s8", 1.0, 4.6)]
 GOLD = ["астана", "қазақстан", "тәуелсіздік", "болашақ", "болашағы", "1997", "ақмола", "бәйтерек", "ақорда",
         "хан", "шатыр", "expo", "мегаполис", "жүрегі", "өсіп", "халық", "экономикалық", "инвестиция",
         "туристер", "мәдени", "технологиялар", "жасыл", "арманы", "үміті", "қолымызда", "сәулеті", "ертеңгі"]
 vo = {s["id"]: s for s in json.load(open(f"{ROOT}/tools/vo-words.json", encoding="utf-8"))}
+SCENES = [(sid, round((off + vo[sid]["words"][-1]["end"] + tail) * 5 + 0.499) / 5, off) for sid, off, tail in PLAN]
+# keep every scene file's clip slots equal to its scene length
+for sid, dur, _ in SCENES:
+    fp = f"{ROOT}/compositions/{sid}.html"
+    if os.path.exists(fp):
+        src = open(fp, encoding="utf-8").read()
+        open(fp, "w", encoding="utf-8").write(re.sub(r'data-start="0" data-duration="[0-9.]+"', f'data-start="0" data-duration="{dur}"', src))
 def r(x): return round(x + 1e-9, 3)
 
 timing, t0, caps = {}, 0.0, []
@@ -111,7 +120,7 @@ for i, (sid, dur, off) in enumerate(SCENES):
                  f'data-start="{r(t0)}" data-duration="{dur}" data-track-index="1" data-track-kind="graphics" '
                  f'data-width="{W}" data-height="{H}" style="z-index:{i + 1}"></div>')
     audio.append(f'      <audio id="vo-{sid}" class="clip" src="assets/audio/vo-{sid}.mp3" data-start="{r(t0 + off)}" data-duration="{adur(f'assets/audio/vo-{sid}.mp3')}" '
-                 f'data-track-index="3" data-volume="1.6"></audio>')
+                 f'data-track-index="3" data-volume="1"></audio>')
     if sid in SFX:
         audio.append(f'      <audio id="sfx-{sid}" class="clip" src="assets/audio/sfx/{SFX[sid]}" data-start="{r(t0 - 0.35)}" data-duration="{min(adur('assets/audio/sfx/' + SFX[sid]), 3.0)}" data-fade-out="0.4" '
                      f'data-track-index="{5 + i % 2}" data-volume="0.32"></audio>')

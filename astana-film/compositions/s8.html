@@ -33,7 +33,7 @@
       <div id="s8-glints" class="layer"></div>
     </div>
     <div id="s8-fw" class="layer" data-layout-ignore></div>
-    <div id="s8-text" class="clip" data-start="0" data-duration="14" data-track-index="2">
+    <div id="s8-text" class="clip" data-start="0" data-duration="14.8" data-track-index="2">
       <div id="s8-l1" class="txt h1"><span>А</span><span>С</span><span>Т</span><span>А</span><span>Н</span><span>А</span><span>&nbsp;—</span></div>
       <div id="s8-l2" class="txt h1"><span>ТӘУЕЛСІЗДІКТІҢ</span> <span>БЕЛГІСІ</span></div>
       <div id="s8-rule" class="rule"></div>
@@ -43,7 +43,7 @@
   </div>
   <script>
     (function () {
-      const A = window.Astana, D = 14, rnd = A.rng(8080), c = A.theme.night, G = 1332;
+      const A = window.Astana, D = A.T.s8.dur, rnd = A.rng(8080), c = A.theme.night, G = 1332;
       const $ = function (id) { return document.getElementById(id); };
       $("s8-stars").innerHTML = '<div style="position:absolute;left:-300px;top:-500px">' + A.stars(240, 1680, 1500, rnd) + "</div>";
       $("s8-far").innerHTML = A.place(A.skyline(2000, A.sil("#102A57"), A.rng(81), { minH: 100, maxH: 420, minW: 50, maxW: 100, gap: 8 }), { x: 540, base: G });

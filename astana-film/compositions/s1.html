@@ -36,7 +36,7 @@
       <div id="s1-front" class="layer"></div>
     </div>
     <div id="s1-vig" class="fill"></div>
-    <div id="s1-title" class="clip" data-start="0" data-duration="14" data-track-index="2">
+    <div id="s1-title" class="clip" data-start="0" data-duration="14.2" data-track-index="2">
       <div id="s1-kicker" class="txt kicker">Қазақстан елордасы</div>
       <div id="s1-name" class="txt h1"><span>А</span><span>С</span><span>Т</span><span>А</span><span>Н</span><span>А</span></div>
       <div id="s1-rule" class="rule"></div>
@@ -46,7 +46,7 @@
   </div>
   <script>
     (function () {
-      const A = window.Astana, D = 14, rnd = A.rng(11);
+      const A = window.Astana, D = A.T.s1.dur, rnd = A.rng(11);
       const $ = function (id) { return document.getElementById(id); };
       // ---- art ----
       $("s1-stars").innerHTML = A.stars(60, 1080, 700, rnd);

@@ -1,6 +1,6 @@
 # Астана — болашақтың қаласы
 
-A 136-second vertical (1080×1920, 30 fps) 2D animated documentary about Astana, fully in Kazakh:
+A 138.6-second vertical (1080×1920, 30 fps) 2D animated documentary about Astana, fully in Kazakh:
 narration, burned-in subtitles and on-screen text. Built as a [HyperFrames](https://hyperframes.heygen.com)
 project (HTML + GSAP timelines rendered frame by frame to MP4).
 
@@ -16,7 +16,7 @@ Final render: `renders/astana-bolashaqtyn-qalasy.mp4`
 | `assets/js/astana.js` | Shared illustration + motion library: landmarks (Бәйтерек, Ақорда, Хан Шатыр, EXPO, пирамида, мешіт, опера, музей), skylines, trees, people, construction wipes, counters |
 | `assets/js/timing.js` | Word-level voice timings, so visuals land on the spoken word (generated) |
 | `assets/audio/` | Voiceover per scene, original score, transition effects |
-| `tools/tts.py` | Generates the narration (Microsoft neural voice `kk-KZ-DauletNeural`, male, rate −8 %) with word timings |
+| `tools/tts.py` | Generates the narration (Microsoft neural voice `kk-KZ-DauletNeural`, the native Kazakh male voice; pitch −12 Hz, rate −10 %, one request per sentence with chosen pauses, warmth mastering to −17 LUFS) with word timings |
 | `tools/music.py` | Synthesises the original score from code and pre-ducks it under the voice |
 | `tools/build.py` | Assembles `index.html`, captions and the timing file |
 
@@ -24,7 +24,7 @@ Final render: `renders/astana-bolashaqtyn-qalasy.mp4`
 
 ```bash
 pip install edge-tts numpy scipy
-python3 tools/tts.py "-8%"   # voiceover + word timings (needs network)
+python3 tools/tts.py          # voiceover + word timings (needs network); --sample writes renders/voice-sample.mp3
 python3 tools/build.py        # index.html, captions, timing.js
 python3 tools/music.py        # original score
 npm run check                 # HyperFrames lint + layout + contrast
