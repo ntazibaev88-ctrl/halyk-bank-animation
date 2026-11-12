@@ -34,7 +34,7 @@
  {
   "id": "00_4_im1_landing",
   "seg": "im1_landing",
-  "in": 39.2,
+  "in": 39.45,
   "dur": 1.485,
   "fx": 0.5,
   "sat": 0.9
@@ -74,7 +74,7 @@
  {
   "id": "03_0_tour_f9_close",
   "seg": "tour_f9_close",
-  "in": 4.25,
+  "in": 4.550000000000001,
   "dur": 3.033,
   "fx": 0.46,
   "sat": 0.9
@@ -122,7 +122,7 @@
  {
   "id": "04_0_convoy_drone",
   "seg": "convoy_drone",
-  "in": 1.15,
+  "in": 2.85,
   "dur": 3.163,
   "fx": 0.55,
   "sat": 0.9
