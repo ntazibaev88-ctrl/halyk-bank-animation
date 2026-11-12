@@ -3,7 +3,7 @@
   "id": "00_0_tour_talk",
   "seg": "tour_talk",
   "in": 7.3,
-  "dur": 2.243,
+  "dur": 2.15,
   "fx": 0.31,
   "sat": 0.9
  },
@@ -11,7 +11,7 @@
   "id": "00_1_fh_hs",
   "seg": "fh_hs",
   "in": 7.2,
-  "dur": 1.745,
+  "dur": 1.675,
   "fx": 0.5,
   "sat": 0.9
  },
@@ -19,7 +19,7 @@
   "id": "00_2_convoy_side",
   "seg": "convoy_side",
   "in": 2.92,
-  "dur": 1.875,
+  "dur": 1.813,
   "fx": 0.5,
   "sat": 0.9
  },
@@ -27,15 +27,15 @@
   "id": "00_3_super_boards",
   "seg": "super_boards",
   "in": 3.68,
-  "dur": 1.816,
+  "dur": 1.758,
   "fx": 0.5,
   "sat": 0.9
  },
  {
   "id": "00_4_im1_landing",
   "seg": "im1_landing",
-  "in": 14.0,
-  "dur": 1.546,
+  "in": 39.2,
+  "dur": 1.485,
   "fx": 0.5,
   "sat": 0.9
  },
@@ -43,7 +43,7 @@
   "id": "00_5_tour_silhouette",
   "seg": "tour_silhouette",
   "in": 6.1,
-  "dur": 3.241,
+  "dur": 3.121,
   "fx": 0.79,
   "sat": 0.9
  },
@@ -51,15 +51,15 @@
   "id": "01_0_earth_iss",
   "seg": "earth_iss",
   "in": 0.65,
-  "dur": 4.485,
+  "dur": 4.282,
   "fx": 0.55,
   "sat": 0.9
  },
  {
   "id": "02_0_super_ext",
   "seg": "super_ext",
-  "in": 1.65,
-  "dur": 3.878,
+  "in": 5.25,
+  "dur": 3.705,
   "fx": 0.55,
   "sat": 0.9
  },
@@ -67,7 +67,7 @@
   "id": "02_2_super_racks",
   "seg": "super_racks",
   "in": 1.68,
-  "dur": 6.033,
+  "dur": 5.746,
   "fx": 0.42,
   "sat": 0.9
  },
@@ -75,31 +75,31 @@
   "id": "03_0_tour_f9_close",
   "seg": "tour_f9_close",
   "in": 4.25,
-  "dur": 3.163,
+  "dur": 3.033,
   "fx": 0.46,
   "sat": 0.9
  },
  {
   "id": "03_1_suitup_musk",
   "seg": "suitup_musk",
-  "in": 21.0,
-  "dur": 2.916,
-  "fx": 0.42,
+  "in": 23.6,
+  "dur": 2.78,
+  "fx": 0.25,
   "sat": 0.9
  },
  {
   "id": "03_2_fh_hs",
   "seg": "fh_hs",
   "in": 8.0,
-  "dur": 3.019,
+  "dur": 2.877,
   "fx": 0.52,
   "sat": 0.9
  },
  {
   "id": "03_3_im1_landing",
   "seg": "im1_landing",
-  "in": 16.0,
-  "dur": 2.711,
+  "in": 46.4,
+  "dur": 2.585,
   "fx": 0.5,
   "sat": 0.9
  },
@@ -107,7 +107,7 @@
   "id": "03_4_starship_iss",
   "seg": "starship_iss",
   "in": 4.6,
-  "dur": 3.111,
+  "dur": 2.985,
   "fx": 0.42,
   "sat": 0.9
  },
@@ -115,7 +115,7 @@
   "id": "03_5_fh_drone",
   "seg": "fh_drone",
   "in": 5.68,
-  "dur": 3.851,
+  "dur": 3.684,
   "fx": 0.5,
   "sat": 0.9
  },
@@ -123,7 +123,7 @@
   "id": "04_0_convoy_drone",
   "seg": "convoy_drone",
   "in": 1.15,
-  "dur": 3.303,
+  "dur": 3.163,
   "fx": 0.55,
   "sat": 0.9
  },
@@ -131,7 +131,7 @@
   "id": "04_1_walkout_tesla",
   "seg": "walkout_tesla",
   "in": 3.2,
-  "dur": 3.368,
+  "dur": 3.208,
   "fx": 0.52,
   "sat": 0.9
  },
@@ -139,7 +139,7 @@
   "id": "04_2_convoy_side",
   "seg": "convoy_side",
   "in": 1.72,
-  "dur": 3.648,
+  "dur": 3.488,
   "fx": 0.45,
   "sat": 0.9
  },
@@ -147,7 +147,7 @@
   "id": "04_3_convoy_top",
   "seg": "convoy_top",
   "in": 3.0,
-  "dur": 3.368,
+  "dur": 3.208,
   "fx": 0.5,
   "sat": 0.9
  },
@@ -155,7 +155,7 @@
   "id": "04_4_walkout_tesla2",
   "seg": "walkout_tesla2",
   "in": 5.1,
-  "dur": 3.976,
+  "dur": 3.805,
   "fx": 0.36,
   "sat": 0.9
  },
@@ -163,7 +163,7 @@
   "id": "05_0_super_boards",
   "seg": "super_boards",
   "in": 7.65,
-  "dur": 3.6,
+  "dur": 3.441,
   "fx": 0.5,
   "sat": 0.9
  },
@@ -171,7 +171,7 @@
   "id": "05_1_super_cables",
   "seg": "super_cables",
   "in": 1.68,
-  "dur": 3.17,
+  "dur": 3.032,
   "fx": 0.5,
   "sat": 0.9
  },
@@ -179,7 +179,7 @@
   "id": "05_2_super_racks",
   "seg": "super_racks",
   "in": 6.0,
-  "dur": 4.051,
+  "dur": 3.848,
   "fx": 0.3,
   "sat": 0.9
  },
@@ -187,7 +187,7 @@
   "id": "05_3_super_boards",
   "seg": "super_boards",
   "in": 17.6,
-  "dur": 3.851,
+  "dur": 3.68,
   "fx": 0.45,
   "sat": 0.9
  },
@@ -195,7 +195,7 @@
   "id": "06_0_press_wide",
   "seg": "press_wide",
   "in": 2.65,
-  "dur": 3.13,
+  "dur": 2.995,
   "fx": 0.5,
   "sat": 0.7
  },
@@ -203,7 +203,7 @@
   "id": "06_1_press_musk_a",
   "seg": "press_musk_a",
   "in": 7.6,
-  "dur": 3.169,
+  "dur": 3.013,
   "fx": 0.5,
   "sat": 0.62
  },
@@ -211,7 +211,7 @@
   "id": "06_2_press_musk_b",
   "seg": "press_musk_b",
   "in": 14.28,
-  "dur": 4.073,
+  "dur": 3.885,
   "fx": 0.53,
   "sat": 0.55
  },
@@ -219,7 +219,7 @@
   "id": "06_3_tour_group",
   "seg": "tour_group",
   "in": 0.4,
-  "dur": 3.364,
+  "dur": 3.197,
   "fx": 0.52,
   "sat": 0.9
  },
@@ -227,7 +227,7 @@
   "id": "07_0_fh_drone",
   "seg": "fh_drone",
   "in": 0.3,
-  "dur": 3.38,
+  "dur": 3.231,
   "fx": 0.5,
   "sat": 0.9
  },
@@ -235,7 +235,7 @@
   "id": "07_1_earth_iss",
   "seg": "earth_iss",
   "in": 11.6,
-  "dur": 3.989,
+  "dur": 3.83,
   "fx": 0.58,
   "sat": 0.9
  },
@@ -243,7 +243,7 @@
   "id": "07_2_convoy_top",
   "seg": "convoy_top",
   "in": 11.0,
-  "dur": 2.963,
+  "dur": 2.834,
   "fx": 0.5,
   "sat": 0.9
  },
@@ -251,7 +251,7 @@
   "id": "07_3_tour_silhouette",
   "seg": "tour_silhouette",
   "in": 9.1,
-  "dur": 4.824,
+  "dur": 4.625,
   "fx": 0.8,
   "sat": 0.9
  },
@@ -259,7 +259,7 @@
   "id": "07_4_tour_night",
   "seg": "tour_night",
   "in": 5.65,
-  "dur": 7.5,
+  "dur": 6.83,
   "fx": 0.45,
   "sat": 0.9
  }

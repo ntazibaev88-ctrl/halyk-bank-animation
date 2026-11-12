@@ -28,7 +28,7 @@ PLAN = {
         dict(seg="fh_hs", inn=7.2, fx=0.50, w=1.5, tr="flash", z=(1.05, 1.18), p=(0, 0), rumble=True),
         dict(seg="convoy_side", inn=3.2, fx=0.50, w=1.35, tr="whip", z=(1.1, 1.18), p=(60, -60), tag=T_TESLA),
         dict(seg="super_boards", inn=4.0, fx=0.50, w=1.25, tr="zoom", z=(1.15, 1.3), p=(-40, 40)),
-        dict(seg="im1_landing", inn=14.0, fx=0.50, w=1.3, tr="cut", z=(1.1, 1.2), p=(0, 0), rumble=True),
+        dict(seg="im1_landing", inn=39.2, fx=0.50, w=1.3, tr="cut", z=(1.1, 1.2), p=(0, 0), rumble=True),
         dict(seg="tour_silhouette", inn=6.5, fx=0.79, w=2.6, tr="fade", z=(1.12, 1.02), p=(30, -30)),
     ],
     "childhood": [
@@ -37,15 +37,15 @@ PLAN = {
         dict(seg="gfx:game", w=4.6, tr="zoom", z=(1.0, 1.0), p=(0, 0), tag="ИЛЛЮСТРАЦИЯ"),
     ],
     "paypal": [
-        dict(seg="super_ext", inn=2.0, fx=0.55, w=3.0, tr="dip", z=(1.04, 1.14), p=(40, -40), tag="КРЕМНИЕВАЯ ДОЛИНА · NASA AMES"),
+        dict(seg="super_ext", inn=5.6, fx=0.55, w=3.0, tr="dip", z=(1.04, 1.14), p=(40, -40), tag="КРЕМНИЕВАЯ ДОЛИНА · NASA AMES"),
         dict(seg="gfx:web", w=3.9, tr="whip", z=(1.0, 1.0), p=(0, 0), tag="ИЛЛЮСТРАЦИЯ"),
         dict(seg="super_racks", inn=2.0, fx=0.42, w=5.0, tr="zoom", z=(1.08, 1.22), p=(-50, 50), dim=0.25),
     ],
     "spacex": [
         dict(seg="tour_f9_close", inn=4.6, fx=0.46, w=2.5, tr="dip", z=(1.02, 1.16), p=(0, 0), panY=(-40, 40), tag="FALCON 9 · LC-39A · NASA"),
-        dict(seg="suitup_musk", inn=21.0, fx=0.42, w=2.6, tr="cut", z=(1.08, 1.0), p=(30, -30), tag="SPACEX · NASA · 2020"),
+        dict(seg="suitup_musk", inn=23.6, fx=0.25, w=2.6, tr="cut", z=(1.08, 1.0), p=(30, -30), tag="SPACEX · NASA · 2020"),
         dict(seg="fh_hs", inn=8.0, fx=0.52, w=2.7, tr="flash", z=(1.02, 1.14), p=(0, 0), rumble=True, tag="FALCON HEAVY · NASA"),
-        dict(seg="im1_landing", inn=16.0, fx=0.50, w=2.4, tr="cut", z=(1.04, 1.14), p=(0, 0), rumble=True, tag="ПОСАДКА СТУПЕНИ · NASA"),
+        dict(seg="im1_landing", inn=46.4, fx=0.50, w=2.4, tr="cut", z=(1.04, 1.14), p=(0, 0), rumble=True, tag="ПОСАДКА СТУПЕНИ · NASA"),
         dict(seg="starship_iss", inn=5.0, fx=0.42, w=2.4, tr="fade", z=(1.1, 1.22), p=(-30, 30), tag="STARSHIP · ВИД С МКС · NASA"),
         dict(seg="fh_drone", inn=6.0, fx=0.50, w=3.2, tr="zoom", z=(1.0, 1.12), p=(0, 0), rumble=True, dim=0.15),
     ],

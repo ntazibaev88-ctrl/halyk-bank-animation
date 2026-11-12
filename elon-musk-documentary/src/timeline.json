@@ -2,55 +2,55 @@
  "fps": 30,
  "width": 1080,
  "height": 1920,
- "durationInFrames": 3389,
+ "durationInFrames": 3206,
  "scenes": [
   {
    "id": "hook",
    "index": 0,
    "start": 0.0,
-   "end": 9.966
+   "end": 9.502
   },
   {
    "id": "childhood",
    "index": 1,
-   "start": 9.966,
-   "end": 23.457
+   "start": 9.502,
+   "end": 22.286
   },
   {
    "id": "paypal",
    "index": 2,
-   "start": 23.457,
-   "end": 36.46
+   "start": 22.286,
+   "end": 34.604
   },
   {
    "id": "spacex",
    "index": 3,
-   "start": 36.46,
-   "end": 52.661
+   "start": 34.604,
+   "end": 49.978
   },
   {
    "id": "tesla",
    "index": 4,
-   "start": 52.661,
-   "end": 68.045
+   "start": 49.978,
+   "end": 64.569
   },
   {
    "id": "ai",
    "index": 5,
-   "start": 68.045,
-   "end": 80.647
+   "start": 64.569,
+   "end": 76.5
   },
   {
    "id": "controversy",
    "index": 6,
-   "start": 80.647,
-   "end": 92.713
+   "start": 76.5,
+   "end": 87.92
   },
   {
    "id": "ending",
    "index": 7,
-   "start": 92.713,
-   "end": 112.969
+   "start": 87.92,
+   "end": 106.87
   }
  ],
  "shots": [
@@ -58,7 +58,7 @@
    "id": "00_0_tour_talk",
    "src": "shots/00_0_tour_talk.mp4",
    "start": 0.0,
-   "end": 1.993,
+   "end": 1.9,
    "transIn": "cut",
    "transDur": 0,
    "zoom": [
@@ -74,8 +74,8 @@
   {
    "id": "00_1_fh_hs",
    "src": "shots/00_1_fh_hs.mp4",
-   "start": 1.993,
-   "end": 3.488,
+   "start": 1.9,
+   "end": 3.326,
    "transIn": "flash",
    "transDur": 0,
    "zoom": [
@@ -90,8 +90,8 @@
   {
    "id": "00_2_convoy_side",
    "src": "shots/00_2_convoy_side.mp4",
-   "start": 3.488,
-   "end": 4.834,
+   "start": 3.326,
+   "end": 4.608,
    "transIn": "whip",
    "transDur": 0.28,
    "zoom": [
@@ -107,8 +107,8 @@
   {
    "id": "00_3_super_boards",
    "src": "shots/00_3_super_boards.mp4",
-   "start": 4.834,
-   "end": 6.079,
+   "start": 4.608,
+   "end": 5.796,
    "transIn": "zoom",
    "transDur": 0.32,
    "zoom": [
@@ -123,8 +123,8 @@
   {
    "id": "00_4_im1_landing",
    "src": "shots/00_4_im1_landing.mp4",
-   "start": 6.079,
-   "end": 7.375,
+   "start": 5.796,
+   "end": 7.031,
    "transIn": "cut",
    "transDur": 0,
    "zoom": [
@@ -139,8 +139,8 @@
   {
    "id": "00_5_tour_silhouette",
    "src": "shots/00_5_tour_silhouette.mp4",
-   "start": 7.375,
-   "end": 9.966,
+   "start": 7.031,
+   "end": 9.502,
    "transIn": "fade",
    "transDur": 0.4,
    "zoom": [
@@ -155,8 +155,8 @@
   {
    "id": "01_0_earth_iss",
    "src": "shots/01_0_earth_iss.mp4",
-   "start": 9.966,
-   "end": 13.851,
+   "start": 9.502,
+   "end": 13.184,
    "transIn": "dip",
    "transDur": 0.35,
    "zoom": [
@@ -172,8 +172,8 @@
   {
    "id": "01_1_gfx_code",
    "src": "gfx:code",
-   "start": 13.851,
-   "end": 18.492,
+   "start": 13.184,
+   "end": 17.581,
    "transIn": "fade",
    "transDur": 0.4,
    "zoom": [
@@ -189,8 +189,8 @@
   {
    "id": "01_2_gfx_game",
    "src": "gfx:game",
-   "start": 18.492,
-   "end": 23.457,
+   "start": 17.581,
+   "end": 22.286,
    "transIn": "zoom",
    "transDur": 0.32,
    "zoom": [
@@ -206,8 +206,8 @@
   {
    "id": "02_0_super_ext",
    "src": "shots/02_0_super_ext.mp4",
-   "start": 23.457,
-   "end": 26.735,
+   "start": 22.286,
+   "end": 25.391,
    "transIn": "dip",
    "transDur": 0.35,
    "zoom": [
@@ -223,8 +223,8 @@
   {
    "id": "02_1_gfx_web",
    "src": "gfx:web",
-   "start": 26.735,
-   "end": 30.997,
+   "start": 25.391,
+   "end": 29.428,
    "transIn": "whip",
    "transDur": 0.28,
    "zoom": [
@@ -240,8 +240,8 @@
   {
    "id": "02_2_super_racks",
    "src": "shots/02_2_super_racks.mp4",
-   "start": 30.997,
-   "end": 36.46,
+   "start": 29.428,
+   "end": 34.604,
    "transIn": "zoom",
    "transDur": 0.32,
    "zoom": [
@@ -257,8 +257,8 @@
   {
    "id": "03_0_tour_f9_close",
    "src": "shots/03_0_tour_f9_close.mp4",
-   "start": 36.46,
-   "end": 39.023,
+   "start": 34.604,
+   "end": 37.037,
    "transIn": "dip",
    "transDur": 0.35,
    "zoom": [
@@ -278,8 +278,8 @@
   {
    "id": "03_1_suitup_musk",
    "src": "shots/03_1_suitup_musk.mp4",
-   "start": 39.023,
-   "end": 41.689,
+   "start": 37.037,
+   "end": 39.566,
    "transIn": "cut",
    "transDur": 0,
    "zoom": [
@@ -295,8 +295,8 @@
   {
    "id": "03_2_fh_hs",
    "src": "shots/03_2_fh_hs.mp4",
-   "start": 41.689,
-   "end": 44.458,
+   "start": 39.566,
+   "end": 42.194,
    "transIn": "flash",
    "transDur": 0,
    "zoom": [
@@ -312,8 +312,8 @@
   {
    "id": "03_3_im1_landing",
    "src": "shots/03_3_im1_landing.mp4",
-   "start": 44.458,
-   "end": 46.919,
+   "start": 42.194,
+   "end": 44.529,
    "transIn": "cut",
    "transDur": 0,
    "zoom": [
@@ -329,8 +329,8 @@
   {
    "id": "03_4_starship_iss",
    "src": "shots/03_4_starship_iss.mp4",
-   "start": 46.919,
-   "end": 49.38,
+   "start": 44.529,
+   "end": 46.864,
    "transIn": "fade",
    "transDur": 0.4,
    "zoom": [
@@ -346,8 +346,8 @@
   {
    "id": "03_5_fh_drone",
    "src": "shots/03_5_fh_drone.mp4",
-   "start": 49.38,
-   "end": 52.661,
+   "start": 46.864,
+   "end": 49.978,
    "transIn": "zoom",
    "transDur": 0.32,
    "zoom": [
@@ -363,8 +363,8 @@
   {
    "id": "04_0_convoy_drone",
    "src": "shots/04_0_convoy_drone.mp4",
-   "start": 52.661,
-   "end": 55.364,
+   "start": 49.978,
+   "end": 52.541,
    "transIn": "dip",
    "transDur": 0.35,
    "zoom": [
@@ -380,8 +380,8 @@
   {
    "id": "04_1_walkout_tesla",
    "src": "shots/04_1_walkout_tesla.mp4",
-   "start": 55.364,
-   "end": 58.482,
+   "start": 52.541,
+   "end": 55.499,
    "transIn": "cut",
    "transDur": 0,
    "zoom": [
@@ -397,8 +397,8 @@
   {
    "id": "04_2_convoy_side",
    "src": "shots/04_2_convoy_side.mp4",
-   "start": 58.482,
-   "end": 61.6,
+   "start": 55.499,
+   "end": 58.457,
    "transIn": "whip",
    "transDur": 0.28,
    "zoom": [
@@ -414,8 +414,8 @@
   {
    "id": "04_3_convoy_top",
    "src": "shots/04_3_convoy_top.mp4",
-   "start": 61.6,
-   "end": 64.719,
+   "start": 58.457,
+   "end": 61.414,
    "transIn": "cut",
    "transDur": 0,
    "zoom": [
@@ -431,8 +431,8 @@
   {
    "id": "04_4_walkout_tesla2",
    "src": "shots/04_4_walkout_tesla2.mp4",
-   "start": 64.719,
-   "end": 68.045,
+   "start": 61.414,
+   "end": 64.569,
    "transIn": "fade",
    "transDur": 0.4,
    "zoom": [
@@ -448,8 +448,8 @@
   {
    "id": "05_0_super_boards",
    "src": "shots/05_0_super_boards.mp4",
-   "start": 68.045,
-   "end": 71.045,
+   "start": 64.569,
+   "end": 67.41,
    "transIn": "dip",
    "transDur": 0.35,
    "zoom": [
@@ -465,8 +465,8 @@
   {
    "id": "05_1_super_cables",
    "src": "shots/05_1_super_cables.mp4",
-   "start": 71.045,
-   "end": 73.646,
+   "start": 67.41,
+   "end": 69.872,
    "transIn": "zoom",
    "transDur": 0.32,
    "zoom": [
@@ -481,8 +481,8 @@
   {
    "id": "05_2_super_racks",
    "src": "shots/05_2_super_racks.mp4",
-   "start": 73.646,
-   "end": 77.446,
+   "start": 69.872,
+   "end": 73.47,
    "transIn": "cut",
    "transDur": 0,
    "zoom": [
@@ -498,8 +498,8 @@
   {
    "id": "05_3_super_boards",
    "src": "shots/05_3_super_boards.mp4",
-   "start": 77.446,
-   "end": 80.647,
+   "start": 73.47,
+   "end": 76.5,
    "transIn": "fade",
    "transDur": 0.4,
    "zoom": [
@@ -515,8 +515,8 @@
   {
    "id": "06_0_press_wide",
    "src": "shots/06_0_press_wide.mp4",
-   "start": 80.647,
-   "end": 83.177,
+   "start": 76.5,
+   "end": 78.895,
    "transIn": "dip",
    "transDur": 0.35,
    "zoom": [
@@ -532,8 +532,8 @@
   {
    "id": "06_1_press_musk_a",
    "src": "shots/06_1_press_musk_a.mp4",
-   "start": 83.177,
-   "end": 86.096,
+   "start": 78.895,
+   "end": 81.657,
    "transIn": "cut",
    "transDur": 0,
    "zoom": [
@@ -548,8 +548,8 @@
   {
    "id": "06_2_press_musk_b",
    "src": "shots/06_2_press_musk_b.mp4",
-   "start": 86.096,
-   "end": 89.599,
+   "start": 81.657,
+   "end": 84.973,
    "transIn": "zoom",
    "transDur": 0.32,
    "zoom": [
@@ -565,8 +565,8 @@
   {
    "id": "06_3_tour_group",
    "src": "shots/06_3_tour_group.mp4",
-   "start": 89.599,
-   "end": 92.713,
+   "start": 84.973,
+   "end": 87.92,
    "transIn": "cut",
    "transDur": 0,
    "zoom": [
@@ -582,8 +582,8 @@
   {
    "id": "07_0_fh_drone",
    "src": "shots/07_0_fh_drone.mp4",
-   "start": 92.713,
-   "end": 95.843,
+   "start": 87.92,
+   "end": 90.901,
    "transIn": "flash",
    "transDur": 0,
    "zoom": [
@@ -598,8 +598,8 @@
   {
    "id": "07_1_earth_iss",
    "src": "shots/07_1_earth_iss.mp4",
-   "start": 95.843,
-   "end": 99.182,
+   "start": 90.901,
+   "end": 94.081,
    "transIn": "fade",
    "transDur": 0.4,
    "zoom": [
@@ -615,8 +615,8 @@
   {
    "id": "07_2_convoy_top",
    "src": "shots/07_2_convoy_top.mp4",
-   "start": 99.182,
-   "end": 101.895,
+   "start": 94.081,
+   "end": 96.665,
    "transIn": "cut",
    "transDur": 0,
    "zoom": [
@@ -631,8 +631,8 @@
   {
    "id": "07_3_tour_silhouette",
    "src": "shots/07_3_tour_silhouette.mp4",
-   "start": 101.895,
-   "end": 106.069,
+   "start": 96.665,
+   "end": 100.64,
    "transIn": "fade",
    "transDur": 0.4,
    "zoom": [
@@ -647,8 +647,8 @@
   {
    "id": "07_4_tour_night",
    "src": "shots/07_4_tour_night.mp4",
-   "start": 106.069,
-   "end": 112.969,
+   "start": 100.64,
+   "end": 106.87,
    "transIn": "dip",
    "transDur": 0.35,
    "zoom": [
@@ -669,22 +669,22 @@
    "kicker": "ДОКУМЕНТАЛЬНАЯ ИСТОРИЯ",
    "variant": "hook",
    "at": 0.12,
-   "dur": 6.491
+   "dur": 6.227
   },
   {
    "scene": "childhood",
    "text": "12 ЛЕТ —|ПЕРВЫЙ ПРОЕКТ",
    "kicker": "ГЛАВА 1 · ДЕТСТВО",
    "variant": "chapter",
-   "at": 17.79,
-   "dur": 5.618
+   "at": 16.906,
+   "dur": 5.4
   },
   {
    "scene": "paypal",
    "text": "PAYPAL —|ПЕРВЫЙ БОЛЬШОЙ УСПЕХ",
    "kicker": "ГЛАВА 2 · 1990-Е",
    "variant": "chapter",
-   "at": 23.707,
+   "at": 22.536,
    "dur": 4.2
   },
   {
@@ -692,7 +692,7 @@
    "text": "SPACEX —|ПУТЬ К МАРСУ",
    "kicker": "ГЛАВА 3 · 2002",
    "variant": "chapter",
-   "at": 36.71,
+   "at": 34.854,
    "dur": 4.2
   },
   {
@@ -700,7 +700,7 @@
    "text": "TESLA —|БУДУЩЕЕ АВТОМОБИЛЕЙ",
    "kicker": "ГЛАВА 4 · 2004 → 2008",
    "variant": "chapter",
-   "at": 52.911,
+   "at": 50.228,
    "dur": 4.2
   },
   {
@@ -708,7 +708,7 @@
    "text": "AI. NEURALINK.|TECHNOLOGIES.",
    "kicker": "ГЛАВА 5 · ТЕХНОЛОГИИ",
    "variant": "chapter",
-   "at": 68.295,
+   "at": 64.819,
    "dur": 4.2
   },
   {
@@ -716,272 +716,272 @@
    "text": "ГЕНИЙ ИЛИ|ПРОВОКАТОР?",
    "kicker": "ГЛАВА 6 · СПОРЫ",
    "variant": "question",
-   "at": 80.897,
+   "at": 76.75,
    "dur": 4.2
   }
  ],
  "subs": [
   {
    "start": 0.55,
-   "end": 2.764,
+   "end": 2.664,
    "text": "Он хочет отправить человечество на *Марс*,"
   },
   {
-   "start": 2.764,
-   "end": 4.872,
+   "start": 2.664,
+   "end": 4.69,
    "text": "изменить автомобильную индустрию"
   },
   {
-   "start": 4.562,
-   "end": 6.681,
+   "start": 4.38,
+   "end": 6.607,
    "text": "и создать *технологии будущего*."
   },
   {
-   "start": 6.891,
-   "end": 9.606,
+   "start": 6.607,
+   "end": 9.212,
    "text": "Но кто на самом деле такой *Илон Маск*?"
   },
   {
-   "start": 10.366,
-   "end": 13.724,
+   "start": 9.822,
+   "end": 13.041,
    "text": "Илон Маск родился в *1971 году*"
   },
   {
-   "start": 13.414,
-   "end": 14.748,
+   "start": 12.731,
+   "end": 14.209,
    "text": "в *Южной Африке*."
   },
   {
-   "start": 14.958,
-   "end": 17.78,
+   "start": 14.209,
+   "end": 17.106,
    "text": "Ещё в детстве он увлекался *компьютерами*."
   },
   {
-   "start": 17.99,
-   "end": 19.859,
+   "start": 17.106,
+   "end": 18.905,
    "text": "В *12 лет* он создал"
   },
   {
-   "start": 19.549,
-   "end": 21.3,
+   "start": 18.595,
+   "end": 20.28,
    "text": "собственную компьютерную игру"
   },
   {
-   "start": 20.99,
-   "end": 23.097,
+   "start": 19.97,
+   "end": 21.996,
    "text": "и продал её за *500 долларов*."
   },
   {
-   "start": 23.857,
-   "end": 26.62,
+   "start": 22.606,
+   "end": 25.447,
    "text": "В *1990-х* он начал строить свой бизнес."
   },
   {
-   "start": 26.83,
-   "end": 28.52,
+   "start": 25.447,
+   "end": 27.075,
    "text": "Одним из главных успехов"
   },
   {
-   "start": 28.21,
-   "end": 30.068,
+   "start": 26.765,
+   "end": 28.742,
    "text": "стала компания *PayPal*."
   },
   {
-   "start": 30.278,
-   "end": 32.683,
+   "start": 28.742,
+   "end": 31.038,
    "text": "После её продажи Маск получил *капитал*,"
   },
   {
-   "start": 32.683,
-   "end": 34.41,
+   "start": 31.038,
+   "end": 32.7,
    "text": "который позволил ему взяться"
   },
   {
-   "start": 34.1,
-   "end": 36.1,
+   "start": 32.39,
+   "end": 34.314,
    "text": "за ещё более *масштабные идеи*."
   },
   {
-   "start": 36.86,
-   "end": 40.146,
+   "start": 34.924,
+   "end": 38.264,
    "text": "В *2002 году* он основал *SpaceX*."
   },
   {
-   "start": 40.356,
-   "end": 43.166,
+   "start": 38.264,
+   "end": 40.961,
    "text": "Многие *сомневались*, что частная компания"
   },
   {
-   "start": 42.856,
-   "end": 44.226,
+   "start": 40.651,
+   "end": 41.972,
    "text": "сможет конкурировать"
   },
   {
-   "start": 43.916,
-   "end": 45.464,
+   "start": 41.662,
+   "end": 43.344,
    "text": "в космической отрасли."
   },
   {
-   "start": 45.674,
-   "end": 47.674,
+   "start": 43.344,
+   "end": 45.458,
    "text": "Но Маск *продолжил работу*."
   },
   {
-   "start": 47.884,
-   "end": 50.516,
+   "start": 45.458,
+   "end": 47.984,
    "text": "Его цель — сделать *космос доступнее*"
   },
   {
-   "start": 50.206,
-   "end": 52.301,
+   "start": 47.674,
+   "end": 49.688,
    "text": "и однажды отправить людей на *Марс*."
   },
   {
-   "start": 53.061,
-   "end": 54.955,
+   "start": 50.298,
+   "end": 52.309,
    "text": "Затем появилась *Tesla*."
   },
   {
-   "start": 55.165,
-   "end": 57.213,
+   "start": 52.309,
+   "end": 54.279,
    "text": "Маск присоединился к компании"
   },
   {
-   "start": 56.903,
-   "end": 59.427,
+   "start": 53.969,
+   "end": 56.378,
    "text": "как *ранний инвестор* в *2004 году*,"
   },
   {
-   "start": 59.427,
-   "end": 61.165,
+   "start": 56.378,
+   "end": 58.051,
    "text": "а в *2008-м* стал"
   },
   {
-   "start": 60.855,
-   "end": 62.272,
+   "start": 57.741,
+   "end": 59.298,
    "text": "*генеральным директором*."
   },
   {
-   "start": 62.482,
-   "end": 64.733,
+   "start": 59.298,
+   "end": 61.46,
    "text": "*Электромобили* постепенно превратились"
   },
   {
-   "start": 64.423,
-   "end": 65.721,
+   "start": 61.15,
+   "end": 62.404,
    "text": "из необычной идеи"
   },
   {
-   "start": 65.411,
-   "end": 67.685,
+   "start": 62.094,
+   "end": 64.279,
    "text": "в важную часть *автомобильного рынка*."
   },
   {
-   "start": 68.445,
-   "end": 70.636,
+   "start": 64.889,
+   "end": 66.994,
    "text": "Но его *амбиции* не ограничиваются"
   },
   {
-   "start": 70.326,
-   "end": 72.184,
+   "start": 66.684,
+   "end": 68.661,
    "text": "автомобилями и космосом."
   },
   {
-   "start": 72.394,
-   "end": 74.644,
+   "start": 68.661,
+   "end": 70.824,
    "text": "*Neuralink* работает над технологиями"
   },
   {
-   "start": 74.334,
-   "end": 76.132,
+   "start": 70.514,
+   "end": 72.229,
    "text": "взаимодействия *мозга с компьютером*,"
   },
   {
-   "start": 76.132,
-   "end": 78.537,
+   "start": 72.229,
+   "end": 74.539,
    "text": "а *xAI* развивает собственные проекты"
   },
   {
-   "start": 78.227,
-   "end": 80.287,
+   "start": 74.229,
+   "end": 76.21,
    "text": "в области *искусственного интеллекта*."
   },
   {
-   "start": 81.047,
-   "end": 82.988,
+   "start": 76.82,
+   "end": 78.687,
    "text": "При этом Маск остаётся одной"
   },
   {
-   "start": 82.678,
-   "end": 85.31,
+   "start": 78.377,
+   "end": 81.093,
    "text": "из самых *противоречивых* фигур современности."
   },
   {
-   "start": 85.52,
-   "end": 87.353,
+   "start": 81.093,
+   "end": 82.843,
    "text": "Его решения вызывают *споры*,"
   },
   {
-   "start": 87.353,
-   "end": 89.651,
+   "start": 82.843,
+   "end": 85.036,
    "text": "его заявления обсуждают *миллионы людей*,"
   },
   {
-   "start": 89.651,
-   "end": 91.306,
+   "start": 85.036,
+   "end": 86.63,
    "text": "а его *влияние* давно вышло"
   },
   {
-   "start": 90.996,
-   "end": 92.353,
+   "start": 86.32,
+   "end": 87.63,
    "text": "за пределы бизнеса."
   },
   {
-   "start": 93.113,
-   "end": 94.697,
+   "start": 88.24,
+   "end": 89.751,
    "text": "Одни считают его *гением*,"
   },
   {
-   "start": 94.697,
-   "end": 96.245,
+   "start": 89.751,
+   "end": 91.243,
    "text": "другие — человеком"
   },
   {
-   "start": 95.935,
-   "end": 97.804,
+   "start": 90.933,
+   "end": 92.922,
    "text": "с *чрезмерными амбициями*."
   },
   {
-   "start": 98.014,
-   "end": 99.348,
+   "start": 92.922,
+   "end": 94.195,
    "text": "Но одно очевидно:"
   },
   {
-   "start": 99.348,
-   "end": 102.134,
+   "start": 94.195,
+   "end": 97.058,
    "text": "его проекты уже *изменили целые отрасли*."
   },
   {
-   "start": 102.344,
-   "end": 104.522,
+   "start": 97.058,
+   "end": 99.138,
    "text": "А насколько далеко он сможет зайти —"
   },
   {
-   "start": 104.522,
-   "end": 105.859,
+   "start": 99.138,
+   "end": 100.43,
    "text": "*покажет время*."
   }
  ],
  "overlays": [
   {
    "type": "mainTitle",
-   "at": 6.841,
-   "dur": 3.125
+   "at": 6.557,
+   "dur": 2.945
   },
   {
    "type": "location",
-   "at": 10.366,
-   "dur": 4.891,
+   "at": 9.822,
+   "dur": 4.706,
    "props": {
     "text": "ПРЕТОРИЯ · ЮАР",
     "sub": "ЮЖНАЯ АФРИКА"
@@ -989,8 +989,8 @@
   },
   {
    "type": "year",
-   "at": 10.966,
-   "dur": 4.491,
+   "at": 10.422,
+   "dur": 4.306,
    "props": {
     "from": 1900,
     "to": 1971,
@@ -999,83 +999,83 @@
   },
   {
    "type": "payments",
-   "at": 29.878,
-   "dur": 6.482
+   "at": 28.342,
+   "dur": 6.162
   },
   {
    "type": "mars",
-   "at": 48.084,
-   "dur": 4.677
+   "at": 45.658,
+   "dur": 4.42
   },
   {
    "type": "battery",
-   "at": 62.482,
-   "dur": 5.463
+   "at": 59.298,
+   "dur": 5.171
   },
   {
    "type": "scan",
-   "at": 68.345,
-   "dur": 4.049
+   "at": 64.869,
+   "dur": 3.812
   },
   {
    "type": "neural",
-   "at": 72.594,
-   "dur": 8.053
+   "at": 68.861,
+   "dur": 7.639
   },
   {
    "type": "feed",
-   "at": 85.32,
-   "dur": 6.944
+   "at": 80.893,
+   "dur": 6.647
   }
  ],
  "flashes": [
   {
-   "at": 1.993,
+   "at": 1.9,
    "kind": "warm",
    "dur": 0.12
   },
   {
-   "at": 9.946,
+   "at": 9.482,
    "kind": "dip",
    "dur": 0.2
   },
   {
-   "at": 23.437,
+   "at": 22.266,
    "kind": "dip",
    "dur": 0.2
   },
   {
-   "at": 36.44,
+   "at": 34.584,
    "kind": "dip",
    "dur": 0.2
   },
   {
-   "at": 41.689,
+   "at": 39.566,
    "kind": "warm",
    "dur": 0.12
   },
   {
-   "at": 52.641,
+   "at": 49.958,
    "kind": "dip",
    "dur": 0.2
   },
   {
-   "at": 68.025,
+   "at": 64.549,
    "kind": "dip",
    "dur": 0.2
   },
   {
-   "at": 80.627,
+   "at": 76.48,
    "kind": "dip",
    "dur": 0.2
   },
   {
-   "at": 92.713,
+   "at": 87.92,
    "kind": "warm",
    "dur": 0.12
   },
   {
-   "at": 106.049,
+   "at": 100.62,
    "kind": "dip",
    "dur": 0.2
   },
@@ -1086,8 +1086,8 @@
   }
  ],
  "ending": {
-  "finalAt": 106.069,
-  "ctaAt": 108.669
+  "finalAt": 100.64,
+  "ctaAt": 103.24
  },
  "credits": "Видео: NASA (общественное достояние). Иллюстрации и музыка — оригинальные. NASA не одобряет и не спонсирует данный материал.",
  "vo": [
@@ -1095,295 +1095,295 @@
    "file": "vo/hook_0.wav",
    "start": 0.55,
    "trimStart": 0.04000000000000001,
-   "trimEnd": 6.0814580000000005
+   "trimEnd": 5.816791
   },
   {
    "file": "vo/hook_1.wav",
-   "start": 6.891,
+   "start": 6.607,
    "trimStart": 0.04000000000000001,
-   "trimEnd": 2.6647490000000005
+   "trimEnd": 2.555457
   },
   {
    "file": "vo/childhood_0.wav",
-   "start": 10.366,
+   "start": 9.822,
    "trimStart": 0.04000000000000001,
-   "trimEnd": 4.331416000000001
+   "trimEnd": 4.146333
   },
   {
    "file": "vo/childhood_1.wav",
-   "start": 14.958,
+   "start": 14.209,
    "trimStart": 0.04000000000000001,
-   "trimEnd": 2.771916
+   "trimEnd": 2.6577490000000004
   },
   {
    "file": "vo/childhood_2.wav",
-   "start": 17.99,
+   "start": 17.106,
    "trimStart": 0.04000000000000001,
-   "trimEnd": 5.057624
+   "trimEnd": 4.8395410000000005
   },
   {
    "file": "vo/paypal_0.wav",
-   "start": 23.857,
+   "start": 22.606,
    "trimStart": 0.04000000000000001,
-   "trimEnd": 2.712375
+   "trimEnd": 2.6009160000000002
   },
   {
    "file": "vo/paypal_1.wav",
-   "start": 26.83,
+   "start": 25.447,
    "trimStart": 0.04000000000000001,
-   "trimEnd": 3.1885830000000004
+   "trimEnd": 3.055458
   },
   {
    "file": "vo/paypal_2.wav",
-   "start": 30.278,
+   "start": 28.742,
    "trimStart": 0.04000000000000001,
-   "trimEnd": 5.771916
+   "trimEnd": 5.521332
   },
   {
    "file": "vo/spacex_0.wav",
-   "start": 36.86,
+   "start": 34.924,
    "trimStart": 0.04000000000000001,
-   "trimEnd": 3.2361660000000003
+   "trimEnd": 3.1009160000000002
   },
   {
    "file": "vo/spacex_1.wav",
-   "start": 40.356,
+   "start": 38.264,
    "trimStart": 0.04000000000000001,
-   "trimEnd": 5.057624000000001
+   "trimEnd": 4.839541
   },
   {
    "file": "vo/spacex_2.wav",
-   "start": 45.674,
+   "start": 43.344,
    "trimStart": 0.04000000000000001,
-   "trimEnd": 1.950499
+   "trimEnd": 1.8736249999999999
   },
   {
    "file": "vo/spacex_3.wav",
-   "start": 47.884,
+   "start": 45.458,
    "trimStart": 0.04000000000000001,
-   "trimEnd": 4.367166
+   "trimEnd": 4.180458
   },
   {
    "file": "vo/tesla_0.wav",
-   "start": 53.061,
+   "start": 50.298,
    "trimStart": 0.04000000000000001,
-   "trimEnd": 1.8433329999999999
+   "trimEnd": 1.771374
   },
   {
    "file": "vo/tesla_1.wav",
-   "start": 55.165,
+   "start": 52.309,
    "trimStart": 0.04000000000000001,
-   "trimEnd": 7.057624000000001
+   "trimEnd": 6.748624
   },
   {
    "file": "vo/tesla_2.wav",
-   "start": 62.482,
+   "start": 59.298,
    "trimStart": 0.04000000000000001,
-   "trimEnd": 5.152874
+   "trimEnd": 4.930457
   },
   {
    "file": "vo/ai_0.wav",
-   "start": 68.445,
+   "start": 64.889,
    "trimStart": 0.04000000000000001,
-   "trimEnd": 3.6885820000000002
+   "trimEnd": 3.532749
   },
   {
    "file": "vo/ai_1.wav",
-   "start": 72.394,
+   "start": 68.661,
    "trimStart": 0.04000000000000001,
-   "trimEnd": 7.843332
+   "trimEnd": 7.498624
   },
   {
    "file": "vo/controversy_0.wav",
-   "start": 81.047,
+   "start": 76.82,
    "trimStart": 0.04000000000000001,
-   "trimEnd": 4.212375
+   "trimEnd": 4.03275
   },
   {
    "file": "vo/controversy_1.wav",
-   "start": 85.52,
+   "start": 81.093,
    "trimStart": 0.04000000000000001,
-   "trimEnd": 6.783791
+   "trimEnd": 6.487291
   },
   {
    "file": "vo/ending_0.wav",
-   "start": 93.113,
+   "start": 88.24,
    "trimStart": 0.04000000000000001,
-   "trimEnd": 4.640958
+   "trimEnd": 4.441833
   },
   {
    "file": "vo/ending_1.wav",
-   "start": 98.014,
+   "start": 92.922,
    "trimStart": 0.04000000000000001,
-   "trimEnd": 4.069541
+   "trimEnd": 3.8963740000000002
   },
   {
    "file": "vo/ending_2.wav",
-   "start": 102.344,
+   "start": 97.058,
    "trimStart": 0.04000000000000001,
-   "trimEnd": 3.41475
+   "trimEnd": 3.2713740000000002
   }
  ],
  "sfx": [
   {
    "type": "impact",
-   "at": 1.993,
+   "at": 1.9,
    "gain": 0.9
   },
   {
    "type": "riser",
-   "at": 0.793,
+   "at": 0.7,
    "dur": 1.2
   },
   {
    "type": "rumble",
-   "at": 1.993,
-   "dur": 1.495,
+   "at": 1.9,
+   "dur": 1.425,
    "gain": 0.9
   },
   {
    "type": "whoosh",
-   "at": 3.488,
+   "at": 3.326,
    "dur": 0.7,
    "gain": 0.7
   },
   {
    "type": "whoosh",
-   "at": 4.834,
+   "at": 4.608,
    "dur": 0.7,
    "gain": 0.7
   },
   {
    "type": "rumble",
-   "at": 6.079,
-   "dur": 1.296,
+   "at": 5.796,
+   "dur": 1.235,
    "gain": 0.9
   },
   {
    "type": "whoosh",
-   "at": 9.966,
+   "at": 9.502,
    "dur": 1.0,
    "gain": 0.9
   },
   {
    "type": "whoosh",
-   "at": 18.492,
+   "at": 17.581,
    "dur": 0.7,
    "gain": 0.7
   },
   {
    "type": "whoosh",
-   "at": 23.457,
+   "at": 22.286,
    "dur": 1.0,
    "gain": 0.9
   },
   {
    "type": "whoosh",
-   "at": 26.735,
+   "at": 25.391,
    "dur": 0.7,
    "gain": 0.7
   },
   {
    "type": "whoosh",
-   "at": 30.997,
+   "at": 29.428,
    "dur": 0.7,
    "gain": 0.7
   },
   {
    "type": "whoosh",
-   "at": 36.46,
+   "at": 34.604,
    "dur": 1.0,
    "gain": 0.9
   },
   {
    "type": "impact",
-   "at": 41.689,
+   "at": 39.566,
    "gain": 0.9
   },
   {
    "type": "riser",
-   "at": 40.489,
+   "at": 38.366,
    "dur": 1.2
   },
   {
    "type": "rumble",
-   "at": 41.689,
-   "dur": 2.769,
+   "at": 39.566,
+   "dur": 2.627,
    "gain": 0.9
   },
   {
    "type": "rumble",
-   "at": 44.458,
-   "dur": 2.461,
+   "at": 42.194,
+   "dur": 2.335,
    "gain": 0.9
   },
   {
    "type": "whoosh",
-   "at": 49.38,
+   "at": 46.864,
    "dur": 0.7,
    "gain": 0.7
   },
   {
    "type": "rumble",
-   "at": 49.38,
-   "dur": 3.281,
+   "at": 46.864,
+   "dur": 3.114,
    "gain": 0.9
   },
   {
    "type": "whoosh",
-   "at": 52.661,
+   "at": 49.978,
    "dur": 1.0,
    "gain": 0.9
   },
   {
    "type": "whoosh",
-   "at": 58.482,
+   "at": 55.499,
    "dur": 0.7,
    "gain": 0.7
   },
   {
    "type": "whoosh",
-   "at": 68.045,
+   "at": 64.569,
    "dur": 1.0,
    "gain": 0.9
   },
   {
    "type": "whoosh",
-   "at": 71.045,
+   "at": 67.41,
    "dur": 0.7,
    "gain": 0.7
   },
   {
    "type": "whoosh",
-   "at": 80.647,
+   "at": 76.5,
    "dur": 1.0,
    "gain": 0.9
   },
   {
    "type": "whoosh",
-   "at": 86.096,
+   "at": 81.657,
    "dur": 0.7,
    "gain": 0.7
   },
   {
    "type": "impact",
-   "at": 92.713,
+   "at": 87.92,
    "gain": 0.9
   },
   {
    "type": "riser",
-   "at": 91.513,
+   "at": 86.72,
    "dur": 1.2
   },
   {
    "type": "rumble",
-   "at": 92.713,
-   "dur": 3.13,
+   "at": 87.92,
+   "dur": 2.981,
    "gain": 0.9
   },
   {
    "type": "whoosh",
-   "at": 106.069,
+   "at": 100.64,
    "dur": 1.0,
    "gain": 0.9
   },
@@ -1394,52 +1394,52 @@
   },
   {
    "type": "impact",
-   "at": 6.841,
+   "at": 6.557,
    "gain": 0.8
   },
   {
    "type": "impact",
-   "at": 17.84,
+   "at": 16.956,
    "gain": 0.55
   },
   {
    "type": "impact",
-   "at": 23.757,
+   "at": 22.586,
    "gain": 0.55
   },
   {
    "type": "impact",
-   "at": 36.76,
+   "at": 34.904,
    "gain": 0.55
   },
   {
    "type": "impact",
-   "at": 52.961,
+   "at": 50.278,
    "gain": 0.55
   },
   {
    "type": "impact",
-   "at": 68.345,
+   "at": 64.869,
    "gain": 0.55
   },
   {
    "type": "impact",
-   "at": 80.947,
+   "at": 76.8,
    "gain": 0.55
   },
   {
    "type": "impact",
-   "at": 106.069,
+   "at": 100.64,
    "gain": 1.0
   },
   {
    "type": "riser",
-   "at": 104.569,
+   "at": 99.14,
    "dur": 1.5
   },
   {
    "type": "whoosh",
-   "at": 109.069,
+   "at": 103.64,
    "dur": 0.8,
    "gain": 0.8
   }
