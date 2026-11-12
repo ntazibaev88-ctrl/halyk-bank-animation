@@ -1,0 +1,10 @@
+node_modules/
+footage/raw/
+footage/seg/
+public/shots/
+public/audio/stem_*.wav
+out/*.png
+*.part
+public/audio/
+out/
+footage/fetch_log.txt

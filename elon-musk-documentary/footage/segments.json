@@ -1,0 +1,175 @@
+{
+ "segments": {
+  "press_musk_a": {
+   "src": "nasa:NASA’s SpaceX Demonstration Mission 2 Postlaunch News Conference",
+   "start": 2758,
+   "dur": 42
+  },
+  "press_musk_b": {
+   "src": "nasa:NASA’s SpaceX Demonstration Mission 2 Postlaunch News Conference",
+   "start": 2830,
+   "dur": 38
+  },
+  "press_wide": {
+   "src": "nasa:NASA’s SpaceX Demonstration Mission 2 Postlaunch News Conference",
+   "start": 2718,
+   "dur": 14
+  },
+  "tour_f9_close": {
+   "src": "nasa:NHQ_2019_0302_SpaceX CEO Elon Musk and NASA Administrator Jim Bridenstine Tour Launch Pad 39A",
+   "variant": "orig",
+   "start": 28,
+   "dur": 12
+  },
+  "tour_pad": {
+   "src": "nasa:NHQ_2019_0302_SpaceX CEO Elon Musk and NASA Administrator Jim Bridenstine Tour Launch Pad 39A",
+   "variant": "orig",
+   "start": 38,
+   "dur": 14
+  },
+  "tour_group": {
+   "src": "nasa:NHQ_2019_0302_SpaceX CEO Elon Musk and NASA Administrator Jim Bridenstine Tour Launch Pad 39A",
+   "variant": "orig",
+   "start": 56,
+   "dur": 14
+  },
+  "tour_talk": {
+   "src": "nasa:NHQ_2019_0302_SpaceX CEO Elon Musk and NASA Administrator Jim Bridenstine Tour Launch Pad 39A",
+   "variant": "orig",
+   "start": 94,
+   "dur": 12
+  },
+  "tour_silhouette": {
+   "src": "nasa:NHQ_2019_0302_SpaceX CEO Elon Musk and NASA Administrator Jim Bridenstine Tour Launch Pad 39A",
+   "variant": "orig",
+   "start": 105,
+   "dur": 22
+  },
+  "tour_night": {
+   "src": "nasa:NHQ_2019_0302_SpaceX CEO Elon Musk and NASA Administrator Jim Bridenstine Tour Launch Pad 39A",
+   "variant": "orig",
+   "start": 153,
+   "dur": 20
+  },
+  "fh_drone": {
+   "src": "nasa:KSC-20260830-MH-SPX01-0001-Roman_Space_Telescope_Launch_ISO_Drone-4K-M26246",
+   "variant": "orig",
+   "start": 0,
+   "dur": 22.4
+  },
+  "fh_hs": {
+   "src": "nasa:KSC-20260830-MH-CSH01-0001-Roman_Space_Telescope_Launch_High_Speed_Footage",
+   "variant": "orig",
+   "start": 26,
+   "dur": 24
+  },
+  "im1_ignite": {
+   "src": "nasa:KSC-20240215-MH-AJN01-0001-SpaceX_CLPS_IM1_Isolated_Launch_Landing_Views-M4208",
+   "start": 88,
+   "dur": 26,
+   "variant": "orig"
+  },
+  "im1_climb": {
+   "src": "nasa:KSC-20240215-MH-AJN01-0001-SpaceX_CLPS_IM1_Isolated_Launch_Landing_Views-M4208",
+   "start": 245,
+   "dur": 20,
+   "variant": "orig"
+  },
+  "im1_landing": {
+   "src": "nasa:KSC-20240215-MH-AJN01-0001-SpaceX_CLPS_IM1_Isolated_Launch_Landing_Views-M4208",
+   "start": 790,
+   "dur": 60,
+   "variant": "orig"
+  },
+  "demo2_wide": {
+   "src": "nasa:KSC-20200530-MH-AJW01-0001-SpaceX_Demo-2_Isolated_Launch_Views-3250046",
+   "start": 136,
+   "dur": 22
+  },
+  "demo2_capsule": {
+   "src": "nasa:KSC-20200530-MH-AJW01-0001-SpaceX_Demo-2_Isolated_Launch_Views-3250046",
+   "start": 5,
+   "dur": 18
+  },
+  "earth_iss": {
+   "src": "nasa:jsc2021m000138_4K_Earth_Views_Extended_Cut_for_Earth_Day_ 2021_210422-4KMP4",
+   "variant": "orig",
+   "start": 1800,
+   "dur": 24
+  },
+  "earth_limb": {
+   "src": "nasa:jsc2021m000138_4K_Earth_Views_Extended_Cut_for_Earth_Day_ 2021_210422-4KMP4",
+   "variant": "orig",
+   "start": 68,
+   "dur": 20
+  },
+  "starship_iss": {
+   "src": "nasa:jsc2024m000188_Views_of_Starship_Flight_6_from_International_Space_Station",
+   "variant": "orig",
+   "start": 112,
+   "dur": 22
+  },
+  "super_ext": {
+   "src": "nasa:ARC-20190821-AAV3214-ModularSupercomputer-BRollResource-NASAWeb",
+   "start": 26,
+   "dur": 10
+  },
+  "super_racks": {
+   "src": "nasa:ARC-20190821-AAV3214-ModularSupercomputer-BRollResource-NASAWeb",
+   "start": 74,
+   "dur": 16
+  },
+  "super_cables": {
+   "src": "nasa:ARC-20190821-AAV3214-ModularSupercomputer-BRollResource-NASAWeb",
+   "start": 110,
+   "dur": 14
+  },
+  "super_boards": {
+   "src": "nasa:ARC-20190821-AAV3214-ModularSupercomputer-BRollResource-NASAWeb",
+   "start": 183,
+   "dur": 26
+  },
+  "suitup_musk": {
+   "src": "nasa:KSC-20200530-MH-AJW02-0002-SpaceX_Demo-2_Suit_Up_Crew_Quarters_4K",
+   "variant": "orig",
+   "start": 27,
+   "dur": 31
+  },
+  "walkout_tesla": {
+   "src": "nasa:KSC-20200530-MH-AJW02-0003-SpaceX_Demo-2_Walkout_Hallway_and_C7_Exit_4K",
+   "variant": "orig",
+   "start": 68,
+   "dur": 16
+  },
+  "walkout_tesla2": {
+   "src": "nasa:KSC-20200530-MH-AJW02-0003-SpaceX_Demo-2_Walkout_Hallway_and_C7_Exit_4K",
+   "variant": "orig",
+   "start": 120,
+   "dur": 32
+  },
+  "convoy_side": {
+   "src": "nasa:KSC-20200530-MH-AJW02-0005-SpaceX_Demo-2_Astronaut_Tracking_Convoy_720",
+   "variant": "orig",
+   "start": 37,
+   "dur": 14
+  },
+  "convoy_side2": {
+   "src": "nasa:KSC-20200530-MH-AJW02-0005-SpaceX_Demo-2_Astronaut_Tracking_Convoy_720",
+   "variant": "orig",
+   "start": 60,
+   "dur": 10
+  },
+  "convoy_top": {
+   "src": "nasa:KSC-20200530-MH-AJW02-0005-SpaceX_Demo-2_Astronaut_Tracking_Convoy_720",
+   "variant": "orig",
+   "start": 105,
+   "dur": 19
+  },
+  "convoy_drone": {
+   "src": "nasa:KSC-20200530-MH-AJW02-0006-SpaceX_Demo-2_Astronaut_Tracking_Convoy_Drone_Arrival_at_Pad_39A_4K",
+   "variant": "orig",
+   "start": 5,
+   "dur": 18
+  }
+ }
+}
