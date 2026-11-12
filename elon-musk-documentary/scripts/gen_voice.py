@@ -12,7 +12,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 cfg = json.load(open(os.path.join(ROOT, "scripts/narration.json"), encoding="utf-8"))
 rate = sys.argv[1] if len(sys.argv) > 1 else cfg["rate"]
 pitch = sys.argv[2] if len(sys.argv) > 2 else cfg["pitch"]
-outdir = os.path.join(ROOT, "public/vo"); os.makedirs(outdir, exist_ok=True)
+outdir = os.environ.get("VO_OUT") or os.path.join(ROOT, "public/vo"); os.makedirs(outdir, exist_ok=True)
 
 def dur(p):
     return float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", p]).decode())
@@ -54,6 +54,6 @@ async def main():
             print(f"{sc['id']}_{i}: {d:.2f}s", flush=True)
         out["scenes"].append({"id": sc["id"], "sentences": s_out})
     print(f"TOTAL speech audio: {total:.1f}s")
-    json.dump(out, open(os.path.join(ROOT, "scripts/vo_timings.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(out, open(os.environ.get("VO_TIMINGS") or os.path.join(ROOT, "scripts/vo_timings.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
 asyncio.run(main())

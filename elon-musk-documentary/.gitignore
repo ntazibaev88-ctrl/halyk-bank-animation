@@ -8,3 +8,4 @@ out/*.png
 public/audio/
 out/
 footage/fetch_log.txt
+.vo_staging/
