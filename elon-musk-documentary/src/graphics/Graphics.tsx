@@ -221,11 +221,11 @@ export const Neural: React.FC<{dur: number}> = ({dur}) => {
 /* ------------------------------------------------------------------ social feed (generic, no real posts) */
 export const Feed: React.FC<{dur: number}> = ({dur}) => {
   const {frame, fps, env} = useEnv(dur, 12, 14);
-  const scroll = interpolate(frame, [0, dur * fps], [0, -420], clamp);
+  const scroll = interpolate(frame, [0, dur * fps], [40, -520], clamp);
   const cards = Array.from({length: 6}, (_, i) => i);
   const fmt = (n: number) => (n >= 1e6 ? `${(n / 1e6).toFixed(1)}M` : n >= 1e3 ? `${Math.round(n / 1e3)}K` : `${n}`);
   return (
-    <div style={{position: 'absolute', left: 110, right: 190, top: 560, height: 700, overflow: 'hidden', opacity: env}}>
+    <div style={{position: 'absolute', left: 90, right: 200, top: 880, height: 380, overflow: 'hidden', opacity: env, maskImage: 'linear-gradient(180deg, transparent 0%, black 12%, black 82%, transparent 100%)', WebkitMaskImage: 'linear-gradient(180deg, transparent 0%, black 12%, black 82%, transparent 100%)'}}>
       <div style={{transform: `translateY(${scroll}px)`}}>
         {cards.map((i) => {
           const base = 20000 + random(`f${i}`) * 900000;

@@ -83,7 +83,7 @@ export const Flashes: React.FC<{tl: Timeline}> = ({tl}) => {
         />
       ) : null}
       {white > 0 ? <AbsoluteFill style={{backgroundColor: '#fff', opacity: white * 0.9}} /> : null}
-      {black > 0 ? <AbsoluteFill style={{backgroundColor: '#000', opacity: black}} /> : null}
+      {black > 0 ? <AbsoluteFill style={{backgroundColor: '#000', opacity: black * 0.82}} /> : null}
     </>
   );
 };
