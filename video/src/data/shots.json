@@ -1,0 +1,85 @@
+{
+ "shots": [
+  {
+   "id": "t_flag",
+   "gfx": "flagWide",
+   "start": 0,
+   "xf": 0.6,
+   "dur": 5.05
+  },
+  {
+   "id": "t_steppe",
+   "src": "c01.webm",
+   "ss": 24,
+   "start": 4.0,
+   "fx": 0.5,
+   "trans": "fade",
+   "xf": 0.8,
+   "motion": {
+    "s": [
+     1.04,
+     1.12
+    ]
+   },
+   "dur": 11.901,
+   "clip": "t_steppe.mp4"
+  },
+  {
+   "id": "t_saiga",
+   "src": "c00.webm",
+   "ss": 14,
+   "start": 14.851,
+   "fx": 0.45,
+   "xf": 0.8,
+   "motion": {
+    "s": [
+     1.1,
+     1.04
+    ],
+    "x": [
+     20,
+     -20
+    ]
+   },
+   "dur": 13.033,
+   "clip": "t_saiga.mp4"
+  },
+  {
+   "id": "t_date",
+   "gfx": "date1991",
+   "start": 27.134,
+   "xf": 0.5,
+   "trans": "flash",
+   "dur": 15.847
+  },
+  {
+   "id": "t_tl",
+   "gfx": "timeline9293",
+   "start": 42.231,
+   "xf": 0.5,
+   "dur": 13.572
+  },
+  {
+   "id": "t_cap",
+   "gfx": "capitalMap",
+   "start": 55.053,
+   "xf": 0.5,
+   "trans": "wipe",
+   "dur": 13.925
+  },
+  {
+   "id": "t_close",
+   "gfx": "flagClose",
+   "start": 68.128,
+   "xf": 0.6,
+   "dur": 46.044
+  },
+  {
+   "id": "t_sunset",
+   "gfx": "flagSunset",
+   "start": 113.122,
+   "xf": 0.8,
+   "dur": 19.919
+  }
+ ]
+}

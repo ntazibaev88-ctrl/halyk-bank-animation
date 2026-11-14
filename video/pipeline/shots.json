@@ -1,0 +1,75 @@
+{
+ "shots": [
+  {
+   "id": "t_flag",
+   "gfx": "flagWide",
+   "start": 0,
+   "xf": 0.6
+  },
+  {
+   "id": "t_steppe",
+   "src": "c01.webm",
+   "ss": 24,
+   "start": 4.0,
+   "fx": 0.5,
+   "trans": "fade",
+   "xf": 0.8,
+   "motion": {
+    "s": [
+     1.04,
+     1.12
+    ]
+   }
+  },
+  {
+   "id": "t_saiga",
+   "src": "c00.webm",
+   "ss": 14,
+   "start": 14.851,
+   "fx": 0.45,
+   "xf": 0.8,
+   "motion": {
+    "s": [
+     1.1,
+     1.04
+    ],
+    "x": [
+     20,
+     -20
+    ]
+   }
+  },
+  {
+   "id": "t_date",
+   "gfx": "date1991",
+   "start": 27.134,
+   "xf": 0.5,
+   "trans": "flash"
+  },
+  {
+   "id": "t_tl",
+   "gfx": "timeline9293",
+   "start": 42.231,
+   "xf": 0.5
+  },
+  {
+   "id": "t_cap",
+   "gfx": "capitalMap",
+   "start": 55.053,
+   "xf": 0.5,
+   "trans": "wipe"
+  },
+  {
+   "id": "t_close",
+   "gfx": "flagClose",
+   "start": 68.128,
+   "xf": 0.6
+  },
+  {
+   "id": "t_sunset",
+   "gfx": "flagSunset",
+   "start": 113.122,
+   "xf": 0.8
+  }
+ ]
+}

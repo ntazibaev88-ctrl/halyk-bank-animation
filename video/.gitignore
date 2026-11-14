@@ -1,0 +1,8 @@
+node_modules/
+public/clips/
+public/audio/
+public/photos/
+out/
+pipeline/vo/
+pipeline/vo0/
+pipeline/*.wav
