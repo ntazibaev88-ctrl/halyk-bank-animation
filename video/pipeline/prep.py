@@ -7,6 +7,7 @@ Each video shot gets exactly the frames it needs (+ transition overlap), scaled 
 import json, os, subprocess, sys
 
 RAW = sys.argv[1] if len(sys.argv) > 1 else os.environ.get('RAW_DIR', 'raw')
+PHOTO_DIR = sys.argv[2] if len(sys.argv) > 2 else os.environ.get('PHOTO_DIR', 'photos')
 OUT = os.path.join(os.path.dirname(__file__), '..', 'public', 'clips')
 os.makedirs(OUT, exist_ok=True)
 spec = json.load(open(os.path.join(os.path.dirname(__file__), 'shots.json')))
@@ -17,6 +18,18 @@ for i, s in enumerate(shots):
     nxt = shots[i + 1] if i + 1 < len(shots) else None
     end = (nxt['start'] + nxt.get('xf', 0.5)) if nxt else total
     s['dur'] = round(end - s['start'] + 0.25, 3)
+    if s.get('photo'):
+        # 9:16 crop of a still around (fx, fy); zoom > 1 tightens the crop. Output 1350x2400 so motion has headroom.
+        from PIL import Image
+        PH = os.path.join(os.path.dirname(__file__), '..', 'public', 'photos'); os.makedirs(PH, exist_ok=True)
+        im = Image.open(os.path.join(PHOTO_DIR, s['photo'])).convert('RGB')
+        iw, ih = im.size; zoom = s.get('zoom', 1.0)
+        ch = min(ih, iw * 16 / 9) / zoom; cw = ch * 9 / 16
+        cx = min(max(s.get('fx', 0.5) * iw - cw / 2, 0), iw - cw); cy = min(max(s.get('fy', 0.5) * ih - ch / 2, 0), ih - ch)
+        im.crop((int(cx), int(cy), int(cx + cw), int(cy + ch))).resize((1350, 2400), Image.LANCZOS).save(os.path.join(PH, s['id'] + '.jpg'), quality=93)
+        s['img'] = s['id'] + '.jpg'
+        print('ok photo', s['id'], f'{cw:.0f}x{ch:.0f}')
+        continue
     if not s.get('src'):
         continue
     name = s['id'] + '.mp4'

@@ -51,7 +51,8 @@ const EndCard: React.FC<{durF: number}> = ({durF}) => {
   const fadeOut = interpolate(f, [durF - 20, durF], [1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   return (
     <AbsoluteFill style={{opacity: fadeOut}}>
-      <AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(2,14,24,0.0) 0%, rgba(2,14,24,0.55) 30%, rgba(2,14,24,0.55) 62%, rgba(2,14,24,0.0) 85%)', opacity: a(0, 30)}} />
+      <AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(2,14,24,0.0) 0%, rgba(2,14,24,0.55) 30%, rgba(2,14,24,0.55) 62%, rgba(2,14,24,0.0) 85%)', opacity: a(0, 30),
+        backdropFilter: `blur(${9 * a(0, 30)}px) brightness(${1 - 0.25 * a(0, 30)})`}} />
       <div style={{position: 'absolute', top: 520, left: 40, right: 40, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
         {words.map((w, i) => (
           <div key={i} style={{fontFamily: SERIF, fontWeight: 700, fontSize: i === 0 ? 150 : 112, lineHeight: 1.12,
@@ -66,7 +67,7 @@ const EndCard: React.FC<{durF: number}> = ({durF}) => {
       </div>
       <div style={{position: 'absolute', left: 80, right: 150, bottom: 300, textAlign: 'center', fontFamily: SANS, fontWeight: 500, fontSize: 19,
         lineHeight: 1.45, color: 'rgba(255,255,255,0.6)', opacity: a(90)}}>
-        Бейнематериалдар: Wikimedia Commons (CC BY / CC BY-SA), NASA (қоғамдық игілік).<br />Музыка — түпнұсқа. Толық тізім — сипаттамада.
+        Бейне және фото: Wikimedia Commons авторлары (CC BY / CC BY-SA / CC0), NASA,<br />George H. W. Bush Presidential Library (қоғамдық игілік). Музыка — түпнұсқа. Толық тізім — сипаттамада.
       </div>
     </AbsoluteFill>
   );

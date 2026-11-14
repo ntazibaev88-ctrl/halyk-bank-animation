@@ -49,7 +49,7 @@ att = int(0.25 * SR)
 duck = np.convolve(duck, np.ones(att) / att, 'same')
 duck = np.clip(duck * 1.8, 0, 1)
 music_gain = 10 ** ((-6.0 * duck) / 20)  # music drops 6 dB further under speech
-mus = music * music_gain[:, None] * 0.30   # music bed sits well under narration
+mus = music * music_gain[:, None] * 0.40   # music bed sits well under narration
 
 mix = mus + 0.80 * vo[:, None] * np.array([[1.0, 1.0]])
 mix /= max(1.0, np.abs(mix).max() / 0.95)

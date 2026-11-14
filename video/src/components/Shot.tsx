@@ -1,6 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, Easing, Img, interpolate, OffthreadVideo, staticFile, useCurrentFrame} from 'remotion';
 import {C, SANS} from '../theme';
+import {Particles} from './Graphics';
 
 export type Motion = {s?: [number, number]; x?: [number, number]; y?: [number, number]; r?: [number, number]};
 export type ShotSpec = {
@@ -29,6 +30,10 @@ export const ShotView: React.FC<{spec: ShotSpec; durF: number; xfF: number; chil
   const x = m.x ? m.x[0] + (m.x[1] - m.x[0]) * p : 0;
   const y = m.y ? m.y[0] + (m.y[1] - m.y[0]) * p : 0;
   const r = m.r ? m.r[0] + (m.r[1] - m.r[0]) * p : 0;
+  const still = !spec.clip && !!spec.img;
+  // stills get a gentle hand-held drift so the camera never feels locked off
+  const dx = still ? 7 * Math.sin(f / 41) + 3 * Math.sin(f / 17 + 2) : 0;
+  const dy = still ? 6 * Math.sin(f / 53 + 1) + 2 * Math.sin(f / 23) : 0;
   const trans = spec.trans ?? 'fade';
   const inP = xfF > 0 ? interpolate(f, [0, xfF], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.inOut(Easing.cubic)}) : 1;
   let opacity = trans === 'cut' ? 1 : inP;
@@ -65,7 +70,14 @@ export const ShotView: React.FC<{spec: ShotSpec; durF: number; xfF: number; chil
           )}
         </AbsoluteFill>
       ) : (
-        <AbsoluteFill style={{transform: `scale(${s * extraScale}) translate(${x}px, ${y}px) rotate(${r}deg)`}}>{graded}</AbsoluteFill>
+        <AbsoluteFill style={{transform: `scale(${s * extraScale}) translate(${x + dx}px, ${y + dy}px) rotate(${r}deg)`}}>{graded}</AbsoluteFill>
+      )}
+      {still && (
+        <>
+          <AbsoluteFill style={{background: 'linear-gradient(115deg, rgba(255,255,255,0) 35%, rgba(255,236,190,0.16) 50%, rgba(255,255,255,0) 65%)',
+            transform: `translateX(${(p * 2.2 - 1.1) * 1100}px)`, mixBlendMode: 'screen'}} />
+          <Particles n={22} seed={spec.id} rise={0.35} color="#fff6dc" />
+        </>
       )}
       {spec.archive && spec.mode !== 'frame' && (
         <div style={{position: 'absolute', left: 72, top: 230, fontFamily: SANS, fontWeight: 700, fontSize: 28, letterSpacing: 8, color: C.goldBright,

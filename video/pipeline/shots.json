@@ -1,75 +1,474 @@
 {
  "shots": [
   {
-   "id": "t_flag",
+   "id": "s01_flag",
    "gfx": "flagWide",
    "start": 0,
-   "xf": 0.6
+   "xf": 0.8
   },
   {
-   "id": "t_steppe",
+   "id": "s02_steppe",
    "src": "c01.webm",
-   "ss": 24,
+   "ss": 7.2,
    "start": 4.0,
+   "xf": 0.7,
    "fx": 0.5,
-   "trans": "fade",
-   "xf": 0.8,
    "motion": {
     "s": [
      1.04,
      1.12
     ]
-   }
+   },
+   "credit": "Бейне: Yedil n / Wikimedia Commons · CC BY-SA 4.0"
   },
   {
-   "id": "t_saiga",
+   "id": "s03_saiga",
    "src": "c00.webm",
-   "ss": 14,
-   "start": 14.851,
-   "fx": 0.45,
-   "xf": 0.8,
+   "ss": 14.0,
+   "start": 7.6,
+   "xf": 0.6,
+   "fx": 0.42,
    "motion": {
     "s": [
      1.1,
-     1.04
+     1.03
+    ]
+   },
+   "credit": "Бейне: Yedil n / Wikimedia Commons · CC BY-SA 4.0"
+  },
+  {
+   "id": "s04_steppe",
+   "src": "c01.webm",
+   "ss": 24.0,
+   "start": 11.2,
+   "xf": 0.6,
+   "fx": 0.5,
+   "motion": {
+    "s": [
+     1.03,
+     1.1
+    ],
+    "y": [
+     0,
+     -20
+    ]
+   },
+   "credit": "Бейне: Yedil n / Wikimedia Commons · CC BY-SA 4.0"
+  },
+  {
+   "id": "s05_tamgaly",
+   "photo": "p22.jpg",
+   "start": 14.851,
+   "credit": "Фото: Stomac · CC BY 3.0",
+   "fx": 0.45,
+   "zoom": 1.15,
+   "trans": "zoom",
+   "xf": 0.8,
+   "motion": {
+    "s": [
+     1.16,
+     1.02
+    ],
+    "r": [
+     -1.2,
+     0
+    ]
+   },
+   "grade": "contrast(1.1) saturate(0.95) sepia(0.12)"
+  },
+  {
+   "id": "s06_herd",
+   "src": "c00.webm",
+   "ss": 26.0,
+   "start": 18.4,
+   "xf": 0.6,
+   "fx": 0.5,
+   "motion": {
+    "s": [
+     1.04,
+     1.12
+    ]
+   },
+   "credit": "Бейне: Yedil n / Wikimedia Commons · CC BY-SA 4.0",
+   "warm": 0.4
+  },
+  {
+   "id": "s07_goldman",
+   "photo": "p02.jpg",
+   "start": 21.4,
+   "credit": "Фото: Nurken · CC BY-SA 4.0",
+   "fx": 0.5,
+   "fy": 0.42,
+   "zoom": 1.25,
+   "xf": 0.6,
+   "motion": {
+    "s": [
+     1.02,
+     1.12
+    ],
+    "y": [
+     40,
+     -10
+    ]
+   },
+   "warm": 0.5
+  },
+  {
+   "id": "s08_yasawi",
+   "photo": "p05.jpg",
+   "start": 24.4,
+   "credit": "Фото: Adam Harangozó · CC BY-SA 4.0",
+   "fx": 0.66,
+   "fy": 0.55,
+   "xf": 0.6,
+   "motion": {
+    "s": [
+     1.12,
+     1.02
     ],
     "x": [
+     30,
+     -30
+    ]
+   },
+   "warm": 0.6
+  },
+  {
+   "id": "s09_date",
+   "gfx": "date1991",
+   "start": 27.134,
+   "trans": "flash",
+   "xf": 0.4
+  },
+  {
+   "id": "s10_flagclose",
+   "gfx": "flagClose",
+   "start": 34.9,
+   "xf": 0.6
+  },
+  {
+   "id": "s11_plain",
+   "src": "c00.webm",
+   "ss": 0.0,
+   "start": 38.6,
+   "xf": 0.7,
+   "fx": 0.5,
+   "motion": {
+    "s": [
+     1.03,
+     1.1
+    ]
+   },
+   "credit": "Бейне: Yedil n / Wikimedia Commons · CC BY-SA 4.0",
+   "warm": 0.7
+  },
+  {
+   "id": "s12_arch92a",
+   "src": "c12.webm",
+   "ss": 20.0,
+   "start": 42.231,
+   "mode": "frame",
+   "trans": "flash",
+   "xf": 0.4,
+   "archive": "АРХИВ · 19.05.1992 · ВАШИНГТОН",
+   "motion": {
+    "s": [
+     1.0,
+     1.03
+    ]
+   },
+   "credit": "Бейне: George H. W. Bush Presidential Library · қоғамдық игілік"
+  },
+  {
+   "id": "s13_timeline",
+   "gfx": "timeline9293",
+   "start": 45.6,
+   "xf": 0.5
+  },
+  {
+   "id": "s14_arch92b",
+   "src": "c12.webm",
+   "ss": 68.0,
+   "start": 50.6,
+   "mode": "frame",
+   "xf": 0.5,
+   "archive": "АРХИВ · 19.05.1992",
+   "motion": {
+    "s": [
+     1.03,
+     1.0
+    ]
+   },
+   "credit": "Бейне: George H. W. Bush Presidential Library · қоғамдық игілік"
+  },
+  {
+   "id": "s15_capmap",
+   "gfx": "capitalMap",
+   "start": 55.053,
+   "trans": "wipe",
+   "xf": 0.6
+  },
+  {
+   "id": "s16_nurzhol",
+   "photo": "p08.jpg",
+   "start": 59.4,
+   "credit": "Фото: Ken and Nyetta · CC BY 2.0",
+   "fx": 0.5,
+   "fy": 0.5,
+   "zoom": 1.05,
+   "xf": 0.6,
+   "motion": {
+    "s": [
+     1.02,
+     1.14
+    ],
+    "y": [
      20,
-     -20
+     -30
     ]
    }
   },
   {
-   "id": "t_date",
-   "gfx": "date1991",
-   "start": 27.134,
-   "xf": 0.5,
-   "trans": "flash"
+   "id": "s17_astananight",
+   "photo": "p10.jpg",
+   "start": 63.3,
+   "credit": "Фото: Matti Blume · CC BY-SA 4.0",
+   "fx": 0.76,
+   "fy": 0.5,
+   "xf": 0.7,
+   "motion": {
+    "s": [
+     1.14,
+     1.03
+    ],
+    "x": [
+     -30,
+     20
+    ]
+   },
+   "grade": "contrast(1.08) saturate(1.15)"
   },
   {
-   "id": "t_tl",
-   "gfx": "timeline9293",
-   "start": 42.231,
-   "xf": 0.5
-  },
-  {
-   "id": "t_cap",
-   "gfx": "capitalMap",
-   "start": 55.053,
-   "xf": 0.5,
-   "trans": "wipe"
-  },
-  {
-   "id": "t_close",
-   "gfx": "flagClose",
+   "id": "s18_girls",
+   "photo": "p13.jpg",
    "start": 68.128,
-   "xf": 0.6
+   "credit": "Фото: Talgat Orynbayev · CC BY-SA 4.0",
+   "fx": 0.36,
+   "fy": 0.5,
+   "xf": 0.7,
+   "motion": {
+    "s": [
+     1.03,
+     1.12
+    ],
+    "x": [
+     25,
+     -15
+    ]
+   },
+   "warm": 0.4
   },
   {
-   "id": "t_sunset",
-   "gfx": "flagSunset",
+   "id": "s19_swings",
+   "photo": "p14.jpg",
+   "start": 73.4,
+   "credit": "Фото: OlegShalun · CC BY-SA 4.0",
+   "fx": 0.4,
+   "fy": 0.5,
+   "xf": 0.6,
+   "motion": {
+    "s": [
+     1.12,
+     1.02
+    ],
+    "x": [
+     -30,
+     30
+    ]
+   }
+  },
+  {
+   "id": "s20_rollout",
+   "src": "n_rollout.mp4",
+   "ss": 34.5,
+   "start": 78.772,
+   "trans": "zoom",
+   "xf": 0.6,
+   "fx": 0.62,
+   "motion": {
+    "s": [
+     1.04,
+     1.12
+    ]
+   },
+   "credit": "Бейне: NASA · Байқоңыр"
+  },
+  {
+   "id": "s21_lab",
+   "photo": "p17.jpg",
+   "start": 82.4,
+   "credit": "Фото: Aidar Turlanov · CC BY 4.0",
+   "fx": 0.47,
+   "fy": 0.5,
+   "xf": 0.6,
+   "motion": {
+    "s": [
+     1.02,
+     1.12
+    ],
+    "x": [
+     -25,
+     10
+    ]
+   }
+  },
+  {
+   "id": "s22_skyline",
+   "photo": "p09.jpg",
+   "start": 86.2,
+   "credit": "Фото: Jjm2311 · CC BY-SA 4.0",
+   "fx": 0.5,
+   "fy": 0.5,
+   "xf": 0.7,
+   "motion": {
+    "s": [
+     1.12,
+     1.02
+    ],
+    "y": [
+     -20,
+     20
+    ]
+   },
+   "warm": 0.5
+  },
+  {
+   "id": "s23_launch",
+   "src": "n_launch.mp4",
+   "ss": 413.0,
+   "start": 90.626,
+   "trans": "flash",
+   "xf": 0.4,
+   "fx": 0.52,
+   "motion": {
+    "s": [
+     1.02,
+     1.08
+    ]
+   },
+   "credit": "Бейне: NASA · Байқоңыр"
+  },
+  {
+   "id": "s24_dombra",
+   "photo": "p23.jpg",
+   "start": 93.9,
+   "credit": "Фото: Popolon · CC BY-SA 4.0",
+   "fx": 0.5,
+   "fy": 0.5,
+   "xf": 0.6,
+   "motion": {
+    "s": [
+     1.02,
+     1.11
+    ],
+    "y": [
+     20,
+     -10
+    ]
+   },
+   "warm": 0.3
+  },
+  {
+   "id": "s25_student",
+   "photo": "p18.jpg",
+   "start": 97.0,
+   "credit": "Фото: Kudaibergen Urinbayev · CC BY-SA 4.0",
+   "fx": 0.6,
+   "fy": 0.5,
+   "xf": 0.6,
+   "motion": {
+    "s": [
+     1.12,
+     1.02
+    ]
+   }
+  },
+  {
+   "id": "s26_girl",
+   "photo": "p11.jpg",
+   "start": 102.094,
+   "credit": "Фото: Daliya.Nurmukhammedova · CC BY-SA 4.0",
+   "fx": 0.53,
+   "fy": 0.5,
+   "xf": 0.7,
+   "motion": {
+    "s": [
+     1.02,
+     1.12
+    ],
+    "y": [
+     10,
+     -25
+    ]
+   },
+   "warm": 0.3
+  },
+  {
+   "id": "s27_family",
+   "photo": "p12.jpg",
+   "start": 105.9,
+   "credit": "Фото: Daliya.Nurmukhammedova · CC BY-SA 4.0",
+   "fx": 0.5,
+   "fy": 0.5,
+   "xf": 0.6,
+   "motion": {
+    "s": [
+     1.12,
+     1.02
+    ],
+    "y": [
+     -20,
+     20
+    ]
+   }
+  },
+  {
+   "id": "s28_horizon",
+   "src": "c01.webm",
+   "ss": 28.8,
+   "start": 109.6,
+   "xf": 0.7,
+   "fx": 0.5,
+   "motion": {
+    "s": [
+     1.03,
+     1.1
+    ]
+   },
+   "credit": "Бейне: Yedil n / Wikimedia Commons · CC BY-SA 4.0",
+   "warm": 0.8
+  },
+  {
+   "id": "s29_herd",
+   "src": "c00.webm",
+   "ss": 40.0,
    "start": 113.122,
-   "xf": 0.8
+   "xf": 0.8,
+   "fx": 0.5,
+   "motion": {
+    "s": [
+     1.04,
+     1.11
+    ]
+   },
+   "credit": "Бейне: Yedil n / Wikimedia Commons · CC BY-SA 4.0",
+   "warm": 0.9
+  },
+  {
+   "id": "s30_flagsunset",
+   "gfx": "flagSunset",
+   "start": 116.9,
+   "xf": 1.0
   }
  ]
 }
