@@ -1,0 +1,9 @@
+node_modules/
+film/footage/raw/
+film/remotion/public/shots/
+film/gfx/out/
+film/build/*
+!film/build/timeline.md
+!film/build/subtitles.srt
+film/music/score_raw.wav
+__pycache__/

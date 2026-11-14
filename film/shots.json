@@ -1,0 +1,420 @@
+{
+ "titles": {
+  "1": {
+   "at": "L1.1+0.1",
+   "dur": 4.4
+  },
+  "2": {
+   "at": "S2+0.5",
+   "dur": 3.6
+  },
+  "6": {
+   "at": "S6+0.5",
+   "dur": 4.0
+  },
+  "7": {
+   "at": "S7+0.5",
+   "dur": 3.8
+  },
+  "8": {
+   "at": "S8+0.6",
+   "dur": 3.8
+  }
+ },
+ "shots": [
+  {
+   "id": "01_steppe_night",
+   "at": "S1",
+   "kind": "video",
+   "src": "footage/raw/aurora.webm",
+   "ss": 2.0,
+   "speed": 0.5,
+   "x": 0.42,
+   "subject": "Түнгі дала, аспан (Қазақстан даласы, timelapse)",
+   "credit": "Astrobond, CC BY-SA 4.0",
+   "extra": "eq=gamma=1.35:brightness=0.03"
+  },
+  {
+   "id": "02_steppe_aerial",
+   "at": "L1.1",
+   "kind": "video",
+   "src": "footage/raw/saiga_drone.webm",
+   "ss": 23,
+   "x": 0.5,
+   "sharpen": 1,
+   "subject": "Батыс Қазақстан даласы, дрон",
+   "credit": "Yedil n, CC BY-SA 4.0"
+  },
+  {
+   "id": "03_steppe_eagle",
+   "at": "L1.2",
+   "kind": "video",
+   "src": "footage/raw/orda_drone.webm",
+   "ss": 1.6,
+   "x": 0.62,
+   "sharpen": 1,
+   "subject": "Жасыл дала үстінде қалықтаған қыран, дрон",
+   "credit": "Yedil n, CC BY-SA 4.0"
+  },
+  {
+   "id": "04_flag_wide",
+   "at": "L1.3",
+   "kind": "video",
+   "src": "gfx/out/flag_wide.mp4",
+   "ss": 0.5,
+   "drift": 0.03,
+   "subject": "Мемлекеттік ту (motion graphic)",
+   "credit": "Flag artwork: public domain"
+  },
+  {
+   "id": "05_flag_eagle",
+   "at": "L1.4",
+   "kind": "video",
+   "src": "gfx/out/flag_eagle.mp4",
+   "ss": 0.5,
+   "drift": 0.03,
+   "subject": "Тудағы қыран мен күн, ірі план (motion graphic)",
+   "credit": "Flag artwork: public domain"
+  },
+  {
+   "id": "06_steppe_herd",
+   "at": "S2",
+   "kind": "video",
+   "src": "footage/raw/saiga_drone.webm",
+   "ss": 14,
+   "x": 0.86,
+   "sharpen": 1,
+   "subject": "Ұлы дала, киік үйірі, дрон",
+   "credit": "Yedil n, CC BY-SA 4.0",
+   "zoom": 1.7,
+   "y": 0.8
+  },
+  {
+   "id": "07_saiga",
+   "at": "L2.1",
+   "kind": "video",
+   "src": "footage/raw/saiga_zdf.webm",
+   "ss": 9.3,
+   "x": 0.5,
+   "subject": "Даладағы киік",
+   "credit": "ZDF/Terra X, CC BY 4.0"
+  },
+  {
+   "id": "08_dombra_heritage",
+   "at": "L2.1+2.5",
+   "kind": "video",
+   "mode": "frame",
+   "src": "footage/raw/dombra_jambyl.webm",
+   "ss": 0.2,
+   "speed": 0.6,
+   "label": "ЖАМБЫЛДЫҢ ДОМБЫРАСЫ · XIX ҒАСЫР",
+   "subject": "Жамбыл Жабаевтың домбырасы (мұражай)",
+   "credit": "Zhambyl museum, CC BY-SA 4.0",
+   "label_y": 440
+  },
+  {
+   "id": "09_dombra_girl",
+   "at": "L2.2",
+   "kind": "video",
+   "src": "footage/raw/students.webm",
+   "ss": 117.5,
+   "x": 0.45,
+   "subject": "Домбыра тартқан қазақ қызы",
+   "credit": "Vgrigas / WMF, CC BY-SA 3.0",
+   "zoom": 1.22,
+   "y": 0.04
+  },
+  {
+   "id": "10_date1991",
+   "at": "S3",
+   "kind": "graphic",
+   "graphic": "date1991",
+   "subject": "16 желтоқсан 1991 — күн мен заң атауы (motion graphic)",
+   "credit": "Original graphic"
+  },
+  {
+   "id": "11_flag_hoist",
+   "at": "L3.2",
+   "kind": "video",
+   "src": "gfx/out/flag_hoist.mp4",
+   "ss": 0.5,
+   "drift": 0.03,
+   "subject": "Мемлекеттік ту, ұлттық өрнек (motion graphic)",
+   "credit": "Flag artwork: public domain"
+  },
+  {
+   "id": "12_new_dawn",
+   "at": "L3.3",
+   "kind": "video",
+   "src": "footage/raw/swans_drone.webm",
+   "ss": 2,
+   "x": 0.5,
+   "subject": "Жалтыркөл үстінен ұшу, кең көкжиек, дрон",
+   "credit": "Yedil n, CC BY-SA 4.0",
+   "sharpen": 1
+  },
+  {
+   "id": "13_archive_1992_a",
+   "at": "S4",
+   "kind": "video",
+   "mode": "frame",
+   "src": "footage/raw/bush1992b.webm",
+   "ss": 36,
+   "cropin": "crop=ih*4/3:ih",
+   "inset_w": 1000,
+   "inset_cy": 840,
+   "label": "ВАШИНГТОН · 1992 ЖЫЛ, МАМЫР · МҰРАҒАТ",
+   "subject": "Мұрағат: Қазақстан Президентінің АҚШ-қа сапары, құжаттарға қол қою, 1992",
+   "credit": "George Bush Presidential Library, public domain",
+   "label_y": 392
+  },
+  {
+   "id": "14_tenge",
+   "at": "W4.1.3",
+   "kind": "graphic",
+   "graphic": "tenge1993",
+   "subject": "1993 — ұлттық валюта теңге (motion graphic)",
+   "credit": "Original graphic"
+  },
+  {
+   "id": "15_un",
+   "at": "W4.1.6",
+   "kind": "graphic",
+   "graphic": "un1992",
+   "subject": "1992 — БҰҰ мүшелігі (motion graphic)",
+   "credit": "Original graphic"
+  },
+  {
+   "id": "16_archive_1992_b",
+   "at": "L4.2",
+   "kind": "video",
+   "mode": "frame",
+   "src": "footage/raw/bush1992b.webm",
+   "ss": 176,
+   "cropin": "crop=ih*4/3:ih",
+   "inset_w": 1000,
+   "inset_cy": 840,
+   "label": "ВАШИНГТОН · 1992 ЖЫЛ, МАМЫР · МҰРАҒАТ",
+   "subject": "Мұрағат: халықаралық келісімге қол қою, 1992",
+   "credit": "George Bush Presidential Library, public domain",
+   "label_y": 392
+  },
+  {
+   "id": "17_astana_graphic",
+   "at": "S5",
+   "kind": "graphic",
+   "graphic": "astana",
+   "subject": "Астана сұлбасы — Бәйтерек (line-art motion graphic)",
+   "credit": "Original graphic"
+  },
+  {
+   "id": "18_astana_kids_a",
+   "at": "L5.2",
+   "kind": "video",
+   "mode": "frame",
+   "src": "footage/raw/kids_astana.webm",
+   "ss": 0.2,
+   "inset_cy": 820,
+   "label": "АСТАНА · ҚЫСҚЫ МЕРЕКЕ",
+   "subject": "Астана: мұз төбешіктегі балалар мен ата-аналар",
+   "credit": "Ken & Nyetta, CC BY 2.0",
+   "label_y": 420
+  },
+  {
+   "id": "19_astana_kids_b",
+   "at": "L5.2+3.2",
+   "kind": "video",
+   "mode": "frame",
+   "src": "footage/raw/kids_astana.webm",
+   "ss": 7.6,
+   "inset_cy": 820,
+   "label": "АСТАНА · ҚЫСҚЫ МЕРЕКЕ",
+   "subject": "Астана: сырғанап ойнаған балалар",
+   "credit": "Ken & Nyetta, CC BY 2.0",
+   "label_y": 420
+  },
+  {
+   "id": "20_people_youth",
+   "at": "S6",
+   "kind": "video",
+   "src": "footage/raw/students.webm",
+   "ss": 167,
+   "x": 0.5,
+   "subject": "Ту ұстаған қазақстандық жастар",
+   "credit": "Vgrigas / WMF, CC BY-SA 3.0",
+   "zoom": 1.22,
+   "y": 0.04
+  },
+  {
+   "id": "21_people_park",
+   "at": "L6.1",
+   "kind": "video",
+   "src": "footage/raw/almaty_9may.webm",
+   "ss": 6.3,
+   "x": 0.45,
+   "subject": "Алматы: саябақтағы халық",
+   "credit": "Тахир Юлдашев, CC BY-SA 3.0",
+   "pre": "crop=1280:536:0:92"
+  },
+  {
+   "id": "22_people_child",
+   "at": "L6.1+2.0",
+   "kind": "video",
+   "src": "footage/raw/almaty_9may.webm",
+   "ss": 114.0,
+   "x": 0.5,
+   "subject": "Алматы: сәби",
+   "credit": "Тахир Юлдашев, CC BY-SA 3.0",
+   "pre": "crop=1280:536:0:92"
+  },
+  {
+   "id": "23_people_elder",
+   "at": "L6.2",
+   "kind": "video",
+   "src": "footage/raw/almaty_9may.webm",
+   "ss": 180.4,
+   "x": 0.42,
+   "subject": "Алматы: аға буын — әже",
+   "credit": "Тахир Юлдашев, CC BY-SA 3.0",
+   "pre": "crop=1280:536:0:92"
+  },
+  {
+   "id": "24_people_together",
+   "at": "L6.2+2.7",
+   "kind": "video",
+   "src": "footage/raw/almaty_9may.webm",
+   "ss": 153.3,
+   "x": 0.5,
+   "subject": "Алматы: бірге отырған адамдар",
+   "credit": "Тахир Юлдашев, CC BY-SA 3.0",
+   "pre": "crop=1280:536:0:92"
+  },
+  {
+   "id": "25_almaty_sunset",
+   "at": "S7",
+   "kind": "video",
+   "src": "footage/raw/koktobe.webm",
+   "ss": 0,
+   "speed": 0.7,
+   "subject": "Алматы, Көктөбе аспалы жолы, күн батуы",
+   "credit": "Key2xanadu, CC BY-SA 4.0"
+  },
+  {
+   "id": "26_freight_train",
+   "at": "L7.1+1.3",
+   "kind": "video",
+   "src": "footage/raw/te33a.webm",
+   "ss": 223,
+   "x": 0.6,
+   "subject": "Контейнер пойызы — өндіріс пен транзит",
+   "credit": "Dmitriy Lissin, CC BY 3.0"
+  },
+  {
+   "id": "27_observatory",
+   "at": "W7.1.6",
+   "kind": "video",
+   "src": "footage/raw/milkyway.webm",
+   "ss": 3,
+   "x": 0.72,
+   "subject": "Асы-Түрген обсерваториясы, Құс жолы — ғылым",
+   "credit": "Astrobond, CC BY-SA 4.0"
+  },
+  {
+   "id": "28_baikonur_launch",
+   "at": "L7.2",
+   "kind": "video",
+   "src": "footage/raw/soyuz_launch.webm",
+   "ss": 4.5,
+   "x": 0.6,
+   "subject": "Байқоңыр ғарыш айлағынан зымыран ұшыру",
+   "credit": "NASA TV, public domain"
+  },
+  {
+   "id": "29_child_reading",
+   "at": "S8",
+   "kind": "video",
+   "src": "footage/raw/girl.webm",
+   "ss": 1.0,
+   "subject": "Қазақ қызы — күлімдеген сәби",
+   "credit": "NotGypsy, CC BY-SA 4.0"
+  },
+  {
+   "id": "30_youth_flag",
+   "at": "L8.1",
+   "kind": "video",
+   "src": "footage/raw/students.webm",
+   "ss": 34,
+   "x": 0.42,
+   "subject": "Ту аясындағы оқушы қыз",
+   "credit": "Vgrigas / WMF, CC BY-SA 3.0",
+   "zoom": 1.22,
+   "y": 0.04
+  },
+  {
+   "id": "31_youth_boy",
+   "at": "L8.2",
+   "kind": "video",
+   "src": "footage/raw/students.webm",
+   "ss": 184,
+   "x": 0.55,
+   "subject": "Жас жеткіншек, артында ту",
+   "credit": "Vgrigas / WMF, CC BY-SA 3.0",
+   "zoom": 1.0,
+   "y": 0.5
+  },
+  {
+   "id": "32_youth_dombra",
+   "at": "L8.2+2.4",
+   "kind": "video",
+   "src": "footage/raw/students.webm",
+   "ss": 233,
+   "x": 0.62,
+   "subject": "Домбыра тартқан жас жігіт пен құрдастары",
+   "credit": "Vgrigas / WMF, CC BY-SA 3.0",
+   "zoom": 1.22,
+   "y": 0.04
+  },
+  {
+   "id": "33_steppe_wide",
+   "at": "S9",
+   "kind": "video",
+   "src": "footage/raw/orda_drone.webm",
+   "ss": 22,
+   "x": 0.5,
+   "sharpen": 1,
+   "subject": "Жасыл дала көкжиегі, дрон",
+   "credit": "Yedil n, CC BY-SA 4.0"
+  },
+  {
+   "id": "35_child_smile",
+   "at": "W9.1.4",
+   "kind": "video",
+   "src": "footage/raw/almaty_9may.webm",
+   "ss": 218.08,
+   "x": 0.42,
+   "subject": "Алматы: күлімдеген бала",
+   "credit": "Тахир Юлдашев, CC BY-SA 3.0",
+   "pre": "crop=1280:536:0:92",
+   "speed": 0.76
+  },
+  {
+   "id": "36_flag_final",
+   "at": "L9.2",
+   "kind": "video",
+   "src": "gfx/out/flag_final.mp4",
+   "ss": 0.5,
+   "drift": 0.03,
+   "subject": "Желбіреген мемлекеттік ту (motion graphic)",
+   "credit": "Flag artwork: public domain"
+  },
+  {
+   "id": "37_final_title",
+   "at": "E9.3+0.45",
+   "kind": "graphic",
+   "graphic": "final",
+   "fade": 0.9,
+   "subject": "Қорытынды титр",
+   "credit": "Original graphic"
+  }
+ ]
+}
