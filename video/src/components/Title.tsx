@@ -43,6 +43,9 @@ export const Title: React.FC<{lines: TitleLine[]; dur: number; top: number; orna
   return (
     <div style={{position: 'absolute', left: 60, right: 60, top, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 18,
       opacity: out, filter: `blur(${blur}px)`, transform: `translateY(${(1 - out) * -30}px)`}}>
+      <div style={{position: 'absolute', left: -120, right: -120, top: -140, bottom: -120, zIndex: -1,
+        background: 'radial-gradient(ellipse 60% 55% at 50% 50%, rgba(0,12,22,0.55) 0%, rgba(0,12,22,0.25) 55%, rgba(0,12,22,0) 100%)',
+        opacity: interpolate(frame, [0, 14], [0, 1], clamp)}} />
       {kicker && (
         <div style={{fontFamily: SANS, fontWeight: 600, fontSize: 30, letterSpacing: 10, color: C.goldBright,
           opacity: interpolate(frame, [0, 16], [0, 1], clamp), textShadow: '0 2px 12px rgba(0,0,0,0.7)'}}>{kicker}</div>
