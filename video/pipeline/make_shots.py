@@ -8,7 +8,7 @@ nasa = f'{V}: NASA'
 arch = f'{V}: George H. W. Bush Presidential Library · қоғамдық игілік'
 shots = [
   # 1 — opening
-  dict(id='s01_flag', gfx='flagWide', start=0, xf=0.8),
+  dict(id='s01_flag', gfx='flagWide', start=0, xf=0, trans='cut'),
   vid('s02_steppe', 'c01.webm', 7.2, 4.0, xf=0.7, fx=0.5, motion={'s': [1.04, 1.12]}, credit=yed),
   vid('s03_saiga', 'c00.webm', 14.0, 7.6, xf=0.6, fx=0.42, motion={'s': [1.10, 1.03]}, credit=yed),
   vid('s04_steppe', 'c01.webm', 24.0, 11.2, xf=0.6, fx=0.5, motion={'s': [1.03, 1.10], 'y': [0, -20]}, credit=yed),
@@ -33,8 +33,8 @@ shots = [
   pho('s18_girls', 'p13.jpg', 68.128, 'Talgat Orynbayev · CC BY-SA 4.0', fx=0.36, fy=0.5, xf=0.7, motion={'s': [1.03, 1.12], 'x': [25, -15]}, warm=0.4),
   pho('s19_swings', 'p14.jpg', 73.4, 'OlegShalun · CC BY-SA 4.0', fx=0.4, fy=0.5, xf=0.6, motion={'s': [1.12, 1.02], 'x': [-30, 30]}),
   # 7 — modern Kazakhstan
-  vid('s20_rollout', 'n_rollout.mp4', 34.5, 78.772, trans='zoom', xf=0.6, fx=0.62, motion={'s': [1.04, 1.12]}, credit=f'{nasa} · Байқоңыр'),
-  pho('s21_lab', 'p17.jpg', 82.4, 'Aidar Turlanov · CC BY 4.0', fx=0.47, fy=0.5, xf=0.6, motion={'s': [1.02, 1.12], 'x': [-25, 10]}),
+  vid('s20_rollout', 'n_rollout.mp4', 34.05, 78.772, trans='zoom', xf=0.6, fx=0.62, motion={'s': [1.04, 1.12]}, credit=f'{nasa} · Байқоңыр'),
+  pho('s21_lab', 'p17.jpg', 82.1, 'Aidar Turlanov · CC BY 4.0', fx=0.47, fy=0.5, xf=0.6, motion={'s': [1.02, 1.12], 'x': [-25, 10]}),
   pho('s22_skyline', 'p09.jpg', 86.2, 'Jjm2311 · CC BY-SA 4.0', fx=0.5, fy=0.5, xf=0.7, motion={'s': [1.12, 1.02], 'y': [-20, 20]}, warm=0.5),
   # 8 — achievements
   vid('s23_launch', 'n_launch.mp4', 413.0, 90.626, trans='flash', xf=0.4, fx=0.52, motion={'s': [1.02, 1.08]}, credit=f'{nasa} · Байқоңыр'),

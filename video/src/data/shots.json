@@ -4,7 +4,8 @@
    "id": "s01_flag",
    "gfx": "flagWide",
    "start": 0,
-   "xf": 0.8,
+   "xf": 0,
+   "trans": "cut",
    "dur": 4.95
   },
   {
@@ -323,7 +324,7 @@
   {
    "id": "s20_rollout",
    "src": "n_rollout.mp4",
-   "ss": 34.5,
+   "ss": 34.05,
    "start": 78.772,
    "trans": "zoom",
    "xf": 0.6,
@@ -335,13 +336,13 @@
     ]
    },
    "credit": "Бейне: NASA · Байқоңыр",
-   "dur": 4.478,
+   "dur": 4.178,
    "clip": "s20_rollout.mp4"
   },
   {
    "id": "s21_lab",
    "photo": "p17.jpg",
-   "start": 82.4,
+   "start": 82.1,
    "credit": "Фото: Aidar Turlanov · CC BY 4.0",
    "fx": 0.47,
    "fy": 0.5,
@@ -356,7 +357,7 @@
      10
     ]
    },
-   "dur": 4.75,
+   "dur": 5.05,
    "img": "s21_lab.jpg"
   },
   {

@@ -25,7 +25,7 @@ The 1992 archival clip is a U.S. federal government work (public domain) from th
 | 17 | 1:03.30 | s17_astananight | [Night at Esil District, Astana (P1190721).jpg](https://commons.wikimedia.org/wiki/File:Night_at_Esil_District,_Astana_(P1190721).jpg) | Matti Blume | CC BY-SA 4.0 |
 | 18 | 1:08.13 | s18_girls | [Nauryz celebration.jpg](https://commons.wikimedia.org/wiki/File:Nauryz_celebration.jpg) | Talgat Orynbayev | CC BY-SA 4.0 |
 | 19 | 1:13.40 | s19_swings | [Nauryz, Kazakh national swings Altybaqan.jpg](https://commons.wikimedia.org/wiki/File:Nauryz,_Kazakh_national_swings_Altybaqan.jpg) | OlegShalun | CC BY-SA 4.0 |
-| 20 | 1:18.77 | s20_rollout | Soyuz MS-24 rollout, Baikonur (NASA, images.nasa.gov), from 34.5s | NASA | Public domain |
+| 20 | 1:18.77 | s20_rollout | Soyuz MS-24 rollout, Baikonur (NASA, images.nasa.gov), from 34.05s | NASA | Public domain |
 | 21 | 1:22.40 | s21_lab | [Biology research process at Nazarbayev University.jpg](https://commons.wikimedia.org/wiki/File:Biology_research_process_at_Nazarbayev_University.jpg) | Aidar Turlanov | CC BY 4.0 |
 | 22 | 1:26.20 | s22_skyline | [210719 View from Palace of Peace and Reconciliation to Skyline.jpg](https://commons.wikimedia.org/wiki/File:210719_View_from_Palace_of_Peace_and_Reconciliation_to_Skyline.jpg) | Jjm2311 | CC BY-SA 4.0 |
 | 23 | 1:30.63 | s23_launch | Soyuz launch, Baikonur Cosmodrome (NASA, images.nasa.gov), from 413.0s | NASA | Public domain |
