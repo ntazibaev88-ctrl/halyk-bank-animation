@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<title>GTA 6 — The Game That Changed Everything?</title>
+<style>
+@font-face{font-family:"Mont";src:url(assets/fonts/montserrat-cyrillic-700-normal.woff2) format("woff2");font-weight:700;unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Mont";src:url(assets/fonts/montserrat-latin-700-normal.woff2) format("woff2");font-weight:700;unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:"Mont";src:url(assets/fonts/montserrat-cyrillic-800-normal.woff2) format("woff2");font-weight:800;unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Mont";src:url(assets/fonts/montserrat-latin-800-normal.woff2) format("woff2");font-weight:800;unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:"Mont";src:url(assets/fonts/montserrat-cyrillic-900-normal.woff2) format("woff2");font-weight:900;unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Mont";src:url(assets/fonts/montserrat-latin-900-normal.woff2) format("woff2");font-weight:900;unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:"Unb";src:url(assets/fonts/unbounded-cyrillic-700-normal.woff2) format("woff2");font-weight:700;unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Unb";src:url(assets/fonts/unbounded-latin-700-normal.woff2) format("woff2");font-weight:700;unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:"Unb";src:url(assets/fonts/unbounded-cyrillic-900-normal.woff2) format("woff2");font-weight:900;unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Unb";src:url(assets/fonts/unbounded-latin-900-normal.woff2) format("woff2");font-weight:900;unicode-range:U+0000-00FF,U+2000-206F}
+
+:root{--yellow:#ffd60a;--white:#ffffff}
+html,body{margin:0;padding:0;background:#000}
+#root{position:relative;width:2160px;height:3840px;overflow:hidden;background:#000;font-family:"Mont",sans-serif;color:#fff}
+.clip{position:absolute}
+.shot{inset:0;width:2160px;height:3840px;object-fit:cover;transform-origin:50% 45%;background:#000}
+
+/* ---------- animatic slate ---------- */
+.slate{position:absolute;inset:0;overflow:hidden;background:var(--bg)}
+.blob{position:absolute;border-radius:50%;opacity:.55}
+.b1{width:2400px;height:2400px;left:-700px;top:-200px;background:radial-gradient(circle,var(--a) 0%,transparent 62%)}
+.b2{width:2600px;height:2600px;left:300px;top:1500px;background:radial-gradient(circle,var(--b) 0%,transparent 60%)}
+.b3{width:1400px;height:1400px;left:380px;top:1100px;background:radial-gradient(circle,rgba(255,255,255,.18) 0%,transparent 65%)}
+.scan{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 2px,transparent 2px 8px)}
+.frame{position:absolute;left:150px;right:150px;top:760px;bottom:520px}
+.frame .c{position:absolute;width:120px;height:120px;border:6px solid rgba(255,255,255,.35)}
+.frame .tl{left:0;top:0;border-right:0;border-bottom:0}.frame .tr{right:0;top:0;border-left:0;border-bottom:0}
+.frame .bl{left:0;bottom:0;border-right:0;border-top:0}.frame .br{right:0;bottom:0;border-left:0;border-top:0}
+.slate-box{position:absolute;left:0;right:0;top:2990px;text-align:center}
+.slate-id{font:700 50px "Mont";letter-spacing:10px;color:rgba(255,255,255,.55)}
+.slate-id span{color:var(--yellow)}
+.slate-label{margin:22px auto 0;max-width:1800px;font:800 76px/1.15 "Mont";letter-spacing:4px;color:rgba(255,255,255,.8)}
+.slate-note{margin-top:26px;display:inline-block;padding:16px 34px;border:3px solid rgba(255,255,255,.35);border-radius:10px;font:700 46px "Mont";letter-spacing:8px;color:rgba(255,255,255,.7)}
+
+/* ---------- grade helpers ---------- */
+.vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 85% 70% at 50% 46%,transparent 55%,rgba(0,0,0,.55) 100%)}
+.shade-top{position:absolute;left:0;right:0;top:0;height:900px;background:linear-gradient(rgba(0,0,0,.45),transparent)}
+.shade-bottom{position:absolute;left:0;right:0;bottom:0;height:1700px;background:linear-gradient(transparent,rgba(0,0,0,.28) 35%,rgba(0,0,0,.62))}
+.flash{inset:0;background:#fff;opacity:0}
+.dip{inset:0;background:#000;opacity:0}
+.endshade{inset:0;background:#000;opacity:0}
+
+/* ---------- chapter label ---------- */
+.chapter{left:160px;top:640px;display:flex;align-items:center;gap:30px;font:800 64px "Mont";letter-spacing:12px}
+.chapter .num{color:var(--yellow)}
+.chapter .bar{display:block;width:140px;height:6px;background:var(--yellow);transform-origin:0 50%}
+.chapter .name{color:#fff;text-shadow:0 4px 20px rgba(0,0,0,.6)}
+
+/* ---------- motion typography ---------- */
+.mt{left:0;right:0;text-align:center}
+.mt13{top:980px}
+.mt13 .big{font:900 900px/1 "Unb";letter-spacing:-20px;background:linear-gradient(180deg,#fff 30%,#ffd60a 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 20px 60px rgba(0,0,0,.6))}
+.mt13 .sub{margin-top:40px;font:800 120px "Mont";letter-spacing:26px;text-shadow:0 6px 30px rgba(0,0,0,.8)}
+.mtgta{top:1420px;display:flex;align-items:center;justify-content:center;gap:50px}
+.mtgta .big{font:900 400px/1 "Unb";letter-spacing:6px;color:#fff;text-shadow:0 0 60px rgba(255,214,10,.35),0 20px 60px rgba(0,0,0,.7)}
+.mtgta .rule{width:180px;height:10px;background:var(--yellow)}
+.mtgta .rule.l{transform-origin:100% 50%}.mtgta .rule.r{transform-origin:0 50%}
+.nametag{left:160px;top:2060px;display:flex;align-items:stretch;gap:36px}
+.nametag .tagbar{width:18px;background:var(--yellow);transform-origin:50% 100%}
+.nametag .nm{font:900 170px/1 "Unb";letter-spacing:6px;text-shadow:0 8px 40px rgba(0,0,0,.7)}
+.nametag .role{margin-top:22px;font:700 60px "Mont";letter-spacing:14px;color:rgba(255,255,255,.85);text-shadow:0 4px 20px rgba(0,0,0,.8)}
+.mtvc{top:1300px}
+.mtvc .pre{font:800 90px "Mont";letter-spacing:22px;color:rgba(255,255,255,.92);text-shadow:0 4px 24px rgba(0,0,0,.7)}
+.mtvc .big{margin-top:30px;font:900 215px/1 "Unb";letter-spacing:6px;white-space:nowrap;background:linear-gradient(90deg,#ff3d9a,#ffb36b 50%,#2ee6ff);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 40px rgba(255,61,154,.45)) drop-shadow(0 16px 40px rgba(0,0,0,.6))}
+.wordtag{top:1400px}
+.wordtag .big{display:inline-block;font:900 150px/1 "Unb";letter-spacing:8px;white-space:nowrap;color:#fff;padding-bottom:34px;border-bottom:12px solid var(--yellow);text-shadow:0 10px 40px rgba(0,0,0,.7)}
+.endcard{top:1250px}
+.endcard .big{font:900 420px/1 "Unb";letter-spacing:8px;color:#fff;text-shadow:0 0 80px rgba(255,214,10,.3),0 20px 60px rgba(0,0,0,.7)}
+.endcard .q{margin-top:70px;font:900 130px "Mont";letter-spacing:10px;color:var(--yellow);text-shadow:0 8px 40px rgba(0,0,0,.8)}
+.wm{right:150px;top:470px;font:700 44px "Mont";letter-spacing:8px;color:rgba(255,255,255,.55);padding:12px 24px;border:3px solid rgba(255,255,255,.3);border-radius:8px}
+
+/* ---------- subtitles ---------- */
+.sub{left:160px;right:160px;top:2560px;text-align:center}
+.sub .ln{font:800 108px/1.2 "Mont";letter-spacing:1px;color:#fff;text-shadow:0 0 4px rgba(0,0,0,.9),0 6px 10px rgba(0,0,0,.65),0 12px 40px rgba(0,0,0,.7);white-space:nowrap}
+.sub .w{display:inline-block;margin:0 .13em;transform-origin:50% 70%}
+.sub .hl{color:var(--yellow)}
+
+</style></head>
+<body>
+<div id="root" data-composition-id="root" data-width="2160" data-height="3840" data-fps="30" data-start="0" data-duration="80.0">
+<div id="shot_S01" class="clip shot" data-start="0.000" data-duration="2.800" style="z-index:10">
+  <div class="slate" style="--a:#ff6a3d;--b:#6d1b7b;--bg:#140a14">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S01 <span>·</span> 00:00.00 → 00:02.80</div>
+      <div class="slate-label">ВАЙС-СИТИ · ГОРИЗОНТ</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S02" class="clip shot" data-start="2.800" data-duration="1.367" style="z-index:11">
+  <div class="slate" style="--a:#ff6a3d;--b:#6d1b7b;--bg:#140a14">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S02 <span>·</span> 00:02.80 → 00:04.17</div>
+      <div class="slate-label">ТОЛПА · ПЛЯЖ / КЛУБ</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S03" class="clip shot" data-start="4.167" data-duration="1.833" style="z-index:12">
+  <div class="slate" style="--a:#ff6a3d;--b:#6d1b7b;--bg:#140a14">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S03 <span>·</span> 00:04.17 → 00:06.00</div>
+      <div class="slate-label">НОЧНОЙ ГОРОД · АЭРО</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S04" class="clip shot" data-start="6.000" data-duration="2.933" style="z-index:13">
+  <div class="slate" style="--a:#ff6a3d;--b:#6d1b7b;--bg:#140a14">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S04 <span>·</span> 00:06.00 → 00:08.93</div>
+      <div class="slate-label">АВТО НА МОСТУ · СКОРОСТЬ</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S05" class="clip shot" data-start="8.933" data-duration="2.933" style="z-index:14">
+  <div class="slate" style="--a:#ff6a3d;--b:#6d1b7b;--bg:#140a14">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S05 <span>·</span> 00:08.93 → 00:11.87</div>
+      <div class="slate-label">ФЛАМИНГО · ПАЛЬМЫ</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S06" class="clip shot" data-start="11.867" data-duration="2.000" style="z-index:15">
+  <div class="slate" style="--a:#ffb347;--b:#1f6f8b;--bg:#0c1014">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S06 <span>·</span> 00:11.87 → 00:13.87</div>
+      <div class="slate-label">ДЖЕЙСОН · КРУПНЫЙ ПЛАН</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S07" class="clip shot" data-start="13.867" data-duration="1.300" style="z-index:16">
+  <div class="slate" style="--a:#ffb347;--b:#1f6f8b;--bg:#0c1014">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S07 <span>·</span> 00:13.87 → 00:15.17</div>
+      <div class="slate-label">ЛЮСИЯ · КРУПНЫЙ ПЛАН</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S08" class="clip shot" data-start="15.167" data-duration="2.333" style="z-index:17">
+  <div class="slate" style="--a:#ffb347;--b:#1f6f8b;--bg:#0c1014">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S08 <span>·</span> 00:15.17 → 00:17.50</div>
+      <div class="slate-label">ДЖЕЙСОН И ЛЮСИЯ · ВМЕСТЕ</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S09" class="clip shot" data-start="17.500" data-duration="2.200" style="z-index:18">
+  <div class="slate" style="--a:#ffb347;--b:#1f6f8b;--bg:#0c1014">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S09 <span>·</span> 00:17.50 → 00:19.70</div>
+      <div class="slate-label">ОГРАБЛЕНИЕ · ДЕНЬГИ · ДОВЕРИЕ</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S10" class="clip shot" data-start="19.700" data-duration="1.200" style="z-index:19">
+  <div class="slate" style="--a:#ffb347;--b:#1f6f8b;--bg:#0c1014">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S10 <span>·</span> 00:19.70 → 00:20.90</div>
+      <div class="slate-label">ПОЛИЦИЯ · ПОГОНЯ</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S11" class="clip shot" data-start="20.900" data-duration="2.000" style="z-index:20">
+  <div class="slate" style="--a:#ffb347;--b:#1f6f8b;--bg:#0c1014">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S11 <span>·</span> 00:20.90 → 00:22.90</div>
+      <div class="slate-label">АРЕСТ · ПОСЛЕДСТВИЯ</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S12" class="clip shot" data-start="22.900" data-duration="2.500" style="z-index:21">
+  <div class="slate" style="--a:#ff2d95;--b:#00d9ff;--bg:#0b0716">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S12 <span>·</span> 00:22.90 → 00:25.40</div>
+      <div class="slate-label">ВАЙС-СИТИ · ДНЁМ</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S13" class="clip shot" data-start="25.400" data-duration="1.300" style="z-index:22">
+  <div class="slate" style="--a:#ff2d95;--b:#00d9ff;--bg:#0b0716">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S13 <span>·</span> 00:25.40 → 00:26.70</div>
+      <div class="slate-label">НЕОНОВЫЕ УЛИЦЫ</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S14" class="clip shot" data-start="26.700" data-duration="1.300" style="z-index:23">
+  <div class="slate" style="--a:#ff2d95;--b:#00d9ff;--bg:#0b0716">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S14 <span>·</span> 00:26.70 → 00:28.00</div>
+      <div class="slate-label">ШОССЕ · ТРАФИК</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S15" class="clip shot" data-start="28.000" data-duration="1.633" style="z-index:24">
+  <div class="slate" style="--a:#ff2d95;--b:#00d9ff;--bg:#0b0716">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S15 <span>·</span> 00:28.00 → 00:29.63</div>
+      <div class="slate-label">ПЛЯЖ · НОЧНАЯ ЖИЗНЬ</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S16" class="clip shot" data-start="29.633" data-duration="1.700" style="z-index:25">
+  <div class="slate" style="--a:#ff2d95;--b:#00d9ff;--bg:#0b0716">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S16 <span>·</span> 00:29.63 → 00:31.33</div>
+      <div class="slate-label">МАРИНА · ЗОЛОТОЙ ЧАС</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S17" class="clip shot" data-start="31.333" data-duration="4.200" style="z-index:26">
+  <div class="slate" style="--a:#ff2d95;--b:#00d9ff;--bg:#0b0716">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S17 <span>·</span> 00:31.33 → 00:35.03</div>
+      <div class="slate-label">УЛИЦА · МЕСТНЫЕ ЖИТЕЛИ</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S18" class="clip shot" data-start="35.033" data-duration="3.633" style="z-index:27">
+  <div class="slate" style="--a:#2ec4b6;--b:#ffd166;--bg:#071311">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S18 <span>·</span> 00:35.03 → 00:38.67</div>
+      <div class="slate-label">ПЕЙЗАЖ · НЕБО И ВОДА</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S19" class="clip shot" data-start="38.667" data-duration="2.133" style="z-index:28">
+  <div class="slate" style="--a:#2ec4b6;--b:#ffd166;--bg:#071311">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S19 <span>·</span> 00:38.67 → 00:40.80</div>
+      <div class="slate-label">ДЕТАЛИ · ПЕРСОНАЖИ</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S20" class="clip shot" data-start="40.800" data-duration="1.167" style="z-index:29">
+  <div class="slate" style="--a:#2ec4b6;--b:#ffd166;--bg:#071311">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S20 <span>·</span> 00:40.80 → 00:41.97</div>
+      <div class="slate-label">ДИКАЯ ПРИРОДА · БОЛОТА</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S21" class="clip shot" data-start="41.967" data-duration="2.033" style="z-index:30">
+  <div class="slate" style="--a:#2ec4b6;--b:#ffd166;--bg:#071311">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S21 <span>·</span> 00:41.97 → 00:44.00</div>
+      <div class="slate-label">ЖИВОЙ ГОРОД · ТРАФИК</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S22" class="clip shot" data-start="44.000" data-duration="2.367" style="z-index:31">
+  <div class="slate" style="--a:#2ec4b6;--b:#ffd166;--bg:#071311">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S22 <span>·</span> 00:44.00 → 00:46.37</div>
+      <div class="slate-label">МОМЕНТЫ ИЗ ЖИЗНИ</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S23" class="clip shot" data-start="46.367" data-duration="3.033" style="z-index:32">
+  <div class="slate" style="--a:#2ec4b6;--b:#ffd166;--bg:#071311">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S23 <span>·</span> 00:46.37 → 00:49.40</div>
+      <div class="slate-label">АВТО НА ЗАКАТЕ</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S24" class="clip shot" data-start="49.400" data-duration="3.633" style="z-index:33">
+  <div class="slate" style="--a:#7b5cff;--b:#00b4d8;--bg:#0a0a1a">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S24 <span>·</span> 00:49.40 → 00:53.03</div>
+      <div class="slate-label">НОЧНОЙ ВАЙС-СИТИ · АЭРО</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S25" class="clip shot" data-start="53.033" data-duration="2.700" style="z-index:34">
+  <div class="slate" style="--a:#7b5cff;--b:#00b4d8;--bg:#0a0a1a">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S25 <span>·</span> 00:53.03 → 00:55.73</div>
+      <div class="slate-label">ОТКРЫТЫЙ МИР · СВОБОДА</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S26" class="clip shot" data-start="55.733" data-duration="2.500" style="z-index:35">
+  <div class="slate" style="--a:#7b5cff;--b:#00b4d8;--bg:#0a0a1a">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S26 <span>·</span> 00:55.73 → 00:58.23</div>
+      <div class="slate-label">ГЕРОИ · КИНОКАДР</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S27" class="clip shot" data-start="58.233" data-duration="1.767" style="z-index:36">
+  <div class="slate" style="--a:#7b5cff;--b:#00b4d8;--bg:#0a0a1a">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S27 <span>·</span> 00:58.23 → 01:00.00</div>
+      <div class="slate-label">ВЕРТОЛЁТ · ПРОЖЕКТОР</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S28" class="clip shot" data-start="60.000" data-duration="3.033" style="z-index:37">
+  <div class="slate" style="--a:#7b5cff;--b:#00b4d8;--bg:#0a0a1a">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S28 <span>·</span> 01:00.00 → 01:03.03</div>
+      <div class="slate-label">ЛЮСИЯ · ВЗГЛЯД</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S29" class="clip shot" data-start="63.033" data-duration="2.600" style="z-index:38">
+  <div class="slate" style="--a:#ffcf33;--b:#ff4d4d;--bg:#140c06">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S29 <span>·</span> 01:03.03 → 01:05.63</div>
+      <div class="slate-label">ДЖЕЙСОН И ЛЮСИЯ · ЗАКАТ</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S30" class="clip shot" data-start="65.633" data-duration="1.300" style="z-index:39">
+  <div class="slate" style="--a:#ffcf33;--b:#ff4d4d;--bg:#140c06">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S30 <span>·</span> 01:05.63 → 01:06.93</div>
+      <div class="slate-label">ГОРИЗОНТ · ЗОЛОТОЙ ЧАС</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S31" class="clip shot" data-start="66.933" data-duration="3.000" style="z-index:40">
+  <div class="slate" style="--a:#ffcf33;--b:#ff4d4d;--bg:#140c06">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S31 <span>·</span> 01:06.93 → 01:09.93</div>
+      <div class="slate-label">СОЦСЕТИ · ВИРУСНЫЕ МОМЕНТЫ</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S32" class="clip shot" data-start="69.933" data-duration="2.033" style="z-index:41">
+  <div class="slate" style="--a:#ffcf33;--b:#ff4d4d;--bg:#140c06">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S32 <span>·</span> 01:09.93 → 01:11.97</div>
+      <div class="slate-label">ПОГОНЯ · ЗАМЕДЛЕНИЕ</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S33" class="clip shot" data-start="71.967" data-duration="2.433" style="z-index:42">
+  <div class="slate" style="--a:#ffcf33;--b:#ff4d4d;--bg:#140c06">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S33 <span>·</span> 01:11.97 → 01:14.40</div>
+      <div class="slate-label">НОЧНОЙ ГОРОД · ОГНИ</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S34" class="clip shot" data-start="74.400" data-duration="1.833" style="z-index:43">
+  <div class="slate" style="--a:#ffcf33;--b:#ff4d4d;--bg:#140c06">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S34 <span>·</span> 01:14.40 → 01:16.23</div>
+      <div class="slate-label">ДЖЕЙСОН И ЛЮСИЯ · ГЕРОИ</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div id="shot_S35" class="clip shot" data-start="76.233" data-duration="3.767" style="z-index:44">
+  <div class="slate" style="--a:#ffcf33;--b:#ff4d4d;--bg:#140c06">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="scan"></div>
+    <div class="frame"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+    <div class="slate-box">
+      <div class="slate-id">S35 <span>·</span> 01:16.23 → 01:20.00</div>
+      <div class="slate-label">ФИНАЛ · ГОРИЗОНТ НА ЗАКАТЕ</div>
+      <div class="slate-note">СЛОТ ДЛЯ ОФИЦИАЛЬНОГО ВИДЕО GTA VI</div>
+    </div>
+  </div>
+</div>
+<div class="vignette" style="z-index:200"></div>
+<div class="shade-top" style="z-index:201"></div>
+<div class="shade-bottom" style="z-index:201"></div>
+<div id="fl_S04" class="clip flash" data-start="5.960" data-duration="0.4" style="z-index:400"></div>
+<div id="dp_S06" class="clip dip" data-start="11.647" data-duration="0.6" style="z-index:400"></div>
+<div id="fl_S12" class="clip flash" data-start="22.860" data-duration="0.4" style="z-index:400"></div>
+<div id="dp_S24" class="clip dip" data-start="49.180" data-duration="0.6" style="z-index:400"></div>
+<div id="fl_S29" class="clip flash" data-start="62.993" data-duration="0.4" style="z-index:400"></div>
+<div id="ch_characters" class="clip chapter" data-start="12.017" data-duration="2.6" style="z-index:300"><span class="num">01</span><span class="bar"></span><span class="name">ГЕРОИ</span></div>
+<div id="ch_world" class="clip chapter" data-start="35.183" data-duration="2.6" style="z-index:300"><span class="num">03</span><span class="bar"></span><span class="name">ЖИВОЙ МИР</span></div>
+<div id="ch_expectations" class="clip chapter" data-start="49.550" data-duration="2.6" style="z-index:300"><span class="num">04</span><span class="bar"></span><span class="name">ОЖИДАНИЯ</span></div>
+<div id="ch_final" class="clip chapter" data-start="63.183" data-duration="2.6" style="z-index:300"><span class="num">05</span><span class="bar"></span><span class="name">ФИНАЛ</span></div>
+<div id="mt13" class="clip mt mt13" data-start="0.560" data-duration="2.140" style="z-index:310"><div class="big">13</div><div class="sub">ЛЕТ ОЖИДАНИЯ</div></div>
+<div id="mtgta" class="clip mt mtgta" data-start="6.000" data-duration="2.968" style="z-index:310"><div class="rule l"></div><div class="big">GTA&nbsp;VI</div><div class="rule r"></div></div>
+<div id="nm_S06" class="clip nametag" data-start="13.277" data-duration="0.590" style="z-index:310"><div class="tagbar"></div><div><div class="nm">ДЖЕЙСОН</div><div class="role">ГЛАВНЫЙ ГЕРОЙ</div></div></div>
+<div id="nm_S07" class="clip nametag" data-start="13.965" data-duration="1.202" style="z-index:310"><div class="tagbar"></div><div><div class="nm">ЛЮСИЯ</div><div class="role">ГЛАВНАЯ ГЕРОИНЯ</div></div></div>
+<div id="mtvc" class="clip mt mtvc" data-start="23.000" data-duration="2.400" style="z-index:310"><div class="pre">ДОБРО ПОЖАЛОВАТЬ В</div><div class="big">ВАЙС-СИТИ</div></div>
+<div id="wt_S19" class="clip mt wordtag" data-start="38.767" data-duration="1.983" style="z-index:310"><div class="big">ДЕТАЛИ</div></div>
+<div id="wt_S21" class="clip mt wordtag" data-start="42.067" data-duration="1.883" style="z-index:310"><div class="big">ЖИВОЙ ГОРОД</div></div>
+<div id="endshade" class="clip endshade" data-start="76.233" data-duration="3.767" style="z-index:250"></div>
+<div id="endcard" class="clip mt endcard" data-start="76.533" data-duration="3.467" style="z-index:320"><div class="big">GTA&nbsp;VI</div><div class="q">ПРЕВЗОЙТИ ЛЕГЕНДУ?</div></div>
+<div class="clip wm" data-start="0" data-duration="80.0" style="z-index:500">АНИМАТИК · ЧЕРНОВОЙ МОНТАЖ</div>
+<div id="sub00" class="clip sub" data-start="0.560" data-duration="2.295" style="z-index:350"><div class="ln"><span class="w hl">Тринадцать</span></div><div class="ln"><span class="w hl">лет</span><span class="w">ожидания.</span></div></div>
+<div id="sub01" class="clip sub" data-start="2.895" data-duration="2.595" style="z-index:350"><div class="ln"><span class="w hl">Миллионы</span><span class="w">игроков</span></div><div class="ln"><span class="w">по</span><span class="w">всему</span><span class="w">миру.</span></div></div>
+<div id="sub02" class="clip sub" data-start="5.530" data-duration="1.373" style="z-index:350"><div class="ln"><span class="w">И</span><span class="w">теперь</span><span class="w hl">GTA</span><span class="w hl">6</span></div></div>
+<div id="sub03" class="clip sub" data-start="6.943" data-duration="2.035" style="z-index:350"><div class="ln"><span class="w">готовится</span><span class="w">стать</span></div><div class="ln"><span class="w">одним</span><span class="w">из</span><span class="w">самых</span><span class="w hl">громких</span></div></div>
+<div id="sub04" class="clip sub" data-start="9.018" data-duration="2.050" style="z-index:350"><div class="ln"><span class="w">событий</span><span class="w">в</span><span class="w">истории</span></div><div class="ln"><span class="w">видеоигр.</span></div></div>
+<div id="sub05" class="clip sub" data-start="11.940" data-duration="3.270" style="z-index:350"><div class="ln"><span class="w">В</span><span class="w">центре</span><span class="w">истории —</span></div><div class="ln"><span class="w hl">Джейсон</span><span class="w">и</span><span class="w hl">Люсия.</span></div></div>
+<div id="sub06" class="clip sub" data-start="15.250" data-duration="2.297" style="z-index:350"><div class="ln"><span class="w">Двое</span><span class="w">людей,</span></div><div class="ln"><span class="w">оказавшихся</span><span class="w">в</span><span class="w">мире,</span></div></div>
+<div id="sub07" class="clip sub" data-start="17.587" data-duration="2.073" style="z-index:350"><div class="ln"><span class="w">где</span><span class="w hl">доверие</span><span class="w">может</span></div><div class="ln"><span class="w">стоить</span><span class="w">дороже</span><span class="w">денег,</span></div></div>
+<div id="sub08" class="clip sub" data-start="19.700" data-duration="2.412" style="z-index:350"><div class="ln"><span class="w">а</span><span class="w">каждый</span><span class="w">неправильный</span><span class="w">шаг</span></div><div class="ln"><span class="w">меняет</span><span class="w hl">всё.</span></div></div>
+<div id="sub09" class="clip sub" data-start="22.984" data-duration="2.458" style="z-index:350"><div class="ln"><span class="w">Добро</span><span class="w">пожаловать</span></div><div class="ln"><span class="w">в</span><span class="w hl">Вайс-Сити.</span></div></div>
+<div id="sub10" class="clip sub" data-start="25.482" data-duration="2.547" style="z-index:350"><div class="ln"><span class="w hl">Неоновые</span><span class="w">улицы,</span></div><div class="ln"><span class="w">бесконечные</span><span class="w">дороги,</span></div></div>
+<div id="sub11" class="clip sub" data-start="28.069" data-duration="2.485" style="z-index:350"><div class="ln"><span class="w">пляжи,</span><span class="w hl">ночная</span><span class="w hl">жизнь</span></div><div class="ln"><span class="w">и</span><span class="w">атмосфера,</span></div></div>
+<div id="sub12" class="clip sub" data-start="30.594" data-duration="1.510" style="z-index:350"><div class="ln"><span class="w">в</span><span class="w">которой</span><span class="w">каждый</span></div><div class="ln"><span class="w">уголок</span><span class="w">словно</span></div></div>
+<div id="sub13" class="clip sub" data-start="32.144" data-duration="2.100" style="z-index:350"><div class="ln"><span class="w">рассказывает</span></div><div class="ln"><span class="w">собственную</span><span class="w">историю.</span></div></div>
+<div id="sub14" class="clip sub" data-start="35.116" data-duration="0.897" style="z-index:350"><div class="ln"><span class="w hl">Rockstar</span><span class="w">делает</span></div></div>
+<div id="sub15" class="clip sub" data-start="36.053" data-duration="2.670" style="z-index:350"><div class="ln"><span class="w">ставку</span><span class="w">не</span><span class="w">просто</span></div><div class="ln"><span class="w">на</span><span class="w">красивую</span><span class="w">картинку.</span></div></div>
+<div id="sub16" class="clip sub" data-start="38.763" data-duration="2.085" style="z-index:350"><div class="ln"><span class="w">Важны</span><span class="w hl">детали,</span></div><div class="ln"><span class="w">персонажи,</span></div></div>
+<div id="sub17" class="clip sub" data-start="40.888" data-duration="0.960" style="z-index:350"><div class="ln"><span class="w">окружающий</span><span class="w">мир</span></div></div>
+<div id="sub18" class="clip sub" data-start="41.888" data-duration="2.170" style="z-index:350"><div class="ln"><span class="w">и</span><span class="w">ощущение</span></div><div class="ln"><span class="w hl">живого</span><span class="w hl">города.</span></div></div>
+<div id="sub19" class="clip sub" data-start="44.098" data-duration="1.785" style="z-index:350"><div class="ln"><span class="w">Именно</span><span class="w">такие</span></div><div class="ln"><span class="w">мелочи</span><span class="w">заставляют</span></div></div>
+<div id="sub20" class="clip sub" data-start="45.923" data-duration="2.700" style="z-index:350"><div class="ln"><span class="w">игроков</span><span class="w">возвращаться</span></div><div class="ln"><span class="w">снова</span><span class="w">и</span><span class="w hl">снова.</span></div></div>
+<div id="sub21" class="clip sub" data-start="49.495" data-duration="1.970" style="z-index:350"><div class="ln"><span class="w">Ожидания</span><span class="w hl">огромны.</span></div></div>
+<div id="sub22" class="clip sub" data-start="51.505" data-duration="1.573" style="z-index:350"><div class="ln"><span class="w">Поклонники</span></div><div class="ln"><span class="w">надеются</span><span class="w">увидеть</span></div></div>
+<div id="sub23" class="clip sub" data-start="53.118" data-duration="2.472" style="z-index:350"><div class="ln"><span class="w">новый</span><span class="w">уровень</span></div><div class="ln"><span class="w">открытого</span><span class="w">мира,</span><span class="w hl">свободы</span></div></div>
+<div id="sub24" class="clip sub" data-start="55.630" data-duration="2.645" style="z-index:350"><div class="ln"><span class="w">и</span><span class="w">кинематографичного</span></div><div class="ln"><span class="w">повествования.</span></div></div>
+<div id="sub25" class="clip sub" data-start="58.315" data-duration="0.998" style="z-index:350"><div class="ln"><span class="w">Но</span><span class="w">действительно</span><span class="w">ли</span></div></div>
+<div id="sub26" class="clip sub" data-start="59.353" data-duration="1.135" style="z-index:350"><div class="ln"><span class="w">игра</span><span class="w">сможет</span></div><div class="ln"><span class="w">оправдать</span></div></div>
+<div id="sub27" class="clip sub" data-start="60.528" data-duration="1.725" style="z-index:350"><div class="ln"><span class="w">весь</span><span class="w">этот</span><span class="w hl">ажиотаж?</span></div></div>
+<div id="sub28" class="clip sub" data-start="63.125" data-duration="2.560" style="z-index:350"><div class="ln"><span class="w">Одно</span><span class="w">можно</span><span class="w">сказать</span></div><div class="ln"><span class="w hl">точно:</span><span class="w">GTA</span><span class="w">6</span></div></div>
+<div id="sub29" class="clip sub" data-start="65.725" data-duration="1.985" style="z-index:350"><div class="ln"><span class="w">уже</span><span class="w">стала</span><span class="w">одним</span><span class="w">из</span></div><div class="ln"><span class="w">самых</span><span class="w hl">обсуждаемых</span></div></div>
+<div id="sub30" class="clip sub" data-start="67.750" data-duration="2.233" style="z-index:350"><div class="ln"><span class="w">игровых</span><span class="w">проектов</span></div><div class="ln"><span class="w">современности.</span></div></div>
+<div id="sub31" class="clip sub" data-start="70.023" data-duration="1.997" style="z-index:350"><div class="ln"><span class="w">И</span><span class="w">главный</span><span class="w">вопрос</span></div><div class="ln"><span class="w">теперь</span><span class="w">не</span><span class="w">в</span><span class="w">том,</span></div></div>
+<div id="sub32" class="clip sub" data-start="72.060" data-duration="2.382" style="z-index:350"><div class="ln"><span class="w">насколько</span><span class="w">громкой</span></div><div class="ln"><span class="w">будет</span><span class="w hl">премьера.</span></div></div>
+<div id="sub33" class="clip sub" data-start="74.482" data-duration="1.798" style="z-index:350"><div class="ln"><span class="w">А</span><span class="w">в</span><span class="w">том,</span></div><div class="ln"><span class="w">сможет</span><span class="w">ли</span><span class="w hl">Rockstar</span></div></div>
+<div id="sub34" class="clip sub" data-start="76.320" data-duration="2.100" style="z-index:350"><div class="ln"><span class="w">превзойти</span></div><div class="ln"><span class="w">собственную</span><span class="w hl">легенду.</span></div></div>
+<audio id="mix" src="audio/mix.wav" data-start="0" data-duration="80.0" data-volume="1"></audio>
+</div>
+<script src="assets/vendor/gsap.min.js"></script>
+<script>
+const tl = gsap.timeline({paused: true});
+tl.fromTo("#shot_S01 .b1",{x:-120,y:-60},{x:140,y:90,duration:2.800,ease:"none"},0.000);
+tl.fromTo("#shot_S01 .b2",{x:100,y:80},{x:-160,y:-40,duration:2.800,ease:"none"},0.000);
+tl.fromTo("#shot_S01 .b3",{scale:0.9},{scale:1.15,duration:2.800,ease:"none"},0.000);
+tl.fromTo("#shot_S01",{scale:1.0},{scale:1.07,duration:2.800,ease:"none"},0.000);
+tl.fromTo("#shot_S02 .b1",{x:-120,y:-60},{x:140,y:90,duration:1.367,ease:"none"},2.800);
+tl.fromTo("#shot_S02 .b2",{x:100,y:80},{x:-160,y:-40,duration:1.367,ease:"none"},2.800);
+tl.fromTo("#shot_S02 .b3",{scale:0.9},{scale:1.15,duration:1.367,ease:"none"},2.800);
+tl.fromTo("#shot_S02",{scale:1.0},{scale:1.07,duration:1.367,ease:"none"},2.800);
+tl.fromTo("#shot_S03 .b1",{x:-120,y:-60},{x:140,y:90,duration:1.833,ease:"none"},4.167);
+tl.fromTo("#shot_S03 .b2",{x:100,y:80},{x:-160,y:-40,duration:1.833,ease:"none"},4.167);
+tl.fromTo("#shot_S03 .b3",{scale:0.9},{scale:1.15,duration:1.833,ease:"none"},4.167);
+tl.fromTo("#shot_S03",{scale:1.09},{scale:1.0,duration:1.833,ease:"power1.out"},4.167);
+tl.fromTo("#shot_S04 .b1",{x:-120,y:-60},{x:140,y:90,duration:2.933,ease:"none"},6.000);
+tl.fromTo("#shot_S04 .b2",{x:100,y:80},{x:-160,y:-40,duration:2.933,ease:"none"},6.000);
+tl.fromTo("#shot_S04 .b3",{scale:0.9},{scale:1.15,duration:2.933,ease:"none"},6.000);
+tl.fromTo("#shot_S04",{scale:1.0},{scale:1.07,duration:2.933,ease:"none"},6.000);
+tl.fromTo("#shot_S05 .b1",{x:-120,y:-60},{x:140,y:90,duration:2.933,ease:"none"},8.933);
+tl.fromTo("#shot_S05 .b2",{x:100,y:80},{x:-160,y:-40,duration:2.933,ease:"none"},8.933);
+tl.fromTo("#shot_S05 .b3",{scale:0.9},{scale:1.15,duration:2.933,ease:"none"},8.933);
+tl.fromTo("#shot_S05",{scale:1.0},{scale:1.07,duration:2.933,ease:"none"},8.933);
+tl.fromTo("#shot_S06 .b1",{x:-120,y:-60},{x:140,y:90,duration:2.000,ease:"none"},11.867);
+tl.fromTo("#shot_S06 .b2",{x:100,y:80},{x:-160,y:-40,duration:2.000,ease:"none"},11.867);
+tl.fromTo("#shot_S06 .b3",{scale:0.9},{scale:1.15,duration:2.000,ease:"none"},11.867);
+tl.fromTo("#shot_S06",{scale:1.0},{scale:1.07,duration:2.000,ease:"none"},11.867);
+tl.fromTo("#shot_S07 .b1",{x:-120,y:-60},{x:140,y:90,duration:1.300,ease:"none"},13.867);
+tl.fromTo("#shot_S07 .b2",{x:100,y:80},{x:-160,y:-40,duration:1.300,ease:"none"},13.867);
+tl.fromTo("#shot_S07 .b3",{scale:0.9},{scale:1.15,duration:1.300,ease:"none"},13.867);
+tl.fromTo("#shot_S07",{scale:1.0},{scale:1.07,duration:1.300,ease:"none"},13.867);
+tl.fromTo("#shot_S08 .b1",{x:-120,y:-60},{x:140,y:90,duration:2.333,ease:"none"},15.167);
+tl.fromTo("#shot_S08 .b2",{x:100,y:80},{x:-160,y:-40,duration:2.333,ease:"none"},15.167);
+tl.fromTo("#shot_S08 .b3",{scale:0.9},{scale:1.15,duration:2.333,ease:"none"},15.167);
+tl.fromTo("#shot_S08",{scale:1.06,x:-50},{scale:1.06,x:50,duration:2.333,ease:"none"},15.167);
+tl.fromTo("#shot_S09 .b1",{x:-120,y:-60},{x:140,y:90,duration:2.200,ease:"none"},17.500);
+tl.fromTo("#shot_S09 .b2",{x:100,y:80},{x:-160,y:-40,duration:2.200,ease:"none"},17.500);
+tl.fromTo("#shot_S09 .b3",{scale:0.9},{scale:1.15,duration:2.200,ease:"none"},17.500);
+tl.fromTo("#shot_S09",{scale:1.0},{scale:1.07,duration:2.200,ease:"none"},17.500);
+tl.fromTo("#shot_S10 .b1",{x:-120,y:-60},{x:140,y:90,duration:1.200,ease:"none"},19.700);
+tl.fromTo("#shot_S10 .b2",{x:100,y:80},{x:-160,y:-40,duration:1.200,ease:"none"},19.700);
+tl.fromTo("#shot_S10 .b3",{scale:0.9},{scale:1.15,duration:1.200,ease:"none"},19.700);
+tl.set("#shot_S10",{scale:1.08},19.700);tl.to("#shot_S10",{keyframes:[{x:8,y:-6,duration:0.150},{x:-10,y:5,duration:0.150},{x:6,y:9,duration:0.150},{x:-7,y:-8,duration:0.150},{x:10,y:4,duration:0.150},{x:-5,y:-6,duration:0.150},{x:7,y:7,duration:0.150},{x:0,y:0,duration:0.150}],ease:"none"},19.700);
+tl.fromTo("#shot_S11 .b1",{x:-120,y:-60},{x:140,y:90,duration:2.000,ease:"none"},20.900);
+tl.fromTo("#shot_S11 .b2",{x:100,y:80},{x:-160,y:-40,duration:2.000,ease:"none"},20.900);
+tl.fromTo("#shot_S11 .b3",{scale:0.9},{scale:1.15,duration:2.000,ease:"none"},20.900);
+tl.fromTo("#shot_S11",{scale:1.0},{scale:1.07,duration:2.000,ease:"none"},20.900);
+tl.fromTo("#shot_S12 .b1",{x:-120,y:-60},{x:140,y:90,duration:2.500,ease:"none"},22.900);
+tl.fromTo("#shot_S12 .b2",{x:100,y:80},{x:-160,y:-40,duration:2.500,ease:"none"},22.900);
+tl.fromTo("#shot_S12 .b3",{scale:0.9},{scale:1.15,duration:2.500,ease:"none"},22.900);
+tl.fromTo("#shot_S12",{scale:1.09},{scale:1.0,duration:2.500,ease:"power1.out"},22.900);
+tl.fromTo("#shot_S13 .b1",{x:-120,y:-60},{x:140,y:90,duration:1.300,ease:"none"},25.400);
+tl.fromTo("#shot_S13 .b2",{x:100,y:80},{x:-160,y:-40,duration:1.300,ease:"none"},25.400);
+tl.fromTo("#shot_S13 .b3",{scale:0.9},{scale:1.15,duration:1.300,ease:"none"},25.400);
+tl.fromTo("#shot_S13",{scale:1.06,x:-50},{scale:1.06,x:50,duration:1.300,ease:"none"},25.400);
+tl.fromTo("#shot_S14 .b1",{x:-120,y:-60},{x:140,y:90,duration:1.300,ease:"none"},26.700);
+tl.fromTo("#shot_S14 .b2",{x:100,y:80},{x:-160,y:-40,duration:1.300,ease:"none"},26.700);
+tl.fromTo("#shot_S14 .b3",{scale:0.9},{scale:1.15,duration:1.300,ease:"none"},26.700);
+tl.fromTo("#shot_S14",{scale:1.0},{scale:1.07,duration:1.300,ease:"none"},26.700);
+tl.fromTo("#shot_S15 .b1",{x:-120,y:-60},{x:140,y:90,duration:1.633,ease:"none"},28.000);
+tl.fromTo("#shot_S15 .b2",{x:100,y:80},{x:-160,y:-40,duration:1.633,ease:"none"},28.000);
+tl.fromTo("#shot_S15 .b3",{scale:0.9},{scale:1.15,duration:1.633,ease:"none"},28.000);
+tl.fromTo("#shot_S15",{scale:1.06,x:-50},{scale:1.06,x:50,duration:1.633,ease:"none"},28.000);
+tl.fromTo("#shot_S16 .b1",{x:-120,y:-60},{x:140,y:90,duration:1.700,ease:"none"},29.633);
+tl.fromTo("#shot_S16 .b2",{x:100,y:80},{x:-160,y:-40,duration:1.700,ease:"none"},29.633);
+tl.fromTo("#shot_S16 .b3",{scale:0.9},{scale:1.15,duration:1.700,ease:"none"},29.633);
+tl.fromTo("#shot_S16",{scale:1.06,x:-50},{scale:1.06,x:50,duration:1.700,ease:"none"},29.633);
+tl.fromTo("#shot_S17 .b1",{x:-120,y:-60},{x:140,y:90,duration:4.200,ease:"none"},31.333);
+tl.fromTo("#shot_S17 .b2",{x:100,y:80},{x:-160,y:-40,duration:4.200,ease:"none"},31.333);
+tl.fromTo("#shot_S17 .b3",{scale:0.9},{scale:1.15,duration:4.200,ease:"none"},31.333);
+tl.fromTo("#shot_S17",{scale:1.0},{scale:1.07,duration:4.200,ease:"none"},31.333);
+tl.fromTo("#shot_S18 .b1",{x:-120,y:-60},{x:140,y:90,duration:3.633,ease:"none"},35.033);
+tl.fromTo("#shot_S18 .b2",{x:100,y:80},{x:-160,y:-40,duration:3.633,ease:"none"},35.033);
+tl.fromTo("#shot_S18 .b3",{scale:0.9},{scale:1.15,duration:3.633,ease:"none"},35.033);
+tl.fromTo("#shot_S18",{scale:1.09},{scale:1.0,duration:3.633,ease:"power1.out"},35.033);
+tl.fromTo("#shot_S18",{opacity:0},{opacity:1,duration:0.5,ease:"power1.inOut"},35.033);
+tl.fromTo("#shot_S19 .b1",{x:-120,y:-60},{x:140,y:90,duration:2.133,ease:"none"},38.667);
+tl.fromTo("#shot_S19 .b2",{x:100,y:80},{x:-160,y:-40,duration:2.133,ease:"none"},38.667);
+tl.fromTo("#shot_S19 .b3",{scale:0.9},{scale:1.15,duration:2.133,ease:"none"},38.667);
+tl.fromTo("#shot_S19",{scale:1.0},{scale:1.07,duration:2.133,ease:"none"},38.667);
+tl.fromTo("#shot_S20 .b1",{x:-120,y:-60},{x:140,y:90,duration:1.167,ease:"none"},40.800);
+tl.fromTo("#shot_S20 .b2",{x:100,y:80},{x:-160,y:-40,duration:1.167,ease:"none"},40.800);
+tl.fromTo("#shot_S20 .b3",{scale:0.9},{scale:1.15,duration:1.167,ease:"none"},40.800);
+tl.fromTo("#shot_S20",{scale:1.0},{scale:1.07,duration:1.167,ease:"none"},40.800);
+tl.fromTo("#shot_S21 .b1",{x:-120,y:-60},{x:140,y:90,duration:2.033,ease:"none"},41.967);
+tl.fromTo("#shot_S21 .b2",{x:100,y:80},{x:-160,y:-40,duration:2.033,ease:"none"},41.967);
+tl.fromTo("#shot_S21 .b3",{scale:0.9},{scale:1.15,duration:2.033,ease:"none"},41.967);
+tl.fromTo("#shot_S21",{scale:1.06,x:-50},{scale:1.06,x:50,duration:2.033,ease:"none"},41.967);
+tl.fromTo("#shot_S22 .b1",{x:-120,y:-60},{x:140,y:90,duration:2.367,ease:"none"},44.000);
+tl.fromTo("#shot_S22 .b2",{x:100,y:80},{x:-160,y:-40,duration:2.367,ease:"none"},44.000);
+tl.fromTo("#shot_S22 .b3",{scale:0.9},{scale:1.15,duration:2.367,ease:"none"},44.000);
+tl.fromTo("#shot_S22",{scale:1.0},{scale:1.07,duration:2.367,ease:"none"},44.000);
+tl.fromTo("#shot_S23 .b1",{x:-120,y:-60},{x:140,y:90,duration:3.033,ease:"none"},46.367);
+tl.fromTo("#shot_S23 .b2",{x:100,y:80},{x:-160,y:-40,duration:3.033,ease:"none"},46.367);
+tl.fromTo("#shot_S23 .b3",{scale:0.9},{scale:1.15,duration:3.033,ease:"none"},46.367);
+tl.fromTo("#shot_S23",{scale:1.0},{scale:1.07,duration:3.033,ease:"none"},46.367);
+tl.fromTo("#shot_S24 .b1",{x:-120,y:-60},{x:140,y:90,duration:3.633,ease:"none"},49.400);
+tl.fromTo("#shot_S24 .b2",{x:100,y:80},{x:-160,y:-40,duration:3.633,ease:"none"},49.400);
+tl.fromTo("#shot_S24 .b3",{scale:0.9},{scale:1.15,duration:3.633,ease:"none"},49.400);
+tl.fromTo("#shot_S24",{scale:1.09},{scale:1.0,duration:3.633,ease:"power1.out"},49.400);
+tl.fromTo("#shot_S25 .b1",{x:-120,y:-60},{x:140,y:90,duration:2.700,ease:"none"},53.033);
+tl.fromTo("#shot_S25 .b2",{x:100,y:80},{x:-160,y:-40,duration:2.700,ease:"none"},53.033);
+tl.fromTo("#shot_S25 .b3",{scale:0.9},{scale:1.15,duration:2.700,ease:"none"},53.033);
+tl.fromTo("#shot_S25",{scale:1.09},{scale:1.0,duration:2.700,ease:"power1.out"},53.033);
+tl.fromTo("#shot_S26 .b1",{x:-120,y:-60},{x:140,y:90,duration:2.500,ease:"none"},55.733);
+tl.fromTo("#shot_S26 .b2",{x:100,y:80},{x:-160,y:-40,duration:2.500,ease:"none"},55.733);
+tl.fromTo("#shot_S26 .b3",{scale:0.9},{scale:1.15,duration:2.500,ease:"none"},55.733);
+tl.fromTo("#shot_S26",{scale:1.06,x:-50},{scale:1.06,x:50,duration:2.500,ease:"none"},55.733);
+tl.fromTo("#shot_S27 .b1",{x:-120,y:-60},{x:140,y:90,duration:1.767,ease:"none"},58.233);
+tl.fromTo("#shot_S27 .b2",{x:100,y:80},{x:-160,y:-40,duration:1.767,ease:"none"},58.233);
+tl.fromTo("#shot_S27 .b3",{scale:0.9},{scale:1.15,duration:1.767,ease:"none"},58.233);
+tl.fromTo("#shot_S27",{scale:1.0},{scale:1.07,duration:1.767,ease:"none"},58.233);
+tl.fromTo("#shot_S28 .b1",{x:-120,y:-60},{x:140,y:90,duration:3.033,ease:"none"},60.000);
+tl.fromTo("#shot_S28 .b2",{x:100,y:80},{x:-160,y:-40,duration:3.033,ease:"none"},60.000);
+tl.fromTo("#shot_S28 .b3",{scale:0.9},{scale:1.15,duration:3.033,ease:"none"},60.000);
+tl.fromTo("#shot_S28",{scale:1.0},{scale:1.07,duration:3.033,ease:"none"},60.000);
+tl.fromTo("#shot_S29 .b1",{x:-120,y:-60},{x:140,y:90,duration:2.600,ease:"none"},63.033);
+tl.fromTo("#shot_S29 .b2",{x:100,y:80},{x:-160,y:-40,duration:2.600,ease:"none"},63.033);
+tl.fromTo("#shot_S29 .b3",{scale:0.9},{scale:1.15,duration:2.600,ease:"none"},63.033);
+tl.fromTo("#shot_S29",{scale:1.0},{scale:1.07,duration:2.600,ease:"none"},63.033);
+tl.fromTo("#shot_S30 .b1",{x:-120,y:-60},{x:140,y:90,duration:1.300,ease:"none"},65.633);
+tl.fromTo("#shot_S30 .b2",{x:100,y:80},{x:-160,y:-40,duration:1.300,ease:"none"},65.633);
+tl.fromTo("#shot_S30 .b3",{scale:0.9},{scale:1.15,duration:1.300,ease:"none"},65.633);
+tl.fromTo("#shot_S30",{scale:1.09},{scale:1.0,duration:1.300,ease:"power1.out"},65.633);
+tl.fromTo("#shot_S31 .b1",{x:-120,y:-60},{x:140,y:90,duration:3.000,ease:"none"},66.933);
+tl.fromTo("#shot_S31 .b2",{x:100,y:80},{x:-160,y:-40,duration:3.000,ease:"none"},66.933);
+tl.fromTo("#shot_S31 .b3",{scale:0.9},{scale:1.15,duration:3.000,ease:"none"},66.933);
+tl.fromTo("#shot_S31",{scale:1.0},{scale:1.07,duration:3.000,ease:"none"},66.933);
+tl.fromTo("#shot_S32 .b1",{x:-120,y:-60},{x:140,y:90,duration:2.033,ease:"none"},69.933);
+tl.fromTo("#shot_S32 .b2",{x:100,y:80},{x:-160,y:-40,duration:2.033,ease:"none"},69.933);
+tl.fromTo("#shot_S32 .b3",{scale:0.9},{scale:1.15,duration:2.033,ease:"none"},69.933);
+tl.fromTo("#shot_S32",{scale:1.0},{scale:1.07,duration:2.033,ease:"none"},69.933);
+tl.fromTo("#shot_S33 .b1",{x:-120,y:-60},{x:140,y:90,duration:2.433,ease:"none"},71.967);
+tl.fromTo("#shot_S33 .b2",{x:100,y:80},{x:-160,y:-40,duration:2.433,ease:"none"},71.967);
+tl.fromTo("#shot_S33 .b3",{scale:0.9},{scale:1.15,duration:2.433,ease:"none"},71.967);
+tl.fromTo("#shot_S33",{scale:1.06,x:-50},{scale:1.06,x:50,duration:2.433,ease:"none"},71.967);
+tl.fromTo("#shot_S34 .b1",{x:-120,y:-60},{x:140,y:90,duration:1.833,ease:"none"},74.400);
+tl.fromTo("#shot_S34 .b2",{x:100,y:80},{x:-160,y:-40,duration:1.833,ease:"none"},74.400);
+tl.fromTo("#shot_S34 .b3",{scale:0.9},{scale:1.15,duration:1.833,ease:"none"},74.400);
+tl.fromTo("#shot_S34",{scale:1.0},{scale:1.07,duration:1.833,ease:"none"},74.400);
+tl.fromTo("#shot_S35 .b1",{x:-120,y:-60},{x:140,y:90,duration:3.767,ease:"none"},76.233);
+tl.fromTo("#shot_S35 .b2",{x:100,y:80},{x:-160,y:-40,duration:3.767,ease:"none"},76.233);
+tl.fromTo("#shot_S35 .b3",{scale:0.9},{scale:1.15,duration:3.767,ease:"none"},76.233);
+tl.fromTo("#shot_S35",{scale:1.09},{scale:1.0,duration:3.767,ease:"power1.out"},76.233);
+tl.fromTo("#fl_S04",{opacity:0.85},{opacity:0,duration:0.36,ease:"power2.out"},5.960);
+tl.fromTo("#dp_S06",{opacity:0},{opacity:0.82,duration:0.2,ease:"power1.in"},11.647);
+tl.to("#dp_S06",{opacity:0,duration:0.36,ease:"power1.out"},11.867);
+tl.fromTo("#fl_S12",{opacity:0.85},{opacity:0,duration:0.36,ease:"power2.out"},22.860);
+tl.fromTo("#dp_S24",{opacity:0},{opacity:0.82,duration:0.2,ease:"power1.in"},49.180);
+tl.to("#dp_S24",{opacity:0,duration:0.36,ease:"power1.out"},49.400);
+tl.fromTo("#fl_S29",{opacity:0.85},{opacity:0,duration:0.36,ease:"power2.out"},62.993);
+tl.fromTo("#ch_characters",{opacity:0,x:-40},{opacity:1,x:0,duration:0.45,ease:"power3.out"},12.017);
+tl.fromTo("#ch_characters .bar",{scaleX:0},{scaleX:1,duration:0.6,ease:"power3.out"},12.117);
+tl.to("#ch_characters",{opacity:0,duration:0.35},14.217);
+tl.fromTo("#ch_world",{opacity:0,x:-40},{opacity:1,x:0,duration:0.45,ease:"power3.out"},35.183);
+tl.fromTo("#ch_world .bar",{scaleX:0},{scaleX:1,duration:0.6,ease:"power3.out"},35.283);
+tl.to("#ch_world",{opacity:0,duration:0.35},37.383);
+tl.fromTo("#ch_expectations",{opacity:0,x:-40},{opacity:1,x:0,duration:0.45,ease:"power3.out"},49.550);
+tl.fromTo("#ch_expectations .bar",{scaleX:0},{scaleX:1,duration:0.6,ease:"power3.out"},49.650);
+tl.to("#ch_expectations",{opacity:0,duration:0.35},51.750);
+tl.fromTo("#ch_final",{opacity:0,x:-40},{opacity:1,x:0,duration:0.45,ease:"power3.out"},63.183);
+tl.fromTo("#ch_final .bar",{scaleX:0},{scaleX:1,duration:0.6,ease:"power3.out"},63.283);
+tl.to("#ch_final",{opacity:0,duration:0.35},65.383);
+tl.fromTo("#mt13 .big",{opacity:0,scale:1.3},{opacity:1,scale:1,duration:0.6,ease:"power3.out"},0.560);
+tl.to("#mt13 .big",{scale:0.94,duration:1.540,ease:"none"},1.160);
+tl.fromTo("#mt13 .sub",{opacity:0,scaleX:1.35},{opacity:1,scaleX:1,duration:0.9,ease:"power2.out"},1.460);
+tl.to("#mt13",{opacity:0,y:-60,duration:0.3,ease:"power2.in"},2.400);
+tl.fromTo("#mtgta .big",{opacity:0,scale:0.86},{opacity:1,scale:1,duration:0.5,ease:"power3.out"},6.000);
+tl.to("#mtgta .big",{scale:1.05,duration:2.468,ease:"none"},6.500);
+tl.fromTo("#mtgta .rule",{scaleX:0},{scaleX:1,duration:0.7,ease:"power3.out"},6.100);
+tl.to("#mtgta",{opacity:0,duration:0.25},8.718);
+tl.fromTo("#nm_S06",{opacity:0,x:-90},{opacity:1,x:0,duration:0.4,ease:"power3.out"},13.277);
+tl.fromTo("#nm_S06 .tagbar",{scaleY:0},{scaleY:1,duration:0.35,ease:"power3.out"},13.277);
+tl.to("#nm_S06",{opacity:0,x:-40,duration:0.2},13.667);
+tl.fromTo("#nm_S07",{opacity:0,x:-90},{opacity:1,x:0,duration:0.4,ease:"power3.out"},13.965);
+tl.fromTo("#nm_S07 .tagbar",{scaleY:0},{scaleY:1,duration:0.35,ease:"power3.out"},13.965);
+tl.to("#nm_S07",{opacity:0,x:-40,duration:0.2},14.967);
+tl.fromTo("#mtvc .pre",{opacity:0,y:30},{opacity:1,y:0,duration:0.5,ease:"power2.out"},23.000);
+tl.fromTo("#mtvc .big",{opacity:0,scaleX:1.3},{opacity:1,scaleX:1,duration:1.0,ease:"power3.out"},24.022);
+tl.to("#mtvc",{opacity:0,scale:1.04,duration:0.3},25.100);
+tl.fromTo("#wt_S19 .big",{opacity:0,scaleX:1.3},{opacity:1,scaleX:1,duration:0.7,ease:"power3.out"},38.767);
+tl.to("#wt_S19",{opacity:0,duration:0.25},40.500);
+tl.fromTo("#wt_S21 .big",{opacity:0,scaleX:1.3},{opacity:1,scaleX:1,duration:0.7,ease:"power3.out"},42.067);
+tl.to("#wt_S21",{opacity:0,duration:0.25},43.700);
+tl.fromTo("#endshade",{opacity:0},{opacity:0.62,duration:3.767,ease:"power1.in"},76.233);
+tl.fromTo("#endcard .big",{opacity:0,scale:1.12},{opacity:1,scale:1,duration:1.2,ease:"power2.out"},76.533);
+tl.fromTo("#endcard .q",{opacity:0,y:40},{opacity:1,y:0,duration:0.6,ease:"power3.out"},78.270);
+tl.fromTo("#sub00",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},0.560);
+tl.fromTo("#sub01",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},2.895);
+tl.fromTo("#sub02",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},5.530);
+tl.fromTo("#sub03",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},6.943);
+tl.fromTo("#sub04",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},9.018);
+tl.fromTo("#sub05",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},11.940);
+tl.fromTo("#sub06",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},15.250);
+tl.fromTo("#sub07",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},17.587);
+tl.fromTo("#sub08",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},19.700);
+tl.fromTo("#sub09",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},22.984);
+tl.fromTo("#sub10",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},25.482);
+tl.fromTo("#sub11",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},28.069);
+tl.fromTo("#sub12",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},30.594);
+tl.fromTo("#sub13",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},32.144);
+tl.fromTo("#sub14",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},35.116);
+tl.fromTo("#sub15",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},36.053);
+tl.fromTo("#sub16",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},38.763);
+tl.fromTo("#sub17",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},40.888);
+tl.fromTo("#sub18",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},41.888);
+tl.fromTo("#sub19",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},44.098);
+tl.fromTo("#sub20",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},45.923);
+tl.fromTo("#sub21",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},49.495);
+tl.fromTo("#sub22",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},51.505);
+tl.fromTo("#sub23",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},53.118);
+tl.fromTo("#sub24",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},55.630);
+tl.fromTo("#sub25",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},58.315);
+tl.fromTo("#sub26",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},59.353);
+tl.fromTo("#sub27",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},60.528);
+tl.fromTo("#sub28",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},63.125);
+tl.fromTo("#sub29",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},65.725);
+tl.fromTo("#sub30",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},67.750);
+tl.fromTo("#sub31",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},70.023);
+tl.fromTo("#sub32",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},72.060);
+tl.fromTo("#sub33",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},74.482);
+tl.fromTo("#sub34",{opacity:0,y:24},{opacity:1,y:0,duration:0.14,ease:"power2.out"},76.320);
+tl.fromTo(document.querySelectorAll("#sub00 .w")[0],{scale:1},{scale:1.1,duration:0.12,yoyo:true,repeat:1,ease:"power1.out"},0.610);
+tl.fromTo(document.querySelectorAll("#sub00 .w")[1],{scale:1},{scale:1.1,duration:0.12,yoyo:true,repeat:1,ease:"power1.out"},1.297);
+tl.fromTo(document.querySelectorAll("#sub01 .w")[0],{scale:1},{scale:1.1,duration:0.12,yoyo:true,repeat:1,ease:"power1.out"},2.945);
+tl.fromTo(document.querySelectorAll("#sub02 .w")[2],{scale:1},{scale:1.1,duration:0.12,yoyo:true,repeat:1,ease:"power1.out"},6.118);
+tl.fromTo(document.querySelectorAll("#sub02 .w")[3],{scale:1},{scale:1.1,duration:0.12,yoyo:true,repeat:1,ease:"power1.out"},6.593);
+tl.fromTo(document.querySelectorAll("#sub03 .w")[5],{scale:1},{scale:1.1,duration:0.12,yoyo:true,repeat:1,ease:"power1.out"},8.655);
+tl.fromTo(document.querySelectorAll("#sub05 .w")[3],{scale:1},{scale:1.1,duration:0.12,yoyo:true,repeat:1,ease:"power1.out"},13.327);
+tl.fromTo(document.querySelectorAll("#sub05 .w")[5],{scale:1},{scale:1.1,duration:0.12,yoyo:true,repeat:1,ease:"power1.out"},14.015);
+tl.fromTo(document.querySelectorAll("#sub07 .w")[1],{scale:1},{scale:1.1,duration:0.12,yoyo:true,repeat:1,ease:"power1.out"},17.850);
+tl.fromTo(document.querySelectorAll("#sub08 .w")[5],{scale:1},{scale:1.1,duration:0.12,yoyo:true,repeat:1,ease:"power1.out"},21.425);
+tl.fromTo(document.querySelectorAll("#sub09 .w")[3],{scale:1},{scale:1.1,duration:0.12,yoyo:true,repeat:1,ease:"power1.out"},24.222);
+tl.fromTo(document.querySelectorAll("#sub10 .w")[0],{scale:1},{scale:1.1,duration:0.12,yoyo:true,repeat:1,ease:"power1.out"},25.532);
+tl.fromTo(document.querySelectorAll("#sub11 .w")[1],{scale:1},{scale:1.1,duration:0.12,yoyo:true,repeat:1,ease:"power1.out"},28.807);
+tl.fromTo(document.querySelectorAll("#sub11 .w")[2],{scale:1},{scale:1.1,duration:0.12,yoyo:true,repeat:1,ease:"power1.out"},29.219);
+tl.fromTo(document.querySelectorAll("#sub14 .w")[0],{scale:1},{scale:1.1,duration:0.12,yoyo:true,repeat:1,ease:"power1.out"},35.166);
+tl.fromTo(document.querySelectorAll("#sub16 .w")[1],{scale:1},{scale:1.1,duration:0.12,yoyo:true,repeat:1,ease:"power1.out"},39.401);
+tl.fromTo(document.querySelectorAll("#sub18 .w")[2],{scale:1},{scale:1.1,duration:0.12,yoyo:true,repeat:1,ease:"power1.out"},42.713);
+tl.fromTo(document.querySelectorAll("#sub18 .w")[3],{scale:1},{scale:1.1,duration:0.12,yoyo:true,repeat:1,ease:"power1.out"},43.088);
+tl.fromTo(document.querySelectorAll("#sub20 .w")[4],{scale:1},{scale:1.1,duration:0.12,yoyo:true,repeat:1,ease:"power1.out"},47.773);
+tl.fromTo(document.querySelectorAll("#sub21 .w")[1],{scale:1},{scale:1.1,duration:0.12,yoyo:true,repeat:1,ease:"power1.out"},50.320);
+tl.fromTo(document.querySelectorAll("#sub23 .w")[4],{scale:1},{scale:1.1,duration:0.12,yoyo:true,repeat:1,ease:"power1.out"},55.093);
+tl.fromTo(document.querySelectorAll("#sub27 .w")[2],{scale:1},{scale:1.1,duration:0.12,yoyo:true,repeat:1,ease:"power1.out"},61.303);
+tl.fromTo(document.querySelectorAll("#sub28 .w")[3],{scale:1},{scale:1.1,duration:0.12,yoyo:true,repeat:1,ease:"power1.out"},64.225);
+tl.fromTo(document.querySelectorAll("#sub29 .w")[5],{scale:1},{scale:1.1,duration:0.12,yoyo:true,repeat:1,ease:"power1.out"},67.075);
+tl.fromTo(document.querySelectorAll("#sub32 .w")[3],{scale:1},{scale:1.1,duration:0.12,yoyo:true,repeat:1,ease:"power1.out"},73.335);
+tl.fromTo(document.querySelectorAll("#sub33 .w")[5],{scale:1},{scale:1.1,duration:0.12,yoyo:true,repeat:1,ease:"power1.out"},75.920);
+tl.fromTo(document.querySelectorAll("#sub34 .w")[2],{scale:1},{scale:1.1,duration:0.12,yoyo:true,repeat:1,ease:"power1.out"},77.520);
+tl.set({}, {}, 80.0);
+window.__timelines = window.__timelines || {};
+window.__timelines["root"] = tl;
+</script>
+</body></html>

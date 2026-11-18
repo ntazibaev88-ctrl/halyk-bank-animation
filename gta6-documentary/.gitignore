@@ -1,0 +1,12 @@
+renders/
+footage/raw/
+footage/cut/
+build/mix_pre.wav
+.hyperframes/
+node_modules/
+__pycache__/
+*.mp4
+audio/music.wav
+audio/sfx.wav
+audio/mix.wav
+audio/voiceover.wav

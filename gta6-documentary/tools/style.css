@@ -1,0 +1,76 @@
+@font-face{font-family:"Mont";src:url(assets/fonts/montserrat-cyrillic-700-normal.woff2) format("woff2");font-weight:700;unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Mont";src:url(assets/fonts/montserrat-latin-700-normal.woff2) format("woff2");font-weight:700;unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:"Mont";src:url(assets/fonts/montserrat-cyrillic-800-normal.woff2) format("woff2");font-weight:800;unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Mont";src:url(assets/fonts/montserrat-latin-800-normal.woff2) format("woff2");font-weight:800;unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:"Mont";src:url(assets/fonts/montserrat-cyrillic-900-normal.woff2) format("woff2");font-weight:900;unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Mont";src:url(assets/fonts/montserrat-latin-900-normal.woff2) format("woff2");font-weight:900;unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:"Unb";src:url(assets/fonts/unbounded-cyrillic-700-normal.woff2) format("woff2");font-weight:700;unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Unb";src:url(assets/fonts/unbounded-latin-700-normal.woff2) format("woff2");font-weight:700;unicode-range:U+0000-00FF,U+2000-206F}
+@font-face{font-family:"Unb";src:url(assets/fonts/unbounded-cyrillic-900-normal.woff2) format("woff2");font-weight:900;unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Unb";src:url(assets/fonts/unbounded-latin-900-normal.woff2) format("woff2");font-weight:900;unicode-range:U+0000-00FF,U+2000-206F}
+
+:root{--yellow:#ffd60a;--white:#ffffff}
+html,body{margin:0;padding:0;background:#000}
+#root{position:relative;width:2160px;height:3840px;overflow:hidden;background:#000;font-family:"Mont",sans-serif;color:#fff}
+.clip{position:absolute}
+.shot{inset:0;width:2160px;height:3840px;object-fit:cover;transform-origin:50% 45%;background:#000}
+
+/* ---------- animatic slate ---------- */
+.slate{position:absolute;inset:0;overflow:hidden;background:var(--bg)}
+.blob{position:absolute;border-radius:50%;opacity:.55}
+.b1{width:2400px;height:2400px;left:-700px;top:-200px;background:radial-gradient(circle,var(--a) 0%,transparent 62%)}
+.b2{width:2600px;height:2600px;left:300px;top:1500px;background:radial-gradient(circle,var(--b) 0%,transparent 60%)}
+.b3{width:1400px;height:1400px;left:380px;top:1100px;background:radial-gradient(circle,rgba(255,255,255,.18) 0%,transparent 65%)}
+.scan{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 2px,transparent 2px 8px)}
+.frame{position:absolute;left:150px;right:150px;top:760px;bottom:520px}
+.frame .c{position:absolute;width:120px;height:120px;border:6px solid rgba(255,255,255,.35)}
+.frame .tl{left:0;top:0;border-right:0;border-bottom:0}.frame .tr{right:0;top:0;border-left:0;border-bottom:0}
+.frame .bl{left:0;bottom:0;border-right:0;border-top:0}.frame .br{right:0;bottom:0;border-left:0;border-top:0}
+.slate-box{position:absolute;left:0;right:0;top:2990px;text-align:center}
+.slate-id{font:700 50px "Mont";letter-spacing:10px;color:rgba(255,255,255,.55)}
+.slate-id span{color:var(--yellow)}
+.slate-label{margin:22px auto 0;max-width:1800px;font:800 76px/1.15 "Mont";letter-spacing:4px;color:rgba(255,255,255,.8)}
+.slate-note{margin-top:26px;display:inline-block;padding:16px 34px;border:3px solid rgba(255,255,255,.35);border-radius:10px;font:700 46px "Mont";letter-spacing:8px;color:rgba(255,255,255,.7)}
+
+/* ---------- grade helpers ---------- */
+.vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 85% 70% at 50% 46%,transparent 55%,rgba(0,0,0,.55) 100%)}
+.shade-top{position:absolute;left:0;right:0;top:0;height:900px;background:linear-gradient(rgba(0,0,0,.45),transparent)}
+.shade-bottom{position:absolute;left:0;right:0;bottom:0;height:1700px;background:linear-gradient(transparent,rgba(0,0,0,.28) 35%,rgba(0,0,0,.62))}
+.flash{inset:0;background:#fff;opacity:0}
+.dip{inset:0;background:#000;opacity:0}
+.endshade{inset:0;background:#000;opacity:0}
+
+/* ---------- chapter label ---------- */
+.chapter{left:160px;top:640px;display:flex;align-items:center;gap:30px;font:800 64px "Mont";letter-spacing:12px}
+.chapter .num{color:var(--yellow)}
+.chapter .bar{display:block;width:140px;height:6px;background:var(--yellow);transform-origin:0 50%}
+.chapter .name{color:#fff;text-shadow:0 4px 20px rgba(0,0,0,.6)}
+
+/* ---------- motion typography ---------- */
+.mt{left:0;right:0;text-align:center}
+.mt13{top:980px}
+.mt13 .big{font:900 900px/1 "Unb";letter-spacing:-20px;background:linear-gradient(180deg,#fff 30%,#ffd60a 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 20px 60px rgba(0,0,0,.6))}
+.mt13 .sub{margin-top:40px;font:800 120px "Mont";letter-spacing:26px;text-shadow:0 6px 30px rgba(0,0,0,.8)}
+.mtgta{top:1420px;display:flex;align-items:center;justify-content:center;gap:50px}
+.mtgta .big{font:900 400px/1 "Unb";letter-spacing:6px;color:#fff;text-shadow:0 0 60px rgba(255,214,10,.35),0 20px 60px rgba(0,0,0,.7)}
+.mtgta .rule{width:180px;height:10px;background:var(--yellow)}
+.mtgta .rule.l{transform-origin:100% 50%}.mtgta .rule.r{transform-origin:0 50%}
+.nametag{left:160px;top:2060px;display:flex;align-items:stretch;gap:36px}
+.nametag .tagbar{width:18px;background:var(--yellow);transform-origin:50% 100%}
+.nametag .nm{font:900 170px/1 "Unb";letter-spacing:6px;text-shadow:0 8px 40px rgba(0,0,0,.7)}
+.nametag .role{margin-top:22px;font:700 60px "Mont";letter-spacing:14px;color:rgba(255,255,255,.85);text-shadow:0 4px 20px rgba(0,0,0,.8)}
+.mtvc{top:1300px}
+.mtvc .pre{font:800 90px "Mont";letter-spacing:22px;color:rgba(255,255,255,.92);text-shadow:0 4px 24px rgba(0,0,0,.7)}
+.mtvc .big{margin-top:30px;font:900 215px/1 "Unb";letter-spacing:6px;white-space:nowrap;background:linear-gradient(90deg,#ff3d9a,#ffb36b 50%,#2ee6ff);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 40px rgba(255,61,154,.45)) drop-shadow(0 16px 40px rgba(0,0,0,.6))}
+.wordtag{top:1400px}
+.wordtag .big{display:inline-block;font:900 150px/1 "Unb";letter-spacing:8px;white-space:nowrap;color:#fff;padding-bottom:34px;border-bottom:12px solid var(--yellow);text-shadow:0 10px 40px rgba(0,0,0,.7)}
+.endcard{top:1250px}
+.endcard .big{font:900 420px/1 "Unb";letter-spacing:8px;color:#fff;text-shadow:0 0 80px rgba(255,214,10,.3),0 20px 60px rgba(0,0,0,.7)}
+.endcard .q{margin-top:70px;font:900 130px "Mont";letter-spacing:10px;color:var(--yellow);text-shadow:0 8px 40px rgba(0,0,0,.8)}
+.wm{right:150px;top:470px;font:700 44px "Mont";letter-spacing:8px;color:rgba(255,255,255,.55);padding:12px 24px;border:3px solid rgba(255,255,255,.3);border-radius:8px}
+
+/* ---------- subtitles ---------- */
+.sub{left:160px;right:160px;top:2560px;text-align:center}
+.sub .ln{font:800 108px/1.2 "Mont";letter-spacing:1px;color:#fff;text-shadow:0 0 4px rgba(0,0,0,.9),0 6px 10px rgba(0,0,0,.65),0 12px 40px rgba(0,0,0,.7);white-space:nowrap}
+.sub .w{display:inline-block;margin:0 .13em;transform-origin:50% 70%}
+.sub .hl{color:var(--yellow)}

@@ -1,0 +1,326 @@
+{
+ "_doc": "Shot list. 'at' anchors the cut to a spoken word: '<sentence id>:<word as written in narration.json>' (cut lands ~4 frames before the word). 'need' is the GTA VI footage to place in the slot (official Rockstar trailers / officially released footage only). 'type' = motion typography cue shown over the shot.",
+ "shots": [
+  {
+   "id": "S01",
+   "at": "start",
+   "need": "Vice City skyline at dawn/dusk, slow aerial push-in (official trailer establishing shot)",
+   "visual": "Slow push-in on the Vice City skyline; dark, moody grade",
+   "move": "push",
+   "slate": "ВАЙС-СИТИ · ГОРИЗОНТ",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S02",
+   "at": "s02:Миллионы",
+   "need": "Packed beach or club crowd, many people on screen",
+   "visual": "Crowds — 'millions of players'",
+   "move": "push",
+   "slate": "ТОЛПА · ПЛЯЖ / КЛУБ",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S03",
+   "at": "s02:всему",
+   "need": "Wide aerial of the city at night, lights to the horizon",
+   "visual": "City lights to the horizon — 'all over the world'",
+   "move": "pull",
+   "slate": "НОЧНОЙ ГОРОД · АЭРО",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S04",
+   "at": "s03:GTA",
+   "need": "Fast car crossing a causeway/bridge at speed",
+   "visual": "Energy cut on the title — GTA VI title typography",
+   "move": "push",
+   "slate": "АВТО НА МОСТУ · СКОРОСТЬ",
+   "trans_in": "flash"
+  },
+  {
+   "id": "S05",
+   "at": "s03:событий",
+   "need": "Iconic hero landscape: flamingos / palm trees at golden hour",
+   "visual": "Iconic, monumental shot — 'in video game history'",
+   "move": "push",
+   "slate": "ФЛАМИНГО · ПАЛЬМЫ",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S06",
+   "at": "s04:В",
+   "need": "Jason — close-up, clear face",
+   "visual": "Jason close-up; name tag lands on the word 'Джейсон'",
+   "move": "push",
+   "type": "name:ДЖЕЙСОН",
+   "slate": "ДЖЕЙСОН · КРУПНЫЙ ПЛАН",
+   "trans_in": "dip"
+  },
+  {
+   "id": "S07",
+   "at": "s04:Люсия.",
+   "need": "Lucia — close-up, clear face",
+   "visual": "Lucia close-up + name tag",
+   "move": "push",
+   "type": "name:ЛЮСИЯ",
+   "slate": "ЛЮСИЯ · КРУПНЫЙ ПЛАН",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S08",
+   "at": "s05:Двое",
+   "need": "Jason and Lucia side by side (walking / standing together)",
+   "visual": "Two people — 'Двое людей'",
+   "move": "drift",
+   "slate": "ДЖЕЙСОН И ЛЮСИЯ · ВМЕСТЕ",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S09",
+   "at": "s05:где",
+   "need": "Jason & Lucia in the robbery moment (masks, cash) — trust vs money",
+   "visual": "Trust vs money — 'где доверие может стоить дороже денег'",
+   "move": "push",
+   "slate": "ОГРАБЛЕНИЕ · ДЕНЬГИ · ДОВЕРИЕ",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S10",
+   "at": "s05:каждый",
+   "need": "Police lights / pursuit",
+   "visual": "Police pursuit — 'каждый неправильный шаг'",
+   "move": "shake",
+   "slate": "ПОЛИЦИЯ · ПОГОНЯ",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S11",
+   "at": "s05:меняет",
+   "need": "Consequence: arrest / handcuffs / Lucia in prison scene",
+   "visual": "Consequence — 'меняет всё'",
+   "move": "push",
+   "slate": "АРЕСТ · ПОСЛЕДСТВИЯ",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S12",
+   "at": "s06:Добро",
+   "need": "Vice City aerial in daylight — the definitive establishing shot",
+   "visual": "Welcome to Vice City — location title",
+   "move": "pull",
+   "type": "title:ВАЙС-СИТИ",
+   "slate": "ВАЙС-СИТИ · ДНЁМ",
+   "trans_in": "flash"
+  },
+  {
+   "id": "S13",
+   "at": "s07:Неоновые",
+   "need": "Neon-lit street at night (Ocean Drive-style strip)",
+   "visual": "Neon streets",
+   "move": "drift",
+   "slate": "НЕОНОВЫЕ УЛИЦЫ",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S14",
+   "at": "s07:бесконечные",
+   "need": "Highway / causeway traffic, car driving away to the horizon",
+   "visual": "Endless roads",
+   "move": "push",
+   "slate": "ШОССЕ · ТРАФИК",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S15",
+   "at": "s07:пляжи,",
+   "need": "Beach at night with party / neon nightlife by the water (or beach -> club within one clip)",
+   "visual": "Beaches & nightlife",
+   "move": "drift",
+   "slate": "ПЛЯЖ · НОЧНАЯ ЖИЗНЬ",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S16",
+   "at": "s07:атмосфера,",
+   "need": "Golden-hour city atmosphere (marina, boats, sunset haze)",
+   "visual": "Atmosphere",
+   "move": "drift",
+   "slate": "МАРИНА · ЗОЛОТОЙ ЧАС",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S17",
+   "at": "s07:уголок",
+   "need": "Street-level life detail: locals, small-town corner, gas station",
+   "visual": "Every corner tells a story",
+   "move": "push",
+   "slate": "УЛИЦА · МЕСТНЫЕ ЖИТЕЛИ",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S18",
+   "at": "s08:Rockstar",
+   "need": "Wide cinematic landscape shot showing visual fidelity (sky, water, light)",
+   "visual": "Beyond a pretty picture",
+   "move": "pull",
+   "slate": "ПЕЙЗАЖ · НЕБО И ВОДА",
+   "trans_in": "fade"
+  },
+  {
+   "id": "S19",
+   "at": "s09:Важны",
+   "need": "Close details of characters & surfaces: faces, clothing, reflections, props",
+   "visual": "Details, characters",
+   "move": "push",
+   "type": "word:ДЕТАЛИ",
+   "slate": "ДЕТАЛИ · ПЕРСОНАЖИ",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S20",
+   "at": "s09:окружающий",
+   "need": "Wildlife & nature: alligator, swamp/Everglades-style wetlands, flamingos",
+   "visual": "The surrounding world — nature and wildlife",
+   "move": "push",
+   "slate": "ДИКАЯ ПРИРОДА · БОЛОТА",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S21",
+   "at": "s09:ощущение",
+   "need": "Busy city: traffic and pedestrians, living streets",
+   "visual": "A living city",
+   "move": "drift",
+   "type": "word:ЖИВОЙ ГОРОД",
+   "slate": "ЖИВОЙ ГОРОД · ТРАФИК",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S22",
+   "at": "s10:Именно",
+   "need": "Small human moments (social-media style clips from the trailer, people in daily life)",
+   "visual": "Small details that pull players back",
+   "move": "push",
+   "slate": "МОМЕНТЫ ИЗ ЖИЗНИ",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S23",
+   "at": "s10:возвращаться",
+   "need": "Car driving into the sunset / returning to the city",
+   "visual": "Coming back again and again",
+   "move": "push",
+   "slate": "АВТО НА ЗАКАТЕ",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S24",
+   "at": "s11:Ожидания",
+   "need": "Massive night aerial of Vice City",
+   "visual": "Expectations are huge",
+   "move": "pull",
+   "slate": "НОЧНОЙ ВАЙС-СИТИ · АЭРО",
+   "trans_in": "dip"
+  },
+  {
+   "id": "S25",
+   "at": "s12:новый",
+   "need": "Open-world vista with freedom of movement: speedboat / plane over open water and coastline",
+   "visual": "A new level of open world, freedom",
+   "move": "pull",
+   "slate": "ОТКРЫТЫЙ МИР · СВОБОДА",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S26",
+   "at": "s12:кинематографичного",
+   "need": "Cinematic character moment of Jason & Lucia (dramatic framing)",
+   "visual": "Cinematic storytelling",
+   "move": "drift",
+   "slate": "ГЕРОИ · КИНОКАДР",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S27",
+   "at": "s13:Но",
+   "need": "Tension: police helicopter spotlight / standoff",
+   "visual": "The doubt — can it live up to the hype?",
+   "move": "push",
+   "slate": "ВЕРТОЛЁТ · ПРОЖЕКТОР",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S28",
+   "at": "s13:оправдать",
+   "need": "Lucia close-up, looking into frame — strongest character shot",
+   "visual": "The question hangs",
+   "move": "push",
+   "slate": "ЛЮСИЯ · ВЗГЛЯД",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S29",
+   "at": "s14:Одно",
+   "need": "Strongest cinematic shot: Jason & Lucia in the car, sunset (hero shot)",
+   "visual": "One thing is certain",
+   "move": "push",
+   "slate": "ДЖЕЙСОН И ЛЮСИЯ · ЗАКАТ",
+   "trans_in": "flash"
+  },
+  {
+   "id": "S30",
+   "at": "s14:уже",
+   "need": "Hero skyline of Vice City at golden hour",
+   "visual": "'уже стала одним из самых…'",
+   "move": "pull",
+   "slate": "ГОРИЗОНТ · ЗОЛОТОЙ ЧАС",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S31",
+   "at": "s14:обсуждаемых",
+   "need": "In-game social-media / livestream style clip from the official trailer (people filming, viral moments)",
+   "visual": "Most discussed project",
+   "move": "push",
+   "slate": "СОЦСЕТИ · ВИРУСНЫЕ МОМЕНТЫ",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S32",
+   "at": "s15:И",
+   "need": "Slow-motion action beat: pursuit / heist",
+   "visual": "The main question",
+   "move": "push",
+   "slate": "ПОГОНЯ · ЗАМЕДЛЕНИЕ",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S33",
+   "at": "s15:насколько",
+   "need": "Spectacle: night city, lights, crowds",
+   "visual": "How loud the premiere will be",
+   "move": "drift",
+   "slate": "НОЧНОЙ ГОРОД · ОГНИ",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S34",
+   "at": "s16:А",
+   "need": "Jason & Lucia, iconic hero framing",
+   "visual": "'А в том, сможет ли Rockstar…'",
+   "move": "push",
+   "slate": "ДЖЕЙСОН И ЛЮСИЯ · ГЕРОИ",
+   "trans_in": "cut"
+  },
+  {
+   "id": "S35",
+   "at": "s16:превзойти",
+   "need": "Final iconic shot: Vice City skyline at sunset (slow), holds under the end card",
+   "visual": "'…превзойти собственную легенду' -> end card GTA VI / ПРЕВЗОЙТИ ЛЕГЕНДУ?",
+   "move": "pull",
+   "slate": "ФИНАЛ · ГОРИЗОНТ НА ЗАКАТЕ",
+   "trans_in": "cut",
+   "type": "end"
+  }
+ ]
+}

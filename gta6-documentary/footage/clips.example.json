@@ -1,0 +1,5 @@
+{
+  "_doc": "Copy to footage/clips.json and fill in. One entry per shot ID from deliverables/GTA6_scene_timeline.md. 'src' = official GTA VI video file inside footage/raw/. 'in' = source timecode (s) where the shot starts. 'focus_x' = horizontal centre of the 9:16 crop (0 = left edge, 0.5 = centre, 1 = right). 'speed' < 1 = slow motion (e.g. 0.7), > 1 = faster. 'note' = where the clip comes from (kept in the report).",
+  "S01": {"src": "raw/gta6_trailer1.mp4", "in": 0.0, "focus_x": 0.5, "speed": 1.0, "note": "Trailer 1 - Vice City skyline"},
+  "S06": {"src": "raw/gta6_trailer2.mp4", "in": 0.0, "focus_x": 0.42, "speed": 1.0, "note": "Trailer 2 - Jason close-up"}
+}

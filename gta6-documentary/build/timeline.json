@@ -1,0 +1,2747 @@
+{
+ "duration": 80.0,
+ "fps": 30,
+ "sections": [
+  {
+   "id": "hook",
+   "title": "HOOK",
+   "start": 0.0,
+   "end": 11.63,
+   "nominal": [
+    0.0,
+    10.0
+   ],
+   "speech_start": 0.55,
+   "speech_end": 11.047,
+   "tempo": 1.0
+  },
+  {
+   "id": "characters",
+   "title": "CHARACTERS",
+   "start": 11.63,
+   "end": 22.674,
+   "nominal": [
+    10.0,
+    23.0
+   ],
+   "speech_start": 11.93,
+   "speech_end": 22.092,
+   "tempo": 1.0
+  },
+  {
+   "id": "vicecity",
+   "title": "VICE CITY",
+   "start": 22.674,
+   "end": 34.806,
+   "nominal": [
+    23.0,
+    37.0
+   ],
+   "speech_start": 22.974,
+   "speech_end": 34.224,
+   "tempo": 1.0
+  },
+  {
+   "id": "world",
+   "title": "WORLD",
+   "start": 34.806,
+   "end": 49.185,
+   "nominal": [
+    37.0,
+    51.0
+   ],
+   "speech_start": 35.106,
+   "speech_end": 48.603,
+   "tempo": 1.0
+  },
+  {
+   "id": "expectations",
+   "title": "EXPECTATIONS",
+   "start": 49.185,
+   "end": 62.815,
+   "nominal": [
+    51.0,
+    66.0
+   ],
+   "speech_start": 49.485,
+   "speech_end": 62.233,
+   "tempo": 1.0
+  },
+  {
+   "id": "final",
+   "title": "FINAL",
+   "start": 62.815,
+   "end": 80.0,
+   "nominal": [
+    66.0,
+    80.0
+   ],
+   "speech_start": 63.115,
+   "speech_end": 78.4,
+   "tempo": 1.0
+  }
+ ],
+ "sentences": [
+  {
+   "id": "s01",
+   "section": "hook",
+   "text": "Тринадцать лет ожидания.",
+   "start": 0.55,
+   "end": 2.665
+  },
+  {
+   "id": "s02",
+   "section": "hook",
+   "text": "Миллионы игроков по всему миру.",
+   "start": 2.885,
+   "end": 5.3
+  },
+  {
+   "id": "s03",
+   "section": "hook",
+   "text": "И теперь GTA 6 готовится стать одним из самых громких событий в истории видеоигр.",
+   "start": 5.52,
+   "end": 11.047
+  },
+  {
+   "id": "s04",
+   "section": "characters",
+   "text": "В центре истории — Джейсон и Люсия.",
+   "start": 11.93,
+   "end": 15.02
+  },
+  {
+   "id": "s05",
+   "section": "characters",
+   "text": "Двое людей, оказавшихся в мире, где доверие может стоить дороже денег, а каждый неправильный шаг меняет всё.",
+   "start": 15.24,
+   "end": 22.092
+  },
+  {
+   "id": "s06",
+   "section": "vicecity",
+   "text": "Добро пожаловать в Вайс-Сити.",
+   "start": 22.974,
+   "end": 25.252
+  },
+  {
+   "id": "s07",
+   "section": "vicecity",
+   "text": "Неоновые улицы, бесконечные дороги, пляжи, ночная жизнь и атмосфера, в которой каждый уголок словно рассказывает собственную историю.",
+   "start": 25.472,
+   "end": 34.224
+  },
+  {
+   "id": "s08",
+   "section": "world",
+   "text": "Rockstar делает ставку не просто на красивую картинку.",
+   "start": 35.106,
+   "end": 38.533
+  },
+  {
+   "id": "s09",
+   "section": "world",
+   "text": "Важны детали, персонажи, окружающий мир и ощущение живого города.",
+   "start": 38.753,
+   "end": 43.868
+  },
+  {
+   "id": "s10",
+   "section": "world",
+   "text": "Именно такие мелочи заставляют игроков возвращаться снова и снова.",
+   "start": 44.088,
+   "end": 48.603
+  },
+  {
+   "id": "s11",
+   "section": "expectations",
+   "text": "Ожидания огромны.",
+   "start": 49.485,
+   "end": 51.275
+  },
+  {
+   "id": "s12",
+   "section": "expectations",
+   "text": "Поклонники надеются увидеть новый уровень открытого мира, свободы и кинематографичного повествования.",
+   "start": 51.495,
+   "end": 58.085
+  },
+  {
+   "id": "s13",
+   "section": "expectations",
+   "text": "Но действительно ли игра сможет оправдать весь этот ажиотаж?",
+   "start": 58.305,
+   "end": 62.233
+  },
+  {
+   "id": "s14",
+   "section": "final",
+   "text": "Одно можно сказать точно: GTA 6 уже стала одним из самых обсуждаемых игровых проектов современности.",
+   "start": 63.115,
+   "end": 69.793
+  },
+  {
+   "id": "s15",
+   "section": "final",
+   "text": "И главный вопрос теперь не в том, насколько громкой будет премьера.",
+   "start": 70.013,
+   "end": 74.252
+  },
+  {
+   "id": "s16",
+   "section": "final",
+   "text": "А в том, сможет ли Rockstar превзойти собственную легенду.",
+   "start": 74.472,
+   "end": 78.4
+  }
+ ],
+ "words": [
+  {
+   "sid": "s01",
+   "w": "Тринадцать",
+   "start": 0.61,
+   "end": 1.298,
+   "hl": true
+  },
+  {
+   "sid": "s01",
+   "w": "лет",
+   "start": 1.297,
+   "end": 1.56,
+   "hl": true
+  },
+  {
+   "sid": "s01",
+   "w": "ожидания.",
+   "start": 1.56,
+   "end": 2.385,
+   "hl": false
+  },
+  {
+   "sid": "s02",
+   "w": "Миллионы",
+   "start": 2.945,
+   "end": 3.558,
+   "hl": true
+  },
+  {
+   "sid": "s02",
+   "w": "игроков",
+   "start": 3.558,
+   "end": 4.195,
+   "hl": false
+  },
+  {
+   "sid": "s02",
+   "w": "по",
+   "start": 4.195,
+   "end": 4.308,
+   "hl": false
+  },
+  {
+   "sid": "s02",
+   "w": "всему",
+   "start": 4.308,
+   "end": 4.633,
+   "hl": false
+  },
+  {
+   "sid": "s02",
+   "w": "миру.",
+   "start": 4.633,
+   "end": 5.02,
+   "hl": false
+  },
+  {
+   "sid": "s03",
+   "w": "И",
+   "start": 5.58,
+   "end": 5.793,
+   "hl": false
+  },
+  {
+   "sid": "s03",
+   "w": "теперь",
+   "start": 5.793,
+   "end": 6.118,
+   "hl": false
+  },
+  {
+   "sid": "s03",
+   "w": "GTA",
+   "start": 6.118,
+   "end": 6.593,
+   "hl": true
+  },
+  {
+   "sid": "s03",
+   "w": "6",
+   "start": 6.593,
+   "end": 6.993,
+   "hl": true
+  },
+  {
+   "sid": "s03",
+   "w": "готовится",
+   "start": 6.993,
+   "end": 7.53,
+   "hl": false
+  },
+  {
+   "sid": "s03",
+   "w": "стать",
+   "start": 7.53,
+   "end": 7.893,
+   "hl": false
+  },
+  {
+   "sid": "s03",
+   "w": "одним",
+   "start": 7.893,
+   "end": 8.217,
+   "hl": false
+  },
+  {
+   "sid": "s03",
+   "w": "из",
+   "start": 8.218,
+   "end": 8.305,
+   "hl": false
+  },
+  {
+   "sid": "s03",
+   "w": "самых",
+   "start": 8.305,
+   "end": 8.655,
+   "hl": false
+  },
+  {
+   "sid": "s03",
+   "w": "громких",
+   "start": 8.655,
+   "end": 9.068,
+   "hl": true
+  },
+  {
+   "sid": "s03",
+   "w": "событий",
+   "start": 9.068,
+   "end": 9.53,
+   "hl": false
+  },
+  {
+   "sid": "s03",
+   "w": "в",
+   "start": 9.53,
+   "end": 9.58,
+   "hl": false
+  },
+  {
+   "sid": "s03",
+   "w": "истории",
+   "start": 9.58,
+   "end": 10.043,
+   "hl": false
+  },
+  {
+   "sid": "s03",
+   "w": "видеоигр.",
+   "start": 10.043,
+   "end": 10.768,
+   "hl": false
+  },
+  {
+   "sid": "s04",
+   "w": "В",
+   "start": 11.99,
+   "end": 12.14,
+   "hl": false
+  },
+  {
+   "sid": "s04",
+   "w": "центре",
+   "start": 12.14,
+   "end": 12.54,
+   "hl": false
+  },
+  {
+   "sid": "s04",
+   "w": "истории —",
+   "start": 12.54,
+   "end": 13.04,
+   "hl": false
+  },
+  {
+   "sid": "s04",
+   "w": "Джейсон",
+   "start": 13.327,
+   "end": 13.902,
+   "hl": true
+  },
+  {
+   "sid": "s04",
+   "w": "и",
+   "start": 13.902,
+   "end": 14.015,
+   "hl": false
+  },
+  {
+   "sid": "s04",
+   "w": "Люсия.",
+   "start": 14.015,
+   "end": 14.74,
+   "hl": true
+  },
+  {
+   "sid": "s05",
+   "w": "Двое",
+   "start": 15.3,
+   "end": 15.775,
+   "hl": false
+  },
+  {
+   "sid": "s05",
+   "w": "людей,",
+   "start": 15.775,
+   "end": 16.15,
+   "hl": false
+  },
+  {
+   "sid": "s05",
+   "w": "оказавшихся",
+   "start": 16.287,
+   "end": 17.012,
+   "hl": false
+  },
+  {
+   "sid": "s05",
+   "w": "в",
+   "start": 17.012,
+   "end": 17.05,
+   "hl": false
+  },
+  {
+   "sid": "s05",
+   "w": "мире,",
+   "start": 17.05,
+   "end": 17.362,
+   "hl": false
+  },
+  {
+   "sid": "s05",
+   "w": "где",
+   "start": 17.637,
+   "end": 17.85,
+   "hl": false
+  },
+  {
+   "sid": "s05",
+   "w": "доверие",
+   "start": 17.85,
+   "end": 18.225,
+   "hl": true
+  },
+  {
+   "sid": "s05",
+   "w": "может",
+   "start": 18.225,
+   "end": 18.525,
+   "hl": false
+  },
+  {
+   "sid": "s05",
+   "w": "стоить",
+   "start": 18.525,
+   "end": 18.812,
+   "hl": false
+  },
+  {
+   "sid": "s05",
+   "w": "дороже",
+   "start": 18.812,
+   "end": 19.175,
+   "hl": false
+  },
+  {
+   "sid": "s05",
+   "w": "денег,",
+   "start": 19.175,
+   "end": 19.512,
+   "hl": false
+  },
+  {
+   "sid": "s05",
+   "w": "а",
+   "start": 19.75,
+   "end": 19.837,
+   "hl": false
+  },
+  {
+   "sid": "s05",
+   "w": "каждый",
+   "start": 19.837,
+   "end": 20.212,
+   "hl": false
+  },
+  {
+   "sid": "s05",
+   "w": "неправильный",
+   "start": 20.212,
+   "end": 20.737,
+   "hl": false
+  },
+  {
+   "sid": "s05",
+   "w": "шаг",
+   "start": 20.737,
+   "end": 21.025,
+   "hl": false
+  },
+  {
+   "sid": "s05",
+   "w": "меняет",
+   "start": 21.025,
+   "end": 21.425,
+   "hl": false
+  },
+  {
+   "sid": "s05",
+   "w": "всё.",
+   "start": 21.425,
+   "end": 21.812,
+   "hl": true
+  },
+  {
+   "sid": "s06",
+   "w": "Добро",
+   "start": 23.034,
+   "end": 23.534,
+   "hl": false
+  },
+  {
+   "sid": "s06",
+   "w": "пожаловать",
+   "start": 23.534,
+   "end": 24.122,
+   "hl": false
+  },
+  {
+   "sid": "s06",
+   "w": "в",
+   "start": 24.122,
+   "end": 24.222,
+   "hl": false
+  },
+  {
+   "sid": "s06",
+   "w": "Вайс-Сити.",
+   "start": 24.222,
+   "end": 24.972,
+   "hl": true
+  },
+  {
+   "sid": "s07",
+   "w": "Неоновые",
+   "start": 25.532,
+   "end": 26.194,
+   "hl": true
+  },
+  {
+   "sid": "s07",
+   "w": "улицы,",
+   "start": 26.194,
+   "end": 26.707,
+   "hl": false
+  },
+  {
+   "sid": "s07",
+   "w": "бесконечные",
+   "start": 26.844,
+   "end": 27.557,
+   "hl": false
+  },
+  {
+   "sid": "s07",
+   "w": "дороги,",
+   "start": 27.557,
+   "end": 27.994,
+   "hl": false
+  },
+  {
+   "sid": "s07",
+   "w": "пляжи,",
+   "start": 28.119,
+   "end": 28.544,
+   "hl": false
+  },
+  {
+   "sid": "s07",
+   "w": "ночная",
+   "start": 28.807,
+   "end": 29.219,
+   "hl": true
+  },
+  {
+   "sid": "s07",
+   "w": "жизнь",
+   "start": 29.219,
+   "end": 29.619,
+   "hl": true
+  },
+  {
+   "sid": "s07",
+   "w": "и",
+   "start": 29.619,
+   "end": 29.782,
+   "hl": false
+  },
+  {
+   "sid": "s07",
+   "w": "атмосфера,",
+   "start": 29.782,
+   "end": 30.357,
+   "hl": false
+  },
+  {
+   "sid": "s07",
+   "w": "в",
+   "start": 30.644,
+   "end": 30.694,
+   "hl": false
+  },
+  {
+   "sid": "s07",
+   "w": "которой",
+   "start": 30.694,
+   "end": 31.107,
+   "hl": false
+  },
+  {
+   "sid": "s07",
+   "w": "каждый",
+   "start": 31.107,
+   "end": 31.457,
+   "hl": false
+  },
+  {
+   "sid": "s07",
+   "w": "уголок",
+   "start": 31.457,
+   "end": 31.819,
+   "hl": false
+  },
+  {
+   "sid": "s07",
+   "w": "словно",
+   "start": 31.819,
+   "end": 32.194,
+   "hl": false
+  },
+  {
+   "sid": "s07",
+   "w": "рассказывает",
+   "start": 32.194,
+   "end": 32.782,
+   "hl": false
+  },
+  {
+   "sid": "s07",
+   "w": "собственную",
+   "start": 32.782,
+   "end": 33.344,
+   "hl": false
+  },
+  {
+   "sid": "s07",
+   "w": "историю.",
+   "start": 33.344,
+   "end": 33.944,
+   "hl": false
+  },
+  {
+   "sid": "s08",
+   "w": "Rockstar",
+   "start": 35.166,
+   "end": 35.778,
+   "hl": true
+  },
+  {
+   "sid": "s08",
+   "w": "делает",
+   "start": 35.778,
+   "end": 36.103,
+   "hl": false
+  },
+  {
+   "sid": "s08",
+   "w": "ставку",
+   "start": 36.103,
+   "end": 36.491,
+   "hl": false
+  },
+  {
+   "sid": "s08",
+   "w": "не",
+   "start": 36.491,
+   "end": 36.628,
+   "hl": false
+  },
+  {
+   "sid": "s08",
+   "w": "просто",
+   "start": 36.628,
+   "end": 36.991,
+   "hl": false
+  },
+  {
+   "sid": "s08",
+   "w": "на",
+   "start": 36.991,
+   "end": 37.103,
+   "hl": false
+  },
+  {
+   "sid": "s08",
+   "w": "красивую",
+   "start": 37.103,
+   "end": 37.616,
+   "hl": false
+  },
+  {
+   "sid": "s08",
+   "w": "картинку.",
+   "start": 37.616,
+   "end": 38.253,
+   "hl": false
+  },
+  {
+   "sid": "s09",
+   "w": "Важны",
+   "start": 38.813,
+   "end": 39.401,
+   "hl": false
+  },
+  {
+   "sid": "s09",
+   "w": "детали,",
+   "start": 39.401,
+   "end": 39.876,
+   "hl": true
+  },
+  {
+   "sid": "s09",
+   "w": "персонажи,",
+   "start": 40.013,
+   "end": 40.713,
+   "hl": false
+  },
+  {
+   "sid": "s09",
+   "w": "окружающий",
+   "start": 40.938,
+   "end": 41.651,
+   "hl": false
+  },
+  {
+   "sid": "s09",
+   "w": "мир",
+   "start": 41.651,
+   "end": 41.938,
+   "hl": false
+  },
+  {
+   "sid": "s09",
+   "w": "и",
+   "start": 41.938,
+   "end": 42.088,
+   "hl": false
+  },
+  {
+   "sid": "s09",
+   "w": "ощущение",
+   "start": 42.088,
+   "end": 42.713,
+   "hl": false
+  },
+  {
+   "sid": "s09",
+   "w": "живого",
+   "start": 42.713,
+   "end": 43.088,
+   "hl": true
+  },
+  {
+   "sid": "s09",
+   "w": "города.",
+   "start": 43.088,
+   "end": 43.588,
+   "hl": true
+  },
+  {
+   "sid": "s10",
+   "w": "Именно",
+   "start": 44.148,
+   "end": 44.648,
+   "hl": false
+  },
+  {
+   "sid": "s10",
+   "w": "такие",
+   "start": 44.648,
+   "end": 45.011,
+   "hl": false
+  },
+  {
+   "sid": "s10",
+   "w": "мелочи",
+   "start": 45.011,
+   "end": 45.448,
+   "hl": false
+  },
+  {
+   "sid": "s10",
+   "w": "заставляют",
+   "start": 45.448,
+   "end": 45.973,
+   "hl": false
+  },
+  {
+   "sid": "s10",
+   "w": "игроков",
+   "start": 45.973,
+   "end": 46.498,
+   "hl": false
+  },
+  {
+   "sid": "s10",
+   "w": "возвращаться",
+   "start": 46.498,
+   "end": 47.311,
+   "hl": false
+  },
+  {
+   "sid": "s10",
+   "w": "снова",
+   "start": 47.311,
+   "end": 47.723,
+   "hl": false
+  },
+  {
+   "sid": "s10",
+   "w": "и",
+   "start": 47.723,
+   "end": 47.773,
+   "hl": false
+  },
+  {
+   "sid": "s10",
+   "w": "снова.",
+   "start": 47.773,
+   "end": 48.323,
+   "hl": true
+  },
+  {
+   "sid": "s11",
+   "w": "Ожидания",
+   "start": 49.545,
+   "end": 50.32,
+   "hl": false
+  },
+  {
+   "sid": "s11",
+   "w": "огромны.",
+   "start": 50.32,
+   "end": 50.995,
+   "hl": true
+  },
+  {
+   "sid": "s12",
+   "w": "Поклонники",
+   "start": 51.555,
+   "end": 52.268,
+   "hl": false
+  },
+  {
+   "sid": "s12",
+   "w": "надеются",
+   "start": 52.268,
+   "end": 52.755,
+   "hl": false
+  },
+  {
+   "sid": "s12",
+   "w": "увидеть",
+   "start": 52.755,
+   "end": 53.168,
+   "hl": false
+  },
+  {
+   "sid": "s12",
+   "w": "новый",
+   "start": 53.168,
+   "end": 53.543,
+   "hl": false
+  },
+  {
+   "sid": "s12",
+   "w": "уровень",
+   "start": 53.543,
+   "end": 53.943,
+   "hl": false
+  },
+  {
+   "sid": "s12",
+   "w": "открытого",
+   "start": 53.943,
+   "end": 54.48,
+   "hl": false
+  },
+  {
+   "sid": "s12",
+   "w": "мира,",
+   "start": 54.48,
+   "end": 54.78,
+   "hl": false
+  },
+  {
+   "sid": "s12",
+   "w": "свободы",
+   "start": 55.093,
+   "end": 55.68,
+   "hl": true
+  },
+  {
+   "sid": "s12",
+   "w": "и",
+   "start": 55.68,
+   "end": 55.88,
+   "hl": false
+  },
+  {
+   "sid": "s12",
+   "w": "кинематографичного",
+   "start": 55.88,
+   "end": 56.893,
+   "hl": false
+  },
+  {
+   "sid": "s12",
+   "w": "повествования.",
+   "start": 56.893,
+   "end": 57.805,
+   "hl": false
+  },
+  {
+   "sid": "s13",
+   "w": "Но",
+   "start": 58.365,
+   "end": 58.665,
+   "hl": false
+  },
+  {
+   "sid": "s13",
+   "w": "действительно",
+   "start": 58.665,
+   "end": 59.265,
+   "hl": false
+  },
+  {
+   "sid": "s13",
+   "w": "ли",
+   "start": 59.265,
+   "end": 59.403,
+   "hl": false
+  },
+  {
+   "sid": "s13",
+   "w": "игра",
+   "start": 59.403,
+   "end": 59.665,
+   "hl": false
+  },
+  {
+   "sid": "s13",
+   "w": "сможет",
+   "start": 59.665,
+   "end": 60.128,
+   "hl": false
+  },
+  {
+   "sid": "s13",
+   "w": "оправдать",
+   "start": 60.128,
+   "end": 60.578,
+   "hl": false
+  },
+  {
+   "sid": "s13",
+   "w": "весь",
+   "start": 60.578,
+   "end": 60.903,
+   "hl": false
+  },
+  {
+   "sid": "s13",
+   "w": "этот",
+   "start": 60.903,
+   "end": 61.303,
+   "hl": false
+  },
+  {
+   "sid": "s13",
+   "w": "ажиотаж?",
+   "start": 61.303,
+   "end": 61.953,
+   "hl": true
+  },
+  {
+   "sid": "s14",
+   "w": "Одно",
+   "start": 63.175,
+   "end": 63.575,
+   "hl": false
+  },
+  {
+   "sid": "s14",
+   "w": "можно",
+   "start": 63.575,
+   "end": 63.838,
+   "hl": false
+  },
+  {
+   "sid": "s14",
+   "w": "сказать",
+   "start": 63.838,
+   "end": 64.225,
+   "hl": false
+  },
+  {
+   "sid": "s14",
+   "w": "точно:",
+   "start": 64.225,
+   "end": 64.638,
+   "hl": true
+  },
+  {
+   "sid": "s14",
+   "w": "GTA",
+   "start": 64.95,
+   "end": 65.4,
+   "hl": false
+  },
+  {
+   "sid": "s14",
+   "w": "6",
+   "start": 65.4,
+   "end": 65.775,
+   "hl": false
+  },
+  {
+   "sid": "s14",
+   "w": "уже",
+   "start": 65.775,
+   "end": 65.988,
+   "hl": false
+  },
+  {
+   "sid": "s14",
+   "w": "стала",
+   "start": 65.988,
+   "end": 66.313,
+   "hl": false
+  },
+  {
+   "sid": "s14",
+   "w": "одним",
+   "start": 66.313,
+   "end": 66.613,
+   "hl": false
+  },
+  {
+   "sid": "s14",
+   "w": "из",
+   "start": 66.613,
+   "end": 66.713,
+   "hl": false
+  },
+  {
+   "sid": "s14",
+   "w": "самых",
+   "start": 66.713,
+   "end": 67.075,
+   "hl": false
+  },
+  {
+   "sid": "s14",
+   "w": "обсуждаемых",
+   "start": 67.075,
+   "end": 67.8,
+   "hl": true
+  },
+  {
+   "sid": "s14",
+   "w": "игровых",
+   "start": 67.8,
+   "end": 68.263,
+   "hl": false
+  },
+  {
+   "sid": "s14",
+   "w": "проектов",
+   "start": 68.263,
+   "end": 68.675,
+   "hl": false
+  },
+  {
+   "sid": "s14",
+   "w": "современности.",
+   "start": 68.675,
+   "end": 69.513,
+   "hl": false
+  },
+  {
+   "sid": "s15",
+   "w": "И",
+   "start": 70.073,
+   "end": 70.285,
+   "hl": false
+  },
+  {
+   "sid": "s15",
+   "w": "главный",
+   "start": 70.285,
+   "end": 70.635,
+   "hl": false
+  },
+  {
+   "sid": "s15",
+   "w": "вопрос",
+   "start": 70.635,
+   "end": 71.01,
+   "hl": false
+  },
+  {
+   "sid": "s15",
+   "w": "теперь",
+   "start": 71.01,
+   "end": 71.335,
+   "hl": false
+  },
+  {
+   "sid": "s15",
+   "w": "не",
+   "start": 71.335,
+   "end": 71.485,
+   "hl": false
+  },
+  {
+   "sid": "s15",
+   "w": "в",
+   "start": 71.485,
+   "end": 71.535,
+   "hl": false
+  },
+  {
+   "sid": "s15",
+   "w": "том,",
+   "start": 71.535,
+   "end": 71.822,
+   "hl": false
+  },
+  {
+   "sid": "s15",
+   "w": "насколько",
+   "start": 72.11,
+   "end": 72.61,
+   "hl": false
+  },
+  {
+   "sid": "s15",
+   "w": "громкой",
+   "start": 72.61,
+   "end": 73.047,
+   "hl": false
+  },
+  {
+   "sid": "s15",
+   "w": "будет",
+   "start": 73.047,
+   "end": 73.335,
+   "hl": false
+  },
+  {
+   "sid": "s15",
+   "w": "премьера.",
+   "start": 73.335,
+   "end": 73.973,
+   "hl": true
+  },
+  {
+   "sid": "s16",
+   "w": "А",
+   "start": 74.532,
+   "end": 74.733,
+   "hl": false
+  },
+  {
+   "sid": "s16",
+   "w": "в",
+   "start": 74.733,
+   "end": 74.808,
+   "hl": false
+  },
+  {
+   "sid": "s16",
+   "w": "том,",
+   "start": 74.807,
+   "end": 75.095,
+   "hl": false
+  },
+  {
+   "sid": "s16",
+   "w": "сможет",
+   "start": 75.358,
+   "end": 75.832,
+   "hl": false
+  },
+  {
+   "sid": "s16",
+   "w": "ли",
+   "start": 75.832,
+   "end": 75.92,
+   "hl": false
+  },
+  {
+   "sid": "s16",
+   "w": "Rockstar",
+   "start": 75.92,
+   "end": 76.37,
+   "hl": true
+  },
+  {
+   "sid": "s16",
+   "w": "превзойти",
+   "start": 76.37,
+   "end": 76.932,
+   "hl": false
+  },
+  {
+   "sid": "s16",
+   "w": "собственную",
+   "start": 76.932,
+   "end": 77.52,
+   "hl": false
+  },
+  {
+   "sid": "s16",
+   "w": "легенду.",
+   "start": 77.52,
+   "end": 78.12,
+   "hl": true
+  }
+ ],
+ "subtitles": [
+  {
+   "start": 0.56,
+   "end": 2.855,
+   "lines": [
+    [
+     {
+      "w": "Тринадцать",
+      "hl": true
+     }
+    ],
+    [
+     {
+      "w": "лет",
+      "hl": true
+     },
+     {
+      "w": "ожидания.",
+      "hl": false
+     }
+    ]
+   ]
+  },
+  {
+   "start": 2.895,
+   "end": 5.49,
+   "lines": [
+    [
+     {
+      "w": "Миллионы",
+      "hl": true
+     },
+     {
+      "w": "игроков",
+      "hl": false
+     }
+    ],
+    [
+     {
+      "w": "по",
+      "hl": false
+     },
+     {
+      "w": "всему",
+      "hl": false
+     },
+     {
+      "w": "миру.",
+      "hl": false
+     }
+    ]
+   ]
+  },
+  {
+   "start": 5.53,
+   "end": 6.903,
+   "lines": [
+    [
+     {
+      "w": "И",
+      "hl": false
+     },
+     {
+      "w": "теперь",
+      "hl": false
+     },
+     {
+      "w": "GTA",
+      "hl": true
+     },
+     {
+      "w": "6",
+      "hl": true
+     }
+    ]
+   ]
+  },
+  {
+   "start": 6.943,
+   "end": 8.978,
+   "lines": [
+    [
+     {
+      "w": "готовится",
+      "hl": false
+     },
+     {
+      "w": "стать",
+      "hl": false
+     }
+    ],
+    [
+     {
+      "w": "одним",
+      "hl": false
+     },
+     {
+      "w": "из",
+      "hl": false
+     },
+     {
+      "w": "самых",
+      "hl": false
+     },
+     {
+      "w": "громких",
+      "hl": true
+     }
+    ]
+   ]
+  },
+  {
+   "start": 9.018,
+   "end": 11.068,
+   "lines": [
+    [
+     {
+      "w": "событий",
+      "hl": false
+     },
+     {
+      "w": "в",
+      "hl": false
+     },
+     {
+      "w": "истории",
+      "hl": false
+     }
+    ],
+    [
+     {
+      "w": "видеоигр.",
+      "hl": false
+     }
+    ]
+   ]
+  },
+  {
+   "start": 11.94,
+   "end": 15.21,
+   "lines": [
+    [
+     {
+      "w": "В",
+      "hl": false
+     },
+     {
+      "w": "центре",
+      "hl": false
+     },
+     {
+      "w": "истории —",
+      "hl": false
+     }
+    ],
+    [
+     {
+      "w": "Джейсон",
+      "hl": true
+     },
+     {
+      "w": "и",
+      "hl": false
+     },
+     {
+      "w": "Люсия.",
+      "hl": true
+     }
+    ]
+   ]
+  },
+  {
+   "start": 15.25,
+   "end": 17.547,
+   "lines": [
+    [
+     {
+      "w": "Двое",
+      "hl": false
+     },
+     {
+      "w": "людей,",
+      "hl": false
+     }
+    ],
+    [
+     {
+      "w": "оказавшихся",
+      "hl": false
+     },
+     {
+      "w": "в",
+      "hl": false
+     },
+     {
+      "w": "мире,",
+      "hl": false
+     }
+    ]
+   ]
+  },
+  {
+   "start": 17.587,
+   "end": 19.66,
+   "lines": [
+    [
+     {
+      "w": "где",
+      "hl": false
+     },
+     {
+      "w": "доверие",
+      "hl": true
+     },
+     {
+      "w": "может",
+      "hl": false
+     }
+    ],
+    [
+     {
+      "w": "стоить",
+      "hl": false
+     },
+     {
+      "w": "дороже",
+      "hl": false
+     },
+     {
+      "w": "денег,",
+      "hl": false
+     }
+    ]
+   ]
+  },
+  {
+   "start": 19.7,
+   "end": 22.112,
+   "lines": [
+    [
+     {
+      "w": "а",
+      "hl": false
+     },
+     {
+      "w": "каждый",
+      "hl": false
+     },
+     {
+      "w": "неправильный",
+      "hl": false
+     },
+     {
+      "w": "шаг",
+      "hl": false
+     }
+    ],
+    [
+     {
+      "w": "меняет",
+      "hl": false
+     },
+     {
+      "w": "всё.",
+      "hl": true
+     }
+    ]
+   ]
+  },
+  {
+   "start": 22.984,
+   "end": 25.442,
+   "lines": [
+    [
+     {
+      "w": "Добро",
+      "hl": false
+     },
+     {
+      "w": "пожаловать",
+      "hl": false
+     }
+    ],
+    [
+     {
+      "w": "в",
+      "hl": false
+     },
+     {
+      "w": "Вайс-Сити.",
+      "hl": true
+     }
+    ]
+   ]
+  },
+  {
+   "start": 25.482,
+   "end": 28.029,
+   "lines": [
+    [
+     {
+      "w": "Неоновые",
+      "hl": true
+     },
+     {
+      "w": "улицы,",
+      "hl": false
+     }
+    ],
+    [
+     {
+      "w": "бесконечные",
+      "hl": false
+     },
+     {
+      "w": "дороги,",
+      "hl": false
+     }
+    ]
+   ]
+  },
+  {
+   "start": 28.069,
+   "end": 30.554,
+   "lines": [
+    [
+     {
+      "w": "пляжи,",
+      "hl": false
+     },
+     {
+      "w": "ночная",
+      "hl": true
+     },
+     {
+      "w": "жизнь",
+      "hl": true
+     }
+    ],
+    [
+     {
+      "w": "и",
+      "hl": false
+     },
+     {
+      "w": "атмосфера,",
+      "hl": false
+     }
+    ]
+   ]
+  },
+  {
+   "start": 30.594,
+   "end": 32.104,
+   "lines": [
+    [
+     {
+      "w": "в",
+      "hl": false
+     },
+     {
+      "w": "которой",
+      "hl": false
+     },
+     {
+      "w": "каждый",
+      "hl": false
+     }
+    ],
+    [
+     {
+      "w": "уголок",
+      "hl": false
+     },
+     {
+      "w": "словно",
+      "hl": false
+     }
+    ]
+   ]
+  },
+  {
+   "start": 32.144,
+   "end": 34.244,
+   "lines": [
+    [
+     {
+      "w": "рассказывает",
+      "hl": false
+     }
+    ],
+    [
+     {
+      "w": "собственную",
+      "hl": false
+     },
+     {
+      "w": "историю.",
+      "hl": false
+     }
+    ]
+   ]
+  },
+  {
+   "start": 35.116,
+   "end": 36.013,
+   "lines": [
+    [
+     {
+      "w": "Rockstar",
+      "hl": true
+     },
+     {
+      "w": "делает",
+      "hl": false
+     }
+    ]
+   ]
+  },
+  {
+   "start": 36.053,
+   "end": 38.723,
+   "lines": [
+    [
+     {
+      "w": "ставку",
+      "hl": false
+     },
+     {
+      "w": "не",
+      "hl": false
+     },
+     {
+      "w": "просто",
+      "hl": false
+     }
+    ],
+    [
+     {
+      "w": "на",
+      "hl": false
+     },
+     {
+      "w": "красивую",
+      "hl": false
+     },
+     {
+      "w": "картинку.",
+      "hl": false
+     }
+    ]
+   ]
+  },
+  {
+   "start": 38.763,
+   "end": 40.848,
+   "lines": [
+    [
+     {
+      "w": "Важны",
+      "hl": false
+     },
+     {
+      "w": "детали,",
+      "hl": true
+     }
+    ],
+    [
+     {
+      "w": "персонажи,",
+      "hl": false
+     }
+    ]
+   ]
+  },
+  {
+   "start": 40.888,
+   "end": 41.848,
+   "lines": [
+    [
+     {
+      "w": "окружающий",
+      "hl": false
+     },
+     {
+      "w": "мир",
+      "hl": false
+     }
+    ]
+   ]
+  },
+  {
+   "start": 41.888,
+   "end": 44.058,
+   "lines": [
+    [
+     {
+      "w": "и",
+      "hl": false
+     },
+     {
+      "w": "ощущение",
+      "hl": false
+     }
+    ],
+    [
+     {
+      "w": "живого",
+      "hl": true
+     },
+     {
+      "w": "города.",
+      "hl": true
+     }
+    ]
+   ]
+  },
+  {
+   "start": 44.098,
+   "end": 45.883,
+   "lines": [
+    [
+     {
+      "w": "Именно",
+      "hl": false
+     },
+     {
+      "w": "такие",
+      "hl": false
+     }
+    ],
+    [
+     {
+      "w": "мелочи",
+      "hl": false
+     },
+     {
+      "w": "заставляют",
+      "hl": false
+     }
+    ]
+   ]
+  },
+  {
+   "start": 45.923,
+   "end": 48.623,
+   "lines": [
+    [
+     {
+      "w": "игроков",
+      "hl": false
+     },
+     {
+      "w": "возвращаться",
+      "hl": false
+     }
+    ],
+    [
+     {
+      "w": "снова",
+      "hl": false
+     },
+     {
+      "w": "и",
+      "hl": false
+     },
+     {
+      "w": "снова.",
+      "hl": true
+     }
+    ]
+   ]
+  },
+  {
+   "start": 49.495,
+   "end": 51.465,
+   "lines": [
+    [
+     {
+      "w": "Ожидания",
+      "hl": false
+     },
+     {
+      "w": "огромны.",
+      "hl": true
+     }
+    ]
+   ]
+  },
+  {
+   "start": 51.505,
+   "end": 53.078,
+   "lines": [
+    [
+     {
+      "w": "Поклонники",
+      "hl": false
+     }
+    ],
+    [
+     {
+      "w": "надеются",
+      "hl": false
+     },
+     {
+      "w": "увидеть",
+      "hl": false
+     }
+    ]
+   ]
+  },
+  {
+   "start": 53.118,
+   "end": 55.59,
+   "lines": [
+    [
+     {
+      "w": "новый",
+      "hl": false
+     },
+     {
+      "w": "уровень",
+      "hl": false
+     }
+    ],
+    [
+     {
+      "w": "открытого",
+      "hl": false
+     },
+     {
+      "w": "мира,",
+      "hl": false
+     },
+     {
+      "w": "свободы",
+      "hl": true
+     }
+    ]
+   ]
+  },
+  {
+   "start": 55.63,
+   "end": 58.275,
+   "lines": [
+    [
+     {
+      "w": "и",
+      "hl": false
+     },
+     {
+      "w": "кинематографичного",
+      "hl": false
+     }
+    ],
+    [
+     {
+      "w": "повествования.",
+      "hl": false
+     }
+    ]
+   ]
+  },
+  {
+   "start": 58.315,
+   "end": 59.313,
+   "lines": [
+    [
+     {
+      "w": "Но",
+      "hl": false
+     },
+     {
+      "w": "действительно",
+      "hl": false
+     },
+     {
+      "w": "ли",
+      "hl": false
+     }
+    ]
+   ]
+  },
+  {
+   "start": 59.353,
+   "end": 60.488,
+   "lines": [
+    [
+     {
+      "w": "игра",
+      "hl": false
+     },
+     {
+      "w": "сможет",
+      "hl": false
+     }
+    ],
+    [
+     {
+      "w": "оправдать",
+      "hl": false
+     }
+    ]
+   ]
+  },
+  {
+   "start": 60.528,
+   "end": 62.253,
+   "lines": [
+    [
+     {
+      "w": "весь",
+      "hl": false
+     },
+     {
+      "w": "этот",
+      "hl": false
+     },
+     {
+      "w": "ажиотаж?",
+      "hl": true
+     }
+    ]
+   ]
+  },
+  {
+   "start": 63.125,
+   "end": 65.685,
+   "lines": [
+    [
+     {
+      "w": "Одно",
+      "hl": false
+     },
+     {
+      "w": "можно",
+      "hl": false
+     },
+     {
+      "w": "сказать",
+      "hl": false
+     }
+    ],
+    [
+     {
+      "w": "точно:",
+      "hl": true
+     },
+     {
+      "w": "GTA",
+      "hl": false
+     },
+     {
+      "w": "6",
+      "hl": false
+     }
+    ]
+   ]
+  },
+  {
+   "start": 65.725,
+   "end": 67.71,
+   "lines": [
+    [
+     {
+      "w": "уже",
+      "hl": false
+     },
+     {
+      "w": "стала",
+      "hl": false
+     },
+     {
+      "w": "одним",
+      "hl": false
+     },
+     {
+      "w": "из",
+      "hl": false
+     }
+    ],
+    [
+     {
+      "w": "самых",
+      "hl": false
+     },
+     {
+      "w": "обсуждаемых",
+      "hl": true
+     }
+    ]
+   ]
+  },
+  {
+   "start": 67.75,
+   "end": 69.983,
+   "lines": [
+    [
+     {
+      "w": "игровых",
+      "hl": false
+     },
+     {
+      "w": "проектов",
+      "hl": false
+     }
+    ],
+    [
+     {
+      "w": "современности.",
+      "hl": false
+     }
+    ]
+   ]
+  },
+  {
+   "start": 70.023,
+   "end": 72.02,
+   "lines": [
+    [
+     {
+      "w": "И",
+      "hl": false
+     },
+     {
+      "w": "главный",
+      "hl": false
+     },
+     {
+      "w": "вопрос",
+      "hl": false
+     }
+    ],
+    [
+     {
+      "w": "теперь",
+      "hl": false
+     },
+     {
+      "w": "не",
+      "hl": false
+     },
+     {
+      "w": "в",
+      "hl": false
+     },
+     {
+      "w": "том,",
+      "hl": false
+     }
+    ]
+   ]
+  },
+  {
+   "start": 72.06,
+   "end": 74.442,
+   "lines": [
+    [
+     {
+      "w": "насколько",
+      "hl": false
+     },
+     {
+      "w": "громкой",
+      "hl": false
+     }
+    ],
+    [
+     {
+      "w": "будет",
+      "hl": false
+     },
+     {
+      "w": "премьера.",
+      "hl": true
+     }
+    ]
+   ]
+  },
+  {
+   "start": 74.482,
+   "end": 76.28,
+   "lines": [
+    [
+     {
+      "w": "А",
+      "hl": false
+     },
+     {
+      "w": "в",
+      "hl": false
+     },
+     {
+      "w": "том,",
+      "hl": false
+     }
+    ],
+    [
+     {
+      "w": "сможет",
+      "hl": false
+     },
+     {
+      "w": "ли",
+      "hl": false
+     },
+     {
+      "w": "Rockstar",
+      "hl": true
+     }
+    ]
+   ]
+  },
+  {
+   "start": 76.32,
+   "end": 78.42,
+   "lines": [
+    [
+     {
+      "w": "превзойти",
+      "hl": false
+     }
+    ],
+    [
+     {
+      "w": "собственную",
+      "hl": false
+     },
+     {
+      "w": "легенду.",
+      "hl": true
+     }
+    ]
+   ]
+  }
+ ],
+ "shots": [
+  {
+   "id": "S01",
+   "at": "start",
+   "need": "Vice City skyline at dawn/dusk, slow aerial push-in (official trailer establishing shot)",
+   "visual": "Slow push-in on the Vice City skyline; dark, moody grade",
+   "move": "push",
+   "slate": "ВАЙС-СИТИ · ГОРИЗОНТ",
+   "trans_in": "cut",
+   "start": 0.0,
+   "anchor_word": null,
+   "end": 2.8,
+   "dur": 2.8,
+   "narration": "Тринадцать лет ожидания.",
+   "subtitle": "Тринадцать лет ожидания.",
+   "file": "footage/cut/S01.mp4"
+  },
+  {
+   "id": "S02",
+   "at": "s02:Миллионы",
+   "need": "Packed beach or club crowd, many people on screen",
+   "visual": "Crowds — 'millions of players'",
+   "move": "push",
+   "slate": "ТОЛПА · ПЛЯЖ / КЛУБ",
+   "trans_in": "cut",
+   "start": 2.8,
+   "anchor_word": "Миллионы",
+   "end": 4.166666666666667,
+   "dur": 1.367,
+   "narration": "Миллионы игроков",
+   "subtitle": "Тринадцать лет ожидания. / Миллионы игроков по всему миру.",
+   "file": "footage/cut/S02.mp4"
+  },
+  {
+   "id": "S03",
+   "at": "s02:всему",
+   "need": "Wide aerial of the city at night, lights to the horizon",
+   "visual": "City lights to the horizon — 'all over the world'",
+   "move": "pull",
+   "slate": "НОЧНОЙ ГОРОД · АЭРО",
+   "trans_in": "cut",
+   "start": 4.166666666666667,
+   "anchor_word": "всему",
+   "end": 6.0,
+   "dur": 1.833,
+   "narration": "по всему миру. И теперь",
+   "subtitle": "Миллионы игроков по всему миру. / И теперь GTA 6",
+   "file": "footage/cut/S03.mp4"
+  },
+  {
+   "id": "S04",
+   "at": "s03:GTA",
+   "need": "Fast car crossing a causeway/bridge at speed",
+   "visual": "Energy cut on the title — GTA VI title typography",
+   "move": "push",
+   "slate": "АВТО НА МОСТУ · СКОРОСТЬ",
+   "trans_in": "flash",
+   "start": 6.0,
+   "anchor_word": "GTA",
+   "end": 8.933333333333334,
+   "dur": 2.933,
+   "narration": "GTA 6 готовится стать одним из самых громких",
+   "subtitle": "И теперь GTA 6 / готовится стать одним из самых громких",
+   "file": "footage/cut/S04.mp4"
+  },
+  {
+   "id": "S05",
+   "at": "s03:событий",
+   "need": "Iconic hero landscape: flamingos / palm trees at golden hour",
+   "visual": "Iconic, monumental shot — 'in video game history'",
+   "move": "push",
+   "slate": "ФЛАМИНГО · ПАЛЬМЫ",
+   "trans_in": "cut",
+   "start": 8.933333333333334,
+   "anchor_word": "событий",
+   "end": 11.866666666666667,
+   "dur": 2.933,
+   "narration": "событий в истории видеоигр.",
+   "subtitle": "готовится стать одним из самых громких / событий в истории видеоигр.",
+   "file": "footage/cut/S05.mp4"
+  },
+  {
+   "id": "S06",
+   "at": "s04:В",
+   "need": "Jason — close-up, clear face",
+   "visual": "Jason close-up; name tag lands on the word 'Джейсон'",
+   "move": "push",
+   "type": "name:ДЖЕЙСОН",
+   "slate": "ДЖЕЙСОН · КРУПНЫЙ ПЛАН",
+   "trans_in": "dip",
+   "start": 11.866666666666667,
+   "anchor_word": "В",
+   "end": 13.866666666666667,
+   "dur": 2.0,
+   "narration": "В центре истории — Джейсон",
+   "subtitle": "В центре истории — Джейсон и Люсия.",
+   "file": "footage/cut/S06.mp4"
+  },
+  {
+   "id": "S07",
+   "at": "s04:Люсия.",
+   "need": "Lucia — close-up, clear face",
+   "visual": "Lucia close-up + name tag",
+   "move": "push",
+   "type": "name:ЛЮСИЯ",
+   "slate": "ЛЮСИЯ · КРУПНЫЙ ПЛАН",
+   "trans_in": "cut",
+   "start": 13.866666666666667,
+   "anchor_word": "Люсия.",
+   "end": 15.166666666666666,
+   "dur": 1.3,
+   "narration": "и Люсия.",
+   "subtitle": "В центре истории — Джейсон и Люсия.",
+   "file": "footage/cut/S07.mp4"
+  },
+  {
+   "id": "S08",
+   "at": "s05:Двое",
+   "need": "Jason and Lucia side by side (walking / standing together)",
+   "visual": "Two people — 'Двое людей'",
+   "move": "drift",
+   "slate": "ДЖЕЙСОН И ЛЮСИЯ · ВМЕСТЕ",
+   "trans_in": "cut",
+   "start": 15.166666666666666,
+   "anchor_word": "Двое",
+   "end": 17.5,
+   "dur": 2.333,
+   "narration": "Двое людей, оказавшихся в мире,",
+   "subtitle": "В центре истории — Джейсон и Люсия. / Двое людей, оказавшихся в мире,",
+   "file": "footage/cut/S08.mp4"
+  },
+  {
+   "id": "S09",
+   "at": "s05:где",
+   "need": "Jason & Lucia in the robbery moment (masks, cash) — trust vs money",
+   "visual": "Trust vs money — 'где доверие может стоить дороже денег'",
+   "move": "push",
+   "slate": "ОГРАБЛЕНИЕ · ДЕНЬГИ · ДОВЕРИЕ",
+   "trans_in": "cut",
+   "start": 17.5,
+   "anchor_word": "где",
+   "end": 19.7,
+   "dur": 2.2,
+   "narration": "где доверие может стоить дороже денег,",
+   "subtitle": "Двое людей, оказавшихся в мире, / где доверие может стоить дороже денег,",
+   "file": "footage/cut/S09.mp4"
+  },
+  {
+   "id": "S10",
+   "at": "s05:каждый",
+   "need": "Police lights / pursuit",
+   "visual": "Police pursuit — 'каждый неправильный шаг'",
+   "move": "shake",
+   "slate": "ПОЛИЦИЯ · ПОГОНЯ",
+   "trans_in": "cut",
+   "start": 19.7,
+   "anchor_word": "каждый",
+   "end": 20.9,
+   "dur": 1.2,
+   "narration": "а каждый неправильный шаг",
+   "subtitle": "а каждый неправильный шаг меняет всё.",
+   "file": "footage/cut/S10.mp4"
+  },
+  {
+   "id": "S11",
+   "at": "s05:меняет",
+   "need": "Consequence: arrest / handcuffs / Lucia in prison scene",
+   "visual": "Consequence — 'меняет всё'",
+   "move": "push",
+   "slate": "АРЕСТ · ПОСЛЕДСТВИЯ",
+   "trans_in": "cut",
+   "start": 20.9,
+   "anchor_word": "меняет",
+   "end": 22.9,
+   "dur": 2.0,
+   "narration": "меняет всё.",
+   "subtitle": "а каждый неправильный шаг меняет всё.",
+   "file": "footage/cut/S11.mp4"
+  },
+  {
+   "id": "S12",
+   "at": "s06:Добро",
+   "need": "Vice City aerial in daylight — the definitive establishing shot",
+   "visual": "Welcome to Vice City — location title",
+   "move": "pull",
+   "type": "title:ВАЙС-СИТИ",
+   "slate": "ВАЙС-СИТИ · ДНЁМ",
+   "trans_in": "flash",
+   "start": 22.9,
+   "anchor_word": "Добро",
+   "end": 25.4,
+   "dur": 2.5,
+   "narration": "Добро пожаловать в Вайс-Сити.",
+   "subtitle": "Добро пожаловать в Вайс-Сити.",
+   "file": "footage/cut/S12.mp4"
+  },
+  {
+   "id": "S13",
+   "at": "s07:Неоновые",
+   "need": "Neon-lit street at night (Ocean Drive-style strip)",
+   "visual": "Neon streets",
+   "move": "drift",
+   "slate": "НЕОНОВЫЕ УЛИЦЫ",
+   "trans_in": "cut",
+   "start": 25.4,
+   "anchor_word": "Неоновые",
+   "end": 26.7,
+   "dur": 1.3,
+   "narration": "Неоновые улицы,",
+   "subtitle": "Добро пожаловать в Вайс-Сити. / Неоновые улицы, бесконечные дороги,",
+   "file": "footage/cut/S13.mp4"
+  },
+  {
+   "id": "S14",
+   "at": "s07:бесконечные",
+   "need": "Highway / causeway traffic, car driving away to the horizon",
+   "visual": "Endless roads",
+   "move": "push",
+   "slate": "ШОССЕ · ТРАФИК",
+   "trans_in": "cut",
+   "start": 26.7,
+   "anchor_word": "бесконечные",
+   "end": 28.0,
+   "dur": 1.3,
+   "narration": "бесконечные дороги,",
+   "subtitle": "Неоновые улицы, бесконечные дороги,",
+   "file": "footage/cut/S14.mp4"
+  },
+  {
+   "id": "S15",
+   "at": "s07:пляжи,",
+   "need": "Beach at night with party / neon nightlife by the water (or beach -> club within one clip)",
+   "visual": "Beaches & nightlife",
+   "move": "drift",
+   "slate": "ПЛЯЖ · НОЧНАЯ ЖИЗНЬ",
+   "trans_in": "cut",
+   "start": 28.0,
+   "anchor_word": "пляжи,",
+   "end": 29.633333333333333,
+   "dur": 1.633,
+   "narration": "пляжи, ночная жизнь и",
+   "subtitle": "Неоновые улицы, бесконечные дороги, / пляжи, ночная жизнь и атмосфера,",
+   "file": "footage/cut/S15.mp4"
+  },
+  {
+   "id": "S16",
+   "at": "s07:атмосфера,",
+   "need": "Golden-hour city atmosphere (marina, boats, sunset haze)",
+   "visual": "Atmosphere",
+   "move": "drift",
+   "slate": "МАРИНА · ЗОЛОТОЙ ЧАС",
+   "trans_in": "cut",
+   "start": 29.633333333333333,
+   "anchor_word": "атмосфера,",
+   "end": 31.333333333333332,
+   "dur": 1.7,
+   "narration": "атмосфера, в которой каждый",
+   "subtitle": "пляжи, ночная жизнь и атмосфера, / в которой каждый уголок словно",
+   "file": "footage/cut/S16.mp4"
+  },
+  {
+   "id": "S17",
+   "at": "s07:уголок",
+   "need": "Street-level life detail: locals, small-town corner, gas station",
+   "visual": "Every corner tells a story",
+   "move": "push",
+   "slate": "УЛИЦА · МЕСТНЫЕ ЖИТЕЛИ",
+   "trans_in": "cut",
+   "start": 31.333333333333332,
+   "anchor_word": "уголок",
+   "end": 35.03333333333333,
+   "dur": 3.7,
+   "narration": "уголок словно рассказывает собственную историю.",
+   "subtitle": "в которой каждый уголок словно / рассказывает собственную историю.",
+   "file": "footage/cut/S17.mp4"
+  },
+  {
+   "id": "S18",
+   "at": "s08:Rockstar",
+   "need": "Wide cinematic landscape shot showing visual fidelity (sky, water, light)",
+   "visual": "Beyond a pretty picture",
+   "move": "pull",
+   "slate": "ПЕЙЗАЖ · НЕБО И ВОДА",
+   "trans_in": "fade",
+   "start": 35.03333333333333,
+   "anchor_word": "Rockstar",
+   "end": 38.666666666666664,
+   "dur": 3.633,
+   "narration": "Rockstar делает ставку не просто на красивую картинку.",
+   "subtitle": "Rockstar делает / ставку не просто на красивую картинку.",
+   "file": "footage/cut/S18.mp4"
+  },
+  {
+   "id": "S19",
+   "at": "s09:Важны",
+   "need": "Close details of characters & surfaces: faces, clothing, reflections, props",
+   "visual": "Details, characters",
+   "move": "push",
+   "type": "word:ДЕТАЛИ",
+   "slate": "ДЕТАЛИ · ПЕРСОНАЖИ",
+   "trans_in": "cut",
+   "start": 38.666666666666664,
+   "anchor_word": "Важны",
+   "end": 40.8,
+   "dur": 2.133,
+   "narration": "Важны детали, персонажи,",
+   "subtitle": "ставку не просто на красивую картинку. / Важны детали, персонажи,",
+   "file": "footage/cut/S19.mp4"
+  },
+  {
+   "id": "S20",
+   "at": "s09:окружающий",
+   "need": "Wildlife & nature: alligator, swamp/Everglades-style wetlands, flamingos",
+   "visual": "The surrounding world — nature and wildlife",
+   "move": "push",
+   "slate": "ДИКАЯ ПРИРОДА · БОЛОТА",
+   "trans_in": "cut",
+   "start": 40.8,
+   "anchor_word": "окружающий",
+   "end": 41.96666666666667,
+   "dur": 1.167,
+   "narration": "окружающий мир и",
+   "subtitle": "Важны детали, персонажи, / окружающий мир / и ощущение живого города.",
+   "file": "footage/cut/S20.mp4"
+  },
+  {
+   "id": "S21",
+   "at": "s09:ощущение",
+   "need": "Busy city: traffic and pedestrians, living streets",
+   "visual": "A living city",
+   "move": "drift",
+   "type": "word:ЖИВОЙ ГОРОД",
+   "slate": "ЖИВОЙ ГОРОД · ТРАФИК",
+   "trans_in": "cut",
+   "start": 41.96666666666667,
+   "anchor_word": "ощущение",
+   "end": 44.0,
+   "dur": 2.033,
+   "narration": "ощущение живого города.",
+   "subtitle": "и ощущение живого города.",
+   "file": "footage/cut/S21.mp4"
+  },
+  {
+   "id": "S22",
+   "at": "s10:Именно",
+   "need": "Small human moments (social-media style clips from the trailer, people in daily life)",
+   "visual": "Small details that pull players back",
+   "move": "push",
+   "slate": "МОМЕНТЫ ИЗ ЖИЗНИ",
+   "trans_in": "cut",
+   "start": 44.0,
+   "anchor_word": "Именно",
+   "end": 46.36666666666667,
+   "dur": 2.367,
+   "narration": "Именно такие мелочи заставляют игроков",
+   "subtitle": "и ощущение живого города. / Именно такие мелочи заставляют / игроков возвращаться снова и снова.",
+   "file": "footage/cut/S22.mp4"
+  },
+  {
+   "id": "S23",
+   "at": "s10:возвращаться",
+   "need": "Car driving into the sunset / returning to the city",
+   "visual": "Coming back again and again",
+   "move": "push",
+   "slate": "АВТО НА ЗАКАТЕ",
+   "trans_in": "cut",
+   "start": 46.36666666666667,
+   "anchor_word": "возвращаться",
+   "end": 49.4,
+   "dur": 3.033,
+   "narration": "возвращаться снова и снова.",
+   "subtitle": "игроков возвращаться снова и снова.",
+   "file": "footage/cut/S23.mp4"
+  },
+  {
+   "id": "S24",
+   "at": "s11:Ожидания",
+   "need": "Massive night aerial of Vice City",
+   "visual": "Expectations are huge",
+   "move": "pull",
+   "slate": "НОЧНОЙ ВАЙС-СИТИ · АЭРО",
+   "trans_in": "dip",
+   "start": 49.4,
+   "anchor_word": "Ожидания",
+   "end": 53.03333333333333,
+   "dur": 3.633,
+   "narration": "Ожидания огромны. Поклонники надеются увидеть",
+   "subtitle": "Ожидания огромны. / Поклонники надеются увидеть",
+   "file": "footage/cut/S24.mp4"
+  },
+  {
+   "id": "S25",
+   "at": "s12:новый",
+   "need": "Open-world vista with freedom of movement: speedboat / plane over open water and coastline",
+   "visual": "A new level of open world, freedom",
+   "move": "pull",
+   "slate": "ОТКРЫТЫЙ МИР · СВОБОДА",
+   "trans_in": "cut",
+   "start": 53.03333333333333,
+   "anchor_word": "новый",
+   "end": 55.733333333333334,
+   "dur": 2.7,
+   "narration": "новый уровень открытого мира, свободы и",
+   "subtitle": "Поклонники надеются увидеть / новый уровень открытого мира, свободы / и кинематографичного повествования.",
+   "file": "footage/cut/S25.mp4"
+  },
+  {
+   "id": "S26",
+   "at": "s12:кинематографичного",
+   "need": "Cinematic character moment of Jason & Lucia (dramatic framing)",
+   "visual": "Cinematic storytelling",
+   "move": "drift",
+   "slate": "ГЕРОИ · КИНОКАДР",
+   "trans_in": "cut",
+   "start": 55.733333333333334,
+   "anchor_word": "кинематографичного",
+   "end": 58.233333333333334,
+   "dur": 2.5,
+   "narration": "кинематографичного повествования.",
+   "subtitle": "и кинематографичного повествования.",
+   "file": "footage/cut/S26.mp4"
+  },
+  {
+   "id": "S27",
+   "at": "s13:Но",
+   "need": "Tension: police helicopter spotlight / standoff",
+   "visual": "The doubt — can it live up to the hype?",
+   "move": "push",
+   "slate": "ВЕРТОЛЁТ · ПРОЖЕКТОР",
+   "trans_in": "cut",
+   "start": 58.233333333333334,
+   "anchor_word": "Но",
+   "end": 60.0,
+   "dur": 1.767,
+   "narration": "Но действительно ли игра сможет",
+   "subtitle": "и кинематографичного повествования. / Но действительно ли / игра сможет оправдать",
+   "file": "footage/cut/S27.mp4"
+  },
+  {
+   "id": "S28",
+   "at": "s13:оправдать",
+   "need": "Lucia close-up, looking into frame — strongest character shot",
+   "visual": "The question hangs",
+   "move": "push",
+   "slate": "ЛЮСИЯ · ВЗГЛЯД",
+   "trans_in": "cut",
+   "start": 60.0,
+   "anchor_word": "оправдать",
+   "end": 63.03333333333333,
+   "dur": 3.033,
+   "narration": "оправдать весь этот ажиотаж?",
+   "subtitle": "игра сможет оправдать / весь этот ажиотаж?",
+   "file": "footage/cut/S28.mp4"
+  },
+  {
+   "id": "S29",
+   "at": "s14:Одно",
+   "need": "Strongest cinematic shot: Jason & Lucia in the car, sunset (hero shot)",
+   "visual": "One thing is certain",
+   "move": "push",
+   "slate": "ДЖЕЙСОН И ЛЮСИЯ · ЗАКАТ",
+   "trans_in": "flash",
+   "start": 63.03333333333333,
+   "anchor_word": "Одно",
+   "end": 65.63333333333334,
+   "dur": 2.6,
+   "narration": "Одно можно сказать точно: GTA 6",
+   "subtitle": "Одно можно сказать точно: GTA 6",
+   "file": "footage/cut/S29.mp4"
+  },
+  {
+   "id": "S30",
+   "at": "s14:уже",
+   "need": "Hero skyline of Vice City at golden hour",
+   "visual": "'уже стала одним из самых…'",
+   "move": "pull",
+   "slate": "ГОРИЗОНТ · ЗОЛОТОЙ ЧАС",
+   "trans_in": "cut",
+   "start": 65.63333333333334,
+   "anchor_word": "уже",
+   "end": 66.93333333333334,
+   "dur": 1.3,
+   "narration": "уже стала одним из самых",
+   "subtitle": "Одно можно сказать точно: GTA 6 / уже стала одним из самых обсуждаемых",
+   "file": "footage/cut/S30.mp4"
+  },
+  {
+   "id": "S31",
+   "at": "s14:обсуждаемых",
+   "need": "In-game social-media / livestream style clip from the official trailer (people filming, viral moments)",
+   "visual": "Most discussed project",
+   "move": "push",
+   "slate": "СОЦСЕТИ · ВИРУСНЫЕ МОМЕНТЫ",
+   "trans_in": "cut",
+   "start": 66.93333333333334,
+   "anchor_word": "обсуждаемых",
+   "end": 69.93333333333334,
+   "dur": 3.0,
+   "narration": "обсуждаемых игровых проектов современности.",
+   "subtitle": "уже стала одним из самых обсуждаемых / игровых проектов современности.",
+   "file": "footage/cut/S31.mp4"
+  },
+  {
+   "id": "S32",
+   "at": "s15:И",
+   "need": "Slow-motion action beat: pursuit / heist",
+   "visual": "The main question",
+   "move": "push",
+   "slate": "ПОГОНЯ · ЗАМЕДЛЕНИЕ",
+   "trans_in": "cut",
+   "start": 69.93333333333334,
+   "anchor_word": "И",
+   "end": 71.96666666666667,
+   "dur": 2.033,
+   "narration": "И главный вопрос теперь не в том,",
+   "subtitle": "игровых проектов современности. / И главный вопрос теперь не в том,",
+   "file": "footage/cut/S32.mp4"
+  },
+  {
+   "id": "S33",
+   "at": "s15:насколько",
+   "need": "Spectacle: night city, lights, crowds",
+   "visual": "How loud the premiere will be",
+   "move": "drift",
+   "slate": "НОЧНОЙ ГОРОД · ОГНИ",
+   "trans_in": "cut",
+   "start": 71.96666666666667,
+   "anchor_word": "насколько",
+   "end": 74.4,
+   "dur": 2.433,
+   "narration": "насколько громкой будет премьера.",
+   "subtitle": "И главный вопрос теперь не в том, / насколько громкой будет премьера.",
+   "file": "footage/cut/S33.mp4"
+  },
+  {
+   "id": "S34",
+   "at": "s16:А",
+   "need": "Jason & Lucia, iconic hero framing",
+   "visual": "'А в том, сможет ли Rockstar…'",
+   "move": "push",
+   "slate": "ДЖЕЙСОН И ЛЮСИЯ · ГЕРОИ",
+   "trans_in": "cut",
+   "start": 74.4,
+   "anchor_word": "А",
+   "end": 76.23333333333333,
+   "dur": 1.833,
+   "narration": "А в том, сможет ли Rockstar",
+   "subtitle": "насколько громкой будет премьера. / А в том, сможет ли Rockstar",
+   "file": "footage/cut/S34.mp4"
+  },
+  {
+   "id": "S35",
+   "at": "s16:превзойти",
+   "need": "Final iconic shot: Vice City skyline at sunset (slow), holds under the end card",
+   "visual": "'…превзойти собственную легенду' -> end card GTA VI / ПРЕВЗОЙТИ ЛЕГЕНДУ?",
+   "move": "pull",
+   "slate": "ФИНАЛ · ГОРИЗОНТ НА ЗАКАТЕ",
+   "trans_in": "cut",
+   "type": "end",
+   "start": 76.23333333333333,
+   "anchor_word": "превзойти",
+   "end": 80.0,
+   "dur": 3.767,
+   "narration": "превзойти собственную легенду.",
+   "subtitle": "А в том, сможет ли Rockstar / превзойти собственную легенду.",
+   "file": "footage/cut/S35.mp4"
+  }
+ ]
+}
