@@ -17,8 +17,12 @@ echo '```'
 echo "## Loudness (EBU R128)"; echo '```'
 ffmpeg -nostats -i "$F" -vn -af ebur128=peak=true -f null - 2>&1 | grep -A20 "Summary" | grep -E "I:|LRA:|Peak:|Threshold" 
 echo '```'
-echo "## Audio clipping (astats)"; echo '```'
-ffmpeg -nostats -i "$F" -vn -af astats=measure_perchannel=none:measure_overall=Peak_level+Number_of_clipped_samples -f null - 2>&1 | grep -E "Peak level|clipped" | tail -2
+echo "## Audio peak (volumedetect)"; echo '```'
+ffmpeg -nostats -i "$F" -vn -af volumedetect -f null - 2>&1 | grep -E "max_volume|mean_volume"
+echo '```'
+echo "## Full decode integrity"; echo '```'
+N=$(ffmpeg -v error -i "$F" -map 0:v -f framemd5 - 2>/tmp/qc_dec.err | grep -vc "^#")
+echo "decoded video frames: $N (expected 3600)"; echo "decoder errors: $(grep -c '' /tmp/qc_dec.err)"
 echo '```'
 } > "$R"
 mkdir -p research/frames
