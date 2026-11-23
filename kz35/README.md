@@ -2,13 +2,13 @@
 **Қазақстан: Тәуелсіздікке 35 жыл · 16 Желтоқсан** — 120-second vertical documentary (Kazakh)
 
 This folder holds the project source, the build pipeline, and the deliverables (`out/`).
-Large media (source footage, prepared shots, renders) are not committed. See *Rebuilding*.
+The two final MP4s are stored with Git LFS. Source footage, prepared shots and intermediate renders are not committed (see *Rebuilding*).
 
 ## Deliverables (`out/`)
 | File | What it is |
 |---|---|
-| `KAZAKHSTAN_INDEPENDENCE_35_YEARS_4K.mp4` | Final film, 2160×3840, 30 fps, HEVC/H.265 + AAC 48 kHz, exactly 120.000 s (not committed: too large for Git) |
-| `KAZAKHSTAN_INDEPENDENCE_35_YEARS_1080p_preview.mp4` | Light preview of the same master (1080×1920, H.264) |
+| `KAZAKHSTAN_INDEPENDENCE_35_YEARS_4K.mp4` | Final film, 2160×3840, 30 fps, HEVC/H.265 + AAC 48 kHz, exactly 120.000 s, ~42 Mbps (Git LFS) |
+| `KAZAKHSTAN_INDEPENDENCE_35_YEARS_1080p_preview.mp4` | Light preview of the same master (1080×1920, H.264, Git LFS) |
 | `KAZAKHSTAN_VOICEOVER.wav` | Narration stem, 48 kHz / 24-bit, 120.000 s, −16 LUFS, sentence timing as used in the film |
 | `KAZAKHSTAN_SUBTITLES.srt` | Kazakh subtitles, timed from the synthesiser's word boundaries, ≤ 2 lines per cue |
 | `KAZAKHSTAN_SCENE_TIMELINE.csv` | Shot-by-shot timeline: start/end, exact narration, asset file, visual description, on-screen label, motion graphics, subtitle text, audio cue, transition, origin/authenticity, licence |

@@ -2,7 +2,6 @@ assets/
 hf/media/
 hf/.hyperframes/
 out/render/
-out/*.mp4
 research/frames/
 node_modules/
 tools/geo/node_modules/
