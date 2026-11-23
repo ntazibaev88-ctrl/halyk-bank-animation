@@ -5,7 +5,7 @@ cd "$(dirname "$0")/.."
 SRC=out/render/video_4k_silent.mp4
 OUT=out/KAZAKHSTAN_INDEPENDENCE_35_YEARS_4K.mp4
 ffmpeg -v error -stats -y -i "$SRC" -i out/mix_master.wav -map 0:v:0 -map 1:a:0 -t 120 \
-  -c:v libx265 -preset medium -b:v 42M -maxrate 55M -bufsize 84M -pix_fmt yuv420p -tag:v hvc1 \
+  -c:v libx265 -preset fast -b:v 42M -maxrate 55M -bufsize 84M -pix_fmt yuv420p -tag:v hvc1 \
   -x265-params "keyint=60:min-keyint=30:aq-mode=3:log-level=error" \
   -color_primaries bt709 -color_trc bt709 -colorspace bt709 \
   -c:a aac -b:a 320k -ar 48000 -movflags +faststart \

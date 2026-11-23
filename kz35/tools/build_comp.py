@@ -77,12 +77,6 @@ def chunk(words):
         # avoid an orphan one-word last cue
         if cues and len(cur) == 1 and length(cues[-1] + cur) <= MAXLINE * 2 + 2:
             cues[-1] += cur
-        elif cues and len(cur) == 1:
-            prev = cues[-1]
-            cut = max((i for i, w in enumerate(prev[:-1]) if re.search(r',$', w[0])), default=None)
-            if cut is not None:
-                cues[-1], cur = prev[:cut + 1], prev[cut + 1:] + cur
-            cues.append(cur)
         else:
             cues.append(cur)
     return cues
