@@ -9,3 +9,4 @@ tools/geo/node_modules/
 voice/raw/
 voice/*.wav
 __pycache__/
+research/dl.log
