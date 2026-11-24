@@ -9,3 +9,4 @@ film/audio/vo_track.wav
 film/audio/sfx/
 film/tail/
 film/hyperframes.json.bak
+__pycache__/
