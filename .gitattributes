@@ -1,0 +1,5 @@
+deliverables/*.wav filter=lfs diff=lfs merge=lfs -text
+film/assets/audio/*.wav filter=lfs diff=lfs merge=lfs -text
+film/audio/**/*.wav filter=lfs diff=lfs merge=lfs -text
+film/audio/**/*.mp3 filter=lfs diff=lfs merge=lfs -text
+deliverables/*.mp4 filter=lfs diff=lfs merge=lfs -text

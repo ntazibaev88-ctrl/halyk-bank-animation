@@ -1,0 +1,38 @@
+shot,scene,scene_title,start_s,end_s,duration_s,type,transition_in,on_screen_label,description,source,source_in_s,license
+S01,1,THE QUESTION,0.00,3.80,3.80,footage,cut,,"Establishing: a herd of horses crossing the steppe at sunrise, mountains on the horizon; slow push-in, wind.",Aerial view of a herd of wild horses running across,1.5,Mixkit Stock Video Free License — Mixkit
+S02,1,THE QUESTION,3.80,8.60,4.80,animated scene (HyperFrames),dissolve,,"Kazakh home at sunset. Ata and Bala by the window; slow dolly-in. Bala: «Ата, тәуелсіздік деген не?»",,,
+S03,1,THE QUESTION,8.60,12.20,3.60,animated scene (HyperFrames),cut,,Close: Ata lifts his gaze to the window; rack focus to the blue flag waving outside.,,,
+S04,2,THE PAST,12.20,16.00,3.80,footage,cut,ИЛЛЮСТРАЦИЯЛЫҚ КАДР,"Memory: horses crossing the open plain (sepia, illustrative).",A pack of wild horses running on a green plain,1.0,Mixkit Stock Video Free License — Mixkit
+S05,2,THE PAST,16.00,19.60,3.60,footage,cut,ИЛЛЮСТРАЦИЯЛЫҚ КАДР,"Memory: ears of wheat in the wind (sepia, illustrative).",Wheat swaying in a gentle wind,2.0,Mixkit Stock Video Free License — Mixkit
+S06,2,THE PAST,19.60,23.40,3.80,animated scene (HyperFrames),cut,,Close-up: Ata: «Оның артында тұтас бір халықтың арманы мен тағдыры жатыр.»,,,
+S07,2,THE PAST,23.40,27.00,3.60,footage,cut,ИЛЛЮСТРАЦИЯЛЫҚ КАДР,Winter comes: snow falling in a misty forest (illustrative).,"Snowing in a foggy forest, slow motion",4.0,Mixkit Stock Video Free License — Mixkit
+S08,3,DECEMBER 1986,27.00,31.20,4.20,motion graphics (HyperFrames),cut,,Memorial title «АЛМАТЫ · ЖЕЛТОҚСАН · 1986» over falling snow.,,,
+S09,3,DECEMBER 1986,31.20,35.00,3.80,motion graphics (HyperFrames),dissolve,,Night snowfall under a lamp (animated).,,,
+S10,3,DECEMBER 1986,35.00,38.80,3.80,footage,dissolve,ИЛЛЮСТРАЦИЯЛЫҚ КАДР,Snow falling through winter pines (illustrative).,Snow falling in a pine forest,1.0,Mixkit Stock Video Free License — Mixkit
+S11,3,DECEMBER 1986,38.80,43.20,4.40,animated scene (HyperFrames),dissolve,,"Present day, night: Ata bows his head in remembrance.",,,
+S12,4,INDEPENDENCE,43.20,48.00,4.80,motion graphics (HyperFrames),dissolve,,"On-screen text «16 ЖЕЛТОҚСАН 1991 ЖЫЛ», gold, light rays.",,,
+S13,4,INDEPENDENCE,48.00,52.40,4.40,motion graphics (HyperFrames),dissolve,,"Typographic title of the Constitutional Law «On the State Independence of the Republic of Kazakhstan», Almaty 1991.",,,
+S14,4,INDEPENDENCE,52.40,55.40,3.00,footage,dissolve,,"«Сол күннен бастап…» A red sun rises over the plain — a new day, a new history.",Red sun rising in the warm morning,3.0,Mixkit Stock Video Free License — Mixkit
+S15,4,INDEPENDENCE,55.40,58.40,3.00,footage,dissolve,,Morning light over a wheat field — the land waking up.,Wheat field at sunrise,1.0,Mixkit Stock Video Free License — Mixkit
+S16,5,A NEW COUNTRY,58.40,62.20,3.80,motion graphics (HyperFrames),dissolve,1992 · МЕМЛЕКЕТТІК ТУ,«Біз өз туымызды көтердік.» The State Flag (adopted 4 June 1992) rises and unfurls.,,,
+S17,5,A NEW COUNTRY,62.20,65.70,3.50,motion graphics (HyperFrames),cut,,"«Өз теңгемізді енгіздік.» The tenge, national currency introduced 15 November 1993.",,,
+S18,5,A NEW COUNTRY,65.70,69.70,4.00,motion graphics (HyperFrames),cut,,«Әлемге … танылдық.» 2 March 1992 — Kazakhstan becomes a member of the United Nations.,,,
+S19,5,A NEW COUNTRY,69.70,73.20,3.50,footage,dissolve,БАЙҚОҢЫР,"«Алдымызда жаңа жол ашылды.» Rollout along the rails across the steppe, Baikonur.",Expedition 73 Baikonur Activities and Soyuz MS-27 Rollout (jsc2025m000030),372.0,Public domain (NASA media) — NASA
+S20,6,TODAY'S KAZAKHSTAN,73.20,75.80,2.60,footage,dissolve,,"Builders: cranes raising new buildings, mountains behind.","Construction site and cranes working, time-lapse",2.0,Mixkit Stock Video Free License — Mixkit
+S21,6,TODAY'S KAZAKHSTAN,75.80,78.20,2.40,footage,cut,,Green farmland and fields under a wide sky.,Windswept grasslands,2.0,Mixkit Stock Video Free License — Mixkit
+S22,6,TODAY'S KAZAKHSTAN,78.20,80.40,2.20,footage,cut,,«…еңбек еткен халық» Aerial: combines harvesting grain.,Machines harvesting a wheat field,6.0,Mixkit Stock Video Free License — Mixkit
+S23,6,TODAY'S KAZAKHSTAN,80.40,81.60,1.20,footage,cut,,Builders and engineers: welding sparks.,Close-up of sparks and smoke occurring during welding,4.0,Mixkit Stock Video Free License — Mixkit
+S24,6,TODAY'S KAZAKHSTAN,81.60,82.80,1.20,footage,cut,,Doctors: a physician listens to a patient's heartbeat.,Doctor listening to a heartbeat at hospital,4.0,Mixkit Stock Video Free License — Mixkit
+S25,6,TODAY'S KAZAKHSTAN,82.80,84.00,1.20,footage,cut,,«…армандаған жастар» Teacher / scholar at a blackboard of equations.,Analyzing equations written on a blackboard,1.0,Mixkit Stock Video Free License — Mixkit
+S26,6,TODAY'S KAZAKHSTAN,84.00,85.40,1.40,footage,cut,,Young people studying: hands drawing charts in a notebook.,A student making notes and mathematical charts on the notebook,0.5,Mixkit Stock Video Free License — Mixkit
+S27,6,TODAY'S KAZAKHSTAN,85.40,87.60,2.20,footage,cut,,«…болашаққа сенген ұрпақ» A hand brushing through ripe wheat at sunset.,Hand touching wheat in golden sunset,3.0,Mixkit Stock Video Free License — Mixkit
+S28,6,TODAY'S KAZAKHSTAN,87.60,89.60,2.00,footage,cut,БАЙҚОҢЫР,"Soyuz rocket raised on the launch pad, Baikonur.",Expedition 73 Baikonur Activities and Soyuz MS-27 Rollout (jsc2025m000030),402.0,Public domain (NASA media) — NASA
+S29,6,TODAY'S KAZAKHSTAN,89.60,91.40,1.80,motion graphics (HyperFrames),cut,,The blue flag of Kazakhstan waving in the wind.,,,
+S30,7,THE GRANDFATHER'S MESSAGE,91.40,95.40,4.00,animated scene (HyperFrames),dissolve,,"Back in the home at dusk, lamp light. Ata: «Балам, біз сендерге азат елді аманат еттік.»",,,
+S31,7,THE GRANDFATHER'S MESSAGE,95.40,99.20,3.80,animated scene (HyperFrames),cut,,Two-shot: Ata gently places his hand on the grandson's shoulder.,,,
+S32,7,THE GRANDFATHER'S MESSAGE,99.20,103.00,3.80,animated scene (HyperFrames),cut,,"Close-up Ata: «Енді сол елді қорғау, дамыту, қадірлеу — сендердің қолдарыңда.»",,,
+S33,7,THE GRANDFATHER'S MESSAGE,103.00,106.40,3.40,animated scene (HyperFrames),cut,,"Close-up Bala listening in silence, looking up at his grandfather.",,,
+S34,8,THE FUTURE,106.40,110.40,4.00,animated scene (HyperFrames),dissolve,,Sunrise over the steppe; Bala stands on a hill beside the flag; slow crane up.,,,
+S35,8,THE FUTURE,110.40,113.40,3.00,animated scene (HyperFrames),cut,,"Closer: the flag in the morning wind, sunlight through the cloth.",,,
+S36,8,THE FUTURE,113.40,120.00,6.60,animated scene (HyperFrames),cut,,"Wide dawn sky above Bala and the flag, the camera still rising; final titles.",,,
+S37,8,THE FUTURE,113.80,120.00,6.20,end titles (HyperFrames),cut,,«АТАНЫҢ АМАНАТЫ» / «16 ЖЕЛТОҚСАН — ҚАЗАҚСТАН РЕСПУБЛИКАСЫНЫҢ ТӘУЕЛСІЗДІК КҮНІ» / «ТӘУЕЛСІЗДІГІМІЗ МӘҢГІ БОЛСЫН!»,,,

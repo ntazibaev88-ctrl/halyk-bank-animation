@@ -1,0 +1,11 @@
+node_modules/
+film/media/
+film/build/
+film/assets/shots/
+film/dev/
+film/.hyperframes/
+film/audio/vo_track.wav
+*.part
+film/audio/sfx/
+film/tail/
+film/hyperframes.json.bak
